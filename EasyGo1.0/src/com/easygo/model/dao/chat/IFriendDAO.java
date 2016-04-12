@@ -8,7 +8,7 @@ import com.easygo.model.beans.house.House;
 
 public interface IFriendDAO {
 	/**
-	 * 对好友列表进行增删改查
+	 * 对好友列表进行增删改 查
 	 */
 	// 添加好友
 	public abstract boolean addIFriend(Friend friend);
