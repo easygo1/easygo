@@ -1,5 +1,5 @@
 package com.easygo.model.beans.chat;
-//111222
+//111222444
 public class Friend {
 	private int friend_no;// 朋友表ID
 	private int user_id;// 用户ID

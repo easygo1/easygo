@@ -8,5 +8,5 @@ public class News {
 	private String news_content;// 发送内容
 	private Timestamp news_time;// 发送时间
 	private int news_stars;// 点赞次数
-	private int news_views;// ？？
+	private int news_views;// 浏览次数
 }
