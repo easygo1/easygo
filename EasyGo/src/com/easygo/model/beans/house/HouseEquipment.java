@@ -1,9 +1,27 @@
 package com.easygo.model.beans.house;
 
 public class HouseEquipment {
-	// 房屋设施表 0表示无，1表示有
-	private int house_equipment_no; // 设施编号
-	private String house_equipment_name;	//设施名称
-	private int house_id; // 房源编号
+	private int house_id; // 房屋编号
+	private int equipment_id;	//设施名称
+	public HouseEquipment() {
+		super();
+	}
+	public HouseEquipment(int house_id, int equipment_id) {
+		super();
+		this.house_id = house_id;
+		this.equipment_id = equipment_id;
+	}
+	public int getHouse_id() {
+		return house_id;
+	}
+	public void setHouse_id(int house_id) {
+		this.house_id = house_id;
+	}
+	public int getEquipment_id() {
+		return equipment_id;
+	}
+	public void setEquipment_id(int equipment_id) {
+		this.equipment_id = equipment_id;
+	}
 	
 }
