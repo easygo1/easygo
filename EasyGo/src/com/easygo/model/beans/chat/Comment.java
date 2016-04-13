@@ -12,4 +12,54 @@ public class Comment {
 	public Comment() {
 		super();
 	}
+
+	public Comment(int comment_id, int comment_news_id, int comment_user_id,
+			String comment_content, Timestamp comment_time) {
+		super();
+		this.comment_id = comment_id;
+		this.comment_news_id = comment_news_id;
+		this.comment_user_id = comment_user_id;
+		this.comment_content = comment_content;
+		this.comment_time = comment_time;
+	}
+
+	public int getComment_id() {
+		return comment_id;
+	}
+
+	public void setComment_id(int comment_id) {
+		this.comment_id = comment_id;
+	}
+
+	public int getComment_news_id() {
+		return comment_news_id;
+	}
+
+	public void setComment_news_id(int comment_news_id) {
+		this.comment_news_id = comment_news_id;
+	}
+
+	public int getComment_user_id() {
+		return comment_user_id;
+	}
+
+	public void setComment_user_id(int comment_user_id) {
+		this.comment_user_id = comment_user_id;
+	}
+
+	public String getComment_content() {
+		return comment_content;
+	}
+
+	public void setComment_content(String comment_content) {
+		this.comment_content = comment_content;
+	}
+
+	public Timestamp getComment_time() {
+		return comment_time;
+	}
+
+	public void setComment_time(Timestamp comment_time) {
+		this.comment_time = comment_time;
+	}
 }
