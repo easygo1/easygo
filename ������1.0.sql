@@ -1,4 +1,4 @@
-
+﻿
 #用户表
 CREATE TABLE USER(
 user_id        INT PRIMARY KEY AUTO_INCREMENT,  #用户ID
@@ -60,15 +60,7 @@ message_isread       CHAR(2),                      #消息状态；01未读，02
 FOREIGN KEY (message_sender_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (message_receiver_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );			
-#系统消息表
-CREATE TABLE system_message(
-system_message_id INT PRIMARY KEY AUTO_INCREMENT,
-user_id INT NOT NULL,  				#系统信息接收者（外键）
-system_message_content VARCHAR(20),		#系统发送的内容
-system_message_linkorder INT,			#顾客购买的订单
-system_message_linkuser	INT,		        #请求加为好友的用户
-FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
-);
+
 #说说表news
 CREATE TABLE news(
 news_id  INT PRIMARY KEY AUTO_INCREMENT,   #说说动态id
@@ -76,7 +68,7 @@ news_sender_id INT,                        #发送人id
 news_content   VARCHAR(300),               #发送内容
 news_time      DATETIME,                   #发送时间
 news_stars      INT ,                      #点赞次数
-news_views      INT ,                      #点赞次数
+news_views      INT ,                      #浏览次数
 FOREIGN KEY (news_sender_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE 
 );
 #说说图片表
@@ -117,6 +109,15 @@ alipay_no        VARCHAR(30),                           #支付宝号
 user_wallet_score  INT,                          #积分
 user_wallet_money  DOUBLE,                       #钱包余额
 FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE	
+);
+#系统消息表
+CREATE TABLE system_message(
+system_message_id INT PRIMARY KEY AUTO_INCREMENT,
+user_id INT NOT NULL,  				#系统信息接收者（外键）
+system_message_content VARCHAR(20),		#系统发送的内容
+system_message_linkorder INT,			#顾客购买的订单
+system_message_linkuser	INT,		        #请求加为好友的用户
+FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
