@@ -12,8 +12,8 @@ public interface IHouseEquipmentDAO {
 	 */
 	// 添加房源设施
 	public abstract boolean addIHouseEquipment(HouseEquipment houseEquipment);
-	// 修改房源设施
-	public abstract boolean updateSpecHouseEquipment(int house_id,HouseEquipment houseEquipment);
+	// 删除某个房源某个设施
+	public abstract boolean deleteSpecHouseEquipment(int house_id,HouseEquipment houseEquipment);
 	// 查询某个房源的所有房源设施
 	public abstract HotCity selectSpecHouseEquipment(int house_id);
 		

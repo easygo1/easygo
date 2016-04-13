@@ -33,4 +33,85 @@ public class Orders {
 		this.tel = tel;
 		this.order_state = order_state;
 	}
+
+	public int getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
+	}
+
+	public int getHouse_id() {
+		return house_id;
+	}
+
+	public void setHouse_id(int house_id) {
+		this.house_id = house_id;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
+	public int getChecknum() {
+		return checknum;
+	}
+
+	public void setChecknum(int checknum) {
+		this.checknum = checknum;
+	}
+
+	public String getCheckname() {
+		return checkname;
+	}
+
+	public void setCheckname(String checkname) {
+		this.checkname = checkname;
+	}
+
+	public Date getChecktime() {
+		return checktime;
+	}
+
+	public void setChecktime(Date checktime) {
+		this.checktime = checktime;
+	}
+
+	public Date getLeavetime() {
+		return leavetime;
+	}
+
+	public void setLeavetime(Date leavetime) {
+		this.leavetime = leavetime;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getOrder_state() {
+		return order_state;
+	}
+
+	public void setOrder_state(String order_state) {
+		this.order_state = order_state;
+	}
+	
 }

@@ -20,4 +20,45 @@ public class Assess {
 		this.star = star;
 		this.assess_content = assess_content;
 	}
+
+	public int getAssess_id() {
+		return assess_id;
+	}
+
+	public void setAssess_id(int assess_id) {
+		this.assess_id = assess_id;
+	}
+
+	public int getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
+	public int getStar() {
+		return star;
+	}
+
+	public void setStar(int star) {
+		this.star = star;
+	}
+
+	public String getAssess_content() {
+		return assess_content;
+	}
+
+	public void setAssess_content(String assess_content) {
+		this.assess_content = assess_content;
+	}
+	
 }

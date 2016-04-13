@@ -25,4 +25,167 @@ public class User {
 	public User() {
 		super();
 	}
+
+	public User(int user_id, String user_no, String user_realname,
+			String user_password, String user_nickname, String user_sex,
+			String user_phone, int user_type, String user_photo,
+			String user_job, String user_address_province,
+			String user_address_city, String user_mood, String user_mail,
+			String user_introduct, Date user_birthday, String user_idcard) {
+		super();
+		this.user_id = user_id;
+		this.user_no = user_no;
+		this.user_realname = user_realname;
+		this.user_password = user_password;
+		this.user_nickname = user_nickname;
+		this.user_sex = user_sex;
+		this.user_phone = user_phone;
+		this.user_type = user_type;
+		this.user_photo = user_photo;
+		this.user_job = user_job;
+		this.user_address_province = user_address_province;
+		this.user_address_city = user_address_city;
+		this.user_mood = user_mood;
+		this.user_mail = user_mail;
+		this.user_introduct = user_introduct;
+		this.user_birthday = user_birthday;
+		this.user_idcard = user_idcard;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
+	public String getUser_no() {
+		return user_no;
+	}
+
+	public void setUser_no(String user_no) {
+		this.user_no = user_no;
+	}
+
+	public String getUser_realname() {
+		return user_realname;
+	}
+
+	public void setUser_realname(String user_realname) {
+		this.user_realname = user_realname;
+	}
+
+	public String getUser_password() {
+		return user_password;
+	}
+
+	public void setUser_password(String user_password) {
+		this.user_password = user_password;
+	}
+
+	public String getUser_nickname() {
+		return user_nickname;
+	}
+
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
+	}
+
+	public String getUser_sex() {
+		return user_sex;
+	}
+
+	public void setUser_sex(String user_sex) {
+		this.user_sex = user_sex;
+	}
+
+	public String getUser_phone() {
+		return user_phone;
+	}
+
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
+	}
+
+	public int getUser_type() {
+		return user_type;
+	}
+
+	public void setUser_type(int user_type) {
+		this.user_type = user_type;
+	}
+
+	public String getUser_photo() {
+		return user_photo;
+	}
+
+	public void setUser_photo(String user_photo) {
+		this.user_photo = user_photo;
+	}
+
+	public String getUser_job() {
+		return user_job;
+	}
+
+	public void setUser_job(String user_job) {
+		this.user_job = user_job;
+	}
+
+	public String getUser_address_province() {
+		return user_address_province;
+	}
+
+	public void setUser_address_province(String user_address_province) {
+		this.user_address_province = user_address_province;
+	}
+
+	public String getUser_address_city() {
+		return user_address_city;
+	}
+
+	public void setUser_address_city(String user_address_city) {
+		this.user_address_city = user_address_city;
+	}
+
+	public String getUser_mood() {
+		return user_mood;
+	}
+
+	public void setUser_mood(String user_mood) {
+		this.user_mood = user_mood;
+	}
+
+	public String getUser_mail() {
+		return user_mail;
+	}
+
+	public void setUser_mail(String user_mail) {
+		this.user_mail = user_mail;
+	}
+
+	public String getUser_introduct() {
+		return user_introduct;
+	}
+
+	public void setUser_introduct(String user_introduct) {
+		this.user_introduct = user_introduct;
+	}
+
+	public Date getUser_birthday() {
+		return user_birthday;
+	}
+
+	public void setUser_birthday(Date user_birthday) {
+		this.user_birthday = user_birthday;
+	}
+
+	public String getUser_idcard() {
+		return user_idcard;
+	}
+
+	public void setUser_idcard(String user_idcard) {
+		this.user_idcard = user_idcard;
+	}
+	
 }

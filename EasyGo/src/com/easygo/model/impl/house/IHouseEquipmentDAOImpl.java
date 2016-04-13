@@ -13,7 +13,7 @@ public class IHouseEquipmentDAOImpl implements IHouseEquipmentDAO {
 	}
 
 	@Override
-	public boolean updateSpecHouseEquipment(int house_id,
+	public boolean deleteSpecHouseEquipment(int house_id,
 			HouseEquipment houseEquipment) {
 		// TODO Auto-generated method stub
 		return false;
