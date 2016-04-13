@@ -1,12 +1,17 @@
 package com.easygo.model.impl.house;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import com.easygo.model.beans.house.House;
 import com.easygo.model.dao.house.IHouseDAO;
 
 public class IHouseDAOImpl implements IHouseDAO {
-
+	private Connection connection = null;
+	private PreparedStatement statement = null;
+	private ResultSet resultSet = null;
 	@Override
 	public boolean addHouse(House house) {
 		// TODO Auto-generated method stub

@@ -49,7 +49,7 @@ function setTaba(m,n){
           <ul class="nav nav-sidebar" id="leftmenu0">   
             <li onclick="setTaba(0,0)"><a href="#">用户表</a></li>
             <li onclick="setTaba(0,1)"><a href="#">钱包表</a></li>
-            <li><a href="#">房源信息表</a></li>
+            <li onclick="setTaba(0,2)"><a href="#">房源信息表</a></li>
             <li><a href="#">订单表</a></li>
             <li><a href="#">订单状态表</a></li>
             <li><a href="#">日期管理表</a></li>
@@ -73,7 +73,10 @@ function setTaba(m,n){
        		</ul>
         	<ul style="display: none">
                 <iframe src="jsp/user/userwallet.jsp" width="100%" height="650px" scrolling="no" frameborder="0"> </iframe>
-       		</ul>        
+       		</ul>    
+       		<ul style="display: none">
+                <iframe src="jsp/house/house.jsp" width="100%" height="650px" scrolling="no" frameborder="0"> </iframe>
+       		</ul>     
           </div> 
       </div>
     </div>
