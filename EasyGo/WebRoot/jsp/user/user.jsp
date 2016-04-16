@@ -21,7 +21,7 @@
 		</a>
 	</div>
 	<hr>
-	<table class="table table-striped" style="border:1px;border-color: red " >
+	<table class="table table-striped" style="border:1px;" >
 		<thead>
 			<tr>
 				<th style="text-align:center">用户id</th>
@@ -38,13 +38,13 @@
 		<c:forEach items="${requestScope.users}" var="user">
 			<tbody>
 				<tr>
-					<td>${user.name}</td>
-					<td>${user.count}</td>
-					<td>${user.price}</td>
-					<td>${user.price}</td>
-					<td>${user.price}</td>
-					<td>${user.price}</td>
-					<td>${user.price}</td>
+					<td>${user.user_id}</td>
+					<td>${user.user_no}</td>
+					<td>${user.user_realname}</td>
+					<td>${user.user_nickname}</td>
+					<td>${user.user_sex}</td>
+					<td>${user.user_phone}</td>
+					<td>${user.user_type}</td>
 					<td>
 						<a href="selectUser.jsp?id=${user.id }">
 						<button type="button" class="btn btn-primary">查看</button></a>
@@ -61,7 +61,7 @@
 			</tbody>
 		</c:forEach>
 
-		<tbody  style="text-align:center" >
+		<%-- <tbody  style="text-align:center" >
 			<tr>
 				<td>1,001</td>
 				<td>Lorem</td>
@@ -82,7 +82,7 @@
 				</td>
 				
 			</tr>
-		</tbody>
+		</tbody> --%>
 	</table>
 	
 	<center>
