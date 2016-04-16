@@ -22,8 +22,8 @@
 
 			<tbody style="text-align: center">
 				<tr>
-					<td>账号</td>
-					<td><input type="text" class="form-control" style="width: 400px">
+					<td style="text-align: center">账号</td>
+					<td><input type="text" class="form-control" style="width: 400px"></td>
 				</tr>
 				<tr>
 					<td>账号</td>

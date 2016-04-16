@@ -11,17 +11,18 @@
 </head>
 <body>
 	<h2>用户管理</h2>
-	<div style="text-align: center;">
+	<div style="text-align: center" align="center">
 		<a href="addUser.jsp" ><button type="button" class="btn btn-info">添加用户</button></a>
+		
 		&nbsp;&nbsp;&nbsp;
-		<a class="form-inline" href="#">
+		<a class="form-inline" href="">
 			<input  class="form-control" placeholder="模糊查询">
 			<button type="button" class="btn btn-info">查询</button>
 		</a>
 	</div>
 	<hr>
-	<table class="table table-striped" style="text-align: center">
-		<thead style="text-align:center">
+	<table class="table table-striped" style="border:1px;border-color: red " >
+		<thead>
 			<tr>
 				<th style="text-align:center">用户id</th>
 				<th style="text-align:center">用户账号</th>
@@ -60,7 +61,7 @@
 			</tbody>
 		</c:forEach>
 
-		<tbody>
+		<tbody  style="text-align:center" >
 			<tr>
 				<td>1,001</td>
 				<td>Lorem</td>
