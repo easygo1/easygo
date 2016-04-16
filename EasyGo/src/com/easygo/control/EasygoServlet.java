@@ -32,19 +32,11 @@ public class EasygoServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// 获取当前页面显示的第几页
@@ -58,11 +50,23 @@ public class EasygoServlet extends HttpServlet {
 		switch (method) {
 		case "getAllUser":
 			List<User> userList = new ArrayList<User>();
-			IUserDAO userdao = new IUserDAOImpl();
-			userList = userdao.selectAllUser();
+			IUserDAO userdao1 = new IUserDAOImpl();
+			userList = userdao1.selectAllUser();
 			request.setAttribute("userList", userList);
 			request.getRequestDispatcher("jsp/user/user.jsp").forward(request,
 					response);
+			break;
+		case "findUser":
+
+			// 得到要查询的user_no
+			int user_no = Integer.valueOf(request.getParameter("user_no"));
+
+			IUserDAO userdao2 = new IUserDAOImpl();
+			User user = userdao2.findSpecStudent(user_no);
+
+			request.setAttribute("oneUser", user);
+			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
+					request, response);
 			break;
 		case "addOrders":
 			IOrderDAO order = new IOrderDAOImpl();
