@@ -48,54 +48,46 @@ public class EasygoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// 获取当前页面显示的第几页
-				String cur = request.getParameter("cur");
-				// 第一次加载页面，让其显示第一页
-				if (cur == null) {
-					cur = "1";
-				}
+		String cur = request.getParameter("cur");
+		// 第一次加载页面，让其显示第一页
+		if (cur == null) {
+			cur = "1";
+		}
 		String method = request.getParameter("methods");
-		
+
 		switch (method) {
 		case "getAllUser":
 			List<User> userList = new ArrayList<User>();
-
 			IUserDAO userdao = new IUserDAOImpl();
-
 			userList = userdao.selectAllUser();
-
 			request.setAttribute("userList", userList);
 			request.getRequestDispatcher("jsp/user/user.jsp").forward(request,
 					response);
 			break;
-		case "":
-			System.out.println("默认用户管理界面");
-			break;
 		case "addOrders":
 			IOrderDAO order = new IOrderDAOImpl();
-			//获取到订单信息的每个字段
-			//BeanUtils.populate(order, request.getParameterMap());
+			// 获取到订单信息的每个字段
+			// BeanUtils.populate(order, request.getParameterMap());
 			int house_id = Integer.valueOf(request.getParameter("house_id"));
-			int user_id =Integer.valueOf(request.getParameter("user_id"));
-			int checknum =Integer.valueOf(request.getParameter("checknum"));
+			int user_id = Integer.valueOf(request.getParameter("user_id"));
+			int checknum = Integer.valueOf(request.getParameter("checknum"));
 			String checktime = request.getParameter("checktime");
 			String leavetime = request.getParameter("leavetime");
-			double total =Double.valueOf(request.getParameter("total"));
+			double total = Double.valueOf(request.getParameter("total"));
 			String tel = request.getParameter("tel");
 			String order_state = request.getParameter("order_state");
 			String order_time = request.getParameter("order_time");
-			
-			//添加订单信息
-			//用网页信息初始化订单对象
-			Orders orders=new Orders(house_id,user_id,checknum,checktime,leavetime,total,tel,order_state,order_time);
-			//向数据库中添加信息
+			// 添加订单信息
+			// 用网页信息初始化订单对象
+			Orders orders = new Orders(house_id, user_id, checknum, checktime,
+					leavetime, total, tel, order_state, order_time);
+			// 向数据库中添加信息
 			order.addOrders(orders);
-			
-			
+
 			request.getRequestDispatcher("jsp/order/order.jsp").forward(
 					request, response);
 			break;
 		case "getAllorder":
-			
 			IOrderDAO order1 = new IOrderDAOImpl();
 			List<Orders> orderlist = new ArrayList<Orders>();
 			orderlist = order1.selectAllOrders(Integer.parseInt(cur));
