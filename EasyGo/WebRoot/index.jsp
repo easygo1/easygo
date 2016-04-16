@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -49,8 +49,8 @@ function setTaba(m,n){
           <ul class="nav nav-sidebar" id="leftmenu0">   
             <li onclick="setTaba(0,0)"><a href="#">用户表</a></li>
             <li onclick="setTaba(0,1)"><a href="#">钱包表</a></li>
-            <li onclick="setTaba(0,2)"><a href="#">房源信息表</a></li>
-            <li><a href="#">订单表</a></li>
+            <li onclick="setTaba(0,2)"><a href="#">订单表</a></li>
+             <li><a href="#">房源信息表</a></li>
             <li><a href="#">订单状态表</a></li>
             <li><a href="#">日期管理表</a></li>
             <li><a href="#">房屋设施表</a></li>
@@ -69,14 +69,14 @@ function setTaba(m,n){
           
           <div style="margin-left:210px" id="mcont0">
             <ul style="display: block">
-                <iframe src="easygoservlet?methods=getAllUser" width="100%" height="1050px" scrolling="no" frameborder="0"> </iframe>
+                <iframe src="jsp/user/user.jsp" width="100%" height="650px" scrolling="no" frameborder="0"> </iframe>
        		</ul>
         	<ul style="display: none">
                 <iframe src="jsp/user/userwallet.jsp" width="100%" height="650px" scrolling="no" frameborder="0"> </iframe>
-       		</ul>    
+       		</ul>
        		<ul style="display: none">
-                <iframe src="jsp/house/house.jsp" width="100%" height="650px" scrolling="no" frameborder="0"> </iframe>
-       		</ul>     
+                <iframe src="easygoservlet?methods=getAllorder" width="100%" height="650px" scrolling="no" frameborder="0"> </iframe>
+       		</ul>         
           </div> 
       </div>
     </div>
