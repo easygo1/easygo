@@ -1,7 +1,5 @@
 package com.easygo.model.beans.user;
 
-import java.sql.Date;
-
 public class User {
 	// 用户
 	private int user_id; // 用户ID
@@ -19,7 +17,7 @@ public class User {
 	private String user_mood; // 个性签名15字内
 	private String user_mail; // 邮箱
 	private String user_introduct; // 个人简介
-	private Date user_birthday; // 出生日期
+	private String user_birthday; // 出生日期
 	private String user_idcard; // 身份证号
 
 	public User() {
@@ -31,7 +29,7 @@ public class User {
 			int user_type, String user_photo, String user_job,
 			String user_address_province, String user_address_city,
 			String user_mood, String user_mail, String user_introduct,
-			Date user_birthday, String user_idcard) {
+			String user_birthday, String user_idcard) {
 		super();
 		this.user_no = user_no;
 		this.user_realname = user_realname;
@@ -56,7 +54,7 @@ public class User {
 			String user_phone, int user_type, String user_photo,
 			String user_job, String user_address_province,
 			String user_address_city, String user_mood, String user_mail,
-			String user_introduct, Date user_birthday, String user_idcard) {
+			String user_introduct, String user_birthday, String user_idcard) {
 		super();
 		this.user_id = user_id;
 		this.user_no = user_no;
@@ -197,11 +195,11 @@ public class User {
 		this.user_introduct = user_introduct;
 	}
 
-	public Date getUser_birthday() {
+	public String getUser_birthday() {
 		return user_birthday;
 	}
 
-	public void setUser_birthday(Date user_birthday) {
+	public void setUser_birthday(String user_birthday) {
 		this.user_birthday = user_birthday;
 	}
 

@@ -69,7 +69,7 @@ function setTaba(m,n){
           
           <div style="margin-left:210px" id="mcont0">
             <ul style="display: block">
-                <iframe src="easygoservlet?methods=getAllUser" width="100%" height="650px" scrolling="no" frameborder="0"> </iframe>
+                <iframe src="easygoservlet?methods=getAllUser" width="100%" height="1200px" scrolling="no" frameborder="0"> </iframe>
        		</ul>
         	<ul style="display: none">
                 <iframe src="jsp/user/userwallet.jsp" width="100%" height="650px" scrolling="no" frameborder="0"> </iframe>

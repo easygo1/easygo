@@ -1,7 +1,6 @@
 package com.easygo.model.impl.user;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,9 +18,42 @@ public class IUserDAOImpl implements IUserDAO {
 
 	@Override
 	public boolean addUser(User user) {
-		// TODO Auto-generated method stub
+		boolean result = false;
+		connection = C3P0Utils.getConnection();
+		String sql = "INSERT INTO USER(user_no,user_realname,user_password,user_nickname,user_sex,user_phone,user_type,user_photo,user_job,user_address_province,user_address_city,user_mood,user_mail,user_introduct,user_birthday,user_idcard) VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		try {
+			statement = connection.prepareStatement(sql);
+			System.out.println(user.getUser_birthday());
+			statement.setString(1, user.getUser_no());
+			statement.setString(2, user.getUser_realname());
+			statement.setString(3, user.getUser_password());
+			statement.setString(4, user.getUser_nickname());
+			statement.setString(5, user.getUser_sex());
+			statement.setString(6, user.getUser_phone());
+			statement.setInt(7, user.getUser_type());
+			statement.setString(8, user.getUser_photo());
+			statement.setString(9, user.getUser_job());
+			statement.setString(10, user.getUser_address_province());
+			statement.setString(11, user.getUser_address_city());
+			statement.setString(12, user.getUser_mood());
+			statement.setString(13, user.getUser_mail());
+			statement.setString(14, user.getUser_introduct());
+			statement.setString(15, user.getUser_birthday());
+			statement.setString(16, user.getUser_idcard());
 
-		return false;
+			statement.executeUpdate();
+			result = true;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+			result = false;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+
+		return result;
 	}
 
 	@Override
@@ -74,7 +106,7 @@ public class IUserDAOImpl implements IUserDAO {
 				String user_mood = resultSet.getString(13);
 				String user_mail = resultSet.getString(14);
 				String user_introduct = resultSet.getString(15);
-				Date user_birthday = resultSet.getDate(16);
+				String user_birthday = resultSet.getString(16);
 				String user_idcard = resultSet.getString(17);
 
 				user = new User(user_id, user_no2, user_realname,
@@ -117,7 +149,7 @@ public class IUserDAOImpl implements IUserDAO {
 				String user_mood = resultSet.getString(13);
 				String user_mail = resultSet.getString(14);
 				String user_introduct = resultSet.getString(15);
-				Date user_birthday = resultSet.getDate(16);
+				String user_birthday = resultSet.getString(16);
 				String user_idcard = resultSet.getString(17);
 
 				User user = new User(user_id, user_no, user_realname,
@@ -125,7 +157,6 @@ public class IUserDAOImpl implements IUserDAO {
 						user_type, user_photo, user_job, user_address_province,
 						user_address_city, user_mood, user_mail,
 						user_introduct, user_birthday, user_idcard);
-
 				userList.add(user);
 			}
 		} catch (SQLException e) {

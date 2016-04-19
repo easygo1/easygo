@@ -8,7 +8,7 @@ user_password  VARCHAR(20) NOT NULL,   #用户密码
 user_nickname  VARCHAR(20),            #用户昵称
 user_sex      CHAR(2),                 #性别'男'，'女'
 user_phone    VARCHAR(15),             #手机号11位
-user_type     TINYINT NOT NULL,        #用户类型1'房东',2'房客'
+user_type     TINYINT NOT NULL,        #用户类型1'房客',2'房东'
 user_photo    VARCHAR(100),            #头像//存地址
 user_job      VARCHAR(10),             #职业
 user_address_province   VARCHAR(20),   #所在省份
