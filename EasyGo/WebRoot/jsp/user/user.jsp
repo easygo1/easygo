@@ -12,7 +12,7 @@
 <body>
 	<h2>用户管理</h2>
 	<div style="text-align: center" align="center">
-		<a href="addUser.jsp" ><button type="button" class="btn btn-info">添加用户</button></a>
+		<a href="easygoservlet?methods=goAddUser" ><button type="button" class="btn btn-info">添加用户</button></a>
 		&nbsp;&nbsp;&nbsp;
 		<a class="form-inline" href="">
 			<input  class="form-control" placeholder="模糊查询">
@@ -45,15 +45,15 @@
 					<td>${user.user_phone}</td>
 					<td>${user.user_type}</td>
 					<td>
-						<a href="easygoservlet?methods=findUser&&id=${user.user_no }">
+						<a href="easygoservlet?methods=findoneUser&&no=${user.user_no }">
 						<button type="button" class="btn btn-primary">查看</button></a>
 					</td>
 					<td>
-						<a href="updateUser.jsp?id=${user.user_id }">
+						<a href="easygoservlet?methods=updateUser&&no=${user.user_no }">
 						<button type="button" class="btn btn-info">修改</button></a>
 					</td>
 					<td>
-						<a href="deleteServlet?id=${user.user_id }">
+						<a href="easygoservlet?methods=deleteUser&&no=${user.user_no }">
 						<button type="button" class="btn btn-danger">删除</button></a>
 					</td>
 				</tr>

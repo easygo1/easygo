@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import com.easygo.model.beans.order.Orders;
 import com.easygo.model.beans.user.User;
 import com.easygo.model.dao.order.IOrderDAO;
@@ -17,16 +19,16 @@ import com.easygo.model.dao.user.IUserDAO;
 import com.easygo.model.impl.order.IOrderDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 
-/**
- * Servlet implementation class EasygoServlet
- */
 @WebServlet("/easygoservlet")
 public class EasygoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	// user的相关方法
+	IUserDAO userdao;
+	// user的相关对象
+	List<User> userList;
+	int user_no;
+	User user;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public EasygoServlet() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -48,26 +50,69 @@ public class EasygoServlet extends HttpServlet {
 		String method = request.getParameter("methods");
 
 		switch (method) {
+		case "goAddUser":
+			request.setAttribute("oneUser", user);
+			request.getRequestDispatcher("jsp/user/addUser.jsp").forward(
+					request, response);
+			break;
+		case "addUser":
+			user = new User();
+			try {
+				BeanUtils.populate(user, request.getParameterMap());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println(user.getUser_no());
+			// userdao.addUser(user);
+			if (userdao.addUser(user)) {
+				System.out.println("成功");
+			}
+
+			break;
+		case "addUserSuccess":
+			break;
+		case "deleteUser":
+			// 得到要删除的user_no
+			user_no = Integer.valueOf(request.getParameter("no"));
+			userdao = new IUserDAOImpl();
+			boolean delResult = userdao.delUser(user_no);
+			// 属性名为oneUser
+			request.setAttribute("delResult", delResult);
+			if (delResult) {
+				response.sendRedirect("easygoservlet?methods=getAllUser");
+			}
+			// request.getRequestDispatcher("jsp/user/user.jsp").forward(request,
+			// response);
+			break;
 		case "getAllUser":
-			List<User> userList = new ArrayList<User>();
-			IUserDAO userdao1 = new IUserDAOImpl();
-			userList = userdao1.selectAllUser();
+			userList = new ArrayList<User>();
+			userdao = new IUserDAOImpl();
+			userList = userdao.selectAllUser();
 			request.setAttribute("userList", userList);
 			request.getRequestDispatcher("jsp/user/user.jsp").forward(request,
 					response);
 			break;
-		case "findUser":
-
+		case "findoneUser":
 			// 得到要查询的user_no
-			int user_no = Integer.valueOf(request.getParameter("user_no"));
-
-			IUserDAO userdao2 = new IUserDAOImpl();
-			User user = userdao2.findSpecStudent(user_no);
-
+			user_no = Integer.valueOf(request.getParameter("no"));
+			userdao = new IUserDAOImpl();
+			user = userdao.findSpecStudent(user_no);
+			// 属性名为oneUser
 			request.setAttribute("oneUser", user);
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
 					request, response);
 			break;
+		case "updateUser":
+			// 得到要查询的user_no
+			user_no = Integer.valueOf(request.getParameter("no"));
+			userdao = new IUserDAOImpl();
+			user = userdao.findSpecStudent(user_no);
+			// 属性名为oneUser
+			request.setAttribute("oneUser", user);
+			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
+					request, response);
+			break;
+
 		case "addOrders":
 			IOrderDAO order = new IOrderDAOImpl();
 			// 获取到订单信息的每个字段

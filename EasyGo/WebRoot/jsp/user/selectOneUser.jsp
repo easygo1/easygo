@@ -23,83 +23,83 @@
 			</tr>
 		</thead>
 
-		<tbody style="text-align: center">
-			<tr>
-				<td>用户id</td>
-				<td><input type="text" class="form-control">
-			</tr>
-			<tr>
-				<td>用户账号</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>真实姓名</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>密码</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>昵称</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>性别</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>手机号</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>用户类型</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>头像</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>职业</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>所在省份</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>所在城市</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>个性签名</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>邮箱</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>个人简介</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>出生日期</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<td>身份证号</td>
-				<td><input type="text" class="form-control"></td>
-			</tr>
-			
+		<tbody>
+				<tr>
+					<td>用户id</td>
+					<td><c:out value="${requestScope.oneUser.user_id}"></c:out>
+					</td>
+				</tr>
+				<tr>
+					<td>用户账号</td>
+					<td><c:out value="${requestScope.oneUser.user_no}"></c:out></td>
+				</tr>
+				<tr>
+					<td>真实姓名</td>
+					<td><c:out value="${requestScope.oneUser.user_realname}"></c:out></td>
+				</tr>
+				<tr>
+					<td>密码</td>
+					<td><c:out value="${requestScope.oneUser.user_password}"></c:out></td>
+				</tr>
+				<tr>
+					<td>昵称</td>
+					<td><c:out value="${requestScope.oneUser.user_nickname}"></c:out></td>
+				</tr>
+				<tr>
+					<td>性别</td>
+					<td><c:out value="${requestScope.oneUser.user_sex}"></c:out></td>
+				</tr>
+				<tr>
+					<td>手机号</td>
+					<td><c:out value="${requestScope.oneUser.user_phone}"></c:out></td>
+				</tr>
+				<tr>
+					<td>用户类型</td>
+					<td><c:out value="${requestScope.oneUser.user_type}"></c:out></td>
+				</tr>
+				<tr>
+					<td>头像</td>
+					<td><c:out value="${requestScope.oneUser.user_photo}"></c:out></td>
+				</tr>
+				<tr>
+					<td>职业</td>
+					<td><c:out value="${requestScope.oneUser.user_job}"></c:out></td>
+				</tr>
+				<tr>
+					<td>所在省份</td>
+					<td><c:out value="${requestScope.oneUser.user_address_province}"></c:out></td>
+				</tr>
+				<tr>
+					<td>所在城市</td>
+					<td><c:out value="${requestScope.oneUser.user_address_city}"></c:out></td>
+				</tr>
+				<tr>
+					<td>个性签名</td>
+					<td><c:out value="${requestScope.oneUser.user_mood}"></c:out></td>
+				</tr>
+				<tr>
+					<td>邮箱</td>
+					<td><c:out value="${requestScope.oneUser.user_mail}"></c:out></td>
+				</tr>
+				<tr>
+					<td>个人简介</td>
+					<td><c:out value="${requestScope.oneUser.user_introduct}"></c:out></td>
+				</tr>
+				<tr>
+					<td>出生日期</td>
+					<td><c:out value="${requestScope.oneUser.user_birthday}"></c:out></td>
+				</tr>
+				<tr>
+					<td>身份证号</td>
+					<td><c:out value="${requestScope.oneUser.user_idcard}"></c:out></td>
+				</tr>
 		</tbody>
 	</table>
 	<div style="text-align: center">
-		<a href="updateUser.jsp?id=${user.id}">
+		<a href="easygoservlet?methods=updateUser?no=${requestScope.oneUser.user_no}">
 			<input type="submit" value="去修改" class="btn btn-primary"></a>
 			
-		<a href="user.jsp">
+		<a href="easygoservlet?methods=getAllUser">
 			<input type="reset" value="返回" class="btn btn-info"></a>
 	</div>
 </body>
