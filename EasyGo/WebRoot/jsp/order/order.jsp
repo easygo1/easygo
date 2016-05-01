@@ -11,13 +11,16 @@
 </head>
 <body>
 	<h2>订单管理</h2>
-	<div style="text-align: center;">
+	<div style="text-align: center">
+		
+		<form action="easygoservlet?methods=selectsomeOrders&&cur=1" method="post">
 		<a href="jsp/order/addOrder.jsp" ><button type="button" class="btn btn-info">添加订单</button></a>
 		&nbsp;&nbsp;&nbsp;
 		<a class="form-inline" href="#">
-			<input  class="form-control" placeholder="模糊查询">
-			<button type="button" class="btn btn-info">查询</button>
+			<input  class="form-control" placeholder="模糊查询" name="orderserch"/>
 		</a>
+		<input type="submit" value="确定" class="btn btn-info">
+		</form>
 	</div>
 	<hr>
 	<table class="table table-striped" style="text-align: center">
@@ -50,14 +53,10 @@
 					<td>${order.tel}</td>
 					<td>${order.order_state}</td>
 					<td>${order.order_time}</td>
+					
 					<td>
-						<a href="selectOrder.jsp?id=${order.order_id}">
-						<button type="button" class="btn btn-primary">查看</button></a>
-					</td>
-					<td>
-						<a href="updateOrder.jsp?id=${order.order_id}">
-						<button type="button" class="btn btn-info">修改</button></a>
-					</td>
+						<a href="easygoservlet?methods=getorderbyorderid&&order_id=${order.order_id}">
+						<button type="button" class="btn btn-info">修改</button></a></td>
 					<td>
 						<a href="easygoservlet?methods=delOrders&&order_id=${order.order_id}">
 						<button type="button" class="btn btn-danger">删除</button></a>
@@ -67,7 +66,6 @@
 			</tbody>	
 	</table>
 	<center>
-		<h3>分页显示</h3>
 		<c:if test="${cur ==1}">
 			<a>首页</a>
 			<a>上一页</a>

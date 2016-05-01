@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.order.Orders;
@@ -22,8 +23,6 @@ public class IOrderDAOImpl implements IOrderDAO {
 	private ResultSet resultSet = null;
 	Paging paging=new Paging();
 	
-	
-
 	// 将数据处理，计算出需要分成几页
 	//改动的话只需改动查询语句即可
 	public int getTotalPage() {
@@ -82,9 +81,26 @@ public class IOrderDAOImpl implements IOrderDAO {
 	}
 
 	@Override
-	public boolean updateOrders(int order_id, House house) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateOrders(int order_id, Orders orders) {
+		try {
+			statement=connection.prepareStatement("UPDATE orders SET house_id=?,user_id=?,checknum=?,checktime=?,leavetime=?,total=?,tel=?,order_state=?,order_time=? where order_id = ?");
+			statement.setInt(1, orders.getHouse_id());
+			statement.setInt(2, orders.getHouse_id());
+			statement.setInt(3, orders.getHouse_id());
+			statement.setString(4, orders.getChecktime());
+			statement.setString(5, orders.getLeavetime());
+			statement.setDouble(6, orders.getTotal());
+			statement.setString(7, orders.getTel());
+			statement.setString(8, orders.getOrder_state());
+			statement.setString(9, orders.getOrder_time());
+			statement.setInt(10, order_id);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
@@ -97,10 +113,8 @@ public class IOrderDAOImpl implements IOrderDAO {
 			statement.setInt(2, paging.getPageSize());
 			//分页处理
 			resultSet= statement.executeQuery();
-			System.out.println("IOrderDAOImpl里面。。。");
 			while(resultSet.next()){
 				Orders orders = new Orders(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6),resultSet.getDouble(7),resultSet.getString(8),resultSet.getString(9),resultSet.getString(10));
-				System.out.println(orders);
 				orderList.add(orders);
 			}
 		} catch (SQLException e) {
@@ -111,10 +125,86 @@ public class IOrderDAOImpl implements IOrderDAO {
 		}	
 		return orderList;
 	}
+	public Orders findOrdersByorderid(int order_id){
+		Orders orders =null;
+		try {
+			statement=connection.prepareStatement("select * from orders where order_id=?");
+			statement.setInt(1, order_id);
+			resultSet= statement.executeQuery();
+			while(resultSet.next()){
+				orders = new Orders(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6),resultSet.getDouble(7),resultSet.getString(8),resultSet.getString(9),resultSet.getString(10));
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return orders;
+	}
 
 	@Override
-	public Orders findSpecOrdersById(int user_id) {
+	public Orders findSpecOrdersByUserId(int user_id) {
 		Orders order = new Orders();
 		return null;
 	}
+
+	@Override
+	public List<Orders> selectsomeOrders(String orderserch,int cur) {
+		List<Orders> orderList= new ArrayList<Orders>();
+		if(isNumeric(orderserch)){
+			int orderint=Integer.parseInt(orderserch);
+			try {
+				statement=connection.prepareStatement("select * from orders where order_id=? or user_id=? or house_id=? limit ?,?");
+				statement.setInt(1, orderint);
+				statement.setInt(2, orderint);
+				statement.setInt(3, orderint);
+				
+				//分页处理
+				statement.setInt(4, (cur - 1) * paging.getPageSize());
+				statement.setInt(5, paging.getPageSize());
+				//分页处理
+				resultSet= statement.executeQuery();
+				while(resultSet.next()){
+					Orders orders = new Orders(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6),resultSet.getDouble(7),resultSet.getString(8),resultSet.getString(9),resultSet.getString(10));
+					orderList.add(orders);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				C3P0Utils.close(resultSet, statement, connection);
+			}	
+		}
+		else{
+			try {
+				statement=connection.prepareStatement("select * from orders where checktime LIKE ? OR leavetime LIKE ? OR order_state LIKE ?  limit ?,?");
+				statement.setString(1, "%"+orderserch+"%");
+				statement.setString(2, "%"+orderserch+"%");
+				statement.setString(3, "%"+orderserch+"%");
+				
+				//分页处理
+				statement.setInt(4, (cur - 1) * paging.getPageSize());
+				statement.setInt(5, paging.getPageSize());
+				//分页处理
+				resultSet= statement.executeQuery();
+				while(resultSet.next()){
+					Orders orders = new Orders(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6),resultSet.getDouble(7),resultSet.getString(8),resultSet.getString(9),resultSet.getString(10));
+					orderList.add(orders);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				C3P0Utils.close(resultSet, statement, connection);
+			}	
+		}
+		
+		return orderList;
+	}
+	//用正则表达式判断是否是数字  
+	public static boolean isNumeric(String str){   
+	    Pattern pattern = Pattern.compile("[0-9]*");   
+	    return pattern.matcher(str).matches();      
+	} 
 }

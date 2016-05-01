@@ -1,6 +1,7 @@
 package com.easygo.control;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -136,6 +137,7 @@ public class EasygoServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/order/order.jsp").forward(
 					request, response);
 			break;
+			//得到全部订单
 		case "getAllorder":
 			IOrderDAO order1 = new IOrderDAOImpl();
 			List<Orders> orderlist = new ArrayList<Orders>();
@@ -156,6 +158,44 @@ public class EasygoServlet extends HttpServlet {
 						"easygoservlet?methods=getAllorder").forward(request,
 						response);
 			}
+			break;
+			//根据订单号得到订单
+		case "getorderbyorderid":
+			IOrderDAO order3 = new IOrderDAOImpl();
+			int order_id3=Integer.parseInt( request.getParameter("order_id"));
+			Orders orders3=order3.findOrdersByorderid(order_id3);
+			request.setAttribute("orders", orders3);
+			request.getRequestDispatcher("jsp/order/updateOrder.jsp").forward(request, response);
+			break;
+			//修改订单
+		case "updateorder":
+			Orders orders4= new Orders();
+			IOrderDAO order4 = new IOrderDAOImpl();
+			try {
+				BeanUtils.populate(orders4, request.getParameterMap());
+				int order_id4=Integer.valueOf(request.getParameter("order_id"));
+				order4.updateOrders(order_id4,orders4);
+				request.getRequestDispatcher("easygoservlet?methods=getAllorder").forward(request, response);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "selectsomeOrders":
+			IOrderDAO order5 = new IOrderDAOImpl();
+			List<Orders> orderlist5 = new ArrayList<Orders>();
+			String orderserch=request.getParameter("orderserch");
+			orderlist5 = order5.selectsomeOrders(orderserch, Integer.parseInt(cur));
+			// 总共被分成了几页
+			int totalPage5 = order5.getTotalPage();
+			request.setAttribute("orderlist", orderlist5);
+			request.setAttribute("cur", cur);
+			request.setAttribute("totalPage", totalPage5);
+			request.getRequestDispatcher("jsp/order/serchorder.jsp").forward(
+					request, response);
 			break;
 		default:
 			break;

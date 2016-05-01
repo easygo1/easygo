@@ -80,8 +80,8 @@
 			</tbody>
 		</table>
 		<input type="submit" value="确定" class="btn btn-primary">
-		<input type="reset" value="重置" class="btn btn-primary"> 
-		<input type="button" value="返回" class="btn btn-primary">
+		<input type="reset" value="重置" class="btn btn-info"> 
+		<a href="easygoservlet?methods=getAllorder"><input type="button" value="返回" class="btn btn-success"></a>
 	</form>
 
 </body>

@@ -32,61 +32,52 @@
 					<td>不能修改</td>
 					<td>${orders.order_id}</td>
 					<td></td>
-					<td></td>
 				</tr>
 				<tr>
 					<td>房源编号</td>
 					<td>只允许在已有房源中选择</td>
-					<td></td>
 					<td><input type="text" name="house_id" value="${orders.house_id}"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>房客编号</td>
 					<td>只允许在已注册用户中选择</td>
-					<td></td>
 					<td><input type="text" name="user_id" value="${orders.user_id}"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>入住人数</td>
 					<td>不能超过房源规定最大入住人数</td>
-					<td>${orders.checknum}</td>
 					<td><input type="text" name="checknum" value="${orders.checknum}"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>入住时间</td>
 					<td>在房源是开放未租状态下</td>
-					<td>${orders.checktime}</td>
 					<td><input type="text" name="checktime" value="${orders.checktime}"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>离开时间</td>
 					<td>与入住时间相比不能超过房源最大入住时间</td>
-					<td>${orders.leavetime}</td>
 					<td><input type="text" name="leavetime" value="${orders.leavetime}"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>订单总额</td>
 					<td>根据计算得出</td>
-					<td>${orders.total}</td>
 					<td><input type="text" name="total" value="${orders.total}"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>联系方式</td>
 					<td>只允许字母数字长度小于30</td>
-					<td>${orders.tel}</td>
 					<td><input type="text" name="tel" value="${orders.tel}"></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>订单状态</td>
 					<td>待确认，待付款，待入住，已完成，取消</td>
-					<td>${orders.order_state}</td>
 					<td><select name="order_state">
 					        <option>${orders.order_state}</option>
 							<option value="待确认">待确认</option>
@@ -100,16 +91,14 @@
 				<tr>
 					<td>下单时间</td>
 					<td>获取当前系统时间</td>
-					<td></td>
 					<td>${orders.order_time}</td>
-					
 					<td></td>
 				</tr>
 			</tbody>
 		</table>
 		<input type="submit" value="确定" class="btn btn-primary"> 
 		<input type="reset" value="重置" class="btn btn-info"> 
-		<input type="button" value="返回" class="btn btn-success">
+		<a href="easygoservlet?methods=getAllorder"><input type="button" value="返回" class="btn btn-success"></a>
 	</form>
 
 </body>
