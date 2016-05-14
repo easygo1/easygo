@@ -5,4 +5,7 @@
     <string name="search">搜索</string>
     <string name="chat">消息</string>
     <string name="me">我</string>
+    
+    <string name="friend">好友</string>
+    <string name="dynamic">动态</string>
 </resources>
