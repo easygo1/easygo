@@ -23,7 +23,15 @@
     <style name="bottom_image">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
 
+    <style name="chat_button">
+
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/chatmybtn2</item>
     </style>
 
 </resources>

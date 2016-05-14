@@ -3,11 +3,14 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <TextView
+    <include
+        layout="@layout/chat_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="聊天"
-        >
-    </TextView>
-
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <FrameLayout
+        android:id="@+id/chat_middle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"/>
 </LinearLayout>
