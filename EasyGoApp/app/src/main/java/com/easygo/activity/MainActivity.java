@@ -2,20 +2,19 @@ package com.easygo.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.fragment.ChatFragment;
 import com.easygo.fragment.HomeFragment;
 import com.easygo.fragment.MeFragment;
-import com.easygo.fragment.PlusFragment;
 import com.easygo.fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -33,14 +32,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SearchFragment mSearchFragment;
     ChatFragment mChatFragment;
     MeFragment mMeFragment;
-    PlusFragment mPlusFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setContentView(R.layout.activity_main);
         initViews();
         addListeners();
         //默认显示买模块，修改图标和文字颜色为选中颜色
@@ -98,16 +96,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //设置当前选中碎片
             initCurrentFragment(id);
         }else{
-            //如果是附加按钮
+            Intent plusIntent=new Intent(MainActivity.this,PlusActivity.class);
+            startActivity(plusIntent);
+
+            /*//如果是附加按钮
             //隐藏所有已经添加到事务中的碎片
             hideAllFragments();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mPlusFragment = new PlusFragment();
             mFragmentTransaction.add(R.id.all,mPlusFragment);
-            mFragmentTransaction.commit();
 
-            PopupWindow mPopupWindow = new PopupWindow();
-
+            mFragmentTransaction.commit();*/
         }
 
     }
