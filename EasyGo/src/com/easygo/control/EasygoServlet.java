@@ -13,12 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.order.Orders;
 import com.easygo.model.beans.user.User;
+import com.easygo.model.dao.house.IHouseDAO;
 import com.easygo.model.dao.order.IOrderDAO;
 import com.easygo.model.dao.user.IUserDAO;
+import com.easygo.model.impl.house.IHouseDAOImpl;
 import com.easygo.model.impl.order.IOrderDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
+import com.google.gson.Gson;
 
 @WebServlet("/easygoservlet")
 public class EasygoServlet extends HttpServlet {
@@ -29,6 +33,12 @@ public class EasygoServlet extends HttpServlet {
 	List<User> userList;
 	int user_no;
 	User user;
+
+	// House的相关方法
+	IHouseDAO housedao;
+	// House相关对象
+	List<House> houseList;
+	House house;
 
 	public EasygoServlet() {
 		super();
@@ -137,7 +147,7 @@ public class EasygoServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/order/order.jsp").forward(
 					request, response);
 			break;
-			//得到全部订单
+		// 得到全部订单
 		case "getAllorder":
 			IOrderDAO order1 = new IOrderDAOImpl();
 			List<Orders> orderlist = new ArrayList<Orders>();
@@ -159,23 +169,27 @@ public class EasygoServlet extends HttpServlet {
 						response);
 			}
 			break;
-			//根据订单号得到订单
+		// 根据订单号得到订单
 		case "getorderbyorderid":
 			IOrderDAO order3 = new IOrderDAOImpl();
-			int order_id3=Integer.parseInt( request.getParameter("order_id"));
-			Orders orders3=order3.findOrdersByorderid(order_id3);
+			int order_id3 = Integer.parseInt(request.getParameter("order_id"));
+			Orders orders3 = order3.findOrdersByorderid(order_id3);
 			request.setAttribute("orders", orders3);
-			request.getRequestDispatcher("jsp/order/updateOrder.jsp").forward(request, response);
+			request.getRequestDispatcher("jsp/order/updateOrder.jsp").forward(
+					request, response);
 			break;
-			//修改订单
+		// 修改订单
 		case "updateorder":
-			Orders orders4= new Orders();
+			Orders orders4 = new Orders();
 			IOrderDAO order4 = new IOrderDAOImpl();
 			try {
 				BeanUtils.populate(orders4, request.getParameterMap());
-				int order_id4=Integer.valueOf(request.getParameter("order_id"));
-				order4.updateOrders(order_id4,orders4);
-				request.getRequestDispatcher("easygoservlet?methods=getAllorder").forward(request, response);
+				int order_id4 = Integer.valueOf(request
+						.getParameter("order_id"));
+				order4.updateOrders(order_id4, orders4);
+				request.getRequestDispatcher(
+						"easygoservlet?methods=getAllorder").forward(request,
+						response);
 			} catch (IllegalAccessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -187,8 +201,9 @@ public class EasygoServlet extends HttpServlet {
 		case "selectsomeOrders":
 			IOrderDAO order5 = new IOrderDAOImpl();
 			List<Orders> orderlist5 = new ArrayList<Orders>();
-			String orderserch=request.getParameter("orderserch");
-			orderlist5 = order5.selectsomeOrders(orderserch, Integer.parseInt(cur));
+			String orderserch = request.getParameter("orderserch");
+			orderlist5 = order5.selectsomeOrders(orderserch,
+					Integer.parseInt(cur));
 			// 总共被分成了几页
 			int totalPage5 = order5.getTotalPage();
 			request.setAttribute("orderlist", orderlist5);
@@ -197,6 +212,16 @@ public class EasygoServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/order/serchorder.jsp").forward(
 					request, response);
 			break;
+		case "getAllHouse":
+			houseList = new ArrayList<House>();
+			housedao = new IHouseDAOImpl();
+			houseList = housedao.selectAllHouse();
+
+			Gson gson = new Gson();
+			String result = gson.toJson(houseList);
+			// 未完待续，如何传递这个result,客户端如何解析
+			break;
+
 		default:
 			break;
 		}

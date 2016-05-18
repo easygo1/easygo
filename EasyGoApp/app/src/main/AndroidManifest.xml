@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".PlusActivity">
         </activity>
+        <activity android:name=".HomeCityActivity">
+        </activity>
     </application>
 
 </manifest>
