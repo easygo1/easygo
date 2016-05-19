@@ -1,6 +1,7 @@
 package com.easygo.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,10 @@ import com.google.gson.Gson;
 
 @WebServlet("/easygoservlet")
 public class EasygoServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVrsionUID = 1L;
+	// 用于输出数据
+	private PrintWriter mPrintWriter;
+
 	// user的相关方法
 	IUserDAO userdao;
 	// user的相关对象
@@ -52,6 +56,8 @@ public class EasygoServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		// 初始化
+		mPrintWriter = response.getWriter();
 		// 获取当前页面显示的第几页
 		String cur = request.getParameter("cur");
 		// 第一次加载页面，让其显示第一页
@@ -216,10 +222,10 @@ public class EasygoServlet extends HttpServlet {
 			houseList = new ArrayList<House>();
 			housedao = new IHouseDAOImpl();
 			houseList = housedao.selectAllHouse();
-
 			Gson gson = new Gson();
 			String result = gson.toJson(houseList);
-			// 未完待续，如何传递这个result,客户端如何解析
+			mPrintWriter.write(result);
+			mPrintWriter.close();
 			break;
 
 		default:
