@@ -3,11 +3,78 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="我"
-        >
-    </TextView>
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@mipmap/me_user_background">
+        <ImageView
+            android:id="@+id/myset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/me_set"/>
+        <ImageView
+            android:id="@+id/me_user_imageview"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/me_user_normal"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/me_user_imageview"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:id="@+id/me_user_login"
+                style="@style/me_user_text"
+                android:text="@string/userlogin"/>
+            <TextView
+                style="@style/me_user_text"
+                android:text="/"/>
+            <TextView
+                android:id="@+id/me_user_register"
+                style="@style/me_user_text"
+                android:text="@string/user_register"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <include
+        layout="@layout/bottom_me_middle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
+        <TextView
+            style="@style/me_content_notext"/>
+        <TextView
+            style="@style/me_content_text"
+            android:text="实名认证"/>
+        <TextView
+            style="@style/me_content_notext"/>
+        <TextView
+            style="@style/me_content_text"
+            android:text="每日任务"/>
+        <TextView
+            style="@style/me_content_notext"/>
+        <TextView
+            style="@style/me_content_text"
+            android:text="发布房源"/>
+        <TextView
+            style="@style/me_content_notext"/>
+        <TextView
+            style="@style/me_content_text"
+            android:text="客服中心"/>
+        <TextView
+            style="@style/me_content_notext"/>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -20,5 +20,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/smartupload.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jsmartcom_zh_CN.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
