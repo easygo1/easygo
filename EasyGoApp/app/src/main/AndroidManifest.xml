@@ -17,9 +17,13 @@
         </activity>
         <activity android:name=".PlusActivity">
         </activity>
+<<<<<<< HEAD
         <activity android:name=".ReleasesroomActivity">
         </activity>
         <activity android:name=".LogintestActivity">
+=======
+        <activity android:name=".HomeCityActivity">
+>>>>>>> 76a48f7ccebd31fc3b532a479b0a076ad8d0623b
         </activity>
     </application>
 

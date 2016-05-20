@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.easygo.activity.HomeCityActivity">
+
+    <RelativeLayout
+        android:id="@+id/homepage_city_item_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/homepage_city_item_room_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_city_room1"/>
+
+        <TextView
+            android:id="@+id/homepage_city_item_text_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/homepage_city_item_text_price"
+            android:layout_marginLeft="15dp"
+            android:text="通州区*独立房间*床"
+            android:textColor="#fff"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/homepage_city_item_text_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/homepage_city_item_room_image"
+            android:layout_marginLeft="15dp"
+            android:text="$99.9"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/homepage_city_item_text_describe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/homepage_city_item_room_image"
+            android:layout_marginLeft="80dp"
+            android:text="温馨甜蜜，交通方便"
+            android:textColor="#fff"
+            android:textSize="16sp"/>
+
+    </RelativeLayout>
+
+   <!-- <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <ImageView
+            android:id="@+id/homepage_city_item_head_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/home_city_head1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/homepage_city_item_head_image"
+            android:text="Rose"
+
+            android:textSize="20sp"/>
+
+
+    </RelativeLayout>-->
+
+
+</LinearLayout>

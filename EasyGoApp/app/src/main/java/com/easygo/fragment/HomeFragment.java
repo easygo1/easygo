@@ -1,6 +1,7 @@
 package com.easygo.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.easygo.activity.HomeCityActivity;
+import com.easygo.activity.MainActivity;
 import com.easygo.activity.R;
 
 import java.util.ArrayList;
@@ -161,7 +164,9 @@ public class HomeFragment extends Fragment {
                 mHomePageCityList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getActivity(), position+"", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), HomeCityActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show();
                     }
                 });
                 return mHomePageCityList.get(position);
@@ -184,6 +189,7 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
     private void initHomePagerHot() {
         //显示的图片
         mHomePageHotList = new ArrayList<>();
@@ -220,6 +226,7 @@ public class HomeFragment extends Fragment {
         });
 
     }
+
     private void initHomePagerLocal() {
         //显示的图片
         mHomePageLocalList = new ArrayList<>();
@@ -258,7 +265,7 @@ public class HomeFragment extends Fragment {
     /**
      * 利用线程池定时执行动画轮播
      */
-    @Override
+   /* @Override
     public void onStart() {
         // TODO Auto-generated method stub
         super.onStart();
@@ -268,9 +275,19 @@ public class HomeFragment extends Fragment {
                 2,
                 2,
                 TimeUnit.SECONDS);
+    }*/
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        scheduledExecutorService.scheduleWithFixedDelay(
+                new ViewPageTask(),
+                2,
+                2,
+                TimeUnit.SECONDS);
     }
 
-    private class ViewPageTask implements Runnable{
+    private class ViewPageTask implements Runnable {
 
         @Override
         public void run() {
@@ -282,7 +299,7 @@ public class HomeFragment extends Fragment {
     /**
      * 接收子线程传递过来的数据
      */
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             mAdvertViewPager.setCurrentItem(currentItem);
         }
