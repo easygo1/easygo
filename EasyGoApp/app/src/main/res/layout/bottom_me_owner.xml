@@ -7,9 +7,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="@mipmap/me_user_background">
+        android:background="@mipmap/me_userislogin_background">
         <ImageView
-            android:id="@+id/me_myset"
+            android:id="@+id/me_owner_myset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -17,29 +17,32 @@
             android:layout_marginTop="10dp"
             android:src="@mipmap/me_set"/>
         <ImageView
-            android:id="@+id/me_user_imageview"
+            android:id="@+id/me_owner_user_imageview"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
-            android:src="@mipmap/me_user_normal"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:src="@mipmap/me_user_head"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/me_user_imageview"
-            android:layout_centerHorizontal="true">
+            android:layout_below="@+id/me_owner_user_imageview">
             <TextView
-                android:id="@+id/me_user_login"
-                style="@style/me_user_text"
-                android:text="@string/userlogin"/>
+                android:id="@+id/me_owner_mypoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/meuser"
+                android:text="@string/mypoints"/>
             <TextView
-                style="@style/me_user_text"
-                android:text="/"/>
-            <TextView
-                android:id="@+id/me_user_register"
-                style="@style/me_user_text"
-                android:text="@string/user_register"/>
-        </LinearLayout>
+                android:id="@+id/me_owner_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/me_owner_mypoints"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/meuser"
+                android:text="@string/mydescription"/>
+        </RelativeLayout>
 
     </RelativeLayout>
     <include
@@ -55,30 +58,23 @@
         <TextView
             style="@style/me_content_notext"/>
         <TextView
-            android:id="@+id/me_certification"
-            style="@style/me_content_text"
-            android:text="@string/certification"/>
-        <TextView
-            style="@style/me_content_notext"/>
-        <TextView
-            android:id="@+id/me_dailytask"
+            android:id="@+id/me_owner_dailytask"
             style="@style/me_content_text"
             android:text="@string/dailytask"/>
         <TextView
             style="@style/me_content_notext"/>
         <TextView
-            android:id="@+id/me_releaseroom"
+            android:id="@+id/me_owner_myroom"
             style="@style/me_content_text"
-            android:text="@string/releaseroom"/>
+            android:text="@string/myroom"/>
         <TextView
             style="@style/me_content_notext"/>
         <TextView
-            android:id="@+id/me_customerservice"
+            android:id="@+id/me_owner_customerservice"
             style="@style/me_content_text"
             android:text="@string/customerservice"/>
         <TextView
             style="@style/me_content_notext"/>
 
     </LinearLayout>
-
 </LinearLayout>
