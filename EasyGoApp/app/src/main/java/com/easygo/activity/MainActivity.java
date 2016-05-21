@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //默认显示买模块，初始化买碎片
             mHomeFragment = new HomeFragment();
             mFragmentTransaction.add(R.id.middle, mHomeFragment);
+            mFragmentTransaction.commit();
 
         } else if (flag.equals("me")) {
             //如果接收到标志位flag=me,显示我的界面
