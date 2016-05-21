@@ -18,7 +18,6 @@ public class LogintestActivity extends AppCompatActivity {
 
     public void login(View view) {
         //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
-
         mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
         //向偏好设置文件中保存数据
         mEditor = mSharedPreferences.edit();
@@ -26,11 +25,8 @@ public class LogintestActivity extends AppCompatActivity {
         //提交保存结果
         mEditor.commit();
         Intent intent = new Intent();
-       /* Bundle bundle = new Bundle();
-        bundle.putInt("type",1);
-        intent.putExtras(bundle);*/
+        intent.putExtra("flag","me");
         intent.setClass(LogintestActivity.this,MainActivity.class);
-
         startActivity(intent);
 
     }

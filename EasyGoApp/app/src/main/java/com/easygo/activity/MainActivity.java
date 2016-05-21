@@ -45,14 +45,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initDefault();
     }
     private void initDefault() {
-        //开始先显示第一个界面
-        mFragmentManager = getFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        //默认显示买模块，初始化买碎片
-        mHomeFragment = new HomeFragment();
-        mFragmentTransaction.add(R.id.middle,mHomeFragment);
+        Intent intent = getIntent();
+        String flag = null;
+        flag = intent.getStringExtra("flag");
+        if(flag == null) {
+            //开始先显示第一个界面
+            mFragmentManager = getFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            //默认显示买模块，初始化买碎片
+            mHomeFragment = new HomeFragment();
+            mFragmentTransaction.add(R.id.middle, mHomeFragment);
 //        mFragmentTransaction.addToBackStack("buy");
-        mFragmentTransaction.commit();
+            mFragmentTransaction.commit();
+        }else if(flag.equals("me")){
+            //如果接收到标志位flag=me,显示我的界面
+           mFragmentManager = getFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            mMeFragment = new MeFragment();
+            mFragmentTransaction.add(R.id.middle, mMeFragment);
+            mFragmentTransaction.commit();
+            //还原图标和文本颜色
+            reset();
+            //得到选中的id
+            int id = R.id.me;
+            //设置当前选中图标和文本颜色
+            setImageAndTextColor(id);
+            //设置当前选中碎片
+            initCurrentFragment(id);
+        }
     }
 
     private void addListeners() {
