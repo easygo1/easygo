@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initDefault();
     }
     private void initDefault() {
-<<<<<<< HEAD
+
         Intent intent = getIntent();
         String flag = null;
         flag = intent.getStringExtra("flag");
@@ -56,19 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //默认显示买模块，初始化买碎片
             mHomeFragment = new HomeFragment();
             mFragmentTransaction.add(R.id.middle, mHomeFragment);
-=======
 
-
-
-        //开始先显示第一个界面
-        mFragmentManager = getFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        //默认显示买模块，初始化买碎片
-        mHomeFragment = new HomeFragment();
-        mFragmentTransaction.add(R.id.middle,mHomeFragment);
->>>>>>> effcb421c6eab9e53e00ab16aee1695fbf947099
-//        mFragmentTransaction.addToBackStack("buy");
-            mFragmentTransaction.commit();
         }else if(flag.equals("me")){
             //如果接收到标志位flag=me,显示我的界面
            mFragmentManager = getFragmentManager();
@@ -218,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setImageAndTextColor(int id) {
-        //参数表示选中项线性布局的id
+        //参数表示选中项线性布局的i
         switch (id) {
             case R.id.homepage:
                 mHomeImageView.setImageResource(R.mipmap.btn_home_page_normal);
