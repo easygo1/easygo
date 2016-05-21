@@ -1,16 +1,21 @@
 package com.easygo.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.easygo.activity.R;
 import com.easygo.beans.House;
 import com.easygo.beans.Music;
+import com.easygo.beans.UserCollect;
 
 import java.util.List;
 
@@ -25,7 +30,7 @@ public class HomeCityAdapter extends BaseAdapter {
     public HomeCityAdapter(Context context, List<House> list) {
         mContext = context;
         this.mList = list;
-        mInflater=LayoutInflater.from(mContext);
+        mInflater = LayoutInflater.from(mContext);
     }
 
     @Override
@@ -42,36 +47,69 @@ public class HomeCityAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-    class ViewHolder{
 
-        ImageView mImageView;
+    class ViewHolder {
+
+        ImageView mRoomImageView;
+
         TextView text_info;
         TextView text_price;
         TextView text_describe;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-        if(convertView==null){
-            convertView=mInflater.inflate(R.layout.activity_home_city_item,null);
-            viewHolder=new ViewHolder();
-            viewHolder.mImageView = (ImageView) convertView.findViewById(R.id.homepage_city_item_room_image);
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.activity_home_city_item, null);
+            viewHolder = new ViewHolder();
+            viewHolder.mRoomImageView = (ImageView) convertView.findViewById(R.id.homepage_city_item_room_image);
             viewHolder.text_info = (TextView) convertView.findViewById(R.id.homepage_city_item_text_info);
             viewHolder.text_describe = (TextView) convertView.findViewById(R.id.homepage_city_item_text_describe);
             viewHolder.text_price = (TextView) convertView.findViewById(R.id.homepage_city_item_text_price);
 
             convertView.setTag(viewHolder);
-        }
-        else {
+        } else {
             //说明开始上下滑动，后面的所有行布局采用第一次绘制时的缓存布局
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+        //得到房屋的一个对象
         final House house = mList.get(position);
-        viewHolder.text_info.setText(house.getHouse_style());
-        viewHolder.text_price.setText(house.getHouse_one_price()+"");
+
+        viewHolder.text_info.setText(house.getHouse_style() + house.getHouse_title());
+        viewHolder.text_price.setText(house.getHouse_one_price() + "");
         viewHolder.text_describe.setText(house.getHouse_describe());
-        viewHolder.mImageView.setImageResource(R.drawable.home_city_room1);
+        viewHolder.mRoomImageView.setImageResource(R.drawable.home_city_room1);
+
+        //未解决。逻辑似乎没错。点击无反应
+        //解决收藏混乱问题
+        ImageView mCollectImageView = (ImageView) convertView.findViewById(R.id.homepage_city_item_collect_image);
+        mCollectImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //一开始是未选中，点击之后换为选中
+                //说明用户之前未收藏。现在想收藏
+                if(house.isCollected()){
+                    //此处之前为false
+                    house.setCollected(true);
+                } else {
+                    //此处之前为false
+                    //说明用户之前收藏过,再次点击则取消
+                    house.setCollected(false);
+                }
+            }
+        });
+
+        //重置每一行Collected状态，必须放到监听事件后面
+        boolean isCollected = house.isCollected();
+        if(isCollected){
+            mCollectImageView.setImageResource(R.mipmap.icon_collect_on);
+        }else {
+            mCollectImageView.setImageResource(R.mipmap.icon_collect_blue);
+
+        }
+
         return convertView;
     }
 }
