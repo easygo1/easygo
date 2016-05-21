@@ -3,13 +3,14 @@ package com.easygo.activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.easygo.adapter.HomeCityAdapter;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.House;
-import com.easygo.beans.User;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -18,28 +19,31 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeCityActivity extends AppCompatActivity {
 
-    MyApplication myApplication;
 
+    public static final String TAG = "info";
     PullToRefreshListView mPullToRefreshListView;//PullToRefreshListView实例
-    List<House> mList = new ArrayList<>();
+    List<House> mList = null;
     HomeCityAdapter mAdapter;
+    String mPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_city);
 //        Intent intent = getIntent();
-        initApplication();
         initViews();
+        initData();
         //2.绑定模拟的数据
         loadData();
-        mAdapter = new HomeCityAdapter(HomeCityActivity.this, mList);
-        mPullToRefreshListView.setAdapter(mAdapter);
+
+
+
         //3.设置上拉加载下拉刷新组件和事件监听
         //设置刷新模式为BOTH才可以上拉和下拉都能起作用,必须写在前面
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
@@ -62,8 +66,12 @@ public class HomeCityActivity extends AppCompatActivity {
 
     }
 
-    private void initApplication() {
-        myApplication = new MyApplication();
+    private void initData() {
+        MyApplication myApplication  = (MyApplication)this.getApplication();
+        mPath = myApplication.getUrl();
+        mList = new ArrayList<>();
+        mAdapter = new HomeCityAdapter(HomeCityActivity.this, mList);
+        mPullToRefreshListView.setAdapter(mAdapter);
     }
 
     private void initViews() {
@@ -76,39 +84,49 @@ public class HomeCityActivity extends AppCompatActivity {
     //模拟数据
     public void loadData() {
 
-        RequestParams params = new RequestParams(myApplication.getHost());
-
-        //请求的方法
+        RequestParams params = new RequestParams(mPath);
+        //Params
         params.addBodyParameter("methods","getAllHouse");
 
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Gson gson=new Gson();
-                List<House> list = new ArrayList<>();
-                list=gson.fromJson(result,List.class);
-                for(int i = 0 ; i < list.size();i++){
-                    mList.add(new House("家庭温馨" + list.get(i).getHouse_describe(), "独立房间" + list.get(i).getHouse_describe(),list.get(i).getHouse_one_price()));
-                }
-            }
+                //把JSON格式的字符串改为Student对象
+                Gson gson = new Gson();
+                Type type = new TypeToken<List<House>>(){}.getType();
 
+//                mList = gson.fromJson(result,type);
+                mList.addAll((List<House>)gson.fromJson(result,type));
+                mAdapter.notifyDataSetChanged();
+                //表示刷新完成
+                mPullToRefreshListView.onRefreshComplete();
+
+
+                Log.e("list",mList.toString());
+                Log.e("aaa",mList.get(2).getHouse_describe());
+
+            }
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
+                Log.e("error","错误原因：" + ex.getMessage() );
             }
-
             @Override
             public void onCancelled(CancelledException cex) {
-            }
 
+            }
             @Override
             public void onFinished() {
+
             }
         });
+
 
         /*for (int i = 0; i < 10; i++) {
             mList.add(new House("家庭温馨" + count, "独立房间" + count,count));
             count++;
-        }*/
+        }
+        mAdapter.notifyDataSetChanged();*/
+
     }
 
     static class LoadDataAsyncTask extends AsyncTask<Void, Void, String> {//定义返回值的类型

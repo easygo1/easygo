@@ -12,12 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <ImageView
             android:id="@+id/homepage_city_item_room_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
             android:src="@drawable/home_city_room1"/>
+
+        <ImageView
+            android:id="@+id/homepage_city_item_collect_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/icon_collect_blue"/>
 
         <TextView
             android:id="@+id/homepage_city_item_text_info"
@@ -52,9 +62,9 @@
 
     </RelativeLayout>
 
-   <!-- <RelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="80dp">
 
         <ImageView
             android:id="@+id/homepage_city_item_head_image"
@@ -65,17 +75,38 @@
             android:src="@drawable/home_city_head1"/>
 
         <TextView
+            android:id="@+id/homepage_city_item_text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/homepage_city_item_head_image"
             android:text="Rose"
 
             android:textSize="20sp"/>
 
+        <RatingBar
+            android:id="@+id/homepage_city_item_ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homepage_city_item_text_name"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/homepage_city_item_head_image"
+            android:numStars="5"
+            android:rating="5"/>
 
-    </RelativeLayout>-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homepage_city_item_text_name"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@+id/homepage_city_item_ratingBar"
+            android:text="6条评论"/>
+
+
+    </RelativeLayout>
 
 
 </LinearLayout>
