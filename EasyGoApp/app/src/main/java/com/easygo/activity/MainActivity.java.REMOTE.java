@@ -17,9 +17,9 @@ import com.easygo.fragment.HomeFragment;
 import com.easygo.fragment.MeFragment;
 import com.easygo.fragment.SearchFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    LinearLayout mAllLayout,mHomeLayout,mSearchLayout,mPlusLayout,mChatLayout,mMeLayout;
+    LinearLayout mAllLayout, mHomeLayout, mSearchLayout, mPlusLayout, mChatLayout, mMeLayout;
     ImageView mHomeImageView, mSearchImageView, mChatImageView, mMeImageView;
     TextView mHomeTextView, mSearchTextView, mChatTextView, mMeTextView;
     Toast mToast;
@@ -44,12 +44,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //默认显示买模块，修改图标和文字颜色为选中颜色
         initDefault();
     }
+
     private void initDefault() {
 
         Intent intent = getIntent();
         String flag = null;
         flag = intent.getStringExtra("flag");
-        if(flag == null) {
+        if (flag == null) {
             //开始先显示第一个界面
             mFragmentManager = getFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -57,9 +58,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mHomeFragment = new HomeFragment();
             mFragmentTransaction.add(R.id.middle, mHomeFragment);
 
-        }else if(flag.equals("me")){
+        } else if (flag.equals("me")) {
             //如果接收到标志位flag=me,显示我的界面
-           mFragmentManager = getFragmentManager();
+            mFragmentManager = getFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mMeFragment = new MeFragment();
             mFragmentTransaction.add(R.id.middle, mMeFragment);
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         //如果不是附加按钮
-        if(v.getId() != R.id.plus){
+        if (v.getId() != R.id.plus) {
             //还原图标和文本颜色
             reset();
             //得到选中的id
@@ -115,8 +116,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             setImageAndTextColor(id);
             //设置当前选中碎片
             initCurrentFragment(id);
-        }else{
-            Intent plusIntent=new Intent(MainActivity.this,PlusActivity.class);
+        } else {
+            Intent plusIntent = new Intent(MainActivity.this, PlusActivity.class);
             startActivity(plusIntent);
 
             /*//如果是附加按钮
@@ -139,34 +140,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //判断当前碎片是哪一个
         switch (id) {
             case R.id.homepage:
-                if(mHomeFragment == null){
+                if (mHomeFragment == null) {
                     mHomeFragment = new HomeFragment();
-                    mFragmentTransaction.add(R.id.middle,mHomeFragment);
-                }else{
+                    mFragmentTransaction.add(R.id.middle, mHomeFragment);
+                } else {
                     mFragmentTransaction.show(mHomeFragment);
                 }
                 break;
             case R.id.search:
-                if(mSearchFragment == null){
+                if (mSearchFragment == null) {
                     mSearchFragment = new SearchFragment();
-                    mFragmentTransaction.add(R.id.middle,mSearchFragment);
-                }else{
+                    mFragmentTransaction.add(R.id.middle, mSearchFragment);
+                } else {
                     mFragmentTransaction.show(mSearchFragment);
                 }
                 break;
             case R.id.chat:
-                if(mChatFragment == null){
+                if (mChatFragment == null) {
                     mChatFragment = new ChatFragment();
-                    mFragmentTransaction.add(R.id.middle,mChatFragment);
-                }else{
+                    mFragmentTransaction.add(R.id.middle, mChatFragment);
+                } else {
                     mFragmentTransaction.show(mChatFragment);
                 }
                 break;
             case R.id.me:
-                if(mMeFragment == null){
+                if (mMeFragment == null) {
                     mMeFragment = new MeFragment();
-                    mFragmentTransaction.add(R.id.middle,mMeFragment);
-                }else{
+                    mFragmentTransaction.add(R.id.middle, mMeFragment);
+                } else {
                     mFragmentTransaction.show(mMeFragment);
                 }
                 break;
@@ -177,16 +178,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void hideAllFragments() {
         //隐藏所有的碎片，首先需要知道碎片是否已经添加到事务中
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        if(mHomeFragment!=null && mHomeFragment.isAdded()){
+        if (mHomeFragment != null && mHomeFragment.isAdded()) {
             mFragmentTransaction.hide(mHomeFragment);
         }
-        if(mSearchFragment!=null && mSearchFragment.isAdded()){
+        if (mSearchFragment != null && mSearchFragment.isAdded()) {
             mFragmentTransaction.hide(mSearchFragment);
         }
-        if(mChatFragment!=null && mChatFragment.isAdded()){
+        if (mChatFragment != null && mChatFragment.isAdded()) {
             mFragmentTransaction.hide(mChatFragment);
         }
-        if(mMeFragment!=null && mMeFragment.isAdded()){
+        if (mMeFragment != null && mMeFragment.isAdded()) {
             mFragmentTransaction.hide(mMeFragment);
         }
         mFragmentTransaction.commit();
