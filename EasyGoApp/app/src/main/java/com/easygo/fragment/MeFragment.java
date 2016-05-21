@@ -1,6 +1,7 @@
 package com.easygo.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.easygo.activity.ReleasesroomActivity;
  * Created by PengHong on 2016/4/29.
  */
 public class MeFragment extends Fragment {
+    public static final String TYPE = "type";
     //得到绑定的界面布局
     View mView;
     int type = 0;
@@ -30,10 +32,13 @@ public class MeFragment extends Fragment {
     SharedPreferences mSharedPreferences;
     SharedPreferences.Editor mEditor;
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        mSharedPreferences = getActivity().getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        type = mSharedPreferences.getInt("type",0);
         //type为0表示未登录状态
         if(type ==0 ){
             mView =inflater.inflate(R.layout.bottom_me,null);
