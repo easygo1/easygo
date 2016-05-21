@@ -33,5 +33,38 @@
         <item name="android:textSize">18sp</item>
         <item name="android:background">@drawable/chatmybtn2</item>
     </style>
-
+    <style name="me_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="me_image">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="me_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
+    <style name="me_user_text">
+        <item name="android:layout_width">wrap_content</item>5
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/meuser</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+    <style name="me_content_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+    <style name="me_content_notext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">7dp</item>
+        <item name="android:background">@color/mebackground</item>
+    </style>
 </resources>

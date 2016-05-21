@@ -1,5 +1,7 @@
 package com.easygo.model.beans.house;
 
+
+
 public class House {
 	private int house_id;// 房子编号 主键
 	private int user_id; // 房东用户编号 外键
@@ -15,7 +17,7 @@ public class House {
 	private String house_limit_sex; // 房客性别要求（不限，只男，只女）
 	private int house_stay_time; // 最长入住时间
 	private int house_assess_sum; // 评价次数（在房东发布房源时不显示）
-
+	
 	public House() {
 		super();
 	}
