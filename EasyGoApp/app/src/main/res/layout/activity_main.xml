@@ -20,12 +20,12 @@
         android:id="@+id/middle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"/>
+        android:layout_weight="10"/>
     <!--include标签想重写layout开头的属性，必须重写宽，高-->
     <include
         layout="@layout/bottom"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1.1"/>
 
 </LinearLayout>
