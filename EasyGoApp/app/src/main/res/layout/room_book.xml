@@ -2,30 +2,34 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/all"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.easygo.activity.MainActivity">
+    tools:context="com.easygo.activity.BookActivity">
 
-    <!--<FrameLayout
-        android:id="@+id/top"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#FFBB55"
-        android:text=""/>-->
+        android:background="@color/headerColor"
+        android:text="申请预定"
+        android:textSize="24sp"
+        android:gravity="center"/>
 
-    <FrameLayout
-        android:id="@+id/middle"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"/>
-    <!--include标签想重写layout开头的属性，必须重写宽，高-->
-    <include
-        layout="@layout/bottom"
+        android:layout_weight="10">
+
+
+    </RelativeLayout>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.1"/>
-
+        android:layout_weight="1"
+        android:background="@color/headerColor"
+        android:text="发送申请"
+        android:textSize="24sp"
+        android:gravity="center"/>
 </LinearLayout>
