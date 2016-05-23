@@ -70,6 +70,12 @@
         <TextView
             style="@style/me_content_notext"/>
         <TextView
+            android:id="@+id/me_owner_datemanage"
+            style="@style/me_content_text"
+            android:text="@string/datemanage"/>
+        <TextView
+            style="@style/me_content_notext"/>
+        <TextView
             android:id="@+id/me_owner_customerservice"
             style="@style/me_content_text"
             android:text="@string/customerservice"/>

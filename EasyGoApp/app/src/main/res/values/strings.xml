@@ -21,4 +21,5 @@
     <string name="myroom">我的房子</string>
     <string name="mypoints">我的积分:100</string>
     <string name="mydescription">个人描述：主人很懒，什么都没有说~</string>
+    <string name="datemanage">可租日期管理</string>
 </resources>
