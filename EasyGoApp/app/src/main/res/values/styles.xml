@@ -33,6 +33,16 @@
         <item name="android:textSize">18sp</item>
         <item name="android:background">@drawable/chatmybtn2</item>
     </style>
+
+    <style name="yuanjiao_btn">
+
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/chatmybtn</item>
+    </style>
+
     <style name="me_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
