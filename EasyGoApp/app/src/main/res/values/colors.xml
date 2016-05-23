@@ -6,4 +6,6 @@
     <color name="textDown">#FFBB55</color>
     <color name="meuser">#FFFFFF</color>
     <color name="mebackground">#edecec</color>
+    <color name="headerColor">#FFBB55</color>
+
 </resources>
