@@ -16,6 +16,6 @@ public class MyViewpager extends ViewPager {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         /*return super.onTouchEvent(ev);*/
-        return true;
+        return false;
     }
 }
