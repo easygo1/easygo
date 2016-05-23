@@ -42,8 +42,6 @@ public class HomeCityActivity extends AppCompatActivity {
         //2.绑定模拟的数据
         loadData();
 
-
-
         //3.设置上拉加载下拉刷新组件和事件监听
         //设置刷新模式为BOTH才可以上拉和下拉都能起作用,必须写在前面
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
@@ -62,7 +60,6 @@ public class HomeCityActivity extends AppCompatActivity {
                 new LoadDataAsyncTask(HomeCityActivity.this).execute();
             }
         });
-
 
     }
 
@@ -94,17 +91,13 @@ public class HomeCityActivity extends AppCompatActivity {
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
                 Type type = new TypeToken<List<House>>(){}.getType();
-
 //                mList = gson.fromJson(result,type);
                 mList.addAll((List<House>)gson.fromJson(result,type));
                 mAdapter.notifyDataSetChanged();
                 //表示刷新完成
                 mPullToRefreshListView.onRefreshComplete();
-
-
                 Log.e("list",mList.toString());
                 Log.e("aaa",mList.get(2).getHouse_describe());
-
             }
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
@@ -119,7 +112,6 @@ public class HomeCityActivity extends AppCompatActivity {
 
             }
         });
-
 
         /*for (int i = 0; i < 10; i++) {
             mList.add(new House("家庭温馨" + count, "独立房间" + count,count));
