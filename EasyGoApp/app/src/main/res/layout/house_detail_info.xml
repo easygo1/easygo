@@ -41,7 +41,7 @@
     </LinearLayout>
 
     <TextView
-        android:background="#459E9E9E"
+        android:background="@color/linecorlor"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
     <LinearLayout
