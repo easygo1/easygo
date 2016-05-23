@@ -7,9 +7,9 @@
     <color name="meuser">#FFFFFF</color>
     <color name="mebackground">#edecec</color>
     <color name="headerColor">#FFBB55</color>
-<<<<<<< HEAD
+
     <color name="hintColor">#cccbcb</color>
-=======
+
     <color name="linecorlor">#459E9E9E</color>
     <color name="bookbackground">#f7f5f6</color>
 
@@ -21,6 +21,6 @@
     <color name="gray_deep">#5c5c5c</color>
     <color name="alpha_gray">#CC646464</color>
     <color name="theme_gray">#646464</color>
->>>>>>> 1732a24cdf35494d9410078f072c6adcdc764d08
+
 
 </resources>
