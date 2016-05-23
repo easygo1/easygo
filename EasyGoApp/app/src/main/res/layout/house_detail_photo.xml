@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.easygo.MyViewpager
+            android:id="@+id/house_detail_photo_viewpager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+        </com.easygo.MyViewpager>
+
+        <TextView
+            android:id="@+id/house_describe"
+            style="@style/text_alpha_bg"
+            android:layout_margin="10dp"
+            android:text="世纪公园+2号线+24小时热水"/>
+
+        <ImageButton
+            android:id="@+id/house_collection"
+            style="@style/text_alpha_bg"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="7dp"
+            android:layout_toLeftOf="@+id/house_share"
+            android:src="@mipmap/icon_like_normal"/>
+
+        <ImageButton
+            android:id="@+id/house_share"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="7dp"
+            android:background="@mipmap/icon_web_share"/>
+
+        <TextView
+            style="@style/text_alpha_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"
+            android:text="4/4"/>
+
+        <TextView
+            android:id="@+id/house_price"
+            style="@style/text_alpha_bg"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:padding="0dp"
+            android:text="128元/晚"
+            android:textColor="@color/textDown"
+            android:textSize="28sp"/>
+    </RelativeLayout>
+</LinearLayout>
