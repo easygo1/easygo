@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:orientation="vertical">
+    <ImageView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        style="@style/text_ww"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:text="宋唐"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            style="@style/text_ww"
+            android:text="22岁"/>
+
+        <TextView
+            style="@style/text_ww"
+            android:text="女"/>
+
+        <TextView
+            style="@style/text_ww"
+            android:text="北京"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="房地产开发等"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            style="@style/text_ww"
+            android:text="打球"
+            android:textColor="#FFBB55"
+            android:padding="4dp"
+            android:background="@drawable/lable_text"/>
+
+        <TextView
+            style="@style/text_ww"
+            android:text="旅游"
+            android:textColor="#FFBB55"
+            android:padding="3dp"
+            android:background="@drawable/lable_text"/>
+
+        <TextView
+            style="@style/text_ww"
+            android:text="交友"
+            android:padding="3dp"
+            android:textColor="#FFBB55"
+            android:background="@drawable/lable_text"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="身份验证"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:paddingLeft="5dp"
+            android:text="身份证"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="手机号"
+            android:paddingLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Button
+        android:text="在线沟通"
+        android:layout_gravity="center"
+        android:textColor="#fff"
+        android:background="@drawable/btn_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"/>
+    <TextView
+        android:textSize="17sp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:text="个人介绍"
+        android:textColor="#FFBB55"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="爱好跑步，喜欢交更多的朋友，欢迎各地的朋友，欢迎你的到来!!!爱好跑步，喜欢交更多的朋友，欢迎各地的朋友，等你哦!!!"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

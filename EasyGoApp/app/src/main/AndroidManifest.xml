@@ -21,11 +21,13 @@
         </activity>
         <activity android:name=".PlusActivity">
         </activity>
+        <activity android:name=".HomeCityActivity">
+        </activity>
+        <activity android:name=".HouseDetailActivity">
+        </activity>
         <activity android:name=".ReleasesroomActivity">
         </activity>
         <activity android:name=".LogintestActivity"/>
-        <activity android:name=".HomeCityActivity">
-        </activity>
         <activity android:name=".BookActivity">
         </activity>
     </application>
