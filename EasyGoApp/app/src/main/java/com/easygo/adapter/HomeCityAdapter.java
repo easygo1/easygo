@@ -49,9 +49,7 @@ public class HomeCityAdapter extends BaseAdapter {
     }
 
     class ViewHolder {
-
         ImageView mRoomImageView;
-
         TextView text_info;
         TextView text_price;
         TextView text_describe;
@@ -67,7 +65,6 @@ public class HomeCityAdapter extends BaseAdapter {
             viewHolder.text_info = (TextView) convertView.findViewById(R.id.homepage_city_item_text_info);
             viewHolder.text_describe = (TextView) convertView.findViewById(R.id.homepage_city_item_text_describe);
             viewHolder.text_price = (TextView) convertView.findViewById(R.id.homepage_city_item_text_price);
-
             convertView.setTag(viewHolder);
         } else {
             //说明开始上下滑动，后面的所有行布局采用第一次绘制时的缓存布局
@@ -107,9 +104,7 @@ public class HomeCityAdapter extends BaseAdapter {
             mCollectImageView.setImageResource(R.mipmap.icon_collect_on);
         }else {
             mCollectImageView.setImageResource(R.mipmap.icon_collect_blue);
-
         }
-
         return convertView;
     }
 }
