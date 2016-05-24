@@ -35,6 +35,16 @@
         <item name="android:textSize">18sp</item>
         <item name="android:background">@drawable/chatmybtn2</item>
     </style>
+
+    <style name="yuanjiao_btn">
+
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/chatmybtn</item>
+    </style>
+
     <style name="me_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
@@ -103,6 +113,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/radio_bg</item>
     </style>
+    <!--透明灰色背景-->
     <style name="text_alpha_bg">
         <item name="android:textColor">#fff</item>
         <item name="android:background">#459E9E9E</item>
@@ -122,6 +133,27 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">4dp</item>
+    </style>
 
+    <!--申请预定的日期style-->
+    <style name="room_book_sec_header">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+
+    </style>
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="LetterIndexTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">@dimen/side_letter_bar_width</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray</item>
     </style>
 </resources>

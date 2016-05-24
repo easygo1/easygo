@@ -30,4 +30,9 @@ public class LogintestActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void reg(View view) {
+        Intent intent=new Intent(LogintestActivity.this,RegisterActivity.class);
+        startActivity(intent);
+    }
 }

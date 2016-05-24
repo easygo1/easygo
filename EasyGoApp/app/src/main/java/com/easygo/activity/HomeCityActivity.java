@@ -3,23 +3,15 @@ package com.easygo.activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ListView;
 
-import com.easygo.adapter.HomeCityAdapter;
+import com.easygo.adapter.HouseListAdapter;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.House;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
-import org.xutils.x;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +21,7 @@ public class HomeCityActivity extends AppCompatActivity {
     public static final String TAG = "info";
     PullToRefreshListView mPullToRefreshListView;//PullToRefreshListView实例
     List<House> mList = null;
-    HomeCityAdapter mAdapter;
+    HouseListAdapter mAdapter;
     String mPath;
 
     @Override
@@ -67,7 +59,7 @@ public class HomeCityActivity extends AppCompatActivity {
         MyApplication myApplication  = (MyApplication)this.getApplication();
         mPath = myApplication.getUrl();
         mList = new ArrayList<>();
-        mAdapter = new HomeCityAdapter(HomeCityActivity.this, mList);
+        mAdapter = new HouseListAdapter(HomeCityActivity.this, mList);
         mPullToRefreshListView.setAdapter(mAdapter);
     }
 
@@ -81,7 +73,7 @@ public class HomeCityActivity extends AppCompatActivity {
     //模拟数据
     public void loadData() {
 
-        RequestParams params = new RequestParams(mPath);
+       /* RequestParams params = new RequestParams(mPath);
         //Params
         params.addBodyParameter("methods","getAllHouse");
 
@@ -111,13 +103,13 @@ public class HomeCityActivity extends AppCompatActivity {
             public void onFinished() {
 
             }
-        });
+        });*/
 
-        /*for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             mList.add(new House("家庭温馨" + count, "独立房间" + count,count));
             count++;
         }
-        mAdapter.notifyDataSetChanged();*/
+        mAdapter.notifyDataSetChanged();
 
     }
 

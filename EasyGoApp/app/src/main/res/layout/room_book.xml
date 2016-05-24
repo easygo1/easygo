@@ -13,7 +13,7 @@
         android:layout_weight="1"
         android:background="@color/headerColor"
         android:text="申请预定"
-        android:textSize="24sp"
+        android:textSize="@dimen/textsize_xl"
         android:gravity="center"/>
 
     <include

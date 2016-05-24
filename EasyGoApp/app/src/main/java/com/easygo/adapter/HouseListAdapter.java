@@ -1,33 +1,25 @@
 package com.easygo.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.easygo.activity.R;
 import com.easygo.beans.House;
-import com.easygo.beans.Music;
-import com.easygo.beans.UserCollect;
 
 import java.util.List;
 
-/**
- * Created by Gemptc on 2016/4/27.
- */
-public class HomeCityAdapter extends BaseAdapter {
+
+public class HouseListAdapter extends BaseAdapter {
     LayoutInflater mInflater;
     Context mContext;
     List<House> mList;
 
-    public HomeCityAdapter(Context context, List<House> list) {
+    public HouseListAdapter(Context context, List<House> list) {
         mContext = context;
         this.mList = list;
         mInflater = LayoutInflater.from(mContext);
@@ -59,7 +51,7 @@ public class HomeCityAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.activity_home_city_item, null);
+            convertView = mInflater.inflate(R.layout.house_list_item, null);
             viewHolder = new ViewHolder();
             viewHolder.mRoomImageView = (ImageView) convertView.findViewById(R.id.homepage_city_item_room_image);
             viewHolder.text_info = (TextView) convertView.findViewById(R.id.homepage_city_item_text_info);
