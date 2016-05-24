@@ -1,5 +1,6 @@
 package com.easygo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,11 +9,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.easygo.adapter.HouseDetailAdpter;
+import com.easygo.beans.House;
 import com.easygo.fragment.HouseDetailAssessFragment;
 import com.easygo.fragment.HouseDetailInfoFragment;
 import com.easygo.fragment.HouseDetailOwnerFragment;
@@ -21,7 +26,7 @@ import com.easygo.fragment.HouseDetailRuleFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HouseDetailActivity extends AppCompatActivity {
+public class HouseDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     ViewPager mPhotoViewPager;
     //图片资源数组
@@ -29,7 +34,6 @@ public class HouseDetailActivity extends AppCompatActivity {
     private List<ImageView> mImageViewList;
 
     RadioGroup mRadioGroup;
-    ViewPager mHouseinfoViewPager;
     List<Fragment> mHouseInfoList;
     //四个fragment
     HouseDetailInfoFragment mInfoFragment;
@@ -39,8 +43,16 @@ public class HouseDetailActivity extends AppCompatActivity {
     //碎片
     FragmentManager mFragmentManager;
     HouseDetailAdpter mHouseDetailAdpter;
-   // FragmentTransaction mFragmentTransaction;
-   // ScrollView mMyScrollview;
+
+    ViewPager mHouseinfoViewPager;
+
+    //房源信息用到的控件
+    TextView mHouseDescribeTextview, mHousePriceTextview, mHousePhotoSizeTextView;
+    ImageView mHouseCollectionImageView, mHouseShareImageView;
+    Button mBookButton;
+
+    //接收到的数据
+    House house = new House("房屋标题", "我是房屋描述", "我是房屋类型", "交通信息", 5, 120, 20, "不限", 3, 3, 4, false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +84,6 @@ public class HouseDetailActivity extends AppCompatActivity {
                 return mImageViewList.get(position);
             }
         });
-
-       /* mMyScrollview.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-               *//* v.getParent().requestDisallowInterceptTouchEvent(true);*//*
-                return true;
-            }
-        });*/
     }
 
     //初始化视图
@@ -87,11 +91,35 @@ public class HouseDetailActivity extends AppCompatActivity {
         mPhotoViewPager = (ViewPager) findViewById(R.id.house_detail_photo_viewpager);
         mRadioGroup = (RadioGroup) findViewById(R.id.house_radiogroup);
         mHouseinfoViewPager = (ViewPager) findViewById(R.id.house_detail_infomation_viewpager);
-//        mMyScrollview = (ScrollView) findViewById(R.id.myscrollview);
+
+        mHouseDescribeTextview = (TextView) findViewById(R.id.house_describe);
+        mHousePriceTextview = (TextView) findViewById(R.id.house_price);
+        mHousePhotoSizeTextView = (TextView) findViewById(R.id.house_photo_size);
+        mHouseCollectionImageView = (ImageView) findViewById(R.id.house_collection);
+        mHouseShareImageView = (ImageView) findViewById(R.id.house_share);
+        mBookButton= (Button) findViewById(R.id.book_house_btn);
     }
 
     //初始化
     private void initListener() {
+        //图片滑动时改变图片张数的显示
+        mPhotoViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Toast.makeText(HouseDetailActivity.this, "第" + position + "张图片", Toast.LENGTH_SHORT).show();
+                mHousePhotoSizeTextView.setText((position + 1) + "/" + house.getHouse_photo_size());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -116,14 +144,12 @@ public class HouseDetailActivity extends AppCompatActivity {
 
             }
         });
-
-       /* mHouseinfoViewPager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                v.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });*/
+        //单击收藏
+        mHouseCollectionImageView.setOnClickListener(this);
+        //单击分享
+        mHouseShareImageView.setOnClickListener(this);
+        //申请预定
+        mBookButton.setOnClickListener(this);
     }
 
     private void resetRadioButton(int position) {
@@ -179,5 +205,27 @@ public class HouseDetailActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
         mHouseDetailAdpter = new HouseDetailAdpter(mFragmentManager, mHouseInfoList);
         mHouseinfoViewPager.setAdapter(mHouseDetailAdpter);
+
+        mHouseDescribeTextview.setText(house.getHouse_title());
+        mHousePriceTextview.setText("" + house.getHouse_one_price() + "元");
+        mHousePhotoSizeTextView.setText(1 + "/" + house.getHouse_photo_size());
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.house_collection:
+                Toast.makeText(HouseDetailActivity.this,"单击了收藏按钮",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.house_share:
+                Toast.makeText(HouseDetailActivity.this,"单击了分享按钮",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.book_house_btn:
+                Intent intent=new Intent();
+                intent.setClass(HouseDetailActivity.this,BookActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

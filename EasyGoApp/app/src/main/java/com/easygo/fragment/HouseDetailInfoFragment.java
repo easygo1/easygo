@@ -21,10 +21,11 @@ public class HouseDetailInfoFragment extends Fragment{
     //根据房源编号获取设施
     List<String> mEquipmentList;
 
+    //显示数据需要使用到的控件
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mHouseContentView=inflater.inflate(R.layout.house_detail_info,null);
+        mHouseContentView=inflater.inflate(R.layout.fragment_info_scroll,null);
         initHouseinfoView();
         initData();
         return mHouseContentView;

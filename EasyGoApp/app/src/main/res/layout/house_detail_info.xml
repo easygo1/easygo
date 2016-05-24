@@ -5,6 +5,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,8 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/house_detail"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:src="@mipmap/house_detail"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,17 +34,19 @@
         </LinearLayout>
 
         <TextView
-            android:padding="8dp"
+            android:id="@+id/house_detail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
+            android:padding="8dp"
             android:text="@string/housedescribe"/>
     </LinearLayout>
 
     <TextView
-        android:background="@color/linecorlor"
         android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="@color/linecorlor"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,10 +85,12 @@
              android:layout_weight="4">
          </ListView>-->
     </LinearLayout>
+
     <TextView
-        android:background="#459E9E9E"
         android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="#459E9E9E"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -100,11 +105,11 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@mipmap/house_address"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:src="@mipmap/house_address"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -117,9 +122,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4">
+
             <Button
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="查看"/>
         </LinearLayout>
     </LinearLayout>
