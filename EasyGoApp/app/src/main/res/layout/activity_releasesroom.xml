@@ -14,8 +14,8 @@
         android:background="@color/headerColor">
         <ImageView
             android:id="@+id/releaseroom_return"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
             android:src="@mipmap/return_back_white"/>
@@ -23,9 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="@color/meuser"
             android:text="发布房源"
-            android:textSize="28sp"/>
+            android:textSize="@dimen/textsize_xl"/>
     </RelativeLayout>
 
     <ScrollView

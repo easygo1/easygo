@@ -94,7 +94,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        int id = v.getId();
+        switch (id){
             case R.id.releaseroom_return:
                 Intent intent = new Intent();
                 intent.putExtra("flag","me");
