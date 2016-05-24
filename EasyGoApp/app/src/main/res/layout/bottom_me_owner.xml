@@ -58,21 +58,21 @@
         <TextView
             style="@style/me_content_notext"/>
         <TextView
-            android:id="@+id/me_owner_dailytask"
+            android:id="@+id/me_owner_linkman"
             style="@style/me_content_text"
-            android:text="@string/dailytask"/>
-        <TextView
-            style="@style/me_content_notext"/>
-        <TextView
-            android:id="@+id/me_owner_myroom"
-            style="@style/me_content_text"
-            android:text="@string/myroom"/>
+            android:text="@string/linkman"/>
         <TextView
             style="@style/me_content_notext"/>
         <TextView
             android:id="@+id/me_owner_datemanage"
             style="@style/me_content_text"
             android:text="@string/datemanage"/>
+        <TextView
+            style="@style/me_content_notext"/>
+        <TextView
+            android:id="@+id/me_owner_myroom"
+            style="@style/me_content_text"
+            android:text="@string/myroom"/>
         <TextView
             style="@style/me_content_notext"/>
         <TextView

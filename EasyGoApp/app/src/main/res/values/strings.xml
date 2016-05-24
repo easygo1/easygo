@@ -35,5 +35,6 @@
     <string name="nothing_found">没有搜索结果~</string>
     <string name="locating">正在定位…</string>
     <string name="located_failed">定位失败</string>
+    <string name="linkman">常用入住人</string>
 
 </resources>
