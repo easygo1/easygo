@@ -37,8 +37,8 @@
         <activity android:name=".BookActivity">
         </activity>
         <activity android:name=".RegisterActivity">
-        <activity android:name=".SelectCityActivity">
         </activity>
+        <activity android:name=".SelectCityActivity">
         </activity>
         <activity android:name=".HouseCollectionActivity">
         </activity>
