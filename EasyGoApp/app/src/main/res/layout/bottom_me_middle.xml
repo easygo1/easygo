@@ -8,12 +8,10 @@
         android:id="@+id/myorder"
         style="@style/me_style">
         <ImageView
-            android:id="@+id/myorder_imageview"
             style="@style/me_image"
             android:src="@mipmap/me_myorder"/>
 
         <TextView
-            android:id="@+id/myorder_text"
             style="@style/me_text"
             android:text="@string/myorder"/>
     </LinearLayout>
@@ -23,12 +21,10 @@
         style="@style/me_style">
 
         <ImageView
-            android:id="@+id/mycollection_imageview"
             style="@style/me_image"
             android:src="@mipmap/me_mycollection"/>
 
         <TextView
-            android:id="@+id/mycollection_text"
             style="@style/me_text"
             android:text="@string/mycollection"/>
 
@@ -40,12 +36,10 @@
         style="@style/me_style">
 
         <ImageView
-            android:id="@+id/mywallet_imageview"
             style="@style/me_image"
             android:src="@mipmap/me_mywallet"/>
 
         <TextView
-            android:id="@+id/mywallet_text"
             style="@style/me_text"
             android:text="@string/mywallet"/>
 
@@ -56,12 +50,10 @@
         style="@style/me_style">
 
         <ImageView
-            android:id="@+id/myinformation_imageview"
             style="@style/me_image"
             android:src="@mipmap/me_myinformation"/>
 
         <TextView
-            android:id="@+id/myinformation_text"
             style="@style/me_text"
             android:text="@string/myinformation"/>
 

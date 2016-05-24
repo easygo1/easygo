@@ -32,6 +32,12 @@
         </activity>
         <activity android:name=".SelectCityActivity">
         </activity>
+        <activity android:name=".SetActivity">
+        </activity>
+        <activity android:name=".FeedbackActivity">
+        </activity>
+        <activity android:name=".AboutusActivity">
+        </activity>
     </application>
 
 </manifest>
