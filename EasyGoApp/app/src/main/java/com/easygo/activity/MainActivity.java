@@ -74,6 +74,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             setImageAndTextColor(id);
             //设置当前选中碎片
             initCurrentFragment(id);
+        }else if (flag.equals("search")) {
+            //如果接收到标志位flag=search,显示搜索界面
+            mFragmentManager = getFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            mSearchFragment = new SearchFragment();
+            mFragmentTransaction.add(R.id.middle, mSearchFragment);
+            mFragmentTransaction.commit();
+            //还原图标和文本颜色
+            reset();
+            //得到选中的id
+            int id = R.id.search;
+            //设置当前选中图标和文本颜色
+            setImageAndTextColor(id);
+            //设置当前选中碎片
+            initCurrentFragment(id);
         }
     }
 
