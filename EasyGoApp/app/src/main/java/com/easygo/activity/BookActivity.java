@@ -2,14 +2,26 @@ package com.easygo.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class BookActivity extends AppCompatActivity implements View.OnClickListener{
+import java.util.ArrayList;
+import java.util.Map;
 
+public class BookActivity extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemClickListener{
+
+    ListView mListView;
     TextView mHumanNumberTextView,mSubtractTextView,mAddTextView;
+    View mBeforeListView;
+    Adapter mAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,20 +29,26 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.room_book);
         initView();
         addListeners();
-//        Toast.makeText(BookActivity.this, Integer.parseInt((String) mHumanNumberTextView.getText())+"", Toast.LENGTH_SHORT).show();
 
     }
 
     private void initView() {
+
+        mListView = (ListView) findViewById(R.id.room_book_listview);
         mHumanNumberTextView = (TextView) findViewById(R.id.room_book_human_number);
         mSubtractTextView = (TextView) findViewById(R.id.room_book_subtract);
         mAddTextView = (TextView) findViewById(R.id.room_book_add);
+        mBeforeListView = findViewById(R.id.room_book_before_list);
+
+        mListView.addHeaderView(mBeforeListView);
+
     }
 
     private void addListeners() {
 //        mHumanNumberTextView.setOnClickListener(this);
         mSubtractTextView.setOnClickListener(this);
         mAddTextView.setOnClickListener(this);
+        mListView.setOnItemClickListener(BookActivity.this);
     }
 
     /*
@@ -60,5 +78,11 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
+    }
+
+    //ListView 的监听
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }

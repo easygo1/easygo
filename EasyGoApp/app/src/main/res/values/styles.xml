@@ -122,6 +122,11 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">4dp</item>
+    </style>
+    <!--申请预定的日期style-->
+    <style name="room_book_sec_header">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
 
     </style>
 </resources>
