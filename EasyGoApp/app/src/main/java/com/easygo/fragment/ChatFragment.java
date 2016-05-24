@@ -51,6 +51,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
 
     private void initChatDefault() {
         //开始先显示第一个界面
+        mButton_chat_info.setBackgroundResource(R.drawable.chatmybtn);
         mChatFragmentManager = getFragmentManager();
         mChatFragmentTransaction = mChatFragmentManager.beginTransaction();
         //默认显示买模块，初始化买碎片
@@ -112,8 +113,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
         switch (id) {
             case R.id.chat_info:
                 mButton_chat_info.setBackgroundResource(R.drawable.chatmybtn);
-
-
                 break;
             case R.id.chat_friend:
                 mButton_chat_friend.setBackgroundResource(R.drawable.chatmybtn);

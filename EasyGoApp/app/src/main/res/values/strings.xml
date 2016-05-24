@@ -24,6 +24,9 @@
     <string name="mypoints">我的积分:100</string>
     <string name="mydescription">个人描述：主人很懒，什么都没有说~</string>
 
+    <string name="datemanage">可租日期管理</string>
+
+
 
     <string name="select_city">选择城市</string>
     <string name="hot_city">热门城市</string>
@@ -32,4 +35,6 @@
     <string name="nothing_found">没有搜索结果~</string>
     <string name="locating">正在定位…</string>
     <string name="located_failed">定位失败</string>
+    <string name="linkman">常用入住人</string>
+
 </resources>
