@@ -58,9 +58,15 @@
         <TextView
             style="@style/me_content_notext"/>
         <TextView
-            android:id="@+id/me_owner_dailytask"
+            android:id="@+id/me_owner_linkman"
             style="@style/me_content_text"
-            android:text="@string/dailytask"/>
+            android:text="@string/linkman"/>
+        <TextView
+            style="@style/me_content_notext"/>
+        <TextView
+            android:id="@+id/me_owner_datemanage"
+            style="@style/me_content_text"
+            android:text="@string/datemanage"/>
         <TextView
             style="@style/me_content_notext"/>
         <TextView

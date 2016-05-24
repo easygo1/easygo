@@ -55,15 +55,15 @@
         <TextView
             style="@style/me_content_notext"/>
         <TextView
-            android:id="@+id/me_certification"
+            android:id="@+id/me_linkman"
             style="@style/me_content_text"
-            android:text="@string/certification"/>
+            android:text="@string/linkman"/>
         <TextView
             style="@style/me_content_notext"/>
         <TextView
-            android:id="@+id/me_dailytask"
+            android:id="@+id/me_certification"
             style="@style/me_content_text"
-            android:text="@string/dailytask"/>
+            android:text="@string/certification"/>
         <TextView
             style="@style/me_content_notext"/>
         <TextView

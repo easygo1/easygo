@@ -2,29 +2,49 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/all"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.easygo.activity.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/top"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#FFBB55"
-        android:text=""/>
+        android:background="@color/headerColor">
+        <ImageView
+            android:id="@+id/releaseroom_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/return_back_white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/meuser"
+            android:text="发布房源"
+            android:textSize="28sp"/>
+    </RelativeLayout>
 
-    <FrameLayout
-        android:id="@+id/middle"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"/>
+        android:layout_weight="10">
+        <include
+            layout="@layout/activity_releasesroom_middle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </ScrollView>
     <Button
+        android:id="@+id/releaseroom_success"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="完成"
-        android:onClick="success"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/headerColor"
+        android:textColor="@color/meuser"
+        android:textSize="28sp"
+        android:text="完成"/>
 
 </LinearLayout>

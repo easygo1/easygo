@@ -6,5 +6,20 @@
     <color name="textDown">#FFBB55</color>
     <color name="meuser">#FFFFFF</color>
     <color name="mebackground">#edecec</color>
-    <color name="item_back_press">#10000000</color>
+    <color name="headerColor">#FFBB55</color>
+
+    <color name="hintColor">#cccbcb</color>
+
+    <color name="linecorlor">#459E9E9E</color>
+    <color name="bookbackground">#f7f5f6</color>
+
+    <color name="divider">#E5E5E5</color>
+    <color name="shadow">#AAEBEBEB</color>
+    <color name="common_bg">#FAFAFA</color>
+    <color name="content_bg">#F3F3F3</color>
+    <color name="gray">#8c8c8c</color>
+    <color name="gray_deep">#5c5c5c</color>
+    <color name="alpha_gray">#CC646464</color>
+    <color name="theme_gray">#646464</color>
+
 </resources>

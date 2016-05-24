@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.easygo.activity.BookActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.MainActivity;
 import com.easygo.activity.R;
@@ -124,6 +125,17 @@ public class HomeFragment extends Fragment {
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
                 container.addView(mHomePageAdvertList.get(position));
+
+                //监听
+                mHomePageAdvertList.get(position).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), BookActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
+
                 return mHomePageAdvertList.get(position);
             }
         });
@@ -157,7 +169,7 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public Object instantiateItem(ViewGroup container, final int position) {
+            public Object instantiateItem(ViewGroup container, int position) {
 
                 container.addView(mHomePageCityList.get(position));
                 //监听
@@ -166,7 +178,7 @@ public class HomeFragment extends Fragment {
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), HomeCityActivity.class);
                         startActivity(intent);
-                        Toast.makeText(getActivity(), position + "", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
                     }
                 });
                 return mHomePageCityList.get(position);
