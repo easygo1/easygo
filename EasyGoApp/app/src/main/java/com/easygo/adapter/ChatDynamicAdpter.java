@@ -119,7 +119,6 @@ public class ChatDynamicAdpter extends BaseAdapter {
         //动态修改每一行控件的内容
         final CommentData commentData = mCommentDataList_list.get(position);
 
-
         viewHolder.mcomment_imageview.setImageResource(commentData.getComment_imageview());
         viewHolder.mzan_img.setImageResource(commentData.getZan_img());
         viewHolder.mcomment_img.setImageResource(commentData.getComment_img());
