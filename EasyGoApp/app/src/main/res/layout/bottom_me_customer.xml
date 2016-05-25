@@ -59,7 +59,7 @@
         <TextView
             style="@style/me_content_notext"/>
         <TextView
-            android:id="@+id/me_content_linkman"
+            android:id="@+id/me_customer_linkman"
             style="@style/me_content_text"
             android:text="@string/linkman"/>
         <TextView

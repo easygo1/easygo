@@ -4,6 +4,7 @@ package com.easygo.activity;
 * 申请预定的界面
 * */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -126,6 +127,9 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(BookActivity.this, "离开", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.room_book_add_contact:
+                Toast.makeText(BookActivity.this, "添加一个入住人", Toast.LENGTH_SHORT).show();
+                Intent chooseIntent  = new Intent(BookActivity.this,BookChooseLinkmanActivity.class);
+                startActivity(chooseIntent);
                 break;
             default:
                 break;

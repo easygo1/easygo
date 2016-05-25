@@ -92,7 +92,7 @@ public class HouseListAdapter extends BaseAdapter {
                     mCollectionImageView.setImageResource(R.mipmap.icon_collect_blue);
                     mList.get(position).setCollected(false);
                     //Log.e("收藏","点击了"+mList.get(position).isCollected());
-                    //house.setCollected(false);
+//                    house.setCollected(false);
                 }
             }
         });
