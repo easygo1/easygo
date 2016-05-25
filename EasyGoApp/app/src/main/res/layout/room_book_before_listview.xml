@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.easygo.activity.BookActivity">
+    <!--listView之前的布局-->
+    <TextView
+        style="@style/room_book_sec_header"
+        android:background="@color/bookbackground"
+        android:gravity="center"
+        android:text="日期"
+        android:textSize="22sp"/>
+    <!--日期的两个布局-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <!--入住的布局-->
+        <LinearLayout
+            android:id="@+id/room_book_check_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="入住"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请选择入住时间"
+                android:textColor="@color/textDown"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.01"
+            android:background="@color/bookbackground"/>
+        <!--离开-->
+        <LinearLayout
+            android:id="@+id/room_book_leave_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="离开"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="请选择离开时间"
+                android:textColor="@color/textDown"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--入住人数部分-->
+    <TextView
+        style="@style/room_book_sec_header"
+        android:background="@color/bookbackground"
+        android:gravity="center"
+        android:text="入住人数"
+        android:textSize="22sp"/>
+
+    <LinearLayout
+        style="@style/room_book_sec_header"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/room_book_subtract"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="-"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/room_book_human_number"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/textDown"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/room_book_add"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="+"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+    <!--入住人部分-->
+    <TextView
+        style="@style/room_book_sec_header"
+        android:background="@color/bookbackground"
+        android:gravity="center"
+        android:text="入住人"
+        android:textSize="22sp"/>
+
+
+</LinearLayout>

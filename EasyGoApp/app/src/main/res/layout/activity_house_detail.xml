@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.easygo.activity.HouseDetailActivity">
 
-    <ScrollView
+    <LinearLayout
         android:id="@+id/myscrollview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -39,20 +39,21 @@
                 android:layout_height="0dp"
                 android:layout_weight="7">
 
-                <com.easygo.MyViewpager
+                <android.support.v4.view.ViewPager
                     android:id="@+id/house_detail_infomation_viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                </com.easygo.MyViewpager>
+                </android.support.v4.view.ViewPager>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
     <!--底部两个button-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
         <Button
+            android:id="@+id/book_house_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_bg"

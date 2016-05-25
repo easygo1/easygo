@@ -53,6 +53,7 @@ public class GridViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView=mInflater.inflate(R.layout.gridview_item,null);
         ImageView imageView= (ImageView) convertView.findViewById(R.id.gridview_image);
+
         imageView.setImageResource(list.get(position));
         if(size==1){
             //修改每一行列数由自适应改为只有一列

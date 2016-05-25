@@ -1,7 +1,9 @@
 package com.easygo.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.easygo.activity.CalendarActivity;
 import com.easygo.activity.FootPrintActivity;
 import com.easygo.activity.HouseCollectionActivity;
 import com.easygo.activity.R;
@@ -26,6 +30,10 @@ public class SearchFragment extends Fragment{
     View mSearchCityView,mFootPrintView,mCollectionView,mDateSelectView;
     EditText mSearchEditText;
     Button mSearchButton;
+
+    private TextView tv_in,tv_out;
+    SharedPreferences sp;
+    String inday,outday;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +60,14 @@ public class SearchFragment extends Fragment{
                 intent.setClass(getActivity(),SelectCityActivity.class);
                 startActivity(intent);
                 return false;
+            }
+        });
+        mDateSelectView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"选择入住时间",Toast.LENGTH_SHORT).show();
+                intent.setClass(getActivity(),CalendarActivity.class);
+                startActivity(intent);
             }
         });
         mFootPrintView.setOnClickListener(new View.OnClickListener() {
@@ -81,10 +97,29 @@ public class SearchFragment extends Fragment{
 
     private void initView() {
         mSearchCityView=mSearchView.findViewById(R.id.city_search);
+        mDateSelectView=mSearchView.findViewById(R.id.time_search);
         mSearchEditText= (EditText) mSearchView.findViewById(R.id.search_edittext);
         mFootPrintView=mSearchView.findViewById(R.id.search_footpoint);
         mCollectionView=mSearchView.findViewById(R.id.search_collection);
         mSearchButton= (Button) mSearchView.findViewById(R.id.search_btn);
+        //初始化日历控件
+        sp=getActivity().getSharedPreferences("date",Context.MODE_PRIVATE);
+
+        tv_in=(TextView)mSearchView. findViewById(R.id.search_check_time);
+        tv_out=(TextView) mSearchView.findViewById(R.id.search_leave_time);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        inday=sp.getString("dateIn", "");
+        outday=sp.getString("dateOut", "");
+        if(!"".equals(inday)){
+            tv_in.setText(inday);
+        }
+        if(!"".equals(outday)){
+            tv_out.setText(outday);
+        }
     }
 
 }

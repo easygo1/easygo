@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--我的。常用入住人-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.easygo.activity.UserLinkmanActivity">
+    <include layout="@layout/common_title_bar"/>
+    <TextView
+        android:id="@+id/me_user_linkman_add"
+        style="@style/room_book_sec_header"
+        android:gravity="center"
+        android:text="+添加入住人"
+        android:textSize="20sp"/>
+    <TextView
+        android:background="@color/bookbackground"
+        android:layout_height="10dp"
+        android:layout_width="match_parent"/>
+
+    <ListView
+        android:id="@+id/me_user_linkman_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+
+</LinearLayout>
