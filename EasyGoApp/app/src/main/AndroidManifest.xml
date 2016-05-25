@@ -51,6 +51,8 @@
         </activity>
         <activity android:name=".MyInfomationActivity">
         </activity>
+        <activity android:name=".CalendarActivity">
+        </activity>
     </application>
 
 </manifest>
