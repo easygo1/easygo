@@ -1,5 +1,5 @@
 package com.easygo.fragment;
-package com.easygo.fragment;
+
 
 import android.app.Fragment;
 import android.content.Context;
