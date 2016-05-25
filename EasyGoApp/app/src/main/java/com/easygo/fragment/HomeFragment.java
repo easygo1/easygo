@@ -11,11 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.easygo.activity.BookActivity;
 import com.easygo.activity.HomeCityActivity;
-import com.easygo.activity.MainActivity;
+import com.easygo.activity.HouseDetailActivity;
 import com.easygo.activity.R;
 
 import java.util.ArrayList;
@@ -232,6 +231,16 @@ public class HomeFragment extends Fragment {
             public Object instantiateItem(ViewGroup container, int position) {
 
                 container.addView(mHomePageHotList.get(position));
+
+                //测试使用，跳转到具体房源页面
+               mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), HouseDetailActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
                 return mHomePageHotList.get(position);
             }
 

@@ -19,11 +19,27 @@ public class House implements Serializable {
     private String house_limit_sex; // 房客性别要求（不限，只男，只女）
     private int house_stay_time; // 最长入住时间
     private int house_assess_sum; // 评价次数（在房东发布房源时不显示）
+    private int house_photo_size;//房源图片张数，后来添加的
 
 
     private boolean collected = false;
 
     public House() {
+    }
+
+    public House( String house_title, String house_describe, String house_style, String house_traffic, int house_most_num, double house_one_price, double house_add_price, String house_limit_sex, int house_stay_time, int house_assess_sum, int house_photo_size, boolean collected) {
+        this.house_title = house_title;
+        this.house_describe = house_describe;
+        this.house_style = house_style;
+        this.house_traffic = house_traffic;
+        this.house_most_num = house_most_num;
+        this.house_one_price = house_one_price;
+        this.house_add_price = house_add_price;
+        this.house_limit_sex = house_limit_sex;
+        this.house_stay_time = house_stay_time;
+        this.house_assess_sum = house_assess_sum;
+        this.house_photo_size = house_photo_size;
+        this.collected = collected;
     }
 
     public House(int house_id, String house_title, String house_describe, String house_style, Float house_address_lng, Float house_address_lat, String house_traffic, int house_most_num, double house_one_price, double house_add_price, String house_limit_sex, int house_stay_time, int house_assess_sum) {
@@ -42,10 +58,11 @@ public class House implements Serializable {
         this.house_assess_sum = house_assess_sum;
     }
 
-    public House(String house_describe, String house_style, double house_one_price) {
+    public House(String house_describe, String house_style, double house_one_price,boolean iscollection) {
         this.house_describe = house_describe;
         this.house_style = house_style;
         this.house_one_price = house_one_price;
+        this.collected=iscollection;
     }
 
     public boolean isCollected() {
@@ -160,6 +177,14 @@ public class House implements Serializable {
         this.house_assess_sum = house_assess_sum;
     }
 
+    public int getHouse_photo_size() {
+        return house_photo_size;
+    }
+
+    public void setHouse_photo_size(int house_photo_size) {
+        this.house_photo_size = house_photo_size;
+    }
+
     @Override
     public String toString() {
         return "House{" +
@@ -178,4 +203,5 @@ public class House implements Serializable {
                 ", house_assess_sum=" + house_assess_sum +
                 '}';
     }
+
 }

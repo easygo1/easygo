@@ -3,7 +3,10 @@ package com.easygo.activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.easygo.adapter.HouseListAdapter;
 import com.easygo.application.MyApplication;
@@ -18,17 +21,17 @@ import java.util.List;
 public class HomeCityActivity extends AppCompatActivity {
 
 
-    public static final String TAG = "info";
+    //public static final String TAG = "info";
     PullToRefreshListView mPullToRefreshListView;//PullToRefreshListView实例
     List<House> mList = null;
     HouseListAdapter mAdapter;
     String mPath;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_city);
-//        Intent intent = getIntent();
         initViews();
         initData();
         //2.绑定模拟的数据
@@ -50,6 +53,12 @@ public class HomeCityActivity extends AppCompatActivity {
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 new LoadDataAsyncTask(HomeCityActivity.this).execute();
+            }
+        });
+        mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(HomeCityActivity.this,"房源"+position,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -106,7 +115,7 @@ public class HomeCityActivity extends AppCompatActivity {
         });*/
 
         for (int i = 0; i < 10; i++) {
-            mList.add(new House("家庭温馨" + count, "独立房间" + count,count));
+            mList.add(new House("家庭温馨" + count, "独立房间" + count,count,false));
             count++;
         }
         mAdapter.notifyDataSetChanged();

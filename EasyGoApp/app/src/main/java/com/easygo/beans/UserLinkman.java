@@ -1,9 +1,11 @@
 package com.easygo.beans;
 
+import java.io.Serializable;
+
 /**
  * Created by PengHong on 2016/5/24.
  */
-public class UserLinkman {
+public class UserLinkman implements Serializable {
     private int user_linkman_id; // 表编号
     private int user_id; // 用户id
     private String name; // 联系人的姓名
