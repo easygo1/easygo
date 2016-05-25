@@ -1,8 +1,4 @@
 package com.easygo.fragment;
-<<<<<<< HEAD
-=======
-
->>>>>>> 09323cb5d59158c5f35b25d9e54d41d47ce1fb83
 
 import android.app.Fragment;
 import android.content.Context;
