@@ -1,4 +1,5 @@
 package com.easygo.fragment;
+package com.easygo.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.easygo.activity.LogintestActivity;
+import com.easygo.activity.MyInfomationActivity;
 import com.easygo.activity.R;
 import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.activity.SetActivity;
@@ -206,6 +208,11 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 Intent intentLinkman = new Intent();
                 intentLinkman.setClass(getActivity(), UserLinkmanActivity.class);
                 startActivity(intentLinkman);
+                break;
+            case R.id.myinformation:
+                Intent intentMyInfomation = new Intent();
+                intentMyInfomation.setClass(getActivity(), MyInfomationActivity.class);
+                startActivity(intentMyInfomation);
                 break;
         }
     }

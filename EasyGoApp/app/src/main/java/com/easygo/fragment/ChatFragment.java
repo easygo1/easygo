@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.easygo.activity.R;
+import com.easygo.view.MyPopDownPopWindow;
 
 
 /**
@@ -19,11 +21,13 @@ import com.easygo.activity.R;
 public class ChatFragment extends Fragment implements View.OnClickListener{
 
     Button mButton_chat_info, mButton_chat_friend, mButton_chat_dynamic;
+    ImageButton add_friend;
     private ChatInfoFragment mChatInfoFragment;
     private ChatFriendFragment mChatFriendFragment;
     private ChatDynamicFragment mChatDynamicFragment;
     private FragmentManager mChatFragmentManager;
     private FragmentTransaction mChatFragmentTransaction;
+    private MyPopDownPopWindow popMenus;
     View mChatView;
 
     @Nullable
@@ -41,12 +45,14 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
         mButton_chat_info= (Button) mChatView.findViewById(R.id.chat_info);
         mButton_chat_friend = (Button) mChatView.findViewById(R.id.chat_friend);
         mButton_chat_dynamic = (Button) mChatView.findViewById(R.id.chat_dynamic);
+        add_friend= (ImageButton) mChatView.findViewById(R.id.add_friend);
     }
     private void addChatListeners() {
         //设置监听
         mButton_chat_friend.setOnClickListener(this);
         mButton_chat_info.setOnClickListener(this);
         mButton_chat_dynamic.setOnClickListener(this);
+        add_friend.setOnClickListener(this);
     }
 
     private void initChatDefault() {
@@ -91,21 +97,60 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
                     mChatFragmentTransaction.show(mChatDynamicFragment);
                 }
                 break;
+
         }
         mChatFragmentTransaction.commit();
     }
+    //显示添加好友的dialog
+    private void showDialog() {
+        //自定义的弹出框类
+        add_friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popMenus=new MyPopDownPopWindow(getActivity(),itemsOnClick) ;
+                /*popMenus.showAtLocation(ChatFragment.this.getActivity().findViewById(R.id.add_friend),
+                        Gravity.BOTTOM, 0, 0);*/
 
+                popMenus.showAsDropDown(getActivity().findViewById(R.id.add_friend));
+            }
+        });
+    }
+    //为弹出窗口实现监听类
+    private View.OnClickListener itemsOnClick = new View.OnClickListener(){
+        public void onClick(View v) {
+            popMenus.dismiss();
+            switch (v.getId()) {
+                case R.id.add_friend_username:
 
+                    break;
+                case R.id.add_friend_address:
+
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     @Override
     public void onClick(View v) {
         //恢复所有按钮颜色
         resetchat();
         int id=v.getId();
+        openPopWindow(id);
         //设置当前选中图标和文本颜色
         setButtonColor(id);
         //设置当前碎片
         initChatFragment(id);
+    }
+
+    private void openPopWindow(int id) {
+        switch (id){
+            case R.id.add_friend:
+                showDialog();
+                break;
+        }
+
     }
 
     private void setButtonColor(int id) {
@@ -120,6 +165,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
             case R.id.chat_dynamic:
                 mButton_chat_dynamic.setBackgroundResource(R.drawable.chatmybtn);
                 break;
+
         }
     }
 

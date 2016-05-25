@@ -4,14 +4,28 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#FFBB55"
-        android:gravity="center"
-        android:text="消息"
-        android:textSize="@dimen/textsize_xl"/>
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="消息"
+            android:textSize="@dimen/textsize_xl"
+            />
+        <ImageButton
+            android:id="@+id/add_friend"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/add_friend"/>
+    </RelativeLayout>
+
 
     <include
         layout="@layout/chat_top"

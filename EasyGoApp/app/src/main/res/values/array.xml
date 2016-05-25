@@ -63,4 +63,24 @@
         <item>6天</item>
         <item>7天</item>
     </string-array>
+
+    <!--个人信息-->
+    <string-array name="sex">
+        <item>选择</item>
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
+    <string-array name="label">
+        <item>选择</item>
+        <item>学生</item>
+        <item>公务员</item>
+        <item>自由职业者</item>
+        <item>白领</item>
+        <item>IT民工</item>
+        <item>老师</item>
+        <item>销售</item>
+        <item>房地产</item>
+        <item>法律</item>
+    </string-array>
 </resources>
