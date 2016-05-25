@@ -1,4 +1,8 @@
 package com.easygo.fragment;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 09323cb5d59158c5f35b25d9e54d41d47ce1fb83
 
 import android.app.Fragment;
 import android.content.Context;
@@ -13,9 +17,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.easygo.activity.CustomOrderActivity;
 import com.easygo.activity.LogintestActivity;
 import com.easygo.activity.MyInfomationActivity;
 import com.easygo.activity.R;
+import com.easygo.activity.RegisterActivity;
 import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.activity.SetActivity;
 import com.easygo.activity.UserLinkmanActivity;
@@ -194,8 +200,13 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.me_user_register:
                 Intent intentUserRegister = new Intent();
-                intentUserRegister.setClass(getActivity(), LogintestActivity.class);
+                intentUserRegister.setClass(getActivity(), RegisterActivity.class);
                 startActivity(intentUserRegister);
+                break;
+            case R.id.me_customerservice:
+                Intent intentMeService = new Intent();
+                intentMeService.setClass(getActivity(), CustomOrderActivity.class);
+                startActivity(intentMeService);
                 break;
             case R.id.me_customer_myset:
                 Intent intentCustomerSet = new Intent();
