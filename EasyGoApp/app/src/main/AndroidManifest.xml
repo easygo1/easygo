@@ -33,7 +33,6 @@
         <activity android:name=".ReleasesroomActivity">
         </activity>
         <activity android:name=".LogintestActivity"/>
-
         <activity android:name=".BookActivity">
         </activity>
         <activity android:name=".RegisterActivity">
@@ -49,6 +48,8 @@
         <activity android:name=".HouseCollectionActivity">
         </activity>
         <activity android:name=".FootPrintActivity">
+        </activity>
+        <activity android:name=".MyInfomationActivity">
         </activity>
     </application>
 

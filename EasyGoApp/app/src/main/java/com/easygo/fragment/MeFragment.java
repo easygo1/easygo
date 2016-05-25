@@ -9,14 +9,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.easygo.activity.LogintestActivity;
-import com.easygo.activity.MainActivity;
+import com.easygo.activity.MyInfomationActivity;
 import com.easygo.activity.R;
 import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.activity.SetActivity;
@@ -203,6 +201,11 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 Intent intentReleaseroom = new Intent();
                 intentReleaseroom.setClass(getActivity(), ReleasesroomActivity.class);
                 startActivity(intentReleaseroom);
+                break;
+            case R.id.myinformation:
+                Intent intentMyInfomation = new Intent();
+                intentMyInfomation.setClass(getActivity(), MyInfomationActivity.class);
+                startActivity(intentMyInfomation);
                 break;
         }
     }
