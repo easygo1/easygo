@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import com.easygo.activity.BookActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
+import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.R;
 
 import java.util.ArrayList;
@@ -71,6 +72,10 @@ public class HomeFragment extends Fragment {
     private ScheduledExecutorService scheduledExecutorService;
     //自动播放时使用的变量
     private int currentItem;
+   /* //黑点的集合
+    private List<View> dots;
+    //记录上一次点的位置
+    private int oldPosition = 0;*/
 
     @Nullable
     @Override
@@ -97,6 +102,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void initHomePagerAdvert() {
+        //显示的小点
+       /* dots = new ArrayList<View>();
+        dots.add(getActivity().findViewById(R.id.dot_0));
+        dots.add(getActivity().findViewById(R.id.dot_1));
+        dots.add(getActivity().findViewById(R.id.dot_2));*/
+        //广告轮播图
         mHomePageAdvertList = new ArrayList<>();
         for (int i = 0; i < advertImages.length; i++) {
             ImageView imageView = new ImageView(getActivity());
@@ -138,6 +149,7 @@ public class HomeFragment extends Fragment {
                 return mHomePageAdvertList.get(position);
             }
         });
+
     }
 
     private void initHomePagerCity() {
@@ -278,6 +290,15 @@ public class HomeFragment extends Fragment {
             public Object instantiateItem(ViewGroup container, int position) {
 
                 container.addView(mHomePageLocalList.get(position));
+
+                //测试使用，跳转到具体房源页面
+                mHomePageLocalList.get(position).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
+                        startActivity(intent);
+                    }
+                });
                 return mHomePageLocalList.get(position);
             }
         });
@@ -286,17 +307,6 @@ public class HomeFragment extends Fragment {
     /**
      * 利用线程池定时执行动画轮播
      */
-   /* @Override
-    public void onStart() {
-        // TODO Auto-generated method stub
-        super.onStart();
-        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        scheduledExecutorService.scheduleWithFixedDelay(
-                new ViewPageTask(),
-                2,
-                2,
-                TimeUnit.SECONDS);
-    }*/
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -309,7 +319,6 @@ public class HomeFragment extends Fragment {
     }
 
     private class ViewPageTask implements Runnable {
-
         @Override
         public void run() {
             currentItem = (currentItem + 1) % advertImages.length;

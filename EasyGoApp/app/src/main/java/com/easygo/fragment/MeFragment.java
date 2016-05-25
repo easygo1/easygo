@@ -1,5 +1,4 @@
 package com.easygo.fragment;
-package com.easygo.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -20,6 +19,7 @@ import com.easygo.activity.R;
 import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.activity.SetActivity;
 import com.easygo.activity.UserLinkmanActivity;
+
 
 
 /**
@@ -44,7 +44,10 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private TextView meCustomerservice;
     private ImageView meCustomerMyset;
     private ImageView meCustomerUserImageview;
+    private TextView meCustomerustomers;
+    private TextView meCustomerDescriptustomer;
     private TextView meCustomerMypoints;
+
     private TextView meCustomerDescription;
     private TextView meCustomerLinkman;
     private TextView meCustomerCertification;
@@ -103,7 +106,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         meCustomerMyset = (ImageView) mView.findViewById(R.id.me_customer_myset);
         meCustomerUserImageview = (ImageView) mView.findViewById(R.id.me_customer_user_imageview);
         meCustomerMypoints = (TextView) mView.findViewById(R.id.me_customer_mypoints);
-        meCustomerDescription = (TextView) mView.findViewById(R.id.me_customer_description);
+        meCustomerDescriptustomer = (TextView) mView.findViewById(R.id.me_customer_description);
         meCustomerLinkman = (TextView) mView.findViewById(R.id.me_customer_linkman);
         meCustomerCertification = (TextView) mView.findViewById(R.id.me_customer_certification);
         meCustomerReleaseroom = (TextView) mView.findViewById(R.id.me_customer_releaseroom);

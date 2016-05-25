@@ -57,6 +57,8 @@
         </activity>
         <activity android:name=".CalendarActivity">
         </activity>
+        <activity android:name=".OrderDetailActivity">
+        </activity>
     </application>
 
 </manifest>
