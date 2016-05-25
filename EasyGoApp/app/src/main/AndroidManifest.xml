@@ -33,12 +33,17 @@
         <activity android:name=".ReleasesroomActivity">
         </activity>
         <activity android:name=".LogintestActivity"/>
-
         <activity android:name=".BookActivity">
         </activity>
         <activity android:name=".RegisterActivity">
         </activity>
         <activity android:name=".SelectCityActivity">
+        </activity>
+        <activity android:name=".SetActivity">
+        </activity>
+        <activity android:name=".FeedbackActivity">
+        </activity>
+        <activity android:name=".AboutusActivity">
         </activity>
         <activity android:name=".HouseCollectionActivity">
         </activity>

@@ -12,7 +12,7 @@
 
     <color name="linecorlor">#459E9E9E</color>
     <color name="bookbackground">#f7f5f6</color>
-
+    <color name="feedbackbackground">#f1f1f1</color>
     <color name="divider">#E5E5E5</color>
     <color name="shadow">#AAEBEBEB</color>
     <color name="common_bg">#FAFAFA</color>
