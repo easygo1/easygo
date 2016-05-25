@@ -10,9 +10,13 @@ public class UserLinkman implements Serializable {
     private int user_id; // 用户id
     private String name; // 联系人的姓名
     private String idcard; // 联系人身份证号
+
+    private boolean checked = false;//用来标志当前行数据中的checkbox是否被选中
+
     public UserLinkman() {
         super();
     }
+
     public UserLinkman(int user_linkman_id, int user_id, String name,
                        String idcard) {
         super();
@@ -52,5 +56,13 @@ public class UserLinkman implements Serializable {
 
     public void setIdcard(String idcard) {
         this.idcard = idcard;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 }

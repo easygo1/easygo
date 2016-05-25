@@ -113,7 +113,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/radio_bg</item>
     </style>
-    <!--Í¸Ã÷»ÒÉ«±³¾°-->
+    <!--Í¸ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½-->
     <style name="text_alpha_bg">
         <item name="android:textColor">#fff</item>
         <item name="android:background">#459E9E9E</item>
@@ -135,7 +135,7 @@
         <item name="android:layout_margin">4dp</item>
     </style>
 
-    <!--ÉêÇëÔ¤¶¨µÄÈÕÆÚstyle-->
+    <!--é¢„å®šæˆ¿å±‹çš„äºŒçº§æ ‡é¢˜style-->
     <style name="room_book_sec_header">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">55dp</item>

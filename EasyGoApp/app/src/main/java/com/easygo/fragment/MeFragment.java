@@ -1,4 +1,5 @@
 package com.easygo.fragment;
+package com.easygo.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -18,6 +19,7 @@ import com.easygo.activity.MyInfomationActivity;
 import com.easygo.activity.R;
 import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.activity.SetActivity;
+import com.easygo.activity.UserLinkmanActivity;
 
 
 /**
@@ -44,7 +46,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private ImageView meCustomerUserImageview;
     private TextView meCustomerMypoints;
     private TextView meCustomerDescription;
-    private TextView meContentLinkman;
+    private TextView meCustomerLinkman;
     private TextView meCustomerCertification;
     private TextView meCustomerReleaseroom;
     private TextView meCustomerCustomerservice;
@@ -102,7 +104,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         meCustomerUserImageview = (ImageView) mView.findViewById(R.id.me_customer_user_imageview);
         meCustomerMypoints = (TextView) mView.findViewById(R.id.me_customer_mypoints);
         meCustomerDescription = (TextView) mView.findViewById(R.id.me_customer_description);
-        meContentLinkman = (TextView) mView.findViewById(R.id.me_content_linkman);
+        meCustomerLinkman = (TextView) mView.findViewById(R.id.me_customer_linkman);
         meCustomerCertification = (TextView) mView.findViewById(R.id.me_customer_certification);
         meCustomerReleaseroom = (TextView) mView.findViewById(R.id.me_customer_releaseroom);
         meCustomerCustomerservice = (TextView) mView.findViewById(R.id.me_customer_customerservice);
@@ -145,7 +147,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private void addCustomerListeners() {
         meCustomerMyset.setOnClickListener(this);
         meCustomerUserImageview.setOnClickListener(this);
-        meContentLinkman.setOnClickListener(this);
+        meCustomerLinkman.setOnClickListener(this);
         meCustomerCertification.setOnClickListener(this);
         meCustomerReleaseroom.setOnClickListener(this);
         meCustomerCustomerservice.setOnClickListener(this);
@@ -201,6 +203,11 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 Intent intentReleaseroom = new Intent();
                 intentReleaseroom.setClass(getActivity(), ReleasesroomActivity.class);
                 startActivity(intentReleaseroom);
+                break;
+            case R.id.me_customer_linkman:
+                Intent intentLinkman = new Intent();
+                intentLinkman.setClass(getActivity(), UserLinkmanActivity.class);
+                startActivity(intentLinkman);
                 break;
             case R.id.myinformation:
                 Intent intentMyInfomation = new Intent();
