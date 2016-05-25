@@ -18,7 +18,7 @@ import java.util.List;
 public class HomeCityActivity extends AppCompatActivity {
 
 
-    public static final String TAG = "info";
+    //public static final String TAG = "info";
     PullToRefreshListView mPullToRefreshListView;//PullToRefreshListView实例
     List<House> mList = null;
     HouseListAdapter mAdapter;
@@ -28,7 +28,6 @@ public class HomeCityActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_city);
-//        Intent intent = getIntent();
         initViews();
         initData();
         //2.绑定模拟的数据
