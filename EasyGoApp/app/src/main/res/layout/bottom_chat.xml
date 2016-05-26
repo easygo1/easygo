@@ -4,38 +4,40 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <RelativeLayout
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:background="#FFBB55"
+    >
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#FFBB55"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="消息"
-            android:textSize="@dimen/textsize_xl"
-            />
-        <ImageButton
-            android:id="@+id/add_friend"
-            android:layout_width="55dp"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/add_friend"/>
-    </RelativeLayout>
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="消息"
+        android:textSize="@dimen/textsize_xl"
+        />
+    <ImageView
+        android:id="@+id/add_friend"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="12dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/add_friend"/>
+</RelativeLayout>
 
 
-    <include
-        layout="@layout/chat_top"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+<include
+    layout="@layout/chat_top"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"/>
 
-    <FrameLayout
-        android:id="@+id/chat_middle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"/>
+<FrameLayout
+    android:id="@+id/chat_middle"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="9"/>
 </LinearLayout>

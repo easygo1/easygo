@@ -29,4 +29,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile files('libs/AMap_Location_v2.3.0_20160112.jar')
     compile files('libs/afinal_0.5.1_bin.jar')
+    compile 'com.lzy.widget:ninegridview:0.1.4'
 }

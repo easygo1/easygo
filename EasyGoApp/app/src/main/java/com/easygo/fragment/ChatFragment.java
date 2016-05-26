@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.easygo.activity.R;
 import com.easygo.view.MyPopDownPopWindow;
@@ -20,15 +20,18 @@ import com.easygo.view.MyPopDownPopWindow;
  */
 public class ChatFragment extends Fragment implements View.OnClickListener{
 
-    Button mButton_chat_info, mButton_chat_friend, mButton_chat_dynamic;
-    ImageButton add_friend;
+    private Button mButton_chat_info, mButton_chat_friend, mButton_chat_dynamic;
+    private ImageView add_friend;
     private ChatInfoFragment mChatInfoFragment;
     private ChatFriendFragment mChatFriendFragment;
     private ChatDynamicFragment mChatDynamicFragment;
+
+
     private FragmentManager mChatFragmentManager;
     private FragmentTransaction mChatFragmentTransaction;
     private MyPopDownPopWindow popMenus;
-    View mChatView;
+
+    private View mChatView;
 
     @Nullable
     @Override
@@ -45,7 +48,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
         mButton_chat_info= (Button) mChatView.findViewById(R.id.chat_info);
         mButton_chat_friend = (Button) mChatView.findViewById(R.id.chat_friend);
         mButton_chat_dynamic = (Button) mChatView.findViewById(R.id.chat_dynamic);
-        add_friend= (ImageButton) mChatView.findViewById(R.id.add_friend);
+        add_friend= (ImageView) mChatView.findViewById(R.id.add_friend);
     }
     private void addChatListeners() {
         //设置监听
@@ -107,10 +110,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
         add_friend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popMenus=new MyPopDownPopWindow(getActivity(),itemsOnClick) ;
-                /*popMenus.showAtLocation(ChatFragment.this.getActivity().findViewById(R.id.add_friend),
-                        Gravity.BOTTOM, 0, 0);*/
-
+                popMenus= new MyPopDownPopWindow(getActivity(),itemsOnClick);
                 popMenus.showAsDropDown(getActivity().findViewById(R.id.add_friend));
             }
         });
@@ -118,12 +118,17 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
     //为弹出窗口实现监听类
     private View.OnClickListener itemsOnClick = new View.OnClickListener(){
         public void onClick(View v) {
+            //消除popwindow
             popMenus.dismiss();
             switch (v.getId()) {
+
                 case R.id.add_friend_username:
+
+
 
                     break;
                 case R.id.add_friend_address:
+
 
                     break;
                 default:
@@ -143,7 +148,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
         //设置当前碎片
         initChatFragment(id);
     }
-
+    //显示popwindow进行添加好友
     private void openPopWindow(int id) {
         switch (id){
             case R.id.add_friend:
