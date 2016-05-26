@@ -8,6 +8,7 @@ package com.easygo.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -167,10 +168,10 @@ public class AppServlet extends HttpServlet {
 			break;
 		// 修改订单
 		case "updateorder":
-
+			
 			break;
 		case "selectsomeOrders":
-
+			
 			break;
 		case "getAllHouse":
 			houseList = new ArrayList<House>();
