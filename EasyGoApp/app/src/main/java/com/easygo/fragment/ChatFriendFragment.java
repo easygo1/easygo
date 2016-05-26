@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.easygo.activity.R;
 
@@ -15,7 +14,7 @@ import com.easygo.activity.R;
  * Created by PengHong on 2016/4/29.
  */
 public class ChatFriendFragment extends Fragment {
-    private Button mButton_chat,mButton_friend,mButton_dynamic;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -12,7 +12,7 @@ public class CommentData implements Serializable {
     private String fabiao_time;
     private String browse;
     private String dynamic_content;
-    private List<Integer> gridview_list;
+    private List<String> imgUrls;
     private int zan_img;
     private String zan_text;
     private int comment_img;
@@ -24,13 +24,13 @@ public class CommentData implements Serializable {
     private String comment_content;
     private String comment_time;
 
-    public CommentData(int comment_imageview, String fabiao_man, String fabiao_time, String browse, String dynamic_content, List<Integer> gridview_list, int zan_img, String zan_text, int comment_img, String comment_text, int forward_img, String forward_text, int comment_headimg, String comment_name, String comment_content, String comment_time) {
+    public CommentData(int comment_imageview, String fabiao_man, String fabiao_time, String browse, String dynamic_content, List<String> imgUrls, int zan_img, String zan_text, int comment_img, String comment_text, int forward_img, String forward_text, int comment_headimg, String comment_name, String comment_content, String comment_time) {
         this.comment_imageview = comment_imageview;
         this.fabiao_man = fabiao_man;
         this.fabiao_time = fabiao_time;
         this.browse = browse;
         this.dynamic_content = dynamic_content;
-        this.gridview_list = gridview_list;
+        this.imgUrls = imgUrls;
         this.zan_img = zan_img;
         this.zan_text = zan_text;
         this.comment_img = comment_img;
@@ -40,6 +40,14 @@ public class CommentData implements Serializable {
         this.comment_headimg = comment_headimg;
         this.comment_name = comment_name;
         this.comment_content = comment_content;
+        this.comment_time = comment_time;
+    }
+
+    public String getComment_time() {
+        return comment_time;
+    }
+
+    public void setComment_time(String comment_time) {
         this.comment_time = comment_time;
     }
 
@@ -83,12 +91,12 @@ public class CommentData implements Serializable {
         this.dynamic_content = dynamic_content;
     }
 
-    public List<Integer> getGridview_list() {
-        return gridview_list;
+    public List<String> getImgUrls() {
+        return imgUrls;
     }
 
-    public void setGridview_list(List<Integer> gridview_list) {
-        this.gridview_list = gridview_list;
+    public void setImgUrls(List<String> imgUrls) {
+        this.imgUrls = imgUrls;
     }
 
     public int getZan_img() {
@@ -161,13 +169,5 @@ public class CommentData implements Serializable {
 
     public void setComment_content(String comment_content) {
         this.comment_content = comment_content;
-    }
-
-    public String getComment_time() {
-        return comment_time;
-    }
-
-    public void setComment_time(String comment_time) {
-        this.comment_time = comment_time;
     }
 }

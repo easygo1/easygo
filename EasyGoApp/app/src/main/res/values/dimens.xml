@@ -5,7 +5,7 @@
     <dimen name="textsize_s">16dp</dimen>
     <dimen name="textsize_m">18dp</dimen>
     <dimen name="textsize_l">20dp</dimen>
-    <dimen name="textsize_xl">24dp</dimen>
+    <dimen name="textsize_xl">22dp</dimen>
 
     <dimen name="side_letter_bar_letter_size">12sp</dimen>
     <dimen name="side_letter_bar_width">36dp</dimen>

@@ -54,21 +54,19 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+
         android:textColor="#000"
         android:text="这里显示动态内容！！"/>
 
-        <com.easygo.view.MyGridView
-            android:id="@+id/gridview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:horizontalSpacing="10dp"
-            android:numColumns="auto_fit"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:columnWidth="90dp"
-            android:verticalSpacing="10dp" >
-        </com.easygo.view.MyGridView>
+    <com.lzy.ninegrid.NineGridView
+        android:id="@+id/gridview_imageview"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+       />
+
 
     <!--点赞，评论，转发-->
     <LinearLayout
@@ -87,7 +85,7 @@
                 android:id="@+id/zan_img"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/zan"
                 />
 
             <TextView
@@ -95,6 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
                 android:textColor="#000"
                 android:text="赞"/>
         </LinearLayout>
@@ -108,7 +107,7 @@
                 android:id="@+id/comment_img"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/comment"
                 />
 
             <TextView
@@ -116,6 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
                 android:textColor="#000"
                 android:text="评论"/>
         </LinearLayout>
@@ -129,7 +129,7 @@
                 android:id="@+id/forward_img"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/forward"
                 />
 
             <TextView
@@ -137,6 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
                 android:textColor="#000"
                 android:text="转发"/>
         </LinearLayout>

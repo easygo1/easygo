@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.easygo.view.MyPopupWindow;
 
@@ -260,10 +261,10 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
             popMenus.dismiss();
             switch (v.getId()) {
                 case R.id.btn_take_photo:
-
+                    Toast.makeText(MyInfomationActivity.this, "点击了从相册获取", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.btn_pick_photo:
-
+                    Toast.makeText(MyInfomationActivity.this, "点击了拍照", Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     break;
