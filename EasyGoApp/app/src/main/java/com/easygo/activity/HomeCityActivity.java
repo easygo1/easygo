@@ -18,17 +18,42 @@ import android.widget.Toast;
 import com.easygo.adapter.HouseListAdapter;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.House;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.yolanda.nohttp.Headers;
+import com.yolanda.nohttp.NoHttp;
+import com.yolanda.nohttp.OnResponseListener;
+import com.yolanda.nohttp.Request;
+import com.yolanda.nohttp.RequestMethod;
+import com.yolanda.nohttp.RequestQueue;
+import com.yolanda.nohttp.Response;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeCityActivity extends AppCompatActivity {
 
+    /**
+     * 用来标志请求的what, 类似handler的what一样，这里用来区分请求.
+     */
+    private static final int NOHTTP_WHAT_TEST = 0x001;
 
-    //public static final String TAG = "info";
+
+
+    /**
+     * 请求队列.
+     */
+    private RequestQueue requestQueue;
+
     PullToRefreshListView mPullToRefreshListView;//PullToRefreshListView实例
     List<House> mList = null;
     HouseListAdapter mAdapter;
@@ -188,14 +213,28 @@ public class HomeCityActivity extends AppCompatActivity {
 
     //模拟数据
     public void loadData() {
+        // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
+        requestQueue = NoHttp.newRequestQueue();
+        // 创建请求对象
+        Request<String> request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
+        // 添加请求参数
+        request.add("methods", "getAllHouse");
+        /*
+         * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
+		 * request: 请求对象
+		 * onResponseListener 回调对象，接受请求结果
+		 */
+        requestQueue.add(NOHTTP_WHAT_TEST, request, onResponseListener);
 
-       /* RequestParams params = new RequestParams(mPath);
-        //Params
-        params.addBodyParameter("methods","getAllHouse");
+    }
 
-        x.http().post(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
+    private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
+        @SuppressWarnings("unused")
+        @Override
+        public void onSucceed(int what, Response<String> response) {
+            if (what == NOHTTP_WHAT_TEST) {
+                // 请求成功
+                String result = response.get();// 响应结果
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
                 Type type = new TypeToken<List<House>>(){}.getType();
@@ -204,30 +243,26 @@ public class HomeCityActivity extends AppCompatActivity {
                 mAdapter.notifyDataSetChanged();
                 //表示刷新完成
                 mPullToRefreshListView.onRefreshComplete();
-                Log.e("list",mList.toString());
-                Log.e("aaa",mList.get(2).getHouse_describe());
             }
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-                Log.e("error","错误原因：" + ex.getMessage() );
-            }
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-            @Override
-            public void onFinished() {
-
-            }
-        });*/
-
-        for (int i = 0; i < 10; i++) {
-            mList.add(new House("家庭温馨" + count, "独立房间" + count, count, false));
-            count++;
         }
-        mAdapter.notifyDataSetChanged();
 
-    }
+        @Override
+        public void onStart(int what) {
+            // 请求开始，这里可以显示一个dialog
+            Toast.makeText(HomeCityActivity.this, "开始了", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onFinish(int what) {
+            Toast.makeText(HomeCityActivity.this, "结束了", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+            Toast.makeText(HomeCityActivity.this, "失败了", Toast.LENGTH_SHORT).show();
+        }
+    };
+
 
     /*//出现问题，所以没用
     @Override
@@ -260,20 +295,18 @@ public class HomeCityActivity extends AppCompatActivity {
         public LoadDataAsyncTask(HomeCityActivity activity) {
             this.activity = activity;
         }
-
         @Override
         protected String doInBackground(Void... params) {
             //用一个线程来模拟刷新
-            try {
+           /* try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
             //加载数据
             activity.loadData();
             return "success";
         }
-
         //  onPostExecute（）是对返回的值进行操作
         @Override
         protected void onPostExecute(String s) {
@@ -288,7 +321,7 @@ public class HomeCityActivity extends AppCompatActivity {
     public void initRefreshListView() {
         ILoadingLayout startLabels = mPullToRefreshListView.getLoadingLayoutProxy(true, false);
         startLabels.setPullLabel("下拉刷新");
-        startLabels.setRefreshingLabel("正在拉");
+        startLabels.setRefreshingLabel("正在刷新");
         startLabels.setReleaseLabel("放开刷新");
         ILoadingLayout endLabels = mPullToRefreshListView.getLoadingLayoutProxy(false, true);
         endLabels.setPullLabel("上拉加载");
