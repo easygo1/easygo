@@ -375,7 +375,7 @@ public class HomeCityActivity extends AppCompatActivity {
             TextView tv = (TextView) convertView
                     .findViewById(android.R.id.text1);
             tv.setText(items[position]);
-            tv.setGravity(Gravity.CENTER);
+            tv.setGravity(Gravity.CENTER_HORIZONTAL);
             tv.setTextSize(14);
             return convertView;
         }
