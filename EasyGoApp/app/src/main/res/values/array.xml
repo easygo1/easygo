@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="bed">
         <item>选择</item>
@@ -63,7 +63,31 @@
         <item>6天</item>
         <item>7天</item>
     </string-array>
-
+    <string-array name="selectbed">
+        <item>类型</item>
+        <item>独立房间</item>
+        <item>合住房间</item>
+        <item>客厅沙发</item>
+    </string-array>
+    <string-array name="selectsex">
+        <item>性别</item>
+        <item>男女不限</item>
+        <item>仅限男生</item>
+        <item>仅限女生</item>
+    </string-array>
+    <string-array name="selectprice">
+        <item>价格</item>
+        <item>高-低</item>
+        <item>低-高</item>
+    </string-array>
+    <string-array name="selecttime">
+        <item>时间</item>
+        <item>可议</item>
+        <item>1天</item>
+        <item>2天</item>
+        <item>一周内</item>
+        <item>一周+</item>
+    </string-array>
     <!--个人信息-->
     <string-array name="sex">
         <item>选择</item>

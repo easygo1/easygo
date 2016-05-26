@@ -13,12 +13,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.easygo.activity.CustomOrderActivity;
 import com.easygo.activity.LogintestActivity;
 import com.easygo.activity.MyInfomationActivity;
 import com.easygo.activity.R;
+import com.easygo.activity.RegisterActivity;
 import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.activity.SetActivity;
 import com.easygo.activity.UserLinkmanActivity;
+
 
 
 /**
@@ -43,7 +46,10 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private TextView meCustomerservice;
     private ImageView meCustomerMyset;
     private ImageView meCustomerUserImageview;
+    private TextView meCustomerustomers;
+    private TextView meCustomerDescriptustomer;
     private TextView meCustomerMypoints;
+
     private TextView meCustomerDescription;
     private TextView meCustomerLinkman;
     private TextView meCustomerCertification;
@@ -102,7 +108,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         meCustomerMyset = (ImageView) mView.findViewById(R.id.me_customer_myset);
         meCustomerUserImageview = (ImageView) mView.findViewById(R.id.me_customer_user_imageview);
         meCustomerMypoints = (TextView) mView.findViewById(R.id.me_customer_mypoints);
-        meCustomerDescription = (TextView) mView.findViewById(R.id.me_customer_description);
+        meCustomerDescriptustomer = (TextView) mView.findViewById(R.id.me_customer_description);
         meCustomerLinkman = (TextView) mView.findViewById(R.id.me_customer_linkman);
         meCustomerCertification = (TextView) mView.findViewById(R.id.me_customer_certification);
         meCustomerReleaseroom = (TextView) mView.findViewById(R.id.me_customer_releaseroom);
@@ -190,8 +196,13 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.me_user_register:
                 Intent intentUserRegister = new Intent();
-                intentUserRegister.setClass(getActivity(), LogintestActivity.class);
+                intentUserRegister.setClass(getActivity(), RegisterActivity.class);
                 startActivity(intentUserRegister);
+                break;
+            case R.id.me_customerservice:
+                Intent intentMeService = new Intent();
+                intentMeService.setClass(getActivity(), CustomOrderActivity.class);
+                startActivity(intentMeService);
                 break;
             case R.id.me_customer_myset:
                 Intent intentCustomerSet = new Intent();
