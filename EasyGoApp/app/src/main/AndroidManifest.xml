@@ -61,6 +61,8 @@
         </activity>
         <activity android:name=".OrderDetailActivity">
         </activity>
+        <activity android:name=".MyWalletActivity">
+        </activity>
     </application>
 
 </manifest>
