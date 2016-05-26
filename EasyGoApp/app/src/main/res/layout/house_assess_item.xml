@@ -2,53 +2,86 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:padding="3dp"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:padding="3dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <ImageView
-            android:layout_margin="10dp"
-            android:layout_width="wrap_content"
+            android:id="@+id/assess_user_photo"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"/>
+            android:layout_margin="10dp"
+            android:layout_weight="1"/>
 
         <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="5"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="用户名"
-                android:textColor="@color/textDown"/>
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/assess_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用户名"
+                        android:textColor="@color/textDown"/>
+
+                    <RatingBar
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:id="@+id/assess_stars"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:rating="5"
+                        android:numStars="5"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/user_check_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:text="2016-05-20入住"/>
+            </LinearLayout>
 
             <TextView
-                android:paddingTop="5dp"
-                android:textColor="@color/textDown"
+                android:id="@+id/assess_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4颗星"/>
+                android:layout_marginRight="10dp"
+                android:text="房东很热情"
+                android:textColor="#000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:text="房东点评："/>
+
+            <TextView
+                android:id="@+id/assess_reply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="欢迎下次再来"
+                android:textColor="#000"/>
         </LinearLayout>
-
-        <TextView
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2016-05-20"/>
-
     </LinearLayout>
-    <TextView
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="房东很热情"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
 </LinearLayout>

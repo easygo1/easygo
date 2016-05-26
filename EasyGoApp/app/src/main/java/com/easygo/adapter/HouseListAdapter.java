@@ -40,19 +40,19 @@ public class HouseListAdapter extends BaseAdapter {
         return position;
     }
 
-    class ViewHolder {
+   class ViewHolder {
         ImageView mRoomImageView;
         TextView text_info;
         TextView text_price;
         TextView text_describe;
-        ImageView mCollectionImageView;
+        //ImageView mCollectionImageView;
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        final ViewHolder viewHolder;
+        ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.house_list_item, null);
+            convertView = mInflater.inflate(R.layout.house_list_item,null);
             viewHolder = new ViewHolder();
             viewHolder.mRoomImageView = (ImageView) convertView.findViewById(R.id.homepage_city_item_room_image);
             viewHolder.text_info = (TextView) convertView.findViewById(R.id.homepage_city_item_text_info);
