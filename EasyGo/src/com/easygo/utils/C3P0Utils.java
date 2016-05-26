@@ -21,9 +21,9 @@ public class C3P0Utils {
 			System.out.println("初始化数据库连接池");
 			cpds = new ComboPooledDataSource();
 			cpds.setDriverClass("com.mysql.jdbc.Driver");
-			cpds.setJdbcUrl("jdbc:mysql:///easygo");
+			cpds.setJdbcUrl("jdbc:mysql://115.29.96.130:3306/easygo");
 			cpds.setUser("root");
-			cpds.setPassword("root");
+			cpds.setPassword("123456");
 			cpds.setMinPoolSize(5);// 数据库连接池中最少连接数
 			cpds.setAcquireIncrement(5);// 当前空闲连接不足时(初始化时的空闲连接数目)，每次自动增加的连接数
 			cpds.setMaxPoolSize(20);// 数据库连接池中最多连接数
