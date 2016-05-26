@@ -10,7 +10,7 @@
         android:layout_weight="1"
         android:background="#FFBB55"
         android:gravity="center"
-        android:text="搜索"
+        android:text="搜 索"
         android:textSize="@dimen/textsize_xl"/>
 
     <LinearLayout
@@ -66,7 +66,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         >
-        <ImageButton
+        <ImageView
             android:id="@+id/data_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -139,14 +139,14 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_bg"
-            android:text="搜索"
+            android:text="搜 索"
             android:textColor="#fff"
-            android:textSize="25sp"/>
+            android:textSize="23sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="80dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
@@ -155,11 +155,14 @@
                 android:id="@+id/search_footpoint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3">
+                android:layout_weight="1"
+
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="历史足迹"/>
 
                 <ImageView
@@ -172,7 +175,7 @@
                 android:id="@+id/search_collection"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"

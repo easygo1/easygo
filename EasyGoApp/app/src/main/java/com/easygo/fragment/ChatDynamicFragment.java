@@ -26,7 +26,8 @@ public class ChatDynamicFragment extends Fragment {
     ChatDynamicAdpter mChatDynamicAdpter;
 
     List<CommentData> commentDataList;
-    List<Integer> gridview_list;
+
+    List<String> gridview_list;
     ListView commentListView;
 
     @Nullable
@@ -55,15 +56,10 @@ public class ChatDynamicFragment extends Fragment {
 
         gridview_list=new ArrayList<>();
         //添加图片
-        gridview_list.add(R.drawable.home_city_room1);
-        gridview_list.add(R.drawable.home_city_room1);
-        gridview_list.add(R.drawable.home_city_room1);
-        gridview_list.add(R.drawable.home_city_room1);
-        gridview_list.add(R.drawable.home_city_room1);
-        gridview_list.add(R.drawable.home_city_room1);
-        gridview_list.add(R.drawable.home_city_room1);
-        gridview_list.add(R.drawable.home_city_room1);
-        gridview_list.add(R.drawable.home_city_room1);
+        gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
+        gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
+        gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
+        gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
 
 
         //动态列表
