@@ -22,5 +22,8 @@
     <color name="alpha_gray">#CC646464</color>
     <color name="theme_gray">#646464</color>
     <color name="item_back_press">#646464</color>
+    <color name="order_nobackground">#949494</color>
+    <color name="order_background">#ffffff</color>
+    <color name="order_state">#ef0404</color>
 
 </resources>

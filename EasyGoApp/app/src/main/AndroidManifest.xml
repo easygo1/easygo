@@ -49,6 +49,18 @@
         </activity>
         <activity android:name=".FootPrintActivity">
         </activity>
+        <activity android:name=".CustomOrderActivity">
+        </activity>
+        <activity android:name=".UserLinkmanActivity">
+        </activity>
+        <activity android:name=".BookChooseLinkmanActivity">
+        </activity>
+        <activity android:name=".MyInfomationActivity">
+        </activity>
+        <activity android:name=".CalendarActivity">
+        </activity>
+        <activity android:name=".OrderDetailActivity">
+        </activity>
     </application>
 
 </manifest>

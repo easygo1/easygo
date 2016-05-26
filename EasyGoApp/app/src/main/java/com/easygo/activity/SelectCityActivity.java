@@ -42,6 +42,7 @@ public class SelectCityActivity extends AppCompatActivity implements View.OnClic
     private ImageView backBtn;
     private ViewGroup emptyView;
 
+    //添加适配器
     private CityListAdapter mCityAdapter;
     private ResultListAdapter mResultAdapter;
     private List<City> mAllCities;
@@ -58,8 +59,8 @@ public class SelectCityActivity extends AppCompatActivity implements View.OnClic
         initView();
         //初始化位置
         initLocation();
-    }
 
+    }
 
     private void initLocation() {
         mLocationClient = new AMapLocationClient(this);
@@ -111,6 +112,7 @@ public class SelectCityActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initView() {
+        //初始化城市数据
         mListView = (ListView) findViewById(R.id.listview_all_city);
         mListView.setAdapter(mCityAdapter);
 

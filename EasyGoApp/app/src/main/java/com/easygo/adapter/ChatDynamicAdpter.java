@@ -35,7 +35,6 @@ public class ChatDynamicAdpter extends BaseAdapter {
         this.mCommentDataList_list = mCommentDataList_list;
         this.mContext=chatDynamicFragment.getActivity().getApplicationContext();
         this.mInflater = LayoutInflater.from(mContext);
-        //this.wh=(SysUtils.getScreenWidth((Activity)mContext)-SysUtils.Dp2Px(mContext, 99))/3;
         this.finalImageLoader=FinalBitmap.create(mContext);
         this.finalImageLoader.configLoadingImage(R.mipmap.ic_launcher);
     }
@@ -118,7 +117,6 @@ public class ChatDynamicAdpter extends BaseAdapter {
         }
         //动态修改每一行控件的内容
         final CommentData commentData = mCommentDataList_list.get(position);
-
 
         viewHolder.mcomment_imageview.setImageResource(commentData.getComment_imageview());
         viewHolder.mzan_img.setImageResource(commentData.getZan_img());
