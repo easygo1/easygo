@@ -227,7 +227,16 @@ public class EasygoServlet extends HttpServlet {
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
-
+		case "getAllOrderByUserId":
+			IOrderDAO order6 = new IOrderDAOImpl();
+			List<Orders> orderlist6 = new ArrayList<Orders>();
+			String userid = request.getParameter("userid");
+			orderlist6 = order6.selectsomeOrders(userid, 1);
+			Gson gson6 = new Gson();
+			String result6 = gson6.toJson(orderlist6);
+			mPrintWriter.write(result6);
+			mPrintWriter.close();
+			break;
 		default:
 			break;
 		}
