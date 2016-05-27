@@ -35,6 +35,8 @@ public class HomeFragment extends Fragment {
             R.drawable.advert1,
             R.drawable.advert2,
             R.drawable.advert3,
+            R.drawable.advert4,
+            R.drawable.advert5,
     };
     //热门城市的图片
     private int[] cityImages = new int[]{

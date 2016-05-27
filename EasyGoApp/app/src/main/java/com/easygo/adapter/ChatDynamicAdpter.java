@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.easygo.activity.R;
 import com.easygo.beans.chat_comment.CommentData;
-import com.easygo.fragment.ChatDynamicFragment;
 import com.lzy.ninegrid.ImageInfo;
 import com.lzy.ninegrid.NineGridView;
 import com.lzy.ninegrid.preview.ClickNineGridViewAdapter;
@@ -27,15 +27,14 @@ public class ChatDynamicAdpter extends BaseAdapter {
     //初始化布局的类，可以找到layout文件夹中的所有布局
     private LayoutInflater mInflater;
     private Context mContext;
-
     private List<CommentData> mCommentDataList_list;
     private FinalBitmap finalImageLoader ;
     //private GridViewAdapter nearByInfoImgsAdapter;
 
 
-    public ChatDynamicAdpter(List<CommentData> mCommentDataList_list,ChatDynamicFragment chatDynamicFragment) {
+    public ChatDynamicAdpter(List<CommentData> mCommentDataList_list,Context context) {
         this.mCommentDataList_list = mCommentDataList_list;
-        this.mContext=chatDynamicFragment.getActivity().getApplicationContext();
+        this.mContext=context;
         this.mInflater = LayoutInflater.from(mContext);
         this.finalImageLoader=FinalBitmap.create(mContext);
         this.finalImageLoader.configLoadingImage(R.mipmap.ic_launcher);
@@ -61,16 +60,15 @@ public class ChatDynamicAdpter extends BaseAdapter {
 
     //缓存布局中的控件
     class ViewHolder{
-        ImageView mcomment_imageview,mzan_img,mcomment_img,mforward_img,mcomment_headimg,mgridview_image;
-        TextView mfabiao_man,mfabiao_time,mbrowse,mzan_text,mcomment_text,mforward_text,mcomment_name,mcomment_content,mcomment_time,mdynamic_content;
-        //MyGridView myGridView;
+        ImageView mcomment_imageview;
+        TextView mfabiao_man,mfabiao_time,mbrowse,mdynamic_content;
+        LinearLayout mZan,mComment,mForward;
         NineGridView nineGridView;
-
     }
 
     @Override
     public long getItemId(int position) {
-        return mCommentDataList_list == null ? null : position;
+        return position;
     }
 
     /**
@@ -93,825 +91,45 @@ public class ChatDynamicAdpter extends BaseAdapter {
             viewHolder = new ViewHolder();
             //初始化当前行布局中的所有控件
             viewHolder.mcomment_imageview = (ImageView) convertView.findViewById(R.id.comment_imageview);
-            viewHolder.mzan_img = (ImageView) convertView.findViewById(R.id.zan_img);
-            viewHolder.mcomment_img = (ImageView) convertView.findViewById(R.id.comment_img);
-            viewHolder.mforward_img = (ImageView) convertView.findViewById(R.id.forward_img);
-            viewHolder.mcomment_headimg = (ImageView) convertView.findViewById(R.id.comment_headimg);
+            viewHolder.mComment = (LinearLayout) convertView.findViewById(R.id.comment);
+            viewHolder.mForward = (LinearLayout) convertView.findViewById(R.id.forward);
+            viewHolder.mZan = (LinearLayout) convertView.findViewById(R.id.zan);
             viewHolder.mfabiao_man = (TextView) convertView.findViewById(R.id.fabiao_man);
             viewHolder.mfabiao_time = (TextView) convertView.findViewById(R.id.fabiao_time);
             viewHolder.mbrowse = (TextView) convertView.findViewById(R.id.browse);
-            viewHolder.mzan_text = (TextView) convertView.findViewById(R.id.zan_text);
-            viewHolder.mcomment_text = (TextView) convertView.findViewById(R.id.comment_text);
-            viewHolder.mforward_text = (TextView) convertView.findViewById(R.id.forward_text);
-            viewHolder.mcomment_name = (TextView) convertView.findViewById(R.id.comment_name);
-            viewHolder.mcomment_content = (TextView) convertView.findViewById(R.id.comment_content);
-            viewHolder.mcomment_time = (TextView) convertView.findViewById(R.id.comment_time);
             viewHolder.mdynamic_content = (TextView) convertView.findViewById(R.id.dynamic_content);
 
             //加载上传的图片
-            //viewHolder.myGridView= (MyGridView) convertView.findViewById(R.id.gridview);
             viewHolder.nineGridView= (NineGridView) convertView.findViewById(R.id.gridview_imageview);
-            viewHolder.mgridview_image= (ImageView) convertView.findViewById(R.id.gridview_image);
 
             //把当前的控件缓存到布局视图中
-            convertView.setTag(viewHolder)  ;
+            convertView.setTag(viewHolder);
         } else {
             //说明开始上下滑动，后面的所有行布局采用第一次绘制时的缓存布局
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
         //动态修改每一行控件的内容
         final CommentData commentData = mCommentDataList_list.get(position);
-
-        viewHolder.mcomment_imageview.setImageResource(commentData.getComment_imageview());
-        viewHolder.mzan_img.setImageResource(commentData.getZan_img());
-        viewHolder.mcomment_img.setImageResource(commentData.getComment_img());
-        viewHolder.mforward_img.setImageResource(commentData.getForward_img());
-        viewHolder.mcomment_headimg.setImageResource(commentData.getComment_headimg());
         viewHolder.mcomment_imageview.setImageResource(commentData.getComment_imageview());
         viewHolder.mfabiao_man.setText(commentData.getFabiao_man());
         viewHolder.mfabiao_time.setText(commentData.getFabiao_time());
         viewHolder.mbrowse.setText(commentData.getBrowse());
-        viewHolder.mzan_text.setText(commentData.getZan_text());
-        viewHolder.mcomment_text.setText(commentData.getComment_text());
-        viewHolder.mforward_text.setText(commentData.getForward_text());
-        viewHolder.mcomment_name.setText(commentData.getComment_name());
-        viewHolder.mcomment_content.setText(commentData.getComment_content());
-        viewHolder.mcomment_time.setText(commentData.getComment_time());
         viewHolder.mdynamic_content.setText(commentData.getDynamic_content());
 
-
-
         //使用框架加载图片
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
         ArrayList<ImageInfo> imageInfo = new ArrayList<>();
-        List<String> imageDetails = mCommentDataList_list.get(position).getImgUrls();
+        List<String> imageDetails = commentData.getImgUrls();
         if (imageDetails != null) {
-            for (String imageDetail : imageDetails) {
+            for (String url : imageDetails) {
                 ImageInfo info = new ImageInfo();
-                info.setThumbnailUrl(imageDetail);
-                info.setBigImageUrl(imageDetail);
+                info.setThumbnailUrl(url);
+                info.setBigImageUrl(url);
                 imageInfo.add(info);
             }
         }
-
+        //调用框架的适配器
         viewHolder.nineGridView.setAdapter(new ClickNineGridViewAdapter(mContext,imageInfo));
-        //添加gridview适配器
-        //nearByInfoImgsAdapter = new GridViewAdapter(gridview_list,mContext,viewHolder.myGridView);
-        // viewHolder.myGridView.setAdapter(nearByInfoImgsAdapter);
-
         return convertView;
     }
 }
