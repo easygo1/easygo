@@ -49,15 +49,89 @@ public class IHouseDAOImpl implements IHouseDAO {
 	}
 
 	@Override
-	public House findSpecHouseById(int house_id) {
+	public  List<House> findSpecHouseById(int house_id) {
 		// TODO Auto-generated method stub
-		return null;
+		List<House> houseList = new ArrayList<House>();
+		connection = C3P0Utils.getConnection();
+		String sql = "select * from house where house_id =?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, house_id);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				int house_id1 = resultSet.getInt(1);
+				int user_id = resultSet.getInt(2);
+				String house_title = resultSet.getString(3);
+				String house_describe = resultSet.getString(4);
+				String house_style = resultSet.getString(5);
+				String house_address_province = resultSet.getString(6);
+				String house_address_city = resultSet.getString(7);
+				double house_address_lng = resultSet.getDouble(8);
+				double house_address_lat = resultSet.getDouble(9);
+				String house_traffic = resultSet.getString(10);
+				int house_most_num = resultSet.getInt(11);
+				double house_one_price = resultSet.getDouble(12);
+				double house_add_price = resultSet.getDouble(13);
+				String house_limit_sex = resultSet.getString(14);
+				int house_stay_time = resultSet.getInt(15);
+				int house_assess_sum = resultSet.getInt(16);
+				House house = new House(house_id1, user_id, house_title, house_describe, 
+						house_style,house_address_province,house_address_city, house_address_lng,
+						house_address_lat, house_traffic, 
+						house_most_num, house_one_price, house_add_price,
+						house_limit_sex, house_stay_time, house_assess_sum);
+				houseList.add(house);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return houseList;
 	}
 
 	@Override
-	public House findSpecHouseByStyle(String house_style) {
+	public List<House> findSpecHouseByStyle(String house_style) {
 		// TODO Auto-generated method stub
-		return null;
+		List<House> houseList = new ArrayList<House>();
+		connection = C3P0Utils.getConnection();
+		String sql = "select * from house where house_style =?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, house_style);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				int house_id1 = resultSet.getInt(1);
+				int user_id = resultSet.getInt(2);
+				String house_title = resultSet.getString(3);
+				String house_describe = resultSet.getString(4);
+				String house_style1 = resultSet.getString(5);
+				String house_address_province = resultSet.getString(6);
+				String house_address_city = resultSet.getString(7);
+				double house_address_lng = resultSet.getDouble(8);
+				double house_address_lat = resultSet.getDouble(9);
+				String house_traffic = resultSet.getString(10);
+				int house_most_num = resultSet.getInt(11);
+				double house_one_price = resultSet.getDouble(12);
+				double house_add_price = resultSet.getDouble(13);
+				String house_limit_sex = resultSet.getString(14);
+				int house_stay_time = resultSet.getInt(15);
+				int house_assess_sum = resultSet.getInt(16);
+				House house = new House(house_id1, user_id, house_title, house_describe, 
+						house_style1,house_address_province,house_address_city, house_address_lng,
+						house_address_lat, house_traffic, 
+						house_most_num, house_one_price, house_add_price,
+						house_limit_sex, house_stay_time, house_assess_sum);
+				houseList.add(house);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return houseList;
 	}
 
 	@Override
@@ -75,17 +149,20 @@ public class IHouseDAOImpl implements IHouseDAO {
 				String house_title = resultSet.getString(3);
 				String house_describe = resultSet.getString(4);
 				String house_style = resultSet.getString(5);
-				Float house_address_lng = resultSet.getFloat(6);
-				Float house_address_lat = resultSet.getFloat(7);
-				String house_traffic = resultSet.getString(8);
-				int house_most_num = resultSet.getInt(9);
-				double house_one_price = resultSet.getDouble(10);
-				double house_add_price = resultSet.getDouble(11);
-				String house_limit_sex = resultSet.getString(12);
-				int house_stay_time = resultSet.getInt(13);
-				int house_assess_sum = resultSet.getInt(14);
+				String house_address_province = resultSet.getString(6);
+				String house_address_city = resultSet.getString(7);
+				double house_address_lng = resultSet.getDouble(8);
+				double house_address_lat = resultSet.getDouble(9);
+				String house_traffic = resultSet.getString(10);
+				int house_most_num = resultSet.getInt(11);
+				double house_one_price = resultSet.getDouble(12);
+				double house_add_price = resultSet.getDouble(13);
+				String house_limit_sex = resultSet.getString(14);
+				int house_stay_time = resultSet.getInt(15);
+				int house_assess_sum = resultSet.getInt(16);
 				House house = new House(house_id, user_id, house_title, house_describe, 
-						house_style, house_address_lng, house_address_lat, house_traffic, 
+						house_style,house_address_province,house_address_city, house_address_lng,
+						house_address_lat, house_traffic, 
 						house_most_num, house_one_price, house_add_price,
 						house_limit_sex, house_stay_time, house_assess_sum);
 				houseList.add(house);

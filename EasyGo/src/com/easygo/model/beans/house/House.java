@@ -1,15 +1,15 @@
 package com.easygo.model.beans.house;
 
-
-
 public class House {
 	private int house_id;// 房子编号 主键
 	private int user_id; // 房东用户编号 外键
 	private String house_title; // 房源标题(0-10字)
 	private String house_describe;// 房屋描述（100字）
 	private String house_style; // 房源类型（客厅沙发，独立房间）
-	private Float house_address_lng; // 房源地址（经度）
-	private Float house_address_lat; // 房源地址（纬度）
+	private String house_address_province; //所在省份
+	private String house_address_city; //所在城市
+	private double house_address_lng; // 房源地址（经度）
+	private double house_address_lat; // 房源地址（纬度）
 	private String house_traffic; // 交通信息
 	private int house_most_num; // 最多入住人数
 	private double house_one_price; // 价格（1人）
@@ -20,19 +20,24 @@ public class House {
 	
 	public House() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public House(int house_id, int user_id, String house_title,
-			String house_describe, String house_style, Float house_address_lng,
-			Float house_address_lat, String house_traffic, int house_most_num,
-			double house_one_price, double house_add_price,
-			String house_limit_sex, int house_stay_time, int house_assess_sum) {
+			String house_describe, String house_style,
+			String house_address_province, String house_address_city,
+			double house_address_lng, double house_address_lat,
+			String house_traffic, int house_most_num, double house_one_price,
+			double house_add_price, String house_limit_sex,
+			int house_stay_time, int house_assess_sum) {
 		super();
 		this.house_id = house_id;
 		this.user_id = user_id;
 		this.house_title = house_title;
 		this.house_describe = house_describe;
 		this.house_style = house_style;
+		this.house_address_province = house_address_province;
+		this.house_address_city = house_address_city;
 		this.house_address_lng = house_address_lng;
 		this.house_address_lat = house_address_lat;
 		this.house_traffic = house_traffic;
@@ -84,19 +89,35 @@ public class House {
 		this.house_style = house_style;
 	}
 
-	public Float getHouse_address_lng() {
+	public String getHouse_address_province() {
+		return house_address_province;
+	}
+
+	public void setHouse_address_province(String house_address_province) {
+		this.house_address_province = house_address_province;
+	}
+
+	public String getHouse_address_city() {
+		return house_address_city;
+	}
+
+	public void setHouse_address_city(String house_address_city) {
+		this.house_address_city = house_address_city;
+	}
+
+	public double getHouse_address_lng() {
 		return house_address_lng;
 	}
 
-	public void setHouse_address_lng(Float house_address_lng) {
+	public void setHouse_address_lng(double house_address_lng) {
 		this.house_address_lng = house_address_lng;
 	}
 
-	public Float getHouse_address_lat() {
+	public double getHouse_address_lat() {
 		return house_address_lat;
 	}
 
-	public void setHouse_address_lat(Float house_address_lat) {
+	public void setHouse_address_lat(double house_address_lat) {
 		this.house_address_lat = house_address_lat;
 	}
 
@@ -155,6 +176,8 @@ public class House {
 	public void setHouse_assess_sum(int house_assess_sum) {
 		this.house_assess_sum = house_assess_sum;
 	}
-
+	
+	
+	
 
 }
