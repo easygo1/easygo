@@ -20,10 +20,10 @@ public interface IHouseDAO {
 	public abstract boolean updateHouse(int house_id, House house);
 
 	// 查找房源（通过房源ID查询）
-	public abstract House findSpecHouseById(int house_id);
+	public abstract List<House> findSpecHouseById(int house_id);
 
 	// 某个地区的所有房源
-	public abstract House findSpecHouseByStyle(String house_style);
+	public abstract List<House> findSpecHouseByStyle(String house_style);
 
 	// 所有房源
 	public abstract List<House> selectAllHouse();

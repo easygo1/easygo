@@ -14,8 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.easygo.activity.CustomOrderActivity;
+import com.easygo.activity.HouseCollectionActivity;
 import com.easygo.activity.LogintestActivity;
 import com.easygo.activity.MyInfomationActivity;
+import com.easygo.activity.MyWalletActivity;
 import com.easygo.activity.R;
 import com.easygo.activity.RegisterActivity;
 import com.easygo.activity.ReleasesroomActivity;
@@ -223,6 +225,16 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 Intent intentMyInfomation = new Intent();
                 intentMyInfomation.setClass(getActivity(), MyInfomationActivity.class);
                 startActivity(intentMyInfomation);
+                break;
+            case R.id.mywallet:
+                Intent intentMyWallet = new Intent();
+                intentMyWallet.setClass(getActivity(), MyWalletActivity.class);
+                startActivity(intentMyWallet);
+                break;
+            case R.id.mycollection:
+                Intent intentMyCollection = new Intent();
+                intentMyCollection.setClass(getActivity(), HouseCollectionActivity.class);
+                startActivity(intentMyCollection);
                 break;
         }
     }
