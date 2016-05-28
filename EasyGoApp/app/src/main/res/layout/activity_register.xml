@@ -39,28 +39,30 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:text="手机号："
             android:textColor="@color/meuser"
             android:textSize="17sp"/>
 
         <EditText
+            android:id="@+id/register_phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="2"
+            android:layout_marginLeft="-25dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1.6"
             android:hint="请输入手机号"
             android:textColor="@color/meuser"
             android:textColorHint="@color/meuser"
             android:textSize="17sp"/>
+
         <Button
             android:id="@+id/verification"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="获取验证码"
             android:onClick="verification"
+            android:text="获取验证码"
             />
     </LinearLayout>
 
@@ -71,16 +73,18 @@
         android:layout_marginTop="17dp"
         android:background="@drawable/mybutton"
         android:gravity="center">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:text="验证码："
             android:textColor="@color/meuser"
             android:textSize="17sp"/>
 
         <EditText
+            android:id="@+id/register_erification_code"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-55dp"
@@ -104,7 +108,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:text="密    码："
             android:textColor="@color/meuser"
@@ -129,16 +133,15 @@
         android:layout_height="1dp"
         android:background="#ffffff"
         />
-    <!--登录按钮-->
+    <!--注册按钮-->
     <Button
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/mybutton_noline"
-        android:onClick="login"
-        android:textSize="17sp"
-        android:text="注      册"/>
+        android:onClick="register"
+        android:text="注      册"
+        android:textSize="17sp"/>
 
 </LinearLayout>
