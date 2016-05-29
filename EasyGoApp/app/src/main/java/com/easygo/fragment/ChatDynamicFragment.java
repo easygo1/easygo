@@ -1,13 +1,17 @@
 package com.easygo.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.easygo.activity.ChatDynamicActivity;
 import com.easygo.activity.R;
 import com.easygo.adapter.ChatDynamicAdpter;
 import com.easygo.beans.chat_comment.CommentData;
@@ -26,8 +30,8 @@ public class ChatDynamicFragment extends Fragment {
     ChatDynamicAdpter mChatDynamicAdpter;
 
     List<CommentData> commentDataList;
-
     List<String> gridview_list;
+
     ListView commentListView;
 
     @Nullable
@@ -38,11 +42,22 @@ public class ChatDynamicFragment extends Fragment {
         initData();
         initAdapter();
 
+        commentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //这里需要做好传值动作
+
+                Toast.makeText(getActivity(), "这是第"+position+"个页面", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getActivity(), ChatDynamicActivity.class);
+
+                startActivity(intent);
+            }
+        });
         return  mChatDynamicView;
     }
 
     private void initAdapter() {
-        mChatDynamicAdpter=new ChatDynamicAdpter(commentDataList,ChatDynamicFragment.this);
+        mChatDynamicAdpter=new ChatDynamicAdpter(commentDataList,getActivity());
         commentListView.setAdapter(mChatDynamicAdpter);
     }
 
@@ -60,14 +75,14 @@ public class ChatDynamicFragment extends Fragment {
         gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
         gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
         gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
-
+        gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
 
         //动态列表
-        CommentData commentdata1=new CommentData(R.mipmap.ic_launcher,"rose","12:00","浏览：321次","今天天气真好",gridview_list,R.mipmap.ic_launcher,"赞",R.mipmap.ic_launcher,"评论",R.mipmap.ic_launcher,"转发",R.mipmap.ic_launcher,"ROSE","今天天气不错啊！","13:00");
-        CommentData commentdata2=new CommentData(R.mipmap.ic_launcher,"jack","11:00","浏览：32次","想回学校",gridview_list,R.mipmap.ic_launcher,"赞",R.mipmap.ic_launcher,"评论",R.mipmap.ic_launcher,"转发",R.mipmap.ic_launcher,"ROSE","额！","12:00");
-        CommentData commentdata3=new CommentData(R.mipmap.ic_launcher,"rose","12:20","浏览：54次","好想学习啊",gridview_list,R.mipmap.ic_launcher,"赞",R.mipmap.ic_launcher,"评论",R.mipmap.ic_launcher,"转发",R.mipmap.ic_launcher,"ROSE","饿？！","11:00");
-        CommentData commentdata4=new CommentData(R.mipmap.ic_launcher,"rose","12:03","浏览：121次","真想学啊",gridview_list,R.mipmap.ic_launcher,"赞",R.mipmap.ic_launcher,"评论",R.mipmap.ic_launcher,"转发",R.mipmap.ic_launcher,"ROSE","呃呃呃！","13:20");
-        CommentData commentdata5=new CommentData(R.mipmap.ic_launcher,"rose","11:00","浏览：51次","该睡觉了",gridview_list,R.mipmap.ic_launcher,"赞",R.mipmap.ic_launcher,"评论",R.mipmap.ic_launcher,"转发",R.mipmap.ic_launcher,"ROSE","(⊙o⊙)…！","13:31");
+        CommentData commentdata1=new CommentData(R.mipmap.ic_launcher,"rose","12:00","浏览：321次","今天天气真好",gridview_list);
+        CommentData commentdata2=new CommentData(R.mipmap.ic_launcher,"jack","12:00","浏览：123次","昨天下雨了",gridview_list);
+        CommentData commentdata3=new CommentData(R.mipmap.ic_launcher,"jarry","12:00","浏览：234次","天气终于晴了",gridview_list);
+        CommentData commentdata4=new CommentData(R.mipmap.ic_launcher,"tom","12:00","浏览：23次","好饿啊",gridview_list);
+        CommentData commentdata5=new CommentData(R.mipmap.ic_launcher,"苍天在上","12:00","浏览：4123次","hello world",gridview_list);
 
         //添加数据
         commentDataList.add(commentdata1);

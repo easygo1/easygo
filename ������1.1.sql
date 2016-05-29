@@ -132,6 +132,8 @@ CREATE TABLE house(
 	house_style    VARCHAR(10),	        #房源类型（客厅沙发，独立房间）
 	house_address_province   VARCHAR(20),   #所在省份
 	house_address_city   VARCHAR(20),       #所在城市
+	house_address_lng DOUBLE,               #房源地址（经度）
+	house_address_lat DOUBLE,               #房源地址（纬度）
 	house_traffic	VARCHAR(50),	        #交通信息		
 	house_most_num	TINYINT,	        #最多入住人数
 	house_one_price	DOUBLE,	                #价格（1人）
