@@ -13,42 +13,14 @@ public class CommentData implements Serializable {
     private String browse;
     private String dynamic_content;
     private List<String> imgUrls;
-    private int zan_img;
-    private String zan_text;
-    private int comment_img;
-    private String comment_text;
-    private int forward_img;
-    private String forward_text;
-    private int comment_headimg;
-    private String comment_name;
-    private String comment_content;
-    private String comment_time;
 
-    public CommentData(int comment_imageview, String fabiao_man, String fabiao_time, String browse, String dynamic_content, List<String> imgUrls, int zan_img, String zan_text, int comment_img, String comment_text, int forward_img, String forward_text, int comment_headimg, String comment_name, String comment_content, String comment_time) {
+    public CommentData(int comment_imageview, String fabiao_man, String fabiao_time, String browse, String dynamic_content, List<String> imgUrls) {
         this.comment_imageview = comment_imageview;
         this.fabiao_man = fabiao_man;
         this.fabiao_time = fabiao_time;
         this.browse = browse;
         this.dynamic_content = dynamic_content;
         this.imgUrls = imgUrls;
-        this.zan_img = zan_img;
-        this.zan_text = zan_text;
-        this.comment_img = comment_img;
-        this.comment_text = comment_text;
-        this.forward_img = forward_img;
-        this.forward_text = forward_text;
-        this.comment_headimg = comment_headimg;
-        this.comment_name = comment_name;
-        this.comment_content = comment_content;
-        this.comment_time = comment_time;
-    }
-
-    public String getComment_time() {
-        return comment_time;
-    }
-
-    public void setComment_time(String comment_time) {
-        this.comment_time = comment_time;
     }
 
     public int getComment_imageview() {
@@ -99,75 +71,5 @@ public class CommentData implements Serializable {
         this.imgUrls = imgUrls;
     }
 
-    public int getZan_img() {
-        return zan_img;
-    }
 
-    public void setZan_img(int zan_img) {
-        this.zan_img = zan_img;
-    }
-
-    public String getZan_text() {
-        return zan_text;
-    }
-
-    public void setZan_text(String zan_text) {
-        this.zan_text = zan_text;
-    }
-
-    public int getComment_img() {
-        return comment_img;
-    }
-
-    public void setComment_img(int comment_img) {
-        this.comment_img = comment_img;
-    }
-
-    public String getComment_text() {
-        return comment_text;
-    }
-
-    public void setComment_text(String comment_text) {
-        this.comment_text = comment_text;
-    }
-
-    public int getForward_img() {
-        return forward_img;
-    }
-
-    public void setForward_img(int forward_img) {
-        this.forward_img = forward_img;
-    }
-
-    public String getForward_text() {
-        return forward_text;
-    }
-
-    public void setForward_text(String forward_text) {
-        this.forward_text = forward_text;
-    }
-
-    public int getComment_headimg() {
-        return comment_headimg;
-    }
-
-    public void setComment_headimg(int comment_headimg) {
-        this.comment_headimg = comment_headimg;
-    }
-
-    public String getComment_name() {
-        return comment_name;
-    }
-
-    public void setComment_name(String comment_name) {
-        this.comment_name = comment_name;
-    }
-
-    public String getComment_content() {
-        return comment_content;
-    }
-
-    public void setComment_content(String comment_content) {
-        this.comment_content = comment_content;
-    }
 }

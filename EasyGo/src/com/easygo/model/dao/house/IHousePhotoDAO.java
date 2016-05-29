@@ -14,6 +14,6 @@ public interface IHousePhotoDAO {
 	// 删除房源照片
 	public abstract boolean deleteSpecIHousePhoto(int house_id);
 	// 查询某个房源的所有房源照片
-	public abstract HotCity selectSpecIHousePhoto(int house_id);
+	public abstract List<HousePhoto> selectSpecIHousePhoto(int house_id);
 
 }

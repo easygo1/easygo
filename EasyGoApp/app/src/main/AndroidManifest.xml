@@ -28,8 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".PlusActivity">
-        </activity>
         <activity android:name=".HomeCityActivity">
         </activity>
         <activity android:name=".HouseDetailActivity">
@@ -64,6 +62,8 @@
         <activity android:name=".CalendarActivity">
         </activity>
         <activity android:name=".OrderDetailActivity">
+        </activity>
+        <activity android:name=".ChatDynamicActivity">
         </activity>
         <activity android:name=".MyWalletActivity">
         </activity>
