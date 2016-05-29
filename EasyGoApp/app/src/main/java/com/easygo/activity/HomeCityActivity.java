@@ -18,25 +18,10 @@ import android.widget.Toast;
 import com.easygo.adapter.HouseListAdapter;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.House;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.yolanda.nohttp.Headers;
-import com.yolanda.nohttp.NoHttp;
-import com.yolanda.nohttp.OnResponseListener;
-import com.yolanda.nohttp.Request;
-import com.yolanda.nohttp.RequestMethod;
-import com.yolanda.nohttp.RequestQueue;
-import com.yolanda.nohttp.Response;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +37,7 @@ public class HomeCityActivity extends AppCompatActivity {
     /**
      * 请求队列.
      */
-    private RequestQueue requestQueue;
+   // private RequestQueue requestQueue;
 
     PullToRefreshListView mPullToRefreshListView;//PullToRefreshListView实例
     List<House> mList = null;
@@ -213,22 +198,22 @@ public class HomeCityActivity extends AppCompatActivity {
 
     //模拟数据
     public void loadData() {
-        // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
+       /* // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
         requestQueue = NoHttp.newRequestQueue();
         // 创建请求对象
         Request<String> request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
         // 添加请求参数
         request.add("methods", "getAllHouse");
-        /*
+        *//*
          * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
 		 * request: 请求对象
 		 * onResponseListener 回调对象，接受请求结果
-		 */
-        requestQueue.add(NOHTTP_WHAT_TEST, request, onResponseListener);
+		 *//*
+        requestQueue.add(NOHTTP_WHAT_TEST, request, onResponseListener);*/
 
     }
 
-    private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
+   /* private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
         @Override
         public void onSucceed(int what, Response<String> response) {
@@ -262,7 +247,7 @@ public class HomeCityActivity extends AppCompatActivity {
             Toast.makeText(HomeCityActivity.this, "失败了", Toast.LENGTH_SHORT).show();
         }
     };
-
+*/
 
     /*//出现问题，所以没用
     @Override
