@@ -188,7 +188,7 @@ public class SelectLocationActivity extends AppCompatActivity implements
         marker.setTitle("经纬度" + address.getLatLonPoint() + "\n位置" + address.getFormatAddress());
         marker.showInfoWindow();
         address.getCity();//得到城市
-        address.getProvince();//得到省份
+        address.getProvince();//省份
         show(address.getFormatAddress());
         Address=address.getFormatAddress();
     }

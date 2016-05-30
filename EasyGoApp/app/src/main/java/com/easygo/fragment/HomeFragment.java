@@ -10,19 +10,17 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.bumptech.glide.Glide;
 import com.easygo.activity.BookActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
+import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.R;
 import com.easygo.utils.StringUtils;
 
@@ -36,16 +34,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by PengHong on 2016/4/29.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment {
     //第一步：数据源
     //广告的图片
-
-    private String[] advertImages = new String[]{
-            "http://easygo.b0.upaiyun.com/advert/advert1.jpg",
-            "http://easygo.b0.upaiyun.com/advert/advert2.jpg",
-            "http://easygo.b0.upaiyun.com/advert/advert3.jpg",
-            "http://easygo.b0.upaiyun.com/advert/advert4.jpg",
-            "http://easygo.b0.upaiyun.com/advert/advert5.jpg"
+    private int[] advertImages = new int[]{
+            R.drawable.advert1,
+            R.drawable.advert2,
+            R.drawable.advert3,
     };
     //热门城市的图片
     private int[] cityImages = new int[]{
@@ -53,7 +48,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             R.drawable.home_city2,
             R.drawable.home_city3,
     };
-    private  String[] title=new String[]{"上 海","苏 州","北 京"};
     //热门城市的图片
     private int[] hotImages = new int[]{
             R.drawable.home_hot1,
@@ -76,10 +70,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     List<ImageView> mHomePageAdvertList;
     List<ImageView> mHomePageHotList;
     List<ImageView> mHomePageLocalList;
-    //城市中的控件
-    Button mCityLeft,mCityRight,mHomeHotLeft,mHomeHotRight,mHomeLocalLeft,mHomeLocalRight;
-    TextView mCityText;
-
     //第三步：确定适配器，这里采用PagerAdapter
 
     //得到绑定的页面布局
@@ -111,71 +101,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         initHomePagerLocal();
         //初始化位置
         initLocation();
-        addListener();
         return mView;
     }
 
-    private void addListener() {
-        mCityLeft.setOnClickListener(this);
-        mCityRight.setOnClickListener(this);
-        mHomeHotLeft.setOnClickListener(this);
-        mHomeHotRight.setOnClickListener(this);
-        mHomeLocalLeft.setOnClickListener(this);
-        mHomeLocalRight.setOnClickListener(this);
-    }
-    //监听事件按钮的实现
-    @Override
-    public void onClick(View v) {
-        int id=v.getId();
-
-        switch (id){
-            case R.id.left_city_btn:
-                mCityViewPager.arrowScroll(1);
-                break;
-            case R.id.right_city_btn:
-                mCityViewPager.arrowScroll(2);
-                break;
-            case R.id.left_home_hot_btn:
-                mHotViewPager.arrowScroll(1);
-                break;
-            case R.id.right_home_hot_btn:
-                mHotViewPager.arrowScroll(2);
-                break;
-            case R.id.left_home_local_btn:
-                mLocalViewPager.arrowScroll(1);
-                break;
-            case R.id.right_home_local_btn:
-                mLocalViewPager.arrowScroll(2);
-                break;
-        }
-    }
     private void initViews() {
-        //滑动屏幕控件初始化
         mAdvertViewPager = (ViewPager) mView.findViewById(R.id.homepage_advert_viewpager);
         mCityViewPager = (ViewPager) mView.findViewById(R.id.homepage_city_viewpager);
         mHotViewPager = (ViewPager) mView.findViewById(R.id.homepage_hot_viewpager);
         mLocalViewPager = (ViewPager) mView.findViewById(R.id.homepage_local_viewpager);
         mLocationTextView= (TextView) mView.findViewById(R.id.location_my);
-        //按钮，文本初始化
-        mCityLeft= (Button) mView.findViewById(R.id.left_city_btn);
-        mCityRight= (Button) mView.findViewById(R.id.right_city_btn);
-        mHomeHotLeft= (Button) mView.findViewById(R.id.left_home_hot_btn);
-        mHomeHotRight= (Button) mView.findViewById(R.id.right_home_hot_btn);
-        mHomeLocalLeft= (Button) mView.findViewById(R.id.left_home_local_btn);
-        mHomeLocalRight= (Button) mView.findViewById(R.id.right_home_local_btn);
-        mCityText= (TextView) mView.findViewById(R.id.city_text);
     }
 
 
     private void initHomePagerAdvert() {
-
+        //显示的小点
+       /* dots = new ArrayList<View>();
+        dots.add(getActivity().findViewById(R.id.dot_0));
+        dots.add(getActivity().findViewById(R.id.dot_1));
+        dots.add(getActivity().findViewById(R.id.dot_2));*/
         //广告轮播图
         mHomePageAdvertList = new ArrayList<>();
         for (int i = 0; i < advertImages.length; i++) {
             ImageView imageView = new ImageView(getActivity());
-
-            Glide.with(getActivity()).load(advertImages[i]).into(imageView);
-            //imageView.setBackgroundResource(advertImages1[i]);
+            imageView.setBackgroundResource(advertImages[i]);
             mHomePageAdvertList.add(imageView);
         }
 
@@ -197,14 +145,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
 
             @Override
-            public Object instantiateItem(ViewGroup container, final int position) {
+            public Object instantiateItem(ViewGroup container, int position) {
                 container.addView(mHomePageAdvertList.get(position));
 
                 //监听
                 mHomePageAdvertList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         Intent intent = new Intent(getActivity(), BookActivity.class);
                         startActivity(intent);
 
@@ -245,16 +192,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
 
             @Override
-            public Object instantiateItem(ViewGroup container, final int position) {
-                container.addView(mHomePageCityList.get(position));
+            public Object instantiateItem(ViewGroup container, int position) {
 
+                container.addView(mHomePageCityList.get(position));
                 //监听
                 mHomePageCityList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), HomeCityActivity.class);
                         startActivity(intent);
-                        Toast.makeText(getActivity(), title[position], Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
                     }
                 });
                 return mHomePageCityList.get(position);
@@ -264,19 +211,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mCityViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                //滑动时设置监听
-                mCityText.setText(title[position]);//滑动时更改名字
             }
 
             @Override
             public void onPageSelected(int position) {
-                //选择时
-
+//                Toast.makeText(getActivity(), position+"", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                //更改滑动状态时
+
             }
         });
     }
@@ -311,9 +255,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public Object instantiateItem(ViewGroup container, int position) {
 
                 container.addView(mHomePageHotList.get(position));
+
                 //测试使用，跳转到具体房源页面
                 mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
-                //跳转到具体房源页面
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), HouseDetailActivity.class);
@@ -337,7 +281,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             mHomePageLocalList.add(imageView);
         }
 
-        //本地热门滑动图的适配器
+        //城市滑动图的适配器
         mLocalViewPager.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
@@ -363,12 +307,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 mHomePageLocalList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), HomeCityActivity.class);
-                        startActivity(intent);
-                        /*
-                        跳转到支付详情页面
                         Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
-                        startActivity(intent);*/
+                        startActivity(intent);
                     }
                 });
                 return mHomePageLocalList.get(position);
@@ -412,7 +352,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 2,
                 TimeUnit.SECONDS);
     }
-
 
     private class ViewPageTask implements Runnable {
         @Override
