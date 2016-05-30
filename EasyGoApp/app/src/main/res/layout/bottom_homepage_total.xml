@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/homepage_advert_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="170dp">
+        </android.support.v4.view.ViewPager>
+
+
+    <include
+        layout="@layout/bottom_homepage_city"/>
+
+    <include
+        layout="@layout/bottom_homepage_hot"/>
+
+    <include
+        layout="@layout/bottom_homepage_local"/>
+</LinearLayout>

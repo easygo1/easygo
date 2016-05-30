@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#EFEEEC"
+              android:orientation="horizontal">
+    <!--首页-->
+    <LinearLayout
+        android:id="@+id/homepage"
+        style="@style/bottom_style">
+        <ImageView
+            android:id="@+id/homepage_imageview"
+            style="@style/bottom_image"
+            android:src="@mipmap/btn_home_page_normal"/>
+
+        <TextView
+            android:id="@+id/homepage_text"
+            style="@style/bottom_text"
+            android:textColor="@color/textDown"
+            android:text="@string/homepage"/>
+    </LinearLayout>
+    <!--搜索-->
+    <LinearLayout
+        android:id="@+id/search"
+        style="@style/bottom_style">
+
+        <ImageView
+            android:id="@+id/search_imageview"
+            style="@style/bottom_image"
+            android:src="@mipmap/btn_search_disabled"/>
+
+        <TextView
+            android:id="@+id/search_text"
+            style="@style/bottom_text"
+            android:text="@string/search"/>
+
+    </LinearLayout>
+
+    <!--附加功能-->
+    <LinearLayout
+        android:id="@+id/plus"
+        style="@style/bottom_style">
+
+        <ImageView
+            android:id="@+id/plus_imageview"
+            style="@style/bottom_image"
+            android:src="@mipmap/btn_plus_normal"/>
+
+    </LinearLayout>
+
+    <!--消息-->
+    <LinearLayout
+        android:id="@+id/chat"
+        style="@style/bottom_style">
+
+        <ImageView
+            android:id="@+id/chat_imageview"
+            style="@style/bottom_image"
+            android:src="@mipmap/btn_chat_disabled"/>
+
+        <TextView
+            android:id="@+id/chat_text"
+            style="@style/bottom_text"
+            android:text="@string/chat"
+            />
+    </LinearLayout>
+    <!--我-->
+    <LinearLayout
+        android:id="@+id/me"
+        style="@style/bottom_style">
+
+        <ImageView
+            android:id="@+id/me_imageview"
+            style="@style/bottom_image"
+            android:src="@mipmap/btn_me_disabled"/>
+
+        <TextView
+            android:id="@+id/me_text"
+            style="@style/bottom_text"
+            android:text="@string/me"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
