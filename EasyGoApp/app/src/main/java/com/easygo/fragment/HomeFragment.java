@@ -102,7 +102,12 @@ public class HomeFragment extends Fragment {
         initHomePagerHot();
         //本地生活适配器初始化
         initHomePagerLocal();
+        addListener();
         return mView;
+    }
+
+    private void addListener() {
+
     }
 
 
@@ -219,6 +224,7 @@ public class HomeFragment extends Fragment {
                 mHomePageCityList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         Intent intent = new Intent(getActivity(), HomeCityActivity.class);
                         startActivity(intent);
 //                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
@@ -277,11 +283,15 @@ public class HomeFragment extends Fragment {
                 container.addView(mHomePageHotList.get(position));
 
                 //测试使用，跳转到具体房源页面
+
+                //跳转到具体房源页面
+
                mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), HouseDetailActivity.class);
                         startActivity(intent);
+
                     }
                 });
 
