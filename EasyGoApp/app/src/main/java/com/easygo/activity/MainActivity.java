@@ -16,7 +16,6 @@ import com.easygo.fragment.ChatFragment;
 import com.easygo.fragment.HomeFragment;
 import com.easygo.fragment.MeFragment;
 import com.easygo.fragment.SearchFragment;
-import com.easygo.view.MoreWindow;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageView mHomeImageView, mSearchImageView, mChatImageView, mMeImageView;
     TextView mHomeTextView, mSearchTextView, mChatTextView, mMeTextView;
     Toast mToast;
-    MoreWindow mMoreWindow;
+
     //碎片
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
@@ -134,19 +133,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //设置当前选中碎片
             initCurrentFragment(id);
         } else {
-            //弹跳出“+”操作
-            showMoreWindow(v);
+            Intent plusIntent = new Intent(MainActivity.this, PlusActivity.class);
+            startActivity(plusIntent);
+
+            /*//如果是附加按钮
+            //隐藏所有已经添加到事务中的碎片
+            hideAllFragments();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            mPlusFragment = new PlusFragment();
+            mFragmentTransaction.add(R.id.all,mPlusFragment);
+
+            mFragmentTransaction.commit();*/
         }
 
-    }
-
-    private void showMoreWindow(View view) {
-        if (null == mMoreWindow) {
-            mMoreWindow = new MoreWindow(this);
-            mMoreWindow.init();
-        }
-        //第二个参数为到底部的距离
-        mMoreWindow.showMoreWindow(view,40);
     }
 
     private void initCurrentFragment(int id) {
