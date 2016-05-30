@@ -9,6 +9,7 @@ package com.easygo.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ import com.easygo.model.impl.house.IHouseDAOImpl;
 import com.easygo.model.impl.order.IOrderDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 @WebServlet("/appservlet")
 public class AppServlet extends HttpServlet {
@@ -45,12 +47,21 @@ public class AppServlet extends HttpServlet {
 	int user_no;
 	User user;
 
+	// Order的相关方法
+	IOrderDAO orderDAO;
+	// House相关对象
+	List<Orders> orderList;
+	Orders orders;
+	
 	// House的相关方法
 	IHouseDAO housedao;
 	// House相关对象
 	List<House> houseList;
 	House house;
-
+	
+	Gson gson;
+	//gson.toJson()的结果
+	String result;
 	public AppServlet() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -133,7 +144,7 @@ public class AppServlet extends HttpServlet {
 			break;
 
 		case "addOrders":
-			IOrderDAO order = new IOrderDAOImpl();
+			orderDAO = new IOrderDAOImpl();
 			// 获取到订单信息的每个字段
 			// BeanUtils.populate(order, request.getParameterMap());
 			int house_id = Integer.valueOf(request.getParameter("house_id"));
@@ -147,10 +158,10 @@ public class AppServlet extends HttpServlet {
 			String order_time = request.getParameter("order_time");
 			// 添加订单信息
 			// 用网页信息初始化订单对象
-			Orders orders = new Orders(house_id, user_id, checknum, checktime,
+			orders = new Orders(house_id, user_id, checknum, checktime,
 					leavetime, total, tel, order_state, order_time);
 			// 向数据库中添加信息
-			order.addOrders(orders);
+			orderDAO.addOrders(orders);
 
 			request.getRequestDispatcher("jsp/order/order.jsp").forward(
 					request, response);
@@ -177,10 +188,46 @@ public class AppServlet extends HttpServlet {
 			houseList = new ArrayList<House>();
 			housedao = new IHouseDAOImpl();
 			houseList = housedao.selectAllHouse();
-			Gson gson = new Gson();
-			String result = gson.toJson(houseList);
+			gson = new Gson();
+			result = gson.toJson(houseList);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
+			break;
+		//根据用户的id查出此人的所有订单
+		case "getAllOrderByUserId":
+			orderDAO= new IOrderDAOImpl();
+			orderList= new ArrayList<Orders>();
+			String userid = request.getParameter("userid");
+			//orderList = orderDAO.selectsomeOrders(userid, 1);
+			orderList = orderDAO.selectAllOrders(1);
+			gson = new Gson();
+			result = gson.toJson(orderList);
+            //gson.tojson
+            String houseJson1 = gson.toJson(house,House.class);
+            //Log.e("ck",houseJson);
+            System.out.println(houseJson1);
+			
+			mPrintWriter.write(houseJson1);
+			mPrintWriter.close();
+			break;
+		//根据发布房源传来的数据进行添房源	
+		case "addHouse":
+			housedao = new IHouseDAOImpl();
+			houseList = new ArrayList<House>();
+			String house_style = request.getParameter("house_style");
+			String house_most_num =request.getParameter("house_most_num");
+			String house_one_price = request.getParameter("house_one_price");
+			String house_add_price = request.getParameter("house_add_price");
+			String house_limit_sex = request.getParameter("house_limit_sex");
+			String house_stay_time = request.getParameter("house_stay_time");
+			house = new House();
+			house.setHouse_style(house_style);
+			house.setHouse_most_num(Integer.valueOf(house_most_num));
+			house.setHouse_one_price(Double.valueOf(house_one_price));
+			house.setHouse_add_price(Double.valueOf(house_add_price));
+			house.setHouse_limit_sex(house_limit_sex);
+			house.setHouse_stay_time(Integer.valueOf(house_stay_time));
+			housedao.addHouse(house);
 			break;
 
 		default:
