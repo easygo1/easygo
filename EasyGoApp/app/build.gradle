@@ -18,6 +18,11 @@ android {
         }
     }
 }
+repositories{
+    flatDir{
+        dirs 'libs'//存放aar的路径
+    }
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -27,12 +32,18 @@ dependencies {
     compile 'org.xutils:xutils:3.3.34'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.google.code.gson:gson:2.6.2'
-    compile files('libs/AMap_Location_v2.3.0_20160112.jar')
     compile files('libs/afinal_0.5.1_bin.jar')
-
-
     compile 'com.yolanda.nohttp:nohttp:+'
-
     compile 'com.lzy.widget:ninegridview:0.1.4'
-
+    compile files('libs/AMap_2DMap_V2.9.0_20160525.jar')
+    compile files('libs/AMap_Search_V3.2.1_20160308.jar')
+    compile files('libs/AMap_Location_v2.3.0_20160112.jar')
+    compile name: 'SMSSDK-2.0.2', ext: 'aar'
+    compile name: 'SMSSDKGUI-2.0.2', ext: 'aar'
+    compile files('libs/ShareSDK-Core-2.7.2.jar')
+    compile files('libs/ShareSDK-QZone-2.7.2.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.7.2.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.7.2.jar')
 }

@@ -1,4 +1,4 @@
-package com.easygo.fragment;
+﻿package com.easygo.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -15,11 +15,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.bumptech.glide.Glide;
 import com.easygo.activity.BookActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
 import com.easygo.activity.R;
+import com.easygo.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +93,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     //记录上一次点的位置
     private int oldPosition = 0;*/
 
+    private AMapLocationClient mLocationClient;
+    private TextView mLocationTextView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,7 +109,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         initHomePagerHot();
         //本地生活适配器初始化
         initHomePagerLocal();
-
+        //初始化位置
+        initLocation();
         addListener();
         return mView;
     }
@@ -146,6 +155,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mCityViewPager = (ViewPager) mView.findViewById(R.id.homepage_city_viewpager);
         mHotViewPager = (ViewPager) mView.findViewById(R.id.homepage_hot_viewpager);
         mLocalViewPager = (ViewPager) mView.findViewById(R.id.homepage_local_viewpager);
+        mLocationTextView= (TextView) mView.findViewById(R.id.location_my);
         //按钮，文本初始化
         mCityLeft= (Button) mView.findViewById(R.id.left_city_btn);
         mCityRight= (Button) mView.findViewById(R.id.right_city_btn);
@@ -155,6 +165,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mHomeLocalRight= (Button) mView.findViewById(R.id.right_home_local_btn);
         mCityText= (TextView) mView.findViewById(R.id.city_text);
     }
+
 
     private void initHomePagerAdvert() {
 
@@ -241,7 +252,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 mHomePageCityList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         Intent intent = new Intent(getActivity(), HomeCityActivity.class);
                         startActivity(intent);
                         Toast.makeText(getActivity(), title[position], Toast.LENGTH_SHORT).show();
@@ -301,14 +311,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public Object instantiateItem(ViewGroup container, int position) {
 
                 container.addView(mHomePageHotList.get(position));
-
+                //测试使用，跳转到具体房源页面
+                mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
                 //跳转到具体房源页面
-               mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), HouseDetailActivity.class);
                         startActivity(intent);
-
                     }
                 });
 
@@ -367,6 +376,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
     }
 
+    private void initLocation() {
+        mLocationClient = new AMapLocationClient(getActivity());
+        AMapLocationClientOption option = new AMapLocationClientOption();
+        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        option.setOnceLocation(true);
+        mLocationClient.setLocationOption(option);
+        mLocationClient.setLocationListener(new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                if (aMapLocation != null) {
+                    if (aMapLocation.getErrorCode() == 0) {
+                        String city = aMapLocation.getCity();
+                        String district = aMapLocation.getDistrict();
+                        String location = StringUtils.extractLocation(city, district);
+                        mLocationTextView.setText(location);
+                    }
+                }
+            }
+        });
+        mLocationClient.startLocation();
+
+    }
+
     /**
      * 利用线程池定时执行动画轮播
      */
@@ -399,4 +431,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     };
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mLocationClient.stopLocation();
+    }
 }

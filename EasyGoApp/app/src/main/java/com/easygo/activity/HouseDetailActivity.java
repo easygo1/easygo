@@ -26,6 +26,8 @@ import com.easygo.fragment.HouseDetailRuleFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
 public class HouseDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     ViewPager mPhotoViewPager;
@@ -50,6 +52,8 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
     TextView mHouseDescribeTextview, mHousePriceTextview, mHousePhotoSizeTextView;
     ImageView mHouseCollectionImageView, mHouseShareImageView;
     Button mBookButton;
+    //一键分享使用
+    private OnekeyShare mOnekeyShare = null;
 
     //接收到的数据
     House house = new House("房屋标题", "我是房屋描述", "我是房屋类型", "交通信息", 5, 120, 20, "不限", 3, 3, 4, false);
@@ -97,7 +101,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
         mHousePhotoSizeTextView = (TextView) findViewById(R.id.house_photo_size);
         mHouseCollectionImageView = (ImageView) findViewById(R.id.house_collection);
         mHouseShareImageView = (ImageView) findViewById(R.id.house_share);
-        mBookButton= (Button) findViewById(R.id.book_house_btn);
+        mBookButton = (Button) findViewById(R.id.book_house_btn);
     }
 
     //初始化
@@ -214,16 +218,29 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.house_collection:
-                Toast.makeText(HouseDetailActivity.this,"单击了收藏按钮",Toast.LENGTH_SHORT).show();
+                Toast.makeText(HouseDetailActivity.this, "单击了收藏按钮", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.house_share:
-                Toast.makeText(HouseDetailActivity.this,"单击了分享按钮",Toast.LENGTH_SHORT).show();
+                mOnekeyShare = new OnekeyShare();
+                mOnekeyShare.setTitle("一键分享");
+                mOnekeyShare.setText("一键分享测试");
+                mOnekeyShare.setImageUrl("http://www.mob.com/images/logo_black.png");
+
+                // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+                mOnekeyShare.setComment("我是测试评论文本");
+                // site是分享此内容的网站名称，仅在QQ空间使用
+                mOnekeyShare.setSite(getString(R.string.app_name));
+                // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+//                mOnekeyShare.setSiteUrl("http://www.baidu.com");
+                mOnekeyShare.setTitleUrl("http://www.baidu.com");
+                //这话必须放最后
+                mOnekeyShare.show(HouseDetailActivity.this);
                 break;
             case R.id.book_house_btn:
-                Intent intent=new Intent();
-                intent.setClass(HouseDetailActivity.this,BookActivity.class);
+                Intent intent = new Intent();
+                intent.setClass(HouseDetailActivity.this, BookActivity.class);
                 startActivity(intent);
                 break;
         }
