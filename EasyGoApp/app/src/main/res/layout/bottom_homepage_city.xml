@@ -5,6 +5,7 @@
                 android:orientation="vertical">
 
     <TextView
+
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="15dp"
@@ -74,4 +75,24 @@
             android:text="上 海"/>
 
     </FrameLayout>
+
+
+
+
+
+    <!--<ImageView
+        android:id="@+id/homepage_city_btn_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/homepage_city_text"
+        android:src="@mipmap/home_goleft"/>
+    <ImageView
+        android:id="@+id/homepage_city_btn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:src="@mipmap/home_goright"/>-->
 </LinearLayout>

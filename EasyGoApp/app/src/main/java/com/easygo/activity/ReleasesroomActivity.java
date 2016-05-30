@@ -3,10 +3,13 @@ package com.easygo.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.Layout;
+import android.view.FocusFinder;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,9 +31,6 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_releasesroom);
         initView();
         addListeners();
-        Intent intent=getIntent();
-        String address=intent.getStringExtra("address");
-        mAddressTextView.setText(address);
     }
 
 
@@ -111,9 +111,6 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
                 showFacilitiesDialog();
                 break;
             case R.id.releaseroom_address:
-                Intent intentaddress=new Intent();
-                intentaddress.setClass(ReleasesroomActivity.this,SelectLocationActivity.class);
-                startActivity(intentaddress);
                 break;
             case R.id.releaseroom_mostnum:
                 showMostnumDialog();

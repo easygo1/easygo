@@ -31,7 +31,6 @@ public class LogintestActivity extends AppCompatActivity {
 
     }
 
-    //登录页面的注册，跳转到注册页面
     public void reg(View view) {
         Intent intent=new Intent(LogintestActivity.this,RegisterActivity.class);
         startActivity(intent);

@@ -75,7 +75,9 @@ public class SelectCityActivity extends AppCompatActivity implements View.OnClic
                     if (aMapLocation.getErrorCode() == 0) {
                         String city = aMapLocation.getCity();
                         String district = aMapLocation.getDistrict();
-                       String location = StringUtils.extractLocation(city, district);
+                        Log.e("onLocationChanged", "city: " + city);
+                        Log.e("onLocationChanged", "district: " + district);
+                        String location = StringUtils.extractLocation(city, district);
                         mCityAdapter.updateLocateState(LocateState.SUCCESS, location);
                     } else {
                         //定位失败
