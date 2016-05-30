@@ -50,6 +50,8 @@ public class MapActivity extends Activity {
         mAMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mLatLng, 20));
         Marker marker = mAMap.addMarker(markerOptions);
         marker.setVisible(true);
+        marker.setTitle("我的位置");
+        marker.showInfoWindow();
     }
 
    /* private void initLinsener() {

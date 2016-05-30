@@ -3,14 +3,10 @@ package com.easygo.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
-import android.view.FocusFinder;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,10 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.easygo.application.MyApplication;
-import com.easygo.beans.House;
 import com.easygo.beans.Order;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
@@ -31,7 +25,6 @@ import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReleasesroomActivity extends AppCompatActivity implements View.OnClickListener{
@@ -163,6 +156,9 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
                 showFacilitiesDialog();
                 break;
             case R.id.releaseroom_address:
+                Intent intent1=new Intent();
+                intent1.setClass(ReleasesroomActivity.this,SelectLocationActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.releaseroom_mostnum:
                 showMostnumDialog();

@@ -1,6 +1,5 @@
 package com.easygo.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,6 +23,9 @@ import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.RegeocodeQuery;
 import com.amap.api.services.geocoder.RegeocodeResult;
 
+/**
+ * 发布房源的地址选择地图页面
+ */
 public class SelectLocationActivity extends AppCompatActivity implements
         GeocodeSearch.OnGeocodeSearchListener {
     private MapView mMapView;//控件地图
@@ -53,10 +55,10 @@ public class SelectLocationActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 getLatlon(mlocationEditText.getText().toString(), "苏州");
-                Intent intent=new Intent();
+                /*Intent intent=new Intent();
                 intent.setClass(SelectLocationActivity.this,ReleasesroomActivity.class);
                 intent.putExtra("address",Address);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         });
         mAMap.setOnMapClickListener(new AMap.OnMapClickListener() {
