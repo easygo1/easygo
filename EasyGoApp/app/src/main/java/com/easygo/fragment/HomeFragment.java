@@ -113,10 +113,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //初始化位置
         initLocation();
         return mView;
-    }
 
-        addListener();
-        return mView;
     }
 
     private void addListener() {
@@ -317,7 +314,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 container.addView(mHomePageHotList.get(position));
                 //测试使用，跳转到具体房源页面
-                mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
                 //跳转到具体房源页面
                mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
