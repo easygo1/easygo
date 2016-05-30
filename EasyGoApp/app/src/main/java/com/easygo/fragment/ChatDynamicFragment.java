@@ -72,10 +72,10 @@ public class ChatDynamicFragment extends Fragment {
         gridview_list=new ArrayList<>();
         //添加图片
         gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
-        gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
-        gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
-        gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
-        gridview_list.add("http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1402/27/c4/31612517_1393474458218_mthumb.jpg");
+        gridview_list.add("http://img2.imgtn.bdimg.com/it/u=176005081,877018693&fm=11&gp=0.jpg");
+        gridview_list.add("http://p1.qqyou.com/pic/uploadpic/2013-5/26/2013052611174240620.jpg");
+        gridview_list.add("http://pic31.nipic.com/20130624/8821914_104949466000_2.jpg");
+        gridview_list.add("http://pic.58pic.com/58pic/16/95/10/658PICx58PICiAN_1024.jpg");
 
         //动态列表
         CommentData commentdata1=new CommentData(R.mipmap.ic_launcher,"rose","12:00","浏览：321次","今天天气真好",gridview_list);
