@@ -13,13 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.easygo.activity.BookActivity;
 import com.easygo.activity.HomeCityActivity;
@@ -112,9 +111,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         initHomePagerLocal();
         //初始化位置
         initLocation();
-        return mView;
-    }
-
         addListener();
         return mView;
     }
@@ -256,7 +252,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 mHomePageCityList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         Intent intent = new Intent(getActivity(), HomeCityActivity.class);
                         startActivity(intent);
                         Toast.makeText(getActivity(), title[position], Toast.LENGTH_SHORT).show();
@@ -319,12 +314,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 //测试使用，跳转到具体房源页面
                 mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
                 //跳转到具体房源页面
-               mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), HouseDetailActivity.class);
                         startActivity(intent);
-
                     }
                 });
 
