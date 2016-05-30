@@ -45,6 +45,7 @@ public class AppServlet extends HttpServlet {
 	// user的相关对象
 	List<User> userList;
 	int user_no;
+	String user_photo;//头像地址
 	User user;
 
 	// Order的相关方法
@@ -141,6 +142,14 @@ public class AppServlet extends HttpServlet {
 			request.setAttribute("oneUser", user);
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
 					request, response);
+			break;
+		case "updateUserPhoto":
+			//得到要更新的用户id user_no,和头像地址
+			user_no=Integer.valueOf(request.getParameter("no"));
+			user_photo=request.getParameter("user_photo_path");
+			userdao = new IUserDAOImpl();
+			boolean s=userdao.updateUserPhoto(user_no, user_photo);
+			System.out.print("头像上传结果"+s);
 			break;
 
 		case "addOrders":
