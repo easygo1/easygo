@@ -23,18 +23,12 @@ import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.yolanda.nohttp.Headers;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
 import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -46,9 +40,6 @@ public class HomeCityActivity extends AppCompatActivity {
      * 用来标志请求的what, 类似handler的what一样，这里用来区分请求.
      */
     private static final int NOHTTP_WHAT_TEST = 0x001;
-
-
-
     /**
      * 请求队列.
      */
@@ -120,12 +111,12 @@ public class HomeCityActivity extends AppCompatActivity {
 
         initLinsenter();
     }
-
+    //下拉菜单监听事件
     private void initLinsenter() {
         housespinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeCityActivity.this,"房源类型"+housetype[position],Toast.LENGTH_SHORT).show();
+                //Toast.makeText(HomeCityActivity.this,"房源类型"+housetype[position],Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -135,7 +126,7 @@ public class HomeCityActivity extends AppCompatActivity {
         sexspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeCityActivity.this,"性别限制"+sexs[position],Toast.LENGTH_SHORT).show();
+                //Toast.makeText(HomeCityActivity.this,"性别限制"+sexs[position],Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -145,7 +136,7 @@ public class HomeCityActivity extends AppCompatActivity {
         pricespinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeCityActivity.this,"价格限制"+pricesort[position],Toast.LENGTH_SHORT).show();
+               // Toast.makeText(HomeCityActivity.this,"价格限制"+pricesort[position],Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -155,7 +146,7 @@ public class HomeCityActivity extends AppCompatActivity {
         checkspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeCityActivity.this,"入住时间"+checknum[position],Toast.LENGTH_SHORT).show();
+                //Toast.makeText(HomeCityActivity.this,"入住时间"+checknum[position],Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -249,44 +240,19 @@ public class HomeCityActivity extends AppCompatActivity {
         @Override
         public void onStart(int what) {
             // 请求开始，这里可以显示一个dialog
-            Toast.makeText(HomeCityActivity.this, "开始了", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(HomeCityActivity.this, "开始了", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onFinish(int what) {
-            Toast.makeText(HomeCityActivity.this, "结束了", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(HomeCityActivity.this, "结束了", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-            Toast.makeText(HomeCityActivity.this, "失败了", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(HomeCityActivity.this, "失败了", Toast.LENGTH_SHORT).show();
         }
     };
-
-
-    /*//出现问题，所以没用
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (view.getId()){
-            case R.id.housespinner:
-                Toast.makeText(HomeCityActivity.this,"房源类型"+housetype[position],Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.sexspinner:
-                Toast.makeText(HomeCityActivity.this,"性别限制"+sexs[position],Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.pricespinner:
-                Toast.makeText(HomeCityActivity.this,"价格限制"+pricesort[position],Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.checkspinner:
-                Toast.makeText(HomeCityActivity.this,"入住时间"+checknum[position],Toast.LENGTH_SHORT).show();
-                break;
-        }
-    }*/
-
-    /*@Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }*/
 
     static class LoadDataAsyncTask extends AsyncTask<Void, Void, String> {//定义返回值的类型
         //后台处理
@@ -368,9 +334,6 @@ public class HomeCityActivity extends AppCompatActivity {
                 convertView = inflater.inflate(
                         android.R.layout.simple_spinner_item, parent, false);
             }
-
-            // android.R.id.text1 is default text view in resource of the android.
-            // android.R.layout.simple_spinner_item is default layout in resources of android.
 
             TextView tv = (TextView) convertView
                     .findViewById(android.R.id.text1);

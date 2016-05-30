@@ -7,19 +7,18 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easygo.activity.BookActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
-import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.R;
 
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by PengHong on 2016/4/29.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
     //第一步：数据源
     //广告的图片
 
@@ -73,7 +72,7 @@ public class HomeFragment extends Fragment {
     List<ImageView> mHomePageHotList;
     List<ImageView> mHomePageLocalList;
     //城市中的控件
-    Button mCityLeft,mCityRight;
+    Button mCityLeft,mCityRight,mHomeHotLeft,mHomeHotRight,mHomeLocalLeft,mHomeLocalRight;
     TextView mCityText;
 
     //第三步：确定适配器，这里采用PagerAdapter
@@ -102,15 +101,45 @@ public class HomeFragment extends Fragment {
         initHomePagerHot();
         //本地生活适配器初始化
         initHomePagerLocal();
+
         addListener();
         return mView;
     }
 
     private void addListener() {
-
+        mCityLeft.setOnClickListener(this);
+        mCityRight.setOnClickListener(this);
+        mHomeHotLeft.setOnClickListener(this);
+        mHomeHotRight.setOnClickListener(this);
+        mHomeLocalLeft.setOnClickListener(this);
+        mHomeLocalRight.setOnClickListener(this);
     }
+    //监听事件按钮的实现
+    @Override
+    public void onClick(View v) {
+        int id=v.getId();
 
-
+        switch (id){
+            case R.id.left_city_btn:
+                mCityViewPager.arrowScroll(1);
+                break;
+            case R.id.right_city_btn:
+                mCityViewPager.arrowScroll(2);
+                break;
+            case R.id.left_home_hot_btn:
+                mHotViewPager.arrowScroll(1);
+                break;
+            case R.id.right_home_hot_btn:
+                mHotViewPager.arrowScroll(2);
+                break;
+            case R.id.left_home_local_btn:
+                mLocalViewPager.arrowScroll(1);
+                break;
+            case R.id.right_home_local_btn:
+                mLocalViewPager.arrowScroll(2);
+                break;
+        }
+    }
     private void initViews() {
         //滑动屏幕控件初始化
         mAdvertViewPager = (ViewPager) mView.findViewById(R.id.homepage_advert_viewpager);
@@ -120,6 +149,10 @@ public class HomeFragment extends Fragment {
         //按钮，文本初始化
         mCityLeft= (Button) mView.findViewById(R.id.left_city_btn);
         mCityRight= (Button) mView.findViewById(R.id.right_city_btn);
+        mHomeHotLeft= (Button) mView.findViewById(R.id.left_home_hot_btn);
+        mHomeHotRight= (Button) mView.findViewById(R.id.right_home_hot_btn);
+        mHomeLocalLeft= (Button) mView.findViewById(R.id.left_home_local_btn);
+        mHomeLocalRight= (Button) mView.findViewById(R.id.right_home_local_btn);
         mCityText= (TextView) mView.findViewById(R.id.city_text);
     }
 
@@ -153,13 +186,14 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public Object instantiateItem(ViewGroup container, int position) {
+            public Object instantiateItem(ViewGroup container, final int position) {
                 container.addView(mHomePageAdvertList.get(position));
 
                 //监听
                 mHomePageAdvertList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         Intent intent = new Intent(getActivity(), BookActivity.class);
                         startActivity(intent);
 
@@ -178,27 +212,9 @@ public class HomeFragment extends Fragment {
         for (int i = 0; i < cityImages.length; i++) {
             ImageView imageView = new ImageView(getActivity());
             imageView.setBackgroundResource(cityImages[i]);
-
             mHomePageCityList.add(imageView);
         }
-        mCityViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                //滑动时设置监听
-                mCityText.setText(title[position]);
-                Log.e(""+position,""+position);
-            }
 
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
         //城市滑动图的适配器
         mCityViewPager.setAdapter(new PagerAdapter() {
 
@@ -218,8 +234,9 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public Object instantiateItem(ViewGroup container, int position) {
+            public Object instantiateItem(ViewGroup container, final int position) {
                 container.addView(mHomePageCityList.get(position));
+
                 //监听
                 mHomePageCityList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -227,7 +244,7 @@ public class HomeFragment extends Fragment {
 
                         Intent intent = new Intent(getActivity(), HomeCityActivity.class);
                         startActivity(intent);
-//                        Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), title[position], Toast.LENGTH_SHORT).show();
                     }
                 });
                 return mHomePageCityList.get(position);
@@ -237,16 +254,19 @@ public class HomeFragment extends Fragment {
         mCityViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                //滑动时设置监听
+                mCityText.setText(title[position]);//滑动时更改名字
             }
 
             @Override
             public void onPageSelected(int position) {
-//                Toast.makeText(getActivity(), position+"", Toast.LENGTH_SHORT).show();
+                //选择时
+
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                //更改滑动状态时
             }
         });
     }
@@ -282,10 +302,7 @@ public class HomeFragment extends Fragment {
 
                 container.addView(mHomePageHotList.get(position));
 
-                //测试使用，跳转到具体房源页面
-
                 //跳转到具体房源页面
-
                mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -311,7 +328,7 @@ public class HomeFragment extends Fragment {
             mHomePageLocalList.add(imageView);
         }
 
-        //城市滑动图的适配器
+        //本地热门滑动图的适配器
         mLocalViewPager.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
@@ -337,8 +354,12 @@ public class HomeFragment extends Fragment {
                 mHomePageLocalList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
+                        Intent intent = new Intent(getActivity(), HomeCityActivity.class);
                         startActivity(intent);
+                        /*
+                        跳转到支付详情页面
+                        Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
+                        startActivity(intent);*/
                     }
                 });
                 return mHomePageLocalList.get(position);
@@ -359,6 +380,7 @@ public class HomeFragment extends Fragment {
                 2,
                 TimeUnit.SECONDS);
     }
+
 
     private class ViewPageTask implements Runnable {
         @Override
