@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +28,10 @@ import com.easygo.activity.SelectCityActivity;
 public class SearchFragment extends Fragment{
     View mSearchView;
     View mSearchCityView,mFootPrintView,mCollectionView,mDateSelectView;
+    EditText mSearchEditText;
     Button mSearchButton;
 
-    private TextView tv_in,tv_out, mSearchTextView;
+    private TextView tv_in,tv_out;
     SharedPreferences sp;
     String inday,outday;
     @Nullable
@@ -46,7 +48,7 @@ public class SearchFragment extends Fragment{
         Intent intent=getActivity().getIntent();
         String city=intent.getStringExtra("city");
         Toast.makeText(getActivity(),city,Toast.LENGTH_SHORT).show();
-        mSearchTextView.setText(city);
+        mSearchEditText.setText(city);
     }
 
     private void initListener() {
@@ -96,7 +98,7 @@ public class SearchFragment extends Fragment{
     private void initView() {
         mSearchCityView=mSearchView.findViewById(R.id.city_search);
         mDateSelectView=mSearchView.findViewById(R.id.time_search);
-        mSearchTextView = (TextView) mSearchView.findViewById(R.id.search_texttext);
+        mSearchEditText= (EditText) mSearchView.findViewById(R.id.search_edittext);
         mFootPrintView=mSearchView.findViewById(R.id.search_footpoint);
         mCollectionView=mSearchView.findViewById(R.id.search_collection);
         mSearchButton= (Button) mSearchView.findViewById(R.id.search_btn);
