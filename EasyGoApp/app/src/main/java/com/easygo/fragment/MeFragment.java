@@ -31,6 +31,7 @@ import com.easygo.activity.UserLinkmanActivity;
  */
 public class MeFragment extends Fragment implements View.OnClickListener {
     public static final String TYPE = "type";
+    Intent intent;
     //得到绑定的界面布局
     View mView;
     int type = 0;
@@ -67,7 +68,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private TextView meOwnerCustomerservice;
     SharedPreferences mSharedPreferences;
 
-    
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         }else if(type == 1){//type为1表示以房客身份登录
             mView =inflater.inflate(R.layout.bottom_me_customer,null);
             initCustomerViews();
-           addCustomerListeners();
+            addCustomerListeners();
         }else{//表示以房东身份登录
             mView =inflater.inflate(R.layout.bottom_me_owner,null);
             initOwnerViews();
@@ -182,59 +183,64 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         int id = v.getId();
         switch (id){
             case  R.id.me_myset:
-                Intent intentMyset = new Intent();
-                intentMyset.setClass(getActivity(), SetActivity.class);
-                startActivity(intentMyset);
+                intent= new Intent();
+                intent.setClass(getActivity(), SetActivity.class);
+                startActivity(intent);
                 break;
             case R.id.me_user_imageview:
-                Intent intentUserImage = new Intent();
-                intentUserImage.setClass(getActivity(), LogintestActivity.class);
-                startActivity(intentUserImage);
+                intent= new Intent();
+                intent.setClass(getActivity(), LogintestActivity.class);
+                startActivity(intent);
                 break;
             case R.id.me_user_login:
-                Intent intentUserLogin = new Intent();
-                intentUserLogin.setClass(getActivity(), LogintestActivity.class);
-                startActivity(intentUserLogin);
+                intent= new Intent();
+                intent.setClass(getActivity(), LogintestActivity.class);
+                startActivity(intent);
                 break;
             case R.id.me_user_register:
-                Intent intentUserRegister = new Intent();
-                intentUserRegister.setClass(getActivity(), RegisterActivity.class);
-                startActivity(intentUserRegister);
+                intent= new Intent();
+                intent.setClass(getActivity(), RegisterActivity.class);
+                startActivity(intent);
                 break;
             case R.id.me_customerservice:
-                Intent intentMeService = new Intent();
-                intentMeService.setClass(getActivity(), CustomOrderActivity.class);
-                startActivity(intentMeService);
+                intent = new Intent();
+                intent.setClass(getActivity(), CustomOrderActivity.class);
+                startActivity(intent);
                 break;
             case R.id.me_customer_myset:
-                Intent intentCustomerSet = new Intent();
-                intentCustomerSet.setClass(getActivity(), SetActivity.class);
-                startActivity(intentCustomerSet);
+                intent = new Intent();
+                intent.setClass(getActivity(), SetActivity.class);
+                startActivity(intent);
                 break;
             case R.id.me_customer_releaseroom:
-                Intent intentReleaseroom = new Intent();
-                intentReleaseroom.setClass(getActivity(), ReleasesroomActivity.class);
-                startActivity(intentReleaseroom);
+                intent = new Intent();
+                intent.setClass(getActivity(), ReleasesroomActivity.class);
+                startActivity(intent);
                 break;
             case R.id.me_customer_linkman:
-                Intent intentLinkman = new Intent();
-                intentLinkman.setClass(getActivity(), UserLinkmanActivity.class);
-                startActivity(intentLinkman);
+                intent = new Intent();
+                intent.setClass(getActivity(), UserLinkmanActivity.class);
+                startActivity(intent);
                 break;
             case R.id.myinformation:
-                Intent intentMyInfomation = new Intent();
-                intentMyInfomation.setClass(getActivity(), MyInfomationActivity.class);
-                startActivity(intentMyInfomation);
+                intent = new Intent();
+                intent.setClass(getActivity(), MyInfomationActivity.class);
+                startActivity(intent);
                 break;
             case R.id.mywallet:
-                Intent intentMyWallet = new Intent();
-                intentMyWallet.setClass(getActivity(), MyWalletActivity.class);
-                startActivity(intentMyWallet);
+                intent = new Intent();
+                intent.setClass(getActivity(), MyWalletActivity.class);
+                startActivity(intent);
                 break;
             case R.id.mycollection:
-                Intent intentMyCollection = new Intent();
-                intentMyCollection.setClass(getActivity(), HouseCollectionActivity.class);
-                startActivity(intentMyCollection);
+                intent = new Intent();
+                intent.setClass(getActivity(), HouseCollectionActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.me_owner_myset:
+                intent = new Intent();
+                intent.setClass(getActivity(), SetActivity.class);
+                startActivity(intent);
                 break;
         }
     }

@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.FocusFinder;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
@@ -16,7 +17,25 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.easygo.application.MyApplication;
+import com.easygo.beans.House;
+import com.easygo.beans.Order;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+import com.yolanda.nohttp.NoHttp;
+import com.yolanda.nohttp.OnResponseListener;
+import com.yolanda.nohttp.Request;
+import com.yolanda.nohttp.RequestMethod;
+import com.yolanda.nohttp.RequestQueue;
+import com.yolanda.nohttp.Response;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ReleasesroomActivity extends AppCompatActivity implements View.OnClickListener{
+    public static final int WHAT = 1;
     ImageView mReturnImageView,mCameraImageView;
     EditText mTitleEditText,mHomeinfoEditText,mTrafficinfoEditText;
     RelativeLayout mRoompicLayout,mBedLayout,mFacilitiesLayout,mAddressLayout,mMostnumLayout,mOnepriceLayout,mAddpriceLayout,mLimitsexLayout,mStaytimeLayout,mRealnameLayout;
@@ -25,6 +44,53 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
     public static final String TYPE = "type";
     SharedPreferences mSharedPreferences;
     SharedPreferences.Editor mEditor;
+    String mUrl;
+    private RequestQueue mRequestQueue;
+    Intent intent;
+    String house_style = null;
+    String house_most_num_str = null;
+    int house_most_num;
+    String house_one_price_str = null;
+    double house_one_price;
+    String house_add_price_str = null;
+    double house_add_price;
+    String house_limit_sex = null;
+    String house_stay_time_str = null;
+    int house_stay_time;
+
+    private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
+        @SuppressWarnings("unused")
+        @Override
+        public void onSucceed(int what, Response<String> response) {
+            if (what == WHAT) {
+                String result = response.get();
+                //把JSON格式的字符串改为Student对象
+                Gson gson = new Gson();
+                Type type = new TypeToken<List<Order>>(){}.getType();
+//                mList = gson.fromJson(result,type);
+                // mList.addAll((List<Order>)gson.fromJson(result,type));
+                // mCustomOrderAdapter.notifyDataSetChanged();
+                //表示刷新完成
+//                mPullToRefreshListView.onRefreshComplete();
+                // Log.e("list",mList.toString());
+            }
+        }
+
+        @Override
+        public void onStart(int what) {
+
+        }
+
+        @Override
+        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+
+        }
+
+        @Override
+        public void onFinish(int what) {
+
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,26 +144,12 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    public void success(View view) {
-        //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
-        mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
-        //向偏好设置文件中保存数据
-        mEditor = mSharedPreferences.edit();
-        mEditor.putInt("type", 2);
-        //提交保存结果
-        mEditor.commit();
-        Intent intent = new Intent();
-        intent.putExtra("flag","me");
-        intent.setClass(ReleasesroomActivity.this,MainActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id){
             case R.id.releaseroom_return:
-                Intent intent = new Intent();
+                intent = new Intent();
                 intent.putExtra("flag","me");
                 intent.setClass(ReleasesroomActivity.this,MainActivity.class);
                 startActivity(intent);
@@ -129,6 +181,62 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.releaseroom_realname:
                 break;
+            case R.id.releaseroom_success:
+                //将用户设置的数据进行处理
+                processData();
+                //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
+                mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
+                //向偏好设置文件中保存数据
+                mEditor = mSharedPreferences.edit();
+                mEditor.putInt("type", 2);
+                //提交保存结果
+                mEditor.commit();
+                MyApplication myApplication = (MyApplication) this.getApplication();
+                mUrl = myApplication.getUrl();
+                //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+                mRequestQueue = NoHttp.newRequestQueue();
+                //创建请求对象
+                Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
+                //添加请求参数
+                request.add("methods","addHouse");
+                request.add("house_style",house_style);
+                request.add("house_most_num",house_most_num);
+                request.add("house_one_price",house_one_price);
+                request.add("house_add_price",house_add_price);
+                request.add("house_limit_sex",house_limit_sex);
+                request.add("house_stay_time",house_stay_time);
+        /*
+         * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
+		 * request: 请求对象
+		 * onResponseListener 回调对象，接受请求结果
+		 */
+                mRequestQueue.add(WHAT,request, onResponseListener);
+                intent = new Intent();
+                intent.putExtra("flag","me");
+                intent.setClass(ReleasesroomActivity.this,MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+
+    private void processData() {
+        //去掉字符串中的“人”,便于之后转换为int类型
+        house_most_num = Integer.valueOf(house_most_num_str.replace("人",""));
+        if (house_one_price_str.equals("免费")){
+            house_one_price = 0;
+        }else {
+            house_one_price = Double.valueOf(house_one_price_str.replace("元", ""));
+        }
+        if (house_add_price_str.equals("免费")){
+            house_add_price = 0;
+        }else {
+            house_add_price = Double.valueOf(house_add_price_str.replace("元", ""));
+        }
+        //当房主选择最长入住时间为可议时，将“可议”转换为0存入数据库
+        if (house_stay_time_str.equals("可议")){
+            house_stay_time = 0;
+        }else {
+            house_stay_time = Integer.valueOf(house_stay_time_str.replace("天",""));
         }
     }
 
@@ -138,8 +246,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         builder.setSingleChoiceItems(R.array.bed, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String bedStr = getResources().getStringArray(R.array.bed)[which];
-                mBedTextView.setText(bedStr);
+                house_style = getResources().getStringArray(R.array.bed)[which];
+                mBedTextView.setText(house_style);
                 dialog.dismiss();
             }
         });
@@ -152,8 +260,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         builder.setSingleChoiceItems(R.array.mostnum, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String mostnumStr = getResources().getStringArray(R.array.mostnum)[which];
-                mMostnumTextView.setText(mostnumStr);
+                house_most_num_str = getResources().getStringArray(R.array.mostnum)[which];
+                mMostnumTextView.setText(house_most_num_str);
                 dialog.dismiss();
             }
         });
@@ -164,8 +272,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         builder.setSingleChoiceItems(R.array.oneprice, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String onepriceStr = getResources().getStringArray(R.array.oneprice)[which];
-                mOnepriceTextView.setText(onepriceStr);
+                house_one_price_str = getResources().getStringArray(R.array.oneprice)[which];
+                mOnepriceTextView.setText(house_one_price_str);
                 dialog.dismiss();
             }
         });
@@ -176,8 +284,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         builder.setSingleChoiceItems(R.array.addprice, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String addpriceStr = getResources().getStringArray(R.array.addprice)[which];
-                mAddpriceTextView.setText(addpriceStr);
+                house_add_price_str = getResources().getStringArray(R.array.addprice)[which];
+                mAddpriceTextView.setText(house_add_price_str);
                 dialog.dismiss();
             }
         });
@@ -188,8 +296,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         builder.setSingleChoiceItems(R.array.limitsex, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String limitsexStr = getResources().getStringArray(R.array.limitsex)[which];
-                mLimitsexTextView.setText(limitsexStr);
+                house_limit_sex = getResources().getStringArray(R.array.limitsex)[which];
+                mLimitsexTextView.setText(house_limit_sex);
                 dialog.dismiss();
             }
         });
@@ -200,8 +308,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         builder.setSingleChoiceItems(R.array.staytime, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String staytimeStr = getResources().getStringArray(R.array.staytime)[which];
-                mStaytimeTextView.setText(staytimeStr);
+                house_stay_time_str = getResources().getStringArray(R.array.staytime)[which];
+                mStaytimeTextView.setText(house_stay_time_str);
                 dialog.dismiss();
             }
         });

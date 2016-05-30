@@ -18,7 +18,29 @@ public class IHouseDAOImpl implements IHouseDAO {
 	@Override
 	public boolean addHouse(House house) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		connection = C3P0Utils.getConnection();
+		String sql = "INSERT INTO house(house_style,house_most_num,house_one_price,house_add_price,house_limit_sex,house_stay_time) VALUE(?,?,?,?,?,?);";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, house.getHouse_style());
+			statement.setInt(2, house.getHouse_most_num());
+			statement.setDouble(3, house.getHouse_one_price());
+			statement.setDouble(4, house.getHouse_add_price());
+			statement.setString(5, house.getHouse_limit_sex());
+			statement.setInt(6, house.getHouse_stay_time());
+			statement.executeUpdate();
+			result = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+			result = false;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+
+		return result;
 	}
 	//根据房源id删除房源，删除成功返回true,失败返回false
 	@Override
@@ -79,7 +101,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 						house_style,house_address_province,house_address_city, house_address_lng,
 						house_address_lat, house_traffic, 
 						house_most_num, house_one_price, house_add_price,
-						house_limit_sex, house_stay_time, house_assess_sum);
+						house_limit_sex, house_stay_time, house_assess_sum,false);
 				houseList.add(house);
 			}
 		} catch (SQLException e) {
@@ -122,7 +144,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 						house_style1,house_address_province,house_address_city, house_address_lng,
 						house_address_lat, house_traffic, 
 						house_most_num, house_one_price, house_add_price,
-						house_limit_sex, house_stay_time, house_assess_sum);
+						house_limit_sex, house_stay_time, house_assess_sum,false);
 				houseList.add(house);
 			}
 		} catch (SQLException e) {
@@ -164,7 +186,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 						house_style,house_address_province,house_address_city, house_address_lng,
 						house_address_lat, house_traffic, 
 						house_most_num, house_one_price, house_add_price,
-						house_limit_sex, house_stay_time, house_assess_sum);
+						house_limit_sex, house_stay_time, house_assess_sum,false);
 				houseList.add(house);
 			}
 		} catch (SQLException e) {

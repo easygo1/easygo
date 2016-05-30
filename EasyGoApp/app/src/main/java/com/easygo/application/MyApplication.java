@@ -10,7 +10,7 @@ import org.xutils.x;
 
 
 public class MyApplication extends Application{
-    private String url = "http://192.168.191.1:8080/EasyGo/easygoservlet";
+    private String url = "http://10.201.1.167:8080/EasyGo/appservlet";
 
    //Application的onCreate早于所有的Activity的onCreate方法
     @Override
