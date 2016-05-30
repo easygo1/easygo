@@ -52,8 +52,8 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
     Button mBookButton;
 
     //接收到的数据
-    House house = new House("房屋标题", "我是房屋描述", "我是房屋类型", "交通信息", 5, 120, 20, "不限", 3, 3, 4, false);
-
+   // House house = new House("房屋标题", "我是房屋描述", "我是房屋类型", "交通信息", 5, 120, 20, "不限", 3, 3, 4, false);
+    House house = new House();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,7 +112,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onPageSelected(int position) {
                 Toast.makeText(HouseDetailActivity.this, "第" + position + "张图片", Toast.LENGTH_SHORT).show();
-                mHousePhotoSizeTextView.setText((position + 1) + "/" + house.getHouse_photo_size());
+                //mHousePhotoSizeTextView.setText((position + 1) + "/" + house.getHouse_photo_size());
             }
 
             @Override
@@ -208,7 +208,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
 
         mHouseDescribeTextview.setText(house.getHouse_title());
         mHousePriceTextview.setText("" + house.getHouse_one_price() + "元");
-        mHousePhotoSizeTextView.setText(1 + "/" + house.getHouse_photo_size());
+       // mHousePhotoSizeTextView.setText(1 + "/" + house.getHouse_photo_size());
 
     }
 
