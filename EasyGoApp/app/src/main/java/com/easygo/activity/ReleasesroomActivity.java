@@ -1,27 +1,28 @@
 package com.easygo.activity;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
-import android.view.FocusFinder;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.House;
 import com.easygo.beans.Order;
+import com.easygo.fragment.ReleasesroomNoFragment;
+import com.easygo.fragment.ReleasesroomYesFragment;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
@@ -29,13 +30,17 @@ import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
-
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReleasesroomActivity extends AppCompatActivity implements View.OnClickListener{
     public static final int WHAT = 1;
+    //碎片
+    ReleasesroomYesFragment mReleasesroomYesFragment;
+    ReleasesroomNoFragment mReleasesroomNoFragment;
+    FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction;
+
     ImageView mReturnImageView,mCameraImageView;
     EditText mTitleEditText,mHomeinfoEditText,mTrafficinfoEditText;
     RelativeLayout mRoompicLayout,mBedLayout,mFacilitiesLayout,mAddressLayout,mMostnumLayout,mOnepriceLayout,mAddpriceLayout,mLimitsexLayout,mStaytimeLayout,mRealnameLayout;
@@ -58,6 +63,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
     String house_stay_time_str = null;
     int house_stay_time;
 
+    LayoutInflater mInflater;
+    View mView;
     private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
         @Override
@@ -97,16 +104,30 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_releasesroom);
         initView();
         addListeners();
+        initDefault();
+    }
+    //默认显示有相机的碎片
+    private void initDefault() {
+        //开始显示第一个界面
+        mFragmentManager = getFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        //默认显示有相机的碎片，初始化该碎片
+        mReleasesroomNoFragment = new ReleasesroomNoFragment();
+        mFragmentTransaction.add(R.id.releaseroom_fragment,mReleasesroomNoFragment);
+        mFragmentTransaction.commit();
     }
 
 
     private void initView() {
+        mInflater =  LayoutInflater.from(this);
+        mView = mInflater.inflate(R.layout.releasesroom_fragment_no,null);
+
         mReturnImageView = (ImageView) findViewById(R.id.releaseroom_return);
-        mCameraImageView = (ImageView) findViewById(R.id.releaseroom_camera);
+        mCameraImageView = (ImageView) mView.findViewById(R.id.releaseroom_camera);
         mTitleEditText = (EditText) findViewById(R.id.releaseroom_title);
         mHomeinfoEditText = (EditText) findViewById(R.id.releaseroom_homeinfo);
         mTrafficinfoEditText = (EditText) findViewById(R.id.releaseroom_trafficinfo);
-        mRoompicLayout = (RelativeLayout) findViewById(R.id.releaseroom_roompic);
+        mRoompicLayout = (RelativeLayout) findViewById(R.id.releaseroom_roompic_no);
         mBedLayout = (RelativeLayout) findViewById(R.id.releaseroom_bed);
         mFacilitiesLayout = (RelativeLayout) findViewById(R.id.releaseroom_facilities);
         mAddressLayout = (RelativeLayout) findViewById(R.id.releaseroom_address);
@@ -129,7 +150,7 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
     }
     private void addListeners() {
         mReturnImageView.setOnClickListener(this);
-        mCameraImageView.setOnClickListener(this);
+        //mCameraImageView.setOnClickListener(this);
         mBedLayout.setOnClickListener(this);
         mFacilitiesLayout.setOnClickListener(this);
         mAddressLayout.setOnClickListener(this);
@@ -143,7 +164,6 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
 
 
     }
-
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -154,8 +174,7 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
                 intent.setClass(ReleasesroomActivity.this,MainActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.releaseroom_camera:
-                break;
+
             case R.id.releaseroom_bed:
                 showBedDialog();
                 break;
@@ -239,8 +258,6 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
             house_stay_time = Integer.valueOf(house_stay_time_str.replace("天",""));
         }
     }
-
-
     private void showBedDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setSingleChoiceItems(R.array.bed, 0, new DialogInterface.OnClickListener() {
