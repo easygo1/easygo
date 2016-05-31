@@ -50,6 +50,7 @@ public class AppServlet extends HttpServlet {
 	int user_id;
 	int user_no;
 	User user;
+	String user_photo;
 
 	// Order的相关对象
 	IOrderDAO orderDAO;
@@ -158,7 +159,6 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
 					request, response);
 			break;
-<<<<<<< HEAD
 		case "updateUserPhoto":
 			//得到要更新的用户id user_no,和头像地址
 			user_id=Integer.valueOf(request.getParameter("user_id"));
@@ -167,8 +167,6 @@ public class AppServlet extends HttpServlet {
 			boolean s=userdao.updateUserPhoto(user_id, user_photo);
 			System.out.print("头像上传结果"+s);
 			break;
-=======
->>>>>>> 00f9085007c54040ba2f257eba855cd1cebaa692
 
 		case "addOrders":
 			orderDAO = new IOrderDAOImpl();
