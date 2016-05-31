@@ -17,4 +17,10 @@ public class IHouseCollectDAOImpl implements IHouseCollectDAO {
 		return false;
 	}
 
+	@Override
+	public HouseCollect findHouseCollectByUserId(int user_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

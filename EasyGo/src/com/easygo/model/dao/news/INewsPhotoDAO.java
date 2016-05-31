@@ -1,7 +1,6 @@
 package com.easygo.model.dao.news;
 
 import com.easygo.model.beans.chat.NewsPhoto;
-import com.easygo.model.beans.house.House;
 
 public interface INewsPhotoDAO {
 	/**

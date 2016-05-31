@@ -1,8 +1,5 @@
 package com.easygo.model.beans.order;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 public class Orders {
 	private int order_id; // 订单编号
 	private int house_id; // 房屋编号 外键

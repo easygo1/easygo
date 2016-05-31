@@ -87,7 +87,7 @@ DELETE FROM orders WHERE order_id=1
 INSERT INTO user_order_linkman(order_id,NAME,idcard) VALUE(2,'王韶辉','410802xxxxxxxxxx10')
 
 #向assess评价表表插入数据
-INSERT INTO assess(order_id,user_id,star,assess_content) VALUE(2,1,4,'总体来说还不错！')
+INSERT INTO assess(order_id,house_id,user_id,star,assess_content) VALUE(2,1,1,4,'总体来说还不错！');
 
 #向checks签到表插入数据
 INSERT INTO checks(user_id,check_sum,check_last_time) VALUE(1,2,'2016-04-13')
