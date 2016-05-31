@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.order.Orders;
 import com.easygo.model.dao.order.IOrderDAO;
 import com.easygo.utils.C3P0Utils;
@@ -25,6 +24,7 @@ public class IOrderDAOImpl implements IOrderDAO {
 	
 	// 将数据处理，计算出需要分成几页
 	//改动的话只需改动查询语句即可
+	@Override
 	public int getTotalPage() {
 		//查询语句，查出数据总的记录数
 		String table = "orders";
@@ -125,6 +125,7 @@ public class IOrderDAOImpl implements IOrderDAO {
 		}	
 		return orderList;
 	}
+	@Override
 	public Orders findOrdersByorderid(int order_id){
 		Orders orders =null;
 		try {

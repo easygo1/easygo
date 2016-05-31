@@ -49,11 +49,13 @@ public class EasygoServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// 初始化

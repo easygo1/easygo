@@ -3,8 +3,6 @@ package com.easygo.model.dao.chat;
 import java.util.List;
 
 import com.easygo.model.beans.chat.Friend;
-import com.easygo.model.beans.house.HotCity;
-import com.easygo.model.beans.house.House;
 
 public interface IFriendDAO {
 	/**

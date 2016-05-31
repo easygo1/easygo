@@ -1,9 +1,6 @@
 package com.easygo.model.dao.news;
 
-import java.util.List;
-
 import com.easygo.model.beans.chat.News;
-import com.easygo.model.beans.house.House;
 
 public interface INewsDAO {
 	/**

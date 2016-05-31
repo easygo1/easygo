@@ -80,11 +80,13 @@ public class AppServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// 初始化
@@ -155,14 +157,6 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
 					request, response);
 			break;
-		case "updateUserPhoto":
-			//得到要更新的用户id user_no,和头像地址
-			user_no=Integer.valueOf(request.getParameter("user_no"));
-			user_photo=request.getParameter("user_photo_path");
-			userdao = new IUserDAOImpl();
-			boolean s=userdao.updateUserPhoto(user_no, user_photo);
-			System.out.print("头像上传结果"+s);
-			break;
 
 		case "addOrders":
 			orderDAO = new IOrderDAOImpl();
@@ -220,7 +214,7 @@ public class AppServlet extends HttpServlet {
 		 * 
 		 * 首先接收到要查询的城市（还要有一个页码，用于判断应该查询哪几个房间），然后根据城市去查询得到所有的房间，
 		 * 然后根据得到的房间，查询房屋对应的图片， 然后根据房子中的房东ID去查询房东， 根据房东ID查询房东的头像，
-		 * 最后，根据房东ID找到评价表，得到评论的条数，以及星级
+		 * 然后，根据房东ID找到评价表，得到评论的条数，以及星级 最后，根据使用APP的用户ID去找到收藏表， 将收藏的房屋爱心变成红色
 		 */
 		case "getAllHouseByCity":
 			// 城市request.getParameter("city")
@@ -232,7 +226,7 @@ public class AppServlet extends HttpServlet {
 			// 得到了所有该城市房源
 			houseList = housedao.findSpecHouseByCity(house_address_city,
 					Integer.parseInt(cur));
-			System.out.println(houseList.get(1).getHouse_address_city());
+			// System.out.println(houseList.get(1).getHouse_address_city());
 			// 得到房源的图片
 			housePhotoDAO = new IHousePhotoDAOImpl();
 			housePhotoList = new ArrayList<>();
