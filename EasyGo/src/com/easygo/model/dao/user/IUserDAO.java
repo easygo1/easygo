@@ -21,5 +21,5 @@ public interface IUserDAO {
 	public abstract List<User> selectAllUser();
 	
 	//修改用户头像
-	public abstract boolean updateUserPhoto(int user_no,String user_photo);
+	public abstract boolean updateUserPhoto(int user_id,String user_photo);
 }
