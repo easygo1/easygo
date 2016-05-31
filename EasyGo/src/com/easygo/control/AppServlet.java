@@ -42,7 +42,8 @@ import com.google.gson.Gson;
 
 @WebServlet("/appservlet")
 public class AppServlet extends HttpServlet {
-
+	
+	
 	private static final long serialVrsionUID = 1L;
 	// 用于输出数据
 	private PrintWriter mPrintWriter;
@@ -53,6 +54,7 @@ public class AppServlet extends HttpServlet {
 	int user_id;
 	int user_no;
 	User user;
+	String user_photo;
 
 	// Order的相关对象
 	IOrderDAO orderDAO;
@@ -109,6 +111,13 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/addUser.jsp").forward(
 					request, response);
 			break;
+		case "login":
+			/*user_phone=request.getParameterValues(user_phone);
+			String user_password=request.getParameter(user_password);
+			
+			mPrintWriter.write(userdao.login(user_no,user_password));
+			mPrintWriter.close();*/
+			break;
 		case "addUser":
 			user = new User();
 			try {
@@ -117,7 +126,6 @@ public class AppServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			System.out.println(user.getUser_no());
-			// userdao.addUser(user);
 			if (userdao.addUser(user)) {
 				System.out.println("成功");
 			}

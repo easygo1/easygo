@@ -17,7 +17,10 @@ user_mood     VARCHAR(30),             #个性签名15字内
 user_mail     VARCHAR(30),             #邮箱
 user_introduct VARCHAR(100),           #个人简介
 user_birthday	DATE,		       #出生日期
-user_idcard	VARCHAR(18)	       #身份证号					
+user_idcard	VARCHAR(18),	       #身份证号
+token VARCHAR(200),		       #token
+remarks VARCHAR(50)		       #备注
+						
 );
 #爱好表（所有爱好
 CREATE TABLE hobby(
