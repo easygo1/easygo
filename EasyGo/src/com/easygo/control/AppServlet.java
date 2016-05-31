@@ -104,11 +104,11 @@ public class AppServlet extends HttpServlet {
 					request, response);
 			break;
 		case "login":
-			/*user_phone=request.getParameterValues(user_phone);
-			String user_password=request.getParameter(user_password);
+			String user_phone=request.getParameter("user_phone");
+			String user_password=request.getParameter("user_password");
 			
-			mPrintWriter.write(userdao.login(user_no,user_password));
-			mPrintWriter.close();*/
+			mPrintWriter.write(userdao.login(user_phone,user_password));
+			mPrintWriter.close();
 			break;
 		case "addUser":
 			user = new User();
