@@ -155,6 +155,14 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
 					request, response);
 			break;
+		case "updateUserPhoto":
+			//得到要更新的用户id user_no,和头像地址
+			user_no=Integer.valueOf(request.getParameter("user_no"));
+			user_photo=request.getParameter("user_photo_path");
+			userdao = new IUserDAOImpl();
+			boolean s=userdao.updateUserPhoto(user_no, user_photo);
+			System.out.print("头像上传结果"+s);
+			break;
 
 		case "addOrders":
 			orderDAO = new IOrderDAOImpl();
