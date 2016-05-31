@@ -237,7 +237,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 				int user_id = resultSet.getInt(2);
 				String house_title = resultSet.getString(3);
 				String house_describe = resultSet.getString(4);
-				String house_style1 = resultSet.getString(5);
+				String house_style = resultSet.getString(5);
 				String house_address_province = resultSet.getString(6);
 				String house_address_city2 = resultSet.getString(7);
 				double house_address_lng = resultSet.getDouble(8);
@@ -250,7 +250,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 				int house_stay_time = resultSet.getInt(15);
 				int house_assess_sum = resultSet.getInt(16);
 				House house = new House(house_id, user_id, house_title,
-						house_describe, house_style1, house_address_province,
+						house_describe, house_style, house_address_province,
 						house_address_city2, house_address_lng,
 						house_address_lat, house_traffic, house_most_num,
 						house_one_price, house_add_price, house_limit_sex,
