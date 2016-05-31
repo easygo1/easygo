@@ -115,7 +115,7 @@ public class EasygoServlet extends HttpServlet {
 			// 得到要查询的user_no
 			user_no = Integer.valueOf(request.getParameter("no"));
 			userdao = new IUserDAOImpl();
-			user = userdao.findSpecStudent(user_no);
+			user = userdao.findSpecUserByNo(user_no);
 			// 属性名为oneUser
 			request.setAttribute("oneUser", user);
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
@@ -125,7 +125,7 @@ public class EasygoServlet extends HttpServlet {
 			// 得到要查询的user_no
 			user_no = Integer.valueOf(request.getParameter("no"));
 			userdao = new IUserDAOImpl();
-			user = userdao.findSpecStudent(user_no);
+			user = userdao.findSpecUserByNo(user_no);
 			// 属性名为oneUser
 			request.setAttribute("oneUser", user);
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(

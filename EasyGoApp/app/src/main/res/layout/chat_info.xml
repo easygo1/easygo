@@ -4,8 +4,9 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="消息"/>
+        android:text="打开聊天界面"/>
 </LinearLayout>

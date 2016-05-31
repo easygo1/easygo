@@ -10,7 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.easygo.activity.R;
-import com.easygo.beans.HouseAssess;
+import com.easygo.beans.house.HouseAssess;
 
 import java.util.List;
 

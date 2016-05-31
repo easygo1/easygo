@@ -21,6 +21,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.house.House;
+import com.easygo.model.beans.house.HouseCollect;
 import com.easygo.model.beans.house.HousePhoto;
 import com.easygo.model.beans.order.Assess;
 import com.easygo.model.beans.order.Orders;
@@ -29,11 +30,13 @@ import com.easygo.model.dao.house.IHouseDAO;
 import com.easygo.model.dao.house.IHousePhotoDAO;
 import com.easygo.model.dao.order.IAssessDAO;
 import com.easygo.model.dao.order.IOrderDAO;
+import com.easygo.model.dao.user.IHouseCollectDAO;
 import com.easygo.model.dao.user.IUserDAO;
 import com.easygo.model.impl.house.IHouseDAOImpl;
 import com.easygo.model.impl.house.IHousePhotoDAOImpl;
 import com.easygo.model.impl.order.IAssessDAOImpl;
 import com.easygo.model.impl.order.IOrderDAOImpl;
+import com.easygo.model.impl.user.IHouseCollectDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.google.gson.Gson;
 
@@ -59,7 +62,6 @@ public class AppServlet extends HttpServlet {
 
 	// House的相关对象
 	IHouseDAO housedao;
-	// House相关对象
 	List<House> houseList;
 	House house;
 
@@ -67,6 +69,11 @@ public class AppServlet extends HttpServlet {
 	IHousePhotoDAO housePhotoDAO;
 	HousePhoto housePhoto;
 	List<HousePhoto> housePhotoList;
+
+	// HouseCollect的相关对象
+	HouseCollect houseCollect;
+	IHouseCollectDAO houseCollectDAO;
+	List<HouseCollect> houseCollectList;
 
 	// Assess的相关对象
 	IAssessDAO assessDAO;
@@ -102,6 +109,15 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/addUser.jsp").forward(
 					request, response);
 			break;
+		case "login":
+			/*
+			 * user_phone=request.getParameterValues(user_phone); String
+			 * user_password=request.getParameter(user_password);
+			 * 
+			 * mPrintWriter.write(userdao.login(user_no,user_password));
+			 * mPrintWriter.close();
+			 */
+			break;
 		case "addUser":
 			user = new User();
 			try {
@@ -110,7 +126,6 @@ public class AppServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			System.out.println(user.getUser_no());
-			// userdao.addUser(user);
 			if (userdao.addUser(user)) {
 				System.out.println("成功");
 			}
@@ -143,7 +158,7 @@ public class AppServlet extends HttpServlet {
 			// 得到要查询的user_no
 			user_no = Integer.valueOf(request.getParameter("no"));
 			userdao = new IUserDAOImpl();
-			user = userdao.findSpecStudent(user_no);
+			user = userdao.findSpecUserByNo(user_no);
 			// 属性名为oneUser
 			request.setAttribute("oneUser", user);
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
@@ -153,19 +168,19 @@ public class AppServlet extends HttpServlet {
 			// 得到要查询的user_no
 			user_no = Integer.valueOf(request.getParameter("no"));
 			userdao = new IUserDAOImpl();
-			user = userdao.findSpecStudent(user_no);
+			user = userdao.findSpecUserByNo(user_no);
 			// 属性名为oneUser
 			request.setAttribute("oneUser", user);
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
 					request, response);
 			break;
 		case "updateUserPhoto":
-			//得到要更新的用户id user_no,和头像地址
-			user_id=Integer.valueOf(request.getParameter("user_id"));
-			user_photo=request.getParameter("user_photo");
+			// 得到要更新的用户id user_no,和头像地址
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			user_photo = request.getParameter("user_photo");
 			userdao = new IUserDAOImpl();
-			boolean s=userdao.updateUserPhoto(user_id, user_photo);
-			System.out.print("头像上传结果"+s);
+			boolean s = userdao.updateUserPhoto(user_id, user_photo);
+			System.out.print("头像上传结果" + s);
 			break;
 
 		case "addOrders":
@@ -220,6 +235,8 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.close();
 			break;
 		/*
+		 * App传过来的参数（city,cur,userid）
+		 * 
 		 * 得到某个城市的所有房子，以及房子对应的图片，以及对应的用户，
 		 * 
 		 * 首先接收到要查询的城市（还要有一个页码，用于判断应该查询哪几个房间），然后根据城市去查询得到所有的房间，
@@ -230,7 +247,10 @@ public class AppServlet extends HttpServlet {
 			// 城市request.getParameter("city")
 			String house_address_city = "苏州市";
 			// 页码request.getParameter("cur")
-			String cur = 1 + "";
+			String cur = 2 + "";
+			// 用户id Integer.valueOf(request.getParameter("userid"))
+			user_id = 1;
+
 			houseList = new ArrayList<House>();
 			housedao = new IHouseDAOImpl();
 			// 得到了所有该城市房源
@@ -239,13 +259,16 @@ public class AppServlet extends HttpServlet {
 			// System.out.println(houseList.get(1).getHouse_address_city());
 			// 得到房源的图片
 			housePhotoDAO = new IHousePhotoDAOImpl();
-			housePhotoList = new ArrayList<>();
+			housePhotoList = new ArrayList<HousePhoto>();
 			// 得到房源的房东
 			userList = new ArrayList<>();
 			userdao = new IUserDAOImpl();
 			// 得到房源的评价
 			assessDAO = new IAssessDAOImpl();
 			assessList = new ArrayList<>();
+			// 得到用户的收藏
+			houseCollectDAO = new IHouseCollectDAOImpl();
+
 			// 遍历查询
 			for (House house : houseList) {
 				// 房源图片List
@@ -255,11 +278,15 @@ public class AppServlet extends HttpServlet {
 				// 房源的评价
 				assessList = assessDAO.selectAllAssess(house.getHouse_id());
 				// 用户List
-				user = userdao.findSpecStudent(house.getUser_id());
+				user = userdao.findSpecUserById(house.getUser_id());
 				userList.add(user);
 			}
+			// 用户收藏
+			houseCollectList = houseCollectDAO
+					.findHouseCollectByUserId(user_id);
+
 			GsonAboutHouse gsonAboutHouse = new GsonAboutHouse(houseList,
-					userList, housePhotoList, assessList);
+					userList, housePhotoList, assessList, houseCollectList);
 
 			gson = new Gson();
 			result = gson.toJson(gsonAboutHouse);
