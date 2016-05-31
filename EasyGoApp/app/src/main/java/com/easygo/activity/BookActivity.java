@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.adapter.BookContactAdapter;
-import com.easygo.beans.UserLinkman;
+import com.easygo.beans.user.UserLinkman;
 
 import java.util.ArrayList;
 import java.util.List;

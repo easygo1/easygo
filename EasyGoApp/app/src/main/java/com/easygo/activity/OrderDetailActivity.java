@@ -5,10 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.easygo.adapter.BookContactAdapter;
-import com.easygo.beans.UserLinkman;
+import com.easygo.beans.user.UserLinkman;
 
 import java.util.ArrayList;
 import java.util.List;

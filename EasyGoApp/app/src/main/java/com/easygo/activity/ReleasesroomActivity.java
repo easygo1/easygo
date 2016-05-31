@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.easygo.application.MyApplication;
-import com.easygo.beans.Order;
+import com.easygo.beans.order.Order;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;

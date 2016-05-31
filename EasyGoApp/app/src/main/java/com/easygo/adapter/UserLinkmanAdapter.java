@@ -12,10 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easygo.activity.MainActivity;
 import com.easygo.activity.R;
-import com.easygo.activity.UserLinkmanActivity;
-import com.easygo.beans.UserLinkman;
+import com.easygo.beans.user.UserLinkman;
 
 import java.util.List;
 

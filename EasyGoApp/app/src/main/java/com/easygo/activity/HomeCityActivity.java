@@ -17,24 +17,18 @@ import android.widget.Toast;
 
 import com.easygo.adapter.HouseListAdapter;
 import com.easygo.application.MyApplication;
-import com.easygo.beans.House;
+import com.easygo.beans.house.House;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.yolanda.nohttp.Headers;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
 import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

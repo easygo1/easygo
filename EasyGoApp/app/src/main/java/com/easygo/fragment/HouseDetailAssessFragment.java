@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.easygo.activity.R;
 import com.easygo.adapter.HouseAssessAdpter;
-import com.easygo.beans.HouseAssess;
+import com.easygo.beans.house.HouseAssess;
 
 import java.util.ArrayList;
 import java.util.List;

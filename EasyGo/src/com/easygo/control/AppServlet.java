@@ -42,8 +42,7 @@ import com.google.gson.Gson;
 
 @WebServlet("/appservlet")
 public class AppServlet extends HttpServlet {
-	
-	
+
 	private static final long serialVrsionUID = 1L;
 	// 用于输出数据
 	private PrintWriter mPrintWriter;
@@ -84,7 +83,6 @@ public class AppServlet extends HttpServlet {
 	Gson gson;
 	// gson.toJson()的结果
 	String result;
-	private String user_photo;
 
 	public AppServlet() {
 		super();
@@ -112,11 +110,13 @@ public class AppServlet extends HttpServlet {
 					request, response);
 			break;
 		case "login":
-			/*user_phone=request.getParameterValues(user_phone);
-			String user_password=request.getParameter(user_password);
-			
-			mPrintWriter.write(userdao.login(user_no,user_password));
-			mPrintWriter.close();*/
+			/*
+			 * user_phone=request.getParameterValues(user_phone); String
+			 * user_password=request.getParameter(user_password);
+			 * 
+			 * mPrintWriter.write(userdao.login(user_no,user_password));
+			 * mPrintWriter.close();
+			 */
 			break;
 		case "addUser":
 			user = new User();
@@ -248,7 +248,7 @@ public class AppServlet extends HttpServlet {
 			// 城市request.getParameter("city")
 			String house_address_city = "苏州市";
 			// 页码request.getParameter("cur")
-			String cur = 1 + "";
+			String cur = 2 + "";
 			// 用户id Integer.valueOf(request.getParameter("userid"))
 			user_id = 1;
 
