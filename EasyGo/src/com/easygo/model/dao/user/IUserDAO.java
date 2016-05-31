@@ -15,11 +15,14 @@ public interface IUserDAO {
 	public abstract boolean updateUser(int user_no, User user);
 
 	// 查找用户（通过账号查询）
-	public abstract User findSpecStudent(int user_no);
+	public abstract User findSpecUserByNo(int user_no);
+
+	// 查找用户（通过ID查询）
+	public abstract User findSpecUserById(int user_id);
 
 	// 所有用户
 	public abstract List<User> selectAllUser();
-	
-	//修改用户头像
-	public abstract boolean updateUserPhoto(int user_id,String user_photo);
+
+	// 修改用户头像
+	public abstract boolean updateUserPhoto(int user_id, String user_photo);
 }
