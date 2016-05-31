@@ -1,9 +1,11 @@
 package com.easygo.activity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -54,6 +56,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
     SharedPreferences.Editor mEditor;
 
     private File mCurrentPhotoFile;//获取当前相册选中的图片文件
+    private String mphotopath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -358,12 +361,31 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case TAKE_PHOTO:
-
                 //相册选取
+                if (data != null) {
+                    Uri selectedImage = data.getData();
+                    if (selectedImage != null) {
+                        new UploadTask().execute(getPhotoPath(this, selectedImage));
+                    }
+                }
                 break;
             case TAKE_CAMERA:
                 //拍照选取
+                new UploadTask().execute(mCurrentPhotoFile.getAbsolutePath());
                 break;
         }
+    }
+
+    private String getPhotoPath(Context context, Uri uri) {
+        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+        //光标
+        Cursor cursor = context.getContentResolver().query(uri, filePathColumn, null, null, null);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+        String picturePath = cursor.getString(columnIndex);
+        mphotopath = picturePath;
+        cursor.close();
+
+        return picturePath;
     }
 }

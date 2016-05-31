@@ -145,7 +145,7 @@ public class AppServlet extends HttpServlet {
 			break;
 		case "updateUserPhoto":
 			//得到要更新的用户id user_no,和头像地址
-			user_no=Integer.valueOf(request.getParameter("no"));
+			user_no=Integer.valueOf(request.getParameter("user_no"));
 			user_photo=request.getParameter("user_photo_path");
 			userdao = new IUserDAOImpl();
 			boolean s=userdao.updateUserPhoto(user_no, user_photo);
