@@ -170,11 +170,11 @@ public class IUserDAOImpl implements IUserDAO {
 
 	// 修改用户头像
 	@Override
-	public boolean updateUserPhoto(int user_no, String user_photo) {
+	public boolean updateUserPhoto(int user_id, String user_photo) {
 		try {
 			statement = connection
-					.prepareStatement("UPDATE user SET user_photo=? where user_no = ?");
-			statement.setInt(1, user_no);
+					.prepareStatement("UPDATE user SET user_photo=? where user_id = ?");
+			statement.setInt(1, user_id);
 			statement.setString(2, user_photo);
 			statement.executeUpdate();
 			return true;

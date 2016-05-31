@@ -44,6 +44,7 @@ public class AppServlet extends HttpServlet {
 	IUserDAO userdao;
 	// user的相关对象
 	List<User> userList;
+	int user_id;
 	int user_no;
 	String user_photo;//头像地址
 	User user;
@@ -145,10 +146,10 @@ public class AppServlet extends HttpServlet {
 			break;
 		case "updateUserPhoto":
 			//得到要更新的用户id user_no,和头像地址
-			user_no=Integer.valueOf(request.getParameter("user_no"));
-			user_photo=request.getParameter("user_photo_path");
+			user_id=Integer.valueOf(request.getParameter("user_id"));
+			user_photo=request.getParameter("user_photo");
 			userdao = new IUserDAOImpl();
-			boolean s=userdao.updateUserPhoto(user_no, user_photo);
+			boolean s=userdao.updateUserPhoto(user_id, user_photo);
 			System.out.print("头像上传结果"+s);
 			break;
 

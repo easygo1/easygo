@@ -24,16 +24,29 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.easygo.application.MyApplication;
+import com.easygo.beans.Order;
 import com.easygo.utils.UpYunException;
 import com.easygo.utils.UpYunUtils;
 import com.easygo.utils.Uploader;
 import com.easygo.view.MyPopupWindow;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.yolanda.nohttp.NoHttp;
+import com.yolanda.nohttp.OnResponseListener;
+import com.yolanda.nohttp.Request;
+import com.yolanda.nohttp.RequestMethod;
+import com.yolanda.nohttp.RequestQueue;
+import com.yolanda.nohttp.Response;
 
 import java.io.File;
+import java.lang.reflect.Type;
 import java.util.Calendar;
+import java.util.List;
 
 public class MyInfomationActivity extends AppCompatActivity implements View.OnClickListener {
-
+    //第三方图片存储
     private static final String DEFAULT_DOMAIN = "easygo.b0.upaiyun.com";// 空间域名
     private static final String API_KEY = "3AtEDO2ByBUZ7qGVTLPUnuKLOWM="; // 表单api验证密钥
     private static final String BUCKET = "easygo";// 空间名称
@@ -56,7 +69,50 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
     SharedPreferences.Editor mEditor;
 
     private File mCurrentPhotoFile;//获取当前相册选中的图片文件
-    private String mphotopath;
+    private String mphotopath;//相册图片的地址
+    private String mloadpath;//图片在服务器上的地址
+    private ImageView mshowImageView;//显示用户头像
+    //nohttp
+    public static final int WHAT = 1;
+    private String mUrl;
+    private RequestQueue mRequestQueue;//请求队列
+
+    private int user_no = 1;
+
+    private OnResponseListener<String> mOnResponseListener = new OnResponseListener<String>() {
+        @SuppressWarnings("unused")
+        @Override
+        public void onStart(int what) {
+
+        }
+
+        @Override
+        public void onSucceed(int what, Response<String> response) {
+            if (what == WHAT) {
+                String result = response.get();
+                //把JSON格式的字符串改为Student对象
+                Gson gson = new Gson();
+                Type type = new TypeToken<List<Order>>() {
+                }.getType();
+//                mList = gson.fromJson(result,type);
+                // mList.addAll((List<Order>)gson.fromJson(result,type));
+                // mCustomOrderAdapter.notifyDataSetChanged();
+                //表示刷新完成
+//                mPullToRefreshListView.onRefreshComplete();
+                // Log.e("list",mList.toString());
+            }
+        }
+
+        @Override
+        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+
+        }
+
+        @Override
+        public void onFinish(int what) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +137,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
 
         mSuccessButton = (Button) findViewById(R.id.myinformation_success);
 
-        mChangeHeadTextView = (TextView) findViewById(R.id.change_head_textView);
+        //mChangeHeadTextView = (TextView) findViewById(R.id.change_head_textView);
         mChangeUsernameTextView = (TextView) findViewById(R.id.change_username_textView);
         mChangeRealnameTextView = (TextView) findViewById(R.id.change_realname_textView);
         mChangeSexTextView = (TextView) findViewById(R.id.change_sex_textView);
@@ -90,7 +146,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         mChangeAutographTextView = (TextView) findViewById(R.id.change_autograph_textView);
         mChangeDateBirthTextView = (TextView) findViewById(R.id.change_date_birth_textView);
         mChangePasswordTextView = (TextView) findViewById(R.id.change_password_textView);
-
+        mshowImageView = (ImageView) findViewById(R.id.photo_show);
     }
 
     private void addListeners() {
@@ -277,7 +333,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onClick(View v) {
                 popMenus = new MyPopupWindow(MyInfomationActivity.this, itemsOnClick);
-                popMenus.showAtLocation(MyInfomationActivity.this.findViewById(R.id.change_head_textView),
+                popMenus.showAtLocation(MyInfomationActivity.this.findViewById(R.id.change_head),
                         Gravity.BOTTOM, 0, 0);
             }
         });
@@ -349,13 +405,39 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                 Log.i("test", "开始上传：" + startTime);
                 // 上传文件到对应的bucket中去。
                 str = DEFAULT_DOMAIN + Uploader.upload(policy, signature, BUCKET, params[0]);
+//                Toast.makeText(MyInfomationActivity.this, "上传用时"+(System.currentTimeMillis() - startTime) + "ms", Toast.LENGTH_SHORT).show();
                 Log.i("test", "上传完成：" + (System.currentTimeMillis() - startTime) + "ms");
             } catch (UpYunException e) {
                 e.printStackTrace();
             }
             return str;
         }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            mloadpath = result;//得到上传后的图片地址
+            Log.e("上传地址", result);
+            updateUserPhoto(result);
+        }
+
     }
+
+    private void updateUserPhoto(String path) {
+        Glide.with(this).load(path).into(mshowImageView);
+        Log.e("ok", "chenggong");
+        MyApplication myApplication = (MyApplication) this.getApplication();
+        mUrl = myApplication.getUrl();
+        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+        mRequestQueue = NoHttp.newRequestQueue();
+        //创建请求对象
+        Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
+        //添加请求参数
+        request.add("methods", "updateUserPhoto");
+        request.add("user_id", "user_id");
+        request.add("user_photo", path);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -365,6 +447,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                 if (data != null) {
                     Uri selectedImage = data.getData();
                     if (selectedImage != null) {
+                        //得到该图片在手机中的路径
                         new UploadTask().execute(getPhotoPath(this, selectedImage));
                     }
                 }
@@ -376,6 +459,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    //相册图片上传地址
     private String getPhotoPath(Context context, Uri uri) {
         String[] filePathColumn = {MediaStore.Images.Media.DATA};
         //光标
@@ -388,4 +472,11 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
 
         return picturePath;
     }
+  /*  //照相上传图片地址
+    private void getDownloadUrl() {
+        if (TextUtils.isEmpty(mloadpath)) {
+            Toast.makeText(this, "照相失败，请重试！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+    }*/
 }

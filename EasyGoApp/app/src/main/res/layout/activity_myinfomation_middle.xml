@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/change_head"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
+
         <TextView
+            android:layout_marginTop="10dp"
             style="@style/releasesroom_textview"
             android:text="更改头像"/>
-        <TextView
+
+       <!-- <TextView
             android:id="@+id/change_head_textView"
             style="@style/releasesroom_xuanze"
-            android:text="选择"/>
+            android:text="选择"/>-->
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:id="@+id/photo_show"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
+
     <TextView
         style="@style/releasesroom_line"/>
 
@@ -27,16 +40,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
+
         <TextView
             style="@style/releasesroom_textview"
             android:text="用户昵称"/>
+
         <TextView
             android:id="@+id/change_username_textView"
             style="@style/releasesroom_xuanze"
             android:text="选择"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
+
     <TextView
         style="@style/releasesroom_line"/>
 
@@ -45,16 +62,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
+
         <TextView
             style="@style/releasesroom_textview"
             android:text="真实姓名"/>
+
         <TextView
             android:id="@+id/change_realname_textView"
             style="@style/releasesroom_xuanze"
             android:text="选择"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
+
     <TextView
         style="@style/releasesroom_line"/>
 
@@ -63,16 +84,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
+
         <TextView
             style="@style/releasesroom_textview"
             android:text="所在地"/>
+
         <TextView
             android:id="@+id/change_city_textView"
             style="@style/releasesroom_xuanze"
             android:text="选择"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
+
     <TextView
         style="@style/releasesroom_line"/>
 
@@ -81,16 +106,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
+
         <TextView
             style="@style/releasesroom_textview"
             android:text="性别"/>
+
         <TextView
             android:id="@+id/change_sex_textView"
             style="@style/releasesroom_xuanze"
             android:text="选择"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
+
     <TextView
         style="@style/releasesroom_line"/>
 
@@ -99,16 +128,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
+
         <TextView
             style="@style/releasesroom_textview"
             android:text="标签"/>
+
         <TextView
             android:id="@+id/change_label_textView"
             style="@style/releasesroom_xuanze"
             android:text="选择"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
+
     <TextView
         style="@style/releasesroom_line"/>
 
@@ -117,16 +150,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
+
         <TextView
             style="@style/releasesroom_textview"
             android:text="个性签名"/>
+
         <TextView
             android:id="@+id/change_autograph_textView"
             style="@style/releasesroom_xuanze"
             android:text="选择"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
+
     <TextView
         style="@style/releasesroom_line"/>
 
@@ -135,16 +172,20 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
+
         <TextView
             style="@style/releasesroom_textview"
             android:text="出生日期"/>
+
         <TextView
             android:id="@+id/change_date_birth_textView"
             style="@style/releasesroom_xuanze"
             android:text="选择"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
+
     <TextView
         style="@style/releasesroom_line"/>
 
@@ -153,19 +194,22 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
+
         <TextView
             style="@style/releasesroom_textview"
             android:text="修改密码"/>
+
         <TextView
             android:id="@+id/change_password_textView"
             style="@style/releasesroom_xuanze"
             android:text="选择"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
+
     <TextView
         style="@style/releasesroom_line"/>
-
 
 
 </LinearLayout>
