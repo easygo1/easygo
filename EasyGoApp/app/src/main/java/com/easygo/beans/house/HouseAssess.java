@@ -1,4 +1,4 @@
-package com.easygo.beans;
+package com.easygo.beans.house;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 评价实体，测试用的
  * Created by zzia on 2016/5/24.
  */
-public class HouseAssess implements Serializable{
+public class HouseAssess implements Serializable {
     private int assesspersonphoto;
     private String assesspersonName;//评论人的姓名
     private int stars;//评论星级
@@ -18,7 +18,7 @@ public class HouseAssess implements Serializable{
         super();
     }
 
-    public HouseAssess( String assesspersonName, int stars, String assesscontent, String assesstime, String assessreply) {
+    public HouseAssess(String assesspersonName, int stars, String assesscontent, String assesstime, String assessreply) {
         this.assesspersonName = assesspersonName;
         this.stars = stars;
         this.assesscontent = assesscontent;

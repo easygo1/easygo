@@ -1,4 +1,4 @@
-package com.easygo.beans;
+package com.easygo.beans.user;
 
 import java.io.Serializable;
 

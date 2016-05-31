@@ -26,7 +26,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easygo.application.MyApplication;
-import com.easygo.beans.Order;
+import com.easygo.beans.order.Order;
 import com.easygo.utils.UpYunException;
 import com.easygo.utils.UpYunUtils;
 import com.easygo.utils.Uploader;

@@ -8,9 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.easygo.activity.R;
-import com.easygo.beans.House;
+import com.easygo.beans.house.House;
 
 import java.util.List;
 

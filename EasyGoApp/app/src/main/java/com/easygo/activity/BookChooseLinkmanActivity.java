@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.adapter.BookChooseLinkmanAdapter;
-import com.easygo.beans.UserLinkman;
+import com.easygo.beans.user.UserLinkman;
 
 import java.util.ArrayList;
 import java.util.List;
