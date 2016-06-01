@@ -1,6 +1,7 @@
 package com.easygo.activity;
 
 import android.app.DatePickerDialog;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.order.Order;
+import com.easygo.beans.User;
 import com.easygo.utils.UpYunException;
 import com.easygo.utils.UpYunUtils;
 import com.easygo.utils.Uploader;
@@ -70,14 +72,16 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
 
     private File mCurrentPhotoFile;//获取当前相册选中的图片文件
     private String mphotopath;//相册图片的地址
-    private String mloadpath;//图片在服务器上的地址
+    private String mloadpath;//图片上传到服务器的地址
     private ImageView mshowImageView;//显示用户头像
+    private ClipboardManager clipboard;
     //nohttp
     public static final int WHAT = 1;
     private String mUrl;
     private RequestQueue mRequestQueue;//请求队列
 
-    private int user_no = 1;
+    private int user_id = 1;
+    private User mUser;
 
     private OnResponseListener<String> mOnResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
@@ -120,6 +124,9 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_my_infomation);
         initView();
         addListeners();
+        /*//测试 网络图片可以
+        Glide.with(MyInfomationActivity.this).load("http://img5.imgtn.bdimg.com/it/u=3921194872,1207178069&fm=21&gp=0.jpg").into(mshowImageView);
+*/
     }
 
     private void initView() {
@@ -137,7 +144,6 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
 
         mSuccessButton = (Button) findViewById(R.id.myinformation_success);
 
-        //mChangeHeadTextView = (TextView) findViewById(R.id.change_head_textView);
         mChangeUsernameTextView = (TextView) findViewById(R.id.change_username_textView);
         mChangeRealnameTextView = (TextView) findViewById(R.id.change_realname_textView);
         mChangeSexTextView = (TextView) findViewById(R.id.change_sex_textView);
@@ -213,6 +219,18 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.change_password:
                 showChangePasswordDialog();
+                break;
+            case R.id.myinformation_success:
+                //点击完成按钮
+                MyApplication myApplication = (MyApplication) this.getApplication();
+                mUrl = myApplication.getUrl();
+                //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+                mRequestQueue = NoHttp.newRequestQueue();
+                //创建请求对象
+                Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
+                //添加请求参数
+                request.add("methods", "addHouse");
+                request.add("user_photo", mloadpath);
                 break;
         }
     }
@@ -418,26 +436,20 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
             super.onPostExecute(result);
             mloadpath = result;//得到上传后的图片地址
             Log.e("上传地址", result);
-            updateUserPhoto(result);
         }
-
     }
 
-    private void updateUserPhoto(String path) {
-        Glide.with(this).load(path).into(mshowImageView);
-        Log.e("ok", "chenggong");
-        MyApplication myApplication = (MyApplication) this.getApplication();
-        mUrl = myApplication.getUrl();
-        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
-        mRequestQueue = NoHttp.newRequestQueue();
-        //创建请求对象
-        Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
-        //添加请求参数
-        request.add("methods", "updateUserPhoto");
-        request.add("user_id", "user_id");
-        request.add("user_photo", path);
-    }
-
+   /* private void photoshow() {
+        //显示本本地图片，显示网络图片有延迟（异步）
+        if (mphotopath != null) {
+            Glide.with(MyInfomationActivity.this).load(mphotopath).into(mshowImageView);
+            mphotopath = null;
+        } else if (mloadpath != null) {
+            Glide.with(MyInfomationActivity.this).load(mCurrentPhotoFile.getAbsolutePath()).into(mshowImageView);
+            mloadpath = null;
+            mphotopath = null;
+        }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -447,14 +459,16 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                 if (data != null) {
                     Uri selectedImage = data.getData();
                     if (selectedImage != null) {
+                        Glide.with(MyInfomationActivity.this).load(getPhotoPath(this, selectedImage)).into(mshowImageView);
                         //得到该图片在手机中的路径
-                        new UploadTask().execute(getPhotoPath(this, selectedImage));
+                       // new UploadTask().execute(getPhotoPath(this, selectedImage));
                     }
                 }
                 break;
             case TAKE_CAMERA:
+                Glide.with(MyInfomationActivity.this).load(mCurrentPhotoFile.getAbsolutePath()).into(mshowImageView);
                 //拍照选取
-                new UploadTask().execute(mCurrentPhotoFile.getAbsolutePath());
+                //new UploadTask().execute(mCurrentPhotoFile.getAbsolutePath());
                 break;
         }
     }
@@ -469,14 +483,6 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         String picturePath = cursor.getString(columnIndex);
         mphotopath = picturePath;
         cursor.close();
-
         return picturePath;
     }
-  /*  //照相上传图片地址
-    private void getDownloadUrl() {
-        if (TextUtils.isEmpty(mloadpath)) {
-            Toast.makeText(this, "照相失败，请重试！", Toast.LENGTH_SHORT).show();
-            return;
-        }
-    }*/
 }

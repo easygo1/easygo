@@ -202,7 +202,6 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
 					request, response);
 			break;
-
 		case "updateUserPhoto":
 			// 得到要更新的用户id user_no,和头像地址
 			user_id = Integer.valueOf(request.getParameter("user_id"));
