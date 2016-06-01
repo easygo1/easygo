@@ -28,14 +28,14 @@ public class IUserDAOImpl implements IUserDAO {
 
 	// 
 	// 用户注册,传入昵称获取token
-	public String getToken(String user_nickname) {
+	public String getToken(String user_phone) {
 		Result token = null;
 		// 获取到token的json数据
 		SdkHttpResult result = null;
 		Gson gson = new Gson();
 		try {
-			result = ApiHttpClient.getToken(key, secret, user_nickname,
-					user_nickname,
+			result = ApiHttpClient.getToken(key, secret, user_phone,
+					user_phone,
 					"http://d3.freep.cn/3tb_1605172026345g7c564917.jpg",
 					FormatType.json);
 			token = gson.fromJson(result.toString(), Result.class);
@@ -47,6 +47,8 @@ public class IUserDAOImpl implements IUserDAO {
 		return a;
 	}
 
+	
+	
 	@Override
 	public boolean addUser(User user) {
 		boolean result = false;
@@ -88,6 +90,34 @@ public class IUserDAOImpl implements IUserDAO {
 
 		return result;
 	}
+	//注册
+	@Override
+	public boolean register(User user) {
+		boolean result = false;
+		connection = C3P0Utils.getConnection();
+		String sql = "INSERT INTO USER(user_password,user_phone,token) VALUE(?,?,?);";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, user.getUser_password());
+			statement.setString(2, user.getUser_phone());
+			//向数据库中插入token
+			statement.setString(3, getToken(user.getUser_phone()));
+			statement.executeUpdate();
+			result = true;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+
+			e.printStackTrace();
+			result = false;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+
+		return result;
+	}
+	
+	
 
 	@Override
 	public boolean delUser(int user_no) {
@@ -222,14 +252,14 @@ public class IUserDAOImpl implements IUserDAO {
 	public String login(String user_phone,String user_password) {
 		String token = null;
 		connection = C3P0Utils.getConnection();
-		String sql = "select * from user where user_phone =? and user_password=?";
+		String sql = "select token from user where user_phone =? and user_password=?";
 		try {
 			statement = connection.prepareStatement(sql);
-			statement.setString(1, user_no);
+			statement.setString(1, user_phone);
 			statement.setString(2, user_password);
 			resultSet = statement.executeQuery();
 			if(resultSet.next()){
-				token = resultSet.getString(17);
+				token = resultSet.getString(1);
 				System.out.println("数据查找成功");
 			}
 		} catch (SQLException e) {

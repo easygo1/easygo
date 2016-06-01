@@ -39,6 +39,7 @@ import com.easygo.model.impl.order.IOrderDAOImpl;
 import com.easygo.model.impl.user.IHouseCollectDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 @WebServlet("/appservlet")
 public class AppServlet extends HttpServlet {
@@ -54,6 +55,8 @@ public class AppServlet extends HttpServlet {
 	int user_no;
 	User user;
 	String user_photo;
+	String user_phone;
+	String user_password;
 
 	// Order的相关对象
 	IOrderDAO orderDAO;
@@ -109,22 +112,39 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/addUser.jsp").forward(
 					request, response);
 			break;
-		case "login":
-
-			String user_phone=request.getParameter("user_phone");
-			String user_password=request.getParameter("user_password");
 			
-			mPrintWriter.write(userdao.login(user_phone,user_password));
+		case "login":
+			user_phone=request.getParameter("user_phone");
+		    user_password=request.getParameter("user_password");
+		    System.out.println(user_phone);
+		    System.out.println(user_password);
+		    //进行登录操作
+		    user=new User();
+		    userdao= new IUserDAOImpl();
+		    String token=userdao.login(user_phone,user_password);
+		    System.out.println(token);
+			if (token != null) {
+				mPrintWriter.write(token);
+				System.out.println("登录成功");
+			}
+		    
 			mPrintWriter.close();
-
-			/*
-			 * user_phone=request.getParameterValues(user_phone); String
-			 * user_password=request.getParameter(user_password);
-			 * 
-			 * mPrintWriter.write(userdao.login(user_no,user_password));
-			 * mPrintWriter.close();
-			 */
-
+			break;
+		case "register":
+			//接收到android端传过来的手机号和密码（手机号相当于用户名）
+			user_phone=request.getParameter("user_phone");
+		    user_password=request.getParameter("user_password");
+			//对用户进行注册
+			user=new User();
+			user.setUser_phone(user_phone);
+			user.setUser_password(user_password);
+			
+			userdao= new IUserDAOImpl();
+			if (userdao.register(user)) {
+				System.out.println("注册成功");
+			}
+			//mPrintWriter.write(userdao.register(user));
+			mPrintWriter.close();
 			break;
 		case "addUser":
 			user = new User();
