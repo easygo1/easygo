@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="个人信息"
-            android:textSize="@dimen/textsize_xl"/>
+            android:textSize="@dimen/textsize_l"/>
     </RelativeLayout>
 
     <ScrollView
@@ -44,7 +44,7 @@
         android:layout_weight="1"
         android:background="@color/headerColor"
         android:textColor="@color/meuser"
-        android:textSize="28sp"
-        android:text="完成"/>
+        android:textSize="@dimen/textsize_l"
+        android:text="完  成"/>
 
 </LinearLayout>

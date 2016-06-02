@@ -51,7 +51,7 @@ public class AppServlet extends HttpServlet {
 	IUserDAO userdao;
 	List<User> userList;
 	int user_id;
-	int user_no;
+	String user_no;
 	User user;
 	String user_photo;
 
@@ -83,6 +83,7 @@ public class AppServlet extends HttpServlet {
 	Gson gson;
 	// gson.toJson()的结果
 	String result;
+	boolean flag;
 
 	public AppServlet() {
 		super();
@@ -134,7 +135,7 @@ public class AppServlet extends HttpServlet {
 		case "addUserSuccess":
 			break;
 		case "deleteUser":
-			// 得到要删除的user_no
+			/*// 得到要删除的user_no
 			user_no = Integer.valueOf(request.getParameter("no"));
 			userdao = new IUserDAOImpl();
 			boolean delResult = userdao.delUser(user_no);
@@ -145,7 +146,7 @@ public class AppServlet extends HttpServlet {
 			}
 			// request.getRequestDispatcher("jsp/user/user.jsp").forward(request,
 			// response);
-			break;
+*/			break;
 		case "getAllUser":
 			userList = new ArrayList<User>();
 			userdao = new IUserDAOImpl();
@@ -155,24 +156,50 @@ public class AppServlet extends HttpServlet {
 					response);
 			break;
 		case "findoneUser":
-			// 得到要查询的user_no
+			/*// 得到要查询的user_no
 			user_no = Integer.valueOf(request.getParameter("no"));
 			userdao = new IUserDAOImpl();
 			user = userdao.findSpecUserByNo(user_no);
 			// 属性名为oneUser
 			request.setAttribute("oneUser", user);
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
-					request, response);
+					request, response);*/
 			break;
-		case "updateUser":
-			// 得到要查询的user_no
-			user_no = Integer.valueOf(request.getParameter("no"));
+		case "updateUserByNo":
+			//根据账号更新用户信息
+			user_no = request.getParameter("user_no");
+			System.out.println("我是用户no"+user_no);
 			userdao = new IUserDAOImpl();
-			user = userdao.findSpecUserByNo(user_no);
-			// 属性名为oneUser
-			request.setAttribute("oneUser", user);
-			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
-					request, response);
+			user=new User();
+			user.setUser_realname(request.getParameter("user_realname"));
+			user.setUser_nickname(request.getParameter("user_nickname"));
+			user.setUser_photo(request.getParameter("user_photo"));
+			user.setUser_sex(request.getParameter("user_sex"));
+			user.setUser_address_province(request.getParameter("user_address_province"));
+			user.setUser_address_city(request.getParameter("user_address_city"));
+			user.setUser_mood(request.getParameter("user_mood"));
+			user.setUser_mail(request.getParameter("user_mail"));
+			user.setUser_birthday(request.getParameter("user_birthday"));
+			userdao.updateUser(user_no, user);
+			break;
+		case "updateUserById":
+			//根据账号更新用户信息
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			System.out.println("我是用户id"+user_id);
+			userdao = new IUserDAOImpl();
+			user=new User();
+			user.setUser_realname(new String(request.getParameter("user_realname").getBytes("iso8859-1"),"UTF-8"));
+			user.setUser_nickname(new String(request.getParameter("user_nickname").getBytes("iso8859-1"),"UTF-8"));
+			user.setUser_photo(request.getParameter("user_photo"));
+			user.setUser_sex(new String(request.getParameter("user_sex").getBytes("iso8859-1"),"UTF-8"));
+			user.setUser_address_province(new String(request.getParameter("user_address_province").getBytes("iso8859-1"),"UTF-8"));
+			user.setUser_address_city(new String(request.getParameter("user_address_city").getBytes("iso8859-1"),"UTF-8"));
+			user.setUser_mood(new String(request.getParameter("user_mood").getBytes("iso8859-1"),"UTF-8"));
+			user.setUser_mail(new String(request.getParameter("user_mail").getBytes("iso8859-1"),"UTF-8"));
+			user.setUser_birthday(request.getParameter("user_birthday"));
+			flag=userdao.updateUserById(user_id, user);
+			mPrintWriter.write("返回结果"+flag);
+			mPrintWriter.close();
 			break;
 		case "updateUserPhoto":
 			// 得到要更新的用户id user_no,和头像地址

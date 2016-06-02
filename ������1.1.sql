@@ -6,7 +6,7 @@ user_no        VARCHAR(30) NOT NULL UNIQUE,     #用户账号（唯一）
 user_realname  VARCHAR(20),            #用户真实姓名
 user_password  VARCHAR(20) NOT NULL,   #用户密码
 user_nickname  VARCHAR(20),            #用户昵称
-user_sex      CHAR(2),                 #性别'男'，'女'
+user_sex      CHAR(4),                 #性别'男'，'女'
 user_phone    VARCHAR(15),             #手机号11位
 user_type     TINYINT NOT NULL,        #用户类型1'房客',2'房东'
 user_photo    VARCHAR(100),            #头像//存地址

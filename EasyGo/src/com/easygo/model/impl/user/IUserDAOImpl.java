@@ -26,7 +26,7 @@ public class IUserDAOImpl implements IUserDAO {
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 
-	// 
+	//
 	// 用户注册,传入昵称获取token
 	public String getToken(String user_nickname) {
 		Result token = null;
@@ -71,7 +71,7 @@ public class IUserDAOImpl implements IUserDAO {
 			statement.setString(14, user.getUser_introduct());
 			statement.setString(15, user.getUser_birthday());
 			statement.setString(16, user.getUser_idcard());
-			//向数据库中插入token
+			// 向数据库中插入token
 			statement.setString(17, getToken(user.getUser_nickname()));
 			statement.setString(18, user.getRemarks());
 			statement.executeUpdate();
@@ -109,9 +109,31 @@ public class IUserDAOImpl implements IUserDAO {
 	}
 
 	@Override
-	public boolean updateUser(int user_no, User user) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateUser(String user_no, User user) {
+		connection = C3P0Utils.getConnection();
+		try {
+			statement = connection
+					.prepareStatement("UPDATE user SET user_realname=?,user_nickname=?,user_sex=?,user_photo=?,user_address_province=?,user_address_city=?,user_mood=?,user_mail=?,user_introduct=?,user_birthday=? where user_no = ?");
+			statement.setString(1, user.getUser_realname());// 用户真实姓名
+			statement.setString(2, user.getUser_nickname());// 用户昵称
+			statement.setString(3, user.getUser_sex());
+			statement.setString(4, user.getUser_photo());
+			statement.setString(5, user.getUser_address_province());
+			statement.setString(6, user.getUser_address_city());
+			statement.setString(7, user.getUser_mood());// 个性签名
+			statement.setString(8, user.getUser_mail());
+			statement.setString(9, user.getUser_introduct());
+			statement.setString(10, user.getUser_birthday());
+			statement.setString(11, user_no);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
 	}
 
 	@Override
@@ -217,9 +239,10 @@ public class IUserDAOImpl implements IUserDAO {
 			return false;
 		}
 	}
-	//用户登录，查找用户名和密码
+
+	// 用户登录，查找用户名和密码
 	@Override
-	public String login(String user_no,String user_password) {
+	public String login(String user_no, String user_password) {
 		String token = null;
 		connection = C3P0Utils.getConnection();
 		String sql = "select * from user where user_no =? and user_password=?";
@@ -228,14 +251,14 @@ public class IUserDAOImpl implements IUserDAO {
 			statement.setString(1, user_no);
 			statement.setString(2, user_password);
 			resultSet = statement.executeQuery();
-			if(resultSet.next()){
+			if (resultSet.next()) {
 				token = resultSet.getString(17);
 				System.out.println("数据查找成功");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		
+
 		}
 		return token;
 	}
@@ -283,6 +306,34 @@ public class IUserDAOImpl implements IUserDAO {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
 		return user;
+	}
+
+	@Override
+	public boolean updateUserById(int user_id, User user) {
+		connection = C3P0Utils.getConnection();
+		try {
+			statement = connection
+					.prepareStatement("UPDATE user SET user_realname=?,user_nickname=?,user_sex=?,user_photo=?,user_address_province=?,user_address_city=?,user_mood=?,user_mail=?,user_introduct=?,user_birthday=? where user_id = ?");
+			statement.setString(1, user.getUser_realname());// 用户真实姓名
+			statement.setString(2, user.getUser_nickname());// 用户昵称
+			statement.setString(3, user.getUser_sex());
+			statement.setString(4, user.getUser_photo());
+			statement.setString(5, user.getUser_address_province());
+			statement.setString(6, user.getUser_address_city());
+			statement.setString(7, user.getUser_mood());// 个性签名
+			statement.setString(8, user.getUser_mail());
+			statement.setString(9, user.getUser_introduct());
+			statement.setString(10, user.getUser_birthday());
+			statement.setInt(11, user_id);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
 	}
 
 }

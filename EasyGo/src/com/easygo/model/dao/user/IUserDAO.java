@@ -12,7 +12,7 @@ public interface IUserDAO {
 	public abstract boolean delUser(int user_no);
 
 	// 修改用户（通过账号修改）
-	public abstract boolean updateUser(int user_no, User user);
+	public abstract boolean updateUser(String user_no, User user);
 
 	// 查找用户（通过账号查询）
 	public abstract User findSpecUserByNo(int user_no);
@@ -28,4 +28,6 @@ public interface IUserDAO {
 	public abstract boolean updateUserPhoto(int user_id, String user_photo);
 	//用户进行登录
 	public abstract String login(String user_no,String user_password);
+	//根据用户id更新用户信息
+	public abstract boolean updateUserById(int user_id, User user);
 }

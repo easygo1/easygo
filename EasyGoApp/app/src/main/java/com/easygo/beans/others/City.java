@@ -1,4 +1,4 @@
-package com.easygo.beans;
+package com.easygo.beans.others;
 
 /**
  * author zaaach on 2016/1/26.

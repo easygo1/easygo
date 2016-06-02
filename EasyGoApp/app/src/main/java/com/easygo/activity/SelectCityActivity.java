@@ -21,7 +21,7 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.easygo.adapter.CityListAdapter;
 import com.easygo.adapter.ResultListAdapter;
-import com.easygo.beans.City;
+import com.easygo.beans.others.City;
 import com.easygo.db.DBManager;
 import com.easygo.model.LocateState;
 import com.easygo.utils.StringUtils;
