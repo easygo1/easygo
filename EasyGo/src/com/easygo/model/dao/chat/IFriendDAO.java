@@ -12,11 +12,13 @@ public interface IFriendDAO {
 	public abstract boolean addIFriend(Friend friend);
 
 	// 删除好友
-	public abstract boolean delIFriend(int friend_id);
+	public abstract boolean delIFriend(int user_id);
 
 	// 查找好友
-	public abstract boolean selectSpecStudent(int friend_id);
-	// 查询所有好友（某个用户的所有好友）
-	public abstract List<Friend> selectAllHouse();
+	public abstract boolean selectSpecStudent(int user_id);
+	//添加好友时进行筛选
+	public abstract boolean selectTwoFriend(int user_id1,int user_id2);
+	// 查询所有好友（某个用户的所有好友的id）
+	public abstract List<Integer> selectAllFriend(int user_id);
 
 }

@@ -9,9 +9,14 @@
         android:layout_height="1dp"
         android:background="#EECBAD"
         />
-    <ListView
-        android:id="@+id/friend_listview"
+    <TextView
+        android:id="@+id/friend_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textSize="20sp"
+        android:text="好友列表"/>
 </LinearLayout>

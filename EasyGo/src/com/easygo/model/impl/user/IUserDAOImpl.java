@@ -26,7 +26,7 @@ public class IUserDAOImpl implements IUserDAO {
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
 
-	// 
+	//
 	// 用户注册,传入昵称获取token
 	public String getToken(String user_phone) {
 		Result token = null;
@@ -47,8 +47,6 @@ public class IUserDAOImpl implements IUserDAO {
 		return a;
 	}
 
-	
-	
 	@Override
 	public boolean addUser(User user) {
 		boolean result = false;
@@ -73,7 +71,7 @@ public class IUserDAOImpl implements IUserDAO {
 			statement.setString(14, user.getUser_introduct());
 			statement.setString(15, user.getUser_birthday());
 			statement.setString(16, user.getUser_idcard());
-			//向数据库中插入token
+			// 向数据库中插入token
 			statement.setString(17, getToken(user.getUser_nickname()));
 			statement.setString(18, user.getRemarks());
 			statement.executeUpdate();
@@ -90,7 +88,8 @@ public class IUserDAOImpl implements IUserDAO {
 
 		return result;
 	}
-	//注册
+
+	// 注册
 	@Override
 	public boolean register(User user) {
 		boolean result = false;
@@ -100,7 +99,7 @@ public class IUserDAOImpl implements IUserDAO {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, user.getUser_password());
 			statement.setString(2, user.getUser_phone());
-			//向数据库中插入token
+			// 向数据库中插入token
 			statement.setString(3, getToken(user.getUser_phone()));
 			statement.executeUpdate();
 			result = true;
@@ -116,8 +115,58 @@ public class IUserDAOImpl implements IUserDAO {
 
 		return result;
 	}
-	
-	
+
+	// 添加好友时进行筛选
+	@Override
+	public int selectUserID(String phone) {
+		// TODO Auto-generated method stub
+		int result = -1;
+		connection = C3P0Utils.getConnection();
+		String sql = "select user_id from user where user_phone=?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, phone);
+			// 在好友表中查找是否存在这样一条数据
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				result = resultSet.getInt(1);
+				System.out.println("查找成功");
+				return result;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("查找失败");
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return result;
+	}
+
+	// 根据输入的id进行手机号的查找
+	public String selectUserPhone(int user_id) {
+		String phone=null;
+		connection = C3P0Utils.getConnection();
+		String sql = "select user_phone from user where user_id=?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, user_id);
+			// 在好友表中查找是否存在这样一条数据
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				phone = resultSet.getString(1);
+				System.out.println("查找成功");
+				return phone;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("查找失败");
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return phone;
+	}	
 
 	@Override
 	public boolean delUser(int user_no) {
@@ -247,9 +296,10 @@ public class IUserDAOImpl implements IUserDAO {
 			return false;
 		}
 	}
-	//用户登录，查找用户名和密码
+
+	// 用户登录，查找用户名和密码
 	@Override
-	public String login(String user_phone,String user_password) {
+	public String login(String user_phone, String user_password) {
 		String token = null;
 		connection = C3P0Utils.getConnection();
 		String sql = "select token from user where user_phone =? and user_password=?";
@@ -258,14 +308,13 @@ public class IUserDAOImpl implements IUserDAO {
 			statement.setString(1, user_phone);
 			statement.setString(2, user_password);
 			resultSet = statement.executeQuery();
-			if(resultSet.next()){
+			if (resultSet.next()) {
 				token = resultSet.getString(1);
 				System.out.println("数据查找成功");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		
 		}
 		return token;
 	}

@@ -30,4 +30,8 @@ public interface IUserDAO {
 	public abstract boolean updateUserPhoto(int user_id, String user_photo);
 	//用户进行登录
 	public abstract String login(String user_no,String user_password);
+	//根据输入的手机号进行user_id的查找
+	public abstract int selectUserID(String phone);
+	//根据输入的id进行手机号的查找
+	public abstract String selectUserPhone(int user_id);
 }
