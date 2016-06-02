@@ -1,8 +1,5 @@
 package com.easygo.model.dao.house;
 
-import java.util.List;
-
-import com.easygo.model.beans.chat.Friend;
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.HotCity;
 import com.easygo.model.beans.house.HouseEquipment;

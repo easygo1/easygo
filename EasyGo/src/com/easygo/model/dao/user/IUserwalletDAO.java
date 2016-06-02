@@ -1,7 +1,5 @@
 package com.easygo.model.dao.user;
 
-import java.util.List;
-
 import com.easygo.model.beans.user.User;
 import com.easygo.model.beans.user.Userwallet;
 

@@ -8,8 +8,6 @@ package com.easygo.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,57 +19,77 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.house.House;
+import com.easygo.model.beans.house.HousePhoto;
+import com.easygo.model.beans.order.Assess;
 import com.easygo.model.beans.order.Orders;
 import com.easygo.model.beans.user.User;
 import com.easygo.model.dao.house.IHouseDAO;
+import com.easygo.model.dao.house.IHousePhotoDAO;
+import com.easygo.model.dao.order.IAssessDAO;
 import com.easygo.model.dao.order.IOrderDAO;
 import com.easygo.model.dao.user.IUserDAO;
 import com.easygo.model.impl.house.IHouseDAOImpl;
+import com.easygo.model.impl.house.IHousePhotoDAOImpl;
+import com.easygo.model.impl.order.IAssessDAOImpl;
 import com.easygo.model.impl.order.IOrderDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 @WebServlet("/appservlet")
 public class AppServlet extends HttpServlet {
-
+	
+	
 	private static final long serialVrsionUID = 1L;
 	// 用于输出数据
 	private PrintWriter mPrintWriter;
 
-	// user的相关方法
-	IUserDAO userdao;
 	// user的相关对象
+	IUserDAO userdao;
 	List<User> userList;
+	int user_id;
 	int user_no;
 	User user;
+	String user_photo;
 
-	// Order的相关方法
+	// Order的相关对象
 	IOrderDAO orderDAO;
-	// House相关对象
 	List<Orders> orderList;
 	Orders orders;
-	
-	// House的相关方法
+
+	// House的相关对象
 	IHouseDAO housedao;
 	// House相关对象
 	List<House> houseList;
 	House house;
-	
+
+	// HousePhoto的相关对象
+	IHousePhotoDAO housePhotoDAO;
+	HousePhoto housePhoto;
+	List<HousePhoto> housePhotoList;
+
+	// Assess的相关对象
+	IAssessDAO assessDAO;
+	List<Assess> assessList;
+	Assess assess;
+
 	Gson gson;
-	//gson.toJson()的结果
+	// gson.toJson()的结果
 	String result;
+
 	public AppServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// 初始化
@@ -85,6 +103,13 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/addUser.jsp").forward(
 					request, response);
 			break;
+		case "login":
+			/*user_phone=request.getParameterValues(user_phone);
+			String user_password=request.getParameter(user_password);
+			
+			mPrintWriter.write(userdao.login(user_no,user_password));
+			mPrintWriter.close();*/
+			break;
 		case "addUser":
 			user = new User();
 			try {
@@ -93,7 +118,6 @@ public class AppServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			System.out.println(user.getUser_no());
-			// userdao.addUser(user);
 			if (userdao.addUser(user)) {
 				System.out.println("成功");
 			}
@@ -143,6 +167,15 @@ public class AppServlet extends HttpServlet {
 					request, response);
 			break;
 
+		case "updateUserPhoto":
+			//得到要更新的用户id user_no,和头像地址
+			user_id=Integer.valueOf(request.getParameter("user_id"));
+			user_photo=request.getParameter("user_photo");
+			userdao = new IUserDAOImpl();
+			boolean s=userdao.updateUserPhoto(user_id, user_photo);
+			System.out.print("头像上传结果"+s);
+			break;
+
 		case "addOrders":
 			orderDAO = new IOrderDAOImpl();
 			// 获取到订单信息的每个字段
@@ -179,11 +212,12 @@ public class AppServlet extends HttpServlet {
 			break;
 		// 修改订单
 		case "updateorder":
-			
+
 			break;
 		case "selectsomeOrders":
-			
+
 			break;
+		// 得到所有房间
 		case "getAllHouse":
 			houseList = new ArrayList<House>();
 			housedao = new IHouseDAOImpl();
@@ -193,29 +227,76 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
-		//根据用户的id查出此人的所有订单
+		/*
+		 * 得到某个城市的所有房子，以及房子对应的图片，以及对应的用户，
+		 * 
+		 * 首先接收到要查询的城市（还要有一个页码，用于判断应该查询哪几个房间），然后根据城市去查询得到所有的房间，
+		 * 然后根据得到的房间，查询房屋对应的图片， 然后根据房子中的房东ID去查询房东， 根据房东ID查询房东的头像，
+		 * 然后，根据房东ID找到评价表，得到评论的条数，以及星级 最后，根据使用APP的用户ID去找到收藏表， 将收藏的房屋爱心变成红色
+		 */
+		case "getAllHouseByCity":
+			// 城市request.getParameter("city")
+			String house_address_city = "苏州市";
+			// 页码request.getParameter("cur")
+			String cur = 1 + "";
+			houseList = new ArrayList<House>();
+			housedao = new IHouseDAOImpl();
+			// 得到了所有该城市房源
+			houseList = housedao.findSpecHouseByCity(house_address_city,
+					Integer.parseInt(cur));
+			// System.out.println(houseList.get(1).getHouse_address_city());
+			// 得到房源的图片
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			housePhotoList = new ArrayList<>();
+			// 得到房源的房东
+			userList = new ArrayList<>();
+			userdao = new IUserDAOImpl();
+			// 得到房源的评价
+			assessDAO = new IAssessDAOImpl();
+			assessList = new ArrayList<>();
+			// 遍历查询
+			for (House house : houseList) {
+				// 房源图片List
+				housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house
+						.getHouse_id());
+				housePhotoList.add(housePhoto);
+				// 房源的评价
+				assessList = assessDAO.selectAllAssess(house.getHouse_id());
+				// 用户List
+				user = userdao.findSpecStudent(house.getUser_id());
+				userList.add(user);
+			}
+			GsonAboutHouse gsonAboutHouse = new GsonAboutHouse(houseList,
+					userList, housePhotoList, assessList);
+
+			gson = new Gson();
+			result = gson.toJson(gsonAboutHouse);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		// 根据用户的id查出此人的所有订单
 		case "getAllOrderByUserId":
-			orderDAO= new IOrderDAOImpl();
-			orderList= new ArrayList<Orders>();
+			orderDAO = new IOrderDAOImpl();
+			orderList = new ArrayList<Orders>();
 			String userid = request.getParameter("userid");
-			//orderList = orderDAO.selectsomeOrders(userid, 1);
+			// orderList = orderDAO.selectsomeOrders(userid, 1);
 			orderList = orderDAO.selectAllOrders(1);
 			gson = new Gson();
 			result = gson.toJson(orderList);
-            //gson.tojson
-            String houseJson1 = gson.toJson(house,House.class);
-            //Log.e("ck",houseJson);
-            System.out.println(houseJson1);
-			
+			// gson.tojson
+			String houseJson1 = gson.toJson(house, House.class);
+			// Log.e("ck",houseJson);
+			System.out.println(houseJson1);
+
 			mPrintWriter.write(houseJson1);
 			mPrintWriter.close();
 			break;
-		//根据发布房源传来的数据进行添房源	
+		// 根据发布房源传来的数据进行添房源
 		case "addHouse":
 			housedao = new IHouseDAOImpl();
 			houseList = new ArrayList<House>();
 			String house_style = request.getParameter("house_style");
-			String house_most_num =request.getParameter("house_most_num");
+			String house_most_num = request.getParameter("house_most_num");
 			String house_one_price = request.getParameter("house_one_price");
 			String house_add_price = request.getParameter("house_add_price");
 			String house_limit_sex = request.getParameter("house_limit_sex");

@@ -5,7 +5,7 @@ import java.util.List;
 import com.easygo.model.beans.user.User;
 
 public interface IUserDAO {
-	// 添加用户
+	// 注册用户
 	public abstract boolean addUser(User user);
 
 	// 删除用户(通过账号删除)
@@ -19,4 +19,10 @@ public interface IUserDAO {
 
 	// 所有用户
 	public abstract List<User> selectAllUser();
+	
+	//修改用户头像
+	public abstract boolean updateUserPhoto(int user_id,String user_photo);
+	
+	//用户进行登录
+	public abstract String login(String user_no,String user_password);
 }

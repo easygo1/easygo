@@ -2,7 +2,6 @@ package com.easygo.model.dao.order;
 
 import java.util.List;
 
-import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.order.Orders;
 
 public interface IOrderDAO {

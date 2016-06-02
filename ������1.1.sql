@@ -17,7 +17,10 @@ user_mood     VARCHAR(30),             #个性签名15字内
 user_mail     VARCHAR(30),             #邮箱
 user_introduct VARCHAR(100),           #个人简介
 user_birthday	DATE,		       #出生日期
-user_idcard	VARCHAR(18)	       #身份证号					
+user_idcard	VARCHAR(18),	       #身份证号
+token VARCHAR(200),		       #token
+remarks VARCHAR(50)		       #备注
+						
 );
 #爱好表（所有爱好
 CREATE TABLE hobby(
@@ -148,6 +151,7 @@ CREATE TABLE house_photo(
 house_photo_id INT PRIMARY KEY AUTO_INCREMENT,
 house_id INT NOT NULL,
 house_photo_path VARCHAR(50),
+isFirst		  SMALLINT(2)			  #是否为封面，0不存在，1存在
 FOREIGN KEY (house_id) REFERENCES house(house_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 #收藏房源表
@@ -217,6 +221,7 @@ FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE ON UPDATE C
  CREATE TABLE assess(
 	assess_id INT PRIMARY KEY AUTO_INCREMENT, #无意义
 	order_id  INT NOT NULL,                   #订单id（外键）
+	house_id  INT NOT NULL,	                	  #房屋编号	外键
 	user_id   INT NOT NULL,                   #用户id（外键）(房客，评价人的id)
 	star      TINYINT,                        #星级
 	assess_content   VARCHAR(100),            #评价内容

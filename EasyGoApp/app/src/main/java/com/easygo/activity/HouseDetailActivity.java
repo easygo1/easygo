@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.adapter.HouseDetailAdpter;
-import com.easygo.beans.House;
 import com.easygo.fragment.HouseDetailAssessFragment;
 import com.easygo.fragment.HouseDetailInfoFragment;
 import com.easygo.fragment.HouseDetailOwnerFragment;
@@ -28,6 +27,9 @@ import java.util.List;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
+/**
+ * 具体房源页面
+ */
 public class HouseDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     ViewPager mPhotoViewPager;

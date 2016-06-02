@@ -1,5 +1,9 @@
 package com.easygo.model.impl.user;
 
+import com.easygo.utils.io.rong.ApiHttpClient;
+import com.easygo.utils.io.rong.models.FormatType;
+import com.easygo.utils.io.rong.models.SdkHttpResult;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,17 +14,44 @@ import java.util.List;
 import com.easygo.model.beans.user.User;
 import com.easygo.model.dao.user.IUserDAO;
 import com.easygo.utils.C3P0Utils;
+import com.google.gson.Gson;
+import com.easygo.model.impl.user.Result;
 
 public class IUserDAOImpl implements IUserDAO {
+
+	String key = "8w7jv4qb7hpsy";// 替换成您的appkey
+	String secret = "gVIYobVgqQe";// 替换成匹配上面key的secret
+
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
+
+	// 
+	// 用户注册,传入昵称获取token
+	public String getToken(String user_nickname) {
+		Result token = null;
+		// 获取到token的json数据
+		SdkHttpResult result = null;
+		Gson gson = new Gson();
+		try {
+			result = ApiHttpClient.getToken(key, secret, user_nickname,
+					user_nickname,
+					"http://d3.freep.cn/3tb_1605172026345g7c564917.jpg",
+					FormatType.json);
+			token = gson.fromJson(result.toString(), Result.class);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String a = token.getResult().getToken();
+		return a;
+	}
 
 	@Override
 	public boolean addUser(User user) {
 		boolean result = false;
 		connection = C3P0Utils.getConnection();
-		String sql = "INSERT INTO USER(user_no,user_realname,user_password,user_nickname,user_sex,user_phone,user_type,user_photo,user_job,user_address_province,user_address_city,user_mood,user_mail,user_introduct,user_birthday,user_idcard) VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO USER(user_no,user_realname,user_password,user_nickname,user_sex,user_phone,user_type,user_photo,user_job,user_address_province,user_address_city,user_mood,user_mail,user_introduct,user_birthday,user_idcard,token,remarks) VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		try {
 			statement = connection.prepareStatement(sql);
 			System.out.println(user.getUser_birthday());
@@ -40,7 +71,9 @@ public class IUserDAOImpl implements IUserDAO {
 			statement.setString(14, user.getUser_introduct());
 			statement.setString(15, user.getUser_birthday());
 			statement.setString(16, user.getUser_idcard());
-
+			//向数据库中插入token
+			statement.setString(17, getToken(user.getUser_nickname()));
+			statement.setString(18, user.getRemarks());
 			statement.executeUpdate();
 			result = true;
 
@@ -166,6 +199,45 @@ public class IUserDAOImpl implements IUserDAO {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
 		return userList;
+	}
+
+	// 修改用户头像
+	@Override
+	public boolean updateUserPhoto(int user_id, String user_photo) {
+		try {
+			statement = connection
+					.prepareStatement("UPDATE user SET user_photo=? where user_id = ?");
+			statement.setInt(1, user_id);
+			statement.setString(2, user_photo);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+	//用户登录，查找用户名和密码
+	@Override
+	public String login(String user_no,String user_password) {
+		String token = null;
+		connection = C3P0Utils.getConnection();
+		String sql = "select * from user where user_no =? and user_password=?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, user_no);
+			statement.setString(2, user_password);
+			resultSet = statement.executeQuery();
+			if(resultSet.next()){
+				token = resultSet.getString(17);
+				System.out.println("数据查找成功");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+		}
+		return token;
 	}
 
 }

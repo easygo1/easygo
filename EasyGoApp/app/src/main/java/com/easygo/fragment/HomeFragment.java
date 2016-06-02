@@ -15,11 +15,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.bumptech.glide.Glide;
 import com.easygo.activity.BookActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
 import com.easygo.activity.R;
+import com.easygo.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +53,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             R.drawable.home_city2,
             R.drawable.home_city3,
     };
-    private  String[] title=new String[]{"上 海","苏 州","北 京"};
+    private String[] title = new String[]{"上 海", "苏 州", "北 京"};
     //热门城市的图片
     private int[] hotImages = new int[]{
             R.drawable.home_hot1,
@@ -72,7 +77,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     List<ImageView> mHomePageHotList;
     List<ImageView> mHomePageLocalList;
     //城市中的控件
-    Button mCityLeft,mCityRight,mHomeHotLeft,mHomeHotRight,mHomeLocalLeft,mHomeLocalRight;
+    Button mCityLeft, mCityRight, mHomeHotLeft, mHomeHotRight, mHomeLocalLeft, mHomeLocalRight;
     TextView mCityText;
 
     //第三步：确定适配器，这里采用PagerAdapter
@@ -83,10 +88,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private ScheduledExecutorService scheduledExecutorService;
     //自动播放时使用的变量
     private int currentItem;
-   /* //黑点的集合
-    private List<View> dots;
-    //记录上一次点的位置
-    private int oldPosition = 0;*/
+    /* //黑点的集合
+     private List<View> dots;
+     //记录上一次点的位置
+     private int oldPosition = 0;*/
+    //定位
+    private AMapLocationClient mLocationClient;
+    private TextView mLocationTextView;
 
     @Nullable
     @Override
@@ -103,6 +111,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         initHomePagerLocal();
 
         addListener();
+        //初始化位置
+        initLocation();
         return mView;
     }
 
@@ -114,12 +124,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mHomeLocalLeft.setOnClickListener(this);
         mHomeLocalRight.setOnClickListener(this);
     }
+
     //监听事件按钮的实现
     @Override
     public void onClick(View v) {
-        int id=v.getId();
+        int id = v.getId();
 
-        switch (id){
+        switch (id) {
             case R.id.left_city_btn:
                 mCityViewPager.arrowScroll(1);
                 break;
@@ -140,6 +151,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
     private void initViews() {
         //滑动屏幕控件初始化
         mAdvertViewPager = (ViewPager) mView.findViewById(R.id.homepage_advert_viewpager);
@@ -147,13 +159,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mHotViewPager = (ViewPager) mView.findViewById(R.id.homepage_hot_viewpager);
         mLocalViewPager = (ViewPager) mView.findViewById(R.id.homepage_local_viewpager);
         //按钮，文本初始化
-        mCityLeft= (Button) mView.findViewById(R.id.left_city_btn);
-        mCityRight= (Button) mView.findViewById(R.id.right_city_btn);
-        mHomeHotLeft= (Button) mView.findViewById(R.id.left_home_hot_btn);
-        mHomeHotRight= (Button) mView.findViewById(R.id.right_home_hot_btn);
-        mHomeLocalLeft= (Button) mView.findViewById(R.id.left_home_local_btn);
-        mHomeLocalRight= (Button) mView.findViewById(R.id.right_home_local_btn);
-        mCityText= (TextView) mView.findViewById(R.id.city_text);
+        mCityLeft = (Button) mView.findViewById(R.id.left_city_btn);
+        mCityRight = (Button) mView.findViewById(R.id.right_city_btn);
+        mHomeHotLeft = (Button) mView.findViewById(R.id.left_home_hot_btn);
+        mHomeHotRight = (Button) mView.findViewById(R.id.right_home_hot_btn);
+        mHomeLocalLeft = (Button) mView.findViewById(R.id.left_home_local_btn);
+        mHomeLocalRight = (Button) mView.findViewById(R.id.right_home_local_btn);
+        mCityText = (TextView) mView.findViewById(R.id.city_text);
+        mLocationTextView= (TextView) mView.findViewById(R.id.location_my);
     }
 
     private void initHomePagerAdvert() {
@@ -303,7 +316,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 container.addView(mHomePageHotList.get(position));
 
                 //跳转到具体房源页面
-               mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
+                mHomePageHotList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), HouseDetailActivity.class);
@@ -365,6 +378,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 return mHomePageLocalList.get(position);
             }
         });
+    }
+//首页定位初始化
+    private void initLocation() {
+        mLocationClient = new AMapLocationClient(getActivity());
+        AMapLocationClientOption option = new AMapLocationClientOption();
+        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        option.setOnceLocation(true);
+        mLocationClient.setLocationOption(option);
+        mLocationClient.setLocationListener(new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                if (aMapLocation != null) {
+                    if (aMapLocation.getErrorCode() == 0) {
+                        String city = aMapLocation.getCity();
+                        String district = aMapLocation.getDistrict();
+                        String location = StringUtils.extractLocation(city, district);
+                        mLocationTextView.setText(location);
+                    }
+                }
+            }
+        });
+        mLocationClient.startLocation();
+
     }
 
     /**

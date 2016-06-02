@@ -2,11 +2,11 @@ package com.easygo.application;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.yolanda.nohttp.Logger;
 import com.yolanda.nohttp.NoHttp;
 
-import org.xutils.BuildConfig;
-import org.xutils.x;
+import io.rong.imkit.RongIM;
 
 
 public class MyApplication extends Application{
@@ -23,8 +23,10 @@ public class MyApplication extends Application{
 //        x.Ext.init(this);
 //        // 是否输出debug日志, 开启debug会影响性能.
 //        x.Ext.setDebug(BuildConfig.DEBUG);
-        Logger.setDebug(true);// 开始NoHttp的调试模式, 这样就能看到请求过程和日志
-
+        Logger.setDebug(true);// 开始NoHttp调试模式, 这样就能看到请求过程和日志
+        RongIM.init(this);
+        // the following line is important
+        Fresco.initialize(getApplicationContext());
     }
 
     public String getUrl() {

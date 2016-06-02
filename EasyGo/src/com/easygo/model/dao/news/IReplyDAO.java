@@ -3,7 +3,6 @@ package com.easygo.model.dao.news;
 import java.util.List;
 
 import com.easygo.model.beans.chat.Reply;
-import com.easygo.model.beans.house.House;
 
 public interface IReplyDAO {
 	/**
