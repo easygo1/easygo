@@ -9,7 +9,7 @@ import io.rong.imkit.RongIM;
 
 
 public class MyApplication extends Application{
-    private String url = "http://10.201.1.167:8080/EasyGo/appservlet";
+    private String url = "http://10.201.1.173:8080/EasyGo/appservlet";
 
    //Application的onCreate早于所有的Activity的onCreate方法
     @Override

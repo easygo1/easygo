@@ -269,6 +269,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 //滑动时设置监听
                 mCityText.setText(title[position]);//滑动时更改名字
+
             }
 
             @Override
