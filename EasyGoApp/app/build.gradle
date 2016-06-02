@@ -18,8 +18,8 @@ android {
         }
     }
 }
-repositories{
-    flatDir{
+repositories {
+    flatDir {
         dirs 'libs'//存放aar的路径
     }
 }
@@ -27,15 +27,8 @@ repositories{
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.loopeer.android.thirdparty.pulltorefresh:Android-PullToRefresh:2.1.1'
-    compile 'org.xutils:xutils:3.3.34'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.google.code.gson:gson:2.6.2'
     compile files('libs/AMap_Location_v2.3.0_20160112.jar')
     compile files('libs/afinal_0.5.1_bin.jar')
-    compile 'com.yolanda.nohttp:nohttp:+'
-    compile 'com.lzy.widget:ninegridview:0.1.4'
     compile name: 'SMSSDK-2.0.2', ext: 'aar'
     compile name: 'SMSSDKGUI-2.0.2', ext: 'aar'
     compile files('libs/ShareSDK-Core-2.7.2.jar')
@@ -49,4 +42,12 @@ dependencies {
     compile files('libs/httpcore-4.2.1.jar')
     compile project(':IMKit')
     compile 'jp.wasabeef:glide-transformations:2.0.1'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.loopeer.android.thirdparty.pulltorefresh:Android-PullToRefresh:2.1.1'
+    compile 'org.xutils:xutils:3.3.34'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.yolanda.nohttp:nohttp:+'
+    compile 'com.lzy.widget:ninegridview:0.1.4'
+    compile 'com.android.support:support-v4:23.3.0'
 }

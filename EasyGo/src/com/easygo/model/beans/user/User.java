@@ -25,6 +25,15 @@ public class User {
 		super();
 	}
 
+	public User(int user_id, String user_password, String user_phone,
+			String token) {
+		super();
+		this.user_id = user_id;
+		this.user_password = user_password;
+		this.user_phone = user_phone;
+		this.token = token;
+	}
+
 	public User(String user_no, String user_realname, String user_password,
 			String user_nickname, String user_sex, String user_phone,
 			int user_type, String user_photo, String user_job,

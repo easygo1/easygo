@@ -38,4 +38,7 @@
     <string name="located_failed">定位失败</string>
     <string name="linkman">常用入住人</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

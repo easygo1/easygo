@@ -11,23 +11,18 @@
         android:gravity="center">
 
         <TextView
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="9dp"
             style="@style/releasesroom_textview"
             android:text="更改头像"/>
 
-       <!-- <TextView
-            android:id="@+id/change_head_textView"
-            style="@style/releasesroom_xuanze"
-            android:text="选择"/>-->
-
-        <ImageView
-            android:scaleType="fitXY"
+        <com.easygo.view.CircleImageView
+            android:scaleType="fitStart"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:id="@+id/photo_show"/>
-
+            android:id="@+id/photo_show"
+            android:src="@mipmap/user_photo_defult"/>
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
