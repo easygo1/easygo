@@ -1,6 +1,5 @@
 package com.easygo.fragment;
 
-import android.app.Application;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +12,7 @@ import android.widget.ListView;
 import com.easygo.activity.R;
 import com.easygo.adapter.CustomOrderAdapter;
 import com.easygo.application.MyApplication;
-import com.easygo.beans.Order;
+import com.easygo.beans.order.Order;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;

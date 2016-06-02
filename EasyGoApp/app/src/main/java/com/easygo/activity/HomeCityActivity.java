@@ -1,9 +1,13 @@
 package com.easygo.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,24 +21,22 @@ import android.widget.Toast;
 
 import com.easygo.adapter.HouseListAdapter;
 import com.easygo.application.MyApplication;
-import com.easygo.beans.House;
+import com.easygo.beans.gson.GsonAboutHouse;
+import com.easygo.beans.house.House;
+import com.easygo.beans.house.HouseCollect;
+import com.easygo.beans.house.HousePhoto;
+import com.easygo.beans.user.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.yolanda.nohttp.Headers;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
 import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.xutils.common.Callback;
-import org.xutils.http.RequestParams;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -45,17 +47,22 @@ public class HomeCityActivity extends AppCompatActivity {
     /**
      * 用来标志请求的what, 类似handler的what一样，这里用来区分请求.
      */
-    private static final int NOHTTP_WHAT_TEST = 0x001;
+    private static final int NOHTTP_WHAT_LOAD = 0x001;
+    public static final int NOHTTP_WHAT_DELETECOLLECT = 2;
+    public static final int NOHTTP_WHAT_ADDCOLLECT = 3;
 
-
-
-    /**
-     * 请求队列.
-     */
+    //请求队列
     private RequestQueue requestQueue;
+    Request<String> request;
+    //PullToRefreshListView实例
+    PullToRefreshListView mPullToRefreshListView;
+    //item中需要使用的数据List
+    List<House> mHouseList = null;
+    List<User> mUserList = null;
+    List<HousePhoto> mHousePhotoList = null;
+    List<Integer> mAssessList = null;
+    List<HouseCollect> mHouseCollectList = null;
 
-    PullToRefreshListView mPullToRefreshListView;//PullToRefreshListView实例
-    List<House> mList = null;
     HouseListAdapter mAdapter;
     String mPath;
     //筛选菜单用到的控件
@@ -68,107 +75,43 @@ public class HomeCityActivity extends AppCompatActivity {
     private String pricesort[];
     private String checknum[];
 
+    //下载数据时用的参数
+    private String city = "苏州市";
+    private int cur = 1;
+    private int userid = 1;
+    GsonAboutHouse gsonAboutHouse;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_city);
         initViews();
         initData();
-        //2.绑定模拟的数据
-        loadData();
-
+        //2.初始化数据
+        loadData(city, cur, userid);
         //3.设置上拉加载下拉刷新组件和事件监听
         //设置刷新模式为BOTH才可以上拉和下拉都能起作用,必须写在前面
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         //设置刷新时头部的状态
         initRefreshListView();
-        //设置上拉和下拉时候的监听器
-        mPullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
-            //下拉时
-            @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                new LoadDataAsyncTask(HomeCityActivity.this).execute();//执行下载数据
-            }
+        //添加各种监听
+        addListener();
 
-            @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                new LoadDataAsyncTask(HomeCityActivity.this).execute();
-            }
-        });
-        mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeCityActivity.this, "房源" + position, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //适配器
-        housetype_adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, data_list_housetype, housetype);
-        sexs_adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, data_list_sexs, sexs);
-        pricesort_adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, data_list_pricesort, pricesort);
-        checknum_adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, data_list_checknum, checknum);
-        //设置样式
-        housetype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sexs_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        pricesort_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        checknum_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //加载适配器
-        housespinner.setAdapter(housetype_adapter);
-        sexspinner.setAdapter(sexs_adapter);
-        pricespinner.setAdapter(pricesort_adapter);
-        checkspinner.setAdapter(checknum_adapter);
-
-        initLinsenter();
     }
 
-    private void initLinsenter() {
-        housespinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeCityActivity.this,"房源类型"+housetype[position],Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        sexspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeCityActivity.this,"性别限制"+sexs[position],Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        pricespinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeCityActivity.this,"价格限制"+pricesort[position],Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        checkspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeCityActivity.this,"入住时间"+checknum[position],Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-    }
 
     private void initData() {
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
-        mList = new ArrayList<>();
-        mAdapter = new HouseListAdapter(HomeCityActivity.this, mList);
+        //集合的初始化
+        mHouseList = new ArrayList<>();
+        mUserList = new ArrayList<>();
+        mHousePhotoList = new ArrayList<>();
+        mAssessList = new ArrayList<>();
+        mHouseCollectList = new ArrayList<>();
+        //适配器初始化
+        mAdapter = new HouseListAdapter(HomeCityActivity.this,
+                mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList);
         mPullToRefreshListView.setAdapter(mAdapter);
 
         //筛选条件数据
@@ -198,6 +141,26 @@ public class HomeCityActivity extends AppCompatActivity {
         for (int i = 0; i < checknum.length; i++) {
             data_list_checknum.add(checknum[i]);
         }
+
+        //筛选的适配器
+        housetype_adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item,
+                data_list_housetype, housetype);
+        sexs_adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item,
+                data_list_sexs, sexs);
+        pricesort_adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item,
+                data_list_pricesort, pricesort);
+        checknum_adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item,
+                data_list_checknum, checknum);
+        //设置样式
+        housetype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sexs_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        pricesort_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        checknum_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //加载适配器
+        housespinner.setAdapter(housetype_adapter);
+        sexspinner.setAdapter(sexs_adapter);
+        pricespinner.setAdapter(pricesort_adapter);
+        checkspinner.setAdapter(checknum_adapter);
     }
 
     private void initViews() {
@@ -209,22 +172,103 @@ public class HomeCityActivity extends AppCompatActivity {
         checkspinner = (Spinner) findViewById(R.id.checkspinner);
     }
 
-    private int count = 1;
+    private void addListener() {
+        //设置上拉和下拉时候的监听器
+        mPullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            //下拉时
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                cur = 1;
+                //清空List
+                mHouseList.clear();
+                mUserList.clear();
+                mHousePhotoList.clear();
+                mAssessList.clear();
+                mHouseCollectList.clear();
+                new LoadDataAsyncTask(HomeCityActivity.this).execute();//执行下载数据
+            }
 
-    //模拟数据
-    public void loadData() {
+            //上拉时
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                //页码加一
+                cur++;
+                new LoadDataAsyncTask(HomeCityActivity.this).execute();
+            }
+        });
+        //点击进入对应的房源
+        mPullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //得到详情页面需要的房屋信息，房东信息，
+                //传参
+                Intent intent = new Intent(HomeCityActivity.this, HouseDetailActivity.class);
+                int houseid = mHouseList.get(position).getHouse_id();
+                intent.putExtra("houseid", houseid);
+                startActivity(intent);
+            }
+        });
+        //筛选相关的
+        housespinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(HomeCityActivity.this,"房源类型"+housetype[position],Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        sexspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(HomeCityActivity.this,"性别限制"+sexs[position],Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        pricespinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(HomeCityActivity.this,"价格限制"+pricesort[position],Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        checkspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(HomeCityActivity.this,"入住时间"+checknum[position],Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+
+    //获取数据(传入查询的城市，页码，请求的用户id)
+    public void loadData(String newCity, int newCur, int user_id) {
         // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
         requestQueue = NoHttp.newRequestQueue();
         // 创建请求对象
-        Request<String> request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
+        request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
         // 添加请求参数
-        request.add("methods", "getAllHouse");
+        request.add("methods", "getAllHouseByCity");
+        request.add("city", newCity);
+        request.add("cur", newCur);
+        request.add("userid", user_id);
         /*
          * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
 		 * request: 请求对象
 		 * onResponseListener 回调对象，接受请求结果
 		 */
-        requestQueue.add(NOHTTP_WHAT_TEST, request, onResponseListener);
+        requestQueue.add(NOHTTP_WHAT_LOAD, request, onResponseListener);
 
     }
 
@@ -232,14 +276,25 @@ public class HomeCityActivity extends AppCompatActivity {
         @SuppressWarnings("unused")
         @Override
         public void onSucceed(int what, Response<String> response) {
-            if (what == NOHTTP_WHAT_TEST) {
+            if (what == NOHTTP_WHAT_LOAD) {
                 // 请求成功
                 String result = response.get();// 响应结果
+                Log.e("tag", result);
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
-                Type type = new TypeToken<List<House>>(){}.getType();
-//                mList = gson.fromJson(result,type);
-                mList.addAll((List<House>)gson.fromJson(result,type));
+
+                Type type = new TypeToken<GsonAboutHouse>() {
+                }.getType();
+                gsonAboutHouse = gson.fromJson(result, type);
+                if (gsonAboutHouse.getHouseList().size() == 0) {
+                    Toast.makeText(HomeCityActivity.this, "没有更多房源了~", Toast.LENGTH_SHORT).show();
+                }
+                mHouseList.addAll(gsonAboutHouse.getHouseList());
+                mUserList.addAll(gsonAboutHouse.getUserList());
+                mHousePhotoList.addAll(gsonAboutHouse.getHousePhotoList());
+                mAssessList.addAll(gsonAboutHouse.getAssessList());
+                mHouseCollectList.addAll(gsonAboutHouse.getHouseCollectList());
+                //通知刷新
                 mAdapter.notifyDataSetChanged();
                 //表示刷新完成
                 mPullToRefreshListView.onRefreshComplete();
@@ -249,12 +304,12 @@ public class HomeCityActivity extends AppCompatActivity {
         @Override
         public void onStart(int what) {
             // 请求开始，这里可以显示一个dialog
-            Toast.makeText(HomeCityActivity.this, "开始了", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(HomeCityActivity.this, "开始了", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onFinish(int what) {
-            Toast.makeText(HomeCityActivity.this, "结束了", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(HomeCityActivity.this, "结束了", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -291,22 +346,26 @@ public class HomeCityActivity extends AppCompatActivity {
     static class LoadDataAsyncTask extends AsyncTask<Void, Void, String> {//定义返回值的类型
         //后台处理
         private HomeCityActivity activity;
+        private String city;
+        private int cur;
+        private int userid;
 
+        //初始化三个参数
         public LoadDataAsyncTask(HomeCityActivity activity) {
             this.activity = activity;
+            city = activity.city;
+            cur = activity.cur;
+            userid = activity.userid;
         }
+
         @Override
         protected String doInBackground(Void... params) {
-            //用一个线程来模拟刷新
-           /* try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
+//            Log.e("zz",""+cur);
             //加载数据
-            activity.loadData();
+            activity.loadData(city, cur, userid);
             return "success";
         }
+
         //  onPostExecute（）是对返回的值进行操作
         @Override
         protected void onPostExecute(String s) {
@@ -376,8 +435,56 @@ public class HomeCityActivity extends AppCompatActivity {
                     .findViewById(android.R.id.text1);
             tv.setText(items[position]);
             tv.setGravity(Gravity.CENTER_HORIZONTAL);
-            tv.setTextSize(14);
+            tv.setTextSize(18);
             return convertView;
         }
     }
+
+    //删除一条收藏
+    public void deleteCollect(int house_collect_id) {
+        // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
+        requestQueue = NoHttp.newRequestQueue();
+        // 创建请求对象
+        request = NoHttp.createStringRequest(new MyApplication().getUrl(), RequestMethod.POST);
+        // 添加请求参数
+        request.add("methods", "deleteHouseCollect");
+        request.add("houseCollectId", house_collect_id);
+        /*
+         * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
+		 * request: 请求对象
+		 * onResponseListener 回调对象，接受请求结果
+		 */
+        requestQueue.add(NOHTTP_WHAT_DELETECOLLECT, request, onResponseListener);
+
+    }
+
+    //增加一条收藏
+    public void addCollect(int user_id, int house_id) {
+        // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
+        requestQueue = NoHttp.newRequestQueue();
+        // 创建请求对象
+        request = NoHttp.createStringRequest(new MyApplication().getUrl(), RequestMethod.POST);
+        // 添加请求参数
+        request.add("methods", "addHouseCollect");
+        request.add("userid", user_id);
+        request.add("houseid", house_id);
+        /*
+         * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
+		 * request: 请求对象
+		 * onResponseListener 回调对象，接受请求结果
+		 */
+        requestQueue.add(NOHTTP_WHAT_ADDCOLLECT, request, onResponseListener);
+
+    }
+    /*public Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case 1:
+                    addCollect(msg.arg1,msg.arg2);
+                    break;
+            }
+        }
+    };*/
 }

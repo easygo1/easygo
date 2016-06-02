@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.easygo.activity.R;
-import com.easygo.beans.Order;
+import com.easygo.beans.order.Order;
 
 import java.util.List;
 

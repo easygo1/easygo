@@ -1,4 +1,4 @@
-package com.easygo.beans;
+package com.easygo.beans.order;
 
 import java.io.Serializable;
 

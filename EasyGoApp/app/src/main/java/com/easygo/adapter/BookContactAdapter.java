@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.easygo.activity.R;
-import com.easygo.beans.UserLinkman;
+import com.easygo.beans.user.UserLinkman;
 
 import java.util.List;
 

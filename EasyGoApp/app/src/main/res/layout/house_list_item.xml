@@ -98,6 +98,7 @@
             android:rating="5"/>
 
         <TextView
+            android:id="@+id/homepage_city_item_assess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/homepage_city_item_text_name"

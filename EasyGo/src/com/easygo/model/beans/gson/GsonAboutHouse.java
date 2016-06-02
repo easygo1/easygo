@@ -1,10 +1,11 @@
 package com.easygo.model.beans.gson;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.easygo.model.beans.house.House;
+import com.easygo.model.beans.house.HouseCollect;
 import com.easygo.model.beans.house.HousePhoto;
-import com.easygo.model.beans.order.Assess;
 import com.easygo.model.beans.user.User;
 
 /**
@@ -14,23 +15,30 @@ import com.easygo.model.beans.user.User;
  * 
  *       APP请求房源列表时，封装JSON时使用的Beans
  */
-public class GsonAboutHouse {
+public class GsonAboutHouse implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	List<House> houseList;
 	List<User> userList;
 	List<HousePhoto> housePhotoList;
-	List<Assess> assessList;
+	List<Integer> assessList;
+	List<HouseCollect> houseCollectList;
 
 	public GsonAboutHouse() {
 		super();
 	}
 
 	public GsonAboutHouse(List<House> houseList, List<User> userList,
-			List<HousePhoto> housePhotoList, List<Assess> assessList) {
+			List<HousePhoto> housePhotoList, List<Integer> assessList,
+			List<HouseCollect> houseCollectList) {
 		super();
 		this.houseList = houseList;
 		this.userList = userList;
 		this.housePhotoList = housePhotoList;
 		this.assessList = assessList;
+		this.houseCollectList = houseCollectList;
 	}
 
 	public List<House> getHouseList() {
@@ -57,12 +65,20 @@ public class GsonAboutHouse {
 		this.housePhotoList = housePhotoList;
 	}
 
-	public List<Assess> getAssessList() {
+	public List<Integer> getAssessList() {
 		return assessList;
 	}
 
-	public void setAssessList(List<Assess> assessList) {
+	public void setAssessList(List<Integer> assessList) {
 		this.assessList = assessList;
+	}
+
+	public List<HouseCollect> getHouseCollectList() {
+		return houseCollectList;
+	}
+
+	public void setHouseCollectList(List<HouseCollect> houseCollectList) {
+		this.houseCollectList = houseCollectList;
 	}
 
 }

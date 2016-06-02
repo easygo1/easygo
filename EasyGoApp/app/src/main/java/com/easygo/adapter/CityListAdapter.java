@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.easygo.activity.R;
-import com.easygo.beans.City;
+import com.easygo.beans.others.City;
 import com.easygo.model.LocateState;
 import com.easygo.utils.PinyinUtils;
 import com.easygo.view.WrapHeightGridView;

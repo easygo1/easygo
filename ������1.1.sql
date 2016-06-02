@@ -6,7 +6,7 @@ user_no        VARCHAR(30) NOT NULL UNIQUE,     #用户账号（唯一）
 user_realname  VARCHAR(20),            #用户真实姓名
 user_password  VARCHAR(20) NOT NULL,   #用户密码
 user_nickname  VARCHAR(20),            #用户昵称
-user_sex      CHAR(2),                 #性别'男'，'女'
+user_sex      CHAR(4),                 #性别'男'，'女'
 user_phone    VARCHAR(15),             #手机号11位
 user_type     TINYINT NOT NULL,        #用户类型1'房客',2'房东'
 user_photo    VARCHAR(100),            #头像//存地址
@@ -175,12 +175,12 @@ equipment_name VARCHAR(20)                  #设施名称
 
 #房屋与设施关系表(一个房源多个设施)WIFI，电视，洗衣机，毛巾...
 CREATE TABLE house_equipment(
-house_equipment_no INT PRIMARY KEY AUTO_INCREMENT,#无意义
+house_equipment_id INT PRIMARY KEY AUTO_INCREMENT,#无意义
 house_id INT NOT NULL,                            #房源编号
 equipment_id INT NOT NULL,                         #设施编号
 FOREIGN KEY (house_id) REFERENCES house(house_id) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (equipment_id) REFERENCES equipment(equipment_id) ON DELETE CASCADE ON UPDATE CASCADE
-);
+); 
 
 
 

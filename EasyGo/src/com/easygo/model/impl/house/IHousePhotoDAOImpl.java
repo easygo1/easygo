@@ -34,7 +34,8 @@ public class IHousePhotoDAOImpl implements IHousePhotoDAO {
 		// TODO Auto-generated method stub
 		List<HousePhoto> housePhotoList = new ArrayList<HousePhoto>();
 		connection = C3P0Utils.getConnection();
-		String sql = "select * from house where house_id =?";
+		String sql = "select * from house_photo where house_id = ?";
+
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, house_id);
@@ -44,9 +45,9 @@ public class IHousePhotoDAOImpl implements IHousePhotoDAO {
 				int house_id1 = resultSet.getInt(2);
 				String house_photo_path = resultSet.getString(3);
 				int isFirst = resultSet.getInt(4);
-				HousePhoto housePhtoo = new HousePhoto(house_photo_id,
+				HousePhoto housePhoto = new HousePhoto(house_photo_id,
 						house_id1, house_photo_path, isFirst);
-				housePhotoList.add(housePhtoo);
+				housePhotoList.add(housePhoto);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -62,7 +63,7 @@ public class IHousePhotoDAOImpl implements IHousePhotoDAO {
 		// TODO Auto-generated method stub
 		HousePhoto housePhoto = new HousePhoto();
 		connection = C3P0Utils.getConnection();
-		String sql = "select * from house where house_id =?";
+		String sql = "select * from house_photo where house_id =? and isFirst = 1";
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, house_id);
@@ -72,6 +73,7 @@ public class IHousePhotoDAOImpl implements IHousePhotoDAO {
 				int house_id1 = resultSet.getInt(2);
 				String house_photo_path = resultSet.getString(3);
 				int isFirst = resultSet.getInt(4);
+
 				housePhoto = new HousePhoto(house_photo_id, house_id1,
 						house_photo_path, isFirst);
 

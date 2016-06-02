@@ -1,6 +1,8 @@
 package com.easygo.activity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +13,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,24 +27,28 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easygo.application.MyApplication;
-import com.easygo.beans.Order;
+import com.easygo.beans.user.User;
 import com.easygo.utils.UpYunException;
 import com.easygo.utils.UpYunUtils;
 import com.easygo.utils.Uploader;
+import com.easygo.view.CityDialog;
 import com.easygo.view.MyPopupWindow;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
 import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
+import com.yolanda.nohttp.error.ClientError;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.NotFoundCacheError;
+import com.yolanda.nohttp.error.ServerError;
+import com.yolanda.nohttp.error.TimeoutError;
+import com.yolanda.nohttp.error.URLError;
+import com.yolanda.nohttp.error.UnKnownHostError;
 
 import java.io.File;
-import java.lang.reflect.Type;
 import java.util.Calendar;
-import java.util.List;
 
 public class MyInfomationActivity extends AppCompatActivity implements View.OnClickListener {
     //第三方图片存储
@@ -55,8 +60,8 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
     public static final int TAKE_PHOTO = 1;
     public static final int TAKE_CAMERA = 0;
     private ImageView mReturnImageView;
-    private RelativeLayout mChangeHeadLayout, mChangeUsernameLayout, mChangeRealnameLayout, mChangeCityLayout, mChangeSexLayout, mChangeLabelLayout, mChangeAutographLayout, mChangeDateBirthLayout, mChangePasswordLayout;
-    private TextView mChangeHeadTextView, mChangeUsernameTextView, mChangeRealnameTextView, mChangeCityTextView, mChangeSexTextView, mChangeLabelTextView, mChangeAutographTextView, mChangeDateBirthTextView, mChangePasswordTextView;
+    private RelativeLayout mChangeHeadLayout, mChangeUsernameLayout, mChangeRealnameLayout, mChangeCityLayout, mChangeSexLayout, mChangeLabelLayout, mChangeAutographLayout, mChangeDateBirthLayout, mChangePasswordLayout, mChangeInstroductLayout, mChangeEmailLayout;
+    private TextView mChangeHeadTextView, mChangeUsernameTextView, mChangeRealnameTextView, mChangeCityTextView, mChangeSexTextView, mChangeLabelTextView, mChangeAutographTextView, mChangeDateBirthTextView, mChangePasswordTextView, mChangeInstroductTextview, mChangeEmailTextView;
     private Button mSuccessButton;
     private MyPopupWindow popMenus;
 
@@ -70,14 +75,17 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
 
     private File mCurrentPhotoFile;//获取当前相册选中的图片文件
     private String mphotopath;//相册图片的地址
-    private String mloadpath;//图片在服务器上的地址
+    private String mloadpath;//图片上传到服务器的地址
     private ImageView mshowImageView;//显示用户头像
+    private ClipboardManager clipboard;
+    private CityDialog dialog;
     //nohttp
     public static final int WHAT = 1;
     private String mUrl;
     private RequestQueue mRequestQueue;//请求队列
 
-    private int user_no = 1;
+    private int user_id = 6;//在偏好设置中获取
+    private User mUser;
 
     private OnResponseListener<String> mOnResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
@@ -90,21 +98,31 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         public void onSucceed(int what, Response<String> response) {
             if (what == WHAT) {
                 String result = response.get();
-                //把JSON格式的字符串改为Student对象
-                Gson gson = new Gson();
-                Type type = new TypeToken<List<Order>>() {
-                }.getType();
-//                mList = gson.fromJson(result,type);
-                // mList.addAll((List<Order>)gson.fromJson(result,type));
-                // mCustomOrderAdapter.notifyDataSetChanged();
-                //表示刷新完成
-//                mPullToRefreshListView.onRefreshComplete();
-                // Log.e("list",mList.toString());
+                Toast.makeText(MyInfomationActivity.this, result, Toast.LENGTH_SHORT).show();
+                Log.e("result", result);
             }
         }
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+            if (exception instanceof ClientError) {// 客户端错误
+                Toast.makeText(MyInfomationActivity.this, "客户端发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof ServerError) {// 服务器错误
+                Toast.makeText(MyInfomationActivity.this, "服务器发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NetworkError) {// 网络不好
+                Toast.makeText(MyInfomationActivity.this, "请检查网络", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof TimeoutError) {// 请求超时
+                Toast.makeText(MyInfomationActivity.this, "请求超时，网络不好或者服务器不稳定", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof UnKnownHostError) {// 找不到服务器
+                Toast.makeText(MyInfomationActivity.this, "未发现指定服务器", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof URLError) {// URL是错的
+                Toast.makeText(MyInfomationActivity.this, "URL错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NotFoundCacheError) {
+                Toast.makeText(MyInfomationActivity.this, "没有发现缓存", Toast.LENGTH_SHORT).show();
+                // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
+            } else {
+                Toast.makeText(MyInfomationActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+            }
 
         }
 
@@ -120,6 +138,9 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_my_infomation);
         initView();
         addListeners();
+        /*//测试 网络图片可以
+        Glide.with(MyInfomationActivity.this).load("http://img5.imgtn.bdimg.com/it/u=3921194872,1207178069&fm=21&gp=0.jpg").into(mshowImageView);
+*/
     }
 
     private void initView() {
@@ -134,10 +155,10 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         mChangeAutographLayout = (RelativeLayout) findViewById(R.id.change_autograph);
         mChangeDateBirthLayout = (RelativeLayout) findViewById(R.id.change_date_birth);
         mChangePasswordLayout = (RelativeLayout) findViewById(R.id.change_password);
-
+        mChangeInstroductLayout = (RelativeLayout) findViewById(R.id.change_introduce);
+        mChangeEmailLayout = (RelativeLayout) findViewById(R.id.change_email);
         mSuccessButton = (Button) findViewById(R.id.myinformation_success);
-
-        //mChangeHeadTextView = (TextView) findViewById(R.id.change_head_textView);
+        //个人具体信息
         mChangeUsernameTextView = (TextView) findViewById(R.id.change_username_textView);
         mChangeRealnameTextView = (TextView) findViewById(R.id.change_realname_textView);
         mChangeSexTextView = (TextView) findViewById(R.id.change_sex_textView);
@@ -146,6 +167,8 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         mChangeAutographTextView = (TextView) findViewById(R.id.change_autograph_textView);
         mChangeDateBirthTextView = (TextView) findViewById(R.id.change_date_birth_textView);
         mChangePasswordTextView = (TextView) findViewById(R.id.change_password_textView);
+        mChangeInstroductTextview = (TextView) findViewById(R.id.change_instroduce_textView);
+        mChangeEmailTextView = (TextView) findViewById(R.id.change_email_textView);
         mshowImageView = (ImageView) findViewById(R.id.photo_show);
     }
 
@@ -160,7 +183,9 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         mChangeAutographLayout.setOnClickListener(this);
         mChangeDateBirthLayout.setOnClickListener(this);
         mChangePasswordTextView.setOnClickListener(this);
-        //mSuccessButton.setOnClickListener(this);
+        mChangeInstroductLayout.setOnClickListener(this);
+        mChangeEmailLayout.setOnClickListener(this);
+        mSuccessButton.setOnClickListener(this);
     }
 
     public void success(View view) {
@@ -214,7 +239,82 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
             case R.id.change_password:
                 showChangePasswordDialog();
                 break;
+            case R.id.change_introduce:
+                showChangeIntroduceDialog();
+                break;
+            case R.id.change_email:
+                showChangeEmailDialog();
+                break;
+            case R.id.myinformation_success:
+                //getUpdateData();
+                String[] address = mChangeCityTextView.getText().toString().split("\\-");
+                if (address.length == 0) {
+                    address[0] = "";
+                    address[1] = "";
+                } else {
+                    for (int i = 0; i < address.length; i++) {
+                        Log.e("dizhi", address[i]);
+                    }
+                }
+                initRequest();
+                //创建请求对象
+                Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
+                //添加请求参数
+                request.add("methods", "updateUserById");
+                request.add("user_id", 7);
+                request.add("user_photo", mloadpath);
+                request.add("user_realname", mChangeUsernameTextView.getText().toString());
+                request.add("user_nickname", mChangeRealnameTextView.getText().toString());
+                request.add("user_sex", mChangeSexTextView.getText().toString());
+                request.add("user_address_province", address[0]);
+                request.add("user_address_city", address[1]);
+                request.add("user_mood", mChangeRealnameTextView.getText().toString());
+                request.add("user_mail", mChangeEmailTextView.getText().toString());
+                request.add("user_birthday", mChangeDateBirthTextView.getText().toString());
+                mRequestQueue.add(WHAT, request, mOnResponseListener);
+                intent = new Intent();
+                intent.putExtra("flag", "me");
+                intent.putExtra("myphoto", mloadpath);
+                intent.setClass(MyInfomationActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
         }
+    }
+
+    private void getUpdateData() {
+        mUser = new User();
+
+        Toast.makeText(MyInfomationActivity.this, "上传地址" + mloadpath, Toast.LENGTH_SHORT).show();
+        //获取页面内textview里的全部个人信息
+        mUser.setUser_nickname(mChangeUsernameTextView.getText().toString());
+        ;//用户昵称
+        mUser.setUser_realname(mChangeRealnameTextView.getText().toString());
+        ;//用户真实姓名
+        String[] address = mChangeCityTextView.getText().toString().split("\\-");
+        for (int i = 0; i < address.length; i++) {
+            Log.e("dizhi", address[i]);
+        }
+        if (address != null) {
+            mUser.setUser_address_province(address[0]);
+            mUser.setUser_address_city(address[1]);
+        }
+        mChangeCityTextView.getText();//所在地
+
+        mUser.setUser_sex(mChangeSexTextView.getText().toString());
+        ;//性别
+        mChangeDateBirthTextView.getText();//出生日期
+
+    }
+
+
+    private void initRequest() {
+        //点击完成按钮
+        MyApplication myApplication = (MyApplication) this.getApplication();
+        mUrl = myApplication.getUrl();
+        //创建请求队列，默认并发3请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+        mRequestQueue = NoHttp.newRequestQueue();
     }
 
     //填写自己的真实姓名
@@ -278,14 +378,21 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         builder.setTitle("请选择标签");
         builder.setMultiChoiceItems(R.array.label, flags, new DialogInterface.OnMultiChoiceClickListener() {
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                String label = getResources().getStringArray(R.array.label)[which];
-                mChangeLabelTextView.setText(label);
+                flags[which] = isChecked;//单击时将是否选中记下来，默认是未选中
             }
         });
         //添加一个确定按钮
         builder.setPositiveButton(" 确 定 ", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-
+                String selectedStr = "";
+                for (int i = 0; i < flags.length; i++) {
+                    if (flags[i] == true) {
+                        selectedStr = selectedStr + " " +
+                                getResources().getStringArray(R.array.label)[i];
+                    }
+                }
+                mChangeLabelTextView.setText(selectedStr);
+                dialog.dismiss();
             }
         });
         builder.create().show();
@@ -307,7 +414,15 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
 
     //选择所在地
     private void showChangeCityDialog() {
-
+        CityDialog.InputListener listener = new CityDialog.InputListener() {
+            @Override
+            public void getText(String str) {
+                mChangeCityTextView.setText(str);
+            }
+        };
+        dialog = new CityDialog(MyInfomationActivity.this, listener);
+        dialog.setTitle("省市区");
+        dialog.show();
     }
 
     //更换昵称
@@ -320,6 +435,38 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         mChangeUsernameTextView.setText(text.getText().toString());
+                    }
+                })
+                .setNegativeButton("取消", null);
+        builder.create().show();
+    }
+
+    //更换邮箱
+    private void showChangeEmailDialog() {
+        final EditText text = new EditText(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("请输入邮箱：")
+                .setView(text)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mChangeEmailTextView.setText(text.getText().toString());
+                    }
+                })
+                .setNegativeButton("取消", null);
+        builder.create().show();
+    }
+
+    //修改个人介绍
+    private void showChangeIntroduceDialog() {
+        final EditText text = new EditText(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("请输入自我介绍：")
+                .setView(text)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mChangeInstroductTextview.setText(text.getText().toString());
                     }
                 })
                 .setNegativeButton("取消", null);
@@ -417,27 +564,20 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             mloadpath = result;//得到上传后的图片地址
-            Log.e("上传地址", result);
-            updateUserPhoto(result);
         }
-
     }
 
-    private void updateUserPhoto(String path) {
-        Glide.with(this).load(path).into(mshowImageView);
-        Log.e("ok", "chenggong");
-        MyApplication myApplication = (MyApplication) this.getApplication();
-        mUrl = myApplication.getUrl();
-        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
-        mRequestQueue = NoHttp.newRequestQueue();
-        //创建请求对象
-        Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
-        //添加请求参数
-        request.add("methods", "updateUserPhoto");
-        request.add("user_id", "user_id");
-        request.add("user_photo", path);
-    }
-
+   /* private void photoshow() {
+        //显示本本地图片，显示网络图片有延迟（异步）
+        if (mphotopath != null) {
+            Glide.with(MyInfomationActivity.this).load(mphotopath).into(mshowImageView);
+            mphotopath = null;
+        } else if (mloadpath != null) {
+            Glide.with(MyInfomationActivity.this).load(mCurrentPhotoFile.getAbsolutePath()).into(mshowImageView);
+            mloadpath = null;
+            mphotopath = null;
+        }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -447,12 +587,14 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                 if (data != null) {
                     Uri selectedImage = data.getData();
                     if (selectedImage != null) {
+                        Glide.with(MyInfomationActivity.this).load(getPhotoPath(this, selectedImage)).into(mshowImageView);
                         //得到该图片在手机中的路径
                         new UploadTask().execute(getPhotoPath(this, selectedImage));
                     }
                 }
                 break;
             case TAKE_CAMERA:
+                Glide.with(MyInfomationActivity.this).load(mCurrentPhotoFile.getAbsolutePath()).into(mshowImageView);
                 //拍照选取
                 new UploadTask().execute(mCurrentPhotoFile.getAbsolutePath());
                 break;
@@ -469,14 +611,6 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         String picturePath = cursor.getString(columnIndex);
         mphotopath = picturePath;
         cursor.close();
-
         return picturePath;
     }
-  /*  //照相上传图片地址
-    private void getDownloadUrl() {
-        if (TextUtils.isEmpty(mloadpath)) {
-            Toast.makeText(this, "照相失败，请重试！", Toast.LENGTH_SHORT).show();
-            return;
-        }
-    }*/
 }
