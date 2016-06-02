@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -70,25 +69,29 @@ public class LogintestActivity extends AppCompatActivity {
             //如果返回的是一个正常的token则显示登录成功
             if(what == Login) {
                // 请求成功，直接更新UI
-
                 List<String> list=new ArrayList<>();
                 String result = response.get();
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
                 list = gson.fromJson(result, new TypeToken<List<String>>(){}.getType());
-                for(int i=0;i<list.size();i++){
-                    if(i==0){
-                        token=list.get(i);
-                    }
-                    if(i==1){
-                        user_id=list.get(i);
+                //如果用户名密码输入有误，则没有返回值，list为空，将token赋为空，防止崩
+                if(list==null){
+                    token=null;
+                }else{
+                    for(int i=0;i<list.size();i++){
+                        //输入正确，传值
+                        if(i==0){
+                            user_id=list.get(i);
+                        }
+                        if(i==1){
+                            token=list.get(i);
+                        }
                     }
                 }
-                Log.e("token",token);
-                Log.e("user_id",user_id);
                 user=new User();
-                if(token!=null){
-
+                if(token==null){
+                    Toast.makeText(LogintestActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                }else{
                     Toast.makeText(LogintestActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     //登录成功后进行页面的跳转
                     Intent intent = new Intent();
@@ -106,8 +109,6 @@ public class LogintestActivity extends AppCompatActivity {
                     mEditor.putInt("type", 1);
                     //提交保存结果
                     mEditor.commit();
-                }else{
-                    Toast.makeText(LogintestActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -172,8 +173,16 @@ public class LogintestActivity extends AppCompatActivity {
         //将输入的数据变成字符串
         mLoginPassword=muser_password.getText().toString();
         mPhoneString = muser_phone.getText().toString();
-        //向服务端传输输入的数据进行登录操作
-        startLoginRequest();
+        if(mPhoneString.equals("")) {
+            //判断手机号是否为空
+            Toast.makeText(LogintestActivity.this, "手机号不能为空", Toast.LENGTH_SHORT).show();
+        }else if(mLoginPassword.equals("")) {
+            //判断验证码是否为空
+            Toast.makeText(LogintestActivity.this, "密码不能为空", Toast.LENGTH_SHORT).show();
+        }else{
+            //向服务端传输输入的数据进行登录操作
+            startLoginRequest();
+        }
     }
 
     //登录页面的注册，跳转到注册页面

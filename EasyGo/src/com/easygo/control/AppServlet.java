@@ -147,8 +147,8 @@ public class AppServlet extends HttpServlet {
 		    String u_id=userdao.selectUserID(user_phone)+"";
 		    
 		    List<String> list=new ArrayList<>();
-		    list.add(token);
 		    list.add(u_id);
+		    list.add(token);
 			if (token != null) {
 				gson = new Gson();
 				result = gson.toJson(list);
