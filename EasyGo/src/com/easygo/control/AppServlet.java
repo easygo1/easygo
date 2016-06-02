@@ -42,7 +42,6 @@ import com.easygo.model.impl.order.IOrderDAOImpl;
 import com.easygo.model.impl.user.IHouseCollectDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 @WebServlet("/appservlet")
 public class AppServlet extends HttpServlet {
@@ -123,38 +122,38 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/addUser.jsp").forward(
 					request, response);
 			break;
-			
+
 		case "login":
-			user_phone=request.getParameter("user_phone");
-		    user_password=request.getParameter("user_password");
-		    System.out.println(user_phone);
-		    System.out.println(user_password);
-		    //进行登录操作
-		    user=new User();
-		    userdao= new IUserDAOImpl();
-		    String token=userdao.login(user_phone,user_password);
-		    System.out.println(token);
+			user_phone = request.getParameter("user_phone");
+			user_password = request.getParameter("user_password");
+			System.out.println(user_phone);
+			System.out.println(user_password);
+			// 进行登录操作
+			user = new User();
+			userdao = new IUserDAOImpl();
+			String token = userdao.login(user_phone, user_password);
+			System.out.println(token);
 			if (token != null) {
 				mPrintWriter.write(token);
 				System.out.println("登录成功");
 			}
-		    
+
 			mPrintWriter.close();
 			break;
 		case "register":
-			//接收到android端传过来的手机号和密码（手机号相当于用户名）
-			user_phone=request.getParameter("user_phone");
-		    user_password=request.getParameter("user_password");
-			//对用户进行注册
-			user=new User();
+			// 接收到android端传过来的手机号和密码（手机号相当于用户名）
+			user_phone = request.getParameter("user_phone");
+			user_password = request.getParameter("user_password");
+			// 对用户进行注册
+			user = new User();
 			user.setUser_phone(user_phone);
 			user.setUser_password(user_password);
-			
-			userdao= new IUserDAOImpl();
+
+			userdao = new IUserDAOImpl();
 			if (userdao.register(user)) {
 				System.out.println("注册成功");
 			}
-			//mPrintWriter.write(userdao.register(user));
+			// mPrintWriter.write(userdao.register(user));
 			mPrintWriter.close();
 			break;
 		case "addUser":
@@ -274,16 +273,16 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
-		/*
-		 * App传过来的参数（city,cur,userid）
-		 * 
-		 * 得到某个城市的所有房子，以及房子对应的图片，以及对应的用户，
-		 * 
-		 * 首先接收到要查询的城市（还要有一个页码，用于判断应该查询哪几个房间），然后根据城市去查询得到所有的房间，
-		 * 然后根据得到的房间，查询房屋对应的图片， 然后根据房子中的房东ID去查询房东， 根据房东ID查询房东的头像，
-		 * 然后，根据房东ID找到评价表，得到评论的条数，以及星级 最后，根据使用APP的用户ID去找到收藏表， 将收藏的房屋爱心变成红色
-		 */
 		case "getAllHouseByCity":
+			/*
+			 * App传过来的参数（city,cur,userid）
+			 * 
+			 * 得到某个城市的所有房子，以及房子对应的图片，以及对应的用户，
+			 * 
+			 * 首先接收到要查询的城市（还要有一个页码，用于判断应该查询哪几个房间），然后根据城市去查询得到所有的房间，
+			 * 然后根据得到的房间，查询房屋对应的图片， 然后根据房子中的房东ID去查询房东， 根据房东ID查询房东的头像，
+			 * 然后，根据房东ID找到评价表，得到评论的条数，以及星级 最后，根据使用APP的用户ID去找到收藏表， 将收藏的房屋爱心变成红色
+			 */
 			// 城市
 			// String house_address_city = "苏州市";
 			String house_address_city = request.getParameter("city");
@@ -337,12 +336,12 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
-		/*
-		 * 得到某个具体的房间的所有信息 1、房源信息2、房源图片、3、用户收藏4、配套设施6、房东信息
-		 * 
-		 * 5、可租日期（等用户点击查看后再次请求） 7、相关评价（7，在翻到的时候再请求）
-		 */
 		case "getHouseDetailByID":
+			/*
+			 * 得到某个具体的房间的所有信息 1、房源信息2、房源图片、3、用户收藏4、配套设施6、房东信息
+			 * 
+			 * 5、可租日期（等用户点击查看后再次请求） 7、相关评价（7，在翻到的时候再请求）
+			 */
 			// 房源id
 			house_id = Integer.parseInt(request.getParameter("houseid"));
 			// 用户id
