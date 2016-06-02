@@ -115,6 +115,7 @@
             android:textSize="17sp"/>
 
         <EditText
+            android:id="@+id/register_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-55dp"
@@ -135,6 +136,7 @@
         />
     <!--注册按钮-->
     <Button
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"

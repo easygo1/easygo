@@ -7,6 +7,8 @@ import com.easygo.model.beans.user.User;
 public interface IUserDAO {
 	// 注册用户
 	public abstract boolean addUser(User user);
+	// 注册用户,只提供手机号码和密码
+	public abstract boolean register(User user);
 
 	// 删除用户(通过账号删除)
 	public abstract boolean delUser(int user_no);

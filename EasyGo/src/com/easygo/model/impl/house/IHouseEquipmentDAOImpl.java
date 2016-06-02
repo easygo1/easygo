@@ -1,7 +1,8 @@
 package com.easygo.model.impl.house;
 
+import java.util.List;
+
 import com.easygo.model.beans.house.Equipment;
-import com.easygo.model.beans.house.HotCity;
 import com.easygo.model.beans.house.HouseEquipment;
 import com.easygo.model.dao.house.IHouseEquipmentDAO;
 
@@ -32,7 +33,7 @@ public class IHouseEquipmentDAOImpl implements IHouseEquipmentDAO {
 	}
 
 	@Override
-	public HotCity selectHouseEquipment(int house_id) {
+	public List<Equipment> selectHouseEquipment(int house_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

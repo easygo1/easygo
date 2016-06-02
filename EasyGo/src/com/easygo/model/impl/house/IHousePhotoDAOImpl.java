@@ -63,7 +63,7 @@ public class IHousePhotoDAOImpl implements IHousePhotoDAO {
 		// TODO Auto-generated method stub
 		HousePhoto housePhoto = new HousePhoto();
 		connection = C3P0Utils.getConnection();
-		String sql = "select * from house_photo where house_id =?";
+		String sql = "select * from house_photo where house_id =? and isFirst = 1";
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, house_id);

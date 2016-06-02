@@ -1,6 +1,10 @@
 [
     {
+<<<<<<< HEAD
         "outputFile": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+=======
+        "outputFile": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
         "map": [
             {
                 "to": {
@@ -12,7 +16,11 @@
                     "endOffset": 4322
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -33,7 +41,11 @@
                     "endOffset": 9213
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 132,
                         "startColumn": 4,
@@ -53,7 +65,11 @@
                     "endOffset": 9279
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 262,
                         "startColumn": 4,
@@ -72,7 +88,11 @@
                     "endOffset": 9340
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 263,
                         "startColumn": 4,
@@ -91,7 +111,11 @@
                     "endOffset": 9394
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 264,
                         "startColumn": 4,
@@ -110,7 +134,11 @@
                     "endOffset": 9439
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 265,
                         "startColumn": 4,
@@ -129,7 +157,11 @@
                     "endOffset": 9501
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 266,
                         "startColumn": 4,
@@ -148,7 +180,11 @@
                     "endOffset": 9547
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 267,
                         "startColumn": 4,
@@ -167,7 +203,11 @@
                     "endOffset": 9604
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 268,
                         "startColumn": 4,
@@ -186,7 +226,11 @@
                     "endOffset": 9653
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 269,
                         "startColumn": 4,
@@ -205,7 +249,11 @@
                     "endOffset": 9699
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 270,
                         "startColumn": 4,
@@ -224,7 +272,11 @@
                     "endOffset": 9752
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 271,
                         "startColumn": 4,
@@ -243,7 +295,11 @@
                     "endOffset": 9807
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 272,
                         "startColumn": 4,
@@ -262,7 +318,11 @@
                     "endOffset": 9854
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 273,
                         "startColumn": 4,
@@ -281,7 +341,11 @@
                     "endOffset": 9907
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 274,
                         "startColumn": 4,
@@ -300,7 +364,11 @@
                     "endOffset": 9956
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 275,
                         "startColumn": 4,
@@ -319,7 +387,11 @@
                     "endOffset": 10010
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 276,
                         "startColumn": 4,
@@ -338,7 +410,11 @@
                     "endOffset": 10063
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 277,
                         "startColumn": 4,
@@ -357,7 +433,11 @@
                     "endOffset": 10157
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 278,
                         "startColumn": 4,
@@ -376,7 +456,11 @@
                     "endOffset": 10218
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 279,
                         "startColumn": 4,
@@ -395,7 +479,11 @@
                     "endOffset": 10274
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 280,
                         "startColumn": 4,
@@ -414,7 +502,11 @@
                     "endOffset": 10338
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 281,
                         "startColumn": 4,
@@ -433,7 +525,11 @@
                     "endOffset": 10390
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 282,
                         "startColumn": 4,
@@ -452,7 +548,11 @@
                     "endOffset": 10455
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 283,
                         "startColumn": 4,
@@ -471,7 +571,11 @@
                     "endOffset": 10519
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 284,
                         "startColumn": 4,
@@ -490,7 +594,11 @@
                     "endOffset": 10584
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 285,
                         "startColumn": 4,
@@ -509,7 +617,11 @@
                     "endOffset": 10654
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 286,
                         "startColumn": 4,
@@ -528,7 +640,11 @@
                     "endOffset": 10723
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 287,
                         "startColumn": 4,
@@ -547,7 +663,11 @@
                     "endOffset": 10789
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 288,
                         "startColumn": 4,
@@ -566,7 +686,11 @@
                     "endOffset": 10837
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 289,
                         "startColumn": 4,
@@ -585,7 +709,11 @@
                     "endOffset": 10893
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 290,
                         "startColumn": 4,
@@ -604,7 +732,11 @@
                     "endOffset": 10970
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 291,
                         "startColumn": 4,
@@ -623,7 +755,11 @@
                     "endOffset": 11028
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 292,
                         "startColumn": 4,
@@ -642,7 +778,11 @@
                     "endOffset": 11085
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 293,
                         "startColumn": 4,
@@ -661,7 +801,11 @@
                     "endOffset": 11133
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 294,
                         "startColumn": 4,
@@ -680,7 +824,11 @@
                     "endOffset": 11186
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 295,
                         "startColumn": 4,
@@ -699,7 +847,11 @@
                     "endOffset": 11235
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 296,
                         "startColumn": 4,
@@ -718,7 +870,11 @@
                     "endOffset": 11289
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 297,
                         "startColumn": 4,
@@ -737,7 +893,11 @@
                     "endOffset": 11344
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 298,
                         "startColumn": 4,
@@ -756,7 +916,11 @@
                     "endOffset": 12117
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 301,
                         "startColumn": 4,
@@ -775,7 +939,11 @@
                     "endOffset": 12179
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 302,
                         "startColumn": 4,
@@ -794,7 +962,11 @@
                     "endOffset": 12244
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 303,
                         "startColumn": 4,
@@ -813,7 +985,11 @@
                     "endOffset": 12286
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 304,
                         "startColumn": 4,
@@ -832,7 +1008,11 @@
                     "endOffset": 12323
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 305,
                         "startColumn": 4,
@@ -851,7 +1031,11 @@
                     "endOffset": 12366
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 306,
                         "startColumn": 4,
@@ -870,7 +1054,11 @@
                     "endOffset": 12405
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 307,
                         "startColumn": 4,
@@ -889,7 +1077,11 @@
                     "endOffset": 12446
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 308,
                         "startColumn": 4,
@@ -908,7 +1100,11 @@
                     "endOffset": 12486
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 309,
                         "startColumn": 4,
@@ -927,7 +1123,11 @@
                     "endOffset": 12539
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 310,
                         "startColumn": 4,
@@ -946,7 +1146,11 @@
                     "endOffset": 12594
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 311,
                         "startColumn": 4,
@@ -965,7 +1169,11 @@
                     "endOffset": 12646
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 312,
                         "startColumn": 4,
@@ -984,7 +1192,11 @@
                     "endOffset": 12696
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 313,
                         "startColumn": 4,
@@ -1003,7 +1215,11 @@
                     "endOffset": 12747
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 314,
                         "startColumn": 4,
@@ -1022,7 +1238,11 @@
                     "endOffset": 12788
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 315,
                         "startColumn": 4,
@@ -1041,7 +1261,11 @@
                     "endOffset": 12826
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 316,
                         "startColumn": 4,
@@ -1060,7 +1284,11 @@
                     "endOffset": 12863
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 317,
                         "startColumn": 4,
@@ -1079,7 +1307,11 @@
                     "endOffset": 12899
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 318,
                         "startColumn": 4,
@@ -1098,7 +1330,11 @@
                     "endOffset": 12947
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 319,
                         "startColumn": 4,
@@ -1117,7 +1353,11 @@
                     "endOffset": 12990
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 320,
                         "startColumn": 4,
@@ -1136,7 +1376,11 @@
                     "endOffset": 13035
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 321,
                         "startColumn": 4,
@@ -1155,7 +1399,11 @@
                     "endOffset": 13073
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 322,
                         "startColumn": 4,
@@ -1174,7 +1422,11 @@
                     "endOffset": 13111
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 323,
                         "startColumn": 4,
@@ -1193,7 +1445,11 @@
                     "endOffset": 13149
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 324,
                         "startColumn": 4,
@@ -1212,7 +1468,11 @@
                     "endOffset": 13187
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 325,
                         "startColumn": 4,
@@ -1231,7 +1491,11 @@
                     "endOffset": 13225
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 326,
                         "startColumn": 4,
@@ -1250,7 +1514,11 @@
                     "endOffset": 13263
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 327,
                         "startColumn": 4,
@@ -1269,7 +1537,11 @@
                     "endOffset": 13301
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 328,
                         "startColumn": 4,
@@ -1288,7 +1560,11 @@
                     "endOffset": 13339
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 329,
                         "startColumn": 4,
@@ -1307,7 +1583,11 @@
                     "endOffset": 13377
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 330,
                         "startColumn": 4,
@@ -1326,7 +1606,11 @@
                     "endOffset": 13415
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 331,
                         "startColumn": 4,
@@ -1345,7 +1629,11 @@
                     "endOffset": 13465
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 332,
                         "startColumn": 4,
@@ -1364,7 +1652,11 @@
                     "endOffset": 13504
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 333,
                         "startColumn": 4,
@@ -1383,7 +1675,11 @@
                     "endOffset": 13541
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 334,
                         "startColumn": 4,
@@ -1402,7 +1698,11 @@
                     "endOffset": 13578
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 335,
                         "startColumn": 4,
@@ -1421,7 +1721,11 @@
                     "endOffset": 13615
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 336,
                         "startColumn": 4,
@@ -1440,7 +1744,11 @@
                     "endOffset": 13667
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 337,
                         "startColumn": 4,
@@ -1459,7 +1767,11 @@
                     "endOffset": 13703
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 338,
                         "startColumn": 4,
@@ -1478,7 +1790,11 @@
                     "endOffset": 13739
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 339,
                         "startColumn": 4,
@@ -1497,7 +1813,11 @@
                     "endOffset": 13777
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 340,
                         "startColumn": 4,
@@ -1516,7 +1836,11 @@
                     "endOffset": 13818
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 341,
                         "startColumn": 4,
@@ -1535,7 +1859,11 @@
                     "endOffset": 13865
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 342,
                         "startColumn": 4,
@@ -1554,7 +1882,11 @@
                     "endOffset": 13906
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 343,
                         "startColumn": 4,
@@ -1573,7 +1905,11 @@
                     "endOffset": 13951
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 344,
                         "startColumn": 4,
@@ -1592,7 +1928,11 @@
                     "endOffset": 13989
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 345,
                         "startColumn": 4,
@@ -1611,7 +1951,11 @@
                     "endOffset": 14026
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 346,
                         "startColumn": 4,
@@ -1630,7 +1974,11 @@
                     "endOffset": 14070
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 347,
                         "startColumn": 4,
@@ -1649,7 +1997,11 @@
                     "endOffset": 14107
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 348,
                         "startColumn": 4,
@@ -1668,7 +2020,11 @@
                     "endOffset": 14145
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 349,
                         "startColumn": 4,
@@ -1687,7 +2043,11 @@
                     "endOffset": 14190
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 350,
                         "startColumn": 4,
@@ -1706,7 +2066,11 @@
                     "endOffset": 14226
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 351,
                         "startColumn": 4,
@@ -1725,7 +2089,11 @@
                     "endOffset": 14273
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 352,
                         "startColumn": 4,
@@ -1744,7 +2112,11 @@
                     "endOffset": 14326
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 353,
                         "startColumn": 4,
@@ -1763,7 +2135,11 @@
                     "endOffset": 14366
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 354,
                         "startColumn": 4,
@@ -1782,7 +2158,11 @@
                     "endOffset": 14428
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 355,
                         "startColumn": 4,
@@ -1801,7 +2181,11 @@
                     "endOffset": 14498
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 356,
                         "startColumn": 4,
@@ -1820,7 +2204,11 @@
                     "endOffset": 14569
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 357,
                         "startColumn": 4,
@@ -1839,7 +2227,11 @@
                     "endOffset": 14619
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 358,
                         "startColumn": 4,
@@ -1858,7 +2250,11 @@
                     "endOffset": 14667
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 359,
                         "startColumn": 4,
@@ -1877,7 +2273,11 @@
                     "endOffset": 14722
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 360,
                         "startColumn": 4,
@@ -1896,7 +2296,11 @@
                     "endOffset": 14779
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 361,
                         "startColumn": 4,
@@ -1915,7 +2319,11 @@
                     "endOffset": 14834
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 362,
                         "startColumn": 4,
@@ -1934,7 +2342,11 @@
                     "endOffset": 14886
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 363,
                         "startColumn": 4,
@@ -1953,7 +2365,11 @@
                     "endOffset": 14958
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 364,
                         "startColumn": 4,
@@ -1972,7 +2388,11 @@
                     "endOffset": 15033
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 365,
                         "startColumn": 4,
@@ -1991,7 +2411,11 @@
                     "endOffset": 15112
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 366,
                         "startColumn": 4,
@@ -2010,7 +2434,11 @@
                     "endOffset": 15184
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 367,
                         "startColumn": 4,
@@ -2029,7 +2457,11 @@
                     "endOffset": 15256
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 368,
                         "startColumn": 4,
@@ -2048,7 +2480,11 @@
                     "endOffset": 15326
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 369,
                         "startColumn": 4,
@@ -2067,7 +2503,11 @@
                     "endOffset": 15397
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 370,
                         "startColumn": 4,
@@ -2086,7 +2526,11 @@
                     "endOffset": 15464
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 371,
                         "startColumn": 4,
@@ -2105,7 +2549,11 @@
                     "endOffset": 15538
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 372,
                         "startColumn": 4,
@@ -2124,7 +2572,11 @@
                     "endOffset": 15607
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 373,
                         "startColumn": 4,
@@ -2143,7 +2595,11 @@
                     "endOffset": 15670
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 374,
                         "startColumn": 4,
@@ -2162,7 +2618,11 @@
                     "endOffset": 15750
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 375,
                         "startColumn": 4,
@@ -2181,7 +2641,11 @@
                     "endOffset": 15821
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 376,
                         "startColumn": 4,
@@ -2200,7 +2664,11 @@
                     "endOffset": 15892
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 377,
                         "startColumn": 4,
@@ -2219,7 +2687,11 @@
                     "endOffset": 15959
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 378,
                         "startColumn": 4,
@@ -2238,7 +2710,11 @@
                     "endOffset": 16028
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 379,
                         "startColumn": 4,
@@ -2257,7 +2733,11 @@
                     "endOffset": 16102
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 380,
                         "startColumn": 4,
@@ -2276,7 +2756,11 @@
                     "endOffset": 16146
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 381,
                         "startColumn": 4,
@@ -2295,7 +2779,11 @@
                     "endOffset": 16206
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 382,
                         "startColumn": 4,
@@ -2314,7 +2802,11 @@
                     "endOffset": 16268
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 383,
                         "startColumn": 4,
@@ -2333,7 +2825,11 @@
                     "endOffset": 16312
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 384,
                         "startColumn": 4,
@@ -2352,7 +2848,11 @@
                     "endOffset": 16360
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 385,
                         "startColumn": 4,
@@ -2371,7 +2871,11 @@
                     "endOffset": 16421
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 386,
                         "startColumn": 4,
@@ -2390,7 +2894,11 @@
                     "endOffset": 16484
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 387,
                         "startColumn": 4,
@@ -2409,7 +2917,11 @@
                     "endOffset": 16528
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 388,
                         "startColumn": 4,
@@ -2428,7 +2940,11 @@
                     "endOffset": 16609
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 389,
                         "startColumn": 4,
@@ -2447,7 +2963,11 @@
                     "endOffset": 16690
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 390,
                         "startColumn": 4,
@@ -2466,7 +2986,11 @@
                     "endOffset": 16762
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 391,
                         "startColumn": 4,
@@ -2485,7 +3009,11 @@
                     "endOffset": 16851
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 392,
                         "startColumn": 4,
@@ -2504,7 +3032,11 @@
                     "endOffset": 16939
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 393,
                         "startColumn": 4,
@@ -2523,7 +3055,11 @@
                     "endOffset": 17017
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 394,
                         "startColumn": 4,
@@ -2542,7 +3078,11 @@
                     "endOffset": 17098
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 395,
                         "startColumn": 4,
@@ -2561,7 +3101,11 @@
                     "endOffset": 17184
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 396,
                         "startColumn": 4,
@@ -2580,7 +3124,11 @@
                     "endOffset": 17245
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 397,
                         "startColumn": 4,
@@ -2599,7 +3147,11 @@
                     "endOffset": 17299
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 398,
                         "startColumn": 4,
@@ -2618,7 +3170,11 @@
                     "endOffset": 17351
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 399,
                         "startColumn": 4,
@@ -2637,7 +3193,11 @@
                     "endOffset": 17417
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 400,
                         "startColumn": 4,
@@ -2656,7 +3216,11 @@
                     "endOffset": 17482
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 401,
                         "startColumn": 4,
@@ -2675,7 +3239,11 @@
                     "endOffset": 17542
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 402,
                         "startColumn": 4,
@@ -2694,7 +3262,11 @@
                     "endOffset": 17604
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 403,
                         "startColumn": 4,
@@ -2713,7 +3285,11 @@
                     "endOffset": 17659
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 404,
                         "startColumn": 4,
@@ -2732,7 +3308,11 @@
                     "endOffset": 17709
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 405,
                         "startColumn": 4,
@@ -2751,7 +3331,11 @@
                     "endOffset": 17754
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 406,
                         "startColumn": 4,
@@ -2770,7 +3354,11 @@
                     "endOffset": 17803
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 407,
                         "startColumn": 4,
@@ -2789,7 +3377,11 @@
                     "endOffset": 17864
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 408,
                         "startColumn": 4,
@@ -2808,7 +3400,11 @@
                     "endOffset": 17925
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 409,
                         "startColumn": 4,
@@ -2827,7 +3423,11 @@
                     "endOffset": 17983
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 410,
                         "startColumn": 4,
@@ -2846,7 +3446,11 @@
                     "endOffset": 18041
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 411,
                         "startColumn": 4,
@@ -2865,7 +3469,11 @@
                     "endOffset": 18102
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 412,
                         "startColumn": 4,
@@ -2884,7 +3492,11 @@
                     "endOffset": 18164
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 413,
                         "startColumn": 4,
@@ -2903,7 +3515,11 @@
                     "endOffset": 18222
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 414,
                         "startColumn": 4,
@@ -2922,7 +3538,11 @@
                     "endOffset": 18283
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 415,
                         "startColumn": 4,
@@ -2941,7 +3561,11 @@
                     "endOffset": 18341
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 416,
                         "startColumn": 4,
@@ -2960,7 +3584,11 @@
                     "endOffset": 18380
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 417,
                         "startColumn": 4,
@@ -2979,7 +3607,11 @@
                     "endOffset": 18432
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 418,
                         "startColumn": 4,
@@ -2998,7 +3630,11 @@
                     "endOffset": 18491
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 419,
                         "startColumn": 4,
@@ -3017,7 +3653,11 @@
                     "endOffset": 18543
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 420,
                         "startColumn": 4,
@@ -3036,7 +3676,11 @@
                     "endOffset": 18600
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 421,
                         "startColumn": 4,
@@ -3055,7 +3699,11 @@
                     "endOffset": 18664
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 422,
                         "startColumn": 4,
@@ -3074,7 +3722,11 @@
                     "endOffset": 18733
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 423,
                         "startColumn": 4,
@@ -3093,7 +3745,11 @@
                     "endOffset": 18793
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 424,
                         "startColumn": 4,
@@ -3112,7 +3768,11 @@
                     "endOffset": 18851
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 425,
                         "startColumn": 4,
@@ -3131,7 +3791,11 @@
                     "endOffset": 18909
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 426,
                         "startColumn": 4,
@@ -3150,7 +3814,11 @@
                     "endOffset": 18968
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 427,
                         "startColumn": 4,
@@ -3169,7 +3837,11 @@
                     "endOffset": 19038
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 428,
                         "startColumn": 4,
@@ -3188,7 +3860,11 @@
                     "endOffset": 19098
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 429,
                         "startColumn": 4,
@@ -3207,7 +3883,11 @@
                     "endOffset": 19164
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 430,
                         "startColumn": 4,
@@ -3226,7 +3906,11 @@
                     "endOffset": 19239
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 431,
                         "startColumn": 4,
@@ -3245,7 +3929,11 @@
                     "endOffset": 19295
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 432,
                         "startColumn": 4,
@@ -3264,7 +3952,11 @@
                     "endOffset": 19362
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 433,
                         "startColumn": 4,
@@ -3283,7 +3975,11 @@
                     "endOffset": 19440
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 434,
                         "startColumn": 4,
@@ -3302,7 +3998,11 @@
                     "endOffset": 19505
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 435,
                         "startColumn": 4,
@@ -3321,7 +4021,11 @@
                     "endOffset": 19554
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 436,
                         "startColumn": 4,
@@ -3340,7 +4044,11 @@
                     "endOffset": 19612
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 437,
                         "startColumn": 4,
@@ -3359,7 +4067,11 @@
                     "endOffset": 19661
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 438,
                         "startColumn": 4,
@@ -3378,7 +4090,11 @@
                     "endOffset": 19719
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 439,
                         "startColumn": 4,
@@ -3397,7 +4113,11 @@
                     "endOffset": 19776
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 440,
                         "startColumn": 4,
@@ -3416,7 +4136,11 @@
                     "endOffset": 19825
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 441,
                         "startColumn": 4,
@@ -3435,7 +4159,11 @@
                     "endOffset": 19888
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 442,
                         "startColumn": 4,
@@ -3454,7 +4182,11 @@
                     "endOffset": 19944
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 443,
                         "startColumn": 4,
@@ -3473,7 +4205,11 @@
                     "endOffset": 19993
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 444,
                         "startColumn": 4,
@@ -3492,7 +4228,11 @@
                     "endOffset": 20050
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 445,
                         "startColumn": 4,
@@ -3511,7 +4251,11 @@
                     "endOffset": 20115
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 446,
                         "startColumn": 4,
@@ -3530,7 +4274,11 @@
                     "endOffset": 20169
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 447,
                         "startColumn": 4,
@@ -3549,7 +4297,11 @@
                     "endOffset": 20233
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 448,
                         "startColumn": 4,
@@ -3568,7 +4320,11 @@
                     "endOffset": 20282
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 449,
                         "startColumn": 4,
@@ -3587,7 +4343,11 @@
                     "endOffset": 20330
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 450,
                         "startColumn": 4,
@@ -3606,7 +4366,11 @@
                     "endOffset": 20381
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 451,
                         "startColumn": 4,
@@ -3625,7 +4389,11 @@
                     "endOffset": 20430
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 452,
                         "startColumn": 4,
@@ -3644,7 +4412,11 @@
                     "endOffset": 20495
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 453,
                         "startColumn": 4,
@@ -3663,7 +4435,11 @@
                     "endOffset": 20560
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 454,
                         "startColumn": 4,
@@ -3682,7 +4458,11 @@
                     "endOffset": 20620
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 455,
                         "startColumn": 4,
@@ -3701,7 +4481,11 @@
                     "endOffset": 20678
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 456,
                         "startColumn": 4,
@@ -3720,7 +4504,11 @@
                     "endOffset": 20740
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 457,
                         "startColumn": 4,
@@ -3739,7 +4527,11 @@
                     "endOffset": 20797
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 458,
                         "startColumn": 4,
@@ -3758,7 +4550,11 @@
                     "endOffset": 20842
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 459,
                         "startColumn": 4,
@@ -3777,7 +4573,11 @@
                     "endOffset": 20918
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 460,
                         "startColumn": 4,
@@ -3796,7 +4596,11 @@
                     "endOffset": 20970
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 461,
                         "startColumn": 4,
@@ -3815,7 +4619,11 @@
                     "endOffset": 21031
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 462,
                         "startColumn": 4,
@@ -3834,7 +4642,11 @@
                     "endOffset": 21092
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 463,
                         "startColumn": 4,
@@ -3853,7 +4665,11 @@
                     "endOffset": 21161
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 464,
                         "startColumn": 4,
@@ -3872,7 +4688,11 @@
                     "endOffset": 21225
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 465,
                         "startColumn": 4,
@@ -3891,7 +4711,11 @@
                     "endOffset": 21290
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 466,
                         "startColumn": 4,
@@ -3910,7 +4734,11 @@
                     "endOffset": 21364
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 467,
                         "startColumn": 4,
@@ -3929,7 +4757,11 @@
                     "endOffset": 21442
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 468,
                         "startColumn": 4,
@@ -3948,7 +4780,11 @@
                     "endOffset": 21489
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 469,
                         "startColumn": 4,
@@ -3967,7 +4803,11 @@
                     "endOffset": 21539
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 470,
                         "startColumn": 4,
@@ -3986,7 +4826,11 @@
                     "endOffset": 21598
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 471,
                         "startColumn": 4,
@@ -4005,7 +4849,11 @@
                     "endOffset": 21652
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 472,
                         "startColumn": 4,
@@ -4024,7 +4872,11 @@
                     "endOffset": 21703
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 473,
                         "startColumn": 4,
@@ -4043,7 +4895,11 @@
                     "endOffset": 21754
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 474,
                         "startColumn": 4,
@@ -4062,7 +4918,11 @@
                     "endOffset": 21804
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 475,
                         "startColumn": 4,
@@ -4081,7 +4941,11 @@
                     "endOffset": 21867
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 476,
                         "startColumn": 4,
@@ -4100,7 +4964,11 @@
                     "endOffset": 21910
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 477,
                         "startColumn": 4,
@@ -4119,7 +4987,11 @@
                     "endOffset": 21947
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 478,
                         "startColumn": 4,
@@ -4138,7 +5010,11 @@
                     "endOffset": 22003
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 479,
                         "startColumn": 4,
@@ -4158,7 +5034,11 @@
                     "endOffset": 22634
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 480,
                         "startColumn": 4,
@@ -4179,7 +5059,11 @@
                     "endOffset": 22856
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 489,
                         "startColumn": 4,
@@ -4200,7 +5084,11 @@
                     "endOffset": 23064
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 493,
                         "startColumn": 4,
@@ -4221,7 +5109,11 @@
                     "endOffset": 23332
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 497,
                         "startColumn": 4,
@@ -4242,7 +5134,11 @@
                     "endOffset": 23827
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 502,
                         "startColumn": 4,
@@ -4263,7 +5159,11 @@
                     "endOffset": 23910
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 511,
                         "startColumn": 4,
@@ -4284,7 +5184,11 @@
                     "endOffset": 23992
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 514,
                         "startColumn": 4,
@@ -4305,7 +5209,11 @@
                     "endOffset": 24170
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 517,
                         "startColumn": 4,
@@ -4326,7 +5234,11 @@
                     "endOffset": 24253
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 520,
                         "startColumn": 4,
@@ -4347,7 +5259,11 @@
                     "endOffset": 24541
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 523,
                         "startColumn": 4,
@@ -4368,7 +5284,11 @@
                     "endOffset": 24623
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 528,
                         "startColumn": 4,
@@ -4389,7 +5309,11 @@
                     "endOffset": 25085
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 531,
                         "startColumn": 4,
@@ -4410,7 +5334,11 @@
                     "endOffset": 25339
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 539,
                         "startColumn": 4,
@@ -4431,7 +5359,11 @@
                     "endOffset": 25591
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
+                    "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
                     "position": {
                         "startLine": 544,
                         "startColumn": 4,
