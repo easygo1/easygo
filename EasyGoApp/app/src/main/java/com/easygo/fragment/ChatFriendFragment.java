@@ -3,12 +3,14 @@ package com.easygo.fragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -34,6 +36,9 @@ import com.yolanda.nohttp.error.UnKnownHostError;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.UserInfo;
 
 
 /**
@@ -63,6 +68,15 @@ public class ChatFriendFragment extends Fragment {
         Log.e("当前用户的手机号码",phone);
         initView();
         refreshfriendList();
+        //用户信息提供者
+        RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
+            @Override
+            public UserInfo getUserInfo(String s) {
+                //用户名，用户显示名字，头像的url
+                UserInfo userInfo=new UserInfo(s,s, Uri.parse(""));
+                return userInfo;
+            }
+        },true);//如果需要缓存用户信息为true，否则为false
         return mChatFriendView;
     }
     //初始化适配器
@@ -111,6 +125,15 @@ public class ChatFriendFragment extends Fragment {
                 Log.e("解析后",friendlist.toString());
                 //添加适配器
                 initAdapter();
+                mFriendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //获取好友的用户名
+                        String target= (String) mFriendListView.getAdapter().getItem(position);
+                        //启动聊天窗口
+                        RongIM.getInstance().startPrivateChat(getActivity(),target,null);
+                    }
+                });
             }
         }
 

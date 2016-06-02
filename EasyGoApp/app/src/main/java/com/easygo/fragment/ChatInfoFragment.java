@@ -72,4 +72,5 @@ public class ChatInfoFragment extends Fragment {
         });
     }
 
+
 }
