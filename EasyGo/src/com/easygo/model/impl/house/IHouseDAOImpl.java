@@ -86,9 +86,10 @@ public class IHouseDAOImpl implements IHouseDAO {
 	}
 
 	@Override
-	public List<House> findSpecHouseById(int house_id) {
+	public House findSpecHouseById(int house_id) {
 		// TODO Auto-generated method stub
-		List<House> houseList = new ArrayList<House>();
+		// List<House> houseList = new ArrayList<House>();
+		House house = null;
 		connection = C3P0Utils.getConnection();
 		String sql = "select * from house where house_id =?";
 		try {
@@ -112,13 +113,12 @@ public class IHouseDAOImpl implements IHouseDAO {
 				String house_limit_sex = resultSet.getString(14);
 				int house_stay_time = resultSet.getInt(15);
 				int house_assess_sum = resultSet.getInt(16);
-				House house = new House(house_id1, user_id, house_title,
+				house = new House(house_id1, user_id, house_title,
 						house_describe, house_style, house_address_province,
 						house_address_city, house_address_lng,
 						house_address_lat, house_traffic, house_most_num,
 						house_one_price, house_add_price, house_limit_sex,
 						house_stay_time, house_assess_sum, false);
-				houseList.add(house);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -126,7 +126,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 		} finally {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
-		return houseList;
+		return house;
 	}
 
 	@Override

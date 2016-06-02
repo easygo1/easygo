@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
-import com.easygo.beans.City;
+import com.easygo.beans.others.City;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -3,24 +3,12 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <RelativeLayout
-        android:id="@+id/releaseroom_roompic"
+    <FrameLayout
+        android:id="@+id/releaseroom_fragment"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
-        <ImageView
-            android:id="@+id/releaseroom_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@mipmap/room_add_camera_normal"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/releaseroom_camera"
-            android:layout_centerHorizontal="true"
-            android:textSize="20dp"
-            android:text="添加房源图片"/>
-    </RelativeLayout>
+        android:layout_height="200dp">
+
+    </FrameLayout>
     <TextView
         style="@style/releasesroom_line"/>no
     <RelativeLayout
@@ -50,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:maxLength="25"
             android:background="@drawable/shape"
             android:textColorHint="@color/hintColor"
             android:hint="一句话描述你的房源。"/>
@@ -179,17 +168,18 @@
         style="@style/releasesroom_line"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             style="@style/releasesroom_textview"
-            android:text="房源详情（0-400）"/>
+            android:text="房源详情（0-100）"/>
         <EditText
             android:id="@+id/releaseroom_homeinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:maxLength="100"
             android:background="@drawable/shape"
             android:textColorHint="@color/hintColor"
             android:hint="你的房源有什么独特之处？"/>
@@ -198,7 +188,7 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             style="@style/releasesroom_textview"
@@ -208,7 +198,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
+            android:maxLength="25"
             android:background="@drawable/shape"
             android:textColorHint="@color/hintColor"
             android:hint="出行是否方便？周边有哪些地铁/公交线？"/>
