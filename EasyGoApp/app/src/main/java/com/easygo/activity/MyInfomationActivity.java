@@ -109,8 +109,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
     //只用定义一次
     private RequestQueue mRequestQueue = NoHttp.newRequestQueue();//请求队列
 
-    private int user_id = 1;//在偏好设置中获取
-    private User mUser;
+    private int user_id;//在偏好设置中获取
     private String selectedStr = "";//用户的标签多选
 
     private OnResponseListener<String> mOnResponseListener = new OnResponseListener<String>() {
@@ -215,12 +214,12 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
 
     private void initAllData() {
         mSharedPreferences = this.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
-        //user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
+        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
         //创建请求对象
         request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
         //添加请求参数
         request.add("methods", "selectInfoById");
-        request.add("user_id", 1);
+        request.add("user_id", 16);
         mRequestQueue.add(WHAT_GETUSERINFO, request, mOnResponseListener);
     }
 

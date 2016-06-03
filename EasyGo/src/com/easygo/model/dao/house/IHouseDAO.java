@@ -31,5 +31,7 @@ public interface IHouseDAO {
 
 	// 所有房源
 	public abstract List<House> selectAllHouse();
-
+	
+	//根据user_id查询房源
+	public abstract House findSpecHouseByUserId(int user_id);
 }

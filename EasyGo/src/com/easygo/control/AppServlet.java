@@ -1,4 +1,4 @@
-package com.easygo.control;
+﻿package com.easygo.control;
 
 /**
  * @Author PengHong
@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.easygo.model.beans.chat.Friend;
 import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.gson.GsonUserInfoHobby;
 import com.easygo.model.beans.house.Equipment;
@@ -29,6 +30,7 @@ import com.easygo.model.beans.house.HousePhoto;
 import com.easygo.model.beans.order.Assess;
 import com.easygo.model.beans.order.Orders;
 import com.easygo.model.beans.user.User;
+import com.easygo.model.dao.chat.IFriendDAO;
 import com.easygo.model.dao.house.IHouseDAO;
 import com.easygo.model.dao.house.IHouseEquipmentDAO;
 import com.easygo.model.dao.house.IHousePhotoDAO;
@@ -38,6 +40,7 @@ import com.easygo.model.dao.user.IHobbyDAO;
 import com.easygo.model.dao.user.IHouseCollectDAO;
 import com.easygo.model.dao.user.IUserDAO;
 import com.easygo.model.dao.user.IUserHobbyDAO;
+import com.easygo.model.impl.chat.IFriendDAOImpl;
 import com.easygo.model.impl.house.IHouseDAOImpl;
 import com.easygo.model.impl.house.IHouseEquipmentDAOImpl;
 import com.easygo.model.impl.house.IHousePhotoDAOImpl;
@@ -77,7 +80,13 @@ public class AppServlet extends HttpServlet {
 	IUserHobbyDAO userhobbydao;
 	List<Integer> userhobbyidlist;
 	List<String> userhobbyNamelist;
+	
+	//friend的相关对象
+	IFriendDAO frienddao;
+	List<Friend> friendlist;
+	int user_id1=-1,user_id2=-1;
 
+	Friend friend;
 	// Order的相关对象
 	IOrderDAO orderDAO;
 	List<Orders> orderList;
@@ -112,10 +121,10 @@ public class AppServlet extends HttpServlet {
 	Assess assess;
 
 	Gson gson;
+	Type type;
 	// gson.toJson()的结果
 	String result;
 	boolean flag;
-	Type type;
 
 	public AppServlet() {
 		super();
@@ -137,29 +146,37 @@ public class AppServlet extends HttpServlet {
 		String method = request.getParameter("methods");
 
 		switch (method) {
+		case "a":
+			break;
 		case "goAddUser":
 			request.setAttribute("oneUser", user);
 			request.getRequestDispatcher("jsp/user/addUser.jsp").forward(
 					request, response);
 			break;
-
+		//用户登录	
 		case "login":
-			user_phone = request.getParameter("user_phone");
-			user_password = request.getParameter("user_password");
-			System.out.println(user_phone);
-			System.out.println(user_password);
-			// 进行登录操作
-			user = new User();
-			userdao = new IUserDAOImpl();
-			String token = userdao.login(user_phone, user_password);
-			System.out.println(token);
+			user_phone=request.getParameter("user_phone");
+		    user_password=request.getParameter("user_password");
+		    System.out.println("手机号为："+user_phone);
+		    System.out.println("密码为："+user_password);
+		    //进行登录操作
+		    user=new User();
+		    userdao= new IUserDAOImpl();
+		    String token=userdao.login(user_phone,user_password);
+		    String u_id=userdao.selectUserID(user_phone)+"";
+		    
+		    List<String> list=new ArrayList<>();
+		    list.add(u_id);
+		    list.add(token);
 			if (token != null) {
-				mPrintWriter.write(token);
+				gson = new Gson();
+				result = gson.toJson(list);
+				mPrintWriter.write(result);
 				System.out.println("登录成功");
 			}
-
 			mPrintWriter.close();
 			break;
+		//用户注册	
 		case "register":
 			// 接收到android端传过来的手机号和密码（手机号相当于用户名）
 			user_phone = request.getParameter("user_phone");
@@ -174,6 +191,60 @@ public class AppServlet extends HttpServlet {
 				System.out.println("注册成功");
 			}
 			// mPrintWriter.write(userdao.register(user));
+			mPrintWriter.close();
+			break;
+		//添加好友	
+		case "addFriend":
+			//1.获取到双方的手机号
+			user=new User();
+			userdao= new IUserDAOImpl();
+			String phone1=request.getParameter("phone1");
+			String phone2=request.getParameter("phone2");
+			//2.根据手机号查找user表查找到对应的id
+			int user_id1=userdao.selectUserID(phone1);
+			int user_id2=userdao.selectUserID(phone2);
+			friend=new Friend();
+			frienddao=new IFriendDAOImpl();
+			friend.setUser_id1(user_id1);
+			friend.setUser_id2(user_id2);
+			//如果id1和id2不为-1（不为空）的话进行向数据库中插入数据
+			if(user_id1!=-1&&user_id2!=-1){
+				//1.进行判断所添加的好友（user_id1,user_id2）是否存在于user表中,如果查询出的结果为两条的话，继续进行添加操作
+				//判断数据库中是否存在这样一条数据,如果找不到，就向数据库中插入数据
+				if(!frienddao.selectTwoFriend(user_id1,user_id2)){
+					if(frienddao.addIFriend(friend)){
+						System.out.println("好友添加成功");
+					}
+				}else{
+					System.out.println("您已经与该用户为好友");
+				}
+			}
+			break;
+		//模糊查找好友
+		case "selectFriend":
+			
+			break;
+		//显示好友列表
+		case "showfriendlist":
+			List<String> friendlist=new ArrayList<>();
+			user=new User();
+			userdao= new IUserDAOImpl();
+			//1.根据phone查找出id
+			String phone=request.getParameter("phone");
+			user_id=userdao.selectUserID(phone);
+			//2.在friend表中查出该id所有的好友的id集合
+			friend=new Friend();
+			frienddao=new IFriendDAOImpl();
+			List<Integer> friend_id_list=frienddao.selectAllFriend(user_id);
+			//3.从数据库中 获取到好友id的用户名集合
+			for(int i=0;i<friend_id_list.size();i++){
+				int id=friend_id_list.get(i);
+				friendlist.add(userdao.selectUserPhone(id));
+			}
+			//4.将获取到的phone数据封装成Gson传送出去
+			gson = new Gson();
+			result = gson.toJson(friendlist);
+			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
 		case "addUser":
@@ -564,20 +635,61 @@ public class AppServlet extends HttpServlet {
 		case "addHouse":
 			housedao = new IHouseDAOImpl();
 			houseList = new ArrayList<House>();
+			String user_id = request.getParameter("user_id");
+			String house_title = request.getParameter("house_title");
 			String house_style = request.getParameter("house_style");
+			String house_address_province = request.getParameter("house_address_province");
+			String house_address_city1 = request.getParameter("house_address_city");
+			String house_address_lng = request.getParameter("house_address_lng");
+			String house_address_lat = request.getParameter("house_address_lat");
 			String house_most_num = request.getParameter("house_most_num");
 			String house_one_price = request.getParameter("house_one_price");
 			String house_add_price = request.getParameter("house_add_price");
+			String house_describe = request.getParameter("house_describe");
+			String house_traffic = request.getParameter("house_traffic");
 			String house_limit_sex = request.getParameter("house_limit_sex");
 			String house_stay_time = request.getParameter("house_stay_time");
+			//房源图片地址json字符串
+			String photoList = new String(request.getParameter("photoList").getBytes("iso8859-1"),"UTF-8");
+			type = new TypeToken<List<String>>(){}.getType();
+			System.out.println("666"+photoList);
+			List<String> mList = new ArrayList<>();
+			gson = new Gson();
+			mList = gson.fromJson(photoList,type);
 			house = new House();
-			house.setHouse_style(house_style);
+			house.setUser_id(Integer.valueOf(user_id));
+			house.setHouse_title(new String(house_title.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_style(new String(house_style.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_address_province(new String(house_address_province.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_address_city(new String(house_address_city1.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_address_lng(Double.valueOf(house_address_lng));
+			house.setHouse_address_lat(Double.valueOf(house_address_lat));
 			house.setHouse_most_num(Integer.valueOf(house_most_num));
 			house.setHouse_one_price(Double.valueOf(house_one_price));
 			house.setHouse_add_price(Double.valueOf(house_add_price));
-			house.setHouse_limit_sex(house_limit_sex);
+			house.setHouse_describe(new String(house_describe.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_traffic(new String(house_traffic.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_limit_sex(new String(house_limit_sex.getBytes("iso8859-1"),"UTF-8"));
 			house.setHouse_stay_time(Integer.valueOf(house_stay_time));
 			housedao.addHouse(house);
+			house = housedao.findSpecHouseByUserId(Integer.valueOf(user_id));
+			System.out.println("9999");
+			housePhoto = new HousePhoto();
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			for (int i = 0; i < mList.size(); i++) {
+				if (i == 0) {
+					housePhoto.setHouse_id(house.getHouse_id());
+					housePhoto.setHouse_photo_path(mList.get(i));
+					housePhoto.setIsFirst(1);
+					housePhotoDAO.addSpecIHousePhoto(housePhoto);
+				}
+				else {
+					housePhoto.setHouse_id(house.getHouse_id());
+					housePhoto.setHouse_photo_path(mList.get(i));
+					housePhoto.setIsFirst(0);
+					housePhotoDAO.addSpecIHousePhoto(housePhoto);
+				}
+			}
 			break;
 
 		default:

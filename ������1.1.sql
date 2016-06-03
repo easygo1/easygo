@@ -44,12 +44,12 @@ idcard	VARCHAR(18) NOT NULL,	                        #联系人身份证号
 FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 #好友表
-CREATE TABLE friend (                      #（双方好友user_id和friend_id都要查）
-friend_no    INT PRIMARY KEY AUTO_INCREMENT,#无意义
-user_id       INT,                        #用户ID(外键)
-friend_id     INT,                        #好友ID（外键）
-FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (friend_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE friend (                      	
+friend_no    INT PRIMARY KEY AUTO_INCREMENT,	
+user_id1     INT,                        	
+user_id2     INT,                        	
+FOREIGN KEY (user_id1) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (user_id2) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 #聊天消息表
 CREATE TABLE message(
