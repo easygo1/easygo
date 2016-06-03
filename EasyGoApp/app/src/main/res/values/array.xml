@@ -96,8 +96,22 @@
         <item>男</item>
         <item>女</item>
     </string-array>
-
     <string-array name="label">
+        <item>选择</item>
+        <item>音乐</item>
+        <item>运动</item>
+        <item>读书</item>
+        <item>旅游</item>
+        <item>看电视</item>
+        <item>逛街</item>
+        <item>品茶</item>
+        <item>收藏</item>
+        <item>网购</item>
+        <item>打游戏</item>
+        <item>滑雪</item>
+        <item>摄影</item>
+    </string-array>
+    <string-array name="job">
         <item>选择</item>
         <item>学生</item>
         <item>公务员</item>

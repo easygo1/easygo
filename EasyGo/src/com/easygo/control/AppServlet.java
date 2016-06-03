@@ -8,6 +8,7 @@ package com.easygo.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import com.easygo.model.beans.gson.GsonAboutHouse;
+import com.easygo.model.beans.gson.GsonUserInfoHobby;
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.house.HouseCollect;
@@ -32,16 +34,21 @@ import com.easygo.model.dao.house.IHouseEquipmentDAO;
 import com.easygo.model.dao.house.IHousePhotoDAO;
 import com.easygo.model.dao.order.IAssessDAO;
 import com.easygo.model.dao.order.IOrderDAO;
+import com.easygo.model.dao.user.IHobbyDAO;
 import com.easygo.model.dao.user.IHouseCollectDAO;
 import com.easygo.model.dao.user.IUserDAO;
+import com.easygo.model.dao.user.IUserHobbyDAO;
 import com.easygo.model.impl.house.IHouseDAOImpl;
 import com.easygo.model.impl.house.IHouseEquipmentDAOImpl;
 import com.easygo.model.impl.house.IHousePhotoDAOImpl;
 import com.easygo.model.impl.order.IAssessDAOImpl;
 import com.easygo.model.impl.order.IOrderDAOImpl;
+import com.easygo.model.impl.user.IHobbyImpl;
 import com.easygo.model.impl.user.IHouseCollectDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
+import com.easygo.model.impl.user.IUserHobbyDAOImpl;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 @WebServlet("/appservlet")
 public class AppServlet extends HttpServlet {
@@ -59,6 +66,17 @@ public class AppServlet extends HttpServlet {
 	String user_photo;
 	String user_phone;
 	String user_password;
+	GsonUserInfoHobby userInfoHobby;
+
+	// Hobby的相关对象
+	IHobbyDAO hobbydao;
+	String hobby_name;
+	int hobby_id;
+
+	// Userhobby的相关对象
+	IUserHobbyDAO userhobbydao;
+	List<Integer> userhobbyidlist;
+	List<String> userhobbyNamelist;
 
 	// Order的相关对象
 	IOrderDAO orderDAO;
@@ -97,6 +115,7 @@ public class AppServlet extends HttpServlet {
 	// gson.toJson()的结果
 	String result;
 	boolean flag;
+	Type type;
 
 	public AppServlet() {
 		super();
@@ -220,6 +239,30 @@ public class AppServlet extends HttpServlet {
 			user.setUser_birthday(request.getParameter("user_birthday"));
 			userdao.updateUser(user_no, user);
 			break;
+		case "selectInfoById":
+			//点击我的信息 根据用户id得到用户的信息
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			System.out.println("我是用户id"+user_id);
+			userdao = new IUserDAOImpl();
+			user=new User();
+			user=userdao.findSpecUserById(user_id);
+			//查找用户的全部爱好
+			userhobbyidlist=new ArrayList<Integer>();
+			userhobbyNamelist=new ArrayList<String>();
+			userhobbydao=new IUserHobbyDAOImpl();
+			hobbydao=new IHobbyImpl();//爱好的操作
+			userhobbyidlist=userhobbydao.selectAllUserHobbyById(user_id);
+			for(int i=0;i<userhobbyidlist.size();i++){
+				hobby_id=userhobbyidlist.get(i);
+				hobby_name=hobbydao.selectNameByHobbyId(hobby_id);
+				userhobbyNamelist.add(hobby_name);
+			}
+			userInfoHobby=new GsonUserInfoHobby(user, userhobbyNamelist);
+			gson=new Gson();
+			result=gson.toJson(userInfoHobby);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
 		case "updateUserById":
 			//根据账号更新用户信息
 			user_id = Integer.valueOf(request.getParameter("user_id"));
@@ -228,24 +271,97 @@ public class AppServlet extends HttpServlet {
 			user=new User();
 			user.setUser_realname(new String(request.getParameter("user_realname").getBytes("iso8859-1"),"UTF-8"));
 			user.setUser_nickname(new String(request.getParameter("user_nickname").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_photo(request.getParameter("user_photo"));
 			user.setUser_sex(new String(request.getParameter("user_sex").getBytes("iso8859-1"),"UTF-8"));
+			user.setUser_job(new String(request.getParameter("user_job").getBytes("iso8859-1"),"UTF-8"));
 			user.setUser_address_province(new String(request.getParameter("user_address_province").getBytes("iso8859-1"),"UTF-8"));
 			user.setUser_address_city(new String(request.getParameter("user_address_city").getBytes("iso8859-1"),"UTF-8"));
 			user.setUser_mood(new String(request.getParameter("user_mood").getBytes("iso8859-1"),"UTF-8"));
 			user.setUser_mail(new String(request.getParameter("user_mail").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_birthday(request.getParameter("user_birthday"));
+			user.setUser_birthday(new String(request.getParameter("user_birthday").getBytes("iso8859-1"),"UTF-8"));
 			flag=userdao.updateUserById(user_id, user);
+			mPrintWriter.write("更新user返回结果"+flag);
+			mPrintWriter.close();
+			break;
+		case "selectHobbyidByHobbyName":
+			//根据爱好的名称找到爱好的id
+			hobby_name="";
+			hobbydao=new IHobbyImpl();
+			hobby_id=hobbydao.SelectHobbyIDByHobbyName("读书");
+			mPrintWriter.write("返回结果"+hobby_id);
+			mPrintWriter.close();
+			break;
+		case "insertHobby":
+			//在用户的爱好表中插入数据
+			userhobbydao=new IUserHobbyDAOImpl();
+			flag=userhobbydao.inssertUserHobby(1, 1);
 			mPrintWriter.write("返回结果"+flag);
 			mPrintWriter.close();
+			break;
+		case "selectExistUserHobby":
+			//判断是否已经存在某个爱好
+			userhobbydao=new IUserHobbyDAOImpl();
+			flag=userhobbydao.selectExistUserHobby(1, 3);
+			mPrintWriter.write("返回结果"+flag);
+			mPrintWriter.close();
+			break;
+		case "selectNameByHobbyId":
+			//根据hobbyid查询出爱好名字
+			hobbydao=new IHobbyImpl();//爱好的操作
+			hobby_id=Integer.valueOf(request.getParameter("hobby_id"));
+			hobby_name=hobbydao.selectNameByHobbyId(hobby_id);
+			mPrintWriter.write("返回结果"+hobby_name);
+			mPrintWriter.close();
+			break;
+		case "selectAllUserHobbyById":
+			//查找用户的全部爱好
+			userhobbyidlist=new ArrayList<Integer>();
+			userhobbyNamelist=new ArrayList<String>();
+			userhobbydao=new IUserHobbyDAOImpl();
+			hobbydao=new IHobbyImpl();//爱好的操作
+			user_id=Integer.valueOf(request.getParameter("user_id"));
+			userhobbyidlist=userhobbydao.selectAllUserHobbyById(user_id);
+			for(int i=0;i<userhobbyidlist.size();i++){
+				hobby_id=userhobbyidlist.get(i);
+				hobby_name=hobbydao.selectNameByHobbyId(hobby_id);
+				userhobbyNamelist.add(hobby_name);
+			}
+			mPrintWriter.write("返回爱好查询结果"+userhobbyNamelist.toString());
+			mPrintWriter.close();
+			break;
+		case "updateUserHobbyByid":
+			hobbydao=new IHobbyImpl();//爱好的操作
+			userhobbydao=new IUserHobbyDAOImpl();//用户爱好的操作
+			user_id=Integer.valueOf(request.getParameter("user_id"));
+			String lables=new String(request.getParameter("lables").getBytes("iso8859-1"),"UTF-8");
+			List<String> hobbylist=new ArrayList<String>();
+			gson=new Gson();
+			type = new TypeToken<List<String>>() {
+            }.getType();
+            hobbylist = gson.fromJson(lables, type);
+            userhobbydao.DeleteUserHobbyByUserId(user_id);//先删除再进行添加
+            for(int i=0;i<hobbylist.size();i++){
+            	int hobby_id=hobbydao.SelectHobbyIDByHobbyName(hobbylist.get(i));//得到选择的爱好的id            	         		
+            		flag=userhobbydao.inssertUserHobby(user_id,hobby_id);
+            		System.out.println(flag+"::"+i);
+            }
 			break;
 		case "updateUserPhoto":
 			// 得到要更新的用户id user_no,和头像地址
 			user_id = Integer.valueOf(request.getParameter("user_id"));
 			user_photo = request.getParameter("user_photo");
 			userdao = new IUserDAOImpl();
-			boolean s = userdao.updateUserPhoto(user_id, user_photo);
-			System.out.print("头像上传结果" + s);
+			flag= userdao.updateUserPhoto(user_id, user_photo);
+			System.out.print("头像上传结果" + flag);
+			break;
+		case "selectPhotoMoodByUserId":
+			//通过用户id得到用户的头像和签名
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			userdao = new IUserDAOImpl();
+			user=userdao.selectPhotoMoodByUserId(user_id);
+			gson = new Gson();
+			result = gson.toJson(user);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
 			break;
 
 		case "addOrders":
