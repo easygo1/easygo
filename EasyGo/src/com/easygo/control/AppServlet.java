@@ -8,6 +8,7 @@ package com.easygo.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,7 @@ import com.easygo.model.impl.order.IOrderDAOImpl;
 import com.easygo.model.impl.user.IHouseCollectDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 @WebServlet("/appservlet")
 public class AppServlet extends HttpServlet {
@@ -94,6 +96,7 @@ public class AppServlet extends HttpServlet {
 	Assess assess;
 
 	Gson gson;
+	Type type;
 	// gson.toJson()的结果
 	String result;
 	boolean flag;
@@ -448,20 +451,61 @@ public class AppServlet extends HttpServlet {
 		case "addHouse":
 			housedao = new IHouseDAOImpl();
 			houseList = new ArrayList<House>();
+			String user_id = request.getParameter("user_id");
+			String house_title = request.getParameter("house_title");
 			String house_style = request.getParameter("house_style");
+			String house_address_province = request.getParameter("house_address_province");
+			String house_address_city1 = request.getParameter("house_address_city");
+			String house_address_lng = request.getParameter("house_address_lng");
+			String house_address_lat = request.getParameter("house_address_lat");
 			String house_most_num = request.getParameter("house_most_num");
 			String house_one_price = request.getParameter("house_one_price");
 			String house_add_price = request.getParameter("house_add_price");
+			String house_describe = request.getParameter("house_describe");
+			String house_traffic = request.getParameter("house_traffic");
 			String house_limit_sex = request.getParameter("house_limit_sex");
 			String house_stay_time = request.getParameter("house_stay_time");
+			//房源图片地址json字符串
+			String photoList = new String(request.getParameter("photoList").getBytes("iso8859-1"),"UTF-8");
+			type = new TypeToken<List<String>>(){}.getType();
+			System.out.println("666"+photoList);
+			List<String> mList = new ArrayList<>();
+			gson = new Gson();
+			mList = gson.fromJson(photoList,type);
 			house = new House();
-			house.setHouse_style(house_style);
+			house.setUser_id(Integer.valueOf(user_id));
+			house.setHouse_title(new String(house_title.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_style(new String(house_style.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_address_province(new String(house_address_province.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_address_city(new String(house_address_city1.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_address_lng(Double.valueOf(house_address_lng));
+			house.setHouse_address_lat(Double.valueOf(house_address_lat));
 			house.setHouse_most_num(Integer.valueOf(house_most_num));
 			house.setHouse_one_price(Double.valueOf(house_one_price));
 			house.setHouse_add_price(Double.valueOf(house_add_price));
-			house.setHouse_limit_sex(house_limit_sex);
+			house.setHouse_describe(new String(house_describe.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_traffic(new String(house_traffic.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_limit_sex(new String(house_limit_sex.getBytes("iso8859-1"),"UTF-8"));
 			house.setHouse_stay_time(Integer.valueOf(house_stay_time));
 			housedao.addHouse(house);
+			house = housedao.findSpecHouseByUserId(Integer.valueOf(user_id));
+			System.out.println("9999");
+			housePhoto = new HousePhoto();
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			for (int i = 0; i < mList.size(); i++) {
+				if (i == 0) {
+					housePhoto.setHouse_id(house.getHouse_id());
+					housePhoto.setHouse_photo_path(mList.get(i));
+					housePhoto.setIsFirst(1);
+					housePhotoDAO.addSpecIHousePhoto(housePhoto);
+				}
+				else {
+					housePhoto.setHouse_id(house.getHouse_id());
+					housePhoto.setHouse_photo_path(mList.get(i));
+					housePhoto.setIsFirst(0);
+					housePhotoDAO.addSpecIHousePhoto(housePhoto);
+				}
+			}
 			break;
 
 		default:

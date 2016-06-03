@@ -272,7 +272,7 @@ public class IUserDAOImpl implements IUserDAO {
 
 	// 用户登录，查找用户名和密码
 	@Override
-	public String login(String user_no,String user_password) {
+	public String login(String user_phone,String user_password) {
 		String token = null;
 		connection = C3P0Utils.getConnection();
 		String sql = "select token from user where user_phone =? and user_password=?";

@@ -44,6 +44,7 @@ import java.util.List;
 
 public class ReleasesroomActivity extends AppCompatActivity implements View.OnClickListener{
     public static final int WHAT = 1;
+    public static final int REQUEST_CODE = 11;
     //碎片
     ReleasesroomYesFragment mReleasesroomYesFragment;
     ReleasesroomNoFragment mReleasesroomNoFragment;
@@ -61,8 +62,13 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
     String mUrl;
     private RequestQueue mRequestQueue;
     Intent intent;
+    int user_id = 6;
     String house_title = null;
     String house_style = null;
+    double house_address_lng;//经度
+    double house_address_lat;//纬度
+    String house_address_province = null;
+    String house_address_city = null;
     String house_most_num_str = null;
     int house_most_num;
     String house_one_price_str = null;
@@ -251,6 +257,9 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
                 showFacilitiesDialog();
                 break;
             case R.id.releaseroom_address:
+                intent = new Intent();
+                intent.setClass(ReleasesroomActivity.this,SelectLocationActivity.class);
+                startActivityForResult(intent,REQUEST_CODE);
                 break;
             case R.id.releaseroom_mostnum:
                 showMostnumDialog();
@@ -270,33 +279,45 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
             case R.id.releaseroom_realname:
                 break;
             case R.id.releaseroom_success:
-                ReleasesroomYesFragment releasesroomYesFragment = (ReleasesroomYesFragment) getFragmentManager().findFragmentById(R.id.releaseroom_fragment);
-                mList = releasesroomYesFragment.mList;
-                Log.e("cuikaiactivity",mList.toString());
-                for (int i = 0; i<mList.size();i++){
-                    new UploadTask().execute(mList.get(i));
+                if(getFragmentManager().findFragmentById(R.id.releaseroom_fragment) == mReleasesroomNoFragment){
+                    Toast.makeText(ReleasesroomActivity.this, "请将房源信息填写完整", Toast.LENGTH_SHORT).show();
+                    break;
                 }
-                Thread t = new Thread(){
-                    @Override
-                    public void run() {
-                        super.run();
-                        try {
-                            while (true){
-                                if(mList.size() == mUpList.size()){
-                                    Log.e("cuikaiup",mUpList.toString());
-                                    addHouseToSQL();
-                                    return;
-                                }else {
-                                    sleep(1000);
-                                }
-                            }
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                mReleasesroomYesFragment = (ReleasesroomYesFragment) getFragmentManager().findFragmentById(R.id.releaseroom_fragment);
+                mList = mReleasesroomYesFragment.mList;
+                Log.e("cuikaiactivity",mList.toString());
+                house_title = mTitleEditText.getText().toString();
+                house_describe = mHomeinfoEditText.getText().toString();
+                house_traffic = mTrafficinfoEditText.getText().toString();
+                if (house_title != null && house_describe != null && house_style != null && house_address_province !=null &&
+                        house_traffic != null && house_most_num_str != null && house_one_price_str != null && house_add_price_str != null
+                        && house_limit_sex != null && house_stay_time_str != null ) {
+                    for (int i = 0; i < mList.size(); i++) {
+                        new UploadTask().execute(mList.get(i));
                     }
-                };
-                t.start();
-
+                    Thread t = new Thread() {
+                        @Override
+                        public void run() {
+                            super.run();
+                            try {
+                                while (true) {
+                                    if (mList.size() == mUpList.size()) {
+                                        Log.e("cuikaiup", mUpList.toString());
+                                        addHouseToSQL();
+                                        return;
+                                    } else {
+                                        sleep(1000);
+                                    }
+                                }
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    t.start();
+                }else {
+                    Toast.makeText(ReleasesroomActivity.this, "请将房源信息填写完整", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
@@ -311,6 +332,10 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         mEditor.putInt("type", 2);
         //提交保存结果
         mEditor.commit();
+        Gson gson = new Gson();
+        //Type type = new TypeToken<List<String>>(){}.getType();
+        String photoList = gson.toJson(mUpList);
+        Log.e("cuikaiphoto",photoList+"666");
         MyApplication myApplication = (MyApplication) this.getApplication();
         mUrl = myApplication.getUrl();
         //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
@@ -319,8 +344,13 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
         //添加请求参数
         request.add("methods","addHouse");
+        request.add("user_id",user_id);
         request.add("house_title",house_title);
         request.add("house_style",house_style);
+        request.add("house_address_province",house_address_province);
+        request.add("house_address_city",house_address_city);
+        request.add("house_address_lng",house_address_lng);
+        request.add("house_address_lat",house_address_lat);
         request.add("house_most_num",house_most_num);
         request.add("house_one_price",house_one_price);
         request.add("house_add_price",house_add_price);
@@ -328,22 +358,19 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         request.add("house_traffic",house_traffic);
         request.add("house_limit_sex",house_limit_sex);
         request.add("house_stay_time",house_stay_time);
-
-         /* what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
-		 * request: 请求对象
-		 * onResponseListener 回调对象，接受请求结果*/
-
+        request.add("photoList",photoList);
+     /* what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
+     * request: 请求对象
+     * onResponseListener 回调对象，接受请求结果*/
         mRequestQueue.add(WHAT,request, onResponseListener);
         intent = new Intent();
         intent.putExtra("flag","me");
         intent.setClass(ReleasesroomActivity.this,MainActivity.class);
         startActivity(intent);
+
     }
 
     private void processData() {
-        house_title = mTitleEditText.getText().toString();
-        house_describe = mHomeinfoEditText.getText().toString();
-        house_traffic = mTrafficinfoEditText.getText().toString();
         //去掉字符串中的“人”,便于之后转换为int类型
         house_most_num = Integer.valueOf(house_most_num_str.replace("人",""));
         if (house_one_price_str.equals("免费")){
@@ -375,6 +402,23 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         });
         builder.create().show();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //比较requestCode和REQUESTCODE，证明活动是否为REQUESTCODE相关的操作发起。
+        if (requestCode == REQUEST_CODE){
+            if (resultCode == SelectLocationActivity.RESULT_OK){
+                Bundle bundle = data.getExtras();
+                String house_address = bundle.getString("house_address");
+                mAddressTextView.setText(house_address);
+                house_address_lng = bundle.getDouble("house_address_lng");
+                house_address_lat = bundle.getDouble("house_address_lat");
+                house_address_province = bundle.getString("house_address_province");
+                house_address_city = bundle.getString("house_address_city");
+            }
+        }
+    }
+
     private void showFacilitiesDialog() {
     }
     private void showMostnumDialog(){

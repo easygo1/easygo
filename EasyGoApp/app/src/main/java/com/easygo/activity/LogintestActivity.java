@@ -79,6 +79,7 @@ public class LogintestActivity extends AppCompatActivity {
                     Toast.makeText(LogintestActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 }
             }
+
         }
 
         @Override
@@ -138,11 +139,23 @@ public class LogintestActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        //将输入的数据变成字符串
+        /*//将输入的数据变成字符串
         mLoginPassword=muser_password.getText().toString();
         mPhoneString = muser_phone.getText().toString();
         //向服务端传输输入的数据进行登录操作
-        startLoginRequest();
+        startLoginRequest();*/
+        Intent intent = new Intent();
+        intent.putExtra("flag","me");
+        intent.setClass(LogintestActivity.this,MainActivity.class);
+        startActivity(intent);
+
+        //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
+        mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
+        //向偏好设置文件中保存数据
+        mEditor = mSharedPreferences.edit();
+        mEditor.putInt("type", 1);
+        //提交保存结果
+        mEditor.commit();
     }
 
     //登录页面的注册，跳转到注册页面
