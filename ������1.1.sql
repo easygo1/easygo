@@ -22,7 +22,7 @@ token VARCHAR(200),		       #token
 remarks VARCHAR(50)		       #备注
 						
 );
-#爱好表（所有爱好
+#标签爱好表（所有爱好
 CREATE TABLE hobby(
 hobby_id     INT PRIMARY KEY AUTO_INCREMENT,#爱好ID
 hobby_name   VARCHAR(10)                   #爱好名称

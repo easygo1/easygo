@@ -139,6 +139,27 @@
 
     <TextView
         style="@style/releasesroom_line"/>
+    <RelativeLayout
+        android:id="@+id/change_job"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+
+        <TextView
+            style="@style/releasesroom_textview"
+            android:text="职业"/>
+
+        <TextView
+            android:id="@+id/change_job_textView"
+            style="@style/releasesroom_xuanze"
+            android:text="选择"/>
+
+        <ImageView
+            style="@style/releasesroom_arrow"/>
+    </RelativeLayout>
+
+    <TextView
+        style="@style/releasesroom_line"/>
 
     <RelativeLayout
         android:id="@+id/change_label"

@@ -1,6 +1,8 @@
 [
     {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u26bd.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u26bd.png"
     },
@@ -22,10 +24,13 @@
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u23f0.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_cancel.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_cancel.png"
     },
     {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f004.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f004.png"
@@ -39,10 +44,17 @@
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_icon_admin.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_icon_admin.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f612.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f612.png"
+    },
+    {
+=======
 <<<<<<< HEAD
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_emoji_block.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_emoji_block.png"
@@ -51,6 +63,7 @@
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f44a.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f44a.png"
 =======
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f377.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f377.png"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
@@ -59,6 +72,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_grid_image_default.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_grid_image_default.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3c0.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f3c0.png"
@@ -375,16 +390,17 @@
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f60f.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60f.png"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_bg_voice_popup.9.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_bg_voice_popup.9.png"
     },
     {
 <<<<<<< HEAD
-        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_bg_voice_popup.9.png",
-        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_bg_voice_popup.9.png"
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f60f.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60f.png"
 =======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_6.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_6.png"
-    },
-    {
 <<<<<<< HEAD
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f494.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f494.png"
@@ -397,6 +413,7 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_message_block.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_location_selected.png",
@@ -404,10 +421,13 @@
     },
     {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u270c.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u270c.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ed_pub_service_search_normal.9.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ed_pub_service_search_normal.9.png"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
@@ -417,6 +437,8 @@
 =======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f381.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f381.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4a4.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4a4.png"
@@ -449,6 +471,7 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_smiley_selected.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_smiley_selected.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4da.png",
@@ -497,13 +520,8 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_receive_voice_one.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f349.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f349.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f6ab.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f6ab.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_back_normal.png",
@@ -539,6 +557,8 @@
     },
     {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_phone_normal.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_phone_normal.png"
     },
@@ -547,6 +567,7 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f366.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4a2.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4a2.png"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
@@ -554,10 +575,6 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f44d.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f44d.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_conversation_list_msg_send_failure.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_conversation_list_msg_send_failure.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f680.png",
@@ -568,17 +585,8 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60e.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f600.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f600.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f61a.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f61a.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f37b.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f37b.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
 <<<<<<< HEAD
@@ -609,7 +617,6 @@
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f366.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f366.png"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
@@ -617,10 +624,6 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f35a.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f35a.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3c2.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f3c2.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
 <<<<<<< HEAD
@@ -644,6 +647,8 @@
     },
     {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_send_voice_two.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_send_voice_two.png"
     },
@@ -656,12 +661,15 @@
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_no_hover.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_star_hover.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_star_hover.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_indicator_hover.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_indicator_hover.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f615.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f615.png"
@@ -676,6 +684,7 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ed_pub_service_search_hover.9.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_text_selected.png",
@@ -690,6 +699,8 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u2614.png"
     },
     {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_location_selected.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_location_selected.png"
@@ -724,6 +735,7 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f612.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4aa.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4aa.png"
     },
@@ -788,6 +800,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f33b.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f33b.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u2b50.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u2b50.png"
@@ -822,6 +836,7 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_warning.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_loading.png",
@@ -832,6 +847,8 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f30f.png"
     },
     {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f484.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f484.png"
@@ -849,12 +866,15 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_setting_friends_delete.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u270c.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u270c.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_camera_normal.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_camera_normal.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_radio_button_off.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_radio_button_off.png"
@@ -2398,6 +2418,7 @@
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3e1.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f3e1.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3a4.png",
@@ -2408,28 +2429,43 @@
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_sent_play1.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3e1.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f3e1.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f649.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f649.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_extend_selected.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_extend_selected.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_no.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_no.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4b0.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4b0.png"
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f381.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f381.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_praise.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_praise.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u26bd.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u26bd.png"
+=======
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f47b.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f47b.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4e2.png",
@@ -2444,6 +2480,10 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_6.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_phone_selected.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_phone_selected.png"
+=======
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_default_group_portrait.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_default_group_portrait.png"
     },
@@ -2458,20 +2498,34 @@
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_bg_text_normal.9.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_bg_text_normal.9.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_bg_voice_popup.9.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_bg_voice_popup.9.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f47f.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f47f.png"
+=======
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f612.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f612.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f602.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f602.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f47b.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f47b.png"
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_img_camera.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_img_camera.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_keyboard_selected.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_keyboard_selected.png"
     },
@@ -2486,12 +2540,21 @@
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_back_pressed.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_back_pressed.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4a3.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4a3.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_setting_friends_delete.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_setting_friends_delete.png"
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_unread_message_count.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_unread_message_count.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62f.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62f.png"
     },
@@ -2506,12 +2569,21 @@
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f48d.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f48d.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f44e.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f44e.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_voice_receive_play1.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_receive_play1.png"
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_default_portrait.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_default_portrait.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f609.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f609.png"
     },
@@ -2522,6 +2594,7 @@
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\select_check_nor.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\select_check_nor.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f484.png",
@@ -2532,6 +2605,14 @@
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f6b2.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_pub_service_enter_hover.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_btn_pub_service_enter_hover.png"
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4a1.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4a1.png"
+=======
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_back_pressed.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_back_pressed.png"
     },
@@ -2546,6 +2627,7 @@
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f60c.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60c.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_extend_selected.png",
@@ -2560,8 +2642,13 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u2b50.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f615.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f615.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_indicator.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_indicator.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_cancel.png",
@@ -2576,6 +2663,18 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_no.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f623.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f623.png"
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f60c.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60c.png"
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_empty_pic.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_empty_pic.png"
+=======
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_yes.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_yes.png"
     },
@@ -2586,6 +2685,7 @@
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_bg_text_normal.9.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_bg_text_normal.9.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_voice_unread.png",
@@ -2600,6 +2700,10 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62e.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f637.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f637.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f633.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f633.png"
     },
@@ -2618,6 +2722,7 @@
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_voide_message_unread.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_voide_message_unread.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u2601.png",
@@ -2628,8 +2733,13 @@
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_cancel.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f60d.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60d.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_2.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_2.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f35a.png",
@@ -2640,20 +2750,30 @@
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60d.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f618.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f618.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_complete_hover.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_complete_hover.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f437.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f437.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62d.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62d.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f61e.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f61e.png"
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_no_right.9.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_bubble_no_right.9.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_notification_network_available.png",
@@ -2664,8 +2784,13 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u23f3.png"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f48d.png",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f48d.png"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_radio_button_off.png",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_radio_button_off.png"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62b.png",
@@ -2685,60 +2810,26 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_origin_check_sel.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_origin_check_sel.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u261d.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u261d.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_praise.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_praise.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_0.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_0.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_no_hover.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_no_hover.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_send_voice_two.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_send_voice_two.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4e2.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4e2.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u26c5.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u26c5.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_no_right.9.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_bubble_no_right.9.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f434.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f434.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_pub_service_enter_hover.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_btn_pub_service_enter_hover.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_warning.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_warning.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_origin_check_nor.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_origin_check_nor.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f46b.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f46b.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f609.png",
@@ -2749,7 +2840,6 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_conversation_list_msg_send_failure.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_pictype_normal.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_pictype_normal.png"
     },
@@ -2764,48 +2854,26 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_voice_normal.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_normal.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_indicator.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_indicator.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_menu_keyboard.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_menu_keyboard.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f393.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f393.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f37b.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f37b.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_extend_normal.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_extend_normal.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_pictype_normal.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_pictype_normal.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f44a.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f44a.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f603.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f603.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u2614.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u2614.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f606.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f606.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_bg_text_hover.9.png",
@@ -2816,7 +2884,6 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62a.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_voice_sent_play3.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_sent_play3.png"
     },
@@ -2827,77 +2894,30 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_mebmer_delete.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_mebmer_delete.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f52b.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f52b.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4aa.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4aa.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_voide_message_unread.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_voide_message_unread.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_def_msg_portrait.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_def_msg_portrait.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f47b.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f47b.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_send_voice_two.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_send_voice_two.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f556.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f556.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_location_selected.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_location_selected.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_voice_selected.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_selected.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_public_service_menu_bg.9.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_public_service_menu_bg.9.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u2744.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u2744.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f556.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f556.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_read_receipt.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_read_receipt.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f436.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f436.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_trangle.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_trangle.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_default_portrait.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_default_portrait.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u26c5.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u26c5.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_send_hover.9.png",
@@ -2908,41 +2928,26 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_delete.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f494.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f494.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_voice_unread.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_voice_unread.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62f.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62f.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62f.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62f.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62e.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62e.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\select_check_nor.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\select_check_nor.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f389.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f389.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_0.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_0.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f602.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f602.png"
     },
@@ -2969,19 +2974,16 @@
 =======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_8.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_8.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\select_check_nor.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\select_check_nor.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_no_hover.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_no_hover.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_def_rich_content.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_def_rich_content.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3a4.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f3a4.png"
@@ -2991,13 +2993,13 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f44c.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f44c.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f48a.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f48a.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f60a.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60a.png"
     },
@@ -3012,6 +3014,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f64f.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f64f.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f628.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f628.png"
@@ -3025,6 +3029,7 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_voice_normal.9.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_btn_voice_normal.9.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62c.png",
@@ -3047,7 +3052,6 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_add_people.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f437.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f437.png"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
@@ -3063,6 +3067,8 @@
 =======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f389.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f389.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f631.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f631.png"
@@ -3096,6 +3102,7 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f64a.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f64a.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f616.png",
@@ -3106,7 +3113,6 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_message_block.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_text_normal.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_text_normal.png"
     },
@@ -3155,6 +3161,8 @@
 =======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_voice_icon_left.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_voice_icon_left.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62d.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62d.png"
@@ -3164,13 +3172,13 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f612.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62b.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62b.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_unread_count_bg.9.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_unread_count_bg.9.png"
     },
@@ -3210,6 +3218,8 @@
 =======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3b2.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f3b2.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_no_hover.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_no_hover.png"
@@ -3227,6 +3237,7 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_notification_network_available.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_notification_network_available.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
 <<<<<<< HEAD
@@ -3239,7 +3250,6 @@
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f611.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f611.png"
     },
@@ -3254,6 +3264,8 @@
 =======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_voide_message_unread.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_voide_message_unread.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_emoji_block.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_emoji_block.png"
@@ -3271,6 +3283,7 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_default_group_portrait.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_default_group_portrait.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
 <<<<<<< HEAD
@@ -3289,7 +3302,6 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f6ab.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_radio_button_on.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_radio_button_on.png"
     },
@@ -3327,6 +3339,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_receive_voice_two.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_receive_voice_two.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f624.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f624.png"
@@ -3344,12 +3358,15 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_grid_image_error.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u270f.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u270f.png"
     },
     {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f636.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f636.png"
@@ -3359,6 +3376,7 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_receive.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_catalog_selected.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_catalog_selected.png"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
@@ -3379,6 +3397,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_star.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_star.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_add_people.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_add_people.png"
@@ -3403,6 +3423,7 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f633.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f633.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_pub_service_follow_normal.png",
@@ -3411,17 +3432,8 @@
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f434.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f434.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f30f.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f30f.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_location_normal.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_location_normal.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
 <<<<<<< HEAD
@@ -3458,7 +3470,6 @@
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f629.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f629.png"
     },
@@ -3497,6 +3508,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f622.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f622.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_unread_count_bg.9.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_unread_count_bg.9.png"
@@ -3546,6 +3559,7 @@
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_warning.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_warning.png"
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_pub_service_enter_normal.png",
@@ -3556,10 +3570,13 @@
     },
     {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_send_voice_two.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_send_voice_two.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_pub_service_follow_hover.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_btn_pub_service_follow_hover.png"
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
@@ -3639,6 +3656,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f614.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f614.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f602.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f602.png"
@@ -3698,6 +3717,7 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_7.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3c2.png",
@@ -3706,10 +3726,13 @@
     },
     {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_yes.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_yes.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f633.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f633.png"
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
@@ -3725,6 +3748,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f525.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f525.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_1.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_1.png"
@@ -3753,6 +3778,7 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_cancel.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_cancel.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f44c.png",
@@ -3760,36 +3786,28 @@
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3c0.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f3c0.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_phone_selected.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_phone_selected.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f601.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f601.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_send_normal.9.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_btn_send_normal.9.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\select_check_sel.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\select_check_sel.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_star.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_star.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_7.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_7.png"
     },
     {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f48d.png",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f48d.png"
@@ -3803,16 +3821,13 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f634.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f636.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f636.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_voice_receive.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_receive.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f319.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f319.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f356.png",
@@ -3824,13 +3839,14 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f606.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_btn_voice_hover.9.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_btn_voice_hover.9.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f36b.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f36b.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u23f0.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u23f0.png"
@@ -3860,23 +3876,15 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f35a.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f44e.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f44e.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f624.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f624.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_voice_sent_play2.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_sent_play2.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_no.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_no.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f631.png",
@@ -3887,7 +3895,6 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f607.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4a4.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4a4.png"
     },
@@ -3910,6 +3917,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_voice_sent.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_sent.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_catalog_pic_shadow.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_catalog_pic_shadow.png"
@@ -3972,6 +3981,7 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f623.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_back_pressed.png",
@@ -3982,36 +3992,24 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f484.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_volume_5.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_volume_5.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_send_voice_one.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_send_voice_one.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_conversation_list_msg_sending.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_conversation_list_msg_sending.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f382.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f382.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u2615.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u2615.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u2744.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u2744.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f60b.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f60b.png"
     },
     {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f64f.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f64f.png"
@@ -4025,12 +4023,15 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_bg_voice_popup.9.png"
 =======
 <<<<<<< HEAD
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f6bf.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f6bf.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f61d.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f61d.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f349.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f349.png"
@@ -4040,26 +4041,21 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f618.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f628.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f628.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u270a.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u270a.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4e2.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4e2.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_catalog_pic_shadow.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_catalog_pic_shadow.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_indicator.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_indicator.png"
     },
@@ -4070,43 +4066,14 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_voice_receive_play2.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_voice_receive_play2.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_img_camera.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_img_camera.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u26bd.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u26bd.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u270f.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u270f.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u263a.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u263a.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_extend_selected.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_extend_selected.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_notice_loading.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_notice_loading.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_notification_network_available.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_notification_network_available.png"
-=======
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f36b.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f36b.png"
-    },
-    {
-        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f3b5.png",
-        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f3b5.png"
->>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u2b50.png",
@@ -4117,7 +4084,6 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_complete.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_no.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_no.png"
     },
@@ -4149,6 +4115,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_def_coversation_portrait.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_def_coversation_portrait.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_picsel_empty_pic.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_picsel_empty_pic.png"
@@ -4191,6 +4159,7 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f339.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f339.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_keyboard_selected.png",
@@ -4201,7 +4170,6 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f339.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_no_left.9.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_bubble_no_left.9.png"
     },
@@ -4224,6 +4192,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_left.9.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_bubble_left.9.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_white.9.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_bubble_white.9.png"
@@ -4237,6 +4207,7 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\select_check_sel.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\select_check_sel.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
 <<<<<<< HEAD
@@ -4255,25 +4226,26 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_default_group_portrait.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f4a3.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f4a3.png"
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f6b2.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f6b2.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f609.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f609.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f52b.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f52b.png"
     },
     {
-<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_radio_button_off.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_radio_button_off.png"
     },
@@ -4288,6 +4260,8 @@
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f64a.png",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f64a.png"
+<<<<<<< HEAD
+=======
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\rc_ic_text_selected.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\rc_ic_text_selected.png"
@@ -4383,5 +4357,6 @@
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\u1f62c.png",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\u1f62c.png"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     }
 ]

@@ -29,6 +29,7 @@ public class User {
         super();
     }
 
+
     public User(int user_id, String user_no, String user_realname,
                 String user_password, String user_nickname, String user_sex,
                 String user_phone, int user_type, String user_photo,

@@ -1,7 +1,10 @@
 package com.easygo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +39,11 @@ public class SelectLocationActivity extends AppCompatActivity implements
     private String Address;//当前位置
     private EditText mlocationEditText;
     private Button mokButton;
+    private double house_address_lng;//经度
+    private double house_address_lat;//纬度
+    private String house_address_province;
+    private String house_address_city;
+    private String house_address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +59,35 @@ public class SelectLocationActivity extends AppCompatActivity implements
     }
 
     private void initlistener() {
+        mlocationEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                getLatlon(mlocationEditText.getText().toString(), "苏州");
+            }
+        });
         mokButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getLatlon(mlocationEditText.getText().toString(), "苏州");
-                /*Intent intent=new Intent();
-                intent.setClass(SelectLocationActivity.this,ReleasesroomActivity.class);
-                intent.putExtra("address",Address);
-                startActivity(intent);*/
+                Intent intent=new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putDouble("house_address_lng",house_address_lng);
+                bundle.putDouble("house_address_lat",house_address_lat);
+                bundle.putString("house_address_province",house_address_province);
+                bundle.putString("house_address_city",house_address_city);
+                bundle.putString("house_address",house_address);
+                intent.putExtras(bundle);
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
         mAMap.setOnMapClickListener(new AMap.OnMapClickListener() {
@@ -189,8 +218,11 @@ public class SelectLocationActivity extends AppCompatActivity implements
         mAMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(address.getLatLonPoint().getLatitude(),address.getLatLonPoint().getLongitude()), 18));
         marker.setTitle("经纬度" + address.getLatLonPoint() + "\n位置" + address.getFormatAddress());
         marker.showInfoWindow();
-        address.getCity();//得到城市
-        address.getProvince();//得到省份
+        house_address_lng = address.getLatLonPoint().getLongitude();//经度
+        house_address_lat = address.getLatLonPoint().getLatitude();//纬度
+        house_address_city = address.getCity();//得到城市
+        house_address_province = address.getProvince();//得到省份
+        house_address = address.getFormatAddress().replace(house_address_city,"").replace(house_address_province,"");
         show(address.getFormatAddress());
         Address=address.getFormatAddress();
     }

@@ -1,11 +1,20 @@
 [
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_btn_send.xml",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_btn_send.xml"
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_selector_grid_camera_mask.xml",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_selector_grid_camera_mask.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_an_voice_receive.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_an_voice_receive.xml"
     },
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_corner_location_style.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_corner_location_style.xml"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_smiley.xml",
@@ -16,14 +25,31 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_bg_editinput.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_sel_picsel_toolbar_back.xml",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_sel_picsel_toolbar_back.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_admin_selector.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_ic_admin_selector.xml"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_bg_editinput.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_bg_editinput.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_corner_style.xml",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_corner_style.xml"
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_admin_selector.xml",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_ic_admin_selector.xml"
+    },
+    {
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_phone.xml",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_ic_phone.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_sel_picsel_toolbar_send.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_sel_picsel_toolbar_send.xml"
     },
@@ -34,6 +60,7 @@
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_btn_input.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_btn_input.xml"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_camera.xml",
@@ -136,6 +163,10 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_ic_keyboard.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_yes_selector.xml",
+        "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_ic_yes_selector.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_sp_grid_mask.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_sp_grid_mask.xml"
     },
@@ -278,5 +309,6 @@
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_ic_picture.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_ic_picture.xml"
+>>>>>>> 4df23f8c75fdd2bc98aa967e00c03229ebed29a2
     }
 ]
