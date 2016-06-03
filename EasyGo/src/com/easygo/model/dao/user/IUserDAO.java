@@ -5,6 +5,7 @@ import java.util.List;
 import com.easygo.model.beans.user.User;
 
 public interface IUserDAO {
+	
 	// 注册用户
 	public abstract boolean addUser(User user);
 	// 注册用户,只提供手机号码和密码
@@ -19,7 +20,6 @@ public interface IUserDAO {
 	// 查找用户（通过账号查询）
 	public abstract User findSpecUserByNo(int user_no);
 
-
 	// 查找用户（通过ID查询）
 	public abstract User findSpecUserById(int user_id);
 
@@ -30,6 +30,10 @@ public interface IUserDAO {
 	public abstract boolean updateUserPhoto(int user_id, String user_photo);
 	//用户进行登录
 	public abstract String login(String user_no,String user_password);
+	//根据输入的手机号进行user_id的查找
+	public abstract int selectUserID(String phone);
+	//根据输入的id进行手机号的查找
+	public abstract String selectUserPhone(int user_id);
 	//根据用户id更新用户信息
 	public abstract boolean updateUserById(int user_id, User user);
 }

@@ -50,7 +50,7 @@ dependencies {
     compile 'org.xutils:xutils:3.3.34'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.google.code.gson:gson:2.6.2'
-
+    compile 'com.yolanda.nohttp:nohttp:1.0.0'
     compile 'com.lzy.widget:ninegridview:0.1.4'
 
     compile 'com.android.support:support-v4:23.0.3'

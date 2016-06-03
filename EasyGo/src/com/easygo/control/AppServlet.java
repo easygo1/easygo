@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.easygo.model.beans.chat.Friend;
 import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.House;
@@ -28,6 +29,7 @@ import com.easygo.model.beans.house.HousePhoto;
 import com.easygo.model.beans.order.Assess;
 import com.easygo.model.beans.order.Orders;
 import com.easygo.model.beans.user.User;
+import com.easygo.model.dao.chat.IFriendDAO;
 import com.easygo.model.dao.house.IHouseDAO;
 import com.easygo.model.dao.house.IHouseEquipmentDAO;
 import com.easygo.model.dao.house.IHousePhotoDAO;
@@ -35,6 +37,7 @@ import com.easygo.model.dao.order.IAssessDAO;
 import com.easygo.model.dao.order.IOrderDAO;
 import com.easygo.model.dao.user.IHouseCollectDAO;
 import com.easygo.model.dao.user.IUserDAO;
+import com.easygo.model.impl.chat.IFriendDAOImpl;
 import com.easygo.model.impl.house.IHouseDAOImpl;
 import com.easygo.model.impl.house.IHouseEquipmentDAOImpl;
 import com.easygo.model.impl.house.IHousePhotoDAOImpl;
@@ -61,7 +64,13 @@ public class AppServlet extends HttpServlet {
 	String user_photo;
 	String user_phone;
 	String user_password;
-
+	
+	//friend的相关对象
+	IFriendDAO frienddao;
+	List<Friend> friendlist;
+	int user_id1=-1,user_id2=-1;
+	Friend friend;
+	
 	// Order的相关对象
 	IOrderDAO orderDAO;
 	List<Orders> orderList;
@@ -121,29 +130,37 @@ public class AppServlet extends HttpServlet {
 		String method = request.getParameter("methods");
 
 		switch (method) {
+		case "a":
+			break;
 		case "goAddUser":
 			request.setAttribute("oneUser", user);
 			request.getRequestDispatcher("jsp/user/addUser.jsp").forward(
 					request, response);
 			break;
-
+		//用户登录	
 		case "login":
-			user_phone = request.getParameter("user_phone");
-			user_password = request.getParameter("user_password");
-			System.out.println(user_phone);
-			System.out.println(user_password);
-			// 进行登录操作
-			user = new User();
-			userdao = new IUserDAOImpl();
-			String token = userdao.login(user_phone, user_password);
-			System.out.println(token);
+			user_phone=request.getParameter("user_phone");
+		    user_password=request.getParameter("user_password");
+		    System.out.println("手机号为："+user_phone);
+		    System.out.println("密码为："+user_password);
+		    //进行登录操作
+		    user=new User();
+		    userdao= new IUserDAOImpl();
+		    String token=userdao.login(user_phone,user_password);
+		    String u_id=userdao.selectUserID(user_phone)+"";
+		    
+		    List<String> list=new ArrayList<>();
+		    list.add(u_id);
+		    list.add(token);
 			if (token != null) {
-				mPrintWriter.write(token);
+				gson = new Gson();
+				result = gson.toJson(list);
+				mPrintWriter.write(result);
 				System.out.println("登录成功");
 			}
-
 			mPrintWriter.close();
 			break;
+		//用户注册	
 		case "register":
 			// 接收到android端传过来的手机号和密码（手机号相当于用户名）
 			user_phone = request.getParameter("user_phone");
@@ -158,6 +175,60 @@ public class AppServlet extends HttpServlet {
 				System.out.println("注册成功");
 			}
 			// mPrintWriter.write(userdao.register(user));
+			mPrintWriter.close();
+			break;
+		//添加好友	
+		case "addFriend":
+			//1.获取到双方的手机号
+			user=new User();
+			userdao= new IUserDAOImpl();
+			String phone1=request.getParameter("phone1");
+			String phone2=request.getParameter("phone2");
+			//2.根据手机号查找user表查找到对应的id
+			int user_id1=userdao.selectUserID(phone1);
+			int user_id2=userdao.selectUserID(phone2);
+			friend=new Friend();
+			frienddao=new IFriendDAOImpl();
+			friend.setUser_id1(user_id1);
+			friend.setUser_id2(user_id2);
+			//如果id1和id2不为-1（不为空）的话进行向数据库中插入数据
+			if(user_id1!=-1&&user_id2!=-1){
+				//1.进行判断所添加的好友（user_id1,user_id2）是否存在于user表中,如果查询出的结果为两条的话，继续进行添加操作
+				//判断数据库中是否存在这样一条数据,如果找不到，就向数据库中插入数据
+				if(!frienddao.selectTwoFriend(user_id1,user_id2)){
+					if(frienddao.addIFriend(friend)){
+						System.out.println("好友添加成功");
+					}
+				}else{
+					System.out.println("您已经与该用户为好友");
+				}
+			}
+			break;
+		//模糊查找好友
+		case "selectFriend":
+			
+			break;
+		//显示好友列表
+		case "showfriendlist":
+			List<String> friendlist=new ArrayList<>();
+			user=new User();
+			userdao= new IUserDAOImpl();
+			//1.根据phone查找出id
+			String phone=request.getParameter("phone");
+			user_id=userdao.selectUserID(phone);
+			//2.在friend表中查出该id所有的好友的id集合
+			friend=new Friend();
+			frienddao=new IFriendDAOImpl();
+			List<Integer> friend_id_list=frienddao.selectAllFriend(user_id);
+			//3.从数据库中 获取到好友id的用户名集合
+			for(int i=0;i<friend_id_list.size();i++){
+				int id=friend_id_list.get(i);
+				friendlist.add(userdao.selectUserPhone(id));
+			}
+			//4.将获取到的phone数据封装成Gson传送出去
+			gson = new Gson();
+			result = gson.toJson(friendlist);
+			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
 		case "addUser":

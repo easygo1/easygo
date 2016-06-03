@@ -73,28 +73,53 @@
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_base_conversation.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu_item.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu_item.xml"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_grid_camera.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_grid_camera.xml"
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_search.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_search.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_rich_content_message.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_rich_content_message.xml"
+<<<<<<< HEAD
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_app_service_conversation.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_app_service_conversation.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_plugin_gridview.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_plugin_gridview.xml"
+=======
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_message.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_message.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_discussion_conversation.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_conversation.xml"
+=======
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_voice_message.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_voice_message.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fragment_base_setting.xml",
@@ -122,6 +147,18 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_popup.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_notice.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_notice.xml"
+    },
+    {
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_app_service_conversation.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_app_service_conversation.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message.xml"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_image.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_image.xml"
     },
@@ -142,6 +179,7 @@
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_discussion_notification_message.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_notification_message.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_voice_message.xml",
@@ -149,8 +187,13 @@
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_alert_human_evaluation.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_alert_human_evaluation.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messageinput.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messageinput.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
 <<<<<<< HEAD
@@ -158,14 +201,25 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_image_message.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_sub_list.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_sub_list.xml"
+    },
+    {
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_message.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_message.xml"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_preview_fragment.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_preview_fragment.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_location_message.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_location_message.xml"
     },
     {
+<<<<<<< HEAD
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_alert_robot_evaluation.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_alert_robot_evaluation.xml"
 =======
@@ -189,19 +243,25 @@
     },
     {
 <<<<<<< HEAD
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_image_message.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_image_message.xml"
     },
     {
-        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_activity.xml",
-        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_activity.xml"
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_system_conversation.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_system_conversation.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_activity.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_activity.xml"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_system_conversation.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_system_conversation.xml"
 =======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation_member.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation_member.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_plugins.xml",
@@ -219,6 +279,10 @@
 <<<<<<< HEAD
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation_member_list.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation_member_list.xml"
+    },
+    {
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fragment_base_setting.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fragment_base_setting.xml"
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu.xml",
@@ -266,12 +330,17 @@
     },
     {
 <<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_webview.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_webview.xml"
+=======
+<<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_app_service_conversation.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_app_service_conversation.xml"
 =======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_grid_item.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_grid_item.xml"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messagelist.xml",
@@ -287,6 +356,10 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation_member_list.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messagelist.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messagelist.xml"
+=======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messageinput.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messageinput.xml"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
@@ -295,14 +368,24 @@
 <<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_information_notification_message.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_information_notification_message.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message_evaluate.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message_evaluate.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_image.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_image.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation_member.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation_member.xml"
+=======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_emoji_gridview.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_emoji_gridview.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
 <<<<<<< HEAD
@@ -322,14 +405,14 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_activity.xml"
     },
     {
-        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_inf.xml",
-        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_inf.xml"
-    },
-    {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_inf.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_inf.xml"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_webview.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_webview.xml"
     },
@@ -340,14 +423,24 @@
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu_item.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu_item.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_camera.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_camera.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu_item.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu_item.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block_popup.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block_popup.xml"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_photo.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_photo.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_catalog_listview.xml",
@@ -365,18 +458,30 @@
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
     },
     {
+<<<<<<< HEAD
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_provider.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_provider.xml"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
     },
     {
 <<<<<<< HEAD
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_grid_item.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_grid_item.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_txt_provider.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_txt_provider.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fragment_base_setting.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fragment_base_setting.xml"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_emoji_gridview.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_emoji_gridview.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messagelist.xml",
@@ -386,6 +491,18 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fragment_base_setting.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_search.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_search.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_image_message.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_image_message.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_albums.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_albums.xml"
+=======
 <<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_text_btn.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_text_btn.xml"
@@ -407,6 +524,7 @@
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_grid_item.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_grid_item.xml"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_camera.xml",
@@ -418,6 +536,18 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_rich_content_message.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_dialog_alter.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_dialog_alter.xml"
+    },
+    {
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_list.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_list.xml"
+    },
+    {
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_dialog_alter.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_dialog_alter.xml"
+=======
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_list.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_list.xml"
     },
@@ -432,6 +562,7 @@
 <<<<<<< HEAD
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_popup.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_popup.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_inf.xml",
@@ -540,6 +671,8 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picprev_activity.xml"
     },
     {
+<<<<<<< HEAD
+=======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_input.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_input.xml"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
@@ -554,6 +687,7 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message_evaluate.xml"
     },
     {
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_search.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_search.xml"
 =======
@@ -562,8 +696,17 @@
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menus.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menus.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picprev_activity.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picprev_activity.xml"
+=======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_notice.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_notice.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
 <<<<<<< HEAD
@@ -616,6 +759,14 @@
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_notice.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation_member_list.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation_member_list.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_system_conversation.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_system_conversation.xml"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_rich_content_message.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_rich_content_message.xml"
     },
@@ -643,18 +794,28 @@
 <<<<<<< HEAD
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menus.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menus.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_photo.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_photo.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_input.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_input.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_preview_fragment.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_preview_fragment.xml"
+=======
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_provider.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_provider.xml"
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_dialog_alter.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_dialog_alter.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_input.xml",
@@ -672,6 +833,10 @@
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_progress.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_conversation.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_conversation.xml"
+=======
         "merged": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_photo.xml",
         "source": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_photo.xml"
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
@@ -688,6 +853,11 @@
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_progress.xml",
         "source": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_progress.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
+    },
+    {
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messageinput.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messageinput.xml"
     },
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_albums.xml",
@@ -696,6 +866,8 @@
     {
         "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_discussion_notification_message.xml",
         "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_notification_message.xml"
+<<<<<<< HEAD
+=======
     },
     {
         "merged": "H:\\git\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_multi_rich_content_message.xml",
@@ -794,32 +966,49 @@
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_popup.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_popup.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_dialog_alter.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_dialog_alter.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_popup.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_popup.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_image_message.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_image_message.xml"
     },
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_discussion_conversation.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_conversation.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_group_conversation.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_group_conversation.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_plugins.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_plugins.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation_member_list.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation_member_list.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_camera.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_camera.xml"
     },
     {
+<<<<<<< HEAD
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message_evaluate.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message_evaluate.xml"
     },
@@ -848,18 +1037,32 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu.xml"
     },
     {
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_webview.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_webview.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_provider.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_provider.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_list.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_list.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation_member.xml",
+        "source": "F:\\sharework\\easygo3\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation_member.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_rich_content_message.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_rich_content_message.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_system_conversation.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_system_conversation.xml"
     },
@@ -882,6 +1085,7 @@
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_search.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_search.xml"
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     },
     {
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_base_conversation.xml",
@@ -896,6 +1100,14 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation.xml"
     },
     {
+<<<<<<< HEAD
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_grid_item.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_grid_item.xml"
+    },
+    {
+        "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_picsel_grid_camera.xml",
+        "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_picsel_grid_camera.xml"
+=======
         "merged": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message.xml",
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message.xml"
     },
@@ -916,5 +1128,6 @@
         "source": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_input_pager_layout.xml"
 >>>>>>> 80ce0e99c89404de9e91a68f42de81ab1068abd2
 >>>>>>> cf494f2d9dfd11d1c20ae54d02ed076c4a1f0d24
+>>>>>>> 89d7b30771e11f8761459478e52e97a5dd252977
     }
 ]

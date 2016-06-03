@@ -9,7 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.easygo.application.MyApplication;
+import com.easygo.beans.user.User;
 import com.easygo.view.WaitDialog;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
 import com.yolanda.nohttp.Request;
@@ -24,21 +27,28 @@ import com.yolanda.nohttp.error.TimeoutError;
 import com.yolanda.nohttp.error.URLError;
 import com.yolanda.nohttp.error.UnKnownHostError;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LogintestActivity extends AppCompatActivity {
     //请求对象
     public static final int Login=6;
     //自定义一个dialog
     private WaitDialog mDialog;
-    //偏好设置
-    public static final String TYPE = "type";
-    SharedPreferences mSharedPreferences;
-    SharedPreferences.Editor mEditor;
     /**
      * 请求队列.
      */
     private RequestQueue mRequestQueue;
     String mUrl,mPhoneString,mLoginPassword;
     EditText muser_phone,muser_password;
+
+    //偏好设置
+    public static final String TYPE = "type";
+    SharedPreferences mSharedPreferences;
+    SharedPreferences.Editor mEditor;
+    //定义一个user对象
+    User user;
+    String token,user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +68,30 @@ public class LogintestActivity extends AppCompatActivity {
             //需要if判断，如果根据用户名和密码查找出来的是null则显示用户名和密码错误
             //如果返回的是一个正常的token则显示登录成功
             if(what == Login) {
-                // 请求成功，直接更新UI
-                String token = response.get();
-                if(token!=null){
+               // 请求成功，直接更新UI
+                List<String> list=new ArrayList<>();
+                String result = response.get();
+                //把JSON格式的字符串改为Student对象
+                Gson gson = new Gson();
+                list = gson.fromJson(result, new TypeToken<List<String>>(){}.getType());
+                //如果用户名密码输入有误，则没有返回值，list为空，将token赋为空，防止崩
+                if(list==null){
+                    token=null;
+                }else{
+                    for(int i=0;i<list.size();i++){
+                        //输入正确，传值
+                        if(i==0){
+                            user_id=list.get(i);
+                        }
+                        if(i==1){
+                            token=list.get(i);
+                        }
+                    }
+                }
+                user=new User();
+                if(token==null){
+                    Toast.makeText(LogintestActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                }else{
                     Toast.makeText(LogintestActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     //登录成功后进行页面的跳转
                     Intent intent = new Intent();
@@ -72,14 +103,14 @@ public class LogintestActivity extends AppCompatActivity {
                     mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
                     //向偏好设置文件中保存数据
                     mEditor = mSharedPreferences.edit();
+                    mEditor.putString("token",token);
+                    mEditor.putString("user_id",user_id);
+                    mEditor.putString("phone",mPhoneString);
                     mEditor.putInt("type", 1);
                     //提交保存结果
                     mEditor.commit();
-                }else{
-                    Toast.makeText(LogintestActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 }
             }
-
         }
 
         @Override
@@ -139,23 +170,19 @@ public class LogintestActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        /*//将输入的数据变成字符串
+        //将输入的数据变成字符串
         mLoginPassword=muser_password.getText().toString();
         mPhoneString = muser_phone.getText().toString();
-        //向服务端传输输入的数据进行登录操作
-        startLoginRequest();*/
-        Intent intent = new Intent();
-        intent.putExtra("flag","me");
-        intent.setClass(LogintestActivity.this,MainActivity.class);
-        startActivity(intent);
-
-        //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
-        mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
-        //向偏好设置文件中保存数据
-        mEditor = mSharedPreferences.edit();
-        mEditor.putInt("type", 1);
-        //提交保存结果
-        mEditor.commit();
+        if(mPhoneString.equals("")) {
+            //判断手机号是否为空
+            Toast.makeText(LogintestActivity.this, "手机号不能为空", Toast.LENGTH_SHORT).show();
+        }else if(mLoginPassword.equals("")) {
+            //判断验证码是否为空
+            Toast.makeText(LogintestActivity.this, "密码不能为空", Toast.LENGTH_SHORT).show();
+        }else{
+            //向服务端传输输入的数据进行登录操作
+            startLoginRequest();
+        }
     }
 
     //登录页面的注册，跳转到注册页面

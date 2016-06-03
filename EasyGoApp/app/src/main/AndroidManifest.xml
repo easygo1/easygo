@@ -137,12 +137,16 @@
         <activity android:name=".ConversationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
+
                 <data
                     android:host="com.easygo.activity"
                     android:pathPrefix="/conversation"
                     android:scheme="rong"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".AddFriendActivity">
         </activity>
         <!-- 打开相册进行的界面声明-->
         <activity

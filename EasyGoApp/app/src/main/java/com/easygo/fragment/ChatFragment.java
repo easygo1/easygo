@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.easygo.activity.AddFriendActivity;
 import com.easygo.activity.LogintestActivity;
 import com.easygo.activity.R;
 import com.easygo.activity.RegisterActivity;
@@ -165,6 +166,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
             switch (v.getId()) {
                 //按照好友姓名进行查找好友
                 case R.id.add_friend_username:
+                    Intent selectfriend=new Intent(getActivity(), AddFriendActivity.class);
+                    startActivity(selectfriend);
                     break;
                 //按照好友地址查找好友
                 case R.id.add_friend_address:
