@@ -23,5 +23,8 @@ public interface IHouseEquipmentDAO {
 
 	// 查询某个房源的所有房源设施
 	public abstract List<Equipment> selectHouseEquipment(int house_id);
+	
+	// 根据房源设施名称查询设施id
+	public abstract int selectEquipmentId(String equipment_name);
 
 }

@@ -25,6 +25,7 @@ import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.house.HouseCollect;
+import com.easygo.model.beans.house.HouseEquipment;
 import com.easygo.model.beans.house.HousePhoto;
 import com.easygo.model.beans.order.Assess;
 import com.easygo.model.beans.order.Orders;
@@ -97,6 +98,7 @@ public class AppServlet extends HttpServlet {
 	IHouseEquipmentDAO houseEquipmentDAO;
 	Equipment equipment;
 	List<Equipment> houseEquipmentList;
+	HouseEquipment houseEquipment;
 
 	// Assess的相关对象
 	IAssessDAO assessDAO;
@@ -538,11 +540,15 @@ public class AppServlet extends HttpServlet {
 			String house_stay_time = request.getParameter("house_stay_time");
 			//房源图片地址json字符串
 			String photoList = new String(request.getParameter("photoList").getBytes("iso8859-1"),"UTF-8");
+			//房源设施json字符串
+			String equipmentList = new String(request.getParameter("equipmentList").getBytes("iso8859-1"),"UTF-8");
 			type = new TypeToken<List<String>>(){}.getType();
 			System.out.println("666"+photoList);
 			List<String> mList = new ArrayList<>();
+			List<String> mEquipmentList = new ArrayList<>();
 			gson = new Gson();
 			mList = gson.fromJson(photoList,type);
+			mEquipmentList = gson.fromJson(equipmentList,type);
 			house = new House();
 			house.setUser_id(Integer.valueOf(user_id));
 			house.setHouse_title(new String(house_title.getBytes("iso8859-1"),"UTF-8"));
@@ -576,6 +582,15 @@ public class AppServlet extends HttpServlet {
 					housePhoto.setIsFirst(0);
 					housePhotoDAO.addSpecIHousePhoto(housePhoto);
 				}
+			}
+			houseEquipment = new HouseEquipment();
+			houseEquipmentDAO = new IHouseEquipmentDAOImpl();
+			int equipment_id = 0;
+			for (int i = 0; i < mEquipmentList.size(); i++) {
+				equipment_id = houseEquipmentDAO.selectEquipmentId(mEquipmentList.get(i));
+				houseEquipment.setHouse_id(house.getHouse_id());
+				houseEquipment.setEquipment_id(equipment_id);
+				houseEquipmentDAO.addHouseEquipment(houseEquipment);
 			}
 			break;
 

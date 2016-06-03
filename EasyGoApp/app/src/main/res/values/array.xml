@@ -109,4 +109,18 @@
         <item>房地产</item>
         <item>法律</item>
     </string-array>
+
+    <string-array name="equipment">
+        <item>无线网络</item>
+        <item>卫生间</item>
+        <item>空调</item>
+        <item>洗漱用品</item>
+        <item>洗衣机</item>
+        <item>厨房</item>
+        <item>电视</item>
+        <item>微波炉</item>
+        <item>吹风机</item>
+        <item>停车位</item>
+        <item>烘干机</item>
+    </string-array>
 </resources>
