@@ -21,6 +21,7 @@ public class User {
 	private String user_idcard; // 身份证号
 	private String token;//token
 	private String remarks;//备注
+
 	public User() {
 		super();
 	}
@@ -34,7 +35,7 @@ public class User {
 		this.token = token;
 	}
 
-	public User(String user_no, String user_realname, String user_password,
+	/*public User(String user_no, String user_realname, String user_password,
 			String user_nickname, String user_sex, String user_phone,
 			int user_type, String user_photo, String user_job,
 			String user_address_province, String user_address_city,
@@ -58,7 +59,7 @@ public class User {
 		this.user_birthday = user_birthday;
 		this.user_idcard = user_idcard;
 	}
-
+*/
 	public User(int user_id, String user_no, String user_realname,
 			String user_password, String user_nickname, String user_sex,
 			String user_phone, int user_type, String user_photo,
@@ -265,6 +266,22 @@ public class User {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	@Override
+	public String toString() {
+		return "User [user_id=" + user_id + ", user_no=" + user_no
+				+ ", user_realname=" + user_realname + ", user_password="
+				+ user_password + ", user_nickname=" + user_nickname
+				+ ", user_sex=" + user_sex + ", user_phone=" + user_phone
+				+ ", user_type=" + user_type + ", user_photo=" + user_photo
+				+ ", user_job=" + user_job + ", user_address_province="
+				+ user_address_province + ", user_address_city="
+				+ user_address_city + ", user_mood=" + user_mood
+				+ ", user_mail=" + user_mail + ", user_introduct="
+				+ user_introduct + ", user_birthday=" + user_birthday
+				+ ", user_idcard=" + user_idcard + ", token=" + token
+				+ ", remarks=" + remarks + "]";
 	}
 	
 

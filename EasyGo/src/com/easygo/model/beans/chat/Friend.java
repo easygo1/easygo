@@ -1,19 +1,18 @@
 package com.easygo.model.beans.chat;
-//111222444
+
 public class Friend {
 	private int friend_no;// 朋友表ID
-	private int user_id;// 用户ID
-	private int friend_id;// 好友ID
+	private int user_id1;// 用户ID
+	private int user_id2;// 好友ID
 
 	public Friend() {
 		super();
 	}
 
-	public Friend(int friend_no, int user_id, int friend_id) {
+	public Friend(int user_id1, int user_id2) {
 		super();
-		this.friend_no = friend_no;
-		this.user_id = user_id;
-		this.friend_id = friend_id;
+		this.user_id1 = user_id1;
+		this.user_id2 = user_id2;
 	}
 
 	public int getFriend_no() {
@@ -24,19 +23,20 @@ public class Friend {
 		this.friend_no = friend_no;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUser_id1() {
+		return user_id1;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUser_id1(int user_id1) {
+		this.user_id1 = user_id1;
 	}
 
-	public int getFriend_id() {
-		return friend_id;
+	public int getUser_id2() {
+		return user_id2;
 	}
 
-	public void setFriend_id(int friend_id) {
-		this.friend_id = friend_id;
+	public void setUser_id2(int user_id2) {
+		this.user_id2 = user_id2;
 	}
+	
 }

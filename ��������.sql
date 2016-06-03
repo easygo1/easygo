@@ -1,4 +1,4 @@
-#向user用户表插入数据
+﻿#向user用户表插入数据
 INSERT INTO USER(user_no,user_realname,user_password,user_nickname,user_sex,user_phone,user_type,user_photo,
 user_job,user_address_province,user_address_city,user_mood,user_mail,user_introduct,user_birthday,user_idcard) 
 VALUE('131006326','王韶辉','123456','哈哈哈','男','130xxxx8112',1,'g:\\1.png','学生','江苏省','苏州市',
@@ -8,10 +8,19 @@ user_job,user_address_province,user_address_city,user_mood,user_mail,user_introd
 VALUE('131007136','张丰鸽','123456','哈哈哈','女','159xxxx8112',1,'g:\\1.png','学生','江苏省','苏州市',
 '今天天气不美','123456@qq.com','专业UI','1993-08-06','410202xxxxxxxxxx25')
 
-#向user_hobby爱好表插入数据
-INSERT INTO hobby(hobby_name) VALUE('打篮球');
-INSERT INTO hobby(hobby_name) VALUE('踢足球');
-INSERT INTO hobby(hobby_name) VALUE('打羽毛球');
+#向user_hobby爱好表插入数据INSERT INTO hobby(hobby_name) VALUE('音乐');
+INSERT INTO hobby(hobby_name) VALUE('运动');
+INSERT INTO hobby(hobby_name) VALUE('读书');
+INSERT INTO hobby(hobby_name) VALUE('音乐');
+INSERT INTO hobby(hobby_name) VALUE('旅游');
+INSERT INTO hobby(hobby_name) VALUE('看电视');
+INSERT INTO hobby(hobby_name) VALUE('逛街');
+INSERT INTO hobby(hobby_name) VALUE('品茶');
+INSERT INTO hobby(hobby_name) VALUE('收藏');
+INSERT INTO hobby(hobby_name) VALUE('网购');
+INSERT INTO hobby(hobby_name) VALUE('打游戏');
+INSERT INTO hobby(hobby_name) VALUE('滑雪');
+INSERT INTO hobby(hobby_name) VALUE('摄影');
 #向user_hobby用户爱好关系表插入数据
 INSERT INTO user_hobby(user_id,hobby_id) VALUE(1,1);
 INSERT INTO user_hobby(user_id,hobby_id) VALUE(1,2);

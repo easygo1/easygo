@@ -19,7 +19,25 @@ public class IHousePhotoDAOImpl implements IHousePhotoDAO {
 	@Override
 	public boolean addSpecIHousePhoto(HousePhoto housePhoto) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		connection = C3P0Utils.getConnection();
+		String sql = "INSERT INTO house_photo(house_id,house_photo_path,isFirst) VALUE(?,?,?);";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, housePhoto.getHouse_id());
+			statement.setString(2, housePhoto.getHouse_photo_path());
+			statement.setInt(3, housePhoto.getIsFirst());
+			statement.executeUpdate();
+			result = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = false;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+
+		return result;
 	}
 
 	@Override

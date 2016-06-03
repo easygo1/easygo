@@ -62,6 +62,8 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
                 //向偏好设置文件中保存数据
                 mEditor = mSharedPreferences.edit();
                 mEditor.putInt("type", 0);
+                mEditor.putString("token",null);
+                mEditor.putString("phone",null);
                 //提交保存结果
                 mEditor.commit();
                 Intent intentExit = new Intent();

@@ -96,8 +96,22 @@
         <item>男</item>
         <item>女</item>
     </string-array>
-
     <string-array name="label">
+        <item>选择</item>
+        <item>音乐</item>
+        <item>运动</item>
+        <item>读书</item>
+        <item>旅游</item>
+        <item>看电视</item>
+        <item>逛街</item>
+        <item>品茶</item>
+        <item>收藏</item>
+        <item>网购</item>
+        <item>打游戏</item>
+        <item>滑雪</item>
+        <item>摄影</item>
+    </string-array>
+    <string-array name="job">
         <item>选择</item>
         <item>学生</item>
         <item>公务员</item>
@@ -108,5 +122,19 @@
         <item>销售</item>
         <item>房地产</item>
         <item>法律</item>
+    </string-array>
+
+    <string-array name="equipment">
+        <item>无线网络</item>
+        <item>卫生间</item>
+        <item>空调</item>
+        <item>洗漱用品</item>
+        <item>洗衣机</item>
+        <item>厨房</item>
+        <item>电视</item>
+        <item>微波炉</item>
+        <item>吹风机</item>
+        <item>停车位</item>
+        <item>烘干机</item>
     </string-array>
 </resources>

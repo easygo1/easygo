@@ -1,18 +1,20 @@
 package com.easygo.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.easygo.activity.CustomOrderActivity;
 import com.easygo.activity.HouseCollectionActivity;
 import com.easygo.activity.LogintestActivity;
@@ -23,7 +25,27 @@ import com.easygo.activity.RegisterActivity;
 import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.activity.SetActivity;
 import com.easygo.activity.UserLinkmanActivity;
+import com.easygo.application.MyApplication;
+import com.easygo.beans.user.User;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.yolanda.nohttp.NoHttp;
+import com.yolanda.nohttp.OnResponseListener;
+import com.yolanda.nohttp.Request;
+import com.yolanda.nohttp.RequestMethod;
+import com.yolanda.nohttp.RequestQueue;
+import com.yolanda.nohttp.Response;
+import com.yolanda.nohttp.error.ClientError;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.NotFoundCacheError;
+import com.yolanda.nohttp.error.ServerError;
+import com.yolanda.nohttp.error.TimeoutError;
+import com.yolanda.nohttp.error.URLError;
+import com.yolanda.nohttp.error.UnKnownHostError;
 
+import java.lang.reflect.Type;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 
 /**
@@ -31,6 +53,7 @@ import com.easygo.activity.UserLinkmanActivity;
  */
 public class MeFragment extends Fragment implements View.OnClickListener {
     public static final String TYPE = "type";
+    public static final int WHAT_GETUSERPHOTO = 1;
     Intent intent;
     //得到绑定的界面布局
     View mView;
@@ -68,29 +91,114 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private TextView meOwnerCustomerservice;
     SharedPreferences mSharedPreferences;
 
+    String mUrl;
+    MyApplication myApplication;
+    Request<String> request;
+    //只用定义一次
+    private RequestQueue mRequestQueue = NoHttp.newRequestQueue();//请求队列
+
+    private int user_id;
+    private User user;
+
+
+    private OnResponseListener<String> mOnResponseListener = new OnResponseListener<String>() {
+        @SuppressWarnings("unused")
+        @Override
+        public void onStart(int what) {
+
+        }
+
+        @Override
+        public void onSucceed(int what, Response<String> response) {
+            if (what == WHAT_GETUSERPHOTO) {
+                String result = response.get();
+                Toast.makeText(getActivity(), "得到用户头像了" + result, Toast.LENGTH_SHORT).show();
+               //解析对象
+                Gson gson = new Gson();
+                Type mytype = new TypeToken<User>() {
+                }.getType();
+                user = gson.fromJson(result, mytype);
+                if(type==1){
+                    //房客状态
+                    Glide.with(getActivity())
+                            .load(user.getUser_photo())
+                            .bitmapTransform(new CropCircleTransformation(getActivity()))
+                            .error(R.mipmap.user_photo_defult)
+                            .into(meCustomerUserImageview);
+                }else if(type==2){
+                    //房东状态
+                    Glide.with(getActivity())
+                            .load(user.getUser_photo())
+                            .bitmapTransform(new CropCircleTransformation(getActivity()))
+                            .error(R.mipmap.user_photo_defult)
+                            .into(meOwnerUserImageview);
+                }
+            }
+        }
+
+        @Override
+        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+            if (exception instanceof ClientError) {// 客户端错误
+                Toast.makeText(getActivity(), "客户端发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof ServerError) {// 服务器错误
+                Toast.makeText(getActivity(), "服务器发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NetworkError) {// 网络不好
+                Toast.makeText(getActivity(), "请检查网络", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof TimeoutError) {// 请求超时
+                Toast.makeText(getActivity(), "请求超时，网络不好或者服务器不稳定", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof UnKnownHostError) {// 找不到服务器
+                Toast.makeText(getActivity(), "未发现指定服务器", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof URLError) {// URL是错的
+                Toast.makeText(getActivity(), "URL错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NotFoundCacheError) {
+                Toast.makeText(getActivity(), "没有发现缓存", Toast.LENGTH_SHORT).show();
+                // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
+            } else {
+                Toast.makeText(getActivity(), "未知错误", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void onFinish(int what) {
+
+        }
+    };
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         mSharedPreferences = getActivity().getSharedPreferences(TYPE, Context.MODE_PRIVATE);
-        type = mSharedPreferences.getInt("type",0);
+        type = mSharedPreferences.getInt("type", 0);
+        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
+        myApplication = (MyApplication) getActivity().getApplication();
+        mUrl = myApplication.getUrl();
+        //创建请求对象
+        request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
+        //添加请求参数
+        request.add("methods", "updateUserById");
+        request.add("user_id", user_id);
+        mRequestQueue.add(WHAT_GETUSERPHOTO, request, mOnResponseListener);
+
         //type为0表示未登录状态
-        if(type ==0 ){
-            mView =inflater.inflate(R.layout.bottom_me,null);
+        if (type == 0) {
+            mView = inflater.inflate(R.layout.bottom_me, null);
             initNoLoginViews();
             addNoLoginListeners();
-        }else if(type == 1){//type为1表示以房客身份登录
-            mView =inflater.inflate(R.layout.bottom_me_customer,null);
+        } else if (type == 1) {//type为1表示以房客身份登录
+            mView = inflater.inflate(R.layout.bottom_me_customer, null);
             initCustomerViews();
             addCustomerListeners();
-        }else{//表示以房东身份登录
-            mView =inflater.inflate(R.layout.bottom_me_owner,null);
+        } else {//表示以房东身份登录
+            mView = inflater.inflate(R.layout.bottom_me_owner, null);
             initOwnerViews();
             addOwnerListeners();
         }
-        return mView ;
+        return mView;
 
     }
+
     //未登录状态的
     private void initNoLoginViews() {
         meMyset = (ImageView) mView.findViewById(R.id.me_myset);
@@ -106,8 +214,9 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         meReleaseroom = (TextView) mView.findViewById(R.id.me_releaseroom);
         meCustomerservice = (TextView) mView.findViewById(R.id.me_customerservice);
     }
+
     //房客状态的
-    private void initCustomerViews(){
+    private void initCustomerViews() {
         meCustomerMyset = (ImageView) mView.findViewById(R.id.me_customer_myset);
         meCustomerUserImageview = (ImageView) mView.findViewById(R.id.me_customer_user_imageview);
         meCustomerMypoints = (TextView) mView.findViewById(R.id.me_customer_mypoints);
@@ -121,8 +230,9 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         mywallet = (LinearLayout) mView.findViewById(R.id.mywallet);
         myinformation = (LinearLayout) mView.findViewById(R.id.myinformation);
     }
+
     //房东状态的
-    private void initOwnerViews(){
+    private void initOwnerViews() {
         meOwnerMyset = (ImageView) mView.findViewById(R.id.me_owner_myset);
         meOwnerUserImageview = (ImageView) mView.findViewById(R.id.me_owner_user_imageview);
         meOwnerMypoints = (TextView) mView.findViewById(R.id.me_owner_mypoints);
@@ -136,6 +246,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         mywallet = (LinearLayout) mView.findViewById(R.id.mywallet);
         myinformation = (LinearLayout) mView.findViewById(R.id.myinformation);
     }
+
     //设置未登录时界面的监听
     private void addNoLoginListeners() {
         meMyset.setOnClickListener(this);
@@ -151,6 +262,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         mywallet.setOnClickListener(this);
         myinformation.setOnClickListener(this);
     }
+
     //设置房客状态我的界面的监听
     private void addCustomerListeners() {
         meCustomerMyset.setOnClickListener(this);
@@ -164,6 +276,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         mywallet.setOnClickListener(this);
         myinformation.setOnClickListener(this);
     }
+
     //设置房东状态我的界面的监听
     private void addOwnerListeners() {
         meOwnerMyset.setOnClickListener(this);
@@ -181,24 +294,24 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id){
-            case  R.id.me_myset:
-                intent= new Intent();
+        switch (id) {
+            case R.id.me_myset:
+                intent = new Intent();
                 intent.setClass(getActivity(), SetActivity.class);
                 startActivity(intent);
                 break;
             case R.id.me_user_imageview:
-                intent= new Intent();
+                intent = new Intent();
                 intent.setClass(getActivity(), LogintestActivity.class);
                 startActivity(intent);
                 break;
             case R.id.me_user_login:
-                intent= new Intent();
+                intent = new Intent();
                 intent.setClass(getActivity(), LogintestActivity.class);
                 startActivity(intent);
                 break;
             case R.id.me_user_register:
-                intent= new Intent();
+                intent = new Intent();
                 intent.setClass(getActivity(), RegisterActivity.class);
                 startActivity(intent);
                 break;

@@ -6,7 +6,7 @@ user_no        VARCHAR(30) NOT NULL UNIQUE,     #用户账号（唯一）
 user_realname  VARCHAR(20),            #用户真实姓名
 user_password  VARCHAR(20) NOT NULL,   #用户密码
 user_nickname  VARCHAR(20),            #用户昵称
-user_sex      CHAR(2),                 #性别'男'，'女'
+user_sex      CHAR(4),                 #性别'男'，'女'
 user_phone    VARCHAR(15),             #手机号11位
 user_type     TINYINT NOT NULL,        #用户类型1'房客',2'房东'
 user_photo    VARCHAR(100),            #头像//存地址
@@ -22,7 +22,7 @@ token VARCHAR(200),		       #token
 remarks VARCHAR(50)		       #备注
 						
 );
-#爱好表（所有爱好
+#标签爱好表（所有爱好
 CREATE TABLE hobby(
 hobby_id     INT PRIMARY KEY AUTO_INCREMENT,#爱好ID
 hobby_name   VARCHAR(10)                   #爱好名称
@@ -44,12 +44,12 @@ idcard	VARCHAR(18) NOT NULL,	                        #联系人身份证号
 FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 #好友表
-CREATE TABLE friend (                      #（双方好友user_id和friend_id都要查）
-friend_no    INT PRIMARY KEY AUTO_INCREMENT,#无意义
-user_id       INT,                        #用户ID(外键)
-friend_id     INT,                        #好友ID（外键）
-FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (friend_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE friend (                      	
+friend_no    INT PRIMARY KEY AUTO_INCREMENT,	
+user_id1     INT,                        	
+user_id2     INT,                        	
+FOREIGN KEY (user_id1) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (user_id2) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 #聊天消息表
 CREATE TABLE message(

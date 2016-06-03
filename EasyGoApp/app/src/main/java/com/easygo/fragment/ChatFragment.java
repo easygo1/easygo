@@ -1,8 +1,9 @@
 package com.easygo.fragment;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import  android.support.v4.app.FragmentTransaction;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.easygo.activity.AddFriendActivity;
 import com.easygo.activity.LogintestActivity;
 import com.easygo.activity.R;
 import com.easygo.activity.RegisterActivity;
@@ -58,9 +60,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
             initChatView();
             addChatListeners();
             initChatDefault();
+
         }
         return mChatView ;
     }
+
     //设置未登录时按钮的监听
     private void addNoLoginListeners() {
         //跳转到登录界面
@@ -165,6 +169,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
             switch (v.getId()) {
                 //按照好友姓名进行查找好友
                 case R.id.add_friend_username:
+                    Intent selectfriend=new Intent(getActivity(), AddFriendActivity.class);
+                    startActivity(selectfriend);
                     break;
                 //按照好友地址查找好友
                 case R.id.add_friend_address:

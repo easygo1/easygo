@@ -29,57 +29,6 @@ public class User {
         super();
     }
 
-    public User(String user_no, String user_realname, String user_password,
-                String user_nickname, String user_sex, String user_phone,
-                int user_type, String user_photo, String user_job,
-                String user_address_province, String user_address_city,
-                String user_mood, String user_mail, String user_introduct,
-                String user_birthday, String user_idcard) {
-        super();
-        this.user_no = user_no;
-        this.user_realname = user_realname;
-        this.user_password = user_password;
-        this.user_nickname = user_nickname;
-        this.user_sex = user_sex;
-        this.user_phone = user_phone;
-        this.user_type = user_type;
-        this.user_photo = user_photo;
-        this.user_job = user_job;
-        this.user_address_province = user_address_province;
-        this.user_address_city = user_address_city;
-        this.user_mood = user_mood;
-        this.user_mail = user_mail;
-        this.user_introduct = user_introduct;
-        this.user_birthday = user_birthday;
-        this.user_idcard = user_idcard;
-    }
-
-    public User(int user_id, String user_no, String user_realname,
-                String user_password, String user_nickname, String user_sex,
-                String user_phone, int user_type, String user_photo,
-                String user_job, String user_address_province,
-                String user_address_city, String user_mood, String user_mail,
-                String user_introduct, String user_birthday, String user_idcard) {
-        super();
-        this.user_id = user_id;
-        this.user_no = user_no;
-        this.user_realname = user_realname;
-        this.user_password = user_password;
-        this.user_nickname = user_nickname;
-        this.user_sex = user_sex;
-        this.user_phone = user_phone;
-        this.user_type = user_type;
-        this.user_photo = user_photo;
-        this.user_job = user_job;
-        this.user_address_province = user_address_province;
-        this.user_address_city = user_address_city;
-        this.user_mood = user_mood;
-        this.user_mail = user_mail;
-        this.user_introduct = user_introduct;
-        this.user_birthday = user_birthday;
-        this.user_idcard = user_idcard;
-    }
-
 
     public User(int user_id, String user_no, String user_realname,
                 String user_password, String user_nickname, String user_sex,
@@ -260,5 +209,30 @@ public class User {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", user_no='" + user_no + '\'' +
+                ", user_realname='" + user_realname + '\'' +
+                ", user_password='" + user_password + '\'' +
+                ", user_nickname='" + user_nickname + '\'' +
+                ", user_sex='" + user_sex + '\'' +
+                ", user_phone='" + user_phone + '\'' +
+                ", user_type=" + user_type +
+                ", user_photo='" + user_photo + '\'' +
+                ", user_job='" + user_job + '\'' +
+                ", user_address_province='" + user_address_province + '\'' +
+                ", user_address_city='" + user_address_city + '\'' +
+                ", user_mood='" + user_mood + '\'' +
+                ", user_mail='" + user_mail + '\'' +
+                ", user_introduct='" + user_introduct + '\'' +
+                ", user_birthday='" + user_birthday + '\'' +
+                ", user_idcard='" + user_idcard + '\'' +
+                ", token='" + token + '\'' +
+                ", remarks='" + remarks + '\'' +
+                '}';
     }
 }
