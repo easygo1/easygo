@@ -1,4 +1,4 @@
-package com.easygo.model.beans.house;
+package com.easygo.beans.house;
 
 public class HouseDateManage {
 	// 房源时间管理

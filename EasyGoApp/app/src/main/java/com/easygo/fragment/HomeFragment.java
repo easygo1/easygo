@@ -22,6 +22,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.bumptech.glide.Glide;
 import com.easygo.activity.BookActivity;
 import com.easygo.activity.DataManageActivity;
+import com.easygo.activity.DataShowActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
 import com.easygo.activity.R;
