@@ -1,8 +1,9 @@
 package com.easygo.fragment;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import  android.support.v4.app.FragmentTransaction;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -59,9 +60,11 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
             initChatView();
             addChatListeners();
             initChatDefault();
+
         }
         return mChatView ;
     }
+
     //设置未登录时按钮的监听
     private void addNoLoginListeners() {
         //跳转到登录界面

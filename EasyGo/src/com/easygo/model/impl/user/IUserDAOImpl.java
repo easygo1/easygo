@@ -370,12 +370,60 @@ public class IUserDAOImpl implements IUserDAO {
 				String user_introduct = resultSet.getString(15);
 				String user_birthday = resultSet.getString(16);
 				String user_idcard = resultSet.getString(17);
-
+				
 				user = new User(user_id2, user_no, user_realname,
 						user_password, user_nickname, user_sex, user_phone,
 						user_type, user_photo, user_job, user_address_province,
 						user_address_city, user_mood, user_mail,
 						user_introduct, user_birthday, user_idcard);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return user;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return user;
+	}
+	
+	
+	@Override
+	public User selectUser(String phone) {
+		// TODO Auto-generated method stub
+		// 通过id查询用户
+		User user = null;
+		connection = C3P0Utils.getConnection();
+		String sql = "select * from user where user_phone =?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, phone);
+			resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				int user_id2 = resultSet.getInt(1);
+				String user_no = resultSet.getString(2);
+				String user_realname = resultSet.getString(3);
+				String user_password = resultSet.getString(4);
+				String user_nickname = resultSet.getString(5);
+				String user_sex = resultSet.getString(6);
+				String user_phone = resultSet.getString(7);
+				int user_type = resultSet.getInt(8);
+				String user_photo = resultSet.getString(9);
+				String user_job = resultSet.getString(10);
+				String user_address_province = resultSet.getString(11);
+				String user_address_city = resultSet.getString(12);
+				String user_mood = resultSet.getString(13);
+				String user_mail = resultSet.getString(14);
+				String user_introduct = resultSet.getString(15);
+				String user_birthday = resultSet.getString(16);
+				String user_idcard = resultSet.getString(17);
+				String token = resultSet.getString(18);
+				String remarks = resultSet.getString(19);
+				user = new User(user_id2, user_no, user_realname,
+						user_password, user_nickname, user_sex, user_phone,
+						user_type, user_photo, user_job, user_address_province,
+						user_address_city, user_mood, user_mail,
+						user_introduct, user_birthday, user_idcard,token,remarks);
+				System.out.println("用户信息查找成功！");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -22,6 +22,9 @@ public interface IUserDAO {
 
 	// 查找用户（通过ID查询）
 	public abstract User findSpecUserById(int user_id);
+	
+	// 查找用户（通过手机号查询）
+	public abstract User selectUser(String phone);
 
 	// 所有用户
 	public abstract List<User> selectAllUser();

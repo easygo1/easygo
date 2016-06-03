@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,8 +28,7 @@ import com.yolanda.nohttp.error.TimeoutError;
 import com.yolanda.nohttp.error.URLError;
 import com.yolanda.nohttp.error.UnKnownHostError;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Type;
 
 public class LogintestActivity extends AppCompatActivity {
     //请求对象
@@ -69,27 +69,15 @@ public class LogintestActivity extends AppCompatActivity {
             //如果返回的是一个正常的token则显示登录成功
             if(what == Login) {
                // 请求成功，直接更新UI
-                List<String> list=new ArrayList<>();
                 String result = response.get();
+                Log.e("json返回结果",result);
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
-                list = gson.fromJson(result, new TypeToken<List<String>>(){}.getType());
-                //如果用户名密码输入有误，则没有返回值，list为空，将token赋为空，防止崩
-                if(list==null){
-                    token=null;
-                }else{
-                    for(int i=0;i<list.size();i++){
-                        //输入正确，传值
-                        if(i==0){
-                            user_id=list.get(i);
-                        }
-                        if(i==1){
-                            token=list.get(i);
-                        }
-                    }
-                }
-                user=new User();
-                if(token==null){
+                Type mytype = new TypeToken<User>() {
+                }.getType();
+                user=gson.fromJson(result,mytype);
+
+                if(user.getToken()==null){
                     Toast.makeText(LogintestActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(LogintestActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
@@ -103,8 +91,22 @@ public class LogintestActivity extends AppCompatActivity {
                     mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
                     //向偏好设置文件中保存数据
                     mEditor = mSharedPreferences.edit();
-                    mEditor.putString("token",token);
-                    mEditor.putString("user_id",user_id);
+                    mEditor.putInt("user_id",user.getUser_id());
+                    mEditor.putString("user_realname",user.getUser_realname());
+                    mEditor.putString("user_nickname",user.getUser_nickname());
+                    mEditor.putString("user_sex",user.getUser_sex());
+                    mEditor.putInt("user_type",user.getUser_type());
+                    mEditor.putString("user_photo",user.getUser_photo());
+                    mEditor.putString("user_job",user.getUser_job());
+                    mEditor.putString("user_address_province",user.getUser_address_province());
+                    mEditor.putString("user_address_city",user.getUser_address_city());
+                    mEditor.putString("user_mood",user.getUser_mood());
+                    mEditor.putString("user_mail",user.getUser_mail());
+                    mEditor.putString("user_introduct",user.getUser_introduct());
+                    mEditor.putString("user_birthday",user.getUser_birthday());
+                    mEditor.putString("user_idcard",user.getUser_idcard());
+                    mEditor.putString("token",user.getToken());
+                    mEditor.putString("remarks",user.getRemarks());
                     mEditor.putString("phone",mPhoneString);
                     mEditor.putInt("type", 1);
                     //提交保存结果

@@ -50,7 +50,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
@@ -149,6 +148,7 @@
         </activity>
         <activity android:name=".AddFriendActivity">
         </activity>
+
         <!-- 打开相册进行的界面声明-->
         <activity
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
