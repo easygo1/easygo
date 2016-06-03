@@ -167,7 +167,7 @@ public class AppServlet extends HttpServlet {
 		    //检查出token是否为空
 		    String token=userdao.login(user_phone,user_password);
 		    
-		    //String u_id=userdao.selectUserID(user_phone)+"";
+		   
 			if (token != null) {
 				//不为空的话根据phone查找出该user的所有数据
 				user=userdao.selectUser(user_phone);
