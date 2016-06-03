@@ -12,10 +12,10 @@ public interface IHouseDateManageDAO {
 	public abstract boolean addHouseDate(HouseDateManage houseDateManage);
 
 	// 删除房源不可租的日期
-	public abstract boolean delHouseDate(int house_id);
+	public abstract boolean delHouseDate(int house_id, String date_not_use);
 
-	// 查询房源不可租的日期
-	
+	// 查询某个房源不可租的日期
+	public abstract List<HouseDateManage> selectAllDateById(int house_id);
 
 	// 查询订单中被租的日期
 	public abstract List<HouseDateManage> selectAllHouse();

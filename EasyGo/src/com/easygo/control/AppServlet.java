@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import com.easygo.model.beans.gson.GsonAboutHouse;
+import com.easygo.model.beans.gson.GsonAboutHouseDetail;
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.house.HouseCollect;
@@ -377,9 +378,12 @@ public class AppServlet extends HttpServlet {
 
 			// GsonAboutHouse gsonAboutHouse = new GsonAboutHouse(houseList,
 			// userList, housePhotoList, assessList, houseCollectList);
+			GsonAboutHouseDetail gsonAboutHouseDetail = new GsonAboutHouseDetail(
+					house, housePhotoList, houseCollectList,
+					houseEquipmentList, user);
 
 			gson = new Gson();
-			// result = gson.toJson(gsonAboutHouse);
+			result = gson.toJson(gsonAboutHouseDetail);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;

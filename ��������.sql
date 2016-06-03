@@ -63,6 +63,8 @@ INSERT INTO house_collect(user_id,house_id) VALUE(1,1)
 
 #向house_date_manage日期管理表插入数据
 INSERT INTO house_date_manage(house_id,date_not_use) VALUE(1,'2016-4-14')
+DELETE FROM house_date_manage WHERE house_id= 1 AND date_not_use="2016-06-25";
+SELECT * FROM house_date_manage WHERE house_id = 2;
 
 #向house_equipment房屋设施表插入数据
 INSERT INTO equipment(equipment_name) VALUE('空调');
