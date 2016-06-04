@@ -1,8 +1,9 @@
 package com.easygo.fragment;
 
-import android.app.Fragment;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,14 +72,14 @@ public class CustomOrderIngFragment extends Fragment {
 		 */
         mRequestQueue.add(NOHTTP_WHAT,request, onResponseListener);
         mList = new ArrayList<>();
-        /*Order order1 = new Order("11111","带确认","5月25","5月26","共一晚","沙发",99.00,R.drawable.home_city2);
+        Order order1 = new Order("11111","带确认","5月25","5月26","共一晚","沙发",99.00,R.drawable.home_city2);
         Order order2 = new Order("2222","带确认","5月25","5月26","共一晚","沙发",99.00,R.drawable.home_city2);
         Order order3 = new Order("3333","带确认","5月25","5月26","共一晚","沙发",99.00,R.drawable.home_city2);
         Order order4 = new Order("4444","带确认","5月25","5月26","共一晚","沙发",99.00,R.drawable.home_city2);
         mList.add(order1);
         mList.add(order2);
         mList.add(order3);
-        mList.add(order4);*/
+        mList.add(order4);
     }
     private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")

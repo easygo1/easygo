@@ -295,6 +295,18 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
 					request, response);*/
 			break;
+		case "getUserInfo":
+			//得到用户的基本信息
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			userdao = new IUserDAOImpl();
+			user=new User();
+			user=userdao.findSpecUserById(user_id);
+			gson=new Gson();
+			result=gson.toJson(user);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+
 		case "updateUserByNo":
 			//根据账号更新用户信息
 			user_no = request.getParameter("user_no");

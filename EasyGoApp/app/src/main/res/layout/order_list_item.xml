@@ -5,7 +5,7 @@
               android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="30dp">
         <TextView
             android:id="@+id/order_title"
             android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
     <include layout="@layout/order_list_listview_house"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:orientation="horizontal">
         <LinearLayout
             android:id="@+id/order_delte"
