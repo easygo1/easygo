@@ -15,23 +15,22 @@
         android:background="@color/bookbackground"
         android:gravity="center"
         android:text="预定人信息"
-        android:textSize="@dimen/textsize_xl"/>
+        android:textSize="@dimen/textsize_l"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:focusable="false"
         android:gravity="center">
 
         <TextView
-
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="姓名:"
-            android:textSize="@dimen/textsize_l"/>
+            android:textSize="@dimen/textsize_m"/>
 
         <EditText
             android:layout_width="0dp"
@@ -44,7 +43,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
@@ -55,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="手机:"
-            android:textSize="@dimen/textsize_l"/>
+            android:textSize="@dimen/textsize_m"/>
 
         <EditText
             android:layout_width="0dp"
@@ -114,6 +113,7 @@
                 android:src="@mipmap/order_update"/>
 
             <TextView
+                android:textColor="@color/textDown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

@@ -141,4 +141,10 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
+
+    public void sendbook(View view) {
+        Intent intent=new Intent();
+        intent.setClass(BookActivity.this,OrderDetailActivity.class);
+        startActivity(intent);
+    }
 }

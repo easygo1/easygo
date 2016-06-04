@@ -14,6 +14,7 @@ import com.easygo.activity.R;
 import com.easygo.adapter.CustomOrderAdapter;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.order.Order;
+import com.easygo.beans.order.Orders;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
@@ -89,7 +90,7 @@ public class CustomOrderIngFragment extends Fragment {
                 String result = response.get();
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
-                Type type = new TypeToken<List<Order>>(){}.getType();
+                Type type = new TypeToken<List<Orders>>(){}.getType();
 //                mList = gson.fromJson(result,type);
                 mList.addAll((List<Order>)gson.fromJson(result,type));
                 mCustomOrderAdapter.notifyDataSetChanged();

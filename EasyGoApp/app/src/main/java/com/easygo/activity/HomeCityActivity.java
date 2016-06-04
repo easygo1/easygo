@@ -279,7 +279,7 @@ public class HomeCityActivity extends AppCompatActivity {
             if (what == NOHTTP_WHAT_LOAD) {
                 // 请求成功
                 String result = response.get();// 响应结果
-                Log.e("tag", result);
+//                Log.e("tag", result);
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
 

@@ -1,7 +1,8 @@
 package com.easygo.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
+import android.support.v4.app.FragmentManager;
+import  android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         flag = intent.getStringExtra("flag");
         if (flag == null) {
             //开始先显示第一个界面
-            mFragmentManager = getFragmentManager();
+            mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             //默认显示买模块，初始化买碎片
             mHomeFragment = new HomeFragment();
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } else if (flag.equals("me")) {
             //如果接收到标志位flag=me,显示我的界面
-            mFragmentManager = getFragmentManager();
+            mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mMeFragment = new MeFragment();
             mFragmentTransaction.add(R.id.middle, mMeFragment);
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             initCurrentFragment(id);
         }else if (flag.equals("search")) {
             //如果接收到标志位flag=search,显示搜索界面
-            mFragmentManager = getFragmentManager();
+            mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mSearchFragment = new SearchFragment();
             mFragmentTransaction.add(R.id.middle, mSearchFragment);
