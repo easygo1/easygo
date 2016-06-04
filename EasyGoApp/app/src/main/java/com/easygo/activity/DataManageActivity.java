@@ -293,7 +293,7 @@ public class DataManageActivity extends AppCompatActivity
         switch (v.getId()) {
             //点击了保存按钮
             case R.id.data_manage_save:
-                Toast.makeText(DataManageActivity.this, "开始哦。。。。", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(DataManageActivity.this, "开始哦。。。。", Toast.LENGTH_SHORT).show();
 
                 // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
 //                requestQueue = NoHttp.newRequestQueue();
@@ -305,7 +305,7 @@ public class DataManageActivity extends AppCompatActivity
                 request.add("methods", "updateHouseDate");
                 request.add("houseDate", houseDate);
                 requestQueue.add(HOUSE_DATE_ADD, request, onResponseListener);
-                Toast.makeText(DataManageActivity.this, "结束了。。。。", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(DataManageActivity.this, "结束了。。。。", Toast.LENGTH_SHORT).show();
                 break;
             //点击了返回按钮
             case R.id.data_manage_back:

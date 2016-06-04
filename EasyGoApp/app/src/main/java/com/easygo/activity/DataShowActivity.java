@@ -42,7 +42,7 @@ import java.util.List;
 */
 @SuppressLint("SimpleDateFormat")
 public class DataShowActivity extends AppCompatActivity
-        implements ManageCalendar.OnDaySelectListener,View.OnClickListener {
+        implements View.OnClickListener {
     public static final int GET_DATE_WHAT = 1;
     public static final int HOUSE_DATE_ADD = 2;
     //网络请求队列
@@ -129,17 +129,13 @@ public class DataShowActivity extends AppCompatActivity
                 Gson gson = new Gson();
                 Type type = new TypeToken<GsonAboutHouseManage>() {
                 }.getType();
-                Log.e("gson", result);
+//                Log.e("gson", result);
                 gsonAboutHouseManage = gson.fromJson(result, type);
 
                 sqlNotList = gsonAboutHouseManage.getHouseNotList();
                 userBuyList = gsonAboutHouseManage.getHouseUserBuyList();
                 //等得到数据后再去初始化那些View
                 init();
-            } else if (what == HOUSE_DATE_ADD) {
-                //房东保存成功
-                finish();
-
             }
         }
 
@@ -154,7 +150,7 @@ public class DataShowActivity extends AppCompatActivity
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-            Toast.makeText(DataShowActivity.this, "失败了", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DataShowActivity.this, "网络请求失败了", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -189,7 +185,7 @@ public class DataShowActivity extends AppCompatActivity
     }
 
     //Api16以上才能用
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+   /* @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onDaySelectListener(View view, String date) {
         //若日历日期小于当前日期，或日历日期-当前日期超过三个月，则不能点击
@@ -267,7 +263,7 @@ public class DataShowActivity extends AppCompatActivity
         }
 
     }
-
+*/
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

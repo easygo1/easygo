@@ -23,10 +23,12 @@ import org.apache.commons.beanutils.BeanUtils;
 import com.easygo.model.beans.chat.Friend;
 import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.gson.GsonAboutHouseDetail;
+import com.easygo.model.beans.gson.GsonAboutHouseManage;
 import com.easygo.model.beans.gson.GsonUserInfoHobby;
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.house.HouseCollect;
+import com.easygo.model.beans.house.HouseDateManage;
 import com.easygo.model.beans.house.HouseEquipment;
 import com.easygo.model.beans.house.HousePhoto;
 import com.easygo.model.beans.order.Assess;
@@ -34,6 +36,7 @@ import com.easygo.model.beans.order.Orders;
 import com.easygo.model.beans.user.User;
 import com.easygo.model.dao.chat.IFriendDAO;
 import com.easygo.model.dao.house.IHouseDAO;
+import com.easygo.model.dao.house.IHouseDateManageDAO;
 import com.easygo.model.dao.house.IHouseEquipmentDAO;
 import com.easygo.model.dao.house.IHousePhotoDAO;
 import com.easygo.model.dao.order.IAssessDAO;
@@ -44,6 +47,7 @@ import com.easygo.model.dao.user.IUserDAO;
 import com.easygo.model.dao.user.IUserHobbyDAO;
 import com.easygo.model.impl.chat.IFriendDAOImpl;
 import com.easygo.model.impl.house.IHouseDAOImpl;
+import com.easygo.model.impl.house.IHouseDateManageDAOImpl;
 import com.easygo.model.impl.house.IHouseEquipmentDAOImpl;
 import com.easygo.model.impl.house.IHousePhotoDAOImpl;
 import com.easygo.model.impl.order.IAssessDAOImpl;
@@ -117,10 +121,14 @@ public class AppServlet extends HttpServlet {
 	List<Equipment> houseEquipmentList;
 	HouseEquipment houseEquipment;
 
-	// HouseDateManage的相关对象 HouseDateManage houseDateManage; IHouseDateManageDAO
-	// houseDateManageDAO; List<HouseDateManage> houseDateManageList;//
-	// 所有的房屋，包括下面两种 List<HouseDateManage> houseUserBuyList;// 用户预定的某个房屋的日期
-	// List<HouseDateManage> houseNotList;// 房东设置的某个房屋的不可租的日期 // Assess的相关对象
+	// HouseDateManage的相关对象
+	HouseDateManage houseDateManage;
+	IHouseDateManageDAO houseDateManageDAO;
+	List<HouseDateManage> houseDateManageList;
+	// 所有的房屋，包括下面两种
+	List<HouseDateManage> houseUserBuyList;// 用户预定的某个房屋的日期
+	List<HouseDateManage> houseNotList;// 房东设置的某个房屋的不可租的日期
+	// Assess的相关对象
 	IAssessDAO assessDAO;
 	// 存每个房源评价的数量
 	List<Integer> assessList;
@@ -633,31 +641,52 @@ public class AppServlet extends HttpServlet {
 			houseCollect.setHouse_id(house_id);
 			houseCollectDAO.addHouseCollect(houseCollect);
 			break;
-		// 得到某个房屋的日期状态 case "getHouseDateByHouseId": house_id =
-		// Integer.parseInt(request.getParameter("houseid")); houseDateManageDAO
-		// = new IHouseDateManageDAOImpl(); // 得到该房屋的所有 /* * houseDateManageList
-		// = houseDateManageDAO * .selectAllDateById(house_id); */
-		// houseUserBuyList = houseDateManageDAO .selectAllDateById(house_id,
-		// 1);// 已租 houseNotList =
-		// houseDateManageDAO.selectAllDateById(house_id, 2);// 不可租 gson = new
-		// Gson(); GsonAboutHouseManage gsonAboutHouseManage = new
-		// GsonAboutHouseManage( houseUserBuyList, houseNotList); result =
-		// gson.toJson(gsonAboutHouseManage); mPrintWriter.write(result);
-		// mPrintWriter.close(); break; // 用户修改时间后，进行数据库的管理 case
-		// "updateHouseDate": // 先删除数据库中，房东曾经修改过的房屋的时间，然后再将新的时间加到数据库中 result =
-		// request.getParameter("houseDate"); houseDateManageDAO = new
-		// IHouseDateManageDAOImpl(); type = new
-		// TypeToken<List<HouseDateManage>>() { }.getType(); gson = new Gson();
-		// // APP传过来的数据 houseNotList = gson.fromJson(result, type); //
-		// 将数据库中的房东设置的数据全部查出来，然后删除 houseDateManageList =
-		// houseDateManageDAO.selectAllDateById(
-		// houseNotList.get(0).getHouse_id(), 2); for (int i = 0; i <
-		// houseDateManageList.size(); i++) { houseDateManage =
-		// houseDateManageList.get(i);
-		// houseDateManageDAO.delHouseDate(houseDateManage); } for
-		// (HouseDateManage h : houseNotList) {
-		// houseDateManageDAO.addHouseDate(h); } // mPrintWriter.write(result);
-		// // mPrintWriter.close(); break; // 根据用户的id查出此人的所有订单
+		// 得到某个房屋的日期状态
+		case "getHouseDateByHouseId":
+			house_id = Integer.parseInt(request.getParameter("houseid"));
+			houseDateManageDAO = new IHouseDateManageDAOImpl();
+			// 得到该房屋的所有
+			/*
+			 * houseDateManageList=
+			 * houseDateManageDAO.selectAllDateById(house_id);
+			 */
+			// 已租
+			houseUserBuyList = houseDateManageDAO
+					.selectAllDateById(house_id, 1);
+			// 不可租
+			houseNotList = houseDateManageDAO.selectAllDateById(house_id, 2);
+			gson = new Gson();
+			GsonAboutHouseManage gsonAboutHouseManage = new GsonAboutHouseManage(
+					houseUserBuyList, houseNotList);
+			result = gson.toJson(gsonAboutHouseManage);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		// 用户修改时间后，进行数据库的管理
+		case "updateHouseDate":
+			// 先删除数据库中，房东曾经修改过的房屋的时间，然后再将新的时间加到数据库中
+			result = request.getParameter("houseDate");
+			houseDateManageDAO = new IHouseDateManageDAOImpl();
+			type = new TypeToken<List<HouseDateManage>>() {
+			}.getType();
+			gson = new Gson();
+			// APP传过来的数据
+			houseNotList = gson.fromJson(result, type);
+			// 将数据库中的房东设置的不可租数据全部查出来，然后删除
+			houseDateManageList = houseDateManageDAO.selectAllDateById(
+					houseNotList.get(0).getHouse_id(), 2);
+			for (int i = 0; i < houseDateManageList.size(); i++) {
+				houseDateManage = houseDateManageList.get(i);
+				houseDateManageDAO.delHouseDate(houseDateManage);
+			}
+			// 將新的不可租的日期存進去
+			for (HouseDateManage h : houseNotList) {
+				houseDateManageDAO.addHouseDate(h);
+			}
+			// mPrintWriter.write(result);
+			// mPrintWriter.close();
+			break;
+		// 根据用户的id查出此人的所有订单
 		case "getAllOrderByUserId":
 			orderDAO = new IOrderDAOImpl();
 			orderList = new ArrayList<Orders>();
