@@ -61,8 +61,11 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
     SharedPreferences.Editor mEditor;
     String mUrl;
     private RequestQueue mRequestQueue;
+    //复选框
+    boolean[] flags = new boolean[]{false, false, false, false, false, false, false, false, false, false,false};
+
     Intent intent;
-    int user_id = 6;
+    int user_id = 8;
     String house_title = null;
     String house_style = null;
     double house_address_lng;//经度
@@ -89,6 +92,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
     private List<String> mList = new ArrayList<>();
     //用来存上传到服务器的图片地址
     private List<String> mUpList = new ArrayList<>();
+    //用来接收选择的房源便利设施
+    private List<String> mEquipmentList = new ArrayList<>();
     private String uploadPath;
     LayoutInflater mInflater;
     View mView;
@@ -335,6 +340,7 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         Gson gson = new Gson();
         //Type type = new TypeToken<List<String>>(){}.getType();
         String photoList = gson.toJson(mUpList);
+        String equipmentList = gson.toJson(mEquipmentList);
         Log.e("cuikaiphoto",photoList+"666");
         MyApplication myApplication = (MyApplication) this.getApplication();
         mUrl = myApplication.getUrl();
@@ -359,6 +365,7 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         request.add("house_limit_sex",house_limit_sex);
         request.add("house_stay_time",house_stay_time);
         request.add("photoList",photoList);
+        request.add("equipmentList",equipmentList);
      /* what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
      * request: 请求对象
      * onResponseListener 回调对象，接受请求结果*/
@@ -420,6 +427,30 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void showFacilitiesDialog() {
+        final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setTitle("请选择便利设施");
+        builder.setMultiChoiceItems(R.array.equipment, flags, new DialogInterface.OnMultiChoiceClickListener() {
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                flags[which] = isChecked;//单击时将是否选中记下来，默认是未选中
+            }
+        });
+        //添加一个确定按钮
+        builder.setPositiveButton(" 确 定 ", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                for (int i = 0; i < flags.length; i++) {
+                    if (flags[i] == true) {
+                        /*selectedStr = selectedStr + " " +
+                                getResources().getStringArray(R.array.equipment)[i];*/
+                        mEquipmentList.add(getResources().getStringArray(R.array.equipment)[i]);
+                    }
+                }
+                if (mEquipmentList.size() > 0){
+                    mFacilitiesTextView.setText(mEquipmentList.toString()+"");
+                }
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
     private void showMostnumDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

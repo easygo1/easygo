@@ -22,11 +22,15 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import com.easygo.model.beans.chat.Friend;
 import com.easygo.model.beans.gson.GsonAboutHouse;
+import com.easygo.model.beans.gson.GsonAboutHouseDetail;
+import com.easygo.model.beans.gson.GsonAboutHouseManage;
 import com.easygo.model.beans.gson.GsonOrderInfoAllDetail;
 import com.easygo.model.beans.gson.GsonUserInfoHobby;
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.house.HouseCollect;
+import com.easygo.model.beans.house.HouseDateManage;
+import com.easygo.model.beans.house.HouseEquipment;
 import com.easygo.model.beans.house.HousePhoto;
 import com.easygo.model.beans.order.Assess;
 import com.easygo.model.beans.order.Orders;
@@ -34,6 +38,7 @@ import com.easygo.model.beans.order.UserOrderLinkman;
 import com.easygo.model.beans.user.User;
 import com.easygo.model.dao.chat.IFriendDAO;
 import com.easygo.model.dao.house.IHouseDAO;
+import com.easygo.model.dao.house.IHouseDateManageDAO;
 import com.easygo.model.dao.house.IHouseEquipmentDAO;
 import com.easygo.model.dao.house.IHousePhotoDAO;
 import com.easygo.model.dao.order.IAssessDAO;
@@ -45,6 +50,7 @@ import com.easygo.model.dao.user.IUserDAO;
 import com.easygo.model.dao.user.IUserHobbyDAO;
 import com.easygo.model.impl.chat.IFriendDAOImpl;
 import com.easygo.model.impl.house.IHouseDAOImpl;
+import com.easygo.model.impl.house.IHouseDateManageDAOImpl;
 import com.easygo.model.impl.house.IHouseEquipmentDAOImpl;
 import com.easygo.model.impl.house.IHousePhotoDAOImpl;
 import com.easygo.model.impl.order.IAssessDAOImpl;
@@ -84,11 +90,11 @@ public class AppServlet extends HttpServlet {
 	IUserHobbyDAO userhobbydao;
 	List<Integer> userhobbyidlist;
 	List<String> userhobbyNamelist;
-	
-	//friend的相关对象
+
+	// friend的相关对象
 	IFriendDAO frienddao;
 	List<Friend> friendlist;
-	int user_id1=-1,user_id2=-1;
+	int user_id1 = -1, user_id2 = -1;
 
 	Friend friend;
 	// Order的相关对象
@@ -126,7 +132,15 @@ public class AppServlet extends HttpServlet {
 	IHouseEquipmentDAO houseEquipmentDAO;
 	Equipment equipment;
 	List<Equipment> houseEquipmentList;
+	HouseEquipment houseEquipment;
 
+	// HouseDateManage的相关对象
+	HouseDateManage houseDateManage;
+	IHouseDateManageDAO houseDateManageDAO;
+	List<HouseDateManage> houseDateManageList;
+	// 所有的房屋，包括下面两种
+	List<HouseDateManage> houseUserBuyList;// 用户预定的某个房屋的日期
+	List<HouseDateManage> houseNotList;// 房东设置的某个房屋的不可租的日期
 	// Assess的相关对象
 	IAssessDAO assessDAO;
 	// 存每个房源评价的数量
@@ -134,9 +148,10 @@ public class AppServlet extends HttpServlet {
 	Assess assess;
 
 	Gson gson;
-	Type type;
+	// Type type;
 	// gson.toJson()的结果
 	String result;
+	Type type;
 	boolean flag;
 
 	public AppServlet() {
@@ -166,30 +181,29 @@ public class AppServlet extends HttpServlet {
 			request.getRequestDispatcher("jsp/user/addUser.jsp").forward(
 					request, response);
 			break;
-		//用户登录	
+		// 用户登录
 		case "login":
-			user_phone=request.getParameter("user_phone");
-		    user_password=request.getParameter("user_password");
-		    System.out.println("手机号为："+user_phone);
-		    System.out.println("密码为："+user_password);
-		    //进行登录操作
-		    user=new User();
-		    userdao= new IUserDAOImpl();
-		    String token=userdao.login(user_phone,user_password);
-		    String u_id=userdao.selectUserID(user_phone)+"";
-		    
-		    List<String> list=new ArrayList<>();
-		    list.add(u_id);
-		    list.add(token);
+			user_phone = request.getParameter("user_phone");
+			user_password = request.getParameter("user_password");
+			System.out.println("手机号为：" + user_phone);
+			System.out.println("密码为：" + user_password);
+			// 进行登录操作
+			user = new User();
+			userdao = new IUserDAOImpl();
+			// 检查出token是否为空
+			String token = userdao.login(user_phone, user_password);
+
 			if (token != null) {
+				// 不为空的话根据phone查找出该user的所有数据
+				user = userdao.selectUser(user_phone);
 				gson = new Gson();
-				result = gson.toJson(list);
-				mPrintWriter.write(result);
+				result = gson.toJson(user);
+				mPrintWriter.write(result);// 将数据写回android端
 				System.out.println("登录成功");
 			}
 			mPrintWriter.close();
 			break;
-		//用户注册	
+		// 用户注册
 		case "register":
 			// 接收到android端传过来的手机号和密码（手机号相当于用户名）
 			user_phone = request.getParameter("user_phone");
@@ -206,55 +220,55 @@ public class AppServlet extends HttpServlet {
 			// mPrintWriter.write(userdao.register(user));
 			mPrintWriter.close();
 			break;
-		//添加好友	
+		// 添加好友
 		case "addFriend":
-			//1.获取到双方的手机号
-			user=new User();
-			userdao= new IUserDAOImpl();
-			String phone1=request.getParameter("phone1");
-			String phone2=request.getParameter("phone2");
-			//2.根据手机号查找user表查找到对应的id
-			int user_id1=userdao.selectUserID(phone1);
-			int user_id2=userdao.selectUserID(phone2);
-			friend=new Friend();
-			frienddao=new IFriendDAOImpl();
+			// 1.获取到双方的手机号
+			user = new User();
+			userdao = new IUserDAOImpl();
+			String phone1 = request.getParameter("phone1");
+			String phone2 = request.getParameter("phone2");
+			// 2.根据手机号查找user表查找到对应的id
+			int user_id1 = userdao.selectUserID(phone1);
+			int user_id2 = userdao.selectUserID(phone2);
+			friend = new Friend();
+			frienddao = new IFriendDAOImpl();
 			friend.setUser_id1(user_id1);
 			friend.setUser_id2(user_id2);
-			//如果id1和id2不为-1（不为空）的话进行向数据库中插入数据
-			if(user_id1!=-1&&user_id2!=-1){
-				//1.进行判断所添加的好友（user_id1,user_id2）是否存在于user表中,如果查询出的结果为两条的话，继续进行添加操作
-				//判断数据库中是否存在这样一条数据,如果找不到，就向数据库中插入数据
-				if(!frienddao.selectTwoFriend(user_id1,user_id2)){
-					if(frienddao.addIFriend(friend)){
+			// 如果id1和id2不为-1（不为空）的话进行向数据库中插入数据
+			if (user_id1 != -1 && user_id2 != -1) {
+				// 1.进行判断所添加的好友（user_id1,user_id2）是否存在于user表中,如果查询出的结果为两条的话，继续进行添加操作
+				// 判断数据库中是否存在这样一条数据,如果找不到，就向数据库中插入数据
+				if (!frienddao.selectTwoFriend(user_id1, user_id2)) {
+					if (frienddao.addIFriend(friend)) {
 						System.out.println("好友添加成功");
 					}
-				}else{
+				} else {
 					System.out.println("您已经与该用户为好友");
 				}
 			}
 			break;
-		//模糊查找好友
+		// 模糊查找好友
 		case "selectFriend":
-			
+
 			break;
-		//显示好友列表
+		// 显示好友列表
 		case "showfriendlist":
-			List<String> friendlist=new ArrayList<>();
-			user=new User();
-			userdao= new IUserDAOImpl();
-			//1.根据phone查找出id
-			String phone=request.getParameter("phone");
-			user_id=userdao.selectUserID(phone);
-			//2.在friend表中查出该id所有的好友的id集合
-			friend=new Friend();
-			frienddao=new IFriendDAOImpl();
-			List<Integer> friend_id_list=frienddao.selectAllFriend(user_id);
-			//3.从数据库中 获取到好友id的用户名集合
-			for(int i=0;i<friend_id_list.size();i++){
-				int id=friend_id_list.get(i);
+			List<String> friendlist = new ArrayList<>();
+			user = new User();
+			userdao = new IUserDAOImpl();
+			// 1.根据phone查找出id
+			String phone = request.getParameter("phone");
+			user_id = userdao.selectUserID(phone);
+			// 2.在friend表中查出该id所有的好友的id集合
+			friend = new Friend();
+			frienddao = new IFriendDAOImpl();
+			List<Integer> friend_id_list = frienddao.selectAllFriend(user_id);
+			// 3.从数据库中 获取到好友id的用户名集合
+			for (int i = 0; i < friend_id_list.size(); i++) {
+				int id = friend_id_list.get(i);
 				friendlist.add(userdao.selectUserPhone(id));
 			}
-			//4.将获取到的phone数据封装成Gson传送出去
+			// 4.将获取到的phone数据封装成Gson传送出去
 			gson = new Gson();
 			result = gson.toJson(friendlist);
 			mPrintWriter.write(result);
@@ -276,18 +290,17 @@ public class AppServlet extends HttpServlet {
 		case "addUserSuccess":
 			break;
 		case "deleteUser":
-			/*// 得到要删除的user_no
-			user_no = Integer.valueOf(request.getParameter("no"));
-			userdao = new IUserDAOImpl();
-			boolean delResult = userdao.delUser(user_no);
-			// 属性名为oneUser
-			request.setAttribute("delResult", delResult);
-			if (delResult) {
-				response.sendRedirect("easygoservlet?methods=getAllUser");
-			}
-			// request.getRequestDispatcher("jsp/user/user.jsp").forward(request,
-			// response);
-*/			break;
+			/*
+			 * // 得到要删除的user_no user_no =
+			 * Integer.valueOf(request.getParameter("no")); userdao = new
+			 * IUserDAOImpl(); boolean delResult = userdao.delUser(user_no); //
+			 * 属性名为oneUser request.setAttribute("delResult", delResult); if
+			 * (delResult) {
+			 * response.sendRedirect("easygoservlet?methods=getAllUser"); } //
+			 * request
+			 * .getRequestDispatcher("jsp/user/user.jsp").forward(request, //
+			 * response);
+			 */break;
 		case "getAllUser":
 			userList = new ArrayList<User>();
 			userdao = new IUserDAOImpl();
@@ -297,26 +310,27 @@ public class AppServlet extends HttpServlet {
 					response);
 			break;
 		case "findoneUser":
-			/*// 得到要查询的user_no
-			user_no = Integer.valueOf(request.getParameter("no"));
-			userdao = new IUserDAOImpl();
-			user = userdao.findSpecUserByNo(user_no);
-			// 属性名为oneUser
-			request.setAttribute("oneUser", user);
-			request.getRequestDispatcher("jsp/user/selectOneUser.jsp").forward(
-					request, response);*/
+			/*
+			 * // 得到要查询的user_no user_no =
+			 * Integer.valueOf(request.getParameter("no")); userdao = new
+			 * IUserDAOImpl(); user = userdao.findSpecUserByNo(user_no); //
+			 * 属性名为oneUser request.setAttribute("oneUser", user);
+			 * request.getRequestDispatcher
+			 * ("jsp/user/selectOneUser.jsp").forward( request, response);
+			 */
 			break;
 		case "updateUserByNo":
-			//根据账号更新用户信息
+			// 根据账号更新用户信息
 			user_no = request.getParameter("user_no");
-			System.out.println("我是用户no"+user_no);
+			System.out.println("我是用户no" + user_no);
 			userdao = new IUserDAOImpl();
-			user=new User();
+			user = new User();
 			user.setUser_realname(request.getParameter("user_realname"));
 			user.setUser_nickname(request.getParameter("user_nickname"));
 			user.setUser_photo(request.getParameter("user_photo"));
 			user.setUser_sex(request.getParameter("user_sex"));
-			user.setUser_address_province(request.getParameter("user_address_province"));
+			user.setUser_address_province(request
+					.getParameter("user_address_province"));
 			user.setUser_address_city(request.getParameter("user_address_city"));
 			user.setUser_mood(request.getParameter("user_mood"));
 			user.setUser_mail(request.getParameter("user_mail"));
@@ -335,101 +349,112 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.close();
 			break;
 		case "selectInfoById":
+			//点击我的信息 根据用户id得到用户的信息
 			//点击我的信息 根据用户id得到用户的信息加上爱好
 			user_id = Integer.valueOf(request.getParameter("user_id"));
-			System.out.println("我是用户id"+user_id);
+			System.out.println("我是用户id" + user_id);
 			userdao = new IUserDAOImpl();
-			user=new User();
-			user=userdao.findSpecUserById(user_id);
-			//查找用户的全部爱好
-			userhobbyidlist=new ArrayList<Integer>();
-			userhobbyNamelist=new ArrayList<String>();
-			userhobbydao=new IUserHobbyDAOImpl();
-			hobbydao=new IHobbyImpl();//爱好的操作
-			userhobbyidlist=userhobbydao.selectAllUserHobbyById(user_id);
-			for(int i=0;i<userhobbyidlist.size();i++){
-				hobby_id=userhobbyidlist.get(i);
-				hobby_name=hobbydao.selectNameByHobbyId(hobby_id);
+			user = new User();
+			user = userdao.findSpecUserById(user_id);
+			// 查找用户的全部爱好
+			userhobbyidlist = new ArrayList<Integer>();
+			userhobbyNamelist = new ArrayList<String>();
+			userhobbydao = new IUserHobbyDAOImpl();
+			hobbydao = new IHobbyImpl();// 爱好的操作
+			userhobbyidlist = userhobbydao.selectAllUserHobbyById(user_id);
+			for (int i = 0; i < userhobbyidlist.size(); i++) {
+				hobby_id = userhobbyidlist.get(i);
+				hobby_name = hobbydao.selectNameByHobbyId(hobby_id);
 				userhobbyNamelist.add(hobby_name);
 			}
-			userInfoHobby=new GsonUserInfoHobby(user, userhobbyNamelist);
-			gson=new Gson();
-			result=gson.toJson(userInfoHobby);
+			userInfoHobby = new GsonUserInfoHobby(user, userhobbyNamelist);
+			gson = new Gson();
+			result = gson.toJson(userInfoHobby);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
 		case "updateUserById":
-			//根据账号更新用户信息
+			// 根据账号更新用户信息
 			user_id = Integer.valueOf(request.getParameter("user_id"));
-			System.out.println("我是用户id"+user_id);
+			System.out.println("我是用户id" + user_id);
 			userdao = new IUserDAOImpl();
-			user=new User();
-			user.setUser_realname(new String(request.getParameter("user_realname").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_nickname(new String(request.getParameter("user_nickname").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_sex(new String(request.getParameter("user_sex").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_job(new String(request.getParameter("user_job").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_address_province(new String(request.getParameter("user_address_province").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_address_city(new String(request.getParameter("user_address_city").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_mood(new String(request.getParameter("user_mood").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_mail(new String(request.getParameter("user_mail").getBytes("iso8859-1"),"UTF-8"));
-			user.setUser_birthday(new String(request.getParameter("user_birthday").getBytes("iso8859-1"),"UTF-8"));
-			flag=userdao.updateUserById(user_id, user);
-			mPrintWriter.write("更新user返回结果"+flag);
+			user = new User();
+			user.setUser_realname(new String(request.getParameter(
+					"user_realname").getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_nickname(new String(request.getParameter(
+					"user_nickname").getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_sex(new String(request.getParameter("user_sex")
+					.getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_job(new String(request.getParameter("user_job")
+					.getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_address_province(new String(request.getParameter(
+					"user_address_province").getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_address_city(new String(request.getParameter(
+					"user_address_city").getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_mood(new String(request.getParameter("user_mood")
+					.getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_mail(new String(request.getParameter("user_mail")
+					.getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_birthday(new String(request.getParameter(
+					"user_birthday").getBytes("iso8859-1"), "UTF-8"));
+			flag = userdao.updateUserById(user_id, user);
+			mPrintWriter.write("更新user返回结果" + flag);
 			mPrintWriter.close();
 			break;
 		case "selectHobbyidByHobbyName":
-			//根据爱好的名称找到爱好的id
-			hobby_name="";
-			hobbydao=new IHobbyImpl();
-			hobby_id=hobbydao.SelectHobbyIDByHobbyName("读书");
-			mPrintWriter.write("返回结果"+hobby_id);
+			// 根据爱好的名称找到爱好的id
+			hobby_name = "";
+			hobbydao = new IHobbyImpl();
+			hobby_id = hobbydao.SelectHobbyIDByHobbyName("读书");
+			mPrintWriter.write("返回结果" + hobby_id);
 			mPrintWriter.close();
 			break;
 		case "insertHobby":
-			//在用户的爱好表中插入数据
-			userhobbydao=new IUserHobbyDAOImpl();
-			flag=userhobbydao.inssertUserHobby(1, 1);
-			mPrintWriter.write("返回结果"+flag);
+			// 在用户的爱好表中插入数据
+			userhobbydao = new IUserHobbyDAOImpl();
+			flag = userhobbydao.inssertUserHobby(1, 1);
+			mPrintWriter.write("返回结果" + flag);
 			mPrintWriter.close();
 			break;
 		case "selectExistUserHobby":
-			//判断是否已经存在某个爱好
-			userhobbydao=new IUserHobbyDAOImpl();
-			flag=userhobbydao.selectExistUserHobby(1, 3);
-			mPrintWriter.write("返回结果"+flag);
+			// 判断是否已经存在某个爱好
+			userhobbydao = new IUserHobbyDAOImpl();
+			flag = userhobbydao.selectExistUserHobby(1, 3);
+			mPrintWriter.write("返回结果" + flag);
 			mPrintWriter.close();
 			break;
 		case "selectNameByHobbyId":
-			//根据hobbyid查询出爱好名字
-			hobbydao=new IHobbyImpl();//爱好的操作
-			hobby_id=Integer.valueOf(request.getParameter("hobby_id"));
-			hobby_name=hobbydao.selectNameByHobbyId(hobby_id);
-			mPrintWriter.write("返回结果"+hobby_name);
+			// 根据hobbyid查询出爱好名字
+			hobbydao = new IHobbyImpl();// 爱好的操作
+			hobby_id = Integer.valueOf(request.getParameter("hobby_id"));
+			hobby_name = hobbydao.selectNameByHobbyId(hobby_id);
+			mPrintWriter.write("返回结果" + hobby_name);
 			mPrintWriter.close();
 			break;
 		case "selectAllUserHobbyById":
-			//查找用户的全部爱好
-			userhobbyidlist=new ArrayList<Integer>();
-			userhobbyNamelist=new ArrayList<String>();
-			userhobbydao=new IUserHobbyDAOImpl();
-			hobbydao=new IHobbyImpl();//爱好的操作
-			user_id=Integer.valueOf(request.getParameter("user_id"));
-			userhobbyidlist=userhobbydao.selectAllUserHobbyById(user_id);
-			for(int i=0;i<userhobbyidlist.size();i++){
-				hobby_id=userhobbyidlist.get(i);
-				hobby_name=hobbydao.selectNameByHobbyId(hobby_id);
+			// 查找用户的全部爱好
+			userhobbyidlist = new ArrayList<Integer>();
+			userhobbyNamelist = new ArrayList<String>();
+			userhobbydao = new IUserHobbyDAOImpl();
+			hobbydao = new IHobbyImpl();// 爱好的操作
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			userhobbyidlist = userhobbydao.selectAllUserHobbyById(user_id);
+			for (int i = 0; i < userhobbyidlist.size(); i++) {
+				hobby_id = userhobbyidlist.get(i);
+				hobby_name = hobbydao.selectNameByHobbyId(hobby_id);
 				userhobbyNamelist.add(hobby_name);
 			}
-			mPrintWriter.write("返回爱好查询结果"+userhobbyNamelist.toString());
+			mPrintWriter.write("返回爱好查询结果" + userhobbyNamelist.toString());
 			mPrintWriter.close();
 			break;
 		case "updateUserHobbyByid":
-			hobbydao=new IHobbyImpl();//爱好的操作
-			userhobbydao=new IUserHobbyDAOImpl();//用户爱好的操作
-			user_id=Integer.valueOf(request.getParameter("user_id"));
-			String lables=new String(request.getParameter("lables").getBytes("iso8859-1"),"UTF-8");
-			List<String> hobbylist=new ArrayList<String>();
-			gson=new Gson();
+			hobbydao = new IHobbyImpl();// 爱好的操作
+			userhobbydao = new IUserHobbyDAOImpl();// 用户爱好的操作
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			String lables = new String(request.getParameter("lables").getBytes(
+					"iso8859-1"), "UTF-8");
+			List<String> hobbylist = new ArrayList<String>();
+			gson = new Gson();
 			type = new TypeToken<List<String>>() {
             }.getType();
             hobbylist = gson.fromJson(lables, type);
@@ -445,14 +470,14 @@ public class AppServlet extends HttpServlet {
 			user_id = Integer.valueOf(request.getParameter("user_id"));
 			user_photo = request.getParameter("user_photo");
 			userdao = new IUserDAOImpl();
-			flag= userdao.updateUserPhoto(user_id, user_photo);
+			flag = userdao.updateUserPhoto(user_id, user_photo);
 			System.out.print("头像上传结果" + flag);
 			break;
 		case "selectPhotoMoodByUserId":
-			//通过用户id得到用户的头像和签名
+			// 通过用户id得到用户的头像和签名
 			user_id = Integer.valueOf(request.getParameter("user_id"));
 			userdao = new IUserDAOImpl();
-			user=userdao.selectPhotoMoodByUserId(user_id);
+			user = userdao.selectPhotoMoodByUserId(user_id);
 			gson = new Gson();
 			result = gson.toJson(user);
 			mPrintWriter.write(result);
@@ -642,9 +667,11 @@ public class AppServlet extends HttpServlet {
 
 			// GsonAboutHouse gsonAboutHouse = new GsonAboutHouse(houseList,
 			// userList, housePhotoList, assessList, houseCollectList);
-
+			GsonAboutHouseDetail gsonAboutHouseDetail = new GsonAboutHouseDetail(
+					house, housePhotoList, houseCollectList,
+					houseEquipmentList, user);
 			gson = new Gson();
-			// result = gson.toJson(gsonAboutHouse);
+			result = gson.toJson(gsonAboutHouseDetail);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
@@ -664,6 +691,51 @@ public class AppServlet extends HttpServlet {
 			houseCollect.setUser_id(user_id);
 			houseCollect.setHouse_id(house_id);
 			houseCollectDAO.addHouseCollect(houseCollect);
+			break;
+		// 得到某个房屋的日期状态
+		case "getHouseDateByHouseId":
+			house_id = Integer.parseInt(request.getParameter("houseid"));
+			houseDateManageDAO = new IHouseDateManageDAOImpl();
+			// 得到该房屋的所有
+			/*
+			 * houseDateManageList=
+			 * houseDateManageDAO.selectAllDateById(house_id);
+			 */
+			// 已租
+			houseUserBuyList = houseDateManageDAO
+					.selectAllDateById(house_id, 1);
+			// 不可租
+			houseNotList = houseDateManageDAO.selectAllDateById(house_id, 2);
+			gson = new Gson();
+			GsonAboutHouseManage gsonAboutHouseManage = new GsonAboutHouseManage(
+					houseUserBuyList, houseNotList);
+			result = gson.toJson(gsonAboutHouseManage);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		// 用户修改时间后，进行数据库的管理
+		case "updateHouseDate":
+			// 先删除数据库中，房东曾经修改过的房屋的时间，然后再将新的时间加到数据库中
+			result = request.getParameter("houseDate");
+			houseDateManageDAO = new IHouseDateManageDAOImpl();
+			type = new TypeToken<List<HouseDateManage>>() {
+			}.getType();
+			gson = new Gson();
+			// APP传过来的数据
+			houseNotList = gson.fromJson(result, type);
+			// 将数据库中的房东设置的不可租数据全部查出来，然后删除
+			houseDateManageList = houseDateManageDAO.selectAllDateById(
+					houseNotList.get(0).getHouse_id(), 2);
+			for (int i = 0; i < houseDateManageList.size(); i++) {
+				houseDateManage = houseDateManageList.get(i);
+				houseDateManageDAO.delHouseDate(houseDateManage);
+			}
+			// 將新的不可租的日期存進去
+			for (HouseDateManage h : houseNotList) {
+				houseDateManageDAO.addHouseDate(h);
+			}
+			// mPrintWriter.write(result);
+			// mPrintWriter.close();
 			break;
 		// 根据用户的id查出此人的所有订单
 		case "getAllOrderByUserId":
@@ -689,10 +761,14 @@ public class AppServlet extends HttpServlet {
 			String user_id = request.getParameter("user_id");
 			String house_title = request.getParameter("house_title");
 			String house_style = request.getParameter("house_style");
-			String house_address_province = request.getParameter("house_address_province");
-			String house_address_city1 = request.getParameter("house_address_city");
-			String house_address_lng = request.getParameter("house_address_lng");
-			String house_address_lat = request.getParameter("house_address_lat");
+			String house_address_province = request
+					.getParameter("house_address_province");
+			String house_address_city1 = request
+					.getParameter("house_address_city");
+			String house_address_lng = request
+					.getParameter("house_address_lng");
+			String house_address_lat = request
+					.getParameter("house_address_lat");
 			String house_most_num = request.getParameter("house_most_num");
 			String house_one_price = request.getParameter("house_one_price");
 			String house_add_price = request.getParameter("house_add_price");
@@ -700,27 +776,41 @@ public class AppServlet extends HttpServlet {
 			String house_traffic = request.getParameter("house_traffic");
 			String house_limit_sex = request.getParameter("house_limit_sex");
 			String house_stay_time = request.getParameter("house_stay_time");
-			//房源图片地址json字符串
-			String photoList = new String(request.getParameter("photoList").getBytes("iso8859-1"),"UTF-8");
-			type = new TypeToken<List<String>>(){}.getType();
-			System.out.println("666"+photoList);
+			// 房源图片地址json字符串
+			String photoList = new String(request.getParameter("photoList")
+					.getBytes("iso8859-1"), "UTF-8");
+			// 房源设施json字符串
+			String equipmentList = new String(request.getParameter(
+					"equipmentList").getBytes("iso8859-1"), "UTF-8");
+			type = new TypeToken<List<String>>() {
+			}.getType();
+			System.out.println("666" + photoList);
 			List<String> mList = new ArrayList<>();
+			List<String> mEquipmentList = new ArrayList<>();
 			gson = new Gson();
-			mList = gson.fromJson(photoList,type);
+			mList = gson.fromJson(photoList, type);
+			mEquipmentList = gson.fromJson(equipmentList, type);
 			house = new House();
 			house.setUser_id(Integer.valueOf(user_id));
-			house.setHouse_title(new String(house_title.getBytes("iso8859-1"),"UTF-8"));
-			house.setHouse_style(new String(house_style.getBytes("iso8859-1"),"UTF-8"));
-			house.setHouse_address_province(new String(house_address_province.getBytes("iso8859-1"),"UTF-8"));
-			house.setHouse_address_city(new String(house_address_city1.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_title(new String(house_title.getBytes("iso8859-1"),
+					"UTF-8"));
+			house.setHouse_style(new String(house_style.getBytes("iso8859-1"),
+					"UTF-8"));
+			house.setHouse_address_province(new String(house_address_province
+					.getBytes("iso8859-1"), "UTF-8"));
+			house.setHouse_address_city(new String(house_address_city1
+					.getBytes("iso8859-1"), "UTF-8"));
 			house.setHouse_address_lng(Double.valueOf(house_address_lng));
 			house.setHouse_address_lat(Double.valueOf(house_address_lat));
 			house.setHouse_most_num(Integer.valueOf(house_most_num));
 			house.setHouse_one_price(Double.valueOf(house_one_price));
 			house.setHouse_add_price(Double.valueOf(house_add_price));
-			house.setHouse_describe(new String(house_describe.getBytes("iso8859-1"),"UTF-8"));
-			house.setHouse_traffic(new String(house_traffic.getBytes("iso8859-1"),"UTF-8"));
-			house.setHouse_limit_sex(new String(house_limit_sex.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_describe(new String(house_describe
+					.getBytes("iso8859-1"), "UTF-8"));
+			house.setHouse_traffic(new String(house_traffic
+					.getBytes("iso8859-1"), "UTF-8"));
+			house.setHouse_limit_sex(new String(house_limit_sex
+					.getBytes("iso8859-1"), "UTF-8"));
 			house.setHouse_stay_time(Integer.valueOf(house_stay_time));
 			housedao.addHouse(house);
 			house = housedao.findSpecHouseByUserId(Integer.valueOf(user_id));
@@ -733,13 +823,22 @@ public class AppServlet extends HttpServlet {
 					housePhoto.setHouse_photo_path(mList.get(i));
 					housePhoto.setIsFirst(1);
 					housePhotoDAO.addSpecIHousePhoto(housePhoto);
-				}
-				else {
+				} else {
 					housePhoto.setHouse_id(house.getHouse_id());
 					housePhoto.setHouse_photo_path(mList.get(i));
 					housePhoto.setIsFirst(0);
 					housePhotoDAO.addSpecIHousePhoto(housePhoto);
 				}
+			}
+			houseEquipment = new HouseEquipment();
+			houseEquipmentDAO = new IHouseEquipmentDAOImpl();
+			int equipment_id = 0;
+			for (int i = 0; i < mEquipmentList.size(); i++) {
+				equipment_id = houseEquipmentDAO
+						.selectEquipmentId(mEquipmentList.get(i));
+				houseEquipment.setHouse_id(house.getHouse_id());
+				houseEquipment.setEquipment_id(equipment_id);
+				houseEquipmentDAO.addHouseEquipment(houseEquipment);
 			}
 			break;
 		default:

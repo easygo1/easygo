@@ -105,6 +105,7 @@ public class CalendarActivity extends AppCompatActivity implements MyCalendar.On
         if(Integer.parseInt(dateDay)<10){
             dateDay=date.split("-")[2].replace("0", "");
         }
+        //textDayView几号（5）包括几号下面的文字
         TextView textDayView=(TextView) view.findViewById(R.id.tv_calendar_day);
         TextView textView=(TextView) view.findViewById(R.id.tv_calendar);
         view.setBackgroundColor(Color.parseColor("#33B5E5"));

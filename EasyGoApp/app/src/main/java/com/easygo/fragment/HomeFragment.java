@@ -1,10 +1,10 @@
 package com.easygo.fragment;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -21,6 +21,8 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bumptech.glide.Glide;
 import com.easygo.activity.BookActivity;
+import com.easygo.activity.DataManageActivity;
+import com.easygo.activity.DataShowActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
 import com.easygo.activity.R;
@@ -368,7 +370,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 mHomePageLocalList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), HomeCityActivity.class);
+                        Intent intent = new Intent(getActivity(), DataManageActivity.class);
                         startActivity(intent);
                         /*
                         跳转到支付详情页面

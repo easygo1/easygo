@@ -165,7 +165,8 @@ CREATE TABLE house_date_manage
 (	
 	date_manage_id INT PRIMARY KEY AUTO_INCREMENT,#无意义
 	house_id INT,                          #房源id（外键）
-	date_not_use DATE                       #不可租日期，精确到天			 	
+	date_not_use DATE，                       #不可租日期，精确到天	
+	date_manage_type smallInt  				#类型，1代表房客租用了，2代表房东自己设置为不可租
 );
 #房屋设施表  WIFI，电视，洗衣机，毛巾...
 CREATE TABLE equipment(

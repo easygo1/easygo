@@ -6,6 +6,8 @@ import android.widget.GridView;
 
 /**
  * @author 王韶辉 ：自定义gridview
+ *
+ * 显示日历时使用
  */
 public class MyGridView extends GridView {
 
