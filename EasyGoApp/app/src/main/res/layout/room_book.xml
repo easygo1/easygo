@@ -23,6 +23,8 @@
         layout="@layout/room_book_middle"/>
 
     <TextView
+        android:id="@+id/send_book"
+        android:onClick="sendbook"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

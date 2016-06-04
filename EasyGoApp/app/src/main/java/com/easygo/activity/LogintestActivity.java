@@ -88,27 +88,29 @@ public class LogintestActivity extends AppCompatActivity {
                         }
                     }
                 }
+                int id=Integer.parseInt(user_id);
                 user=new User();
                 if(token==null){
                     Toast.makeText(LogintestActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(LogintestActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                    //登录成功后进行页面的跳转
-                    Intent intent = new Intent();
-                    intent.putExtra("flag","me");
-                    intent.setClass(LogintestActivity.this,MainActivity.class);
-                    startActivity(intent);
 
                     //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
                     mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
                     //向偏好设置文件中保存数据
                     mEditor = mSharedPreferences.edit();
                     mEditor.putString("token",token);
-                    mEditor.putString("user_id",user_id);
+                    mEditor.putInt("user_id",id);
                     mEditor.putString("phone",mPhoneString);
                     mEditor.putInt("type", 1);
+
                     //提交保存结果
-                    mEditor.commit();
+                    mEditor.commit();//登录成功后进行页面的跳转
+                    Intent intent = new Intent();
+                    intent.putExtra("flag","me");
+                    intent.setClass(LogintestActivity.this,MainActivity.class);
+                    startActivity(intent);
+
                 }
             }
         }
