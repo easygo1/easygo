@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.application.MyApplication;
-import com.easygo.beans.order.Order;
 import com.easygo.fragment.ReleasesroomNoFragment;
 import com.easygo.fragment.ReleasesroomYesFragment;
 import com.easygo.utils.UpYunException;

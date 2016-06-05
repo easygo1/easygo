@@ -10,6 +10,7 @@
             android:id="@+id/order_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:text="到鸟巢去散步，安慧东里敞亮大三居"/>
         <TextView
