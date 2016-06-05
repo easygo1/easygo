@@ -1,4 +1,4 @@
-package com.easygo.model.beans.order;
+package com.easygo.beans.order;
 //订单的订单入住人
 public class UserOrderLinkman {
 	private int user_linkman_id; // 表编号

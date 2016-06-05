@@ -4431,7 +4431,11 @@
                     "endOffset": 25591
                 },
                 "from": {
+<<<<<<< HEAD
+                    "file": "F:\\easygo530\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+=======
                     "file": "F:\\TestArea\\GitSpace\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+>>>>>>> 8384dcb59dc61c950fcde6fe7007839c32a59890
                     "position": {
                         "startLine": 544,
                         "startColumn": 4,

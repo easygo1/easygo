@@ -58,7 +58,8 @@
         </activity>
         <activity android:name=".ReleasesroomActivity">
         </activity>
-        <activity android:name=".LogintestActivity"/>
+        <activity android:name=".LogintestActivity">
+        </activity>
         <activity android:name=".BookActivity">
         </activity>
         <activity android:name=".RegisterActivity">

@@ -52,4 +52,12 @@ public class HousePhoto {
 		this.house_photo_path = house_photo_path;
 	}
 
+	@Override
+	public String toString() {
+		return "HousePhoto [house_photo_id=" + house_photo_id + ", house_id="
+				+ house_id + ", house_photo_path=" + house_photo_path
+				+ ", isFirst=" + isFirst + "]";
+	}
+	
+
 }
