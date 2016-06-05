@@ -92,4 +92,53 @@ public class IHouseCollectDAOImpl implements IHouseCollectDAO {
 		return houseCollectList;
 	}
 
+	// 判断某个用户是否收藏了某个房源
+	@Override
+	public boolean findHouseCollectById(int user_id, int house_id) {
+		// TODO Auto-generated method stub
+		boolean result = false;
+		connection = C3P0Utils.getConnection();
+		String sql = "select * from house_collect where user_id =? AND house_id=?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, user_id);
+			statement.setInt(2, house_id);
+
+			resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				result = true;
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return result;
+	}
+
+	@Override
+	public boolean deleteHouseCollectById(int user_id, int house_id) {
+		// TODO Auto-generated method stub
+		boolean result = false;
+		connection = C3P0Utils.getConnection();
+		String sql = "DELETE FROM house_collect WHERE user_id=? AND house_id = ?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, user_id);
+			statement.setInt(2, house_id);
+			statement.executeUpdate();
+			result = true;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			result = false;
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return result;
+	}
+
 }

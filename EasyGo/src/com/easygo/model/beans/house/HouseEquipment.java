@@ -3,7 +3,7 @@ package com.easygo.model.beans.house;
 public class HouseEquipment {
 	private int house_equipment_id;// 房屋设施表ID
 	private int house_id; // 房屋编号
-	private int equipment_id; // 设施名称
+	private int equipment_id; // 设施ID
 
 	public HouseEquipment() {
 		super();

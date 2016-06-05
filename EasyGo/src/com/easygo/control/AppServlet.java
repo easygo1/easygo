@@ -30,6 +30,7 @@ import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.house.HouseCollect;
 import com.easygo.model.beans.house.HouseDateManage;
 import com.easygo.model.beans.house.HouseEquipment;
+import com.easygo.model.beans.house.HouseEquipmentName;
 import com.easygo.model.beans.house.HousePhoto;
 import com.easygo.model.beans.order.Assess;
 import com.easygo.model.beans.order.Orders;
@@ -120,6 +121,8 @@ public class AppServlet extends HttpServlet {
 	Equipment equipment;
 	List<Equipment> houseEquipmentList;
 	HouseEquipment houseEquipment;
+	// 2016-06-04补充的类，用于存储房屋设备和id
+	List<HouseEquipmentName> houseEquipmentNameList;
 
 	// HouseDateManage的相关对象
 	HouseDateManage houseDateManage;
@@ -605,25 +608,33 @@ public class AppServlet extends HttpServlet {
 			house = housedao.findSpecHouseById(house_id);
 			// 2.房源图片List
 			housePhotoList = housePhotoDAO.selectSpecIHousePhoto(house_id);
-			// 3.用户收藏
-			houseCollectList = houseCollectDAO
-					.findHouseCollectByUserId(user_id);
+			// 3.用户收藏(返回boolean即可)
+			/*
+			 * houseCollectList = houseCollectDAO
+			 * .findHouseCollectByUserId(user_id);
+			 */
+			boolean isCollected = false;
+			isCollected = houseCollectDAO.findHouseCollectById(user_id,
+					house_id);
 			// 4.配套设施
 			houseEquipmentList = houseEquipmentDAO
 					.selectHouseEquipment(house_id);
+			houseEquipmentNameList = houseEquipmentDAO
+					.selectEquipmentName(house_id);
 			// 6.房东的信息
 			user = userdao.findSpecUserById(house.getUser_id());
 
 			// GsonAboutHouse gsonAboutHouse = new GsonAboutHouse(houseList,
 			// userList, housePhotoList, assessList, houseCollectList);
 			GsonAboutHouseDetail gsonAboutHouseDetail = new GsonAboutHouseDetail(
-					house, housePhotoList, houseCollectList,
-					houseEquipmentList, user);
+					house, housePhotoList, isCollected, houseEquipmentNameList,
+					user);
 			gson = new Gson();
 			result = gson.toJson(gsonAboutHouseDetail);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
+
 		// 删除某个用户的收藏表的一条数据
 		case "deleteHouseCollect":
 			houseCollectDAO = new IHouseCollectDAOImpl();
@@ -631,12 +642,19 @@ public class AppServlet extends HttpServlet {
 					.getParameter("houseCollectId"));
 			houseCollectDAO.delHouseCollect(house_collect_id);
 			break;
+		case "deleteHouseCollectById":
+			// 房源id
+			house_id = Integer.parseInt(request.getParameter("houseid"));
+			// 用户id
+			user_id = Integer.parseInt(request.getParameter("userid"));
+			houseCollectDAO.deleteHouseCollectById(user_id, house_id);
+			break;
 		// 增加某个用户的收藏表的一条数据
 		case "addHouseCollect":
-			houseCollectDAO = new IHouseCollectDAOImpl();
-			houseCollect = new HouseCollect();
 			user_id = Integer.parseInt(request.getParameter("userid"));
 			house_id = Integer.parseInt(request.getParameter("houseid"));
+			houseCollectDAO = new IHouseCollectDAOImpl();
+			houseCollect = new HouseCollect();
 			houseCollect.setUser_id(user_id);
 			houseCollect.setHouse_id(house_id);
 			houseCollectDAO.addHouseCollect(houseCollect);

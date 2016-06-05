@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.HouseEquipment;
+import com.easygo.model.beans.house.HouseEquipmentName;
 
 public interface IHouseEquipmentDAO {
 	/**
@@ -23,8 +24,14 @@ public interface IHouseEquipmentDAO {
 
 	// 查询某个房源的所有房源设施
 	public abstract List<Equipment> selectHouseEquipment(int house_id);
-	
+
 	// 根据房源设施名称查询设施id
 	public abstract int selectEquipmentId(String equipment_name);
+
+	// 根据设施id查询设施
+	// public abstract int selectEquipmentId(String equipment_name);
+
+	// 根据设施id，连接查询设施
+	public abstract List<HouseEquipmentName> selectEquipmentName(int house_id);
 
 }
