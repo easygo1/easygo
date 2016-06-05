@@ -527,10 +527,12 @@ public class AppServlet extends HttpServlet {
 			//根据该订单中的house_id得到该house对象
 			housedao=new IHouseDAOImpl();
 			house=housedao.findSpecHouseById(house_id);
+			//根据houseid得到房东id
+			user_id=housedao.findUseridByHouseid(house_id);
+			
 			//得到房客的头像 得到房东的名称
 			userdao=new IUserDAOImpl();
-			book_user=userdao.findSpecUserById(orders.getUser_id());//房客对象
-			house_user=userdao.findSpecUserById(house.getUser_id());//房东对象
+			house_user=userdao.findSpecUserById(user_id);//房东对象
 			
 			//得到该房源的主图
 			housePhotoDAO=new IHousePhotoDAOImpl();
@@ -540,15 +542,19 @@ public class AppServlet extends HttpServlet {
 			userorderlinkmandao=new IUserOrderLinkmanDAOImpl();
 			userorderlinkmanlist=userorderlinkmandao.selectUserOrderLinkmanByOrderid(order_id);
 			
-			GsonOrderInfoAllDetail gsonorderinfoalldetail=new GsonOrderInfoAllDetail(orders, book_user, house_user,house, housePhoto, userorderlinkmanlist);
+			GsonOrderInfoAllDetail gsonorderinfoalldetail=new GsonOrderInfoAllDetail(orders, house_user,house, housePhoto, userorderlinkmanlist);
 			gson = new Gson();
 			result = gson.toJson(gsonorderinfoalldetail);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
-		// 修改订单
-		case "updateorder":
-
+		// 修改订单 只修改订单的预订人信息 预订人姓名 预订人电话
+		case "updateorderbook":
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			String book_name = new String(request.getParameter("book_name").getBytes("iso8859-1"), "UTF-8");
+			String book_tel = new String(request.getParameter("book_tel").getBytes("iso8859-1"), "UTF-8");
+			orderDAO=new IOrderDAOImpl();
+			orderDAO.updateOrderBook(order_id, book_name, book_tel);
 			break;
 		case "selectsomeOrders":
 

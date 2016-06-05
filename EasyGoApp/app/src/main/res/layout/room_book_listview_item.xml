@@ -29,11 +29,12 @@
             android:textSize="@dimen/textsize_m"/>
 
         <TextView
+            android:paddingTop="5dp"
             android:id="@+id/room_book_list_idcard"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="身份证：350500199901105516"/>
+            android:text="350500199901105516"/>
 
     </LinearLayout>
 

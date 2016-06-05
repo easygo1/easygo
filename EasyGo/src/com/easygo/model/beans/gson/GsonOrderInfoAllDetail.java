@@ -14,9 +14,8 @@ public class GsonOrderInfoAllDetail implements Serializable{
 	 * 
 	 */
 	//订单详情
-	//订单对象，房客，房主，房源，房源主图，订单入住人（list）
+	//订单对象，房主，房源，房源主图，订单入住人（list）
     private Orders orders;
-    private User book_user;
     private User house_user;
     private House house;
     private HousePhoto housephoto;
@@ -27,12 +26,11 @@ public class GsonOrderInfoAllDetail implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public GsonOrderInfoAllDetail(Orders orders, User book_user,
+	public GsonOrderInfoAllDetail(Orders orders,
 			User house_user, House house, HousePhoto housephoto,
 			List<UserOrderLinkman> userorderlinkmanlist) {
 		super();
 		this.orders = orders;
-		this.book_user = book_user;
 		this.house_user = house_user;
 		this.house = house;
 		this.housephoto = housephoto;
@@ -45,14 +43,6 @@ public class GsonOrderInfoAllDetail implements Serializable{
 
 	public void setOrders(Orders orders) {
 		this.orders = orders;
-	}
-
-	public User getBook_user() {
-		return book_user;
-	}
-
-	public void setBook_user(User book_user) {
-		this.book_user = book_user;
 	}
 
 	public User getHouse_user() {
@@ -89,8 +79,7 @@ public class GsonOrderInfoAllDetail implements Serializable{
 
 	@Override
 	public String toString() {
-		return "GsonOrderInfoAllDetail [orders=" + orders + ", book_user="
-				+ book_user + ", house_user=" + house_user + ", house=" + house
+		return "GsonOrderInfoAllDetail [orders=" + orders + ",house_user=" + house_user + ", house=" + house
 				+ ", housephoto=" + housephoto + ", userorderlinkmanlist="
 				+ userorderlinkmanlist + "]";
 	}

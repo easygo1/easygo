@@ -26,5 +26,8 @@ public interface IOrderDAO {
 	//模糊查询（订单编号或者房间编号或者房客编号）第二个参数是分页用到的
 	public abstract List<Orders> selectsomeOrders(String orderserch,int cur);
 	public abstract int getTotalPage();
+	public abstract boolean updateOrderBook(int order_id,String book_name,String book_tel);
+	//订单状态的更新
+	public abstract boolean updateOrderState(int order_id,String order_state);
 
 }
