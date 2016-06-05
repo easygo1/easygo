@@ -44,7 +44,7 @@
         <!-- 高德地图 -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="ef6a6a12293f1a91e98b48097272e0df"/>
+            android:value="598648bf7a682c675d74bb76a8b64d90"/>
 
         <activity android:name=".MainActivity">
             <intent-filter>

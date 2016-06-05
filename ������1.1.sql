@@ -1,5 +1,4 @@
-﻿
-#用户表
+﻿#用户表
 CREATE TABLE USER(
 user_id        INT PRIMARY KEY AUTO_INCREMENT,  #用户ID
 user_no        VARCHAR(30) NOT NULL UNIQUE,     #用户账号（唯一）

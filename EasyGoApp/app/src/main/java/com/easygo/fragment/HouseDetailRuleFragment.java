@@ -10,14 +10,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.easygo.activity.DataShowActivity;
+import com.easygo.activity.MapActivity;
 import com.easygo.activity.R;
 
 /**
  * Created by zzia on 2016/5/20.
+ * 房屋日期，地图
  */
 public class HouseDetailRuleFragment extends Fragment implements View.OnClickListener {
     Button mDateButton;
-    View mView;
+    View mView, mHouseContentView, mHouseLocationView;
+    Intent mIntent;
+
 
     @Nullable
     @Override
@@ -30,7 +34,9 @@ public class HouseDetailRuleFragment extends Fragment implements View.OnClickLis
 
     private void initViews() {
         mDateButton = (Button) mView.findViewById(R.id.house_detail_rule_date);
+        mHouseLocationView = mView.findViewById(R.id.house_location);
     }
+
     private void addListener() {
         mDateButton.setOnClickListener(this);
     }
@@ -40,8 +46,13 @@ public class HouseDetailRuleFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.house_detail_rule_date:
-                Intent intent = new Intent(getActivity(), DataShowActivity.class);
-                startActivity(intent);
+                mIntent = new Intent(getActivity(), DataShowActivity.class);
+                startActivity(mIntent);
+                break;
+            case R.id.house_location:
+                mIntent = new Intent();
+                mIntent.setClass(getActivity(), MapActivity.class);
+                startActivity(mIntent);
                 break;
         }
     }
