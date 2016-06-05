@@ -17,25 +17,25 @@
             android:layout_alignParentTop="true">
         </android.support.v4.view.ViewPager>
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/house_describe"
             style="@style/text_alpha_bg"
             android:layout_margin="10dp"
-            android:text="世纪公园+2号线+24小时热水"/>
+            android:text="世纪公园+2号线+24小时热水"/>-->
 
-        <ImageButton
+        <ImageView
             android:id="@+id/house_collection"
             style="@style/text_alpha_bg"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_margin="7dp"
             android:layout_toLeftOf="@+id/house_share"
-            android:src="@mipmap/icon_like_normal"/>
+            android:src="@mipmap/icon_collect_blue"/>
 
         <ImageButton
             android:id="@+id/house_share"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_margin="7dp"
             android:background="@mipmap/icon_web_share"/>
@@ -48,7 +48,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_margin="10dp"
-            android:text="4/4"/>
+            android:text="1/1"/>
 
         <TextView
             android:id="@+id/house_price"
