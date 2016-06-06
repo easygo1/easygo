@@ -20,11 +20,14 @@ public interface IOrderDAO {
 	// 查找所有订单
 	public abstract List<Orders> selectAllOrders(int cur);
 	// 查找某个用户的订单
-	public abstract Orders findSpecOrdersByUserId(int user_id);
+	public abstract List<Orders> findSpecOrdersByUserId(int user_id);
 	// 根据订单号查询订单信息，修改订单是要用到
 	public abstract Orders findOrdersByorderid(int order_id);
 	//模糊查询（订单编号或者房间编号或者房客编号）第二个参数是分页用到的
 	public abstract List<Orders> selectsomeOrders(String orderserch,int cur);
 	public abstract int getTotalPage();
+	public abstract boolean updateOrderBook(int order_id,String book_name,String book_tel);
+	//订单状态的更新
+	public abstract boolean updateOrderState(int order_id,String order_state);
 
 }

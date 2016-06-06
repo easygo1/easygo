@@ -38,7 +38,7 @@ public class BookContactAdapter extends BaseAdapter {
         return position;
     }
 
-    //入住人的姓名，身份证
+    //用户的常用入住人的姓名，身份证
     class ViewHolder {
         TextView text_name;
         TextView text_idcard;

@@ -5,55 +5,56 @@ import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.order.Orders;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by 崔凯 on 2016/6/4.
  */
 public class GsonOrderInfo implements Serializable {
-    private Orders orders;
-    private House house;
-    private HousePhoto housephoto;
-
+    private List<Orders> mOrdersList;
+    private List<House> mHouseList;
+    private List<HousePhoto> mHousePhotoList;
     public GsonOrderInfo() {
         super();
+        // TODO Auto-generated constructor stub
+    }
+    public GsonOrderInfo(List<Orders> ordersList, List<House> houseList, List<HousePhoto> housePhotoList) {
+        super();
+        this.mOrdersList = ordersList;
+        this.mHouseList = houseList;
+        this.mHousePhotoList = housePhotoList;
     }
 
-    public GsonOrderInfo(Orders orders, House house, HousePhoto housephoto) {
-        this.orders = orders;
-        this.house = house;
-        this.housephoto = housephoto;
+    public List<Orders> getOrdersList() {
+        return mOrdersList;
     }
 
-    public Orders getOrders() {
-        return orders;
+    public void setOrdersList(List<Orders> ordersList) {
+        mOrdersList = ordersList;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
+    public List<House> getHouseList() {
+        return mHouseList;
     }
 
-    public House getHouse() {
-        return house;
+    public void setHouseList(List<House> houseList) {
+        mHouseList = houseList;
     }
 
-    public void setHouse(House house) {
-        this.house = house;
+    public List<HousePhoto> getHousePhotoList() {
+        return mHousePhotoList;
     }
 
-    public HousePhoto getHousephoto() {
-        return housephoto;
-    }
-
-    public void setHousephoto(HousePhoto housephoto) {
-        this.housephoto = housephoto;
+    public void setHousePhotoList(List<HousePhoto> housePhotoList) {
+        mHousePhotoList = housePhotoList;
     }
 
     @Override
     public String toString() {
         return "GsonOrderInfo{" +
-                "orders=" + orders +
-                ", house=" + house +
-                ", housephoto=" + housephoto +
+                "mOrdersList=" + mOrdersList +
+                ", mHouseList=" + mHouseList +
+                ", mHousePhotoList=" + mHousePhotoList +
                 '}';
     }
 }

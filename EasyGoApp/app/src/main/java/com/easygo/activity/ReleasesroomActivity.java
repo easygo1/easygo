@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.application.MyApplication;
+import com.easygo.beans.order.Orders;
 import com.easygo.fragment.ReleasesroomNoFragment;
 import com.easygo.fragment.ReleasesroomYesFragment;
 import com.easygo.utils.UpYunException;
@@ -104,7 +105,7 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
                 String result = response.get();
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
-                Type type = new TypeToken<List<Order>>(){}.getType();
+                Type type = new TypeToken<List<Orders>>(){}.getType();
 //                mList = gson.fromJson(result,type);
                 // mList.addAll((List<Order>)gson.fromJson(result,type));
                 // mCustomOrderAdapter.notifyDataSetChanged();

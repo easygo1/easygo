@@ -164,8 +164,7 @@ CREATE TABLE house_date_manage
 (	
 	date_manage_id INT PRIMARY KEY AUTO_INCREMENT,#无意义
 	house_id INT,                          #房源id（外键）
-	date_not_use DATE，                       #不可租日期，精确到天	
-	date_manage_type smallInt  				#类型，1代表房客租用了，2代表房东自己设置为不可租
+	date_not_use DATE                       #不可租日期，精确到天			 	
 );
 #房屋设施表  WIFI，电视，洗衣机，毛巾...
 CREATE TABLE equipment(
@@ -205,7 +204,8 @@ CREATE TABLE orders
 	leavetime     DATE,	                #离开时间
 	total         DOUBLE,			#订单总额（总价=天数*单价）
 	tel	      CHAR(11),	                #联系方式
-	order_state   VARCHAR(20),		#订单状态 #待确认，待付款，待入住，已完成，取消订单
+	order_state   VARCHAR(20),		#订单状态 #待确认，待付款，待入住，已完成，已取消
+    book_name     VARCHAR(20),              #预订人姓名
 FOREIGN KEY (house_id) REFERENCES house(house_id) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );

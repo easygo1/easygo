@@ -42,7 +42,7 @@ public class IOrderDAOImpl implements IOrderDAO {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 		System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
 			//添加一个订单到数据库中
-			String sql = "insert into orders(house_id,user_id,checknum,checktime,leavetime,total,tel,order_state,order_time) values(?,?,?,?,?,?,?,?,'"+df.format(new Date())+"')";
+			String sql = "insert into orders(house_id,user_id,checknum,checktime,leavetime,total,tel,order_state,order_time,book_name) values(?,?,?,?,?,?,?,?,'"+df.format(new Date())+"',?)";
 			try {
 				statement = connection.prepareStatement(sql);
 				statement.setInt(1, orders.getHouse_id());
@@ -53,7 +53,7 @@ public class IOrderDAOImpl implements IOrderDAO {
 				statement.setDouble(6, orders.getTotal());
 				statement.setString(7, orders.getTel());
 				statement.setString(8, orders.getOrder_state());
-			
+				statement.setString(9, orders.getBook_name());
 				statement.executeUpdate();
 				System.out.println("插入数据成功");
 				return true;
@@ -83,7 +83,7 @@ public class IOrderDAOImpl implements IOrderDAO {
 	@Override
 	public boolean updateOrders(int order_id, Orders orders) {
 		try {
-			statement=connection.prepareStatement("UPDATE orders SET house_id=?,user_id=?,checknum=?,checktime=?,leavetime=?,total=?,tel=?,order_state=?,order_time=? where order_id = ?");
+			statement=connection.prepareStatement("UPDATE orders SET house_id=?,user_id=?,checknum=?,checktime=?,leavetime=?,total=?,tel=?,order_state=?,order_time=?,book_name=? where order_id = ?");
 			statement.setInt(1, orders.getHouse_id());
 			statement.setInt(2, orders.getHouse_id());
 			statement.setInt(3, orders.getHouse_id());
@@ -93,13 +93,16 @@ public class IOrderDAOImpl implements IOrderDAO {
 			statement.setString(7, orders.getTel());
 			statement.setString(8, orders.getOrder_state());
 			statement.setString(9, orders.getOrder_time());
-			statement.setInt(10, order_id);
+			statement.setString(10, orders.getBook_name());
+			statement.setInt(11, order_id);
 			statement.executeUpdate();
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
+		}finally {
+			C3P0Utils.close(resultSet, statement, connection);
 		}
 	}
 
@@ -133,7 +136,7 @@ public class IOrderDAOImpl implements IOrderDAO {
 			statement.setInt(1, order_id);
 			resultSet= statement.executeQuery();
 			while(resultSet.next()){
-				orders = new Orders(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6),resultSet.getDouble(7),resultSet.getString(8),resultSet.getString(9),resultSet.getString(10));
+				orders = new Orders(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6),resultSet.getDouble(7),resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),resultSet.getString(11));
 				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -145,9 +148,24 @@ public class IOrderDAOImpl implements IOrderDAO {
 	}
 
 	@Override
-	public Orders findSpecOrdersByUserId(int user_id) {
-		Orders order = new Orders();
-		return null;
+	public List<Orders> findSpecOrdersByUserId(int user_id) {
+		List<Orders> orderList= new ArrayList<Orders>();
+		Orders orders =null;
+		try {
+			statement=connection.prepareStatement("select * from orders where user_id=?");
+			statement.setInt(1, user_id);
+			resultSet= statement.executeQuery();
+			while(resultSet.next()){
+				orders = new Orders(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6),resultSet.getDouble(7),resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),resultSet.getString(11));
+				orderList.add(orders);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return orderList;
 	}
 
 	@Override
@@ -203,9 +221,46 @@ public class IOrderDAOImpl implements IOrderDAO {
 		
 		return orderList;
 	}
+	
 	//用正则表达式判断是否是数字  
 	public static boolean isNumeric(String str){   
 	    Pattern pattern = Pattern.compile("[0-9]*");   
 	    return pattern.matcher(str).matches();      
+	}
+
+	@Override
+	public boolean updateOrderBook(int order_id, String book_name,
+			String book_tel) {
+		try {
+			statement=connection.prepareStatement("UPDATE orders SET tel=?,book_name=? where order_id = ?");
+			statement.setString(1, book_tel);
+			statement.setString(2, book_name);
+			statement.setInt(3, order_id);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+	}
+
+	@Override
+	public boolean updateOrderState(int order_id, String order_state) {
+		try {
+			statement=connection.prepareStatement("UPDATE orders SET order_state=? where order_id = ?");
+			statement.setString(1, order_state);
+			statement.setInt(2, order_id);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
 	} 
 }

@@ -15,11 +15,13 @@
         >
 
         <ImageView
-            android:id="@+id/owner_photo"
+            android:id="@+id/order_photo"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/smile_order"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -48,6 +50,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/order_remind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
@@ -103,9 +106,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="房东:"/>
+                android:text="   房   东:"/>
 
             <TextView
+                android:id="@+id/house_user_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -119,7 +123,10 @@
                 android:textColor="@color/textDown"
                 android:textSize="@dimen/textsize_l"/>
         </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/order_background"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -135,6 +142,7 @@
                 android:text="详细地址:"/>
 
             <TextView
+                android:id="@+id/house_address"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
@@ -143,19 +151,17 @@
         </LinearLayout>
 
     </LinearLayout>
-    <!--交易信息-->
+    <!--入住人信息-->
     <TextView
         style="@style/room_book_sec_header"
         android:background="@color/bookbackground"
         android:gravity="center"
-        android:text="交易信息"
-        android:textSize="@dimen/textsize_xl"/>
+        android:text="入住人信息"
+        android:textSize="@dimen/textsize_l"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
     </LinearLayout>
 
 

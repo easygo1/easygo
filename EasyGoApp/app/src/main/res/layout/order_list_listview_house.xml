@@ -25,6 +25,7 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
+                    android:textSize="12dp"
                     android:text="4月12日"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -36,6 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
+                    android:textSize="12dp"
                     android:text="4月13日"/>
                 <TextView
                     android:id="@+id/order_sumtime"
