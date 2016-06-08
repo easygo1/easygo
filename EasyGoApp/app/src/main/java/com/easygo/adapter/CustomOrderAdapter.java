@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easygo.activity.CustomOrderActivity;
+import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.R;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HousePhoto;
@@ -126,12 +128,12 @@ public class CustomOrderAdapter extends BaseAdapter {
                 Toast.makeText(mContext, "点击了更改订单" , Toast.LENGTH_SHORT).show();
             }
         });
-        viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
+        /*viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "跳转到订单详情界面" , Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         return convertView;
     }
     private void showDelDialog(final int position){

@@ -109,7 +109,7 @@ public class LogintestActivity extends AppCompatActivity {
                     Log.e("token",user.getToken());
                     mEditor.putString("remarks",user.getRemarks());
                     mEditor.putString("phone",mPhoneString);
-                    mEditor.putInt("type", 1);
+                    mEditor.putInt("type", user.getUser_type());
                     //提交保存结果
                     mEditor.commit();
                 }

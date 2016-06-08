@@ -126,12 +126,12 @@ public class OwnerOrderIBookAdapter extends BaseAdapter {
                 Toast.makeText(mContext, "点击了更改订单" , Toast.LENGTH_SHORT).show();
             }
         });
-        viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
+        /*viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "跳转到订单详情界面" , Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         return convertView;
     }
     private void showDelDialog(final int position){

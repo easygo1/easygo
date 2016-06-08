@@ -103,12 +103,12 @@ public class CustomOrderHistoryAdapter extends BaseAdapter {
         viewHolder.orderTotal.setText(money + "");
         //viewHolder.orderImageView.setImageResource(order.getImage());
         Glide.with(mContext).load(mHousePhotoList.get(position).getHouse_photo_path()).into(viewHolder.orderImageView);
-        viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
+        /*viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "跳转到订单详情界面" , Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         return convertView;
     }
 

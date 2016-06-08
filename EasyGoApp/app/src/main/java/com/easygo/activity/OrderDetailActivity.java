@@ -63,7 +63,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
     HousePhoto housephoto;
 
     List<UserOrderLinkman> mUserOrderLinkmanList;//订单入住人信息
-    int order_id = 11;//从上个页面传过来的id
+    int order_id = 0;//从上个页面传过来的id
 
     private OnResponseListener<String> mOnResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
@@ -135,9 +135,9 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_detail);
-        /*Intent intent=getIntent();
+        Intent intent=getIntent();
         order_id=intent.getIntExtra("order_id",0);
-        *///从上个页面获取的
+        //从上个页面获取的
         myApplication = (MyApplication) this.getApplication();
         mUrl = myApplication.getUrl();
         initListView();

@@ -1,15 +1,18 @@
 package com.easygo.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.easygo.activity.CustomOrderActivity;
+import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.R;
 import com.easygo.adapter.CustomOrderHistoryAdapter;
 import com.easygo.beans.gson.GsonOrderInfo;
@@ -56,6 +59,15 @@ public class OwnerOrderIBookHistoryFragment extends Fragment {
         mHousePhotoList = new ArrayList<>();
         mCustomOrderHistoryAdapter = new CustomOrderHistoryAdapter(getActivity(), mOrdersList, mHouseList, mHousePhotoList);
         mListView.setAdapter(mCustomOrderHistoryAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
+                intent.setClass(getActivity(), OrderDetailActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     public void initData(){
         OwnerOrderIBookFragment ownerOrderIBookFragment = (OwnerOrderIBookFragment) getParentFragment();

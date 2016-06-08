@@ -1,6 +1,8 @@
 package com.easygo.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,6 +34,7 @@ import java.util.List;
 * 用户个人中心的常用入住人
 * */
 public class UserLinkmanAddActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String TYPE = "type";
     public static final int USERLINKMAN_ADD_WHAT = 1;
     //自定义一个dialog
     private WaitDialog mDialog;
@@ -43,7 +46,8 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
     String mPath, mRealName, mIdNumber;
     //网络请求
     RequestQueue mRequestQueue;
-    int user_id = 1;//偏好设置中取出
+    int user_id;//偏好设置中取出
+    SharedPreferences mSharedPreferences;
     UserLinkman mUserLinkman;
 
     @Override
@@ -73,6 +77,9 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
     }
 
     private void uploadData() {
+        mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        //type = mSharedPreferences.getInt("type", 0);
+        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
         mRealName = mNameEditText.getText().toString();
         mIdNumber = mIdEditText.getText().toString();
         MyApplication myApplication = (MyApplication) this.getApplication();

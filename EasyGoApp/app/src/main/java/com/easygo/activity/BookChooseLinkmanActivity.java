@@ -1,6 +1,8 @@
 package com.easygo.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +34,8 @@ import java.util.List;
 * 申请预订时选择的常用入住人列表
 * */
 public class BookChooseLinkmanActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String TYPE = "type";
+    SharedPreferences mSharedPreferences;
     //自定义一个dialog
     private WaitDialog mDialog;
     public static final int FIND_LINKMAN_WHAT = 1;
@@ -45,7 +49,7 @@ public class BookChooseLinkmanActivity extends AppCompatActivity implements View
     //网络请求
     String mPath;
     RequestQueue mRequestQueue;
-    int user_id = 1;
+    int user_id;
     UserLinkman mUserLinkman;//用于接收添加入住人后传过来的对象
 
     @Override
@@ -69,6 +73,9 @@ public class BookChooseLinkmanActivity extends AppCompatActivity implements View
     }
 
     private void initData() {
+        mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        //type = mSharedPreferences.getInt("type", 0);
+        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
         //初始化List
         mList = new ArrayList<>();
         //模拟数据

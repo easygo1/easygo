@@ -1,6 +1,7 @@
 package com.easygo.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,10 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.R;
 import com.easygo.adapter.CustomOrderAdapter;
 import com.easygo.adapter.OwnerOrderIBookAdapter;
@@ -56,6 +59,15 @@ public class OwnerOrderIBookIngFragment extends Fragment {
 
         mOwnerOrderIBookAdapter = new OwnerOrderIBookAdapter(getActivity(), mOrdersList,mHouseList,mHousePhotoList);
         mListView.setAdapter(mOwnerOrderIBookAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
+                intent.setClass(getActivity(), OrderDetailActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void initData(){
