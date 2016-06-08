@@ -7,7 +7,6 @@ package com.easygo.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,15 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.adapter.BookContactAdapter;
-import com.easygo.adapter.UserLinkmanAdapter;
 import com.easygo.application.MyApplication;
-import com.easygo.beans.gson.GsonAboutBookOrder;
 import com.easygo.beans.house.House;
-import com.easygo.beans.order.Order;
 import com.easygo.beans.user.UserLinkman;
 import com.easygo.view.WaitDialog;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
 import com.yolanda.nohttp.Request;
@@ -33,7 +28,6 @@ import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
