@@ -208,7 +208,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
         mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         //type = mSharedPreferences.getInt("type", 0);
         userid = mSharedPreferences.getInt("user_id", 0);//整个页面要用
-        Log.e("housedetail6666",userid+"");
+//        Log.e("housedetail6666",userid+"");
         //得到前一个页面传递过来的值
         Intent intent = getIntent();
         houseid = intent.getIntExtra("houseid", 1);
@@ -369,7 +369,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                         mHouseCollectionImageView
                                 .setImageResource(R.mipmap.icon_collect_on);
                     }
-                    Log.e("iscollected",isCollected+"");
+//                    Log.e("iscollected",isCollected+"");
                     mHousePriceTextview.setText(mHouse.getHouse_one_price() + "元/晚");
                     //初始化Fragment的值
                     mInfoFragment.initInfoData(mHouse);
