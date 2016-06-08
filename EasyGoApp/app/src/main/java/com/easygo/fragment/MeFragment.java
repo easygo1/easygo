@@ -417,6 +417,18 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                     startActivity(intent);
                 }
                 break;
+            case R.id.myorder:
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), CustomOrderActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
+                break;
             case R.id.me_owner_myset:
                 if (type != 0) {
                     intent = new Intent();
