@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,26 +16,27 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easygo.activity.CustomOrderActivity;
+import com.easygo.activity.OwnerOrderActivity;
 import com.easygo.activity.R;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.order.Orders;
+import com.easygo.fragment.OwnerOrderIBookFragment;
 import com.easygo.utils.DaysUtil;
-
 
 import java.util.List;
 
 /**
  * Created by 崔凯 on 2016/5/25.
  */
-public class CustomOrderAdapter extends BaseAdapter {
+public class OwnerOrderIBookAdapter extends BaseAdapter {
     LayoutInflater mInflater;
     Context mContext;
     List<Orders> mOrdersList = null;
     List<House> mHouselist = null;
     List<HousePhoto> mHousePhotoList = null;
 
-    public CustomOrderAdapter(Context context, List<Orders> ordersList, List<House> houselist, List<HousePhoto> housePhotoList) {
+    public OwnerOrderIBookAdapter(Context context, List<Orders> ordersList, List<House> houselist, List<HousePhoto> housePhotoList) {
         mContext = context;
         this.mOrdersList = ordersList;
         this.mHouselist = houselist;
@@ -117,7 +117,7 @@ public class CustomOrderAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 showDelDialog(position);
-                //Toast.makeText(mContext, "点击了" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "点击了" + position, Toast.LENGTH_SHORT).show();
             }
         });
         viewHolder.orderUpdate.setOnClickListener(new View.OnClickListener() {
@@ -144,8 +144,13 @@ public class CustomOrderAdapter extends BaseAdapter {
                     case Dialog.BUTTON_POSITIVE:
                         //Toast.makeText(mContext, "确认" + which, Toast.LENGTH_SHORT).show();
                         //点击确认进行取消订单
-                        CustomOrderActivity customOrderActivity = (CustomOrderActivity) mContext;
-                        customOrderActivity.deleteOneOrder(mOrdersList.get(position).getOrder_id(),position);
+                        /*CustomOrderActivity customOrderActivity = (CustomOrderActivity) mContext;
+                        customOrderActivity.deleteOneOrder(mOrdersList.get(position).getOrder_id());*/
+                       // OwnerOrderIBookFragment ownerOrderIBookFragment = new OwnerOrderIBookFragment();
+                       // ownerOrderIBookFragment.deleteOneOrder(mOrdersList.get(position).getOrder_id());
+                        OwnerOrderActivity ownerOrderActivity = (OwnerOrderActivity)mContext;
+                        OwnerOrderIBookFragment ownerOrderIBookFragment = (OwnerOrderIBookFragment)ownerOrderActivity.getSupportFragmentManager().getFragments().get(0);
+                        ownerOrderIBookFragment.deleteOneOrder(mOrdersList.get(position).getOrder_id(),position);
                         break;
                     case Dialog.BUTTON_NEGATIVE:
                         //Toast.makeText(mContext, "取消" + which, Toast.LENGTH_SHORT).show();

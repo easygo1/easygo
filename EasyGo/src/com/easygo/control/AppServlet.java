@@ -517,7 +517,16 @@ public class AppServlet extends HttpServlet {
 
 			break;
 		case "delOrders":
-
+			order_id=Integer.valueOf(request.getParameter("order_id"));
+			orderDAO = new IOrderDAOImpl();
+			boolean result1=orderDAO.delOrders(order_id);
+			if(result1){
+				mPrintWriter.write("删除成功");
+				mPrintWriter.close();
+			}else {
+				mPrintWriter.write("删除失败");
+				mPrintWriter.close();
+			}
 			break;
 		
 		case "getorderdetailbyorderid":
@@ -788,31 +797,35 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
-		case "getAllOrderByUserId1":
-			// 根据房客id得到该房客的所有订单
-			user_id=Integer.valueOf(request.getParameter("user_id"));
-			orderDAO = new IOrderDAOImpl();
-			orderList = new ArrayList<>();
-			houseList = new ArrayList<>();
-			housePhotoList = new ArrayList<>();
-			orderList = orderDAO.findSpecOrdersByUserId(user_id);
-			housedao=new IHouseDAOImpl();
-			housePhotoDAO=new IHousePhotoDAOImpl();
-			for (int i = 0; i < orderList.size(); i++) {
-				house_id=orderList.get(i).getHouse_id();
-				//根据该订单中的house_id得到该house对象
-				house = housedao.findSpecHouseById(house_id);
-				houseList.add(house);
-				//根据该订单中的house_id得到该house的主图
-				housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
-				housePhotoList.add(housePhoto);
-			}
-			GsonOrderInfo gsonOrderInfo1 = new GsonOrderInfo(orderList, houseList, housePhotoList);
-			gson = new Gson();
-			result = gson.toJson(gsonOrderInfo1);
-			mPrintWriter.write(result);
-			mPrintWriter.close();
-			break;
+			// 根据房主的id查出所有预定我的订单
+			case "getOwnerOrderByUserId":
+				System.out.println("666");
+				user_id=Integer.valueOf(request.getParameter("user_id"));
+				housedao=new IHouseDAOImpl();
+				house = housedao.findSpecHouseByUserId(user_id);
+				orderDAO = new IOrderDAOImpl();
+				orderList = new ArrayList<>();
+				houseList = new ArrayList<>();
+				housePhotoList = new ArrayList<>();
+				orderList = orderDAO.findOwnerOrdersByHouseId(house.getHouse_id());
+				//housedao=new IHouseDAOImpl();
+				housePhotoDAO=new IHousePhotoDAOImpl();
+				for (int i = 0; i < orderList.size(); i++) {
+					house_id=orderList.get(i).getHouse_id();
+					//根据该订单中的house_id得到该house对象
+					house = housedao.findSpecHouseById(house_id);
+					houseList.add(house);
+					//根据该订单中的house_id得到该house的主图
+					housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
+					housePhotoList.add(housePhoto);
+				}
+				GsonOrderInfo gsonOrderInfo2 = new GsonOrderInfo(orderList, houseList, housePhotoList);
+				gson = new Gson();
+				result = gson.toJson(gsonOrderInfo2);
+				mPrintWriter.write(result);
+				mPrintWriter.close();
+				break;
+		
 		// 根据发布房源传来的数据进行添房源
 		case "addHouse":
 			housedao = new IHouseDAOImpl();

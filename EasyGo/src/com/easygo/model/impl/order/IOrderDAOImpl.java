@@ -262,5 +262,27 @@ public class IOrderDAOImpl implements IOrderDAO {
 		}finally {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
+	}
+
+	@Override
+	public List<Orders> findOwnerOrdersByHouseId(int house_id) {
+		// TODO Auto-generated method stub
+		List<Orders> orderList= new ArrayList<Orders>();
+		Orders orders =null;
+		try {
+			statement=connection.prepareStatement("select * from orders where house_id=?");
+			statement.setInt(1, house_id);
+			resultSet= statement.executeQuery();
+			while(resultSet.next()){
+				orders = new Orders(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getInt(4),resultSet.getString(5),resultSet.getString(6),resultSet.getDouble(7),resultSet.getString(8),resultSet.getString(9),resultSet.getString(10),resultSet.getString(11));
+				orderList.add(orders);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return orderList;
 	} 
 }

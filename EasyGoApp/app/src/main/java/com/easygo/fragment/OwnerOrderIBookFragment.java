@@ -1,28 +1,25 @@
-package com.easygo.activity;
-
+package com.easygo.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
-
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.easygo.adapter.CustomOrderAdapter;
+import com.easygo.activity.R;
 import com.easygo.adapter.OrderFragmentAdapter;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.gson.GsonOrderInfo;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.order.Orders;
-import com.easygo.fragment.CustomOrderHistoryFragment;
-import com.easygo.fragment.CustomOrderIngFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
@@ -36,16 +33,18 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomOrderActivity extends FragmentActivity implements View.OnClickListener {
+/**
+ * Created by 崔凯 on 2016/6/7.
+ */
+public class OwnerOrderIBookFragment extends Fragment implements View.OnClickListener{
     private ViewPager mViewPager;
     OrderFragmentAdapter mOrderFragmentAdapter;
     FragmentManager mFragmentManager;
     private ArrayList fragments;
-    private TextView orderCustomIngtextView;
-    private TextView orderCustomHistorytextView;
-    private TextView orderCustomIngbottom;
-    private TextView orderCustomHistorybottom;
-    private ImageView customorderReturn;
+    private TextView orderIbookIngtextView;
+    private TextView orderIbookHistorytextView;
+    private TextView orderIbookIngbottom;
+    private TextView orderIbookHistorybottom;
     public static final int NOHTTP_WHAT = 1;
     public static final int NOHTTP_WHAT_DEL = 2;
     //定义适配器
@@ -58,42 +57,35 @@ public class CustomOrderActivity extends FragmentActivity implements View.OnClic
     SharedPreferences mSharedPreferences;
     public static final String TYPE = "type";
     int user_id;
+    View mView;
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_order);
-        mSharedPreferences = CustomOrderActivity.this.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mView = inflater.inflate(R.layout.owner_order_fragment_ibook,null);
+        mSharedPreferences = getActivity().getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
         initViews();
         addListeners();
-
         initData();
+        return mView;
     }
-
-
-
-    private void addListeners() {
-        customorderReturn.setOnClickListener(this);
-        orderCustomIngtextView.setOnClickListener(this);
-        orderCustomHistorytextView.setOnClickListener(this);
-        orderCustomIngbottom.setOnClickListener(this);
-        orderCustomHistorybottom.setOnClickListener(this);
-    }
-
-
     private void initViews() {
-        customorderReturn = (ImageView) findViewById(R.id.customorder_return);
-        orderCustomIngtextView = (TextView) findViewById(R.id.order_custom_ingtextView);
-        orderCustomHistorytextView = (TextView) findViewById(R.id.order_custom_historytextView);
-        orderCustomIngbottom = (TextView) findViewById(R.id.order_custom_ingbottom);
-        orderCustomHistorybottom = (TextView) findViewById(R.id.order_custom_historybottom);
-        mViewPager = (ViewPager) findViewById(R.id.order_custom_viewPager);
+        orderIbookIngtextView = (TextView) mView.findViewById(R.id.order_bookme_ingtextView);
+        orderIbookHistorytextView = (TextView) mView.findViewById(R.id.order_bookme_historytextView);
+        orderIbookIngbottom = (TextView) mView.findViewById(R.id.order_bookme_ingbottom);
+        orderIbookHistorybottom = (TextView) mView.findViewById(R.id.order_bookme_historybottom);
+        mViewPager = (ViewPager) mView.findViewById(R.id.order_bookme_viewPager);
+
+    }
+    private void addListeners() {
+        orderIbookIngtextView.setOnClickListener(this);
+        orderIbookHistorytextView.setOnClickListener(this);
     }
     private void initData() {
         mOrdersList = new ArrayList<>();
         mHouseList = new ArrayList<>();
         mHousePhotoList = new ArrayList<>();
-        MyApplication myApplication = (MyApplication) CustomOrderActivity.this.getApplication();
+        MyApplication myApplication = (MyApplication) getActivity().getApplication();
         mUrl = myApplication.getUrl();
         //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
         mRequestQueue = NoHttp.newRequestQueue();
@@ -108,15 +100,6 @@ public class CustomOrderActivity extends FragmentActivity implements View.OnClic
 		 * onResponseListener 回调对象，接受请求结果
 		 */
         mRequestQueue.add(NOHTTP_WHAT, request, onResponseListener);
-        // mList = new ArrayList<>();
-        /*Order order1 = new Order("11111","带确认","5月25","5月26","共一晚","沙发",99.00,R.drawable.home_city2);
-        Order order2 = new Order("2222","带确认","5月25","5月26","共一晚","沙发",99.00,R.drawable.home_city2);
-        Order order3 = new Order("3333","带确认","5月25","5月26","共一晚","沙发",99.00,R.drawable.home_city2);
-        Order order4 = new Order("4444","带确认","5月25","5月26","共一晚","沙发",99.00,R.drawable.home_city2);
-        mList.add(order1);
-        mList.add(order2);
-        mList.add(order3);
-        mList.add(order4);*/
     }
     private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
@@ -141,6 +124,7 @@ public class CustomOrderActivity extends FragmentActivity implements View.OnClic
                    mOrderFragmentAdapter.notifyDataSetChanged();
                }*/
                 mOrderFragmentAdapter.notifyDataSetChanged();
+                Log.e("zhihou ","4646");
             }
         }
 
@@ -161,7 +145,7 @@ public class CustomOrderActivity extends FragmentActivity implements View.OnClic
     };
     public void deleteOneOrder(int order_id,int position){
         Log.e("调用了，",order_id+"");
-        MyApplication myApplication = (MyApplication) CustomOrderActivity.this.getApplication();
+        MyApplication myApplication = new MyApplication();
         mUrl = myApplication.getUrl();
         //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
         mRequestQueue = NoHttp.newRequestQueue();
@@ -179,17 +163,16 @@ public class CustomOrderActivity extends FragmentActivity implements View.OnClic
         mOrdersList.remove(position);
         mHouseList.remove(position);
         mHousePhotoList.remove(position);
-        CustomOrderIngFragment customOrderIngFragment = (CustomOrderIngFragment) mOrderFragmentAdapter.getItem(0);
-        customOrderIngFragment.deleteOrder(position);
+        OwnerOrderIBookIngFragment ownerOrderIBookIngFragment = (OwnerOrderIBookIngFragment)mOrderFragmentAdapter.getItem(0);
+        ownerOrderIBookIngFragment.deleteOrder(position);
     }
     private void initViewPager() {
         fragments = new ArrayList<Fragment>();
-        Fragment customOrderIngFragment = new CustomOrderIngFragment();
-        Fragment customOrderHistoryFragment = new CustomOrderHistoryFragment();
-        fragments.add(customOrderIngFragment);
-        fragments.add(customOrderHistoryFragment);
-        mFragmentManager = getSupportFragmentManager();
-
+        Fragment ownerOrderIBookIngFragment= new OwnerOrderIBookIngFragment();
+        Fragment ownerOrderIBookHistoryFragment = new OwnerOrderIBookHistoryFragment();
+        fragments.add(ownerOrderIBookIngFragment);
+        fragments.add(ownerOrderIBookHistoryFragment);
+        mFragmentManager = getChildFragmentManager();
         mOrderFragmentAdapter = new OrderFragmentAdapter(mFragmentManager,fragments);
         mViewPager.setAdapter(mOrderFragmentAdapter);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -202,15 +185,15 @@ public class CustomOrderActivity extends FragmentActivity implements View.OnClic
             public void onPageSelected(int position) {
                 //选择时
                 if (position == 0){
-                    orderCustomIngtextView.setTextColor(getResources().getColor(R.color.order_background_bottom));
-                    orderCustomIngbottom.setBackgroundColor(getResources().getColor(R.color.order_background_bottom));
-                    orderCustomHistorytextView.setTextColor(getResources().getColor(R.color.order_textView));
-                    orderCustomHistorybottom.setBackgroundColor(getResources().getColor(R.color.order_background));
+                    orderIbookIngtextView.setTextColor(getResources().getColor(R.color.order_background_bottom));
+                    orderIbookIngbottom.setBackgroundColor(getResources().getColor(R.color.order_background_bottom));
+                    orderIbookHistorytextView.setTextColor(getResources().getColor(R.color.order_textView));
+                    orderIbookHistorybottom.setBackgroundColor(getResources().getColor(R.color.order_background));
                 }else if (position == 1){
-                    orderCustomIngtextView.setTextColor(getResources().getColor(R.color.order_textView));
-                    orderCustomIngbottom.setBackgroundColor(getResources().getColor(R.color.order_background));
-                    orderCustomHistorytextView.setTextColor(getResources().getColor(R.color.order_background_bottom));
-                    orderCustomHistorybottom.setBackgroundColor(getResources().getColor(R.color.order_background_bottom));
+                    orderIbookIngtextView.setTextColor(getResources().getColor(R.color.order_textView));
+                    orderIbookIngbottom.setBackgroundColor(getResources().getColor(R.color.order_background));
+                    orderIbookHistorytextView.setTextColor(getResources().getColor(R.color.order_background_bottom));
+                    orderIbookHistorybottom.setBackgroundColor(getResources().getColor(R.color.order_background_bottom));
                 }
             }
 
@@ -220,33 +203,24 @@ public class CustomOrderActivity extends FragmentActivity implements View.OnClic
             }
         });
     }
-
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.customorder_return:
-                finish();
-                break;
-            case R.id.order_custom_ingtextView:
-                orderCustomIngtextView.setTextColor(getResources().getColor(R.color.order_background_bottom));
-                orderCustomIngbottom.setBackgroundColor(getResources().getColor(R.color.order_background_bottom));
-                orderCustomHistorytextView.setTextColor(getResources().getColor(R.color.order_textView));
-                orderCustomHistorybottom.setBackgroundColor(getResources().getColor(R.color.order_background));
+            case R.id.order_bookme_ingtextView:
+                orderIbookIngtextView.setTextColor(getResources().getColor(R.color.order_background_bottom));
+                orderIbookIngbottom.setBackgroundColor(getResources().getColor(R.color.order_background_bottom));
+                orderIbookHistorytextView.setTextColor(getResources().getColor(R.color.order_textView));
+                orderIbookHistorybottom.setBackgroundColor(getResources().getColor(R.color.order_background));
                 mViewPager.setCurrentItem(0);
                 break;
-            case R.id.order_custom_historytextView:
-                orderCustomIngtextView.setTextColor(getResources().getColor(R.color.order_textView));
-                orderCustomIngbottom.setBackgroundColor(getResources().getColor(R.color.order_background));
-                orderCustomHistorytextView.setTextColor(getResources().getColor(R.color.order_background_bottom));
-                orderCustomHistorybottom.setBackgroundColor(getResources().getColor(R.color.order_background_bottom));
+            case R.id.order_bookme_historytextView:
+                orderIbookIngtextView.setTextColor(getResources().getColor(R.color.order_textView));
+                orderIbookIngbottom.setBackgroundColor(getResources().getColor(R.color.order_background));
+                orderIbookHistorytextView.setTextColor(getResources().getColor(R.color.order_background_bottom));
+                orderIbookHistorybottom.setBackgroundColor(getResources().getColor(R.color.order_background_bottom));
                 mViewPager.setCurrentItem(1);
                 break;
-            case R.id.order_custom_ingbottom:
-                break;
-            case R.id.order_custom_historybottom:
-                break;
         }
-
     }
 }

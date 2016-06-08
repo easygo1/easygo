@@ -29,5 +29,6 @@ public interface IOrderDAO {
 	public abstract boolean updateOrderBook(int order_id,String book_name,String book_tel);
 	//订单状态的更新
 	public abstract boolean updateOrderState(int order_id,String order_state);
-
+	// 查找房主的订单（根据房子id进行查询）
+	public abstract List<Orders> findOwnerOrdersByHouseId(int house_id);
 }

@@ -11,7 +11,6 @@ import android.widget.ListView;
 
 import com.easygo.activity.CustomOrderActivity;
 import com.easygo.activity.R;
-import com.easygo.adapter.CustomOrderAdapter;
 import com.easygo.adapter.CustomOrderHistoryAdapter;
 import com.easygo.beans.gson.GsonOrderInfo;
 import com.easygo.beans.house.House;
@@ -25,7 +24,7 @@ import java.util.List;
 /**
  * Created by 崔凯 on 2016/5/24.
  */
-public class CustomOrderHistoryFragment extends Fragment {
+public class OwnerOrderIBookHistoryFragment extends Fragment {
     public static final int NOHTTP_WHAT = 2;
     //定义视图
     View mOrederHistoryView;
@@ -59,16 +58,14 @@ public class CustomOrderHistoryFragment extends Fragment {
         mListView.setAdapter(mCustomOrderHistoryAdapter);
     }
     public void initData(){
-
-        CustomOrderActivity customOrderActivity = (CustomOrderActivity) getActivity();
-
+        OwnerOrderIBookFragment ownerOrderIBookFragment = (OwnerOrderIBookFragment) getParentFragment();
         //将已完成的订单加入到list
-        if(customOrderActivity.mOrdersList.size()>0){
-            for (int i = 0; i < customOrderActivity.mOrdersList.size(); i++){
-                if (customOrderActivity.mOrdersList.get(i).getOrder_state().equals("已完成")){
-                    mOrdersList.add(customOrderActivity.mOrdersList.get(i));
-                    mHouseList.add(customOrderActivity.mHouseList.get(i));
-                    mHousePhotoList.add(customOrderActivity.mHousePhotoList.get(i));
+        if(ownerOrderIBookFragment.mOrdersList.size()>0){
+            for (int i = 0; i < ownerOrderIBookFragment.mOrdersList.size(); i++){
+                if (ownerOrderIBookFragment.mOrdersList.get(i).getOrder_state().equals("已完成")){
+                    mOrdersList.add(ownerOrderIBookFragment.mOrdersList.get(i));
+                    mHouseList.add(ownerOrderIBookFragment.mHouseList.get(i));
+                    mHousePhotoList.add(ownerOrderIBookFragment.mHousePhotoList.get(i));
                 }
             }
         }

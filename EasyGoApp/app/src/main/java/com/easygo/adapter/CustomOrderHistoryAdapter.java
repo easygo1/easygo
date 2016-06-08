@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easygo.activity.R;
@@ -62,6 +64,7 @@ public class CustomOrderHistoryAdapter extends BaseAdapter {
         TextView orderSumtime;
         TextView orderRoomtype;
         TextView orderTotal;
+        LinearLayout orderLinerlayout;
     }
 
     @Override
@@ -79,6 +82,7 @@ public class CustomOrderHistoryAdapter extends BaseAdapter {
             viewHolder.orderRoomtype = (TextView) convertView.findViewById(R.id.order_roomtype);
             viewHolder.orderTotal = (TextView) convertView.findViewById(R.id.order_total);
             viewHolder.orderImageView = (ImageView) convertView.findViewById(R.id.order_imageView);
+            viewHolder.orderLinerlayout = (LinearLayout) convertView.findViewById(R.id.order_linerlayout);
             //把当前的控件缓存到布局视图中
             convertView.setTag(viewHolder);
         } else {
@@ -99,7 +103,12 @@ public class CustomOrderHistoryAdapter extends BaseAdapter {
         viewHolder.orderTotal.setText(money + "");
         //viewHolder.orderImageView.setImageResource(order.getImage());
         Glide.with(mContext).load(mHousePhotoList.get(position).getHouse_photo_path()).into(viewHolder.orderImageView);
-
+        viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "跳转到订单详情界面" , Toast.LENGTH_SHORT).show();
+            }
+        });
         return convertView;
     }
 

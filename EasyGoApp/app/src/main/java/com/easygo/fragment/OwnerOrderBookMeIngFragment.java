@@ -9,9 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.easygo.activity.CustomOrderActivity;
 import com.easygo.activity.R;
-import com.easygo.adapter.CustomOrderAdapter;
+import com.easygo.adapter.OwnerOrderIngAdapter;
 import com.easygo.beans.gson.GsonOrderInfo;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HousePhoto;
@@ -24,12 +23,12 @@ import java.util.List;
 /**
  * Created by 崔凯 on 2016/5/24.
  */
-public class CustomOrderIngFragment extends Fragment {
+public class OwnerOrderBookMeIngFragment extends Fragment {
     public static final int NOHTTP_WHAT = 1;
     //定义视图
     View mOrederIngView;
     //定义适配器
-    CustomOrderAdapter mCustomOrderAdapter;
+    OwnerOrderIngAdapter mOwnerOrderIngAdapter;
     GsonOrderInfo mGsonOrderInfo = null;
     List<Orders> mOrdersList = null;
     List<House> mHouseList = null;
@@ -43,7 +42,6 @@ public class CustomOrderIngFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mOrederIngView = inflater.inflate(R.layout.order_custom_ing, null);
         initViews();
-
         initAdapter();
         initData();
         return mOrederIngView;
@@ -53,30 +51,29 @@ public class CustomOrderIngFragment extends Fragment {
         mOrdersList = new ArrayList<>();
         mHouseList = new ArrayList<>();
         mHousePhotoList = new ArrayList<>();
-        mCustomOrderAdapter = new CustomOrderAdapter(getActivity(), mOrdersList,mHouseList,mHousePhotoList);
-        mListView.setAdapter(mCustomOrderAdapter);
+        mOwnerOrderIngAdapter = new OwnerOrderIngAdapter(getActivity(), mOrdersList,mHouseList,mHousePhotoList);
+        mListView.setAdapter(mOwnerOrderIngAdapter);
     }
 
     public void initData(){
-
-        CustomOrderActivity customOrderActivity = (CustomOrderActivity) getActivity();
+        OwnerOrderBookMeFragment ownerOrderBookMeFragment = (OwnerOrderBookMeFragment) getParentFragment();
         //将不是已完成状态的订单加入list
-        if(customOrderActivity.mOrdersList.size()>0){
-            for (int i = 0; i < customOrderActivity.mOrdersList.size(); i++){
-                if (!customOrderActivity.mOrdersList.get(i).getOrder_state().equals("已完成")){
-                    mOrdersList.add(customOrderActivity.mOrdersList.get(i));
-                    mHouseList.add(customOrderActivity.mHouseList.get(i));
-                    mHousePhotoList.add(customOrderActivity.mHousePhotoList.get(i));
+        if(ownerOrderBookMeFragment.mOrdersList.size()>0){
+            for (int i = 0; i < ownerOrderBookMeFragment.mOrdersList.size(); i++){
+                if (!ownerOrderBookMeFragment.mOrdersList.get(i).getOrder_state().equals("已完成")){
+                    mOrdersList.add(ownerOrderBookMeFragment.mOrdersList.get(i));
+                    mHouseList.add(ownerOrderBookMeFragment.mHouseList.get(i));
+                    mHousePhotoList.add(ownerOrderBookMeFragment.mHousePhotoList.get(i));
                 }
             }
         }
-        mCustomOrderAdapter.notifyDataSetChanged();
+        mOwnerOrderIngAdapter.notifyDataSetChanged();
     }
     public void deleteOrder(int position){
         mOrdersList.remove(position);
         mHouseList.remove(position);
         mHousePhotoList.remove(position);
-        mCustomOrderAdapter.notifyDataSetChanged();
+        mOwnerOrderIngAdapter.notifyDataSetChanged();
     }
     private void initViews() {
         mListView = (ListView) mOrederIngView.findViewById(R.id.order_custom_inglist);

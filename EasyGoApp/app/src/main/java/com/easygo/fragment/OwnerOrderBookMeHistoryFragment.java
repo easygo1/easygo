@@ -9,9 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.easygo.activity.CustomOrderActivity;
 import com.easygo.activity.R;
-import com.easygo.adapter.CustomOrderAdapter;
 import com.easygo.adapter.CustomOrderHistoryAdapter;
 import com.easygo.beans.gson.GsonOrderInfo;
 import com.easygo.beans.house.House;
@@ -25,7 +23,7 @@ import java.util.List;
 /**
  * Created by 崔凯 on 2016/5/24.
  */
-public class CustomOrderHistoryFragment extends Fragment {
+public class OwnerOrderBookMeHistoryFragment extends Fragment {
     public static final int NOHTTP_WHAT = 2;
     //定义视图
     View mOrederHistoryView;
@@ -59,16 +57,14 @@ public class CustomOrderHistoryFragment extends Fragment {
         mListView.setAdapter(mCustomOrderHistoryAdapter);
     }
     public void initData(){
-
-        CustomOrderActivity customOrderActivity = (CustomOrderActivity) getActivity();
-
+        OwnerOrderBookMeFragment ownerOrderBookMeFragment = (OwnerOrderBookMeFragment) getParentFragment();
         //将已完成的订单加入到list
-        if(customOrderActivity.mOrdersList.size()>0){
-            for (int i = 0; i < customOrderActivity.mOrdersList.size(); i++){
-                if (customOrderActivity.mOrdersList.get(i).getOrder_state().equals("已完成")){
-                    mOrdersList.add(customOrderActivity.mOrdersList.get(i));
-                    mHouseList.add(customOrderActivity.mHouseList.get(i));
-                    mHousePhotoList.add(customOrderActivity.mHousePhotoList.get(i));
+        if(ownerOrderBookMeFragment.mOrdersList.size()>0){
+            for (int i = 0; i < ownerOrderBookMeFragment.mOrdersList.size(); i++){
+                if (ownerOrderBookMeFragment.mOrdersList.get(i).getOrder_state().equals("已完成")){
+                    mOrdersList.add(ownerOrderBookMeFragment.mOrdersList.get(i));
+                    mHouseList.add(ownerOrderBookMeFragment.mHouseList.get(i));
+                    mHousePhotoList.add(ownerOrderBookMeFragment.mHousePhotoList.get(i));
                 }
             }
         }

@@ -199,13 +199,13 @@ CREATE TABLE orders
 	house_id      INT,	                #房屋编号	外键
 	user_id      INT,			#房客编号	外键
 	checknum      INT,		        #入住人数
-	checkname     VARCHAR(20),		#入住人姓名
 	checktime     DATE,		        #入住时间（计算出天数）
 	leavetime     DATE,	                #离开时间
 	total         DOUBLE,			#订单总额（总价=天数*单价）
 	tel	      CHAR(11),	                #联系方式
 	order_state   VARCHAR(20),		#订单状态 #待确认，待付款，待入住，已完成，已取消
-    book_name     VARCHAR(20),              #预订人姓名
+	order_time    DATE,
+        book_name     VARCHAR(20),              #预订人姓名
 FOREIGN KEY (house_id) REFERENCES house(house_id) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );

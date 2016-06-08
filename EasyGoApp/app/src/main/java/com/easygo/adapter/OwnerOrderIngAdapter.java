@@ -5,7 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,27 +16,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.easygo.activity.CustomOrderActivity;
+import com.easygo.activity.OwnerOrderActivity;
 import com.easygo.activity.R;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.order.Orders;
+import com.easygo.fragment.OwnerOrderBookMeFragment;
 import com.easygo.utils.DaysUtil;
-
 
 import java.util.List;
 
 /**
  * Created by 崔凯 on 2016/5/25.
  */
-public class CustomOrderAdapter extends BaseAdapter {
+public class OwnerOrderIngAdapter extends BaseAdapter {
     LayoutInflater mInflater;
     Context mContext;
     List<Orders> mOrdersList = null;
     List<House> mHouselist = null;
     List<HousePhoto> mHousePhotoList = null;
 
-    public CustomOrderAdapter(Context context, List<Orders> ordersList, List<House> houselist, List<HousePhoto> housePhotoList) {
+    public OwnerOrderIngAdapter(Context context, List<Orders> ordersList, List<House> houselist, List<HousePhoto> housePhotoList) {
         mContext = context;
         this.mOrdersList = ordersList;
         this.mHouselist = houselist;
@@ -70,8 +70,8 @@ public class CustomOrderAdapter extends BaseAdapter {
         TextView orderSumtime;
         TextView orderRoomtype;
         TextView orderTotal;
-        LinearLayout orderDelte;
-        LinearLayout orderUpdate;
+        LinearLayout orderOwnerDelete;
+        LinearLayout orderYes;
         LinearLayout orderLinerlayout;
     }
 
@@ -79,19 +79,19 @@ public class CustomOrderAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.order_list_item, null);
+            convertView = mInflater.inflate(R.layout.order_owner_list_item, null);
             viewHolder = new ViewHolder();
 
-            viewHolder.orderTitle = (TextView) convertView.findViewById(R.id.order_title);
-            viewHolder.orderState = (TextView) convertView.findViewById(R.id.order_state);
+            viewHolder.orderTitle = (TextView) convertView.findViewById(R.id.order_owner_title);
+            viewHolder.orderState = (TextView) convertView.findViewById(R.id.order_owner_state);
             viewHolder.orderChecktime = (TextView) convertView.findViewById(R.id.order_checktime);
             viewHolder.orderLeavetime = (TextView) convertView.findViewById(R.id.order_leavetime);
             viewHolder.orderSumtime = (TextView) convertView.findViewById(R.id.order_sumtime);
             viewHolder.orderRoomtype = (TextView) convertView.findViewById(R.id.order_roomtype);
             viewHolder.orderTotal = (TextView) convertView.findViewById(R.id.order_total);
             viewHolder.orderImageView = (ImageView) convertView.findViewById(R.id.order_imageView);
-            viewHolder.orderDelte = (LinearLayout) convertView.findViewById(R.id.order_delte);
-            viewHolder.orderUpdate = (LinearLayout) convertView.findViewById(R.id.order_update);
+            viewHolder.orderOwnerDelete = (LinearLayout) convertView.findViewById(R.id.order_owner_delete);
+            viewHolder.orderYes = (LinearLayout) convertView.findViewById(R.id.order_yes);
             viewHolder.orderLinerlayout = (LinearLayout) convertView.findViewById(R.id.order_linerlayout);
             //把当前的控件缓存到布局视图中
             convertView.setTag(viewHolder);
@@ -113,17 +113,16 @@ public class CustomOrderAdapter extends BaseAdapter {
         viewHolder.orderTotal.setText(money + "");
         //viewHolder.orderImageView.setImageResource(order.getImage());
         Glide.with(mContext).load(mHousePhotoList.get(position).getHouse_photo_path()).into(viewHolder.orderImageView);
-        viewHolder.orderDelte.setOnClickListener(new View.OnClickListener() {
+        viewHolder.orderOwnerDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDelDialog(position);
-                //Toast.makeText(mContext, "点击了" + position, Toast.LENGTH_SHORT).show();
             }
         });
-        viewHolder.orderUpdate.setOnClickListener(new View.OnClickListener() {
+        viewHolder.orderYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "点击了更改订单" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "点击了确认订单" , Toast.LENGTH_SHORT).show();
             }
         });
         viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
@@ -144,8 +143,14 @@ public class CustomOrderAdapter extends BaseAdapter {
                     case Dialog.BUTTON_POSITIVE:
                         //Toast.makeText(mContext, "确认" + which, Toast.LENGTH_SHORT).show();
                         //点击确认进行取消订单
-                        CustomOrderActivity customOrderActivity = (CustomOrderActivity) mContext;
-                        customOrderActivity.deleteOneOrder(mOrdersList.get(position).getOrder_id(),position);
+                        /*CustomOrderActivity customOrderActivity = (CustomOrderActivity) mContext;
+                        customOrderActivity.deleteOneOrder(mOrdersList.get(position).getOrder_id());*/
+                        // OwnerOrderIBookFragment ownerOrderIBookFragment = new OwnerOrderIBookFragment();
+                        // ownerOrderIBookFragment.deleteOneOrder(mOrdersList.get(position).getOrder_id());
+                        OwnerOrderActivity ownerOrderActivity = (OwnerOrderActivity)mContext;
+                        Log.e("fragment11",ownerOrderActivity.getSupportFragmentManager().getFragments().toString()+"");
+                        OwnerOrderBookMeFragment ownerOrderBookMeFragment = (OwnerOrderBookMeFragment)ownerOrderActivity.getSupportFragmentManager().getFragments().get(2);
+                        ownerOrderBookMeFragment.deleteOneOrder(mOrdersList.get(position).getOrder_id(),position);
                         break;
                     case Dialog.BUTTON_NEGATIVE:
                         //Toast.makeText(mContext, "取消" + which, Toast.LENGTH_SHORT).show();
@@ -166,6 +171,5 @@ public class CustomOrderAdapter extends BaseAdapter {
 //        builder.setNeutralButton("忽略", dialogOnclicListener);
         builder.create().show();
     }
-
 
 }

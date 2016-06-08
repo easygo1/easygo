@@ -20,6 +20,7 @@ import com.easygo.activity.HouseCollectionActivity;
 import com.easygo.activity.LogintestActivity;
 import com.easygo.activity.MyInfomationActivity;
 import com.easygo.activity.MyWalletActivity;
+import com.easygo.activity.OwnerOrderActivity;
 import com.easygo.activity.R;
 import com.easygo.activity.RegisterActivity;
 import com.easygo.activity.ReleasesroomActivity;
@@ -418,11 +419,15 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.myorder:
-                if (type != 0) {
+                if (type == 1) {
                     intent = new Intent();
                     intent.setClass(getActivity(), CustomOrderActivity.class);
                     startActivity(intent);
-                } else {
+                }else if (type == 2){
+                    intent = new Intent();
+                    intent.setClass(getActivity(),OwnerOrderActivity.class);
+                    startActivity(intent);
+                }else {
                     Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
                     intent = new Intent();
                     intent.setClass(getActivity(), LogintestActivity.class);
