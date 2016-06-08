@@ -1,5 +1,6 @@
 package com.easygo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import com.easygo.adapter.OrderContactAdpter;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.gson.GsonOrderInfoAllDetail;
 import com.easygo.beans.house.House;
+import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.order.Orders;
 import com.easygo.beans.order.UserOrderLinkman;
 import com.easygo.beans.user.User;
@@ -36,7 +38,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
 
     public static final int WHAT_GETORDERINFO = 10;
     public static final int WHAT_UPDATEORDERBOOK = 11;
-    TextView mTextView, mOrderRemindTextView;
+    TextView mTextView, mOrderRemindTextView, mFootOrderTextView;
     ListView mOrderListView;
     View mBeforeListView, mAfterListView;
     //复用申请预定界面的ListView适配器
@@ -46,7 +48,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
 
     EditText mBookNameEditText, mBookTelEditText;
     TextView mOrderStateTextView, mOrderTimeTextView, mCheckTiemTextView, mCheckLeaveTextView, mOrderTotalTextView, mOrderSumTimeTextView, mHouseTypeTextView, mHouseUserNameTextView, mHouseAddressTextView;
-    ImageView mHousePhotoImageView, mOrderPhotoImageView;
+    ImageView mHousePhotoImageView, mOrderPhotoImageView,mbackImageView;
     LinearLayout mUpdateorderBookLinearLayout;
 
     String mUrl;
@@ -58,8 +60,10 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
     Orders mOrders;
     User house_user;//房东信息
     House house;
+    HousePhoto housephoto;
+
     List<UserOrderLinkman> mUserOrderLinkmanList;//订单入住人信息
-    int order_id = 3;//从上个页面传过来的id
+    int order_id = 11;//从上个页面传过来的id
 
     private OnResponseListener<String> mOnResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
@@ -83,6 +87,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
 
                 mOrders = mGsonOrderInfoAllDetail.getOrders();
                 house_user = mGsonOrderInfoAllDetail.getHouse_user();
+                housephoto=mGsonOrderInfoAllDetail.getHousephoto();
                 house = mGsonOrderInfoAllDetail.getHouse();
                 if (mOrders.getOrder_state().equals("已取消")) {
                     mOrderPhotoImageView.setImageResource(R.mipmap.fail_order);
@@ -95,6 +100,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     mOrderRemindTextView.setText("订单已完成，等待您的入住");
                 } else if (mOrders.getOrder_state().equals("已完成")) {
                     mOrderRemindTextView.setText("欢迎您的下次入住");
+                    mFootOrderTextView.setText("去评价");
                 }
                 mOrderStateTextView.setText(mOrders.getOrder_state());
                 mOrderTimeTextView.setText(mOrders.getOrder_time());
@@ -108,8 +114,8 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                 mBookNameEditText.setText(mOrders.getBook_name());
                 mBookTelEditText.setText(mOrders.getTel());
 
-            }else if(what==WHAT_UPDATEORDERBOOK){
-                String result=response.get();
+            } else if (what == WHAT_UPDATEORDERBOOK) {
+                String result = response.get();
                 Toast.makeText(OrderDetailActivity.this, result, Toast.LENGTH_SHORT).show();
             }
         }
@@ -129,6 +135,9 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_detail);
+        /*Intent intent=getIntent();
+        order_id=intent.getIntExtra("order_id",0);
+        *///从上个页面获取的
         myApplication = (MyApplication) this.getApplication();
         mUrl = myApplication.getUrl();
         initListView();
@@ -164,9 +173,6 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
         mBeforeListView = mInflater.inflate(R.layout.order_detail_before_listview, null);
         //得到ListView之后的布局
         mAfterListView = mInflater.inflate(R.layout.order_detail_after_listview, null);
-
-
-
         //将ListView之前，之后的布局加到前面
         mOrderListView.addHeaderView(mBeforeListView);
         mOrderListView.addFooterView(mAfterListView);
@@ -184,15 +190,18 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
         mHouseTypeTextView = (TextView) findViewById(R.id.order_roomtype);
         mHouseUserNameTextView = (TextView) findViewById(R.id.house_user_name);
         mHouseAddressTextView = (TextView) findViewById(R.id.house_address);
+        mFootOrderTextView = (TextView) findViewById(R.id.order_uptate_textview);
+        mbackImageView= (ImageView) findViewById(R.id.back);
         mAdapter = new OrderContactAdpter(OrderDetailActivity.this, mUserOrderLinkmanList);
         //添加适配器
         mOrderListView.setAdapter(mAdapter);
         //ListView之前控件的初始化
         //ListView之后的控件
-        mUpdateorderBookLinearLayout= (LinearLayout) findViewById(R.id.order_update);
+        mUpdateorderBookLinearLayout = (LinearLayout) findViewById(R.id.order_update);
     }
 
     private void addListeners() {
+        mbackImageView.setOnClickListener(this);
         mUpdateorderBookLinearLayout.setOnClickListener(this);
     }
 
@@ -203,15 +212,23 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.order_update:
-                if(mOrderStateTextView.getText().equals("待确认")){
+                if (mOrderStateTextView.getText().equals("待确认")) {
                     //创建请求对象
                     request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
                     //添加请求参数
                     request.add("methods", "updateorderbook");
                     request.add("order_id", order_id);
-                    request.add("book_name",mBookNameEditText.getText().toString());
+                    request.add("book_name", mBookNameEditText.getText().toString());
                     request.add("book_tel", mBookTelEditText.getText().toString());
                     mRequestQueue.add(WHAT_UPDATEORDERBOOK, request, mOnResponseListener);
+                }
+                if (mOrderStateTextView.getText().equals("已完成")) {
+                    Intent intent=new Intent();
+                    intent.putExtra("house_photo",housephoto.getHouse_photo_path().toString());
+                    intent.putExtra("order_id",order_id);
+                    intent.putExtra("house_id",housephoto.getHouse_id());
+                    intent.setClass(OrderDetailActivity.this,OrderAssessActivity.class);
+                    startActivity(intent);
                 }
                 break;
         }

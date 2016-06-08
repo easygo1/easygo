@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.easygo.model.beans.order.Assess;
@@ -18,8 +19,26 @@ public class IAssessDAOImpl implements IAssessDAO {
 
 	@Override
 	public boolean addAssess(Assess assess) {
-		// TODO Auto-generated method stub
-		return false;
+		connection = C3P0Utils.getConnection();
+		//添加一个评价到数据库中
+		String sql = "insert into assess(order_id,house_id,user_id,star,assess_content) values(?,?,?,?,?)";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, assess.getOrder_id());
+			statement.setInt(2, assess.getHouse_id());
+			statement.setInt(3, assess.getUser_id());
+			statement.setInt(4, assess.getStar());
+			statement.setString(5, assess.getAssess_content());
+			statement.executeUpdate();
+			System.out.println("插入数据成功");
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
 	}
 
 	@Override

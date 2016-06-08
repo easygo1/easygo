@@ -149,6 +149,8 @@ public class AppServlet extends HttpServlet {
 	// 存每个房源评价的数量
 	List<Integer> assessList;
 	Assess assess;
+	String assess_content;
+	int star;
 
 	Gson gson;
 	// Type type;
@@ -561,6 +563,19 @@ public class AppServlet extends HttpServlet {
 			break;
 		case "selectsomeOrders":
 
+			break;
+		case "addAssess":
+			//添加评价
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			house_id = Integer.valueOf(request.getParameter("house_id"));
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			star = Integer.valueOf(request.getParameter("star"));
+			assess_content = new String(request.getParameter("assess_content").getBytes("iso8859-1"), "UTF-8");
+			assessDAO=new IAssessDAOImpl();
+			assess=new Assess( order_id, house_id, user_id, star, assess_content);
+			flag=assessDAO.addAssess(assess);
+			mPrintWriter.write("评价插入"+flag);
+			mPrintWriter.close();
 			break;
 		// 得到所有房间
 		case "getAllHouse":

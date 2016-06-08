@@ -137,7 +137,7 @@ CREATE TABLE house(
 	house_address_lng DOUBLE,               #房源地址（经度）
 	house_address_lat DOUBLE,               #房源地址（纬度）
 	house_traffic	VARCHAR(50),	        #交通信息		
-	house_most_num	TINYINT,	        #最多入住人数
+	house_most_num	TINYINT,	            #最多入住人数
 	house_one_price	DOUBLE,	                #价格（1人）
 	house_add_price	DOUBLE,	                #每多一人的价格			
 	house_limit_sex	VARCHAR(10),	        #房客性别要求（不限，只男，只女）
@@ -201,7 +201,7 @@ CREATE TABLE orders
 	checknum      INT,		        #入住人数
 	checkname     VARCHAR(20),		#入住人姓名
 	checktime     DATE,		        #入住时间（计算出天数）
-	leavetime     DATE,	                #离开时间
+	leavetime     DATE,	            #离开时间
 	total         DOUBLE,			#订单总额（总价=天数*单价）
 	tel	      CHAR(11),	                #联系方式
 	order_state   VARCHAR(20),		#订单状态 #待确认，待付款，待入住，已完成，已取消
@@ -221,10 +221,11 @@ FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE ON UPDATE C
  CREATE TABLE assess(
 	assess_id INT PRIMARY KEY AUTO_INCREMENT, #无意义
 	order_id  INT NOT NULL,                   #订单id（外键）
-	house_id  INT NOT NULL,	                	  #房屋编号	外键
+	house_id  INT NOT NULL,	                  #房屋编号	外键
 	user_id   INT NOT NULL,                   #用户id（外键）(房客，评价人的id)
 	star      TINYINT,                        #星级
 	assess_content   VARCHAR(100),            #评价内容
+        assess_owner_reply VARCHAR(100),          #房东回复内容
 	FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
