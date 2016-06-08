@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -308,6 +307,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                             .setImageResource(R.mipmap.icon_collect_on);
                     isCollected = true;
                     // 添加请求参数
+
                     request.add("methods", "addHouseCollect");
                     request.add("userid", userid);
                     request.add("houseid", houseid);

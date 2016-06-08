@@ -22,6 +22,7 @@ import com.easygo.model.beans.chat.Friend;
 import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.gson.GsonAboutHouseDetail;
 import com.easygo.model.beans.gson.GsonAboutHouseManage;
+import com.easygo.model.beans.gson.GsonOrderInfo;
 import com.easygo.model.beans.gson.GsonOrderInfoAllDetail;
 import com.easygo.model.beans.gson.GsonUserInfoHobby;
 import com.easygo.model.beans.house.Equipment;
@@ -153,6 +154,8 @@ public class AppServlet extends HttpServlet {
 	List<UserLinkman> userLinkmanList;
 	UserLinkman userLinkman;
 	IUserLinkmanDAO userLinkmanDAO;
+	String assess_content;
+	int star;
 
 	Gson gson;
 	// Type type;
@@ -604,6 +607,19 @@ public class AppServlet extends HttpServlet {
 		case "selectsomeOrders":
 
 			break;
+		case "addAssess":
+			//添加评价
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			house_id = Integer.valueOf(request.getParameter("house_id"));
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			star = Integer.valueOf(request.getParameter("star"));
+			assess_content = new String(request.getParameter("assess_content").getBytes("iso8859-1"), "UTF-8");
+			assessDAO=new IAssessDAOImpl();
+			assess=new Assess( order_id, house_id, user_id, star, assess_content);
+			flag=assessDAO.addAssess(assess);
+			mPrintWriter.write("评价插入"+flag);
+			mPrintWriter.close();
+			break;
 		// 得到所有房间
 		case "getAllHouse":
 			houseList = new ArrayList<House>();
@@ -839,19 +855,53 @@ public class AppServlet extends HttpServlet {
 			break;
 		// 根据用户的id查出此人的所有订单
 		case "getAllOrderByUserId":
+			// 根据房客id得到该房客的所有订单
+			user_id=Integer.valueOf(request.getParameter("user_id"));
 			orderDAO = new IOrderDAOImpl();
-			orderList = new ArrayList<Orders>();
-			String userid = request.getParameter("userid");
-			// orderList = orderDAO.selectsomeOrders(userid, 1);
-			orderList = orderDAO.selectAllOrders(1);
+			orderList = new ArrayList<>();
+			houseList = new ArrayList<>();
+			housePhotoList = new ArrayList<>();
+			orderList = orderDAO.findSpecOrdersByUserId(user_id);
+			housedao=new IHouseDAOImpl();
+			housePhotoDAO=new IHousePhotoDAOImpl();
+			for (int i = 0; i < orderList.size(); i++) {
+				house_id=orderList.get(i).getHouse_id();
+				//根据该订单中的house_id得到该house对象
+				house = housedao.findSpecHouseById(house_id);
+				houseList.add(house);
+				//根据该订单中的house_id得到该house的主图
+				housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
+				housePhotoList.add(housePhoto);
+			}
+			GsonOrderInfo gsonOrderInfo = new GsonOrderInfo(orderList, houseList, housePhotoList);
 			gson = new Gson();
-			result = gson.toJson(orderList);
-			// gson.tojson
-			String houseJson1 = gson.toJson(house, House.class);
-			// Log.e("ck",houseJson);
-			System.out.println(houseJson1);
-
-			mPrintWriter.write(houseJson1);
+			result = gson.toJson(gsonOrderInfo);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		case "getAllOrderByUserId1":
+			// 根据房客id得到该房客的所有订单
+			user_id=Integer.valueOf(request.getParameter("user_id"));
+			orderDAO = new IOrderDAOImpl();
+			orderList = new ArrayList<>();
+			houseList = new ArrayList<>();
+			housePhotoList = new ArrayList<>();
+			orderList = orderDAO.findSpecOrdersByUserId(user_id);
+			housedao=new IHouseDAOImpl();
+			housePhotoDAO=new IHousePhotoDAOImpl();
+			for (int i = 0; i < orderList.size(); i++) {
+				house_id=orderList.get(i).getHouse_id();
+				//根据该订单中的house_id得到该house对象
+				house = housedao.findSpecHouseById(house_id);
+				houseList.add(house);
+				//根据该订单中的house_id得到该house的主图
+				housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
+				housePhotoList.add(housePhoto);
+			}
+			GsonOrderInfo gsonOrderInfo1 = new GsonOrderInfo(orderList, houseList, housePhotoList);
+			gson = new Gson();
+			result = gson.toJson(gsonOrderInfo1);
+			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
 		// 根据发布房源传来的数据进行添房源

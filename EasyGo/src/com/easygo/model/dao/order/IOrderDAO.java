@@ -24,7 +24,7 @@ public interface IOrderDAO {
 	public abstract List<Orders> selectAllOrders(int cur);
 
 	// 查找某个用户的订单
-	public abstract Orders findSpecOrdersByUserId(int user_id);
+	public abstract List<Orders> findSpecOrdersByUserId(int user_id);
 
 	// 根据订单号查询订单信息，修改订单是要用到
 	public abstract Orders findOrdersByorderid(int order_id);

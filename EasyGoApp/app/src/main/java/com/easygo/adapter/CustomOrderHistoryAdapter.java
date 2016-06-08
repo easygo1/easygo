@@ -2,8 +2,6 @@ package com.easygo.adapter;
 
 
 import android.content.Context;
-import android.content.SyncStatusObserver;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.easygo.activity.R;
-import com.easygo.beans.gson.GsonOrderInfo;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.order.Orders;
@@ -24,14 +21,14 @@ import java.util.List;
 /**
  * Created by 崔凯 on 2016/5/25.
  */
-public class CustomOrderAdapter extends BaseAdapter {
+public class CustomOrderHistoryAdapter extends BaseAdapter {
     LayoutInflater mInflater;
     Context mContext;
     List<Orders> mOrdersList = null;
     List<House> mHouselist = null;
     List<HousePhoto> mHousePhotoList = null;
 
-    public CustomOrderAdapter(Context context, List<Orders> ordersList, List<House> houselist, List<HousePhoto> housePhotoList) {
+    public CustomOrderHistoryAdapter(Context context, List<Orders> ordersList, List<House> houselist, List<HousePhoto> housePhotoList) {
         mContext = context;
         this.mOrdersList = ordersList;
         this.mHouselist = houselist;
@@ -71,11 +68,11 @@ public class CustomOrderAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.order_list_item, null);
+            convertView = mInflater.inflate(R.layout.order_list_item_history, null);
             viewHolder = new ViewHolder();
 
-            viewHolder.orderTitle = (TextView) convertView.findViewById(R.id.order_title);
-            viewHolder.orderState = (TextView) convertView.findViewById(R.id.order_state);
+            viewHolder.orderTitle = (TextView) convertView.findViewById(R.id.order_title_history);
+            viewHolder.orderState = (TextView) convertView.findViewById(R.id.order_state_history);
             viewHolder.orderChecktime = (TextView) convertView.findViewById(R.id.order_checktime);
             viewHolder.orderLeavetime = (TextView) convertView.findViewById(R.id.order_leavetime);
             viewHolder.orderSumtime = (TextView) convertView.findViewById(R.id.order_sumtime);
