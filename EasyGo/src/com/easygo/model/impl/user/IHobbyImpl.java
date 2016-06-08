@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.easygo.model.beans.user.User;
 import com.easygo.model.dao.user.IHobbyDAO;
 import com.easygo.utils.C3P0Utils;
 

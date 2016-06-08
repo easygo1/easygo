@@ -3,6 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -20,20 +21,21 @@
             tools:ignore="ContentDescription"/>
 
         <TextView
-        android:id="@+id/data_manage_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="可租日期管理"
-        android:textColor="@color/theme_gray"
-        android:textSize="20sp"/>
-        <TextView
-            android:id="@+id/data_manage_save"
-            android:layout_marginRight="20dp"
+            android:id="@+id/data_manage_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:text="可租日期管理"
+            android:textColor="@color/theme_gray"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/data_manage_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
             android:text="保存"
             android:textColor="@color/textDown"
             android:textSize="20sp"/>

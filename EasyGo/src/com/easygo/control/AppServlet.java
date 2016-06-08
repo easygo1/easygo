@@ -18,8 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.beanutils.BeanUtils;
-
 import com.easygo.model.beans.chat.Friend;
 import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.gson.GsonAboutHouseDetail;
@@ -38,6 +36,7 @@ import com.easygo.model.beans.order.Assess;
 import com.easygo.model.beans.order.Orders;
 import com.easygo.model.beans.order.UserOrderLinkman;
 import com.easygo.model.beans.user.User;
+import com.easygo.model.beans.user.UserLinkman;
 import com.easygo.model.dao.chat.IFriendDAO;
 import com.easygo.model.dao.house.IHouseDAO;
 import com.easygo.model.dao.house.IHouseDateManageDAO;
@@ -50,6 +49,7 @@ import com.easygo.model.dao.user.IHobbyDAO;
 import com.easygo.model.dao.user.IHouseCollectDAO;
 import com.easygo.model.dao.user.IUserDAO;
 import com.easygo.model.dao.user.IUserHobbyDAO;
+import com.easygo.model.dao.user.IUserLinkmanDAO;
 import com.easygo.model.impl.chat.IFriendDAOImpl;
 import com.easygo.model.impl.house.IHouseDAOImpl;
 import com.easygo.model.impl.house.IHouseDateManageDAOImpl;
@@ -62,6 +62,7 @@ import com.easygo.model.impl.user.IHobbyImpl;
 import com.easygo.model.impl.user.IHouseCollectDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.easygo.model.impl.user.IUserHobbyDAOImpl;
+import com.easygo.model.impl.user.IUserLinkmanDAOImpl;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -106,13 +107,12 @@ public class AppServlet extends HttpServlet {
 	int order_id;
 	User book_user;
 	User house_user;
-	
-	//UserOrderLinkman相关对象
+
+	// UserOrderLinkman相关对象
 	UserOrderLinkman userorderlinkman;
 	IUserOrderLinkmanDAO userorderlinkmandao;
 	List<UserOrderLinkman> userorderlinkmanlist;
-	
-	
+
 	// House的相关对象
 	IHouseDAO housedao;
 	List<House> houseList;
@@ -150,6 +150,12 @@ public class AppServlet extends HttpServlet {
 	// 存每个房源评价的数量
 	List<Integer> assessList;
 	Assess assess;
+	// 常用入住人相关
+	List<UserLinkman> userLinkmanList;
+	UserLinkman userLinkman;
+	IUserLinkmanDAO userLinkmanDAO;
+	String assess_content;
+	int star;
 
 	Gson gson;
 	// Type type;
@@ -279,17 +285,6 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.close();
 			break;
 		case "addUser":
-			user = new User();
-			try {
-				BeanUtils.populate(user, request.getParameterMap());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			System.out.println(user.getUser_no());
-			if (userdao.addUser(user)) {
-				System.out.println("成功");
-			}
-
 			break;
 		case "addUserSuccess":
 			break;
@@ -304,7 +299,8 @@ public class AppServlet extends HttpServlet {
 			 * request
 			 * .getRequestDispatcher("jsp/user/user.jsp").forward(request, //
 			 * response);
-			 */break;
+			 */
+			break;
 		case "getAllUser":
 			userList = new ArrayList<User>();
 			userdao = new IUserDAOImpl();
@@ -342,19 +338,19 @@ public class AppServlet extends HttpServlet {
 			userdao.updateUser(user_no, user);
 			break;
 		case "getUserInfo":
-			//得到用户的基本信息
+			// 得到用户的基本信息
 			user_id = Integer.valueOf(request.getParameter("user_id"));
 			userdao = new IUserDAOImpl();
-			user=new User();
-			user=userdao.findSpecUserById(user_id);
-			gson=new Gson();
-			result=gson.toJson(user);
+			user = new User();
+			user = userdao.findSpecUserById(user_id);
+			gson = new Gson();
+			result = gson.toJson(user);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
 		case "selectInfoById":
-			//点击我的信息 根据用户id得到用户的信息
-			//点击我的信息 根据用户id得到用户的信息加上爱好
+			// 点击我的信息 根据用户id得到用户的信息
+			// 点击我的信息 根据用户id得到用户的信息加上爱好
 			user_id = Integer.valueOf(request.getParameter("user_id"));
 			System.out.println("我是用户id" + user_id);
 			userdao = new IUserDAOImpl();
@@ -460,14 +456,15 @@ public class AppServlet extends HttpServlet {
 			List<String> hobbylist = new ArrayList<String>();
 			gson = new Gson();
 			type = new TypeToken<List<String>>() {
-            }.getType();
-            hobbylist = gson.fromJson(lables, type);
-            userhobbydao.DeleteUserHobbyByUserId(user_id);//先删除再进行添加
-            for(int i=1;i<hobbylist.size();i++){
-            	int hobby_id=hobbydao.SelectHobbyIDByHobbyName(hobbylist.get(i));//得到选择的爱好的id            	         		
-            		flag=userhobbydao.inssertUserHobby(user_id,hobby_id);
-            		System.out.println(flag+"::"+i);
-            }
+			}.getType();
+			hobbylist = gson.fromJson(lables, type);
+			userhobbydao.DeleteUserHobbyByUserId(user_id);// 先删除再进行添加
+			for (int i = 1; i < hobbylist.size(); i++) {
+				int hobby_id = hobbydao.SelectHobbyIDByHobbyName(hobbylist
+						.get(i));// 得到选择的爱好的id
+				flag = userhobbydao.inssertUserHobby(user_id, hobby_id);
+				System.out.println(flag + "::" + i);
+			}
 			break;
 		case "updateUserPhoto":
 			// 得到要更新的用户id user_no,和头像地址
@@ -489,10 +486,31 @@ public class AppServlet extends HttpServlet {
 			break;
 
 		case "addOrders":
+
+			// orderDAO = new IOrderDAOImpl(); // 获取到订单信息的每个字段 //
+			// BeanUtils.populate(order, request.getParameterMap()); // 改成成员变量
+			// house_id = Integer.valueOf(request.getParameter("house_id"));
+			// user_id = Integer.valueOf(request.getParameter("user_id"));
+			// int checknum = Integer.valueOf(request.getParameter("checknum"));
+			// String checktime = request.getParameter("checktime");
+			// String leavetime = request.getParameter("leavetime");
+			// double total = Double.valueOf(request.getParameter("total"));
+			// String tel = request.getParameter("tel");
+			// String order_state = request.getParameter("order_state");
+			// String order_time = request.getParameter("order_time"); // 添加订单信息
+			// // 用网页信息初始化订单对象
+			// orders = new Orders(house_id, user_id, checknum, checktime,
+			// leavetime, total, tel, order_state, order_time); // 向数据库中添加信息
+			// orderDAO.addOrders(orders);
+			//
+			// request.getRequestDispatcher("jsp/order/order.jsp").forward(
+			// request, response);
+
+			break;
+		case "addOrderAndLinkman":
 			orderDAO = new IOrderDAOImpl();
+			userorderlinkmandao = new IUserOrderLinkmanDAOImpl();
 			// 获取到订单信息的每个字段
-			// BeanUtils.populate(order, request.getParameterMap());
-			// 改成成员变量
 			house_id = Integer.valueOf(request.getParameter("house_id"));
 			user_id = Integer.valueOf(request.getParameter("user_id"));
 			int checknum = Integer.valueOf(request.getParameter("checknum"));
@@ -501,16 +519,38 @@ public class AppServlet extends HttpServlet {
 			double total = Double.valueOf(request.getParameter("total"));
 			String tel = request.getParameter("tel");
 			String order_state = request.getParameter("order_state");
-			String order_time = request.getParameter("order_time");
+			String order_book_name = request.getParameter("book_name");
+			String linkmanList = request.getParameter("linkman");
+			System.out.println("接收到了name::" + order_book_name);
+			// System.out.println("接收到了linkmanList" + linkmanList);
 			// 添加订单信息
-			// 用网页信息初始化订单对象
 			orders = new Orders(house_id, user_id, checknum, checktime,
-					leavetime, total, tel, order_state, order_time);
-			// 向数据库中添加信息
-			orderDAO.addOrders(orders);
+					leavetime, total, tel, order_state, order_book_name);
+			// order_book_name无法传递，所以另外set去设置值
+			orders.setBook_name(order_book_name);
+			// 得到入住人信息
+			gson = new Gson();
+			type = new TypeToken<List<UserLinkman>>() {
+			}.getType();
+			// 初始化
+			userLinkmanList = new ArrayList<>();
+			userorderlinkmanlist = new ArrayList<>();
+			// 返回数据
+			userLinkmanList = gson.fromJson(linkmanList, type);
 
-			request.getRequestDispatcher("jsp/order/order.jsp").forward(
-					request, response);
+			// 得到返回的order_id
+			int return_id = orderDAO.addOrdersRetrunId(orders);
+			for (UserLinkman u : userLinkmanList) {
+				// 得到所有的入住人信息，添加到List中保存，添加到订单的入住人信息中,
+				userorderlinkman = new UserOrderLinkman(return_id,
+						u.getLinkman_name(), u.getIdcard());
+				userorderlinkmanlist.add(userorderlinkman);
+			}
+			for (UserOrderLinkman userorderlinkman : userorderlinkmanlist) {
+				// 一条条插入到数据库中
+				userorderlinkmandao.addUserOrderLinkman(userorderlinkman);
+			}
+
 			break;
 		// 得到全部订单
 		case "getAllorder":
@@ -528,34 +568,36 @@ public class AppServlet extends HttpServlet {
 				mPrintWriter.close();
 			}
 			break;
-		
+
 		case "getorderdetailbyorderid":
-			//根据订单号得到订单的具体信息，该房源具体信息，该房源的主图，房东信息，该订单入住人信息
+			// 根据订单号得到订单的具体信息，该房源具体信息，该房源的主图，房东信息，该订单入住人信息
 			// 根据订单号得到订单//根据订单号得到该订单的全部信息
-			order_id=Integer.valueOf(request.getParameter("order_id"));
+			order_id = Integer.valueOf(request.getParameter("order_id"));
 			orderDAO = new IOrderDAOImpl();
-			orders=orderDAO.findOrdersByorderid(order_id);
-			house_id=orders.getHouse_id();
-			
-			//根据该订单中的house_id得到该house对象
-			housedao=new IHouseDAOImpl();
-			house=housedao.findSpecHouseById(house_id);
-			//根据houseid得到房东id
-			user_id=housedao.findUseridByHouseid(house_id);
-			
-			//得到房客的头像 得到房东的名称
-			userdao=new IUserDAOImpl();
-			house_user=userdao.findSpecUserById(user_id);//房东对象
-			
-			//得到该房源的主图
-			housePhotoDAO=new IHousePhotoDAOImpl();
-			housePhoto=housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
-			
-			//根据订单号查询到该订单的所有入住人信息
-			userorderlinkmandao=new IUserOrderLinkmanDAOImpl();
-			userorderlinkmanlist=userorderlinkmandao.selectUserOrderLinkmanByOrderid(order_id);
-			
-			GsonOrderInfoAllDetail gsonorderinfoalldetail=new GsonOrderInfoAllDetail(orders, house_user,house, housePhoto, userorderlinkmanlist);
+			orders = orderDAO.findOrdersByorderid(order_id);
+			house_id = orders.getHouse_id();
+
+			// 根据该订单中的house_id得到该house对象
+			housedao = new IHouseDAOImpl();
+			house = housedao.findSpecHouseById(house_id);
+			// 根据houseid得到房东id
+			user_id = housedao.findUseridByHouseid(house_id);
+
+			// 得到房客的头像 得到房东的名称
+			userdao = new IUserDAOImpl();
+			house_user = userdao.findSpecUserById(user_id);// 房东对象
+
+			// 得到该房源的主图
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
+
+			// 根据订单号查询到该订单的所有入住人信息
+			userorderlinkmandao = new IUserOrderLinkmanDAOImpl();
+			userorderlinkmanlist = userorderlinkmandao
+					.selectUserOrderLinkmanByOrderid(order_id);
+
+			GsonOrderInfoAllDetail gsonorderinfoalldetail = new GsonOrderInfoAllDetail(
+					orders, house_user, house, housePhoto, userorderlinkmanlist);
 			gson = new Gson();
 			result = gson.toJson(gsonorderinfoalldetail);
 			mPrintWriter.write(result);
@@ -564,13 +606,28 @@ public class AppServlet extends HttpServlet {
 		// 修改订单 只修改订单的预订人信息 预订人姓名 预订人电话
 		case "updateorderbook":
 			order_id = Integer.valueOf(request.getParameter("order_id"));
-			String book_name = new String(request.getParameter("book_name").getBytes("iso8859-1"), "UTF-8");
-			String book_tel = new String(request.getParameter("book_tel").getBytes("iso8859-1"), "UTF-8");
-			orderDAO=new IOrderDAOImpl();
+			String book_name = new String(request.getParameter("book_name")
+					.getBytes("iso8859-1"), "UTF-8");
+			String book_tel = new String(request.getParameter("book_tel")
+					.getBytes("iso8859-1"), "UTF-8");
+			orderDAO = new IOrderDAOImpl();
 			orderDAO.updateOrderBook(order_id, book_name, book_tel);
 			break;
 		case "selectsomeOrders":
 
+			break;
+		case "addAssess":
+			//添加评价
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			house_id = Integer.valueOf(request.getParameter("house_id"));
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			star = Integer.valueOf(request.getParameter("star"));
+			assess_content = new String(request.getParameter("assess_content").getBytes("iso8859-1"), "UTF-8");
+			assessDAO=new IAssessDAOImpl();
+			assess=new Assess( order_id, house_id, user_id, star, assess_content);
+			flag=assessDAO.addAssess(assess);
+			mPrintWriter.write("评价插入"+flag);
+			mPrintWriter.close();
 			break;
 		// 得到所有房间
 		case "getAllHouse":
@@ -683,6 +740,8 @@ public class AppServlet extends HttpServlet {
 			boolean isCollected = false;
 			isCollected = houseCollectDAO.findHouseCollectById(user_id,
 					house_id);
+			// System.out.println("userid:" + user_id + "....." + "iscollected:"
+			// + isCollected);
 			// 4.配套设施
 			houseEquipmentList = houseEquipmentDAO
 					.selectHouseEquipment(house_id);
@@ -770,6 +829,38 @@ public class AppServlet extends HttpServlet {
 			}
 			// mPrintWriter.write(result);
 			// mPrintWriter.close();
+			break;
+		case "addLinkman":
+			// 得到某个用户的所有常用入住人
+			user_id = Integer.parseInt(request.getParameter("userid"));
+			String linkman_name = request.getParameter("linkmanname");
+			String idcard = request.getParameter("idcard");
+			userLinkmanDAO = new IUserLinkmanDAOImpl();
+			userLinkman = new UserLinkman();
+			userLinkman.setUser_id(user_id);
+			userLinkman.setLinkman_name(linkman_name);
+			userLinkman.setIdcard(idcard);
+			// System.out.println(userLinkman.toString());
+			userLinkmanDAO.addUserLinkman(userLinkman);
+			break;
+		case "deleteLinkman":
+			// 删除某个用户的一个常用入住人
+			int user_linkman_id = Integer.parseInt(request
+					.getParameter("userLinkmanId"));
+			System.out.println("------id" + user_linkman_id);
+			userLinkmanDAO = new IUserLinkmanDAOImpl();
+			userLinkmanDAO.delUserLinkman(user_linkman_id);
+			break;
+		case "getLinkmanByUserId":
+			// 得到某个用户的所有常用入住人
+			user_id = Integer.parseInt(request.getParameter("userid"));
+			userLinkmanDAO = new IUserLinkmanDAOImpl();
+			userLinkmanList = new ArrayList<>();
+			userLinkmanList = userLinkmanDAO.findAllUserLinkmanById(user_id);
+			gson = new Gson();
+			result = gson.toJson(userLinkmanList);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
 			break;
 		// 根据用户的id查出此人的所有订单
 		case "getAllOrderByUserId":

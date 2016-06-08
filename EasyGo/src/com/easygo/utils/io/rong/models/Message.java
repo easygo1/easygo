@@ -10,5 +10,6 @@ public abstract class Message {
 		return type;
 	}
 
+	@Override
 	public abstract String toString();
 }

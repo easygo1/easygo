@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.easygo.model.beans.house.HouseCollect;
 import com.easygo.model.beans.user.Hobby;
-import com.easygo.model.beans.user.User;
 import com.easygo.model.beans.user.Userhobby;
 import com.easygo.model.dao.user.IUserHobbyDAO;
 import com.easygo.utils.C3P0Utils;

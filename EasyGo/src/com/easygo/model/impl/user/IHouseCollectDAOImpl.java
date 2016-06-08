@@ -103,11 +103,10 @@ public class IHouseCollectDAOImpl implements IHouseCollectDAO {
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, user_id);
 			statement.setInt(2, house_id);
-
 			resultSet = statement.executeQuery();
 			if (resultSet.next()) {
 				result = true;
-				return true;
+				return result;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

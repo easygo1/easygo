@@ -2,10 +2,7 @@ package com.easygo.utils.io.rong.models;
 
 import com.easygo.utils.io.rong.util.GsonUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class PushMessage {
 	private List<String> platform;

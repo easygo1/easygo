@@ -1,7 +1,6 @@
 package com.easygo.model.impl.user;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Result implements Serializable{
 	/**

@@ -2,10 +2,9 @@ package com.easygo.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,10 +20,10 @@ import android.widget.Toast;
 
 import com.easygo.adapter.HouseListAdapter;
 import com.easygo.application.MyApplication;
+import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.gson.GsonAboutHouse;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HouseCollect;
-import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.user.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -43,6 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeCityActivity extends AppCompatActivity {
+    public static final String TYPE = "type";
 
     /**
      * 用来标志请求的what, 类似handler的what一样，这里用来区分请求.
@@ -78,8 +78,9 @@ public class HomeCityActivity extends AppCompatActivity {
     //下载数据时用的参数
     private String city = "苏州市";
     private int cur = 1;
-    private int userid = 1;
+    private int userid;
     GsonAboutHouse gsonAboutHouse;
+    SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +102,11 @@ public class HomeCityActivity extends AppCompatActivity {
 
 
     private void initData() {
+        //偏好设置中取出
+        mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        userid = mSharedPreferences.getInt("user_id", 0);//整个页面要用
+        Log.e("取出来了id", userid + "");
+
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
         //集合的初始化
@@ -111,7 +117,7 @@ public class HomeCityActivity extends AppCompatActivity {
         mHouseCollectList = new ArrayList<>();
         //适配器初始化
         mAdapter = new HouseListAdapter(HomeCityActivity.this,
-                mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList);
+                mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList, userid);
         mPullToRefreshListView.setAdapter(mAdapter);
 
         //筛选条件数据
@@ -204,10 +210,9 @@ public class HomeCityActivity extends AppCompatActivity {
                 //传参
                 Intent intent = new Intent(HomeCityActivity.this,
                         HouseDetailActivity.class);
-                Log.e("position",position+"");
-                Log.e("mHouseList",mHouseList.get(position-1).getHouse_id()+"");
-
-                int houseid = mHouseList.get(position-1).getHouse_id();
+//                Log.e("position",position+"");
+//                Log.e("mHouseList",mHouseList.get(position-1).getHouse_id()+"");
+                int houseid = mHouseList.get(position - 1).getHouse_id();
                 intent.putExtra("houseid", houseid);
                 startActivity(intent);
             }
@@ -428,10 +433,12 @@ public class HomeCityActivity extends AppCompatActivity {
          * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
 		 * request: 请求对象
 		 * onResponseListener 回调对象，接受请求结果
-		 */
+        */
         requestQueue.add(NOHTTP_WHAT_ADDCOLLECT, request, onResponseListener);
 
     }
+
+
     private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
         @Override
@@ -439,10 +446,8 @@ public class HomeCityActivity extends AppCompatActivity {
             if (what == NOHTTP_WHAT_LOAD) {
                 // 请求成功
                 String result = response.get();// 响应结果
-//                Log.e("tag", result);
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
-
                 Type type = new TypeToken<GsonAboutHouse>() {
                 }.getType();
                 gsonAboutHouse = gson.fromJson(result, type);

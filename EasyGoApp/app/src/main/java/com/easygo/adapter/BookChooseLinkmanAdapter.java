@@ -64,7 +64,7 @@ public class BookChooseLinkmanAdapter extends BaseAdapter {
         }
         final UserLinkman userLinkman = mList.get(position);
 
-        viewHolder.text_name.setText(userLinkman.getName());
+        viewHolder.text_name.setText(userLinkman.getLinkman_name());
         viewHolder.text_idcard.setText(userLinkman.getIdcard());
 
 

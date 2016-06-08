@@ -63,6 +63,8 @@
         </activity>
         <activity android:name=".BookActivity">
         </activity>
+        <activity android:name=".BookDateActivity">
+        </activity>
         <activity android:name=".RegisterActivity">
         </activity>
         <activity android:name=".SelectCityActivity">
@@ -81,15 +83,17 @@
         </activity>
         <activity android:name=".UserLinkmanActivity">
         </activity>
+        <activity android:name=".UserLinkmanAddActivity">
+        </activity>
         <activity android:name=".BookChooseLinkmanActivity">
         </activity>
         <activity android:name=".MyInfomationActivity">
         </activity>
         <activity android:name=".CalendarActivity">
         </activity>
-        <activity android:name=".DataManageActivity">
+        <activity android:name=".DateManageActivity">
         </activity>
-        <activity android:name=".DataShowActivity">
+        <activity android:name=".DateShowActivity">
         </activity>
         <activity android:name=".OrderDetailActivity">
         </activity>
@@ -159,6 +163,8 @@
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
             android:configChanges="orientation|screenSize"/>
         <activity android:name=".OwnerOrderActivity">
+        </activity>
+        <activity android:name=".OrderAssessActivity">
         </activity>
     </application>
 
