@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.easygo.activity.DataShowActivity;
+import com.easygo.activity.DateShowActivity;
 import com.easygo.activity.MapActivity;
 import com.easygo.activity.R;
 
@@ -46,7 +46,7 @@ public class HouseDetailRuleFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.house_detail_rule_date:
-                mIntent = new Intent(getActivity(), DataShowActivity.class);
+                mIntent = new Intent(getActivity(), DateShowActivity.class);
                 startActivity(mIntent);
                 break;
             case R.id.house_location:

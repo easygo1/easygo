@@ -66,7 +66,7 @@ public class UserLinkmanAdapter extends BaseAdapter {
         }
         final UserLinkman userLinkman = mList.get(position);
 
-        viewHolder.text_name.setText(userLinkman.getName());
+        viewHolder.text_name.setText(userLinkman.getLinkman_name());
         viewHolder.text_idcard.setText(userLinkman.getIdcard());
         viewHolder.image_choose.setImageResource(R.mipmap.user_linkman_del);
         //settext 必须是字符串！！！！！

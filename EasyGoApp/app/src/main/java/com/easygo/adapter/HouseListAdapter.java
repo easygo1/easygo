@@ -37,17 +37,18 @@ public class HouseListAdapter extends BaseAdapter {
     List<Integer> mAssessList = null;
     List<HouseCollect> mHouseCollectList = null;
     HomeCityActivity mHomeCityActivity;
-
+    int user_id;
 
     public HouseListAdapter(Context context, List<House> mHouseList, List<User> mUserList,
                             List<HousePhoto> mHousePhotoList, List<Integer> mAssessListList,
-                            List<HouseCollect> mHouseCollectList) {
+                            List<HouseCollect> mHouseCollectList,int user_id) {
         mContext = context;
         this.mHouseList = mHouseList;
         this.mUserList = mUserList;
         this.mHousePhotoList = mHousePhotoList;
         this.mAssessList = mAssessListList;
         this.mHouseCollectList = mHouseCollectList;
+        this.user_id = user_id;
         mInflater = LayoutInflater.from(mContext);
     }
 
@@ -139,19 +140,19 @@ public class HouseListAdapter extends BaseAdapter {
                     mCollectionImageView.setImageResource(R.mipmap.icon_collect_on);
                     mHouseList.get(position).setCollected(true);
                     //将收藏的行加入到数据库中
-                    mHomeCityActivity  = new HomeCityActivity();
+                    mHomeCityActivity = new HomeCityActivity();
                     //应该从偏好设置中取出来用户ID
-                    mHomeCityActivity.addCollect(1,house.getHouse_id());
+                    mHomeCityActivity.addCollect(user_id, house.getHouse_id());
                 } else if (mHouseList.get(position).isCollected()) {
                     //此处之前为false
                     //说明用户之前收藏过,再次点击则取消
                     mCollectionImageView.setImageResource(R.mipmap.icon_collect_blue);
                     mHouseList.get(position).setCollected(false);
                     //将数据库中的收藏行删除
-                    mHomeCityActivity  = new HomeCityActivity();
+                    mHomeCityActivity = new HomeCityActivity();
                     int deleteId = 0;
-                    for (HouseCollect mhouseCollect: mHouseCollectList) {
-                        if (mhouseCollect.getHouse_id() == house.getHouse_id()){
+                    for (HouseCollect mhouseCollect : mHouseCollectList) {
+                        if (mhouseCollect.getHouse_id() == house.getHouse_id()) {
                             deleteId = mhouseCollect.getHouse_collect_id();
                         }
                     }
@@ -170,6 +171,7 @@ public class HouseListAdapter extends BaseAdapter {
         boolean isCollected = house.isCollected();
         if (isCollected) {
             mCollectionImageView.setImageResource(R.mipmap.icon_collect_on);
+
         } else {
             mCollectionImageView.setImageResource(R.mipmap.icon_collect_blue);
         }

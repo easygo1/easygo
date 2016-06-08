@@ -1,12 +1,16 @@
 package com.easygo.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SyncStatusObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -48,7 +52,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  * 具体房源页面
  */
 public class HouseDetailActivity extends AppCompatActivity implements View.OnClickListener {
-
+    public static final String TYPE = "type";
     public static final int GET_HOUSE_DETAIL_WHAT = 1;
     public static final int HOUSE_ADD_COOLECT_WHAT = 2;
     public static final int HOUSE_DEL_COOLECT_WHAT = 3;
@@ -80,8 +84,9 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
     private RequestQueue requestQueue;
     Request<String> request;
     String mPath;
-    int houseid = 1;//从前面一个点击事件传过来
-    int userid = 1;//偏好设置中
+    int houseid;//从前面一个点击事件传过来
+    int userid;//偏好设置中
+    SharedPreferences mSharedPreferences;
     //用于接收数据
     public House mHouse;
     List<HousePhoto> mHousePhotoList;
@@ -200,8 +205,15 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
 
     //从服务器获取数据
     private void loadData() {
+
+        mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        //type = mSharedPreferences.getInt("type", 0);
+        userid = mSharedPreferences.getInt("user_id", 0);//整个页面要用
+        Log.e("housedetail6666",userid+"");
+        //得到前一个页面传递过来的值
         Intent intent = getIntent();
         houseid = intent.getIntExtra("houseid", 1);
+
         //初始化
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
@@ -323,6 +335,8 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
             case R.id.book_house_btn:
                 Intent intent = new Intent();
                 intent.setClass(HouseDetailActivity.this, BookActivity.class);
+                intent.putExtra("house",mHouse);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
                 break;
         }
@@ -355,6 +369,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                         mHouseCollectionImageView
                                 .setImageResource(R.mipmap.icon_collect_on);
                     }
+                    Log.e("iscollected",isCollected+"");
                     mHousePriceTextview.setText(mHouse.getHouse_one_price() + "元/晚");
                     //初始化Fragment的值
                     mInfoFragment.initInfoData(mHouse);

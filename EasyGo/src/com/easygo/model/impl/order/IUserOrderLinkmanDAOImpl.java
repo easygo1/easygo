@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.easygo.model.beans.house.House;
 import com.easygo.model.beans.order.UserOrderLinkman;
 import com.easygo.model.dao.order.IUserOrderLinkmanDAO;
 import com.easygo.utils.C3P0Utils;
@@ -22,7 +21,25 @@ public class IUserOrderLinkmanDAOImpl implements IUserOrderLinkmanDAO {
 	@Override
 	public boolean addUserOrderLinkman(UserOrderLinkman userOrderLinkman) {
 		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		connection = C3P0Utils.getConnection();
+		String sql = "insert into user_order_linkman (order_id,name,idcard) value(?,?,?)";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, userOrderLinkman.getOrder_id());
+			statement.setString(2, userOrderLinkman.getName());
+			statement.setString(3, userOrderLinkman.getIdcard());
+			statement.executeUpdate();
+			return result;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = false;
+			return result;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+
 	}
 
 	@Override
@@ -33,7 +50,7 @@ public class IUserOrderLinkmanDAOImpl implements IUserOrderLinkmanDAO {
 
 	@Override
 	public List<UserOrderLinkman> selectUserOrderLinkmanByOrderid(int order_id) {
-		userorderlinkmanlist=new ArrayList<UserOrderLinkman>();
+		userorderlinkmanlist = new ArrayList<UserOrderLinkman>();
 		connection = C3P0Utils.getConnection();
 		String sql = "select * from user_order_linkman where order_id =?";
 		try {
@@ -45,7 +62,8 @@ public class IUserOrderLinkmanDAOImpl implements IUserOrderLinkmanDAO {
 				int order_id2 = resultSet.getInt(2);
 				String name = resultSet.getString(3);
 				String idcard = resultSet.getString(4);
-				userorderlinkman = new UserOrderLinkman(user_linkman_id, order_id2, name, idcard);
+				userorderlinkman = new UserOrderLinkman(user_linkman_id,
+						order_id2, name, idcard);
 				userorderlinkmanlist.add(userorderlinkman);
 			}
 		} catch (SQLException e) {

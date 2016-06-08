@@ -38,9 +38,8 @@ FOREIGN KEY (hobby_id) REFERENCES hobby(hobby_id) ON DELETE CASCADE ON UPDATE CA
 CREATE TABLE user_linkman(
 user_linkman_id  INT PRIMARY KEY AUTO_INCREMENT,	#表编号
 user_id  INT NOT NULL,					#用户id
-NAME    VARCHAR(20) NOT NULL,				#联系人的姓名
-idcard	VARCHAR(18) NOT NULL,	                        #联系人身份证号
-FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+linkman_name    VARCHAR(20) NOT NULL,				#联系人的姓名
+idcard	VARCHAR(18) NOT NULL	                        #联系人身份证号
 );
 #好友表
 CREATE TABLE friend (                      	

@@ -2,9 +2,7 @@ package com.easygo.activity;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -37,12 +35,11 @@ import java.util.Date;
 import java.util.List;
 
 /*
-*   房东日期显示跳转的页面
-*   这个页面无法进行点击
+*   房东管理日期的页面
 */
 @SuppressLint("SimpleDateFormat")
-public class DataShowActivity extends AppCompatActivity
-        implements View.OnClickListener {
+public class DateManageActivity extends AppCompatActivity
+        implements ManageCalendar.OnDaySelectListener, View.OnClickListener {
     public static final int GET_DATE_WHAT = 1;
     public static final int HOUSE_DATE_ADD = 2;
     //网络请求队列
@@ -67,7 +64,7 @@ public class DataShowActivity extends AppCompatActivity
     //存放这一天是否被选中了
 //    List<String> mDateList;
     //标题栏的两个按钮
-    TextView mSaveTextView,mTitleTextView;
+    TextView mSaveTextView;
     ImageView mBackImageView;
 
     @Override
@@ -87,11 +84,8 @@ public class DataShowActivity extends AppCompatActivity
 
     private void initViews() {
         mSaveTextView = (TextView) findViewById(R.id.data_manage_save);
-        mTitleTextView = (TextView) findViewById(R.id.data_manage_title);
-        mSaveTextView.setVisibility(View.GONE);
-        mTitleTextView.setText("可租日期");
         mBackImageView = (ImageView) findViewById(R.id.data_manage_back);
-//        mSaveTextView.setOnClickListener(this);
+        mSaveTextView.setOnClickListener(this);
         mBackImageView.setOnClickListener(this);
     }
 
@@ -129,13 +123,17 @@ public class DataShowActivity extends AppCompatActivity
                 Gson gson = new Gson();
                 Type type = new TypeToken<GsonAboutHouseManage>() {
                 }.getType();
-//                Log.e("gson", result);
+                Log.e("gson", result);
                 gsonAboutHouseManage = gson.fromJson(result, type);
 
                 sqlNotList = gsonAboutHouseManage.getHouseNotList();
                 userBuyList = gsonAboutHouseManage.getHouseUserBuyList();
                 //等得到数据后再去初始化那些View
                 init();
+            } else if (what == HOUSE_DATE_ADD) {
+                //房东保存成功
+                finish();
+
             }
         }
 
@@ -150,7 +148,7 @@ public class DataShowActivity extends AppCompatActivity
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-            Toast.makeText(DataShowActivity.this, "网络请求失败了", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DateManageActivity.this, "失败了", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -178,14 +176,13 @@ public class DataShowActivity extends AppCompatActivity
             c1.setNotDay(sqlNotList);
             //对每个方格设置天数
             c1.setTheDay(date);
-            //对日历进行点击监听(不进行监听)
-//            c1.setOnDaySelectListener(this);
+            //对日历进行点击监听
+            c1.setOnDaySelectListener(this);
             ll.addView(c1);
         }
     }
 
-    //Api16以上才能用
-   /* @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onDaySelectListener(View view, String date) {
         //若日历日期小于当前日期，或日历日期-当前日期超过三个月，则不能点击
@@ -222,9 +219,9 @@ public class DataShowActivity extends AppCompatActivity
 
         if (sqlNotList.size() == 0) {
             //List为0，说明数据库中没有数据，也就是用户没有修改过
-            view.setBackground(getResources().getDrawable(R.drawable.date_manage));
 //            view.setBackgroundColor(Color.parseColor("#33B5E5"));
             textDayView.setTextColor(Color.WHITE);
+            view.setBackground(getResources().getDrawable(R.drawable.date_manage));
             textView.setText("已关");
             mHouseDateManage = new HouseDateManage();
             mHouseDateManage.setHouse_id(houseid);
@@ -239,9 +236,8 @@ public class DataShowActivity extends AppCompatActivity
                         && i == sqlNotList.size() - 1) {
                     //如果单击的时间不等于List中的时间，设置为已关
 //                    view.setBackgroundColor(Color.parseColor("#33B5E5"));
-                    view.setBackground(getResources().getDrawable(R.drawable.date_manage));
-                    //android:background="@drawable/"
                     textDayView.setTextColor(Color.WHITE);
+                    view.setBackground(getResources().getDrawable(R.drawable.date_manage));
                     textView.setText("已关");
                     mHouseDateManage = new HouseDateManage();
                     mHouseDateManage.setHouse_id(houseid);
@@ -256,23 +252,68 @@ public class DataShowActivity extends AppCompatActivity
                     textDayView.setTextColor(Color.parseColor("#FF6600"));
                     textView.setText("");
                     sqlNotList.remove(i);
+//                    mDateList.remove(date);
                     return;
                 }
             }
 
         }
+        /*//原有的逻辑。写一个List<String> 存储点击的日期
 
+        if (mDateList.size() == 0) {
+            view.setBackgroundColor(Color.parseColor("#33B5E5"));
+            textDayView.setTextColor(Color.WHITE);
+            textView.setText("已关");
+            mDateList.add(date);
+        } else {
+            for (int i = 0; i < mDateList.size(); i++) {
+                //i是最后一个，并且，List(i)不等于当前点击的时间，证明，之前这个日期没有点击过
+                if (!date.equals(mDateList.get(i)) && i == mDateList.size() - 1) {
+                    //如果单击的时间不等于List中的时间，设置为已关
+                    view.setBackgroundColor(Color.parseColor("#33B5E5"));
+                    textDayView.setTextColor(Color.WHITE);
+                    textView.setText("已关");
+                    mDateList.add(date);
+                    return;
+                } else if (date.equals(mDateList.get(i))) {
+                    //如果等于List中的时间，说明之前这个日期有点击过
+                    view.setBackgroundColor(Color.WHITE);
+                    textDayView.setTextColor(Color.parseColor("#FF6600"));
+                    textView.setText("");
+                    mDateList.remove(date);
+                    return;
+                }
+            }
+
+        }*/
     }
-*/
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //点击了保存按钮
+            case R.id.data_manage_save:
+//                Toast.makeText(DateManageActivity.this, "开始哦。。。。", Toast.LENGTH_SHORT).show();
+
+                // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
+//                requestQueue = NoHttp.newRequestQueue();
+                // 创建请求对象
+//                request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
+                // 添加请求参数
+                Gson gson = new Gson();
+                String houseDate = gson.toJson(sqlNotList);
+                request.add("methods", "updateHouseDate");
+                request.add("houseDate", houseDate);
+                requestQueue.add(HOUSE_DATE_ADD, request, onResponseListener);
+//                Toast.makeText(DateManageActivity.this, "结束了。。。。", Toast.LENGTH_SHORT).show();
+                break;
             //点击了返回按钮
             case R.id.data_manage_back:
                 finish();
                 break;
         }
     }
+
     //根据当前日期，向后数三个月（若当前day不是1号，为满足至少90天，则需要向后数4个月）
     @SuppressLint("SimpleDateFormat")
     public List<String> getDateList() {
@@ -329,5 +370,6 @@ public class DataShowActivity extends AppCompatActivity
         }
         return month;
     }
+
 
 }

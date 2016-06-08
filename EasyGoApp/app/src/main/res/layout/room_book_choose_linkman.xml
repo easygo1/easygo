@@ -45,6 +45,7 @@
         android:layout_weight="1"
         android:gravity="center">
         <TextView
+            android:id="@+id/room_book_choose_commit"
             android:layout_margin="5dp"
             android:background="@color/textDown"
             android:layout_width="match_parent"
