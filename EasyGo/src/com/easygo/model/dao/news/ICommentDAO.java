@@ -13,7 +13,7 @@ public interface ICommentDAO {
 	// 删除评论
 	public abstract boolean delIComment(int comment_id);
 	// 所有评论（某个说说的所有评论）
-	public abstract List<Comment> selectAllIComment();
+	public abstract List<Comment> selectAllIComment(int comment_news_id);
 
 		
 }

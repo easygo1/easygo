@@ -46,6 +46,4 @@ public interface IUserDAO {
 	// 根据用户账号查找用户头像和用户签名在我的页面
 	public abstract User selectPhotoMoodByUserId(int user_id);
 
-	// 根据用户id得到用户的全部信息
-	public abstract User selectInfoById(int user_id);
 }

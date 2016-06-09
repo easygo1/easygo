@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="5dp">
 
         <ImageView
             android:id="@+id/comment_imageview"
@@ -30,6 +30,7 @@
                 android:id="@+id/fabiao_man"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
                 android:textColor="#000"
                 android:text="作者：XX"/>
 
@@ -45,6 +46,7 @@
             android:id="@+id/browse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:textColor="#000"
@@ -56,23 +58,44 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:textColor="#000"
         android:text="这里显示动态内容！！"/>
 
     <com.lzy.ninegrid.NineGridView
         android:id="@+id/gridview_imageview"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         fresco:ngv_singleImageSize="200dp"
         fresco:ngv_singleImageRatio="1.5"
         app:ngv_gridSpacing="4dp"
         app:ngv_maxSize="9"
         fresco:ngv_mode="grid"
+        />
 
+    <TextView
+        android:id="@+id/number_like"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:textColor="#000"
+        android:text="已经有n个人觉得很赞~！"/>
+
+    <!--寂寞的分割线-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#EECBAD"
         />
 
     <!--点赞，评论，转发-->
@@ -80,8 +103,8 @@
         android:id="@+id/zan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="7dp"
         android:gravity="center_horizontal">
 
         <LinearLayout
@@ -92,7 +115,7 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/zan"
+                android:src="@drawable/zan1"
                 />
 
             <TextView

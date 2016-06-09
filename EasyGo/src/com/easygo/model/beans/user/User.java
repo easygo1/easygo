@@ -19,8 +19,8 @@ public class User {
 	private String user_introduct; // 个人简介
 	private String user_birthday; // 出生日期
 	private String user_idcard; // 身份证号
-	private String token;//token
-	private String remarks;//备注
+	private String token;// token
+	private String remarks;// 备注
 
 	public User() {
 		super();
@@ -35,31 +35,21 @@ public class User {
 		this.token = token;
 	}
 
-	/*public User(String user_no, String user_realname, String user_password,
-			String user_nickname, String user_sex, String user_phone,
-			int user_type, String user_photo, String user_job,
-			String user_address_province, String user_address_city,
-			String user_mood, String user_mail, String user_introduct,
-			String user_birthday, String user_idcard) {
-		super();
-		this.user_no = user_no;
-		this.user_realname = user_realname;
-		this.user_password = user_password;
-		this.user_nickname = user_nickname;
-		this.user_sex = user_sex;
-		this.user_phone = user_phone;
-		this.user_type = user_type;
-		this.user_photo = user_photo;
-		this.user_job = user_job;
-		this.user_address_province = user_address_province;
-		this.user_address_city = user_address_city;
-		this.user_mood = user_mood;
-		this.user_mail = user_mail;
-		this.user_introduct = user_introduct;
-		this.user_birthday = user_birthday;
-		this.user_idcard = user_idcard;
-	}
-*/
+	/*
+	 * public User(String user_no, String user_realname, String user_password,
+	 * String user_nickname, String user_sex, String user_phone, int user_type,
+	 * String user_photo, String user_job, String user_address_province, String
+	 * user_address_city, String user_mood, String user_mail, String
+	 * user_introduct, String user_birthday, String user_idcard) { super();
+	 * this.user_no = user_no; this.user_realname = user_realname;
+	 * this.user_password = user_password; this.user_nickname = user_nickname;
+	 * this.user_sex = user_sex; this.user_phone = user_phone; this.user_type =
+	 * user_type; this.user_photo = user_photo; this.user_job = user_job;
+	 * this.user_address_province = user_address_province;
+	 * this.user_address_city = user_address_city; this.user_mood = user_mood;
+	 * this.user_mail = user_mail; this.user_introduct = user_introduct;
+	 * this.user_birthday = user_birthday; this.user_idcard = user_idcard; }
+	 */
 	public User(int user_id, String user_no, String user_realname,
 			String user_password, String user_nickname, String user_sex,
 			String user_phone, int user_type, String user_photo,
@@ -85,7 +75,6 @@ public class User {
 		this.user_birthday = user_birthday;
 		this.user_idcard = user_idcard;
 	}
-	
 
 	public User(int user_id, String user_no, String user_realname,
 			String user_password, String user_nickname, String user_sex,
@@ -114,6 +103,32 @@ public class User {
 		this.user_idcard = user_idcard;
 		this.token = token;
 		this.remarks = remarks;
+	}
+
+	public User(int user_id, String user_realname, String user_nickname,
+			String user_sex, String user_phone, String user_job,
+			String user_address_province, String user_address_city,
+			String user_mail, String user_introduct, String user_birthday,
+			String user_idcard) {
+		super();
+		this.user_id = user_id;
+		this.user_realname = user_realname;
+		this.user_nickname = user_nickname;
+		this.user_sex = user_sex;
+		this.user_phone = user_phone;
+		this.user_job = user_job;
+		this.user_address_province = user_address_province;
+		this.user_address_city = user_address_city;
+		this.user_mail = user_mail;
+		this.user_introduct = user_introduct;
+		this.user_birthday = user_birthday;
+		this.user_idcard = user_idcard;
+	}
+
+	public User(String user_photo, String user_mood) {
+		super();
+		this.user_photo = user_photo;
+		this.user_mood = user_mood;
 	}
 
 	public int getUser_id() {
@@ -283,6 +298,5 @@ public class User {
 				+ ", user_idcard=" + user_idcard + ", token=" + token
 				+ ", remarks=" + remarks + "]";
 	}
-	
 
 }

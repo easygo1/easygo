@@ -146,7 +146,7 @@ public class IUserDAOImpl implements IUserDAO {
 
 	// 根据输入的id进行手机号的查找
 	public String selectUserPhone(int user_id) {
-		String phone=null;
+		String phone = null;
 		connection = C3P0Utils.getConnection();
 		String sql = "select user_phone from user where user_id=?";
 		try {
@@ -167,7 +167,7 @@ public class IUserDAOImpl implements IUserDAO {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
 		return phone;
-	}	
+	}
 
 	@Override
 	public boolean delUser(int user_no) {
@@ -368,7 +368,7 @@ public class IUserDAOImpl implements IUserDAO {
 				String user_introduct = resultSet.getString(15);
 				String user_birthday = resultSet.getString(16);
 				String user_idcard = resultSet.getString(17);
-				
+
 				user = new User(user_id2, user_no, user_realname,
 						user_password, user_nickname, user_sex, user_phone,
 						user_type, user_photo, user_job, user_address_province,
@@ -383,8 +383,7 @@ public class IUserDAOImpl implements IUserDAO {
 		}
 		return user;
 	}
-	
-	
+
 	@Override
 	public User selectUser(String phone) {
 		// TODO Auto-generated method stub
@@ -420,7 +419,8 @@ public class IUserDAOImpl implements IUserDAO {
 						user_password, user_nickname, user_sex, user_phone,
 						user_type, user_photo, user_job, user_address_province,
 						user_address_city, user_mood, user_mail,
-						user_introduct, user_birthday, user_idcard,token,remarks);
+						user_introduct, user_birthday, user_idcard, token,
+						remarks);
 				System.out.println("用户信息查找成功！");
 			}
 		} catch (SQLException e) {
@@ -461,8 +461,6 @@ public class IUserDAOImpl implements IUserDAO {
 		}
 	}
 
-
-
 	@Override
 	public User selectPhotoMoodByUserId(int user_id) {
 		connection = C3P0Utils.getConnection();
@@ -483,44 +481,6 @@ public class IUserDAOImpl implements IUserDAO {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
 		return user;
-	}
-
-
-
-	@Override
-	public User selectInfoById(int user_id) {
-		// 通过id查询用户
-				connection = C3P0Utils.getConnection();
-				String sql = "select user_id,user_photo,user_nickname,user_realname,user_idcard,user_address_province,user_address_city,user_sex,user_job,user_birthday,user_introduct,user_mail from user where user_id =?";
-				try {
-					statement = connection.prepareStatement(sql);
-					statement.setInt(1, user_id);
-					resultSet = statement.executeQuery();
-					while (resultSet.next()) {
-						int user_id1 = resultSet.getInt(1);
-						String user_photo = resultSet.getString(2);
-						String user_nickname = resultSet.getString(3);
-						String user_realname = resultSet.getString(4);
-						String user_idcard = resultSet.getString(5);
-						String user_address_province = resultSet.getString(6);
-						String user_address_city = resultSet.getString(7);
-						String user_sex = resultSet.getString(8);
-						String user_job = resultSet.getString(9);
-						String user_birthday = resultSet.getString(10);
-						String user_introduct = resultSet.getString(11);
-						String user_mail = resultSet.getString(12);
-						user = new User( user_id1,user_photo, user_nickname,user_realname, user_idcard,
-								user_address_province,
-								user_address_city, user_sex,user_job, user_birthday, 
-								user_introduct,user_mail);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-					return user;
-				} finally {
-					C3P0Utils.close(resultSet, statement, connection);
-				}
-				return user;
 	}
 
 }

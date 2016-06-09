@@ -29,6 +29,11 @@ public class User {
         super();
     }
 
+    public User(String user_realname, String user_phone, String user_photo) {
+        this.user_realname = user_realname;
+        this.user_phone = user_phone;
+        this.user_photo = user_photo;
+    }
 
     public User(int user_id, String user_no, String user_realname,
                 String user_password, String user_nickname, String user_sex,
