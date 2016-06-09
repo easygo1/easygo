@@ -17,4 +17,9 @@ public interface IHouseCollectDAO {
 	// 查找某个用户的收藏列表
 	public abstract List<HouseCollect> findHouseCollectByUserId(int user_id);
 
+	// 查找某个用户是否收藏某個房源
+	public abstract boolean findHouseCollectById(int user_id, int house_id);
+
+	// 根据用户和房屋ID删除某个房源
+	public abstract boolean deleteHouseCollectById(int user_id, int house_id);
 }

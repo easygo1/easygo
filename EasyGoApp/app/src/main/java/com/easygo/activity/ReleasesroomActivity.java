@@ -1,16 +1,16 @@
 package com.easygo.activity;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,8 +21,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.easygo.application.MyApplication;
-import com.easygo.beans.order.Order;
+import com.easygo.beans.order.Orders;
 import com.easygo.fragment.ReleasesroomNoFragment;
 import com.easygo.fragment.ReleasesroomYesFragment;
 import com.easygo.utils.UpYunException;
@@ -65,7 +66,7 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
     boolean[] flags = new boolean[]{false, false, false, false, false, false, false, false, false, false,false};
 
     Intent intent;
-    int user_id = 8;
+    int user_id;
     String house_title = null;
     String house_style = null;
     double house_address_lng;//经度
@@ -105,7 +106,7 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
                 String result = response.get();
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
-                Type type = new TypeToken<List<Order>>(){}.getType();
+                Type type = new TypeToken<List<Orders>>(){}.getType();
 //                mList = gson.fromJson(result,type);
                 // mList.addAll((List<Order>)gson.fromJson(result,type));
                 // mCustomOrderAdapter.notifyDataSetChanged();
@@ -134,6 +135,8 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_releasesroom);
+        mSharedPreferences = ReleasesroomActivity.this.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
         initView();
         addListeners();
         initDefault();

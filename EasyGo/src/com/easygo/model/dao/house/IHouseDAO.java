@@ -34,4 +34,7 @@ public interface IHouseDAO {
 	
 	//根据user_id查询房源
 	public abstract House findSpecHouseByUserId(int user_id);
+	
+	//根据house_id得到房东id
+	public abstract int findUseridByHouseid(int house_id);
 }

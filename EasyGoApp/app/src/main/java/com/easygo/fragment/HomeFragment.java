@@ -21,6 +21,7 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bumptech.glide.Glide;
 import com.easygo.activity.BookActivity;
+import com.easygo.activity.DateManageActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
 import com.easygo.activity.R;
@@ -368,7 +369,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 mHomePageLocalList.get(position).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(), HomeCityActivity.class);
+                        Intent intent = new Intent(getActivity(), DateManageActivity.class);
                         startActivity(intent);
                         /*
                         跳转到支付详情页面

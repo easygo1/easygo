@@ -23,6 +23,16 @@ public class Assess {
 		this.assess_content = assess_content;
 	}
 
+	public Assess(int order_id, int house_id, int user_id, int star,
+			String assess_content) {
+		super();
+		this.order_id = order_id;
+		this.house_id = house_id;
+		this.user_id = user_id;
+		this.star = star;
+		this.assess_content = assess_content;
+	}
+
 	public int getAssess_id() {
 		return assess_id;
 	}

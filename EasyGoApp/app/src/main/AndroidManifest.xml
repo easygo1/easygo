@@ -42,6 +42,9 @@
         android:theme="@style/AppTheme">
 
         <!-- 高德地图 -->
+        <!--<meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="598648bf7a682c675d74bb76a8b64d90"/>-->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="ef6a6a12293f1a91e98b48097272e0df"/>
@@ -59,8 +62,11 @@
         </activity>
         <activity android:name=".ReleasesroomActivity">
         </activity>
-        <activity android:name=".LogintestActivity"/>
+        <activity android:name=".LogintestActivity">
+        </activity>
         <activity android:name=".BookActivity">
+        </activity>
+        <activity android:name=".BookDateActivity">
         </activity>
         <activity android:name=".RegisterActivity">
         </activity>
@@ -80,11 +86,17 @@
         </activity>
         <activity android:name=".UserLinkmanActivity">
         </activity>
+        <activity android:name=".UserLinkmanAddActivity">
+        </activity>
         <activity android:name=".BookChooseLinkmanActivity">
         </activity>
         <activity android:name=".MyInfomationActivity">
         </activity>
         <activity android:name=".CalendarActivity">
+        </activity>
+        <activity android:name=".DateManageActivity">
+        </activity>
+        <activity android:name=".DateShowActivity">
         </activity>
         <activity android:name=".OrderDetailActivity">
         </activity>
@@ -154,6 +166,10 @@
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
             android:configChanges="orientation|screenSize"/>
         <activity android:name=".PublishDynamicActivity">
+        </activity>
+        <activity android:name=".OwnerOrderActivity">
+        </activity>
+        <activity android:name=".OrderAssessActivity">
         </activity>
     </application>
 

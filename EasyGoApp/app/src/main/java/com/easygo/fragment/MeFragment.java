@@ -20,6 +20,7 @@ import com.easygo.activity.HouseCollectionActivity;
 import com.easygo.activity.LogintestActivity;
 import com.easygo.activity.MyInfomationActivity;
 import com.easygo.activity.MyWalletActivity;
+import com.easygo.activity.OwnerOrderActivity;
 import com.easygo.activity.R;
 import com.easygo.activity.RegisterActivity;
 import com.easygo.activity.ReleasesroomActivity;
@@ -112,26 +113,28 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         public void onSucceed(int what, Response<String> response) {
             if (what == WHAT_GETUSERPHOTO) {
                 String result = response.get();
-                Toast.makeText(getActivity(), "得到用户头像了" + result, Toast.LENGTH_SHORT).show();
-               //解析对象
+                //Toast.makeText(getActivity(), "得到用户头像了" + result, Toast.LENGTH_SHORT).show();
+                //解析对象
                 Gson gson = new Gson();
                 Type mytype = new TypeToken<User>() {
                 }.getType();
                 user = gson.fromJson(result, mytype);
-                if(type==1){
+                if (type == 1) {
                     //房客状态
                     Glide.with(getActivity())
                             .load(user.getUser_photo())
                             .bitmapTransform(new CropCircleTransformation(getActivity()))
                             .error(R.mipmap.user_photo_defult)
                             .into(meCustomerUserImageview);
-                }else if(type==2){
+                    meCustomerDescriptustomer.setText(user.getUser_mood());
+                } else if (type == 2) {
                     //房东状态
                     Glide.with(getActivity())
                             .load(user.getUser_photo())
                             .bitmapTransform(new CropCircleTransformation(getActivity()))
                             .error(R.mipmap.user_photo_defult)
                             .into(meOwnerUserImageview);
+                    meOwnerDescription.setText(user.getUser_mood());
                 }
             }
         }
@@ -172,14 +175,16 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         mSharedPreferences = getActivity().getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         type = mSharedPreferences.getInt("type", 0);
         user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
-        myApplication = (MyApplication) getActivity().getApplication();
-        mUrl = myApplication.getUrl();
-        //创建请求对象
-        request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
-        //添加请求参数
-        request.add("methods", "updateUserById");
-        request.add("user_id", user_id);
-        mRequestQueue.add(WHAT_GETUSERPHOTO, request, mOnResponseListener);
+        if (type != 0) {
+            myApplication = (MyApplication) getActivity().getApplication();
+            mUrl = myApplication.getUrl();
+            //创建请求对象
+            request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
+            //添加请求参数
+            request.add("methods", "getUserInfo");
+            request.add("user_id", user_id);
+            mRequestQueue.add(WHAT_GETUSERPHOTO, request, mOnResponseListener);
+        }
 
         //type为0表示未登录状态
         if (type == 0) {
@@ -296,14 +301,28 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         int id = v.getId();
         switch (id) {
             case R.id.me_myset:
-                intent = new Intent();
-                intent.setClass(getActivity(), SetActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), SetActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.me_user_imageview:
-                intent = new Intent();
-                intent.setClass(getActivity(), LogintestActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.me_user_login:
                 intent = new Intent();
@@ -316,44 +335,116 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.me_customerservice:
-                intent = new Intent();
-                intent.setClass(getActivity(), CustomOrderActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), CustomOrderActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.me_customer_myset:
-                intent = new Intent();
-                intent.setClass(getActivity(), SetActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), SetActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.me_customer_releaseroom:
-                intent = new Intent();
-                intent.setClass(getActivity(), ReleasesroomActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), ReleasesroomActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.me_customer_linkman:
-                intent = new Intent();
-                intent.setClass(getActivity(), UserLinkmanActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), UserLinkmanActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.myinformation:
-                intent = new Intent();
-                intent.setClass(getActivity(), MyInfomationActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), MyInfomationActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.mywallet:
-                intent = new Intent();
-                intent.setClass(getActivity(), MyWalletActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), MyWalletActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.mycollection:
-                intent = new Intent();
-                intent.setClass(getActivity(), HouseCollectionActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), HouseCollectionActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
+                break;
+            case R.id.myorder:
+                if (type == 1) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), CustomOrderActivity.class);
+                    startActivity(intent);
+                }else if (type == 2){
+                    intent = new Intent();
+                    intent.setClass(getActivity(),OwnerOrderActivity.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.me_owner_myset:
-                intent = new Intent();
-                intent.setClass(getActivity(), SetActivity.class);
-                startActivity(intent);
+                if (type != 0) {
+                    intent = new Intent();
+                    intent.setClass(getActivity(), SetActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
+                    intent = new Intent();
+                    intent.setClass(getActivity(), LogintestActivity.class);
+                    startActivity(intent);
+                }
                 break;
         }
     }

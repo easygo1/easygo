@@ -15,36 +15,36 @@
         android:background="@color/bookbackground"
         android:gravity="center"
         android:text="预定人信息"
-        android:textSize="@dimen/textsize_xl"/>
+        android:textSize="@dimen/textsize_l"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:focusable="false"
         android:gravity="center">
 
         <TextView
-
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="姓名:"
-            android:textSize="@dimen/textsize_l"/>
+            android:textSize="@dimen/textsize_m"/>
 
         <EditText
+            android:id="@+id/book_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:text="崔凯"
-            android:textSize="@dimen/textsize_l"/>
+            android:textSize="@dimen/textsize_m"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
@@ -55,14 +55,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="手机:"
-            android:textSize="@dimen/textsize_l"/>
+            android:textSize="@dimen/textsize_m"/>
 
         <EditText
+            android:id="@+id/book_tel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:text="110110110110"
-            android:textSize="@dimen/textsize_l"/>
+            android:textSize="@dimen/textsize_m"/>
 
     </LinearLayout>
 
@@ -114,11 +115,13 @@
                 android:src="@mipmap/order_update"/>
 
             <TextView
+                android:id="@+id/order_uptate_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="15dp"
-                android:text="修改订单"/>
+                android:text="修改订单"
+                android:textColor="@color/textDown"/>
         </LinearLayout>
     </LinearLayout>
 

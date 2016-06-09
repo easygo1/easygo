@@ -3,16 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.easygo.activity.BookActivity">
 
 
     <!--ListView之后的布局-->
     <TextView
-        android:background="@color/bookbackground"
+        android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:layout_width="match_parent"/>
+        android:background="@color/bookbackground"/>
+
     <TextView
         android:id="@+id/room_book_add_contact"
         style="@style/room_book_sec_header"
@@ -30,18 +31,20 @@
         />
 
     <EditText
+        android:id="@+id/room_book_bookname"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="请输入姓名"/>
 
     <EditText
+        android:id="@+id/room_book_tel"
         android:layout_width="match_parent"
-
         android:layout_height="50dp"
         android:hint="请输入电话"/>
+
     <TextView
-        android:background="@color/bookbackground"
-        android:layout_height="20dp"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bookbackground"/>
 
 </LinearLayout>

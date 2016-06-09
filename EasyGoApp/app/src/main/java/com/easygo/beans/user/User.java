@@ -1,9 +1,11 @@
 package com.easygo.beans.user;
 
+import java.io.Serializable;
+
 /**
  * Created by PengHong on 2016/5/18.
  */
-public class User {
+public class User implements Serializable{
     // 用户
     private int user_id; // 用户ID
     private String user_no; // 用户账号（唯一）

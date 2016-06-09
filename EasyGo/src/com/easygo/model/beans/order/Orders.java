@@ -11,9 +11,28 @@ public class Orders {
 	private String tel; // 联系方式
 	private String order_state; // 订单状态 #待确认，待付款，待入住，已完成，取消订单
 	private String order_time;//下单时间
+	private String book_name;//预订人姓名
+
 
 	public Orders() {
 		super();
+	}
+
+	public Orders(int order_id, int house_id, int user_id, int checknum,
+			String checktime, String leavetime, double total, String tel,
+			String order_state, String order_time, String book_name) {
+		super();
+		this.order_id = order_id;
+		this.house_id = house_id;
+		this.user_id = user_id;
+		this.checknum = checknum;
+		this.checktime = checktime;
+		this.leavetime = leavetime;
+		this.total = total;
+		this.tel = tel;
+		this.order_state = order_state;
+		this.order_time = order_time;
+		this.book_name = book_name;
 	}
 
 	public Orders(int house_id, int user_id, int checknum, String checktime,
@@ -127,6 +146,13 @@ public class Orders {
 		this.order_time = order_time;
 	}
 
+	public String getBook_name() {
+		return book_name;
+	}
+
+	public void setBook_name(String book_name) {
+		this.book_name = book_name;
+	}
 	@Override
 	public String toString() {
 		return "Orders [order_id=" + order_id + ", house_id=" + house_id

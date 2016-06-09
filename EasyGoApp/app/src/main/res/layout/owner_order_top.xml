@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center">
+    <Button
+        android:id="@+id/owner_order_ibook"
+        style="@style/owner_order_button"
+        android:textColor="@color/order_white"
+        android:background="@drawable/owner_order_ibookbtn2"
+        android:text="我预订的"/>
+    <Button
+        android:id="@+id/owner_order_bookme"
+        style="@style/owner_order_button"
+        android:background="@drawable/owner_order_bookmebtn"
+        android:textColor="@color/order_yellow"
+        android:text="预订我的"/>
+
+
+</LinearLayout>

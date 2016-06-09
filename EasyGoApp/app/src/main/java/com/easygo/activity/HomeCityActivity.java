@@ -2,10 +2,9 @@ package com.easygo.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,10 +20,10 @@ import android.widget.Toast;
 
 import com.easygo.adapter.HouseListAdapter;
 import com.easygo.application.MyApplication;
+import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.gson.GsonAboutHouse;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HouseCollect;
-import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.user.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -43,6 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeCityActivity extends AppCompatActivity {
+    public static final String TYPE = "type";
 
     /**
      * 用来标志请求的what, 类似handler的what一样，这里用来区分请求.
@@ -78,8 +78,9 @@ public class HomeCityActivity extends AppCompatActivity {
     //下载数据时用的参数
     private String city = "苏州市";
     private int cur = 1;
-    private int userid = 1;
+    private int userid;
     GsonAboutHouse gsonAboutHouse;
+    SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +102,11 @@ public class HomeCityActivity extends AppCompatActivity {
 
 
     private void initData() {
+        //偏好设置中取出
+        mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        userid = mSharedPreferences.getInt("user_id", 0);//整个页面要用
+        Log.e("取出来了id", userid + "");
+
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
         //集合的初始化
@@ -111,7 +117,7 @@ public class HomeCityActivity extends AppCompatActivity {
         mHouseCollectList = new ArrayList<>();
         //适配器初始化
         mAdapter = new HouseListAdapter(HomeCityActivity.this,
-                mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList);
+                mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList, userid);
         mPullToRefreshListView.setAdapter(mAdapter);
 
         //筛选条件数据
@@ -202,8 +208,11 @@ public class HomeCityActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //得到详情页面需要的房屋信息，房东信息，
                 //传参
-                Intent intent = new Intent(HomeCityActivity.this, HouseDetailActivity.class);
-                int houseid = mHouseList.get(position).getHouse_id();
+                Intent intent = new Intent(HomeCityActivity.this,
+                        HouseDetailActivity.class);
+//                Log.e("position",position+"");
+//                Log.e("mHouseList",mHouseList.get(position-1).getHouse_id()+"");
+                int houseid = mHouseList.get(position - 1).getHouse_id();
                 intent.putExtra("houseid", houseid);
                 startActivity(intent);
             }
@@ -251,7 +260,6 @@ public class HomeCityActivity extends AppCompatActivity {
         });
     }
 
-
     //获取数据(传入查询的城市，页码，请求的用户id)
     public void loadData(String newCity, int newCur, int user_id) {
         // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
@@ -271,53 +279,6 @@ public class HomeCityActivity extends AppCompatActivity {
         requestQueue.add(NOHTTP_WHAT_LOAD, request, onResponseListener);
 
     }
-
-    private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
-        @SuppressWarnings("unused")
-        @Override
-        public void onSucceed(int what, Response<String> response) {
-            if (what == NOHTTP_WHAT_LOAD) {
-                // 请求成功
-                String result = response.get();// 响应结果
-                Log.e("tag", result);
-                //把JSON格式的字符串改为Student对象
-                Gson gson = new Gson();
-
-                Type type = new TypeToken<GsonAboutHouse>() {
-                }.getType();
-                gsonAboutHouse = gson.fromJson(result, type);
-                if (gsonAboutHouse.getHouseList().size() == 0) {
-                    Toast.makeText(HomeCityActivity.this, "没有更多房源了~", Toast.LENGTH_SHORT).show();
-                }
-                mHouseList.addAll(gsonAboutHouse.getHouseList());
-                mUserList.addAll(gsonAboutHouse.getUserList());
-                mHousePhotoList.addAll(gsonAboutHouse.getHousePhotoList());
-                mAssessList.addAll(gsonAboutHouse.getAssessList());
-                mHouseCollectList.addAll(gsonAboutHouse.getHouseCollectList());
-                //通知刷新
-                mAdapter.notifyDataSetChanged();
-                //表示刷新完成
-                mPullToRefreshListView.onRefreshComplete();
-            }
-        }
-
-        @Override
-        public void onStart(int what) {
-            // 请求开始，这里可以显示一个dialog
-//            Toast.makeText(HomeCityActivity.this, "开始了", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onFinish(int what) {
-//            Toast.makeText(HomeCityActivity.this, "结束了", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-            Toast.makeText(HomeCityActivity.this, "失败了", Toast.LENGTH_SHORT).show();
-        }
-    };
-
 
     /*//出现问题，所以没用
     @Override
@@ -472,19 +433,54 @@ public class HomeCityActivity extends AppCompatActivity {
          * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
 		 * request: 请求对象
 		 * onResponseListener 回调对象，接受请求结果
-		 */
+        */
         requestQueue.add(NOHTTP_WHAT_ADDCOLLECT, request, onResponseListener);
 
     }
-    /*public Handler mHandler = new Handler(){
+
+
+    private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
+        @SuppressWarnings("unused")
         @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what){
-                case 1:
-                    addCollect(msg.arg1,msg.arg2);
-                    break;
+        public void onSucceed(int what, Response<String> response) {
+            if (what == NOHTTP_WHAT_LOAD) {
+                // 请求成功
+                String result = response.get();// 响应结果
+                //把JSON格式的字符串改为Student对象
+                Gson gson = new Gson();
+                Type type = new TypeToken<GsonAboutHouse>() {
+                }.getType();
+                gsonAboutHouse = gson.fromJson(result, type);
+                if (gsonAboutHouse.getHouseList().size() == 0) {
+                    Toast.makeText(HomeCityActivity.this, "没有更多房源了~", Toast.LENGTH_SHORT).show();
+                }
+                mHouseList.addAll(gsonAboutHouse.getHouseList());
+                mUserList.addAll(gsonAboutHouse.getUserList());
+                mHousePhotoList.addAll(gsonAboutHouse.getHousePhotoList());
+                mAssessList.addAll(gsonAboutHouse.getAssessList());
+                mHouseCollectList.addAll(gsonAboutHouse.getHouseCollectList());
+                //通知刷新
+                mAdapter.notifyDataSetChanged();
+                //表示刷新完成
+                mPullToRefreshListView.onRefreshComplete();
             }
         }
-    };*/
+
+        @Override
+        public void onStart(int what) {
+            // 请求开始，这里可以显示一个dialog
+//            Toast.makeText(HomeCityActivity.this, "开始了", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onFinish(int what) {
+//            Toast.makeText(HomeCityActivity.this, "结束了", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+            Toast.makeText(HomeCityActivity.this, "失败了", Toast.LENGTH_SHORT).show();
+        }
+    };
+
 }

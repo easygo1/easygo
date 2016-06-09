@@ -177,7 +177,17 @@
         <item name="android:layout_weight">1</item>
         <item name="android:dropDownWidth">1000dp</item>
         <item name="android:dropDownHorizontalOffset">50dp</item>
-        <item name="android:dropDownVerticalOffset">20dp</item>
+        <item name="android:dropDownVerticalOffset">20dp</item>?android:attr/ratingBarStyleSmall
         <item name="android:gravity">center</item>
+    </style>
+    <!--房主订单的button-->
+    <style name="owner_order_button">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!--评价的星星-->
+    <style name="rating_assess_star_style" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_assess_star</item>
     </style>
 </resources>
