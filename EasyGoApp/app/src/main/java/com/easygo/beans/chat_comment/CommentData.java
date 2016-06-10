@@ -7,69 +7,102 @@ import java.util.List;
  * Created by 王韶辉 on 2016/5/23.
  */
 public class CommentData implements Serializable {
-    private int comment_imageview;
-    private String fabiao_man;
-    private String fabiao_time;
-    private String browse;
-    private String dynamic_content;
-    private List<String> imgUrls;
+    private int news_id;
+    private String user_photo;
+    private String user_nickname;
+    private String news_content;
+    private String news_time;
+    private int news_stars;
+    private int news_views;
+    private List<String> photo_path;
 
-    public CommentData(int comment_imageview, String fabiao_man, String fabiao_time, String browse, String dynamic_content, List<String> imgUrls) {
-        this.comment_imageview = comment_imageview;
-        this.fabiao_man = fabiao_man;
-        this.fabiao_time = fabiao_time;
-        this.browse = browse;
-        this.dynamic_content = dynamic_content;
-        this.imgUrls = imgUrls;
+
+    public CommentData(int news_id,String user_photo, String user_nickname, String news_content, String news_time, int news_stars, int news_views, List<String> photo_path) {
+        this.news_id = news_id;
+        this.user_photo = user_photo;
+        this.user_nickname = user_nickname;
+        this.news_content = news_content;
+        this.news_time = news_time;
+        this.news_stars = news_stars;
+        this.news_views = news_views;
+        this.photo_path = photo_path;
     }
 
-    public int getComment_imageview() {
-        return comment_imageview;
+    public int getNews_id() {
+        return news_id;
     }
 
-    public void setComment_imageview(int comment_imageview) {
-        this.comment_imageview = comment_imageview;
+    public void setNews_id(int news_id) {
+        this.news_id = news_id;
     }
 
-    public String getFabiao_man() {
-        return fabiao_man;
+    public String getUser_photo() {
+        return user_photo;
     }
 
-    public void setFabiao_man(String fabiao_man) {
-        this.fabiao_man = fabiao_man;
+    public void setUser_photo(String user_photo) {
+        this.user_photo = user_photo;
     }
 
-    public String getFabiao_time() {
-        return fabiao_time;
+    public String getUser_nickname() {
+        return user_nickname;
     }
 
-    public void setFabiao_time(String fabiao_time) {
-        this.fabiao_time = fabiao_time;
+    public void setUser_nickname(String user_nickname) {
+        this.user_nickname = user_nickname;
     }
 
-    public String getBrowse() {
-        return browse;
+    public String getNews_content() {
+        return news_content;
     }
 
-    public void setBrowse(String browse) {
-        this.browse = browse;
+    public void setNews_content(String news_content) {
+        this.news_content = news_content;
     }
 
-    public String getDynamic_content() {
-        return dynamic_content;
+    public String getNews_time() {
+        return news_time;
     }
 
-    public void setDynamic_content(String dynamic_content) {
-        this.dynamic_content = dynamic_content;
+    public void setNews_time(String news_time) {
+        this.news_time = news_time;
     }
 
-    public List<String> getImgUrls() {
-        return imgUrls;
+    public int getNews_stars() {
+        return news_stars;
     }
 
-    public void setImgUrls(List<String> imgUrls) {
-        this.imgUrls = imgUrls;
+    public void setNews_stars(int news_stars) {
+        this.news_stars = news_stars;
     }
 
+    public int getNews_views() {
+        return news_views;
+    }
 
+    public void setNews_views(int news_views) {
+        this.news_views = news_views;
+    }
+
+    public List<String> getPhoto_path() {
+        return photo_path;
+    }
+
+    public void setPhoto_path(List<String> photo_path) {
+        this.photo_path = photo_path;
+    }
+
+    @Override
+    public String toString() {
+        return "CommentData{" +
+                "news_id=" + news_id +
+                ", user_photo='" + user_photo + '\'' +
+                ", user_nickname='" + user_nickname + '\'' +
+                ", news_content='" + news_content + '\'' +
+                ", news_time='" + news_time + '\'' +
+                ", news_stars=" + news_stars +
+                ", news_views=" + news_views +
+                ", photo_path=" + photo_path +
+                '}';
+    }
 }

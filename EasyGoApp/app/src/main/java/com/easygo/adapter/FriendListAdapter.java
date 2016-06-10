@@ -5,11 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.easygo.activity.R;
+import com.easygo.beans.user.User;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by 王韶辉 on 2016/6/2.
@@ -19,9 +24,9 @@ public class FriendListAdapter extends BaseAdapter {
     //初始化布局的类，可以找到layout文件夹中的所有布局
     private LayoutInflater mInflater;
     private Context mContext;
-    private List<String> mfriendlist;
+    private List<User> mfriendlist;
 
-    public FriendListAdapter(List<String> mfriendlist, Context context) {
+    public FriendListAdapter(List<User> mfriendlist, Context context) {
         this.mfriendlist = mfriendlist;
         this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
@@ -44,6 +49,7 @@ public class FriendListAdapter extends BaseAdapter {
 
     //缓存布局中的控件
     class ViewHolder {
+        ImageView mImageView;
         TextView mFriendItem;
     }
 
@@ -67,6 +73,7 @@ public class FriendListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.friend_list_item, null);
             viewHolder = new ViewHolder();
             //初始化控件
+            viewHolder.mImageView= (ImageView) convertView.findViewById(R.id.user_photo);
             viewHolder.mFriendItem = (TextView) convertView.findViewById(R.id.friend_item);
             //把当前的控件缓存到布局视图中
             convertView.setTag(viewHolder);
@@ -75,8 +82,15 @@ public class FriendListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         //动态修改每一行控件的内容
-        final String friend_more = mfriendlist.get(position);
-        viewHolder.mFriendItem.setText(friend_more);
+        final User userfriend = mfriendlist.get(position);
+        //显示要加载的头像
+        Glide.with(mContext)
+                .load(userfriend.getUser_photo())
+                .error(R.mipmap.user_photo_defult)
+                .bitmapTransform(new CropCircleTransformation(mContext))
+                .into(viewHolder.mImageView);
+        viewHolder.mFriendItem.setText(userfriend.getUser_nickname());
+
 
         return convertView;
     }

@@ -23,7 +23,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.easygo.activity.R;
-import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.utils.UpYunException;
 import com.easygo.utils.UpYunUtils;
 import com.easygo.utils.Uploader;
@@ -186,7 +185,7 @@ public class ReleasesroomNoFragment extends Fragment{
         // start multiple photos selector
         Intent intent = new Intent(getActivity(),ImagesSelectorActivity.class);
         // max number of images to be selected
-        intent.putExtra(SelectorSettings.SELECTOR_MAX_IMAGE_NUMBER, 5);
+        intent.putExtra(SelectorSettings.SELECTOR_MAX_IMAGE_NUMBER, 100);
         // min size of image which will be shown; to filter tiny images (mainly icons)
         intent.putExtra(SelectorSettings.SELECTOR_MIN_IMAGE_SIZE, 100000);
         // show camera or not

@@ -43,7 +43,21 @@ public class IHousePhotoDAOImpl implements IHousePhotoDAO {
 	@Override
 	public boolean deleteSpecIHousePhoto(int house_id) {
 		// TODO Auto-generated method stub
-		return false;
+		connection = C3P0Utils.getConnection();
+		String sql = "delete from house_photo where house_id = ?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, house_id);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally{
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		
 	}
 
 	// 查找某个房屋的所有照片

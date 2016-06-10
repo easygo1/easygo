@@ -92,7 +92,7 @@ public class OwnerOrderActivity extends AppCompatActivity implements View.OnClic
             case R.id.owner_order_ibook:
                 if(mOwnerOrderIBookFragment == null){
                     mOwnerOrderIBookFragment = new OwnerOrderIBookFragment();
-                    mFragmentTransaction.add(R.id.owner_order_fragment,mOwnerOrderIBookFragment);
+                    mFragmentTransaction.add(R.id.owner_order_fragment,mOwnerOrderIBookFragment,"ibook");
                 }else{
                     mFragmentTransaction.show(mOwnerOrderIBookFragment);
                 }
@@ -100,7 +100,7 @@ public class OwnerOrderActivity extends AppCompatActivity implements View.OnClic
             case R.id.owner_order_bookme:
                 if(mOwnerOrderBookMeFragment == null){
                     mOwnerOrderBookMeFragment = new OwnerOrderBookMeFragment();
-                    mFragmentTransaction.add(R.id.owner_order_fragment,mOwnerOrderBookMeFragment);
+                    mFragmentTransaction.add(R.id.owner_order_fragment,mOwnerOrderBookMeFragment,"bookme");
                 }else{
                     mFragmentTransaction.show(mOwnerOrderBookMeFragment);
                 }

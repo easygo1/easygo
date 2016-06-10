@@ -25,6 +25,7 @@ import com.easygo.activity.R;
 import com.easygo.activity.RegisterActivity;
 import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.activity.SetActivity;
+import com.easygo.activity.UpdateroomActivity;
 import com.easygo.activity.UserLinkmanActivity;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.user.User;
@@ -446,6 +447,12 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                     startActivity(intent);
                 }
                 break;
+            case R.id.me_owner_myroom:
+                intent = new Intent();
+                intent.setClass(getActivity(), UpdateroomActivity.class);
+                startActivity(intent);
+                break;
         }
     }
+
 }

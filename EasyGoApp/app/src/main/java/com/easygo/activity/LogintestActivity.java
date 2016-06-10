@@ -48,7 +48,6 @@ public class LogintestActivity extends AppCompatActivity {
     SharedPreferences.Editor mEditor;
     //定义一个user对象
     User user;
-    String token,user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +70,7 @@ public class LogintestActivity extends AppCompatActivity {
                // 请求成功，直接更新UI
                 String result = response.get();
                 Log.e("json返回结果",result);
-                //把JSON格式的字符串改为Student对象
+                //把JSON格式的字符串改为对象
                 Gson gson = new Gson();
                 Type mytype = new TypeToken<User>() {
                 }.getType();

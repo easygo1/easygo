@@ -212,6 +212,7 @@ public class SelectLocationActivity extends AppCompatActivity implements
         mAMap.clear();
         //设置标记的初始位置，标记显示图片
         MarkerOptions markerOptions = new MarkerOptions();
+
         markerOptions.position(new LatLng(address.getLatLonPoint().getLatitude(),address.getLatLonPoint().getLongitude()));
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.search_location_blue));
         marker = mAMap.addMarker(markerOptions);
