@@ -149,7 +149,7 @@ public class OwnerOrderIngAdapter extends BaseAdapter {
                         // ownerOrderIBookFragment.deleteOneOrder(mOrdersList.get(position).getOrder_id());
                         OwnerOrderActivity ownerOrderActivity = (OwnerOrderActivity)mContext;
                         Log.e("fragment11",ownerOrderActivity.getSupportFragmentManager().getFragments().toString()+"");
-                        OwnerOrderBookMeFragment ownerOrderBookMeFragment = (OwnerOrderBookMeFragment)ownerOrderActivity.getSupportFragmentManager().getFragments().get(2);
+                        OwnerOrderBookMeFragment ownerOrderBookMeFragment = (OwnerOrderBookMeFragment)ownerOrderActivity.getSupportFragmentManager().findFragmentByTag("bookme");
                         ownerOrderBookMeFragment.deleteOneOrder(mOrdersList.get(position).getOrder_id(),position);
                         break;
                     case Dialog.BUTTON_NEGATIVE:

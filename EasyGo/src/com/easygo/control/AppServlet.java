@@ -888,40 +888,40 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
-			// 根据房主的id查出所有预定我的订单
-			case "getOwnerOrderByUserId":
-				System.out.println("666");
-				user_id=Integer.valueOf(request.getParameter("user_id"));
-				housedao=new IHouseDAOImpl();
-				house = housedao.findSpecHouseByUserId(user_id);
-				orderDAO = new IOrderDAOImpl();
-				orderList = new ArrayList<>();
-				houseList = new ArrayList<>();
-				housePhotoList = new ArrayList<>();
-				orderList = orderDAO.findOwnerOrdersByHouseId(house.getHouse_id());
-				//housedao=new IHouseDAOImpl();
-				housePhotoDAO=new IHousePhotoDAOImpl();
-				for (int i = 0; i < orderList.size(); i++) {
-					house_id=orderList.get(i).getHouse_id();
-					//根据该订单中的house_id得到该house对象
-					house = housedao.findSpecHouseById(house_id);
-					houseList.add(house);
-					//根据该订单中的house_id得到该house的主图
-					housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
-					housePhotoList.add(housePhoto);
-				}
-				GsonOrderInfo gsonOrderInfo2 = new GsonOrderInfo(orderList, houseList, housePhotoList);
-				gson = new Gson();
-				result = gson.toJson(gsonOrderInfo2);
-				mPrintWriter.write(result);
-				mPrintWriter.close();
-				break;
+		// 根据房主的id查出所有预定我的订单
+		case "getOwnerOrderByUserId":
+			System.out.println("666");
+			user_id=Integer.valueOf(request.getParameter("user_id"));
+			housedao=new IHouseDAOImpl();
+			house = housedao.findSpecHouseByUserId(user_id);
+			orderDAO = new IOrderDAOImpl();
+			orderList = new ArrayList<>();
+			houseList = new ArrayList<>();
+			housePhotoList = new ArrayList<>();
+			orderList = orderDAO.findOwnerOrdersByHouseId(house.getHouse_id());
+			//housedao=new IHouseDAOImpl();
+			housePhotoDAO=new IHousePhotoDAOImpl();
+			for (int i = 0; i < orderList.size(); i++) {
+				house_id=orderList.get(i).getHouse_id();
+				//根据该订单中的house_id得到该house对象
+				house = housedao.findSpecHouseById(house_id);
+				houseList.add(house);
+				//根据该订单中的house_id得到该house的主图
+				housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
+				housePhotoList.add(housePhoto);
+			}
+			GsonOrderInfo gsonOrderInfo2 = new GsonOrderInfo(orderList, houseList, housePhotoList);
+			gson = new Gson();
+			result = gson.toJson(gsonOrderInfo2);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
 		
 		// 根据发布房源传来的数据进行添房源
 		case "addHouse":
 			housedao = new IHouseDAOImpl();
 			houseList = new ArrayList<House>();
-			String user_id = request.getParameter("user_id");
+			user_id = Integer.valueOf(request.getParameter("user_id"));
 			String house_title = request.getParameter("house_title");
 			String house_style = request.getParameter("house_style");
 			String house_address_province = request
@@ -954,7 +954,7 @@ public class AppServlet extends HttpServlet {
 			mList = gson.fromJson(photoList, type);
 			mEquipmentList = gson.fromJson(equipmentList, type);
 			house = new House();
-			house.setUser_id(Integer.valueOf(user_id));
+			house.setUser_id(user_id);
 			house.setHouse_title(new String(house_title.getBytes("iso8859-1"),
 					"UTF-8"));
 			house.setHouse_style(new String(house_style.getBytes("iso8859-1"),
@@ -1001,6 +1001,96 @@ public class AppServlet extends HttpServlet {
 						.selectEquipmentId(mEquipmentList.get(i));
 				houseEquipment.setHouse_id(house.getHouse_id());
 				houseEquipment.setEquipment_id(equipment_id);
+				houseEquipmentDAO.addHouseEquipment(houseEquipment);
+			}
+			break;
+			//根据房主id得到房源信息
+		case "selectHouseInfo":
+			 user_id = Integer.valueOf(request.getParameter("user_id"));
+			 housedao = new IHouseDAOImpl();
+			 house = housedao.findSpecHouseByUserId(user_id);
+			 houseEquipmentDAO = new IHouseEquipmentDAOImpl();
+			 houseEquipmentNameList = new ArrayList<>();
+			 houseEquipmentNameList = houseEquipmentDAO.selectEquipmentName(house.getHouse_id());
+			 housePhotoDAO = new IHousePhotoDAOImpl();
+			 housePhotoList = new ArrayList<>();
+			 housePhotoList = housePhotoDAO.selectSpecIHousePhoto(house.getHouse_id());
+			 user = new User();
+			 GsonAboutHouseDetail gsonAboutHouseDetail2 = new GsonAboutHouseDetail(house, housePhotoList, true, houseEquipmentNameList, user);
+			 gson = new Gson();
+			 result = gson.toJson(gsonAboutHouseDetail2);
+			 mPrintWriter.write(result);
+			 mPrintWriter.close();
+			 break;
+			// 根据发布房源传来的数据进行添房源
+		case "updateHouse":
+			housedao = new IHouseDAOImpl();
+			houseList = new ArrayList<House>();
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			// 房源图片地址json字符串
+			String photoList1 = new String(request.getParameter("photoList")
+					.getBytes("iso8859-1"), "UTF-8");
+			// 房源设施json字符串
+			String equipmentList1 = new String(request.getParameter(
+					"equipmentList").getBytes("iso8859-1"), "UTF-8");
+			type = new TypeToken<List<String>>() {
+			}.getType();
+			System.out.println("666" + photoList1);
+			List<String> mList1 = new ArrayList<>();
+			List<String> mEquipmentList1 = new ArrayList<>();
+			gson = new Gson();
+			mList1 = gson.fromJson(photoList1, type);
+			mEquipmentList1 = gson.fromJson(equipmentList1, type);
+			house = new House();
+			house.setUser_id(user_id);
+			house = housedao.findSpecHouseByUserId(Integer.valueOf(user_id));
+			house.setHouse_title(new String(request.getParameter("house_title")
+					.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_style(new String(request.getParameter("house_style")
+					.getBytes("iso8859-1"),"UTF-8"));
+			house.setHouse_address_province(new String(request.getParameter("house_address_province")
+					.getBytes("iso8859-1"), "UTF-8"));
+			house.setHouse_address_city(new String(request.getParameter("house_address_city")
+					.getBytes("iso8859-1"), "UTF-8"));
+			house.setHouse_address_lng(Double.valueOf(request.getParameter("house_address_lng")));
+			house.setHouse_address_lat(Double.valueOf(request.getParameter("house_address_lat")));
+			house.setHouse_most_num(Integer.valueOf(request.getParameter("house_most_num")));
+			house.setHouse_one_price(Double.valueOf(request.getParameter("house_one_price")));
+			house.setHouse_add_price(Double.valueOf(request.getParameter("house_add_price")));
+			house.setHouse_describe(new String(request.getParameter("house_describe")
+					.getBytes("iso8859-1"), "UTF-8"));
+			house.setHouse_traffic(new String(request.getParameter("house_traffic")
+					.getBytes("iso8859-1"), "UTF-8"));
+			house.setHouse_limit_sex(new String(request.getParameter("house_limit_sex")
+					.getBytes("iso8859-1"), "UTF-8"));
+			house.setHouse_stay_time(Integer.valueOf(request.getParameter("house_stay_time")));
+			housedao.updateHouse(house.getHouse_id(), house);
+			System.out.println("9999"+house.toString());
+			housePhoto = new HousePhoto();
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			housePhotoDAO.deleteSpecIHousePhoto(house.getHouse_id());
+			for (int i = 0; i < mList1.size(); i++) {
+				if (i == 0) {
+					housePhoto.setHouse_id(house.getHouse_id());
+					housePhoto.setHouse_photo_path(mList1.get(i));
+					housePhoto.setIsFirst(1);
+					housePhotoDAO.addSpecIHousePhoto(housePhoto);
+				} else {
+					housePhoto.setHouse_id(house.getHouse_id());
+					housePhoto.setHouse_photo_path(mList1.get(i));
+					housePhoto.setIsFirst(0);
+					housePhotoDAO.addSpecIHousePhoto(housePhoto);
+				}
+			}
+			houseEquipment = new HouseEquipment();
+			houseEquipmentDAO = new IHouseEquipmentDAOImpl();
+			houseEquipmentDAO.deleteHouseEquipmentByHouseid(house.getHouse_id());
+			int equipment_id1 = 0;
+			for (int i = 0; i < mEquipmentList1.size(); i++) {
+				equipment_id1 = houseEquipmentDAO
+						.selectEquipmentId(mEquipmentList1.get(i));
+				houseEquipment.setHouse_id(house.getHouse_id());
+				houseEquipment.setEquipment_id(equipment_id1);
 				houseEquipmentDAO.addHouseEquipment(houseEquipment);
 			}
 			break;

@@ -104,6 +104,8 @@
         </activity>
         <activity android:name=".MyWalletActivity">
         </activity>
+        <activity android:name=".UpdateroomActivity">
+        </activity>
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
