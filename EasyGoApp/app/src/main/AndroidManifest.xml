@@ -88,6 +88,8 @@
         </activity>
         <activity android:name=".UserLinkmanAddActivity">
         </activity>
+        <activity android:name=".UserLinkmanUpdateActivity">
+        </activity>
         <activity android:name=".BookChooseLinkmanActivity">
         </activity>
         <activity android:name=".MyInfomationActivity">

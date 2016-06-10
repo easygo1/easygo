@@ -9,10 +9,13 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.easygo.activity.R;
 import com.easygo.beans.house.HouseAssess;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * 房屋评价listview的适配器
@@ -63,7 +66,7 @@ public class HouseAssessAdpter extends BaseAdapter {
             viewholder.mAssessRatingBar = (RatingBar) convertView.findViewById(R.id.assess_stars);
             viewholder.mUserCheckTextView = (TextView) convertView.findViewById(R.id.user_check_time);
             viewholder.massessContentTextView = (TextView) convertView.findViewById(R.id.assess_content);
-            viewholder.mReplyContentTextView = (TextView) convertView.findViewById(R.id.assess_reply);
+//            viewholder.mReplyContentTextView = (TextView) convertView.findViewById(R.id.assess_reply);
             convertView.setTag(viewholder);//记得加上，要不滑动时就出现空指针错误
         } else {
             //说明开始上下滑动，后面的所有行布局采用第一次绘制时的缓存布局
@@ -71,12 +74,18 @@ public class HouseAssessAdpter extends BaseAdapter {
         }
         //得到一个房屋评价的对象
         HouseAssess houseAssess = mHouseAssessList.get(position);
-        viewholder.mImageview.setImageResource(R.mipmap.house_owner_info);
+        Glide.with(mContext)
+                .load(mHouseAssessList.get(position).getAssesspersonphoto())
+                .bitmapTransform(new CropCircleTransformation(mContext))
+                .placeholder(R.drawable.user_test)
+                .error(R.drawable.user_error)
+                .into(viewholder.mImageview);
+//        viewholder.mImageview.setImageResource(R.mipmap.house_owner_info);
         viewholder.mAssessUserNameTextView.setText(houseAssess.getAssesspersonName());
         viewholder.mAssessRatingBar.setNumStars(houseAssess.getStars());
         viewholder.mUserCheckTextView.setText(houseAssess.getAssesstime());
         viewholder.massessContentTextView.setText(houseAssess.getAssesscontent());
-        viewholder.mReplyContentTextView.setText(houseAssess.getAssessreply());
+//        viewholder.mReplyContentTextView.setText(houseAssess.getAssessreply());
         return convertView;
     }
 }

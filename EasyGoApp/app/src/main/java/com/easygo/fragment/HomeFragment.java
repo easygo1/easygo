@@ -167,7 +167,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mHomeLocalLeft = (Button) mView.findViewById(R.id.left_home_local_btn);
         mHomeLocalRight = (Button) mView.findViewById(R.id.right_home_local_btn);
         mCityText = (TextView) mView.findViewById(R.id.city_text);
-        mLocationTextView= (TextView) mView.findViewById(R.id.location_my);
+        mLocationTextView = (TextView) mView.findViewById(R.id.location_my);
     }
 
     private void initHomePagerAdvert() {
@@ -176,7 +176,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mHomePageAdvertList = new ArrayList<>();
         for (int i = 0; i < advertImages.length; i++) {
             ImageView imageView = new ImageView(getActivity());
-
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(getActivity()).load(advertImages[i]).into(imageView);
             //imageView.setBackgroundResource(advertImages1[i]);
             mHomePageAdvertList.add(imageView);
@@ -381,7 +381,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
     }
-//首页定位初始化
+
+    //首页定位初始化
     private void initLocation() {
         mLocationClient = new AMapLocationClient(getActivity());
         AMapLocationClientOption option = new AMapLocationClientOption();

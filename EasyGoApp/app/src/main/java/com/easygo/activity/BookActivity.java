@@ -7,6 +7,7 @@ package com.easygo.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +20,7 @@ import com.easygo.adapter.BookContactAdapter;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.house.House;
 import com.easygo.beans.user.UserLinkman;
+import com.easygo.utils.DaysUtil;
 import com.easygo.view.WaitDialog;
 import com.google.gson.Gson;
 import com.yolanda.nohttp.NoHttp;
@@ -48,6 +50,7 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
     String inday, outday, mPath, book_name, book_tel;
     int user_id;//前一个页面传过来（如果取不到偏好设置中取出）
     int house_id;//前一个页面传过来
+    House mHouse;
     //网络请求
     RequestQueue mRequestQueue;
 
@@ -77,8 +80,8 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
             mList.add(new UserLinkman(i, i, "小明" + i, "350500199508105515"));
         }*/
         Intent mIntent = getIntent();
-        House house = (House) mIntent.getSerializableExtra("house");
-        house_id = house.getHouse_id();
+        mHouse = (House) mIntent.getSerializableExtra("house");
+        house_id = mHouse.getHouse_id();
         user_id = mIntent.getIntExtra("userid", 0);//用户的id
         mList = new ArrayList<>();
         mGetList = new ArrayList<>();
@@ -136,6 +139,7 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
         //ListView之后的控件监听
         mAddContactTextView.setOnClickListener(BookActivity.this);
 
+
     }
 
     @Override
@@ -146,16 +150,18 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.room_book_check_layout:
 //                Toast.makeText(BookActivity.this, "入住", Toast.LENGTH_SHORT).show();
                 mIntent = new Intent(BookActivity.this, BookDateActivity.class);
+                mIntent.putExtra("house_id",house_id);
                 startActivityForResult(mIntent, REQUEST_DATE_CODE);
                 break;
             case R.id.room_book_leave_layout:
 //                Toast.makeText(BookActivity.this, "离开", Toast.LENGTH_SHORT).show();
                 mIntent = new Intent(BookActivity.this, BookDateActivity.class);
+                mIntent.putExtra("house_id",house_id);
                 startActivityForResult(mIntent, REQUEST_DATE_CODE);
                 startActivity(mIntent);
                 break;
             case R.id.room_book_add_contact:
-                Toast.makeText(BookActivity.this, "添加一个入住人", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(BookActivity.this, "添加一个入住人", Toast.LENGTH_SHORT).show();
                 Intent chooseIntent = new Intent(BookActivity.this, BookChooseLinkmanActivity.class);
                 startActivityForResult(chooseIntent, 1);
                 break;
@@ -186,13 +192,11 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
                 if (mList.size() != 0) {
                     mList.clear();
                     mList.addAll(mGetList);
-
                 } else {
                     mList.addAll(mGetList);
 
                 }
 //                mList = (List<UserLinkman>) mBundle.getSerializable("chooseLinkman");
-
 //                Log.e("mime",mList.get(0).getLinkman_name()+"..."+mList.get(0).getUser_linkman_id());
                 mAdapter.notifyDataSetChanged();
                 break;
@@ -207,14 +211,26 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void sendbook() {
+        if(inday ==null || outday ==null ){
+            Toast.makeText(BookActivity.this, "请输入入住和离开时间", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(mList.size() == 0){
+            Toast.makeText(BookActivity.this, "请选择入住人", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (mList.size() > mHouse.getHouse_most_num()) {
+            Toast.makeText(BookActivity.this, "您的入住人数大于房东可接纳人数", Toast.LENGTH_SHORT).show();
+            return;
+        }
         book_name = mNameEditText.getText().toString();
         book_tel = mTelEditText.getText().toString();
-//        Log.e("666:", book_name + book_tel);
-        if (book_name == null) {
+//        Log.e("666:", book_name + book_tel+"00000");
+        if (book_name.equals("")) {
             Toast.makeText(BookActivity.this, "请输入姓名", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (book_tel == null) {
+        if (book_tel.equals("")) {
             Toast.makeText(BookActivity.this, "请输入电话", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -229,7 +245,10 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void uploadData(String linkmanList) {
-        //模拟数据
+        //需要的数据
+        int checknum = mList.size();//入住人数
+        double money = calMoney(inday, outday);//需要支付的金额
+        
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
         //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
@@ -240,10 +259,10 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
         request.add("methods", "addOrderAndLinkman");
         request.add("house_id", house_id);
         request.add("user_id", user_id);
-        request.add("checknum", 4);
+        request.add("checknum", checknum);
         request.add("checktime", inday);
         request.add("leavetime", outday);
-        request.add("total", 5000.0);
+        request.add("total", money);
         request.add("tel", book_tel);
         request.add("order_state", "待确认");
         request.add("book_name", book_name);
@@ -280,4 +299,24 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(BookActivity.this, "网络请求失败了", Toast.LENGTH_SHORT).show();
         }
     };
+
+    //计算金钱
+    public double calMoney(String inday, String outday) {
+        int dayNum = DaysUtil.getDays(inday, outday);
+        double totalMoney, one_price, add_price;
+        one_price = mHouse.getHouse_one_price();
+        add_price = mHouse.getHouse_add_price();
+        if (mList.size() > 1) {
+            totalMoney = (one_price + (mList.size() - 1) * add_price) * dayNum;
+        } else {
+            totalMoney = one_price * dayNum;
+        }
+        return totalMoney;
+    }
+
+    //删除列表
+    public void deleteLinkman(int positon) {
+        mList.remove(positon);
+        mAdapter.notifyDataSetChanged();
+    }
 }

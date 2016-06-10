@@ -3,18 +3,17 @@ package com.easygo.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SyncStatusObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -46,6 +45,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
+
+import static android.view.View.SCALE_X;
 
 /**
  * 具体房源页面
@@ -83,7 +84,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
     private RequestQueue requestQueue;
     Request<String> request;
     String mPath;
-    int houseid;//从前面一个点击事件传过来
+    public int houseid;//从前面一个点击事件传过来
     int userid;//偏好设置中
     SharedPreferences mSharedPreferences;
     //用于接收数据
@@ -208,15 +209,12 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
         mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         //type = mSharedPreferences.getInt("type", 0);
         userid = mSharedPreferences.getInt("user_id", 0);//整个页面要用
-//        Log.e("housedetail6666",userid+"");
         //得到前一个页面传递过来的值
         Intent intent = getIntent();
         houseid = intent.getIntExtra("houseid", 1);
-
         //初始化
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
-
         // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
         requestQueue = NoHttp.newRequestQueue();
         // 创建请求对象
@@ -240,6 +238,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
         mImageViewList = new ArrayList<>();
         for (int i = 0; i < mHousePhotoList.size(); i++) {
             ImageView imageView = new ImageView(this);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(this)
                     .load(mHousePhotoList.get(i).getHouse_photo_path())
                     .into(imageView);
@@ -335,8 +334,8 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
             case R.id.book_house_btn:
                 Intent intent = new Intent();
                 intent.setClass(HouseDetailActivity.this, BookActivity.class);
-                intent.putExtra("house",mHouse);
-                intent.putExtra("userid",userid);
+                intent.putExtra("house", mHouse);
+                intent.putExtra("userid", userid);
                 startActivity(intent);
                 break;
         }
@@ -365,6 +364,8 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                     //网络请求后获取图片(viewpage中)
 //                    mPagerAdapter.notifyDataSetChanged();
                     initData();
+                    mHousePhotoSizeTextView.setText(1 + "/" + mHousePhotoList.size());
+
                     if (isCollected) {
                         mHouseCollectionImageView
                                 .setImageResource(R.mipmap.icon_collect_on);
@@ -372,7 +373,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
 //                    Log.e("iscollected",isCollected+"");
                     mHousePriceTextview.setText(mHouse.getHouse_one_price() + "元/晚");
                     //初始化Fragment的值
-                    mInfoFragment.initInfoData(mHouse);
+                    mInfoFragment.initInfoData(mHouse,mHouseEquipmentList);
 
 
                     break;

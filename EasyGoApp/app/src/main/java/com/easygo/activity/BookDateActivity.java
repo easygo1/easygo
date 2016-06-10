@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.gson.GsonAboutHouseManage;
 import com.easygo.beans.house.HouseDateManage;
+import com.easygo.view.BookCalendar;
 import com.easygo.view.ManageCalendar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -41,7 +41,7 @@ import java.util.List;
 */
 @SuppressLint("SimpleDateFormat")
 public class BookDateActivity extends AppCompatActivity
-        implements ManageCalendar.OnDaySelectListener, View.OnClickListener {
+        implements BookCalendar.OnDaySelectListener, View.OnClickListener {
     public static final int GET_DATE_WHAT = 1;
     public static final int HOUSE_DATE_ADD = 2;
     public static final int BOOK_DATE_RESULT_CODE = 1;
@@ -49,7 +49,7 @@ public class BookDateActivity extends AppCompatActivity
     private RequestQueue requestQueue;
     Request<String> request;
     String mPath;
-    int houseid = 1;//暂时认定为存在Houseid
+    int house_id;//暂时认定为存在Houseid
     GsonAboutHouseManage gsonAboutHouseManage;
     //数据库中房东设置的已关的时间列
     List<HouseDateManage> sqlNotList;
@@ -59,7 +59,7 @@ public class BookDateActivity extends AppCompatActivity
     HouseDateManage mHouseDateManage;
     //布局相关
     LinearLayout ll;
-    ManageCalendar c1;
+    BookCalendar c1;
     Date date;
     String nowday, inday = null, outday = null;//今天，入住的日期，离开的日期
     long nd = 1000 * 24L * 60L * 60L;//一天的毫秒数
@@ -96,6 +96,9 @@ public class BookDateActivity extends AppCompatActivity
     }
 
     private void loadData() {
+        //得到查询的房屋的id
+        Intent mIntent = getIntent();
+        house_id = mIntent.getIntExtra("house_id", 0);
         //初始化
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
@@ -109,7 +112,7 @@ public class BookDateActivity extends AppCompatActivity
         request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
         // 添加请求参数
         request.add("methods", "getHouseDateByHouseId");
-        request.add("houseid", houseid);
+        request.add("houseid", house_id);
         /*
          * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
 		 * request: 请求对象
@@ -169,7 +172,7 @@ public class BookDateActivity extends AppCompatActivity
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         //为每一个小方格设置监听（每一天）
         for (int i = 0; i < listDate.size(); i++) {
-            c1 = new ManageCalendar(this);
+            c1 = new BookCalendar(this);
             c1.setLayoutParams(params);
             Date date = null;
             try {
@@ -220,8 +223,6 @@ public class BookDateActivity extends AppCompatActivity
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-
         /*String dateDay = date.split("-")[2];
         if (Integer.parseInt(dateDay) < 10) {
             dateDay = date.split("-")[2].replace("0", "");
@@ -254,12 +255,12 @@ public class BookDateActivity extends AppCompatActivity
             textView.setText("离开");
             outday = date;
 
-            Intent intent=new Intent();
-            intent.putExtra("inday",inday);
-            intent.putExtra("outday",outday);
+            Intent intent = new Intent();
+            intent.putExtra("inday", inday);
+            intent.putExtra("outday", outday);
 //            Bundle bundle = new Bundle();
 //            intent.putExtras(bundle);
-            setResult(BOOK_DATE_RESULT_CODE,intent);
+            setResult(BOOK_DATE_RESULT_CODE, intent);
             finish();
         }
 

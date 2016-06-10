@@ -3,11 +3,12 @@ package com.easygo.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,17 +36,18 @@ import java.util.List;
 * */
 public class BookChooseLinkmanActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TYPE = "type";
+    public static final int CHOOSE_UPDATE_RESULT_CODE = 1;
     SharedPreferences mSharedPreferences;
     //自定义一个dialog
     private WaitDialog mDialog;
     public static final int FIND_LINKMAN_WHAT = 1;
     public static final int ADD_LINKMAN_REQUEST_CODE = 1;
     public static final int CHOOSE_LINKMAN_RESULT_CODE = 2;
-
+    ImageView mBackImageView;
     List<UserLinkman> mList = null;
     ListView mChooseLinkManListView;
     BookChooseLinkmanAdapter mAdapter;
-    TextView mTitleTextView, mAddTextView,mCommitTextView;
+    TextView mTitleTextView, mAddTextView, mCommitTextView;
     //网络请求
     String mPath;
     RequestQueue mRequestQueue;
@@ -63,6 +65,7 @@ public class BookChooseLinkmanActivity extends AppCompatActivity implements View
     }
 
     private void initView() {
+        mBackImageView = (ImageView) findViewById(R.id.back);
         mDialog = new WaitDialog(this);//提示框
         mChooseLinkManListView = (ListView) findViewById(R.id.room_book_choose_list);
         mTitleTextView = (TextView) findViewById(R.id.title_text);
@@ -84,6 +87,7 @@ public class BookChooseLinkmanActivity extends AppCompatActivity implements View
         }*/
         mAdapter = new BookChooseLinkmanAdapter(BookChooseLinkmanActivity.this, mList);
         mChooseLinkManListView.setAdapter(mAdapter);
+
     }
 
     private void loadData() {
@@ -98,7 +102,7 @@ public class BookChooseLinkmanActivity extends AppCompatActivity implements View
         request.add("methods", "getLinkmanByUserId");
         request.add("userid", user_id);
         mRequestQueue.add(FIND_LINKMAN_WHAT, request, onResponseListener);
-        mAdapter.notifyDataSetChanged();
+//        mAdapter.notifyDataSetChanged();
     }
 
     private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
@@ -137,13 +141,20 @@ public class BookChooseLinkmanActivity extends AppCompatActivity implements View
     };
 
     private void addListeners() {
+        mBackImageView.setOnClickListener(this);
         mAddTextView.setOnClickListener(this);
         mCommitTextView.setOnClickListener(this);
         //listview的监听
         mChooseLinkManListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(BookChooseLinkmanActivity.this, "小明" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(BookChooseLinkmanActivity.this, UserLinkmanUpdateActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("linkman", mList.get(position));
+                bundle.putInt("position", position);
+                intent.putExtras(bundle);
+                setResult(CHOOSE_UPDATE_RESULT_CODE, intent);
+                startActivityForResult(intent, 3);
             }
         });
     }
@@ -151,12 +162,22 @@ public class BookChooseLinkmanActivity extends AppCompatActivity implements View
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
-        switch (resultCode){
+        switch (resultCode) {
             case RESULT_OK:
+                //选择联系人
                 Bundle mBundle = data.getExtras();
                 mUserLinkman = (UserLinkman) mBundle.getSerializable("linkman");
                 mList.add(mUserLinkman);
 //                Log.e("mime",mUserLinkman.getLinkman_name()+"..."+mUserLinkman.getUser_linkman_id());
+                mAdapter.notifyDataSetChanged();
+                break;
+            case UserLinkmanActivity.UPDATE_LINKMAN_RESULT_CODE:
+                Bundle mBundle2 = data.getExtras();
+                mUserLinkman = (UserLinkman) mBundle2.getSerializable("linkman");
+                int position = mBundle2.getInt("position");
+                mList.remove(position);
+                mList.add(position, mUserLinkman);
+//                Log.e("mime",mUserLinkman.getLinkman_name()+"..."+mUserLinkman.getIdcard());
                 mAdapter.notifyDataSetChanged();
                 break;
         }
@@ -173,7 +194,7 @@ public class BookChooseLinkmanActivity extends AppCompatActivity implements View
             case R.id.room_book_choose_commit:
                 List<UserLinkman> commitList = new ArrayList<>();
                 for (UserLinkman ulm : mList) {
-                    if (ulm.isChecked()){
+                    if (ulm.isChecked()) {
                         //如果被选中就添加到List中
                         commitList.add(ulm);
                     }
@@ -182,9 +203,13 @@ public class BookChooseLinkmanActivity extends AppCompatActivity implements View
                 Bundle mBundle = new Bundle();
                 mBundle.putSerializable("chooseLinkman", (Serializable) commitList);
                 mIntent2.putExtras(mBundle);
-                setResult(CHOOSE_LINKMAN_RESULT_CODE,mIntent2);
+                setResult(CHOOSE_LINKMAN_RESULT_CODE, mIntent2);
+                finish();
+                break;
+            case R.id.back:
                 finish();
                 break;
         }
     }
+
 }

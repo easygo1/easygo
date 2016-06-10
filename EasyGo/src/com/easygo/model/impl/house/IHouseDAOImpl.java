@@ -34,9 +34,9 @@ public class IHouseDAOImpl implements IHouseDAO {
 		// TODO Auto-generated method stub
 		boolean result = false;
 		connection = C3P0Utils.getConnection();
-		String sql = "INSERT INTO house(user_id,house_title,house_style,house_address_province,house_address_city," +
-				"house_address_lng,house_address_lat,house_most_num,house_one_price,house_add_price,house_describe," +
-				"house_traffic,house_limit_sex,house_stay_time) VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO house(user_id,house_title,house_style,house_address_province,house_address_city,"
+				+ "house_address_lng,house_address_lat,house_most_num,house_one_price,house_add_price,house_describe,"
+				+ "house_traffic,house_limit_sex,house_stay_time) VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, house.getUser_id());
@@ -321,7 +321,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 
 	@Override
 	public int findUseridByHouseid(int house_id) {
-		int user_id=0;
+		int user_id = 0;
 		connection = C3P0Utils.getConnection();
 		String sql = "select user_id from house where house_id =?";
 		try {
@@ -338,6 +338,13 @@ public class IHouseDAOImpl implements IHouseDAO {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
 		return user_id;
+	}
+
+	@Override
+	public List<House> sortHouse(String house_address_city, int cur,
+			String style_limit, String sex_limit, String price_limit) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
