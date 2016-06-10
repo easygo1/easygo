@@ -1,5 +1,7 @@
 package com.easygo.model.dao.news;
 
+import java.util.List;
+
 import com.easygo.model.beans.chat.News;
 
 public interface INewsDAO {
@@ -12,5 +14,7 @@ public interface INewsDAO {
 	public abstract boolean delNews(int news_sender_id);
 	// 查找说说（某个用户的）
 	public abstract News findSpecNewsById(int news_sender_id);
+	// 查找所有动态
+	public abstract List<News> findSpecNews();
 
 }

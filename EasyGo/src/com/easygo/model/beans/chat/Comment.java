@@ -6,19 +6,42 @@ public class Comment {
 	private int comment_id; // 评论表id
 	private int comment_news_id; // 说说动态id
 	private int comment_user_id; // 评论人id
+	private String nickname;
+	private String userphoto;
 	private String comment_content;// 评论内容
-	private Timestamp comment_time;// 评论时间
+	private String comment_time;// 评论时间
 
 	public Comment() {
 		super();
 	}
 
 	public Comment(int comment_id, int comment_news_id, int comment_user_id,
-			String comment_content, Timestamp comment_time) {
+			String comment_content, String comment_time) {
 		super();
 		this.comment_id = comment_id;
 		this.comment_news_id = comment_news_id;
 		this.comment_user_id = comment_user_id;
+		this.comment_content = comment_content;
+		this.comment_time = comment_time;
+	}
+	
+	
+
+	public Comment(int comment_news_id, int comment_user_id,
+			String comment_content) {
+		super();
+		this.comment_news_id = comment_news_id;
+		this.comment_user_id = comment_user_id;
+		this.comment_content = comment_content;
+	}
+
+	
+
+	public Comment(String userphoto,String nickname,String comment_content,
+			String comment_time) {
+		super();
+		this.nickname = nickname;
+		this.userphoto = userphoto;
 		this.comment_content = comment_content;
 		this.comment_time = comment_time;
 	}
@@ -55,11 +78,38 @@ public class Comment {
 		this.comment_content = comment_content;
 	}
 
-	public Timestamp getComment_time() {
+	public String getComment_time() {
 		return comment_time;
 	}
 
-	public void setComment_time(Timestamp comment_time) {
+	public void setComment_time(String comment_time) {
 		this.comment_time = comment_time;
 	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getUserphoto() {
+		return userphoto;
+	}
+
+	public void setUserphoto(String userphoto) {
+		this.userphoto = userphoto;
+	}
+
+	@Override
+	public String toString() {
+		return "Comment [comment_id=" + comment_id + ", comment_news_id="
+				+ comment_news_id + ", comment_user_id=" + comment_user_id
+				+ ", nickname=" + nickname + ", userphoto=" + userphoto
+				+ ", comment_content=" + comment_content + ", comment_time="
+				+ comment_time + "]";
+	}
+
+		
 }

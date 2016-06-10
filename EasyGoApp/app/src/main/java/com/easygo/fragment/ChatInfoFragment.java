@@ -13,21 +13,30 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.easygo.activity.R;
+import com.easygo.beans.user.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
+import io.rong.imlib.model.UserInfo;
 
 
 /**
  * Created by PengHong on 2016/4/29.
  */
-public class ChatInfoFragment extends Fragment {
+public class ChatInfoFragment extends Fragment{
+    private Context mContext;
+    //添加好友集合
+    private List<User> userIdList;
+
     public static final String TYPE = "type";
     //聊天会话列表
     View mChatInfoView;
-    String mUrl,phone=null,token=null;
+    String mUrl,token=null,user_nickname=null,user_photo=null,phone=null;
     SharedPreferences mSharedPreferences;
     @Nullable
     @Override
@@ -36,9 +45,14 @@ public class ChatInfoFragment extends Fragment {
         //获取到手机号和token
         mSharedPreferences = getActivity().getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         token = mSharedPreferences.getString("token",null);
+        user_nickname = mSharedPreferences.getString("user_nickname",null);
+        user_photo = mSharedPreferences.getString("user_photo",null);
+        phone = mSharedPreferences.getString("phone",null);
         Log.e("聊天好友界面的token",token);
         //进行融云连接
         connect(token);
+        //用户信息提供者
+        initUserInfo();
         //初始化会话列表
         initConversation();
         return mChatInfoView;
@@ -62,11 +76,13 @@ public class ChatInfoFragment extends Fragment {
         transaction.commit();
     }
 
+
     /**
      * 建立与融云服务器的连接
      *
      * @param token
      */
+
     private void connect(String token) {
         /**
          * IMKit SDK调用第二步,建立与服务器的连接
@@ -98,5 +114,24 @@ public class ChatInfoFragment extends Fragment {
         });
     }
 
+    //生命周期伴随着总进程
+    public UserInfo getUserInfo(String s) {
+        //循环获取当前用户信息的userid
+        for (User i : userIdList) {
+            if (i.getUser_phone().equals(s)) {
+               // Log.e(TAG, i.getPortraitUri());
+                return new UserInfo(i.getUser_realname(), i.getUser_realname(), Uri.parse(i.getUser_photo()));
+            }
+        }
+        Log.e("MainActivity", "UserId is:" + s);
+        return null;
+    }
 
+    private void initUserInfo() {
+        userIdList = new ArrayList<>();
+        //连接用户的昵称，手机号，头像
+        userIdList.add(new User(user_nickname,phone,user_photo));
+        //用户信息提供者
+        RongIM.setUserInfoProvider((RongIM.UserInfoProvider) mContext, true);
+    }
 }

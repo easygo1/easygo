@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.easygo.application.MyApplication;
@@ -26,8 +25,6 @@ import com.yolanda.nohttp.error.TimeoutError;
 import com.yolanda.nohttp.error.URLError;
 import com.yolanda.nohttp.error.UnKnownHostError;
 
-import java.util.List;
-
 public class AddFriendActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TYPE = "type";
 
@@ -41,8 +38,8 @@ public class AddFriendActivity extends AppCompatActivity implements View.OnClick
 
     private EditText mSelectFriendEditText;
     private Button mSelectFriendButton;
-    private ListView mUserListView;
-    List<String> user_id_list;
+    /*private ListView mUserListView;
+    List<String> user_id_list;*/
 
     //设置偏好设置
     SharedPreferences mSharedPreferences;
@@ -70,7 +67,7 @@ public class AddFriendActivity extends AppCompatActivity implements View.OnClick
     private void initView() {
         mSelectFriendEditText= (EditText) findViewById(R.id.select_friend);
         mSelectFriendButton= (Button) findViewById(R.id.select_btn);
-        mUserListView= (ListView) findViewById(R.id.user_list);
+        //mUserListView= (ListView) findViewById(R.id.user_list);
         mDialog = new WaitDialog(this);
     }
     private OnResponseListener<String> onResponseListener=new OnResponseListener<String>() {

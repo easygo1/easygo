@@ -167,6 +167,8 @@
         <activity
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
             android:configChanges="orientation|screenSize"/>
+        <activity android:name=".PublishDynamicActivity">
+        </activity>
         <activity android:name=".OwnerOrderActivity">
         </activity>
         <activity android:name=".OrderAssessActivity">

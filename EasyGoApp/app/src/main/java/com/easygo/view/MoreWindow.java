@@ -5,12 +5,15 @@ import android.animation.Animator.AnimatorListener;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,7 +24,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.easygo.activity.PublishDynamicActivity;
 import com.easygo.activity.R;
 
 public class MoreWindow extends PopupWindow implements OnClickListener {
@@ -33,11 +38,24 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 	private int statusBarHeight ;
 	private Bitmap mBitmap= null;
 	private Bitmap overlay = null;
-	
+	/*private ImageView mMoreWindowLocal;*/
+	View  view;
+
 	private Handler mHandler = new Handler();
 
 	public MoreWindow(Activity context) {
 		mContext = context;
+
+		LayoutInflater inflater = (LayoutInflater) mContext
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		view = inflater.inflate(R.layout.activity_publish_dynamic, null);
+
+		/*mMoreWindowLocal= (ImageView) view.findViewById(R.id.more_window_local);
+		mMoreWindowLocal.setOnClickListener(itemsOnClick);*/
+		/*//popwindow导入
+		LayoutInflater inflater = (LayoutInflater) mContext
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		view=inflater.inflate(R.layout.activity_publish_dynamic, null);*/
 	}
 
 	public void init() {
@@ -49,9 +67,11 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 				.getMetrics(metrics);
 		mWidth = metrics.widthPixels;
 		mHeight = metrics.heightPixels;
-		
+
 		setWidth(mWidth);
 		setHeight(mHeight);
+
+
 	}
 	
 	private Bitmap blur() {
@@ -123,7 +143,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 			child.setOnClickListener(this);
 			child.setVisibility(View.INVISIBLE);
 			mHandler.postDelayed(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					child.setVisibility(View.VISIBLE);
@@ -203,24 +223,40 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.more_window_local:
 
+			publishdynamic();
 			break;
 		case R.id.more_window_online:
-			Log.e("你点击了相册","你点击了相册");
-			//System.out.print("你点击了相册");
+			//Log.e("你点击了相册","你点击了相册");
+			Toast.makeText(mContext, "敬请期待", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.more_window_delete:
+			//Log.e("拍摄","拍摄");
+			Toast.makeText(mContext, "敬请期待", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.more_window_collect:
+			//Log.e("签到功能","签到功能");
+			Toast.makeText(mContext, "签到", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.more_window_auto:
+			//Log.e("点评","更多");
+			Toast.makeText(mContext, "敬请期待", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.more_window_external:
+			//Log.e("更多","更多");
+			Toast.makeText(mContext, "敬请期待", Toast.LENGTH_SHORT).show();
 			break;
 		default:
 			break;
 		}
 	}
-	
+	//发表动态
+	private void publishdynamic() {
+		Log.e("发表动态","发表动态");
+		//页面跳转
+		Intent intent = new Intent(mContext, PublishDynamicActivity.class);
+		ActivityCompat.startActivity(mContext,intent,null);
+	}
+
 	public void destroy() {
 		if (null != overlay) {
 			overlay.recycle();
@@ -233,5 +269,5 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 			System.gc();
 		}
 	}
-	
+
 }

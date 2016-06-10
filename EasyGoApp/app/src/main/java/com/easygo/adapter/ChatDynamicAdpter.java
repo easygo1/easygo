@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.easygo.activity.R;
 import com.easygo.beans.chat_comment.CommentData;
 import com.lzy.ninegrid.ImageInfo;
@@ -19,6 +20,8 @@ import net.tsz.afinal.FinalBitmap;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by 王韶辉 on 2016/5/23.
@@ -61,7 +64,7 @@ public class ChatDynamicAdpter extends BaseAdapter {
     //缓存布局中的控件
     class ViewHolder{
         ImageView mcomment_imageview;
-        TextView mfabiao_man,mfabiao_time,mbrowse,mdynamic_content;
+        TextView mfabiao_man,mfabiao_time,mbrowse,mdynamic_content,mnumber_like;
         LinearLayout mZan,mComment,mForward;
         NineGridView nineGridView;
     }
@@ -98,7 +101,7 @@ public class ChatDynamicAdpter extends BaseAdapter {
             viewHolder.mfabiao_time = (TextView) convertView.findViewById(R.id.fabiao_time);
             viewHolder.mbrowse = (TextView) convertView.findViewById(R.id.browse);
             viewHolder.mdynamic_content = (TextView) convertView.findViewById(R.id.dynamic_content);
-
+            viewHolder.mnumber_like= (TextView) convertView.findViewById(R.id.number_like);
             //加载上传的图片
             viewHolder.nineGridView= (NineGridView) convertView.findViewById(R.id.gridview_imageview);
 
@@ -111,15 +114,31 @@ public class ChatDynamicAdpter extends BaseAdapter {
 
         //动态修改每一行控件的内容
         final CommentData commentData = mCommentDataList_list.get(position);
-        viewHolder.mcomment_imageview.setImageResource(commentData.getComment_imageview());
-        viewHolder.mfabiao_man.setText(commentData.getFabiao_man());
-        viewHolder.mfabiao_time.setText(commentData.getFabiao_time());
-        viewHolder.mbrowse.setText(commentData.getBrowse());
-        viewHolder.mdynamic_content.setText(commentData.getDynamic_content());
+        //显示要加载的图片
+        Glide.with(mContext)
+                .load(commentData.getUser_photo())
+                .bitmapTransform(new CropCircleTransformation(mContext))
+                .error(R.mipmap.user_photo_defult)
+                .into(viewHolder.mcomment_imageview);
+        viewHolder.mfabiao_man.setText(commentData.getUser_nickname());
+        viewHolder.mfabiao_time.setText(commentData.getNews_time());
+        if (commentData.getNews_views() == 0) {
+            viewHolder.mbrowse.setText("浏览量：0 次");
+        }else{
+            viewHolder.mbrowse.setText("浏览量："+commentData.getNews_views()+"次");
+        }
+        viewHolder.mdynamic_content.setText(commentData.getNews_content());
+        if (commentData.getNews_stars() == 0) {
+            viewHolder.mnumber_like.setText("还没有人为该动态点赞");
+        }else{
+            viewHolder.mnumber_like.setText("已经有  "+commentData.getNews_stars()+"  人觉得很赞~");
+        }
+
+
 
         //使用框架加载图片
         ArrayList<ImageInfo> imageInfo = new ArrayList<>();
-        List<String> imageDetails = commentData.getImgUrls();
+        List<String> imageDetails = commentData.getPhoto_path();
         if (imageDetails != null) {
             for (String url : imageDetails) {
                 ImageInfo info = new ImageInfo();

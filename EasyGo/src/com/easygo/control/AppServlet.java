@@ -12,13 +12,17 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.inject.New;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.easygo.model.beans.chat.Comment;
 import com.easygo.model.beans.chat.Friend;
+import com.easygo.model.beans.chat.News;
+import com.easygo.model.beans.chat.NewsPhoto;
 import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.gson.GsonAboutHouseDetail;
 import com.easygo.model.beans.gson.GsonAboutHouseManage;
@@ -42,6 +46,8 @@ import com.easygo.model.dao.house.IHouseDAO;
 import com.easygo.model.dao.house.IHouseDateManageDAO;
 import com.easygo.model.dao.house.IHouseEquipmentDAO;
 import com.easygo.model.dao.house.IHousePhotoDAO;
+import com.easygo.model.dao.news.ICommentDAO;
+import com.easygo.model.dao.news.INewsDAO;
 import com.easygo.model.dao.order.IAssessDAO;
 import com.easygo.model.dao.order.IOrderDAO;
 import com.easygo.model.dao.order.IUserOrderLinkmanDAO;
@@ -55,6 +61,8 @@ import com.easygo.model.impl.house.IHouseDAOImpl;
 import com.easygo.model.impl.house.IHouseDateManageDAOImpl;
 import com.easygo.model.impl.house.IHouseEquipmentDAOImpl;
 import com.easygo.model.impl.house.IHousePhotoDAOImpl;
+import com.easygo.model.impl.news.ICommentDAOImpl;
+import com.easygo.model.impl.news.INewsDAOImlp;
 import com.easygo.model.impl.order.IAssessDAOImpl;
 import com.easygo.model.impl.order.IOrderDAOImpl;
 import com.easygo.model.impl.order.IUserOrderLinkmanDAOImpl;
@@ -108,6 +116,13 @@ public class AppServlet extends HttpServlet {
 	User book_user;
 	User house_user;
 
+	// 发表说说的相关对象
+	News news = null;
+	INewsDAO newsdao;
+	//发表评论的相关对象
+	Comment comment=null;
+	ICommentDAO commentdao;
+	
 	// UserOrderLinkman相关对象
 	UserOrderLinkman userorderlinkman;
 	IUserOrderLinkmanDAO userorderlinkmandao;
@@ -185,6 +200,11 @@ public class AppServlet extends HttpServlet {
 
 		switch (method) {
 		case "a":
+			userdao=new IUserDAOImpl();
+			gson = new Gson();
+			result = gson.toJson(userdao.findSpecUserById(4));
+			mPrintWriter.write(result);
+			mPrintWriter.close();
 			break;
 		case "goAddUser":
 			request.setAttribute("oneUser", user);
@@ -263,7 +283,7 @@ public class AppServlet extends HttpServlet {
 			break;
 		// 显示好友列表
 		case "showfriendlist":
-			List<String> friendlist = new ArrayList<>();
+			List<User> friendlist = new ArrayList<>();
 			user = new User();
 			userdao = new IUserDAOImpl();
 			// 1.根据phone查找出id
@@ -276,12 +296,78 @@ public class AppServlet extends HttpServlet {
 			// 3.从数据库中 获取到好友id的用户名集合
 			for (int i = 0; i < friend_id_list.size(); i++) {
 				int id = friend_id_list.get(i);
-				friendlist.add(userdao.selectUserPhone(id));
+				friendlist.add(userdao.findSpecUserById(id));//查到昵称，头像名称等
+				//friendlist.add(userdao.selectUserPhone(id));
 			}
 			// 4.将获取到的phone数据封装成Gson传送出去
 			gson = new Gson();
 			result = gson.toJson(friendlist);
 			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+
+		case "adddynamic":
+			// 定义一个集合用来接收动态图片的集合
+			news = new News();
+			List<String> photoPath = null;
+			newsdao = new INewsDAOImlp();
+			// 接收android端传来的参数
+			String news_dynamic = request.getParameter("news_dynamic");
+			Gson gson = new Gson();
+			Type mytype = new TypeToken<News>() {
+			}.getType();
+			news = gson.fromJson(news_dynamic, mytype);
+			
+			for (int i = 0; news.getPhoto_path().size() > i; i++) {
+				System.out.println("这是第" + i + "个图片"
+						+ news.getPhoto_path().get(i));
+			}
+			// 向数据库增加这条说说
+			newsdao.addNews(news);
+			mPrintWriter.write("success");
+			mPrintWriter.close();
+			break;
+
+		case "showdynamic":
+			// 展示出所有的动态
+			/**
+			 * 查找news表中动态的id 根据动态的id查找图片的地址，并将地址返回
+			 * 查找发送者的id根据发送者的id查找user表中的昵称或者手机号，头像
+			 */
+			newsdao = new INewsDAOImlp();
+			// 返回的是一个集合
+			//newsdao.findSpecNews();
+			// 将该集合封装成json数据
+			// 将其封装成gson对象
+			Gson gson1 = new Gson();
+			String showdynamic = gson1.toJson(newsdao.findSpecNews());
+			mPrintWriter.write(showdynamic);
+			mPrintWriter.close();
+			break;
+		//获取到该动态id的所有评论
+		case "showcomment":
+			commentdao=new ICommentDAOImpl();
+			//接收到发表评论的id
+			int comment_news_id=Integer.valueOf(request.getParameter("comment_news_id"));
+			Gson gson2 = new Gson();
+			String showcomment = gson2.toJson(commentdao.selectAllIComment(comment_news_id));
+			//评论查找成功，将数据写回
+			mPrintWriter.write(showcomment);
+			mPrintWriter.close();
+			break;
+		//插入评论，并将评论的集合全部回调
+		case "addcomment":
+			commentdao=new ICommentDAOImpl();
+			//从android端获取到评论数据
+			String news_comment = request.getParameter("news_comment");
+			Gson gson3 = new Gson();
+			Type mytype3 = new TypeToken<Comment>() {
+			}.getType();
+			comment = gson3.fromJson(news_comment, mytype3);
+			//System.out.println(comment.toString());
+			commentdao.addIComment(comment);
+			
+			mPrintWriter.write("success");
 			mPrintWriter.close();
 			break;
 		case "addUser":

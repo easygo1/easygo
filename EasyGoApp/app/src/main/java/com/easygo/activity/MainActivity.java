@@ -2,7 +2,7 @@ package com.easygo.activity;
 
 
 import android.support.v4.app.FragmentManager;
-import  android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             setImageAndTextColor(id);
             //设置当前选中碎片
             initCurrentFragment(id);
-        }else if (flag.equals("search")) {
+        } else if (flag.equals("search")) {
             //如果接收到标志位flag=search,显示搜索界面
             mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -142,12 +142,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showMoreWindow(View view) {
-        if (null == mMoreWindow) {
+        //启动弹窗
+        if(null==mMoreWindow){
             mMoreWindow = new MoreWindow(this);
             mMoreWindow.init();
         }
         //第二个参数为到底部的距离
-        mMoreWindow.showMoreWindow(view,40);
+        mMoreWindow.showMoreWindow(view, 40);
     }
 
     private void initCurrentFragment(int id) {
