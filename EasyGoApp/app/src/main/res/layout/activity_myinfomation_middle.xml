@@ -4,6 +4,9 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <TextView
+        style="@style/releasesroom_line"/>
+
     <RelativeLayout
         android:id="@+id/change_head"
         android:layout_width="match_parent"
@@ -11,18 +14,19 @@
         android:gravity="center">
 
         <TextView
+            style="@style/myinfo_textview"
             android:layout_marginTop="9dp"
-            style="@style/releasesroom_textview"
             android:text="更改头像"/>
 
         <ImageView
-            android:scaleType="fitStart"
+            android:id="@+id/photo_show"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:id="@+id/photo_show"
+            android:scaleType="fitStart"
             android:src="@mipmap/user_photo_defult"/>
+
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
@@ -37,64 +41,22 @@
         android:gravity="center">
 
         <TextView
-            style="@style/releasesroom_textview"
+            style="@style/myinfo_textview"
             android:text="用户昵称"/>
 
         <TextView
             android:id="@+id/change_username_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
             style="@style/releasesroom_arrow"/>
     </RelativeLayout>
 
-    <TextView
-        style="@style/releasesroom_line"/>
-
-    <RelativeLayout
-        android:id="@+id/change_realname"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center">
-
-        <TextView
-            style="@style/releasesroom_textview"
-            android:text="真实姓名"/>
-
-        <TextView
-            android:id="@+id/change_realname_textView"
-            style="@style/releasesroom_xuanze"
-            android:text="选择"/>
-
-        <ImageView
-            style="@style/releasesroom_arrow"/>
-    </RelativeLayout>
 
     <TextView
         style="@style/releasesroom_line"/>
 
-    <RelativeLayout
-        android:id="@+id/change_idcard"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center">
-
-        <TextView
-            style="@style/releasesroom_textview"
-            android:text="身份证号"/>
-
-        <TextView
-            android:id="@+id/user_idcard_textView"
-            style="@style/releasesroom_xuanze"
-            android:text="选择"/>
-
-        <ImageView
-            style="@style/releasesroom_arrow"/>
-    </RelativeLayout>
-
-    <TextView
-        style="@style/releasesroom_line"/>
 
     <RelativeLayout
         android:id="@+id/change_city"
@@ -103,7 +65,7 @@
         android:gravity="center">
 
         <TextView
-            style="@style/releasesroom_textview"
+            style="@style/myinfo_textview"
             android:text="所在地"/>
 
         <TextView
@@ -125,7 +87,7 @@
         android:gravity="center">
 
         <TextView
-            style="@style/releasesroom_textview"
+            style="@style/myinfo_textview"
             android:text="性别"/>
 
         <TextView
@@ -139,6 +101,7 @@
 
     <TextView
         style="@style/releasesroom_line"/>
+
     <RelativeLayout
         android:id="@+id/change_job"
         android:layout_width="match_parent"
@@ -146,7 +109,7 @@
         android:gravity="center">
 
         <TextView
-            style="@style/releasesroom_textview"
+            style="@style/myinfo_textview"
             android:text="职业"/>
 
         <TextView
@@ -168,7 +131,7 @@
         android:gravity="center">
 
         <TextView
-            style="@style/releasesroom_textview"
+            style="@style/myinfo_textview"
             android:text="标签"/>
 
         <TextView
@@ -190,11 +153,79 @@
         android:gravity="center">
 
         <TextView
-            style="@style/releasesroom_textview"
+            style="@style/myinfo_textview"
             android:text="个性签名"/>
 
         <TextView
             android:id="@+id/change_autograph_textView"
+            style="@style/releasesroom_xuanze"
+            android:text="选择"/>
+
+        <ImageView
+            style="@style/releasesroom_arrow"/>
+    </RelativeLayout>
+
+    <TextView
+        style="@style/releasesroom_line"/>
+
+    <RelativeLayout
+        android:id="@+id/change_introduce"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+
+        <TextView
+            style="@style/myinfo_textview"
+            android:text="个人介绍"/>
+
+        <TextView
+            android:id="@+id/change_instroduce_textView"
+            style="@style/releasesroom_xuanze"
+            android:text="选择"/>
+
+        <ImageView
+            style="@style/releasesroom_arrow"/>
+    </RelativeLayout>
+
+    <TextView
+        style="@style/releasesroom_line"
+        android:layout_height="15dp"/>
+
+
+    <RelativeLayout
+        android:id="@+id/change_realname"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+
+        <TextView
+            style="@style/myinfo_textview"
+            android:text="真实姓名"/>
+
+        <TextView
+            android:id="@+id/change_realname_textView"
+            style="@style/releasesroom_xuanze"
+            android:text="选择"/>
+
+        <ImageView
+            style="@style/releasesroom_arrow"/>
+    </RelativeLayout>
+
+    <TextView
+        style="@style/releasesroom_line"/>
+
+    <RelativeLayout
+        android:id="@+id/change_idcard"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+
+        <TextView
+            style="@style/myinfo_textview"
+            android:text="身份证号"/>
+
+        <TextView
+            android:id="@+id/user_idcard_textView"
             style="@style/releasesroom_xuanze"
             android:text="选择"/>
 
@@ -212,7 +243,7 @@
         android:gravity="center">
 
         <TextView
-            style="@style/releasesroom_textview"
+            style="@style/myinfo_textview"
             android:text="出生日期"/>
 
         <TextView
@@ -234,7 +265,7 @@
         android:gravity="center">
 
         <TextView
-            style="@style/releasesroom_textview"
+            style="@style/myinfo_textview"
             android:text="修改密码"/>
 
         <TextView
@@ -249,27 +280,6 @@
     <TextView
         style="@style/releasesroom_line"/>
 
-    <RelativeLayout
-        android:id="@+id/change_introduce"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center">
-
-        <TextView
-            style="@style/releasesroom_textview"
-            android:text="个人介绍"/>
-
-        <TextView
-            android:id="@+id/change_instroduce_textView"
-            style="@style/releasesroom_xuanze"
-            android:text="选择"/>
-
-        <ImageView
-            style="@style/releasesroom_arrow"/>
-    </RelativeLayout>
-
-    <TextView
-        style="@style/releasesroom_line"/>
 
     <RelativeLayout
         android:id="@+id/change_email"
@@ -278,12 +288,12 @@
         android:gravity="center">
 
         <TextView
-            style="@style/releasesroom_textview"
+            style="@style/myinfo_textview"
             android:text="我的邮箱"/>
 
         <TextView
             android:id="@+id/change_email_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.easygo.activity.RealNameIdentifyActivity">
+
+    <include layout="@layout/common_title_bar"/>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:paddingLeft="15dp"
+            android:layout_gravity="center"
+            android:text="姓名"
+            android:textSize="@dimen/textsize_s"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/real_name_identify"
+            android:layout_gravity="center"
+            android:layout_weight="5"
+            android:layout_width="0dp"
+            android:background="@drawable/shape"
+            android:textColorHint="@color/hintColor"
+            android:hint="请输入真实姓名"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        style="@style/releasesroom_line"/>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:layout_gravity="center"
+            android:text="身份证号"
+            android:textSize="@dimen/textsize_s"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/idcard_identify"
+            android:layout_gravity="center"
+            android:layout_weight="5"
+            android:layout_width="0dp"
+            android:background="@drawable/shape"
+            android:textColorHint="@color/hintColor"
+            android:hint="请输入身份证号"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        style="@style/releasesroom_line"/>
+    <Button
+        android:id="@+id/identify_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_bg"
+        android:text="确  定"
+        android:textColor="#fff"
+        android:textSize="22sp"/>
+</LinearLayout>

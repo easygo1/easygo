@@ -15,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.activity.CalendarActivity;
-import com.easygo.activity.FootPrintActivity;
 import com.easygo.activity.HouseCollectionActivity;
+import com.easygo.activity.PayActivity;
 import com.easygo.activity.R;
 import com.easygo.activity.SelectCityActivity;
 
@@ -72,8 +72,10 @@ public class SearchFragment extends Fragment{
         mFootPrintView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"点击了历史足迹",Toast.LENGTH_SHORT).show();
+             /*   Toast.makeText(getActivity(),"点击了历史足迹",Toast.LENGTH_SHORT).show();
                 intent.setClass(getActivity(),FootPrintActivity.class);
+                startActivity(intent);*/
+                intent.setClass(getActivity(),PayActivity.class);
                 startActivity(intent);
             }
         });

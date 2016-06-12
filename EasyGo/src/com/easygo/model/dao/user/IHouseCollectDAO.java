@@ -22,4 +22,8 @@ public interface IHouseCollectDAO {
 
 	// 根据用户和房屋ID删除某个房源
 	public abstract boolean deleteHouseCollectById(int user_id, int house_id);
+	
+	//查找某个用户的收藏列表，并且分页显示
+	public abstract List<Integer> findHouseCollectByUserIdCur(int cur,int user_id);
+
 }

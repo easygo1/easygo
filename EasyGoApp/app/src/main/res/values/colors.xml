@@ -28,4 +28,5 @@
     <color name="order_textView">#646464</color>
     <color name="order_white">#FFFFFF</color>
     <color name="order_yellow">#FFBB55</color>
+    <color name="btn_apl">#dcffbb55</color>
 </resources>

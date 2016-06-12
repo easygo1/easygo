@@ -116,6 +116,7 @@
                 android:text="崔凯"/>
 
             <Button
+                android:id="@+id/chat_owner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#fff"
