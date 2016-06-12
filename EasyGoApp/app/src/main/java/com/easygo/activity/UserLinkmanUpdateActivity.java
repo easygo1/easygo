@@ -27,9 +27,9 @@ import java.util.List;
 /*
 * 用户个人中心的常用入住人
 * */
-public class UserLinkmanAddActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String TYPE = "type";
+public class UserLinkmanUpdateActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int USERLINKMAN_ADD_WHAT = 1;
+    public static final int UPDATE_LINKMAN_WHAT = 1;
     //自定义一个dialog
     private WaitDialog mDialog;
     ImageView mBackImageView;
@@ -39,8 +39,8 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
     //网络请求
     RequestQueue mRequestQueue;
     int user_id;//偏好设置中取出
-    SharedPreferences mSharedPreferences;
     UserLinkman mUserLinkman;
+    int position, user_linkman_id;//均从上一个页面传过来
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,16 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
         mNameEditText = (EditText) findViewById(R.id.me_user_linkman_name);
         mIdEditText = (EditText) findViewById(R.id.me_user_linkman_number);
         mCommitTextView = (TextView) findViewById(R.id.me_user_linkman_commit);
-        mTitleTextView.setText("新增入住人");
+        mTitleTextView.setText("修改入住人");
+        //得到上个页面传过来的一个item对象
+        Bundle mBundle = getIntent().getExtras();
+        mUserLinkman = (UserLinkman) mBundle.getSerializable("linkman");
+        position = mBundle.getInt("position");
+        user_linkman_id = mUserLinkman.getUser_linkman_id();
+        //设置edittext的值
+        mNameEditText.setText(mUserLinkman.getLinkman_name());
+        mIdEditText.setText(mUserLinkman.getIdcard());
+
     }
 
     private void addListeners() {
@@ -71,9 +80,9 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
     }
 
     private void uploadData() {
-        mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+//        mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         //type = mSharedPreferences.getInt("type", 0);
-        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
+//        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
         mRealName = mNameEditText.getText().toString();
         mIdNumber = mIdEditText.getText().toString();
         MyApplication myApplication = (MyApplication) this.getApplication();
@@ -83,11 +92,11 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
         //创建请求对象
         Request<String> request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
         //添加请求参数
-        request.add("methods", "addLinkman");
-        request.add("userid", user_id);
+        request.add("methods", "updateLinkman");
+        request.add("user_linkman_id", user_linkman_id);
         request.add("linkmanname", mRealName);
         request.add("idcard", mIdNumber);
-        mRequestQueue.add(USERLINKMAN_ADD_WHAT, request, onResponseListener);
+        mRequestQueue.add(UPDATE_LINKMAN_WHAT, request, onResponseListener);
     }
 
     private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
@@ -95,20 +104,18 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
         @Override
         public void onSucceed(int what, Response<String> response) {
             switch (what) {
-                case USERLINKMAN_ADD_WHAT:
-                    String returnid = response.get();
-                    int user_linkman_id = Integer.parseInt(returnid);
+                case UPDATE_LINKMAN_WHAT:
                     //添加一个入住人成功，成功后，回到跳转过来的页面，并把当前的入住人返回
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
-                    mUserLinkman = new UserLinkman();
-                    mUserLinkman.setUser_linkman_id(user_linkman_id);
-                    mUserLinkman.setUser_id(user_id);
+//                    mUserLinkman.setUser_linkman_id(user_linkman_id);
+//                    mUserLinkman.setUser_id(user_id);
                     mUserLinkman.setLinkman_name(mRealName);
                     mUserLinkman.setIdcard(mIdNumber);
                     bundle.putSerializable("linkman", mUserLinkman);
+                    bundle.putInt("position",position);
                     intent.putExtras(bundle);
-                    setResult(RESULT_OK, intent);
+                    setResult(UserLinkmanActivity.UPDATE_LINKMAN_RESULT_CODE, intent);
                     finish();
                     break;
             }
@@ -128,7 +135,7 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-            Toast.makeText(UserLinkmanAddActivity.this, "网络请求失败了", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UserLinkmanUpdateActivity.this, "网络请求失败了", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -146,6 +153,21 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
                 break;
         }
     }
+
+   /* @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //requestCode判断传过去的是哪个Intent
+        switch (resultCode) {
+            //得到userlinkmanactivity穿过来的一个Item对象
+            case UserLinkmanActivity.UPDATE_LINKMAN_RESULT_CODE:
+                Bundle mBundle = data.getExtras();
+                mUserLinkman = (UserLinkman) mBundle.getSerializable("linkman");
+//                mList.add(mUserLinkman);
+//                Log.e("mime",mUserLinkman.getLinkman_name()+"..."+mUserLinkman.getIdcard());
+//                mAdapter.notifyDataSetChanged();
+                break;
+        }
+    }*/
 
 
 }

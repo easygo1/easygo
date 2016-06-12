@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by zzia on 2016/5/24.
  */
 public class HouseAssess implements Serializable {
-    private int assesspersonphoto;
+    private String assesspersonphoto;
     private String assesspersonName;//评论人的姓名
     private int stars;//评论星级
     private String assesscontent;//评论内容
@@ -58,11 +58,11 @@ public class HouseAssess implements Serializable {
         this.assesstime = assesstime;
     }
 
-    public int getAssesspersonphoto() {
+    public String getAssesspersonphoto() {
         return assesspersonphoto;
     }
 
-    public void setAssesspersonphoto(int assesspersonphoto) {
+    public void setAssesspersonphoto(String assesspersonphoto) {
         this.assesspersonphoto = assesspersonphoto;
     }
 

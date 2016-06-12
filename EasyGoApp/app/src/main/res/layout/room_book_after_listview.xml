@@ -34,17 +34,21 @@
         android:id="@+id/room_book_bookname"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:hint="请输入姓名"/>
 
     <EditText
         android:id="@+id/room_book_tel"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:hint="请输入电话"/>
 
-    <TextView
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bookbackground"/>
+        android:background="@color/bookbackground"/>-->
 
 </LinearLayout>

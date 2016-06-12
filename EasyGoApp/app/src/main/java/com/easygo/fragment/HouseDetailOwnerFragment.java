@@ -14,12 +14,15 @@ import com.easygo.activity.HouseDetailActivity;
 import com.easygo.activity.R;
 import com.easygo.beans.user.User;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
 /**
  * Created by zzia on 2016/5/20.
  */
 public class HouseDetailOwnerFragment extends Fragment {
     private ImageView houseDetailHeadPhoto;
-    private TextView houseDetailOwnerName, houseDetailOwnerAge, houseDetailOwnerSex, houseDetailOwnerCity, houseDetailOwnerIntroduct;
+    private TextView houseDetailOwnerName, houseDetailOwnerAge,
+            houseDetailOwnerSex, houseDetailOwnerCity, houseDetailOwnerIntroduct;
     View mView;
 
     @Nullable
@@ -31,9 +34,9 @@ public class HouseDetailOwnerFragment extends Fragment {
         return mView;
     }
 
-        //头像，爱好还未获取过来
+    //爱好还未获取过来
     private void initView() {
-//        houseDetailHeadPhoto = (ImageView) mView.findViewById(R.id.house_detail_head_photo);
+        houseDetailHeadPhoto = (ImageView) mView.findViewById(R.id.house_detail_head_photo);
         houseDetailOwnerName = (TextView) mView.findViewById(R.id.house_detail_owner_name);
 //        houseDetailOwnerAge = (TextView) mView.findViewById(R.id.house_detail_owner_age);
         houseDetailOwnerSex = (TextView) mView.findViewById(R.id.house_detail_owner_sex);
@@ -52,8 +55,14 @@ public class HouseDetailOwnerFragment extends Fragment {
     public void initData() {
         HouseDetailActivity houseDetailActivity = (HouseDetailActivity) getActivity();
         User user = houseDetailActivity.mUser;
+        Glide.with(this)
+                .load(user.getUser_photo())
+                .bitmapTransform(new CropCircleTransformation(houseDetailActivity))
+                .placeholder(R.drawable.user_test)
+                .error(R.drawable.user_error)
+                .into(houseDetailHeadPhoto);
         houseDetailOwnerName.setText(user.getUser_realname());
-//        houseDetailOwnerAge.setText(user());
+//        houseDetailOwnerAge.setText(user);
         houseDetailOwnerSex.setText(user.getUser_sex());
         houseDetailOwnerCity.setText(user.getUser_address_city());
         houseDetailOwnerIntroduct.setText(user.getUser_introduct());

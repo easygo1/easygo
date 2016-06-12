@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +19,10 @@ import android.widget.Toast;
 
 import com.easygo.adapter.HouseListAdapter;
 import com.easygo.application.MyApplication;
-import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.gson.GsonAboutHouse;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HouseCollect;
+import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.user.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -64,7 +63,7 @@ public class HomeCityActivity extends AppCompatActivity {
     List<HouseCollect> mHouseCollectList = null;
 
     HouseListAdapter mAdapter;
-    String mPath;
+    String mPath,house_style,sex_limit,price_limit;
     //筛选菜单用到的控件
     private Spinner housespinner, sexspinner, pricespinner, checkspinner;
     private List<String> data_list_housetype, data_list_sexs, data_list_pricesort, data_list_checknum;
@@ -105,8 +104,7 @@ public class HomeCityActivity extends AppCompatActivity {
         //偏好设置中取出
         mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         userid = mSharedPreferences.getInt("user_id", 0);//整个页面要用
-        Log.e("取出来了id", userid + "");
-
+//        Log.e("取出来了id", userid + "");
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
         //集合的初始化
@@ -222,6 +220,7 @@ public class HomeCityActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(HomeCityActivity.this,"房源类型"+housetype[position],Toast.LENGTH_SHORT).show();
+                house_style = housetype[position];
             }
 
             @Override
@@ -232,6 +231,7 @@ public class HomeCityActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(HomeCityActivity.this,"性别限制"+sexs[position],Toast.LENGTH_SHORT).show();
+                sex_limit = sexs[position];
             }
 
             @Override
@@ -242,6 +242,7 @@ public class HomeCityActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(HomeCityActivity.this,"价格限制"+pricesort[position],Toast.LENGTH_SHORT).show();
+                price_limit = pricesort[position];
             }
 
             @Override
