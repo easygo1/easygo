@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -49,6 +50,7 @@ public class ChatDynamicActivity extends AppCompatActivity implements View.OnCli
     //请求对象
     public static final int SHOW_COMMENT = 1;
     public static final int SEND_COMMENT = 2;
+    public static final int ZAN = 3;
     //自定义一个dialog
     private WaitDialog mDialog;
     /**
@@ -62,7 +64,7 @@ public class ChatDynamicActivity extends AppCompatActivity implements View.OnCli
     SharedPreferences.Editor mEditor;
 
     private ImageView mcomment_imageview, mgridview_image;
-    private TextView mfabiao_man, mfabiao_time, mbrowse, mdynamic_content,mnumber_like;
+    private TextView mfabiao_man, mfabiao_time, mbrowse, mdynamic_content, mnumber_like;
     private LinearLayout mZan, mComment, mForward;
     private NineGridView nineGridView;
     private ListView mListView;
@@ -131,11 +133,8 @@ public class ChatDynamicActivity extends AppCompatActivity implements View.OnCli
         mfabiao_time.setText(commentData.getNews_time());
         mbrowse.setText("浏览量：" + commentData.getNews_views() + "次");
         mdynamic_content.setText(commentData.getNews_content());
-        if (commentData.getNews_stars() == 0) {
-            mnumber_like.setText("还没有人为该动态点赞");
-        }else{
-            mnumber_like.setText("已经有  "+commentData.getNews_stars()+"  人觉得很赞~");
-        }
+        mnumber_like.setText(" " + commentData.getNews_stars() + " ");
+
 
         //使用框架加载图片
         ArrayList<ImageInfo> imageInfo = new ArrayList<>();
@@ -156,13 +155,14 @@ public class ChatDynamicActivity extends AppCompatActivity implements View.OnCli
          */
         initCommentData();
     }
+
     private void initCommentData() {
         // 创建请求对象
         Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.POST);
         //接收服务端传过来的数据，对界面进行更新
         //传输从android端获取到的数据
         request.add("methods", "showcomment");
-        request.add("comment_news_id",commentData.getNews_id());
+        request.add("comment_news_id", commentData.getNews_id());
 
         //将请求添加到队列中
         mRequestQueue.add(SHOW_COMMENT, request, onResponseListener);
@@ -176,7 +176,7 @@ public class ChatDynamicActivity extends AppCompatActivity implements View.OnCli
         mfabiao_time = (TextView) findViewById(R.id.fabiao_time);
         mbrowse = (TextView) findViewById(R.id.browse);
         mdynamic_content = (TextView) findViewById(R.id.dynamic_content);
-        mnumber_like= (TextView) findViewById(R.id.number_like);
+        mnumber_like = (TextView) findViewById(R.id.number_like);
         mZan = (LinearLayout) findViewById(R.id.zan);
         mComment = (LinearLayout) findViewById(R.id.comment);
         mForward = (LinearLayout) findViewById(R.id.forward);
@@ -192,19 +192,32 @@ public class ChatDynamicActivity extends AppCompatActivity implements View.OnCli
             case R.id.zan:
                 //点赞
                 clicklike();
+
                 break;
             case R.id.comment:
                 showCommentDialog();
                 break;
             case R.id.forward:
-
+                //返回上一个界面，并且将这个界面的内容进行一次动态发布
+                Toast.makeText(ChatDynamicActivity.this, "敬请期待", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
+
     //点赞功能
     private void clicklike() {
-
+        //向数据库发送请求，news表赞数+1
+        Log.e(commentData.getNews_stars() + "", "赞的个数是");
+        //向服务器发出请求
+        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+        mRequestQueue = NoHttp.newRequestQueue();
+        // 创建请求对象
+        Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.POST);
+        //请求服务器获取动态表中的所有动态
+        request.add("methods", "zan");
+        request.add("news_id", commentData.getNews_id());
+        mRequestQueue.add(ZAN, request, onResponseListener);
     }
 
     //显示出评论输入框
@@ -236,6 +249,7 @@ public class ChatDynamicActivity extends AppCompatActivity implements View.OnCli
                 });
         builder.create().show();
     }
+
     private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
         @Override
         public void onStart(int what) {
@@ -244,22 +258,25 @@ public class ChatDynamicActivity extends AppCompatActivity implements View.OnCli
 
         @Override
         public void onSucceed(int what, Response<String> response) {
-            if(what==SHOW_COMMENT){
-                String comment=response.get();
+            if (what == SHOW_COMMENT) {
+                String comment = response.get();
                 Gson gson = new Gson();
                 mCommentDynamicData_list = gson.fromJson(comment, new TypeToken<List<CommentDynamicData>>() {
                 }.getType());
                 //添加适配器
                 initAdapter();
             }
-            if(what==SEND_COMMENT){
-                String success=response.get();
+            if (what == SEND_COMMENT) {
+                String success = response.get();
                 if (success.equals("success")) {
                     Toast.makeText(ChatDynamicActivity.this, "评论成功", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(ChatDynamicActivity.this, "评论失败", Toast.LENGTH_SHORT).show();
                 }
                 initCommentData();
+            }
+            if (what == ZAN) {
+                Toast.makeText(ChatDynamicActivity.this, "赞+1", Toast.LENGTH_SHORT).show();
             }
         }
 

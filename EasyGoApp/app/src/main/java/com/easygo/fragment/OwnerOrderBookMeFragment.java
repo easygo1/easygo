@@ -47,6 +47,7 @@ public class OwnerOrderBookMeFragment extends Fragment implements View.OnClickLi
     private TextView orderBookmeHistorybottom;
     public static final int NOHTTP_WHAT = 1;
     public static final int NOHTTP_WHAT_DEL = 2;
+    public static final int NOHTTP_WHAT_YES = 3;
     //定义适配器
     GsonOrderInfo mGsonOrderInfo = null;
     public List<Orders> mOrdersList = null;
@@ -126,6 +127,15 @@ public class OwnerOrderBookMeFragment extends Fragment implements View.OnClickLi
                }*/
                 mOrderFragmentAdapter.notifyDataSetChanged();
                 Log.e("zhihou ","4646");
+            }else if (what == NOHTTP_WHAT_YES) {
+                String result = response.get();
+                Log.e("chenggong",result+"");
+                //把JSON格式的字符串改为Student对象
+               /*if(result.equals("删除成功")){
+                   mOrderFragmentAdapter.notifyDataSetChanged();
+               }*/
+                mOrderFragmentAdapter.notifyDataSetChanged();
+                Log.e("zhihou ","4646");
             }
         }
 
@@ -166,6 +176,27 @@ public class OwnerOrderBookMeFragment extends Fragment implements View.OnClickLi
         mHousePhotoList.remove(position);
         OwnerOrderBookMeIngFragment ownerOrderBookMeIngFragment = (OwnerOrderBookMeIngFragment)mOrderFragmentAdapter.getItem(0);
         ownerOrderBookMeIngFragment.deleteOrder(position);
+    }
+    public void yesOneOrder(int order_id,int position){
+        Log.e("调用了，",order_id+"");
+        MyApplication myApplication = new MyApplication();
+        mUrl = myApplication.getUrl();
+        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+        mRequestQueue = NoHttp.newRequestQueue();
+        //创建请求对象
+        Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
+        //添加请求参数
+        request.add("methods", "yesOrders");
+        request.add("order_id", order_id);
+        /*
+         * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
+		 * request: 请求对象
+		 * onResponseListener 回调对象，接受请求结果
+		 */
+        mRequestQueue.add(NOHTTP_WHAT_YES, request, onResponseListener);
+        mOrdersList.get(position).setOrder_state("待付款");
+        OwnerOrderBookMeIngFragment ownerOrderBookMeIngFragment = (OwnerOrderBookMeIngFragment)mOrderFragmentAdapter.getItem(0);
+        ownerOrderBookMeIngFragment.yesOrder(position);
     }
     private void initViewPager() {
         fragments = new ArrayList<Fragment>();

@@ -36,10 +36,14 @@ public class OwnerOrderActivity extends AppCompatActivity implements View.OnClic
         //开始先显示第一个界面
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        //默认显示买模块，初始化买碎片
-        mOwnerOrderIBookFragment = new OwnerOrderIBookFragment();
-        mFragmentTransaction.add(R.id.owner_order_fragment, mOwnerOrderIBookFragment);
+        //默认显示预订我的模块，初始化预订我的碎片
+        mOwnerOrderBookMeFragment = new OwnerOrderBookMeFragment();
+        mFragmentTransaction.add(R.id.owner_order_fragment, mOwnerOrderBookMeFragment,"bookme");
         mFragmentTransaction.commit();
+        ownerOrderBookme.setBackgroundResource(R.drawable.owner_order_bookmebtn2);
+        ownerOrderBookme.setTextColor(getResources().getColor(R.color.order_white));
+        ownerOrderIbook.setBackgroundResource(R.drawable.owner_order_ibookbtn);
+        ownerOrderIbook.setTextColor(getResources().getColor(R.color.order_yellow));
     }
 
     private void addListeners() {

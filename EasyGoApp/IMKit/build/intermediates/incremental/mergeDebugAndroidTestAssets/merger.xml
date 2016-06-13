@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="debug"><source path="F:\easygo610\easygo\EasyGoApp\IMKit\build\intermediates\bundles\debug\assets"/></dataSet><dataSet config="main"><source path="F:\easygo610\easygo\EasyGoApp\IMKit\src\androidTest\assets"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="debug"><source path="F:\sharework\easygo3\easygo\EasyGoApp\IMKit\build\intermediates\bundles\debug\assets"/></dataSet><dataSet config="main"><source path="F:\sharework\easygo3\easygo\EasyGoApp\IMKit\src\androidTest\assets"/></dataSet></merger>
+>>>>>>> 0f49719369560b5f58aa9b00c5de5a2fbfecef88

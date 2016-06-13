@@ -71,6 +71,7 @@ import com.easygo.model.impl.user.IHouseCollectDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.easygo.model.impl.user.IUserHobbyDAOImpl;
 import com.easygo.model.impl.user.IUserLinkmanDAOImpl;
+import com.easygo.utils.Jdpush;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -374,6 +375,25 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write("success");
 			mPrintWriter.close();
 			break;
+		//增加浏览量
+		case "browse":
+			//接收服务端传过来的数据
+			int news_id_browse=Integer.valueOf(request.getParameter("news_id"));
+			//执行浏览量+1操作
+			newsdao = new INewsDAOImlp();
+			newsdao.updateBrowse(news_id_browse);
+			System.out.println(news_id_browse);
+			break;
+		//点赞
+		case "zan":
+			//接收服务端传过来的数据
+			int news_id_zan=Integer.valueOf(request.getParameter("news_id"));
+			//执行浏览量+1操作
+			newsdao = new INewsDAOImlp();
+			newsdao.updateZan(news_id_zan);
+			System.out.println("点赞成功");
+			System.out.println(news_id_zan);
+			break;
 		case "addUser":
 			break;
 		case "addUserSuccess":
@@ -630,7 +650,6 @@ public class AppServlet extends HttpServlet {
 					leavetime, total, tel, order_state, order_book_name);
 			// order_book_name无法传递，所以另外set去设置值
 			orders.setBook_name(order_book_name);
-
 			// 得到入住人信息
 			gson = new Gson();
 			type = new TypeToken<List<UserLinkman>>() {
@@ -660,24 +679,46 @@ public class AppServlet extends HttpServlet {
 			houseDateManage.setHouse_id(house_id);
 			houseDateManage.setDate_not_use(checktime);
 			houseDateManageDAO.addHouseDate(houseDateManage);
+			//根据房子id查询房主id,向房主推送消息
+			housedao = new IHouseDAOImpl();
+			house = new House();
+			house = housedao.findSpecHouseById(house_id);
+			Jdpush.sendPush(house.getUser_id(), "您有一条新的订单，请及时处理。");
 			break;
 		// 得到全部订单
 		case "getAllorder":
-
+			
 			break;
+		//用户取消订单
 		case "delOrders":
 			order_id = Integer.valueOf(request.getParameter("order_id"));
 			orderDAO = new IOrderDAOImpl();
-			boolean result1 = orderDAO.delOrders(order_id);
+			boolean result1 = orderDAO.updateOrderState(order_id, "已取消");
 			if (result1) {
-				mPrintWriter.write("删除成功");
+				mPrintWriter.write("取消成功");
 				mPrintWriter.close();
 			} else {
-				mPrintWriter.write("删除失败");
+				mPrintWriter.write("取消失败");
 				mPrintWriter.close();
 			}
 			break;
-
+		//用户确认订单
+		case "yesOrders":
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			orderDAO = new IOrderDAOImpl();
+			boolean yes = orderDAO.updateOrderState(order_id, "待付款");
+			if (yes) {
+				mPrintWriter.write("确认成功");
+				mPrintWriter.close();
+			} else {
+				mPrintWriter.write("确认失败");
+				mPrintWriter.close();
+			}
+			orders = new Orders();
+			orderDAO = new IOrderDAOImpl();
+			orders = orderDAO.findOrdersByorderid(order_id);
+			Jdpush.sendPush(orders.getUser_id(), "您的订单已被房主确认，请及时付款");
+			break;
 		case "assessokOrders":
 			order_id = Integer.valueOf(request.getParameter("order_id"));
 			assessDAO=new IAssessDAOImpl();
