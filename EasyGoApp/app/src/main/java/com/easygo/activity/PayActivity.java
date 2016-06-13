@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -172,6 +173,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
             // 支付失败,原因可能是用户中断支付操作,也可能是网络原因
             @Override
             public void fail(int code, String reason) {
+                Log.e("payfail",""+code);
 
                 // 当code为-2,意味着用户中断了操作
                 // code为-3意味着没有安装BmobPlugin插件

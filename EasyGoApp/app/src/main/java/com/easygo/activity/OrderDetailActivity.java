@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.easygo.adapter.OrderContactAdpter;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.gson.GsonOrderInfoAllDetail;
@@ -115,13 +116,16 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                         mFootOrderTextView.setText("去评价");
                         mConcelOrderLinearLayout.setVisibility(View.INVISIBLE);
                     }
+                    Glide.with(OrderDetailActivity.this)
+                            .load(housephoto.getHouse_photo_path())
+                            .into(mHousePhotoImageView);
                     mOrderStateTextView.setText(mOrders.getOrder_state());
                     mOrderTimeTextView.setText(mOrders.getOrder_time());
                     mCheckTiemTextView.setText(mOrders.getChecktime());
                     mCheckLeaveTextView.setText(mOrders.getLeavetime());
-                    // mOrderTotalTextView.setText(mOrders.get);
+                    mOrderTotalTextView.setText("" + mOrders.getTotal());
                     mHouseTypeTextView.setText(house.getHouse_style());
-                    mOrderSumTimeTextView.setText("" + mOrders.getTotal());
+                    mOrderSumTimeTextView.setText("共" + mOrders.getChecknum() + "晚");
                     mHouseUserNameTextView.setText(house_user.getUser_realname());
                     mHouseAddressTextView.setText(house.getHouse_address_province() + house.getHouse_address_city());
                     mBookNameEditText.setText(mOrders.getBook_name());
@@ -136,10 +140,11 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     Toast.makeText(OrderDetailActivity.this, result, Toast.LENGTH_SHORT).show();
                     break;
                 case WHAT_ISASSESSORDERS:
+
                     if (result.equals("已经评价")) {
+                        mFootOrderTextView.setText("已评价");
                         Toast.makeText(OrderDetailActivity.this, "该订单已经评价过了", Toast.LENGTH_SHORT).show();
-                    }
-                    if (result.equals("")) {
+                    } else if (result.equals("未评价")) {
                         Log.e("result", result);
                         Intent intent = new Intent();
                         intent.putExtra("house_photo", housephoto.getHouse_photo_path().toString());
@@ -147,7 +152,9 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                         intent.putExtra("house_id", housephoto.getHouse_id());
                         intent.setClass(OrderDetailActivity.this, OrderAssessActivity.class);
                         startActivity(intent);
+
                     }
+
                     break;
             }
         }
@@ -267,11 +274,11 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     mRequestQueue.add(WHAT_ISASSESSORDERS, request, mOnResponseListener);
                 }
                 if (mOrderStateTextView.getText().equals("待付款")) {
-                    Intent intent=new Intent();
-                    intent.putExtra("order_id",order_id);
-                    intent.putExtra("describe",house.getHouse_describe());
-                    intent.putExtra("price",mOrders.getTotal());
-                    intent.setClass(OrderDetailActivity.this,PayActivity.class);
+                    Intent intent = new Intent();
+                    intent.putExtra("order_id", order_id);
+                    intent.putExtra("describe", house.getHouse_describe() + "-" + house.getHouse_style());
+                    intent.putExtra("price", mOrders.getTotal());
+                    intent.setClass(OrderDetailActivity.this, PayActivity.class);
                     startActivity(intent);
                 }
                 break;

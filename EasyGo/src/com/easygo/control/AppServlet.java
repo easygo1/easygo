@@ -686,6 +686,10 @@ public class AppServlet extends HttpServlet {
 				//说明已经评价过了
 				mPrintWriter.write("已经评价");
 				mPrintWriter.close();
+			}else{
+				//说明已经评价过了
+				mPrintWriter.write("未评价");
+				mPrintWriter.close();
 			}
 			break;
 		case "getorderdetailbyorderid":

@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <merger version="3"><dataSet config="main"><source path="F:\easygo610\easygo\EasyGoApp\IMKit\src\main\assets"/></dataSet><dataSet config="release"><source path="F:\easygo610\easygo\EasyGoApp\IMKit\src\release\assets"/></dataSet></merger>
-=======
-<merger version="3"><dataSet config="main"><source path="F:\TestArea\GitSpace\easygo\EasyGoApp\IMKit\src\main\assets"/></dataSet><dataSet config="release"><source path="F:\TestArea\GitSpace\easygo\EasyGoApp\IMKit\src\release\assets"/></dataSet></merger>
->>>>>>> 5a1a2f9a80a226c2d8d3f10dfa2cadc756b56163
