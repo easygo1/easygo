@@ -160,9 +160,7 @@ public class OwnerOrderIBookFragment extends Fragment implements View.OnClickLis
 		 * onResponseListener 回调对象，接受请求结果
 		 */
         mRequestQueue.add(NOHTTP_WHAT_DEL, request, onResponseListener);
-        mOrdersList.remove(position);
-        mHouseList.remove(position);
-        mHousePhotoList.remove(position);
+        mOrdersList.get(position).setOrder_state("已取消");
         OwnerOrderIBookIngFragment ownerOrderIBookIngFragment = (OwnerOrderIBookIngFragment)mOrderFragmentAdapter.getItem(0);
         ownerOrderIBookIngFragment.deleteOrder(position);
     }

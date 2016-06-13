@@ -74,12 +74,13 @@ public class CustomOrderAdapter extends BaseAdapter {
         TextView orderTotal;
         LinearLayout orderDelte;
         LinearLayout orderUpdate;
+        TextView orderUpdateText;
         LinearLayout orderLinerlayout;
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.order_list_item, null);
             viewHolder = new ViewHolder();
@@ -94,6 +95,7 @@ public class CustomOrderAdapter extends BaseAdapter {
             viewHolder.orderImageView = (ImageView) convertView.findViewById(R.id.order_imageView);
             viewHolder.orderDelte = (LinearLayout) convertView.findViewById(R.id.order_delte);
             viewHolder.orderUpdate = (LinearLayout) convertView.findViewById(R.id.order_update);
+            viewHolder.orderUpdateText = (TextView) convertView.findViewById(R.id.order_update_text);
             viewHolder.orderLinerlayout = (LinearLayout) convertView.findViewById(R.id.order_linerlayout);
             //把当前的控件缓存到布局视图中
             convertView.setTag(viewHolder);
@@ -113,19 +115,37 @@ public class CustomOrderAdapter extends BaseAdapter {
         viewHolder.orderSumtime.setText("共" + days + "晚");
         viewHolder.orderRoomtype.setText(mHouselist.get(position).getHouse_style());
         viewHolder.orderTotal.setText(money + "");
+        if (mOrdersList.get(position).getOrder_state().equals("待付款")){
+            viewHolder.orderUpdateText.setText("去付款");
+        }
         //viewHolder.orderImageView.setImageResource(order.getImage());
         Glide.with(mContext).load(mHousePhotoList.get(position).getHouse_photo_path()).into(viewHolder.orderImageView);
         viewHolder.orderDelte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDelDialog(position);
+                if (mOrdersList.get(position).getOrder_state().equals("待付款") || mOrdersList.get(position).getOrder_state().equals("待确认")){
+                    showDelDialog(position);
+                }else {
+                    Toast.makeText(mContext, "您不可以取消订单", Toast.LENGTH_SHORT).show();
+                }
                 //Toast.makeText(mContext, "点击了" + position, Toast.LENGTH_SHORT).show();
             }
         });
         viewHolder.orderUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "点击了更改订单" , Toast.LENGTH_SHORT).show();
+               // Toast.makeText(mContext, "点击了更改订单" , Toast.LENGTH_SHORT).show();
+                if (viewHolder.orderUpdateText.getText().equals("去付款")){
+                    Intent intent = new Intent();
+                    intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
+                    intent.setClass(mContext, OrderDetailActivity.class);
+                    mContext.startActivity(intent);
+                }else {
+                    Intent intent = new Intent();
+                    intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
+                    intent.setClass(mContext, OrderDetailActivity.class);
+                    mContext.startActivity(intent);
+                }
             }
         });
         /*viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
