@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.activity.R;
+import com.easygo.activity.UserLinkmanActivity;
 import com.easygo.beans.user.UserLinkman;
 
 import java.util.List;
@@ -73,26 +74,30 @@ public class UserLinkmanAdapter extends BaseAdapter {
 
         viewHolder.image_choose
                 .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDelDialog();
-            }
-        });
+                    @Override
+                    public void onClick(View v) {
+                        //根据点击的id去删除
+                        showDelDialog(mList.get(position).getUser_linkman_id(),position);
+                    }
+                });
 
         return convertView;
     }
-    private void showDelDialog(){
+
+    private void showDelDialog(final int user_linkman_id, final int position) {
         //先new出一个监听器，设置好监听
-        DialogInterface.OnClickListener dialogOnclicListener=new DialogInterface.OnClickListener(){
+        DialogInterface.OnClickListener dialogOnclicListener = new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                switch(which){
+                switch (which) {
                     case Dialog.BUTTON_POSITIVE:
-                        Toast.makeText(mContext, "确认" + which, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(mContext, "确认" + which, Toast.LENGTH_SHORT).show();
+                        UserLinkmanActivity ula = (UserLinkmanActivity) mContext;
+                        ula.deleteLinkman(user_linkman_id,position);
                         break;
                     case Dialog.BUTTON_NEGATIVE:
-                        Toast.makeText(mContext, "取消" + which, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(mContext, "取消" + which, Toast.LENGTH_SHORT).show();
                         break;
                     /*case Dialog.BUTTON_NEUTRAL:
                         Toast.makeText(mContext, "忽略" + which, Toast.LENGTH_SHORT).show();
@@ -101,11 +106,11 @@ public class UserLinkmanAdapter extends BaseAdapter {
             }
         };
         //dialog参数设置
-        AlertDialog.Builder builder=new AlertDialog.Builder(mContext);  //先得到构造器
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);  //先得到构造器
         builder.setTitle("提示"); //设置标题
         builder.setMessage("是否确认删除?"); //设置内容
 //        builder.setIcon(R.mipmap.ic_launcher);//设置图标，图片id即可
-        builder.setPositiveButton("确认",dialogOnclicListener);
+        builder.setPositiveButton("确认", dialogOnclicListener);
         builder.setNegativeButton("取消", dialogOnclicListener);
 //        builder.setNeutralButton("忽略", dialogOnclicListener);
         builder.create().show();

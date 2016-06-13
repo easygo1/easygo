@@ -23,4 +23,7 @@ public interface IUserLinkmanDAO {
 
 	// 查找某个用户的所有联系人（通过某个用户的id）
 	public abstract List<UserLinkman> findAllUserLinkmanById(int user_id);
+
+	// 添加某个用户联系人并且返回当前sql中的id
+	public abstract int addUserLinkmanReturnId(UserLinkman userlinkman);
 }

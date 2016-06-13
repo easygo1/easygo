@@ -1,12 +1,15 @@
 package com.easygo.activity;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,8 +22,15 @@ import com.easygo.fragment.MeFragment;
 import com.easygo.fragment.SearchFragment;
 import com.easygo.view.MoreWindow;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.Set;
 
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    SharedPreferences mSharedPreferences;
+    public static final String TYPE = "type";
+    int user_id;
     LinearLayout mAllLayout, mHomeLayout, mSearchLayout, mPlusLayout, mChatLayout, mMeLayout;
     ImageView mHomeImageView, mSearchImageView, mChatImageView, mMeImageView;
     TextView mHomeTextView, mSearchTextView, mChatTextView, mMeTextView;
@@ -40,7 +50,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mSharedPreferences = MainActivity.this.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        user_id = mSharedPreferences.getInt("user_id", 0);
+        JPushInterface.init(this);
+        JPushInterface.setDebugMode(true);
+        JPushInterface.setAlias(this, user_id+"", new TagAliasCallback() {
+            @Override
+            public void gotResult(int i, String s, Set<String> set) {
+                Log.e("jpush","success");
+            }
+        });
         initViews();
         addListeners();
         //默认显示买模块，修改图标和文字颜色为选中颜色

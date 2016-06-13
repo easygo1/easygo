@@ -6,19 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.adapter.UserLinkmanAdapter;
 import com.easygo.application.MyApplication;
-import com.easygo.beans.gson.GsonAboutHouseDetail;
 import com.easygo.beans.user.UserLinkman;
 import com.easygo.view.WaitDialog;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
 import com.yolanda.nohttp.Request;
@@ -26,8 +22,6 @@ import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -38,9 +32,7 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
     public static final int USERLINKMAN_ADD_WHAT = 1;
     //自定义一个dialog
     private WaitDialog mDialog;
-
-    List<UserLinkman> mList = null;
-    UserLinkmanAdapter mAdapter;
+    ImageView mBackImageView;
     TextView mTitleTextView, mCommitTextView;
     EditText mNameEditText, mIdEditText;
     String mPath, mRealName, mIdNumber;
@@ -62,6 +54,7 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
 
     private void initView() {
         mDialog = new WaitDialog(this);//提示框
+        mBackImageView = (ImageView) findViewById(R.id.back);
         mTitleTextView = (TextView) findViewById(R.id.title_text);
         mNameEditText = (EditText) findViewById(R.id.me_user_linkman_name);
         mIdEditText = (EditText) findViewById(R.id.me_user_linkman_number);
@@ -70,6 +63,7 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
     }
 
     private void addListeners() {
+        mBackImageView.setOnClickListener(this);
         mNameEditText.setOnClickListener(this);
         mIdEditText.setOnClickListener(this);
         mCommitTextView.setOnClickListener(this);
@@ -102,10 +96,13 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
         public void onSucceed(int what, Response<String> response) {
             switch (what) {
                 case USERLINKMAN_ADD_WHAT:
+                    String returnid = response.get();
+                    int user_linkman_id = Integer.parseInt(returnid);
                     //添加一个入住人成功，成功后，回到跳转过来的页面，并把当前的入住人返回
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
                     mUserLinkman = new UserLinkman();
+                    mUserLinkman.setUser_linkman_id(user_linkman_id);
                     mUserLinkman.setUser_id(user_id);
                     mUserLinkman.setLinkman_name(mRealName);
                     mUserLinkman.setIdcard(mIdNumber);
@@ -143,6 +140,9 @@ public class UserLinkmanAddActivity extends AppCompatActivity implements View.On
                 //点击确定后，提交到服务器
                 uploadData();
 //                Toast.makeText(UserLinkmanAddActivity.this, mIdNumber + ".." + mRealName, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.back:
+                finish();
                 break;
         }
     }

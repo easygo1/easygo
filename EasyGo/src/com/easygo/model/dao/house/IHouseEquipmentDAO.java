@@ -33,5 +33,8 @@ public interface IHouseEquipmentDAO {
 
 	// 根据设施id，连接查询设施
 	public abstract List<HouseEquipmentName> selectEquipmentName(int house_id);
+	
+	// 删除某个房源的所有房源设施
+	public abstract boolean deleteHouseEquipmentByHouseid(int house_id);
 
 }

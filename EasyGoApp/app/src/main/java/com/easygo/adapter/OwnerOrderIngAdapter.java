@@ -122,7 +122,8 @@ public class OwnerOrderIngAdapter extends BaseAdapter {
         viewHolder.orderYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "点击了确认订单" , Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(mContext, "点击了确认订单" , Toast.LENGTH_SHORT).show();
+                showYesDialog(position);
             }
         });
         /*viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
@@ -149,7 +150,7 @@ public class OwnerOrderIngAdapter extends BaseAdapter {
                         // ownerOrderIBookFragment.deleteOneOrder(mOrdersList.get(position).getOrder_id());
                         OwnerOrderActivity ownerOrderActivity = (OwnerOrderActivity)mContext;
                         Log.e("fragment11",ownerOrderActivity.getSupportFragmentManager().getFragments().toString()+"");
-                        OwnerOrderBookMeFragment ownerOrderBookMeFragment = (OwnerOrderBookMeFragment)ownerOrderActivity.getSupportFragmentManager().getFragments().get(2);
+                        OwnerOrderBookMeFragment ownerOrderBookMeFragment = (OwnerOrderBookMeFragment)ownerOrderActivity.getSupportFragmentManager().findFragmentByTag("bookme");
                         ownerOrderBookMeFragment.deleteOneOrder(mOrdersList.get(position).getOrder_id(),position);
                         break;
                     case Dialog.BUTTON_NEGATIVE:
@@ -165,6 +166,44 @@ public class OwnerOrderIngAdapter extends BaseAdapter {
         AlertDialog.Builder builder=new AlertDialog.Builder(mContext);  //先得到构造器
         builder.setTitle("提示"); //设置标题
         builder.setMessage("是否确认取消该订单?"); //设置内容
+//        builder.setIcon(R.mipmap.ic_launcher);//设置图标，图片id即可
+        builder.setPositiveButton("确认",dialogOnclicListener);
+        builder.setNegativeButton("取消", dialogOnclicListener);
+//        builder.setNeutralButton("忽略", dialogOnclicListener);
+        builder.create().show();
+    }
+    private void showYesDialog(final int position){
+        //先new出一个监听器，设置好监听
+        DialogInterface.OnClickListener dialogOnclicListener=new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch(which){
+                    case Dialog.BUTTON_POSITIVE:
+                        //点击确认进行确认订单
+                        /*CustomOrderActivity customOrderActivity = (CustomOrderActivity) mContext;
+                        customOrderActivity.deleteOneOrder(mOrdersList.get(position).getOrder_id());*/
+                        // OwnerOrderIBookFragment ownerOrderIBookFragment = new OwnerOrderIBookFragment();
+                        // ownerOrderIBookFragment.deleteOneOrder(mOrdersList.get(position).getOrder_id());
+                        OwnerOrderActivity ownerOrderActivity = (OwnerOrderActivity)mContext;
+                        Log.e("fragment11",ownerOrderActivity.getSupportFragmentManager().getFragments().toString()+"");
+                        OwnerOrderBookMeFragment ownerOrderBookMeFragment = (OwnerOrderBookMeFragment)ownerOrderActivity.getSupportFragmentManager().findFragmentByTag("bookme");
+                        Log.e("5656",""+mOrdersList.get(position).getOrder_id()+"---"+position);
+                        ownerOrderBookMeFragment.yesOneOrder(mOrdersList.get(position).getOrder_id(),position);
+                        break;
+                    case Dialog.BUTTON_NEGATIVE:
+                        //Toast.makeText(mContext, "取消" + which, Toast.LENGTH_SHORT).show();
+                        break;
+                    /*case Dialog.BUTTON_NEUTRAL:
+                        Toast.makeText(mContext, "忽略" + which, Toast.LENGTH_SHORT).show();
+                        break;*/
+                }
+            }
+        };
+        //dialog参数设置
+        AlertDialog.Builder builder=new AlertDialog.Builder(mContext);  //先得到构造器
+        builder.setTitle("提示"); //设置标题
+        builder.setMessage("是否确认该订单?"); //设置内容
 //        builder.setIcon(R.mipmap.ic_launcher);//设置图标，图片id即可
         builder.setPositiveButton("确认",dialogOnclicListener);
         builder.setNegativeButton("取消", dialogOnclicListener);

@@ -34,9 +34,9 @@ public class IHouseDAOImpl implements IHouseDAO {
 		// TODO Auto-generated method stub
 		boolean result = false;
 		connection = C3P0Utils.getConnection();
-		String sql = "INSERT INTO house(user_id,house_title,house_style,house_address_province,house_address_city," +
-				"house_address_lng,house_address_lat,house_most_num,house_one_price,house_add_price,house_describe," +
-				"house_traffic,house_limit_sex,house_stay_time) VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO house(user_id,house_title,house_style,house_address_province,house_address_city,"
+				+ "house_address_lng,house_address_lat,house_most_num,house_one_price,house_add_price,house_describe,"
+				+ "house_traffic,house_limit_sex,house_stay_time) VALUE(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, house.getUser_id());
@@ -92,7 +92,33 @@ public class IHouseDAOImpl implements IHouseDAO {
 	public boolean updateHouse(int house_id, House house) {
 		// TODO Auto-generated method stub
 		connection = C3P0Utils.getConnection();
-		return false;
+		String sql = "update house set house_title=?,house_describe=?,house_style=?,house_address_province=?,house_address_city=?,house_address_lng=?,house_address_lat=?,house_traffic=?,house_most_num=?,house_one_price=?,house_add_price=?,house_limit_sex=?,house_stay_time=? where house_id=?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, house.getHouse_title());
+			statement.setString(2, house.getHouse_describe());
+			statement.setString(3, house.getHouse_style());
+			statement.setString(4, house.getHouse_address_province());
+			statement.setString(5, house.getHouse_address_city());
+			statement.setDouble(6, house.getHouse_address_lng());
+			statement.setDouble(7, house.getHouse_address_lat());
+			statement.setString(8, house.getHouse_traffic());
+			statement.setInt(9, house.getHouse_most_num());
+			statement.setDouble(10, house.getHouse_one_price());
+			statement.setDouble(11, house.getHouse_add_price());
+			statement.setString(12, house.getHouse_limit_sex());
+			statement.setInt(13, house.getHouse_stay_time());
+			statement.setInt(14, house_id);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally{
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		
 	}
 
 	@Override
@@ -321,7 +347,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 
 	@Override
 	public int findUseridByHouseid(int house_id) {
-		int user_id=0;
+		int user_id = 0;
 		connection = C3P0Utils.getConnection();
 		String sql = "select user_id from house where house_id =?";
 		try {
@@ -338,6 +364,13 @@ public class IHouseDAOImpl implements IHouseDAO {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
 		return user_id;
+	}
+
+	@Override
+	public List<House> sortHouse(String house_address_city, int cur,
+			String style_limit, String sex_limit, String price_limit) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

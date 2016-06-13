@@ -70,7 +70,7 @@ public class IUserLinkmanDAOImpl implements IUserLinkmanDAO {
 			statement.setString(1, userlinkman.getLinkman_name());
 			statement.setString(2, userlinkman.getIdcard());
 			statement.setInt(3, userlinkman.getUser_linkman_id());
-			statement.executeUpdate(sql);
+			statement.executeUpdate();
 			result = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -128,6 +128,33 @@ public class IUserLinkmanDAOImpl implements IUserLinkmanDAO {
 			C3P0Utils.close(null, statement, connection);
 		}
 		return result;
+	}
+
+	@Override
+	public int addUserLinkmanReturnId(UserLinkman userlinkman) {
+		// TODO Auto-generated method stub
+		int linkmanId = 0;
+		connection = C3P0Utils.getConnection();
+		// 向表中加入该用户
+		String sql = "INSERT INTO user_linkman (user_id,linkman_name,idcard) VALUES(?,?,?)";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, userlinkman.getUser_id());
+			statement.setString(2, userlinkman.getLinkman_name());
+			statement.setString(3, userlinkman.getIdcard());
+			statement.executeUpdate();
+			resultSet = statement.executeQuery("SELECT LAST_INSERT_ID()");
+			if (resultSet.next()) {
+				// 获取到当前插入数据时的主键
+				linkmanId = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(null, statement, connection);
+		}
+		return linkmanId;
 	}
 
 }

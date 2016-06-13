@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.ListView;
 
 import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.R;
-import com.easygo.adapter.CustomOrderAdapter;
 import com.easygo.adapter.OwnerOrderIBookAdapter;
 import com.easygo.beans.gson.GsonOrderInfo;
 import com.easygo.beans.house.House;
@@ -57,25 +55,25 @@ public class OwnerOrderIBookIngFragment extends Fragment {
         mHouseList = new ArrayList<>();
         mHousePhotoList = new ArrayList<>();
 
-        mOwnerOrderIBookAdapter = new OwnerOrderIBookAdapter(getActivity(), mOrdersList,mHouseList,mHousePhotoList);
+        mOwnerOrderIBookAdapter = new OwnerOrderIBookAdapter(getActivity(), mOrdersList, mHouseList, mHousePhotoList);
         mListView.setAdapter(mOwnerOrderIBookAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
-                intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
+                intent.putExtra("order_id", mOrdersList.get(position).getOrder_id());
                 intent.setClass(getActivity(), OrderDetailActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    public void initData(){
+    public void initData() {
         OwnerOrderIBookFragment ownerOrderIBookFragment = (OwnerOrderIBookFragment) getParentFragment();
         //将不是已完成状态的订单加入list
-        if(ownerOrderIBookFragment.mOrdersList.size()>0){
-            for (int i = 0; i < ownerOrderIBookFragment.mOrdersList.size(); i++){
-                if (!ownerOrderIBookFragment.mOrdersList.get(i).getOrder_state().equals("已完成")){
+        if (ownerOrderIBookFragment.mOrdersList.size() > 0) {
+            for (int i = 0; i < ownerOrderIBookFragment.mOrdersList.size(); i++) {
+                if (!ownerOrderIBookFragment.mOrdersList.get(i).getOrder_state().equals("已完成")) {
                     mOrdersList.add(ownerOrderIBookFragment.mOrdersList.get(i));
                     mHouseList.add(ownerOrderIBookFragment.mHouseList.get(i));
                     mHousePhotoList.add(ownerOrderIBookFragment.mHousePhotoList.get(i));
@@ -84,12 +82,14 @@ public class OwnerOrderIBookIngFragment extends Fragment {
         }
         mOwnerOrderIBookAdapter.notifyDataSetChanged();
     }
-    public void deleteOrder(int position){
+
+    public void deleteOrder(int position) {
         mOrdersList.remove(position);
         mHouseList.remove(position);
         mHousePhotoList.remove(position);
         mOwnerOrderIBookAdapter.notifyDataSetChanged();
     }
+
     private void initViews() {
         mListView = (ListView) mOrederIngView.findViewById(R.id.order_custom_inglist);
     }

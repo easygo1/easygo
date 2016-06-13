@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.gson.GsonAboutHouseManage;
 import com.easygo.beans.house.HouseDateManage;
+import com.easygo.view.BookCalendar;
 import com.easygo.view.ManageCalendar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -53,7 +54,7 @@ public class DateShowActivity extends AppCompatActivity
     HouseDateManage mHouseDateManage;
     //布局相关
     LinearLayout ll;
-    ManageCalendar c1;
+    BookCalendar c1;
     Date date;
     String nowday;
     long nd = 1000 * 24L * 60L * 60L;//一天的毫秒数
@@ -61,7 +62,7 @@ public class DateShowActivity extends AppCompatActivity
     //存放这一天是否被选中了
 //    List<String> mDateList;
     //标题栏的两个按钮
-    TextView mSaveTextView,mTitleTextView;
+    TextView mSaveTextView, mTitleTextView;
     ImageView mBackImageView;
 
     @Override
@@ -159,7 +160,7 @@ public class DateShowActivity extends AppCompatActivity
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         //为每一个小方格设置监听（每一天）
         for (int i = 0; i < listDate.size(); i++) {
-            c1 = new ManageCalendar(this);
+            c1 = new BookCalendar(this);
             c1.setLayoutParams(params);
             Date date = null;
             try {
@@ -267,6 +268,7 @@ public class DateShowActivity extends AppCompatActivity
                 break;
         }
     }
+
     //根据当前日期，向后数三个月（若当前day不是1号，为满足至少90天，则需要向后数4个月）
     @SuppressLint("SimpleDateFormat")
     public List<String> getDateList() {

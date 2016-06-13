@@ -10,23 +10,23 @@
 
         <RadioButton
             android:id="@+id/house_info"
-            style="@style/house_radio_button"
+            style="@style/house_radio_button2"
             android:checked="true"
             android:text="房间信息"/>
 
         <RadioButton
             android:id="@+id/house_rule"
-            style="@style/house_radio_button"
+            style="@style/house_radio_button2"
             android:text="规则保障"/>
 
         <RadioButton
             android:id="@+id/house_owner_info"
-            style="@style/house_radio_button"
+            style="@style/house_radio_button2"
             android:text="房主信息"/>
 
         <RadioButton
             android:id="@+id/house_assess"
-            style="@style/house_radio_button"
+            style="@style/house_radio_button2"
             android:text="评价"/>
     </RadioGroup>
 </LinearLayout>

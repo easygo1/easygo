@@ -73,7 +73,7 @@ public class IHouseEquipmentDAOImpl implements IHouseEquipmentDAO {
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				equipment.setEquipment_id(resultSet.getInt(1));
-
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -133,5 +133,25 @@ public class IHouseEquipmentDAOImpl implements IHouseEquipmentDAO {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
 		return nameList;
+	}
+
+	@Override
+	public boolean deleteHouseEquipmentByHouseid(int house_id) {
+		// TODO Auto-generated method stub
+		connection = C3P0Utils.getConnection();
+		String sql = "delete from house_equipment where house_id = ?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, house_id);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally{
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		
 	}
 }
