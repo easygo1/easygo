@@ -87,8 +87,11 @@
         <item>可议</item>
         <item>1天</item>
         <item>2天</item>
-        <item>一周内</item>
-        <item>一周+</item>
+        <item>3天</item>
+        <item>4天</item>
+        <item>5天</item>
+        <item>6天</item>
+        <item>7天</item>
     </string-array>
     <!--个人信息-->
     <string-array name="sex">

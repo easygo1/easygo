@@ -164,6 +164,7 @@ public class AppServlet extends HttpServlet {
 	// 存每个房源评价的数量
 	List<Integer> assessList;
 	List<Assess> allAssessList;// 详细的评价
+	List<Integer> starNumList;// 星级
 	Assess assess;
 	// 常用入住人相关
 	List<UserLinkman> userLinkmanList;
@@ -830,7 +831,6 @@ public class AppServlet extends HttpServlet {
 		case "querySort":
 
 			// 根据城市查询所有房源，然后对查到的房源进行排序
-			// 如果类型不为空，未完成
 			String house_address_city2 = request.getParameter("city");
 			// 页码
 			String cur2 = request.getParameter("cur");
@@ -840,15 +840,19 @@ public class AppServlet extends HttpServlet {
 			String sex_limit = request.getParameter("sex_limit");
 			// 价格排序
 			String price_limit = request.getParameter("price_limit");
+			// 天数
+			String stay_limit = request.getParameter("stay_limit");
 
 			// 用户id
 			user_id = Integer.parseInt(request.getParameter("userid"));
 
 			houseList = new ArrayList<House>();
 			housedao = new IHouseDAOImpl();
+			// System.out.println(stay_limit + "+++++++");
 			// 得到了所有该城市房源
-			houseList = housedao.findSpecHouseByCity(house_address_city2,
-					Integer.parseInt(cur2));
+			houseList = housedao.sortHouse(house_address_city2,
+					Integer.parseInt(cur2), style_limit, sex_limit,
+					price_limit, stay_limit);
 			// System.out.println(houseList.get(1).getHouse_address_city());
 			// 得到房源的图片
 			housePhotoDAO = new IHousePhotoDAOImpl();
@@ -859,6 +863,7 @@ public class AppServlet extends HttpServlet {
 			// 得到房源的评价
 			assessDAO = new IAssessDAOImpl();
 			assessList = new ArrayList<>();
+			starNumList = new ArrayList<>();
 			// 得到用户的收藏
 			houseCollectDAO = new IHouseCollectDAOImpl();
 
@@ -869,19 +874,31 @@ public class AppServlet extends HttpServlet {
 						.getHouse_id());
 				housePhotoList.add(housePhoto);
 				// 房源的评价的数量
-
-				assessList.add(assessDAO.selectAllAssess(house.getHouse_id())
-						.size());
+				int size = assessDAO.selectAllAssess(house.getHouse_id())
+						.size();
+				assessList.add(size);
 				// 用户List
 				user = userdao.findSpecUserById(house.getUser_id());
 				userList.add(user);
+				// 星级
+				int starNum = 0;
+				for (Assess a : assessDAO.selectAllAssess(house.getHouse_id())) {
+					starNum += a.getStar();
+				}
+				// （强转为整型，以防出错）
+				if (size != 0) {
+					starNum = starNum / size;
+				}
+				// System.out.println("打出来看看" + starNum);
+				starNumList.add(starNum);
 			}
 			// 用户收藏
 			houseCollectList = houseCollectDAO
 					.findHouseCollectByUserId(user_id);
 
 			GsonAboutHouse gsonAboutHouse2 = new GsonAboutHouse(houseList,
-					userList, housePhotoList, assessList, houseCollectList);
+					userList, housePhotoList, assessList, houseCollectList,
+					starNumList);
 
 			gson = new Gson();
 			result = gson.toJson(gsonAboutHouse2);
@@ -942,6 +959,10 @@ public class AppServlet extends HttpServlet {
 					house, housePhotoList, isCollected, houseEquipmentNameList,
 					user);
 			gson = new Gson();
+			/*
+			 * System.out.println(houseEquipmentNameList.get(0)
+			 * .getEquipment_name());
+			 */
 			result = gson.toJson(gsonAboutHouseDetail);
 			mPrintWriter.write(result);
 			mPrintWriter.close();

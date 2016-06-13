@@ -4,5 +4,4 @@
           android:state_checked="false"/>
     <item android:drawable="@drawable/radio_bg_shape"
           android:state_checked="true"/>
-
 </selector>
