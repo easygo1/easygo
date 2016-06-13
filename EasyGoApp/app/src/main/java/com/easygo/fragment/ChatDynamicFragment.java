@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,8 @@ public class ChatDynamicFragment extends Fragment {
 
     //请求对象
     public static final int DYNAMIC = 1;
+    public static final int BROWSE = 2;
+
     //自定义一个dialog
     private WaitDialog mDialog;
     /**
@@ -95,12 +98,28 @@ public class ChatDynamicFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), ChatDynamicActivity.class);
                 Bundle mBundle = new Bundle();
                 mBundle.putSerializable("choosedynamic", (Serializable) commentDataList.get(position-1));
+
                 intent.putExtras(mBundle);
+                //当被点击时，进行浏览量+1
+                browseamount(commentDataList.get(position-1).getNews_id());
                 startActivity(intent);
             }
         });
 
         return mChatDynamicView;
+    }
+    //打开动态具体信息，浏览量进行+1
+    private void browseamount(int news_id) {
+        Log.e("点击的动态id是：",news_id+"");
+        //向服务器发出请求
+        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+        mRequestQueue = NoHttp.newRequestQueue();
+        // 创建请求对象
+        Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.POST);
+        //请求服务器获取动态表中的所有动态
+        request.add("methods", "browse");
+        request.add("news_id",news_id);
+        mRequestQueue.add(BROWSE, request, onResponseListener);
     }
 
     private void initUrl() {
@@ -212,10 +231,12 @@ public class ChatDynamicFragment extends Fragment {
                 Gson gson = new Gson();
                 commentDataList = gson.fromJson(result, new TypeToken<List<CommentData>>() {
                 }.getType());
-                //Log.e("解析后", commentDataList.toString());
+                Log.e("解析后", commentDataList.toString());
                 //添加到适配器
                 initAdapter();
-
+            }else if(what==BROWSE){
+                //添加成功直接刷新适配器
+                initAdapter();
             }
         }
 

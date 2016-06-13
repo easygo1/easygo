@@ -1,14 +1,13 @@
 package com.easygo.fragment;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import  android.support.v4.app.FragmentTransaction;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
         type = mSharedPreferences.getInt("type",0);
         //type为0表示未登录状态
         if(type ==0 ){
-            mChatView =inflater.inflate(R.layout.fragment_chat_nologin,null);
+            mChatView =inflater.inflate(R.layout.fragment_chat_nologin,null );
             initNoLoginViews();
             addNoLoginListeners();
 
@@ -60,7 +59,6 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
             initChatView();
             addChatListeners();
             initChatDefault();
-
         }
         return mChatView ;
     }

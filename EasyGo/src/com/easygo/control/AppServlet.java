@@ -370,6 +370,25 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write("success");
 			mPrintWriter.close();
 			break;
+		//增加浏览量
+		case "browse":
+			//接收服务端传过来的数据
+			int news_id_browse=Integer.valueOf(request.getParameter("news_id"));
+			//执行浏览量+1操作
+			newsdao = new INewsDAOImlp();
+			newsdao.updateBrowse(news_id_browse);
+			System.out.println(news_id_browse);
+			break;
+		//点赞
+		case "zan":
+			//接收服务端传过来的数据
+			int news_id_zan=Integer.valueOf(request.getParameter("news_id"));
+			//执行浏览量+1操作
+			newsdao = new INewsDAOImlp();
+			newsdao.updateZan(news_id_zan);
+			System.out.println("点赞成功");
+			System.out.println(news_id_zan);
+			break;
 		case "addUser":
 			break;
 		case "addUserSuccess":

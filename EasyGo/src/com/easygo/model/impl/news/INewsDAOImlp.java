@@ -29,6 +29,7 @@ public class INewsDAOImlp implements INewsDAO {
 	INewsPhotoDAO inewphotodao;
 	List<String> news_photos;
 	List<News> newslist;
+
 	@Override
 	public boolean addNews(News news) {
 		inewphotodao = new INewsPhotoDAOImpl();
@@ -53,7 +54,8 @@ public class INewsDAOImlp implements INewsDAO {
 
 			for (int i = 0; news.getPhoto_path().size() > i; i++) {
 				// 向数据库插入图片
-				System.out.println("向数据库中插入第" +i+"条数据"+ news.getPhoto_path().get(i));
+				System.out.println("向数据库中插入第" + i + "条数据"
+						+ news.getPhoto_path().get(i));
 				inewphotodao.addNewsPhoto(id, news.getPhoto_path().get(i));
 			}
 
@@ -79,67 +81,104 @@ public class INewsDAOImlp implements INewsDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public List<News> findSpecNews() {
 		// TODO Auto-generated method stub
 		/***
 		 * 1.查找出news表中news_id和news_sender_id(一条查询语句返回两个数据)
 		 * 2.拿到这些数据对news_photo表和user表进行查询，返回动态图片地址，昵称或者手机号，头像
-		 * 3.将以上查找好的数据存入动态的javabean中	
+		 * 3.将以上查找好的数据存入动态的javabean中
 		 */
-		News news=null;
-		newslist=new ArrayList<>(); 
+		News news = null;
+		newslist = new ArrayList<>();
 		connection = C3P0Utils.getConnection();
-		//1.查找出news表中news_id和news_sender_id(一条查询语句返回两个数据)
+		// 1.查找出news表中news_id和news_sender_id(一条查询语句返回两个数据)
 		String sql1 = "SELECT * FROM news order by news_id desc;";
-		//2.拿到这些数据对news_photo表和，返回动态图片地址，
+		// 2.拿到这些数据对news_photo表和，返回动态图片地址，
 		String sql2 = "SELECT news_path FROM news_photo WHERE news_id=?;";
-		//3.user表进行查询，昵称或者手机号，头像
+		// 3.user表进行查询，昵称或者手机号，头像
 		String sql3 = "SELECT user_nickname,user_photo FROM USER WHERE user_id=?;";
-		//4.执行这些对数据库的操作
+		// 4.执行这些对数据库的操作
 		try {
-			//执行第一条查询语句
+			// 执行第一条查询语句
 			statement = connection.prepareStatement(sql1);
-			resultSet1=statement.executeQuery();
-			while(resultSet1.next()){
-				int news_id=resultSet1.getInt(1);
-				int news_sender_id=resultSet1.getInt(2);
-				String news_content=resultSet1.getString(3);
-				String news_time=resultSet1.getString(4);
-				int news_stars=resultSet1.getInt(5);
-				int news_views=resultSet1.getInt(6);
-				//执行第二条查询语句
+			resultSet1 = statement.executeQuery();
+			while (resultSet1.next()) {
+				int news_id = resultSet1.getInt(1);
+				int news_sender_id = resultSet1.getInt(2);
+				String news_content = resultSet1.getString(3);
+				String news_time = resultSet1.getString(4);
+				int news_stars = resultSet1.getInt(5);
+				int news_views = resultSet1.getInt(6);
+				// 执行第二条查询语句
 				statement = connection.prepareStatement(sql2);
 				statement.setInt(1, news_id);
-				resultSet2=statement.executeQuery();
-				news_photos=new ArrayList<>();
-				while(resultSet2.next()){
-					String news_photo=resultSet2.getString(1);
-					//将查询到的语句放入集合
+				resultSet2 = statement.executeQuery();
+				news_photos = new ArrayList<>();
+				while (resultSet2.next()) {
+					String news_photo = resultSet2.getString(1);
+					// 将查询到的语句放入集合
 					news_photos.add(news_photo);
 				}
-				//执行第三条语句
-				String user_nickname = null,user_photo=null;
+				// 执行第三条语句
+				String user_nickname = null, user_photo = null;
 				statement = connection.prepareStatement(sql3);
 				statement.setInt(1, news_sender_id);
-				resultSet3=statement.executeQuery();
-				while(resultSet3.next()){
-					user_nickname=resultSet3.getString(1);
-					user_photo=resultSet3.getString(2);
+				resultSet3 = statement.executeQuery();
+				while (resultSet3.next()) {
+					user_nickname = resultSet3.getString(1);
+					user_photo = resultSet3.getString(2);
 				}
-				//将查找到的数据存入news的javabean中
-				news=new News(news_id,user_photo,user_nickname,news_content,news_time,news_stars,news_views,news_photos);
+				// 将查找到的数据存入news的javabean中
+				news = new News(news_id, user_photo, user_nickname,
+						news_content, news_time, news_stars, news_views,
+						news_photos);
 				newslist.add(news);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			C3P0Utils.close(resultSet1, statement, connection);
 			C3P0Utils.close(resultSet2, statement, connection);
 			C3P0Utils.close(resultSet3, statement, connection);
 		}
 		return newslist;
+	}
+
+	// 增加浏览量
+	@Override
+	public boolean updateBrowse(int news_id) {
+		connection = C3P0Utils.getConnection();
+		String sql = "UPDATE news SET news_views=news_views+1 WHERE news_id=?;";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, news_id);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	// 增加点赞量
+	@Override
+	public boolean updateZan(int news_id) {
+		connection = C3P0Utils.getConnection();
+		String sql = "UPDATE news SET news_stars=news_stars+1 WHERE news_id=?;";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, news_id);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }
