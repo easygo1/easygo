@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.easygo.activity.MainActivity">
-
-    <RelativeLayout
+    <include layout="@layout/common_title_bar"/>
+    <!--<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -25,12 +25,13 @@
             android:layout_centerInParent="true"
             android:text="个人信息"
             android:textSize="@dimen/textsize_l"/>
-    </RelativeLayout>
+    </RelativeLayout>-->
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10">
+
         <include
             layout="@layout/activity_myinfomation_middle"
             android:layout_width="match_parent"
@@ -42,9 +43,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/headerColor"
+        android:background="@color/btn_apl"
+        android:text="完  成"
         android:textColor="@color/meuser"
-        android:textSize="@dimen/textsize_l"
-        android:text="完  成"/>
+        android:textSize="@dimen/textsize_s"/>
 
 </LinearLayout>

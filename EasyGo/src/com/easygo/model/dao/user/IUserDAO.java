@@ -45,5 +45,8 @@ public interface IUserDAO {
 
 	// 根据用户账号查找用户头像和用户签名在我的页面
 	public abstract User selectPhotoMoodByUserId(int user_id);
+	
+	//实名认证成功后会把数据保存在数据库中
+	public abstract boolean updateUserRealname(int user_id,String real_name,String idcard);
 
 }

@@ -27,6 +27,7 @@ import com.easygo.model.beans.gson.GsonAboutHouseDetail;
 import com.easygo.model.beans.gson.GsonAboutHouseManage;
 import com.easygo.model.beans.gson.GsonOrderInfo;
 import com.easygo.model.beans.gson.GsonOrderInfoAllDetail;
+import com.easygo.model.beans.gson.GsonUserCollect;
 import com.easygo.model.beans.gson.GsonUserInfoHobby;
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.House;
@@ -70,6 +71,7 @@ import com.easygo.model.impl.user.IHouseCollectDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.easygo.model.impl.user.IUserHobbyDAOImpl;
 import com.easygo.model.impl.user.IUserLinkmanDAOImpl;
+import com.easygo.utils.Jdpush;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -90,6 +92,7 @@ public class AppServlet extends HttpServlet {
 	String user_phone;
 	String user_password;
 	GsonUserInfoHobby userInfoHobby;
+	String idcard;
 
 	// Hobby的相关对象
 	IHobbyDAO hobbydao;
@@ -373,6 +376,25 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write("success");
 			mPrintWriter.close();
 			break;
+		//增加浏览量
+		case "browse":
+			//接收服务端传过来的数据
+			int news_id_browse=Integer.valueOf(request.getParameter("news_id"));
+			//执行浏览量+1操作
+			newsdao = new INewsDAOImlp();
+			newsdao.updateBrowse(news_id_browse);
+			System.out.println(news_id_browse);
+			break;
+		//点赞
+		case "zan":
+			//接收服务端传过来的数据
+			int news_id_zan=Integer.valueOf(request.getParameter("news_id"));
+			//执行浏览量+1操作
+			newsdao = new INewsDAOImlp();
+			newsdao.updateZan(news_id_zan);
+			System.out.println("点赞成功");
+			System.out.println(news_id_zan);
+			break;
 		case "addUser":
 			break;
 		case "addUserSuccess":
@@ -482,6 +504,8 @@ public class AppServlet extends HttpServlet {
 					"user_address_city").getBytes("iso8859-1"), "UTF-8"));
 			user.setUser_mood(new String(request.getParameter("user_mood")
 					.getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_introduct(new String(request.getParameter("user_introduct")
+					.getBytes("iso8859-1"), "UTF-8"));
 			user.setUser_mail(new String(request.getParameter("user_mail")
 					.getBytes("iso8859-1"), "UTF-8"));
 			user.setUser_birthday(new String(request.getParameter(
@@ -548,7 +572,7 @@ public class AppServlet extends HttpServlet {
 			}.getType();
 			hobbylist = gson.fromJson(lables, type);
 			userhobbydao.DeleteUserHobbyByUserId(user_id);// 先删除再进行添加
-			for (int i = 1; i < hobbylist.size(); i++) {
+			for (int i = 0; i < hobbylist.size(); i++) {
 				int hobby_id = hobbydao.SelectHobbyIDByHobbyName(hobbylist
 						.get(i));// 得到选择的爱好的id
 				flag = userhobbydao.inssertUserHobby(user_id, hobby_id);
@@ -571,6 +595,16 @@ public class AppServlet extends HttpServlet {
 			gson = new Gson();
 			result = gson.toJson(user);
 			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		case "updateRealName":
+			// 通过用户id得到用户的头像和签名
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			String real_name = new String(request.getParameter("realname").getBytes("iso8859-1"), "UTF-8");
+			idcard = request.getParameter("idcard");
+			userdao = new IUserDAOImpl();
+			flag=userdao.updateUserRealname(user_id, real_name, idcard);
+			mPrintWriter.write("实名认证"+flag);
 			mPrintWriter.close();
 			break;
 
@@ -617,7 +651,6 @@ public class AppServlet extends HttpServlet {
 					leavetime, total, tel, order_state, order_book_name);
 			// order_book_name无法传递，所以另外set去设置值
 			orders.setBook_name(order_book_name);
-
 			// 得到入住人信息
 			gson = new Gson();
 			type = new TypeToken<List<UserLinkman>>() {
@@ -647,24 +680,60 @@ public class AppServlet extends HttpServlet {
 			houseDateManage.setHouse_id(house_id);
 			houseDateManage.setDate_not_use(checktime);
 			houseDateManageDAO.addHouseDate(houseDateManage);
+			//根据房子id查询房主id,向房主推送消息
+			housedao = new IHouseDAOImpl();
+			house = new House();
+			house = housedao.findSpecHouseById(house_id);
+			Jdpush.sendPush(house.getUser_id(), "您有一条新的订单，请及时处理。");
 			break;
 		// 得到全部订单
 		case "getAllorder":
-
+			
 			break;
+		//用户取消订单
 		case "delOrders":
 			order_id = Integer.valueOf(request.getParameter("order_id"));
 			orderDAO = new IOrderDAOImpl();
-			boolean result1 = orderDAO.delOrders(order_id);
+			boolean result1 = orderDAO.updateOrderState(order_id, "已取消");
 			if (result1) {
-				mPrintWriter.write("删除成功");
+				mPrintWriter.write("取消成功");
 				mPrintWriter.close();
 			} else {
-				mPrintWriter.write("删除失败");
+				mPrintWriter.write("取消失败");
 				mPrintWriter.close();
 			}
 			break;
-
+		//用户确认订单
+		case "yesOrders":
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			orderDAO = new IOrderDAOImpl();
+			boolean yes = orderDAO.updateOrderState(order_id, "待付款");
+			if (yes) {
+				mPrintWriter.write("确认成功");
+				mPrintWriter.close();
+			} else {
+				mPrintWriter.write("确认失败");
+				mPrintWriter.close();
+			}
+			orders = new Orders();
+			orderDAO = new IOrderDAOImpl();
+			orders = orderDAO.findOrdersByorderid(order_id);
+			Jdpush.sendPush(orders.getUser_id(), "您的订单已被房主确认，请及时付款");
+			break;
+		case "assessokOrders":
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			assessDAO=new IAssessDAOImpl();
+			boolean result2=assessDAO.isAssessOrders(order_id);
+			if(result2){
+				//说明已经评价过了
+				mPrintWriter.write("已经评价");
+				mPrintWriter.close();
+			}else{
+				//说明已经评价过了
+				mPrintWriter.write("未评价");
+				mPrintWriter.close();
+			}
+			break;
 		case "getorderdetailbyorderid":
 			// 根据订单号得到订单的具体信息，该房源具体信息，该房源的主图，房东信息，该订单入住人信息
 			// 根据订单号得到订单//根据订单号得到该订单的全部信息
@@ -992,6 +1061,58 @@ public class AppServlet extends HttpServlet {
 			houseCollect.setHouse_id(house_id);
 			houseCollectDAO.addHouseCollect(houseCollect);
 			break;
+		// 查找某個用戶的全部收藏記錄
+		case "selecthousecollect":
+			user_id = Integer.parseInt(request.getParameter("user_id"));
+			int cur1 = Integer.parseInt(request.getParameter("cur"));
+
+			houseCollectDAO = new IHouseCollectDAOImpl();
+			houseCollect = new HouseCollect();
+			houseList = new ArrayList<House>();
+			// 得到用户的全部收藏 是一个house_id 的集合
+			List<Integer> houseCollectlist = new ArrayList<Integer>();
+			houseCollectlist = houseCollectDAO.findHouseCollectByUserIdCur(
+					cur1, user_id);
+			for (int i = 0; i < houseCollectlist.size(); i++) {
+				house_id = houseCollectlist.get(i);// 得到house_id
+				// 根据house_id得到house对象
+				// 得到房源
+				housedao = new IHouseDAOImpl();
+				house = housedao.findSpecHouseById(house_id);
+				houseList.add(house);
+			}
+
+			// 得到房源的图片
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			housePhotoList = new ArrayList<HousePhoto>();
+			// 得到房源的房东
+			userList = new ArrayList<>();
+			userdao = new IUserDAOImpl();
+			// 得到房源的评价
+			assessDAO = new IAssessDAOImpl();
+			assessList = new ArrayList<>();
+
+			// 遍历查询
+			for (House house : houseList) {
+				// 房源图片List
+				housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house
+						.getHouse_id());
+				housePhotoList.add(housePhoto);
+				// 房源的评价的数量
+
+				assessList.add(assessDAO.selectAllAssess(house.getHouse_id())
+						.size());
+				// 用户List房东
+				user = userdao.findSpecUserById(house.getUser_id());
+				userList.add(user);
+			}
+			GsonUserCollect userCollect = new GsonUserCollect(houseList,
+					housePhotoList, userList, houseCollectlist);
+			gson = new Gson();
+			result = gson.toJson(userCollect);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
 		// 得到某个房屋的日期状态
 		case "getHouseDateByHouseId":
 			house_id = Integer.parseInt(request.getParameter("houseid"));
@@ -1041,7 +1162,7 @@ public class AppServlet extends HttpServlet {
 			// 得到某个用户的所有常用入住人
 			user_id = Integer.parseInt(request.getParameter("userid"));
 			String linkman_name = request.getParameter("linkmanname");
-			String idcard = request.getParameter("idcard");
+			idcard = request.getParameter("idcard");
 			userLinkmanDAO = new IUserLinkmanDAOImpl();
 			userLinkman = new UserLinkman();
 			userLinkman.setUser_id(user_id);
@@ -1164,6 +1285,14 @@ public class AppServlet extends HttpServlet {
 			result = gson.toJson(gsonOrderInfo2);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
+			break;
+			
+		case "orderpayok":
+			//支付成功修改订单状态为待入住
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			orderDAO = new IOrderDAOImpl();
+			orderDAO.updateOrderState(order_id, "待入住");
+			//需要通知房东
 			break;
 
 		// 根据发布房源传来的数据进行添房源

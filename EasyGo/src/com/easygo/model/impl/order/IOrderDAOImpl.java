@@ -79,6 +79,8 @@ public class IOrderDAOImpl implements IOrderDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
 		}
 	}
 

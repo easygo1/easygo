@@ -19,14 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
-        <Button
-            android:padding="5dp"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="确 定"
-            android:textColor="#fff"
-            android:textSize="16sp"
-            android:id="@+id/bt_ok"/>
+
         <Button
             android:layout_width="100dp"
             android:layout_height="50dp"
@@ -35,5 +28,14 @@
             android:textSize="16sp"
             android:layout_marginLeft="10dip"
             android:id="@+id/bt_cancel"/>
+        <Button
+            android:padding="5dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="确 定"
+            android:background="@drawable/btn_bg"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:id="@+id/bt_ok"/>
     </LinearLayout>
 </LinearLayout>

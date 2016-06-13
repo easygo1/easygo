@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class CommentData implements Serializable {
     private int news_id;
+
     private String user_photo;
     private String user_nickname;
     private String news_content;
@@ -27,6 +28,10 @@ public class CommentData implements Serializable {
         this.news_views = news_views;
         this.photo_path = photo_path;
     }
+
+
+
+
 
     public int getNews_id() {
         return news_id;

@@ -69,7 +69,9 @@ public class LogintestActivity extends AppCompatActivity {
             if(what == Login) {
                // 请求成功，直接更新UI
                 String result = response.get();
-                Log.e("json返回结果",result);
+                if(result.equals("")){
+                    Toast.makeText(LogintestActivity.this, "服务器异常,请稍后再登录", Toast.LENGTH_SHORT).show();
+                }
                 //把JSON格式的字符串改为对象
                 Gson gson = new Gson();
                 Type mytype = new TypeToken<User>() {

@@ -87,6 +87,10 @@ public class OwnerOrderBookMeIngFragment extends Fragment {
         mHousePhotoList.remove(position);
         mOwnerOrderIngAdapter.notifyDataSetChanged();
     }
+    public void yesOrder(int position){
+        mOrdersList.get(position).setOrder_state("待付款");
+        mOwnerOrderIngAdapter.notifyDataSetChanged();
+    }
     private void initViews() {
         mListView = (ListView) mOrederIngView.findViewById(R.id.order_custom_inglist);
     }
