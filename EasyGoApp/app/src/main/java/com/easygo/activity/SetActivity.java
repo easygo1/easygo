@@ -55,9 +55,9 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(intentaboutus);
                 break;
             case R.id.set_clearcache:
-                Intent intent2 = new Intent();
+                /*Intent intent2 = new Intent();
                 intent2.setClass(SetActivity.this,OwnerOrderActivity.class);
-                startActivity(intent2);
+                startActivity(intent2);*/
                 break;
             case R.id.set_exitlogin:
                 //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
@@ -65,6 +65,21 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
                 //向偏好设置文件中保存数据
                 mEditor = mSharedPreferences.edit();
                 mEditor.putInt("type", 0);
+                mEditor.putInt("user_id",0);
+                mEditor.putInt("user_type",0);
+                mEditor.putString("user_realname",null);
+                mEditor.putString("user_nickname",null);
+                mEditor.putString("user_sex",null);
+                mEditor.putString("user_photo",null);
+                mEditor.putString("user_job",null);
+                mEditor.putString("user_address_province",null);
+                mEditor.putString("user_address_city",null);
+                mEditor.putString("user_mood",null);
+                mEditor.putString("user_mail",null);
+                mEditor.putString("user_introduct",null);
+                mEditor.putString("user_birthday",null);
+                mEditor.putString("user_idcard",null);
+                mEditor.putString("remarks",null);
                 mEditor.putString("token",null);
                 mEditor.putString("phone",null);
                 //提交保存结果

@@ -48,7 +48,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_margin="10dp"
-            android:text="1/1"/>
+            android:text=""/>
 
         <TextView
             android:id="@+id/house_price"
@@ -57,7 +57,7 @@
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
             android:padding="0dp"
-            android:text="128元/晚"
+            android:text=""
             android:textColor="@color/textDown"
             android:textSize="28sp"/>
     </RelativeLayout>

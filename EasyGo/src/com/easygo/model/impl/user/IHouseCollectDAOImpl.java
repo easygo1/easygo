@@ -10,12 +10,25 @@ import java.util.List;
 import com.easygo.model.beans.house.HouseCollect;
 import com.easygo.model.dao.user.IHouseCollectDAO;
 import com.easygo.utils.C3P0Utils;
+import com.easygo.utils.Paging;
 
 public class IHouseCollectDAOImpl implements IHouseCollectDAO {
 
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet resultSet = null;
+	
+	Paging paging = new Paging();
+
+	// 将数据处理，计算出需要分成几页
+	// 改动的话只需改动查询语句即可
+	public int getTotalPage() {
+		// 查询语句，查出数据总的记录数
+		String table = "house";
+		int count = 0;
+		count = paging.getTotalPage(table);
+		return count;
+	}
 
 	@Override
 	public boolean addHouseCollect(HouseCollect houseCollect) {
@@ -139,5 +152,34 @@ public class IHouseCollectDAOImpl implements IHouseCollectDAO {
 		}
 		return result;
 	}
+	@Override
+	public List<Integer> findHouseCollectByUserIdCur(int cur, int user_id) {
+		List<Integer> housecollectList = new ArrayList<Integer>();
+		connection = C3P0Utils.getConnection();
+		String sql = "select * from house_collect where user_id =? limit ?,?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, user_id);
+
+			// 分页处理
+			statement.setInt(2, (cur - 1) * paging.getPageSize());
+			statement.setInt(3, paging.getPageSize());
+
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				//int house_collect_id = resultSet.getInt(1);
+				//int user_id1 = resultSet.getInt(2);
+				int house_id = resultSet.getInt(3);
+				housecollectList.add(house_id);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return housecollectList;
+	}
+
 
 }

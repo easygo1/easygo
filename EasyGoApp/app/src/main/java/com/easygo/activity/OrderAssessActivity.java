@@ -128,6 +128,10 @@ public class OrderAssessActivity extends AppCompatActivity implements View.OnCli
                 //用户点击了保存 判断是否填写完整
                 if (star != STRA_DEFULT && mAssessContentEditText.length() != STRA_DEFULT) {
                     Toast.makeText(OrderAssessActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent();
+                    intent.putExtra("order_id",order_id);
+                    intent.setClass(OrderAssessActivity.this,OrderDetailActivity.class);
+                    startActivity(intent);
                     myApplication = (MyApplication) this.getApplication();
                     mUrl = myApplication.getUrl();
                     //创建请求对象

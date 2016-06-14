@@ -31,15 +31,15 @@ public class ChatDynamicAdpter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Context mContext;
     private List<CommentData> mCommentDataList_list;
-    private FinalBitmap finalImageLoader ;
+    private FinalBitmap finalImageLoader;
     //private GridViewAdapter nearByInfoImgsAdapter;
 
 
-    public ChatDynamicAdpter(List<CommentData> mCommentDataList_list,Context context) {
+    public ChatDynamicAdpter(List<CommentData> mCommentDataList_list, Context context) {
         this.mCommentDataList_list = mCommentDataList_list;
-        this.mContext=context;
+        this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
-        this.finalImageLoader=FinalBitmap.create(mContext);
+        this.finalImageLoader = FinalBitmap.create(mContext);
         this.finalImageLoader.configLoadingImage(R.mipmap.ic_launcher);
     }
 
@@ -62,10 +62,10 @@ public class ChatDynamicAdpter extends BaseAdapter {
     }
 
     //缓存布局中的控件
-    class ViewHolder{
+    class ViewHolder {
         ImageView mcomment_imageview;
-        TextView mfabiao_man,mfabiao_time,mbrowse,mdynamic_content,mnumber_like;
-        LinearLayout mZan,mComment,mForward;
+        TextView mfabiao_man, mfabiao_time, mbrowse, mdynamic_content, mnumber_like;
+        LinearLayout mZan, mComment, mForward;
         NineGridView nineGridView;
     }
 
@@ -76,7 +76,8 @@ public class ChatDynamicAdpter extends BaseAdapter {
 
     /**
      * 指定列表中每一行的布局，并且为每一行中布局的控件赋初值
-     * @param position 当前绘制的是第几行界面，从0开始
+     *
+     * @param position    当前绘制的是第几行界面，从0开始
      * @param convertView 缓存视图的一个类
      * @param parent
      * @return
@@ -88,9 +89,9 @@ public class ChatDynamicAdpter extends BaseAdapter {
         }
         ViewHolder viewHolder;
         //找到每一行的布局
-        if (convertView == null){
+        if (convertView == null) {
             //说明是第一次绘制整屏列表，例如1-6行
-            convertView =mInflater.inflate(R.layout.chat_listview_item,null);
+            convertView = mInflater.inflate(R.layout.chat_listview_item, null);
             viewHolder = new ViewHolder();
             //初始化当前行布局中的所有控件
             viewHolder.mcomment_imageview = (ImageView) convertView.findViewById(R.id.comment_imageview);
@@ -101,9 +102,9 @@ public class ChatDynamicAdpter extends BaseAdapter {
             viewHolder.mfabiao_time = (TextView) convertView.findViewById(R.id.fabiao_time);
             viewHolder.mbrowse = (TextView) convertView.findViewById(R.id.browse);
             viewHolder.mdynamic_content = (TextView) convertView.findViewById(R.id.dynamic_content);
-            viewHolder.mnumber_like= (TextView) convertView.findViewById(R.id.number_like);
+            viewHolder.mnumber_like = (TextView) convertView.findViewById(R.id.number_like);
             //加载上传的图片
-            viewHolder.nineGridView= (NineGridView) convertView.findViewById(R.id.gridview_imageview);
+            viewHolder.nineGridView = (NineGridView) convertView.findViewById(R.id.gridview_imageview);
 
             //把当前的控件缓存到布局视图中
             convertView.setTag(viewHolder);
@@ -124,17 +125,11 @@ public class ChatDynamicAdpter extends BaseAdapter {
         viewHolder.mfabiao_time.setText(commentData.getNews_time());
         if (commentData.getNews_views() == 0) {
             viewHolder.mbrowse.setText("浏览量：0 次");
-        }else{
-            viewHolder.mbrowse.setText("浏览量："+commentData.getNews_views()+"次");
+        } else {
+            viewHolder.mbrowse.setText("浏览量：" + commentData.getNews_views() + "次");
         }
         viewHolder.mdynamic_content.setText(commentData.getNews_content());
-        if (commentData.getNews_stars() == 0) {
-            viewHolder.mnumber_like.setText("还没有人为该动态点赞");
-        }else{
-            viewHolder.mnumber_like.setText("已经有  "+commentData.getNews_stars()+"  人觉得很赞~");
-        }
-
-
+        viewHolder.mnumber_like.setText(" " + commentData.getNews_stars() + " ");
 
         //使用框架加载图片
         ArrayList<ImageInfo> imageInfo = new ArrayList<>();
@@ -148,7 +143,7 @@ public class ChatDynamicAdpter extends BaseAdapter {
             }
         }
         //调用框架的适配器
-        viewHolder.nineGridView.setAdapter(new ClickNineGridViewAdapter(mContext,imageInfo));
+        viewHolder.nineGridView.setAdapter(new ClickNineGridViewAdapter(mContext, imageInfo));
         return convertView;
     }
 }

@@ -651,7 +651,7 @@ public class UpdateroomActivity extends AppCompatActivity implements View.OnClic
 
             try {
                 // 设置服务器上保存文件的目录和文件名，如果服务器上同目录下已经有同名文件会被自动覆盖的。
-                String SAVE_KEY = File.separator + "test" + File.separator + System.currentTimeMillis() + ".jpg";
+                String SAVE_KEY = File.separator + "house" + File.separator + System.currentTimeMillis() + ".jpg";
 
                 // 取得base64编码后的policy
                 String policy = UpYunUtils.makePolicy(SAVE_KEY, EXPIRATION, BUCKET);

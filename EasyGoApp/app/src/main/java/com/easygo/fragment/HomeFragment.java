@@ -208,8 +208,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(getActivity(), BookActivity.class);
-                        startActivity(intent);
+                        /*Intent intent = new Intent(getActivity(), BookActivity.class);
+                        startActivity(intent);*/
 
                     }
                 });

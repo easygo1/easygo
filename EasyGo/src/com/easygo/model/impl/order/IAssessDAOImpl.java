@@ -83,4 +83,27 @@ public class IAssessDAOImpl implements IAssessDAO {
 		return assessList;
 	}
 
+	@Override
+	public boolean isAssessOrders(int order_id) {
+		// 判断某个订单是否已经评价过
+		boolean result = false;
+		connection = C3P0Utils.getConnection();
+		String sql = "select * from assess where order_id =?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, order_id);
+			resultSet = statement.executeQuery();
+			while(resultSet.next()){
+				result = true;
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result = false;
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return result;
+	}
+
 }

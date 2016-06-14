@@ -38,7 +38,8 @@ public interface IHouseDAO {
 	// 根据house_id得到房东id
 	public abstract int findUseridByHouseid(int house_id);
 
-	// 某个地区的所有房源
+	// 某个地区的所有房源进行排序
 	public abstract List<House> sortHouse(String house_address_city, int cur,
-			String style_limit, String sex_limit, String price_limit);
+			String style_limit, String sex_limit, String price_limit,
+			String stay_time);
 }

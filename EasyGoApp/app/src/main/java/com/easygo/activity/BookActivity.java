@@ -248,7 +248,6 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
         //需要的数据
         int checknum = mList.size();//入住人数
         double money = calMoney(inday, outday);//需要支付的金额
-        
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
         //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
