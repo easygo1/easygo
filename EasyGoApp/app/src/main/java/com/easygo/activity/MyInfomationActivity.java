@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -30,7 +29,6 @@ import com.bumptech.glide.Glide;
 import com.easygo.application.MyApplication;
 import com.easygo.beans.gson.GsonUserInfoHobby;
 import com.easygo.beans.user.User;
-import com.easygo.utils.ImageCompressUtils;
 import com.easygo.utils.UpYunException;
 import com.easygo.utils.UpYunUtils;
 import com.easygo.utils.Uploader;
@@ -52,7 +50,6 @@ import com.yolanda.nohttp.error.TimeoutError;
 import com.yolanda.nohttp.error.URLError;
 import com.yolanda.nohttp.error.UnKnownHostError;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -792,20 +789,6 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         String picturePath = cursor.getString(columnIndex);
         mphotopath = picturePath;
         cursor.close();
-        //pic();
         return picturePath;
     }
-
-    private void pic() {
-        ImageCompressUtils compress = new ImageCompressUtils();
-        ImageCompressUtils.CompressOptions options = new ImageCompressUtils.CompressOptions();
-        //options.uri=originalUri;//ͼƬuri
-        Bitmap bitmap = compress.compressFromUri(MyInfomationActivity.this, options);//yasuo
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 50, baos);
-        byte[] pic = baos.toByteArray();//to arr
-        //mBytesList.add(pic);
-    }
-
-
 }

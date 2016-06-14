@@ -20,13 +20,11 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bumptech.glide.Glide;
-import com.easygo.activity.DateManageActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
 import com.easygo.activity.R;
 import com.easygo.utils.StringUtils;
 import com.viewpagerindicator.CirclePageIndicator;
-import com.viewpagerindicator.TitlePageIndicator;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -262,8 +261,6 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
         for (int i = 0; i < mHousePhotoList.size(); i++) {
             ImageView imageView = new ImageView(this);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            Log.i("HouseDetailA",mHousePhotoList.get(0).getHouse_photo_path()+"2张："+mHousePhotoList.get(1).getHouse_photo_path());
-
             Glide.with(this)
                     .load(mHousePhotoList.get(i).getHouse_photo_path())
                     .into(imageView);
