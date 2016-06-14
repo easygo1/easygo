@@ -65,10 +65,10 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
 
         @Override
         public void onSucceed(int what, Response<String> response) {
+            String result = response.get();// 响应结果
             if (what == WHAT_USER_COLLECT) {
                 //得到该用户的房源收藏列表
                 // 请求成功
-                String result = response.get();// 响应结果
                 Log.e("tag", result);
                 //把JSON格式的字符串改为Student对象
                 Gson gson = new Gson();
@@ -92,7 +92,8 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
                 mPullToRefreshListView.onRefreshComplete();
             }if(what==WHAT_DELETECOLLECT){
                 //取消收藏
-
+                Toast.makeText(HouseCollectionActivity.this, "取消"+result, Toast.LENGTH_SHORT).show();
+                mAdpter.notifyDataSetChanged();
             }
         }
 
@@ -264,6 +265,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
 		 * onResponseListener 回调对象，接受请求结果
 		 */
         requestQueue.add(WHAT_DELETECOLLECT, request, mOnResponseListener);
+
 
     }
 }

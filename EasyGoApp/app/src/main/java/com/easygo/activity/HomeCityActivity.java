@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -89,8 +88,8 @@ public class HomeCityActivity extends Activity {
     private String pricesort[];
     private String checknum[];
 
-    //下载数据时用的参数
-    private String city = "苏州市";
+    //下载数据时用的参数（上一个页面传过来的值）
+    private String city;
     private int cur = 1;
     private int userid;
     GsonAboutHouse gsonAboutHouse;
@@ -104,8 +103,8 @@ public class HomeCityActivity extends Activity {
         initData();
         //2.初始化数据
 //        loadData(city, cur, userid);
-        //3.设置上拉加载下拉刷新组件和事件监听
         sortData(city, cur, house_style, sex_limit, price_limit, stay_limit, userid);
+        //3.设置上拉加载下拉刷新组件和事件监听
         //设置刷新模式为BOTH才可以上拉和下拉都能起作用,必须写在前面
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         //设置刷新时头部的状态
@@ -120,6 +119,10 @@ public class HomeCityActivity extends Activity {
         //偏好设置中取出
         mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         userid = mSharedPreferences.getInt("user_id", 0);//整个页面要用
+        //接受上一个页面的值
+        Intent mGetIntent = getIntent();
+        city = mGetIntent.getStringExtra("City");
+
 //        Log.e("取出来了id", userid + "");
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();

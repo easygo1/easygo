@@ -4,7 +4,9 @@ package com.easygo.activity;
 * 申请预定的界面
 * */
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,11 +31,20 @@ import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
+import com.yolanda.nohttp.error.ClientError;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.NotFoundCacheError;
+import com.yolanda.nohttp.error.ServerError;
+import com.yolanda.nohttp.error.TimeoutError;
+import com.yolanda.nohttp.error.URLError;
+import com.yolanda.nohttp.error.UnKnownHostError;
 
+import java.security.acl.Owner;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+    public static final String TYPE = "type";
     public static final int REQUEST_DATE_CODE = 1;
     public static final int BOOK_ORDER_WHAT = 1;//申请预定，添加到数据库
     //自定义一个dialog
@@ -83,6 +94,7 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
         mHouse = (House) mIntent.getSerializableExtra("house");
         house_id = mHouse.getHouse_id();
         user_id = mIntent.getIntExtra("userid", 0);//用户的id
+
         mList = new ArrayList<>();
         mGetList = new ArrayList<>();
 
@@ -150,13 +162,13 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.room_book_check_layout:
 //                Toast.makeText(BookActivity.this, "入住", Toast.LENGTH_SHORT).show();
                 mIntent = new Intent(BookActivity.this, BookDateActivity.class);
-                mIntent.putExtra("house_id",house_id);
+                mIntent.putExtra("house_id", house_id);
                 startActivityForResult(mIntent, REQUEST_DATE_CODE);
                 break;
             case R.id.room_book_leave_layout:
 //                Toast.makeText(BookActivity.this, "离开", Toast.LENGTH_SHORT).show();
                 mIntent = new Intent(BookActivity.this, BookDateActivity.class);
-                mIntent.putExtra("house_id",house_id);
+                mIntent.putExtra("house_id", house_id);
                 startActivityForResult(mIntent, REQUEST_DATE_CODE);
                 startActivity(mIntent);
                 break;
@@ -211,11 +223,11 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void sendbook() {
-        if(inday ==null || outday ==null ){
+        if (inday == null || outday == null) {
             Toast.makeText(BookActivity.this, "请输入入住和离开时间", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(mList.size() == 0){
+        if (mList.size() == 0) {
             Toast.makeText(BookActivity.this, "请选择入住人", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -276,8 +288,19 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
             switch (what) {
                 case BOOK_ORDER_WHAT:
                     Toast.makeText(BookActivity.this, "申请预定成功", Toast.LENGTH_SHORT).show();
-                    finish();
-                    break;
+                    SharedPreferences mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+                    int type = mSharedPreferences.getInt("type", 0);
+                    Intent mIntent;
+                    if (type == 1) {
+                        mIntent = new Intent(BookActivity.this, CustomOrderActivity.class);
+                        startActivity(mIntent);
+                        finish();
+                        break;
+                    } else if (type == 2) {
+                        mIntent = new Intent(BookActivity.this, OwnerOrderActivity.class);
+                        startActivity(mIntent);
+                        finish();
+                    }
             }
 
         }
@@ -295,7 +318,24 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-            Toast.makeText(BookActivity.this, "网络请求失败了", Toast.LENGTH_SHORT).show();
+            if (exception instanceof ClientError) {// 客户端错误
+                Toast.makeText(BookActivity.this, "客户端发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof ServerError) {// 服务器错误
+                Toast.makeText(BookActivity.this, "服务器发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NetworkError) {// 网络不好
+                Toast.makeText(BookActivity.this, "请检查网络", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof TimeoutError) {// 请求超时
+                Toast.makeText(BookActivity.this, "请求超时，网络不好或者服务器不稳定", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof UnKnownHostError) {// 找不到服务器
+                Toast.makeText(BookActivity.this, "未发现指定服务器", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof URLError) {// URL是错的
+                Toast.makeText(BookActivity.this, "URL错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NotFoundCacheError) {
+                Toast.makeText(BookActivity.this, "没有发现缓存", Toast.LENGTH_SHORT).show();
+                // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
+            } else {
+                Toast.makeText(BookActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
