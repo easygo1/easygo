@@ -176,9 +176,7 @@ public class CustomOrderActivity extends FragmentActivity implements View.OnClic
 		 * onResponseListener 回调对象，接受请求结果
 		 */
         mRequestQueue.add(NOHTTP_WHAT_DEL, request, onResponseListener);
-        mOrdersList.remove(position);
-        mHouseList.remove(position);
-        mHousePhotoList.remove(position);
+        mOrdersList.get(position).setOrder_state("已取消");
         CustomOrderIngFragment customOrderIngFragment = (CustomOrderIngFragment) mOrderFragmentAdapter.getItem(0);
         customOrderIngFragment.deleteOrder(position);
     }

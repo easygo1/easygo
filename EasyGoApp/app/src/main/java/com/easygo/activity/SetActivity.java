@@ -55,9 +55,9 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(intentaboutus);
                 break;
             case R.id.set_clearcache:
-                Intent intent2 = new Intent();
+                /*Intent intent2 = new Intent();
                 intent2.setClass(SetActivity.this,OwnerOrderActivity.class);
-                startActivity(intent2);
+                startActivity(intent2);*/
                 break;
             case R.id.set_exitlogin:
                 //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式

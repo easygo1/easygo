@@ -58,7 +58,7 @@ public class OwnerOrderBookMeHistoryFragment extends Fragment {
         mHousePhotoList = new ArrayList<>();
         mCustomOrderHistoryAdapter = new CustomOrderHistoryAdapter(getActivity(), mOrdersList, mHouseList, mHousePhotoList);
         mListView.setAdapter(mCustomOrderHistoryAdapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
@@ -66,7 +66,7 @@ public class OwnerOrderBookMeHistoryFragment extends Fragment {
                 intent.setClass(getActivity(), OrderDetailActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
     public void initData(){
         OwnerOrderBookMeFragment ownerOrderBookMeFragment = (OwnerOrderBookMeFragment) getParentFragment();
