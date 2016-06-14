@@ -25,6 +25,10 @@ public interface IHouseDAO {
 	// 某个地区的所有房源
 	public abstract List<House> findSpecHouseByCity(String house_address_city,
 			int cur);
+	
+	//查找某个地区的房源不分页
+	public abstract List<House> findSpecHouseByCity(String house_address_city);
+		
 
 	// 房源类型（客厅沙发，独立房间）
 	public abstract List<House> findSpecHouseByStyle(String house_style);

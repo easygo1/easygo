@@ -248,11 +248,11 @@
         "source": "F:\\easygo610\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message_evaluate.xml"
     },
     {
-        "merged": "F:\\easygo610\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message.xml",
-        "source": "F:\\easygo610\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message.xml"
-    },
-    {
         "merged": "F:\\easygo610\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation_member_list.xml",
         "source": "F:\\easygo610\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation_member_list.xml"
+    },
+    {
+        "merged": "F:\\easygo610\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message.xml",
+        "source": "F:\\easygo610\\easygo\\EasyGoApp\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message.xml"
     }
 ]

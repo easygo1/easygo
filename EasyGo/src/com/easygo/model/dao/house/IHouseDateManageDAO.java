@@ -23,5 +23,8 @@ public interface IHouseDateManageDAO {
 
 	// 查询订单中被租的日期
 	public abstract List<HouseDateManage> selectAllHouse();
+	
+	//查询某个房源不可租的日期 返回不可租的日期list
+	public abstract List<String> selsectNoGoHouse(int house_id);
 
 }
