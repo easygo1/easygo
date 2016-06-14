@@ -278,6 +278,9 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     intent.putExtra("order_id", order_id);
                     intent.putExtra("describe", house.getHouse_describe() + "-" + house.getHouse_style());
                     intent.putExtra("price", mOrders.getTotal());
+                    intent.putExtra("house_id",mOrders.getHouse_id());
+                    intent.putExtra("checktime",mOrders.getChecktime());
+                    intent.putExtra("leavetime",mOrders.getLeavetime());
                     intent.setClass(OrderDetailActivity.this, PayActivity.class);
                     startActivity(intent);
                 }

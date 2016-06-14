@@ -14,7 +14,6 @@ public class DateUtils {
     private final static String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     /**
      * @author lenghao
-     * @createTime 2008-8-5 下午01:57:09
      * @param first
      * @param second
      * @return 获取两个Date之间的天数的列表
