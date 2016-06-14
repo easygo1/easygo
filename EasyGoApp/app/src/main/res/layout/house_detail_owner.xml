@@ -4,11 +4,12 @@
               android:layout_height="match_parent"
               android:layout_gravity="center"
               android:orientation="vertical">
+
     <ImageView
         android:id="@+id/house_detail_head_photo"
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_margin="10dp"
         android:src="@mipmap/ic_launcher"/>
 
     <TextView
@@ -23,97 +24,119 @@
         android:layout_height="wrap_content"
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/house_detail_owner_age"
-            style="@style/text_ww"
-            android:text="22岁"/>
+        <!-- <TextView
+             android:id="@+id/house_detail_owner_age"
+             style="@style/text_ww"
+             android:text="22岁"/>-->
 
         <TextView
             android:id="@+id/house_detail_owner_sex"
-            style="@style/text_ww"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:text="女"/>
 
         <TextView
             android:id="@+id/house_detail_owner_city"
-            style="@style/text_ww"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="北京"/>
+
+        <TextView
+            android:id="@+id/house_detail_owner_job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="自由职业者"/>
+
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="房地产开发等"/>
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
 
         <TextView
             style="@style/text_ww"
-            android:text="打球"
-            android:textColor="#FFBB55"
+            android:background="@drawable/lable_text"
             android:padding="4dp"
-            android:background="@drawable/lable_text"/>
+            android:text="打球"
+            android:textColor="#FFBB55"/>
 
         <TextView
             style="@style/text_ww"
+            android:background="@drawable/lable_text"
+            android:padding="3dp"
             android:text="旅游"
-            android:textColor="#FFBB55"
-            android:padding="3dp"
-            android:background="@drawable/lable_text"/>
+            android:textColor="#FFBB55"/>
 
         <TextView
             style="@style/text_ww"
-            android:text="交友"
+            android:background="@drawable/lable_text"
             android:padding="3dp"
-            android:textColor="#FFBB55"
-            android:background="@drawable/lable_text"/>
+            android:text="交友"
+            android:textColor="#FFBB55"/>
     </LinearLayout>
+-->
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
+
+        <!-- <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="身份验证"/>-->
+
         <TextView
-            android:text="身份验证"
+            android:id="@+id/house_detail_realname"
+            style="@style/text_ww"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
+            android:layout_height="wrap_content"
+            android:background="@drawable/lable_text"
+            android:padding="5dp"
             android:paddingLeft="5dp"
-            android:text="身份证"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:text="实名认证"/>
+
         <TextView
-            android:text="手机号"
-            android:paddingLeft="5dp"
+            android:id="@+id/house_detail_phoneyes"
+            style="@style/text_ww"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@drawable/lable_text"
+            android:padding="5dp"
+            android:paddingLeft="5dp"
+            android:text="手机验证"/>
     </LinearLayout>
 
     <Button
-        android:text="在线沟通"
-        android:layout_gravity="center"
-        android:textColor="#fff"
-        android:background="@drawable/btn_bg"
+        android:id="@+id/house_detail_talk"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"/>
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_bg"
+        android:text="在线沟通"
+        android:textColor="#fff"/>
+
     <TextView
-        android:textSize="17sp"
-        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:padding="5dp"
         android:text="个人介绍"
         android:textColor="#FFBB55"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textSize="17sp"/>
+
     <TextView
         android:id="@+id/house_detail_owner_introduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:text="爱好跑步，喜欢交更多的朋友，欢迎各地的朋友，欢迎你的到来!!!爱好跑步，喜欢交更多的朋友，欢迎各地的朋友，等你哦!!!"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="爱好跑步，喜欢交更多的朋友，欢迎各地的朋友，欢迎你的到来!!!爱好跑步，喜欢交更多的朋友，欢迎各地的朋友，等你哦!!!"/>
 </LinearLayout>

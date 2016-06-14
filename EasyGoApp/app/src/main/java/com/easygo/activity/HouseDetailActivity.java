@@ -1,6 +1,7 @@
 package com.easygo.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -31,6 +33,7 @@ import com.easygo.fragment.HouseDetailAssessFragment;
 import com.easygo.fragment.HouseDetailInfoFragment;
 import com.easygo.fragment.HouseDetailOwnerFragment;
 import com.easygo.fragment.HouseDetailRuleFragment;
+import com.easygo.view.WaitDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
@@ -39,6 +42,13 @@ import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
+import com.yolanda.nohttp.error.ClientError;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.NotFoundCacheError;
+import com.yolanda.nohttp.error.ServerError;
+import com.yolanda.nohttp.error.TimeoutError;
+import com.yolanda.nohttp.error.URLError;
+import com.yolanda.nohttp.error.UnKnownHostError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -52,6 +62,8 @@ import static android.view.View.SCALE_X;
  * 具体房源页面
  */
 public class HouseDetailActivity extends AppCompatActivity implements View.OnClickListener {
+    //自定义一个dialog
+    private WaitDialog mDialog;
     public static final String TYPE = "type";
     public static final int GET_HOUSE_DETAIL_WHAT = 1;
     public static final int HOUSE_ADD_COOLECT_WHAT = 2;
@@ -96,7 +108,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
     GsonAboutHouseDetail mGsonAboutHouseDetail;
     Bundle mBundle; //往Fragment发送信息
     PagerAdapter mPagerAdapter;//图片是适配器
-
+    RadioButton rbInfo, rbMap, rbOwner, rbAssess;
 
     //接收到的数据
     //House house = new House("房屋标题", "我是房屋描述", "我是房屋类型", "交通信息", 5, 120, 20, "不限", 3, 3, 4, false);
@@ -114,6 +126,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
 
     //初始化视图
     private void initViews() {
+        mDialog = new WaitDialog(this);//提示框
         mPhotoViewPager = (ViewPager) findViewById(R.id.house_detail_photo_viewpager);
         mRadioGroup = (RadioGroup) findViewById(R.id.house_radiogroup);
         mHouseinfoViewPager = (ViewPager) findViewById(R.id.house_detail_infomation_viewpager);
@@ -124,6 +137,10 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
         mHouseCollectionImageView = (ImageView) findViewById(R.id.house_collection);
         mHouseShareImageView = (ImageView) findViewById(R.id.house_share);
         mBookButton = (Button) findViewById(R.id.book_house_btn);
+        rbInfo = (RadioButton) findViewById(R.id.house_info);
+        rbMap = (RadioButton) findViewById(R.id.house_rule);
+        rbOwner = (RadioButton) findViewById(R.id.house_owner_info);
+        rbAssess = (RadioButton) findViewById(R.id.house_assess);
     }
 
 
@@ -163,6 +180,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onPageSelected(int position) {
                 //根据当前位置设置默认选中单选按钮
+                resetRadio();
                 resetRadioButton(position);
             }
 
@@ -179,11 +197,20 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
         mBookButton.setOnClickListener(this);
     }
 
+    public void resetRadio() {
+        rbInfo.setTextColor(getResources().getColor(R.color.black));
+        rbMap.setTextColor(getResources().getColor(R.color.black));
+        rbOwner.setTextColor(getResources().getColor(R.color.black));
+        rbAssess.setTextColor(getResources().getColor(R.color.black));
+    }
+
     private void resetRadioButton(int position) {
         //获取position位置处对应的单选按钮
+
         RadioButton radioButton = (RadioButton) mRadioGroup.getChildAt(position);
         //设置当前单选按钮默认选中
         radioButton.setChecked(true);
+        radioButton.setTextColor(getResources().getColor(R.color.textDown));
     }
 
     private void resetViewPager(int checkedId) {
@@ -286,6 +313,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
         mPhotoViewPager.setAdapter(mPagerAdapter);
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -306,7 +334,6 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                             .setImageResource(R.mipmap.icon_collect_on);
                     isCollected = true;
                     // 添加请求参数
-
                     request.add("methods", "addHouseCollect");
                     request.add("userid", userid);
                     request.add("houseid", houseid);
@@ -338,6 +365,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                 intent.putExtra("userid", userid);
                 startActivity(intent);
                 break;
+
         }
     }
 
@@ -373,9 +401,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
 //                    Log.e("iscollected",isCollected+"");
                     mHousePriceTextview.setText(mHouse.getHouse_one_price() + "元/晚");
                     //初始化Fragment的值
-                    mInfoFragment.initInfoData(mHouse,mHouseEquipmentList);
-
-
+                    mInfoFragment.initInfoData(mHouse, mHouseEquipmentList);
                     break;
                 case HOUSE_ADD_COOLECT_WHAT:
                     Toast.makeText(HouseDetailActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
@@ -384,21 +410,40 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                     Toast.makeText(HouseDetailActivity.this, "取消收藏成功", Toast.LENGTH_SHORT).show();
                     break;
             }
-
         }
 
         @Override
         public void onStart(int what) {
             // 请求开始，这里可以显示一个dialog
+            mDialog.show();
+
         }
 
         @Override
         public void onFinish(int what) {
+            mDialog.dismiss();
         }
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-            Toast.makeText(HouseDetailActivity.this, "网络请求失败了", Toast.LENGTH_SHORT).show();
+            if (exception instanceof ClientError) {// 客户端错误
+                Toast.makeText(HouseDetailActivity.this, "客户端发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof ServerError) {// 服务器错误
+                Toast.makeText(HouseDetailActivity.this, "服务器发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NetworkError) {// 网络不好
+                Toast.makeText(HouseDetailActivity.this, "请检查网络", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof TimeoutError) {// 请求超时
+                Toast.makeText(HouseDetailActivity.this, "请求超时，网络不好或者服务器不稳定", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof UnKnownHostError) {// 找不到服务器
+                Toast.makeText(HouseDetailActivity.this, "未发现指定服务器", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof URLError) {// URL是错的
+                Toast.makeText(HouseDetailActivity.this, "URL错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NotFoundCacheError) {
+                Toast.makeText(HouseDetailActivity.this, "没有发现缓存", Toast.LENGTH_SHORT).show();
+                // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
+            } else {
+                Toast.makeText(HouseDetailActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 }

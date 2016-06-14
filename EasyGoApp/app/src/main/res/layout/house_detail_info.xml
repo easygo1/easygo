@@ -30,8 +30,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:text="房屋详情"
-                android:textColor="@color/textDown"/>
+                />
         </LinearLayout>
 
         <TextView
@@ -73,11 +74,11 @@
 
             <TextView
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:text="房屋介绍"
-                android:textColor="@color/textDown"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -233,8 +234,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:text="配套设施"
-                android:textColor="@color/textDown"/>
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -253,28 +255,28 @@
                     android:layout_height="45dp"
                     android:layout_marginLeft="30dp"
                     android:gravity="center"
-                    android:text="毛巾"/>
+                    android:text=""/>
 
                 <TextView
                     android:id="@+id/house_detail_equipment2"
                     android:layout_width="60dp"
                     android:layout_height="45dp"
                     android:gravity="center"
-                    android:text="毛巾"/>
+                    android:text=""/>
 
                 <TextView
                     android:id="@+id/house_detail_equipment3"
                     android:layout_width="60dp"
                     android:layout_height="45dp"
                     android:gravity="center"
-                    android:text="毛巾"/>
+                    android:text=""/>
 
                 <TextView
                     android:id="@+id/house_detail_equipment4"
                     android:layout_width="60dp"
                     android:layout_height="45dp"
                     android:gravity="center"
-                    android:text="毛巾"/>
+                    android:text=""/>
             </LinearLayout>
 
             <LinearLayout

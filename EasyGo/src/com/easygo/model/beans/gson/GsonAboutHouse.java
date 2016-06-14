@@ -25,9 +25,22 @@ public class GsonAboutHouse implements Serializable {
 	List<HousePhoto> housePhotoList;
 	List<Integer> assessList;
 	List<HouseCollect> houseCollectList;
+	List<Integer> starNumList;
 
 	public GsonAboutHouse() {
 		super();
+	}
+
+	public GsonAboutHouse(List<House> houseList, List<User> userList,
+			List<HousePhoto> housePhotoList, List<Integer> assessList,
+			List<HouseCollect> houseCollectList, List<Integer> starNumList) {
+		super();
+		this.houseList = houseList;
+		this.userList = userList;
+		this.housePhotoList = housePhotoList;
+		this.assessList = assessList;
+		this.houseCollectList = houseCollectList;
+		this.starNumList = starNumList;
 	}
 
 	public GsonAboutHouse(List<House> houseList, List<User> userList,
@@ -39,6 +52,14 @@ public class GsonAboutHouse implements Serializable {
 		this.housePhotoList = housePhotoList;
 		this.assessList = assessList;
 		this.houseCollectList = houseCollectList;
+	}
+
+	public List<Integer> getStarNumList() {
+		return starNumList;
+	}
+
+	public void setStarNumList(List<Integer> starNumList) {
+		this.starNumList = starNumList;
 	}
 
 	public List<House> getHouseList() {

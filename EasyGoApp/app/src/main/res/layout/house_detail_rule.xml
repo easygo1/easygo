@@ -4,12 +4,10 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#459E9E9E"/>
+    <!--   <TextView
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#459E9E9E"/>-->
 
     <LinearLayout
         style="@style/linerlay_style">
@@ -32,69 +30,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="可租日期"/>
+                android:layout_marginTop="5dp"
+                android:text="可租日期"
+                />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4">
-            <Button
-                android:id="@+id/house_detail_rule_date"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="查看"/>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#459E9E9E"/>
-
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginRight="10dp"
+            android:layout_weight="4"
+            android:gravity="right">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"/>
-
-            <TextView
+            <Button
+                android:id="@+id/house_detail_rule_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="规则保障"/>
+                android:background="@drawable/btn_bg"
+                android:gravity="center"
+                android:text="查看"
+                android:textColor="#fff"/>
         </LinearLayout>
+    </LinearLayout>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:padding="8dp"
-            android:text="14:00以后入住，12:00前退房，不允许带宠物，可接待外宾"/>
-    </LinearLayout>-->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#459E9E9E"/>
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="270dp"
         android:layout_margin="5dp"
         android:orientation="horizontal">
 
@@ -116,7 +85,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="具体位置"/>
+                android:layout_marginTop="5dp"
+                android:text="具体位置"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -124,11 +95,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4">
-
-            <Button
+            <!--<Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="查看"/>
+                android:text="查看"/>-->
+            <com.amap.api.maps2d.MapView
+                android:id="@+id/house_detail_map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+            </com.amap.api.maps2d.MapView>
         </LinearLayout>
     </LinearLayout>
+
+
 </LinearLayout>

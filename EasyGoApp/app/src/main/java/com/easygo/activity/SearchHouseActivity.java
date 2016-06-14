@@ -63,6 +63,7 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
     List<HousePhoto> mHousePhotoList = null;
     List<Integer> mAssessList = null;
     List<HouseCollect> mHouseCollectList = null;
+    List<Integer> starNumList = null;
 
     int user_id, cur;
     String mPath;
@@ -178,8 +179,9 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
         mHousePhotoList = new ArrayList<>();
         mAssessList = new ArrayList<>();
         mHouseCollectList = new ArrayList<>();
+        starNumList=new ArrayList<>();
         //初始化适配器
-        mAdapter = new HouseListAdapter(SearchHouseActivity.this, mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList, user_id);
+        mAdapter = new HouseListAdapter(SearchHouseActivity.this, mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList, user_id,starNumList);
 
     }
 
@@ -353,6 +355,7 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
                         mHousePhotoList.addAll(gsonAboutHouse.getHousePhotoList());
                         mAssessList.addAll(gsonAboutHouse.getAssessList());
                         mHouseCollectList.addAll(gsonAboutHouse.getHouseCollectList());
+                        starNumList.addAll(gsonAboutHouse.getStarNumList());
                         //通知刷新
                         mAdapter.notifyDataSetChanged();
                         //表示刷新完成
