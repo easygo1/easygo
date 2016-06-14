@@ -16,13 +16,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.application.MyApplication;
+import com.easygo.beans.order.Orders;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
+import com.yolanda.nohttp.OnResponseListener;
 import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
+import com.yolanda.nohttp.RequestQueue;
+import com.yolanda.nohttp.Response;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.lang.reflect.Type;
+import java.util.List;
 
 import c.b.BP;
 import c.b.PListener;
@@ -47,6 +55,41 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
     String APPID = "640698dda5dab6cb17f864264b35ae91";
     // 此为支付插件的官方最新版本号,请在更新时留意更新说明
     int PLUGINVERSION = 7;
+    public static final int WHAT_ISASSESSORDERS = 1;
+    private RequestQueue mRequestQueue;
+    private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
+        @SuppressWarnings("unused")
+        @Override
+        public void onSucceed(int what, Response<String> response) {
+            if (what == WHAT_ISASSESSORDERS) {
+                String result = response.get();
+                //把JSON格式的字符串改为Student对象
+                Gson gson = new Gson();
+                Type type = new TypeToken<List<Orders>>(){}.getType();
+//                mList = gson.fromJson(result,type);
+                // mList.addAll((List<Order>)gson.fromJson(result,type));
+                // mCustomOrderAdapter.notifyDataSetChanged();
+                //表示刷新完成
+//                mPullToRefreshListView.onRefreshComplete();
+                // Log.e("list",mList.toString());
+            }
+        }
+
+        @Override
+        public void onStart(int what) {
+
+        }
+
+        @Override
+        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+
+        }
+
+        @Override
+        public void onFinish(int what) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,12 +194,15 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
             public void succeed() {
                 Toast.makeText(PayActivity.this, "支付成功!", Toast.LENGTH_SHORT).show();
                 //tv.append(name + "'s pay status is success\n\n");
+                Log.e("order_id99",order_id+"");
+                //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+                mRequestQueue = NoHttp.newRequestQueue();
                 //创建请求对象
                 request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
                 //添加请求参数
                 request.add("methods", "orderpayok");
                 request.add("order_id", order_id);
-               // mRequestQueue.add(WHAT_ISASSESSORDERS, request, mOnResponseListener);
+                mRequestQueue.add(WHAT_ISASSESSORDERS, request, onResponseListener);
                 finish();
                 hideDialog();
             }

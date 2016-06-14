@@ -84,9 +84,7 @@ public class OwnerOrderIBookIngFragment extends Fragment {
     }
 
     public void deleteOrder(int position) {
-        mOrdersList.remove(position);
-        mHouseList.remove(position);
-        mHousePhotoList.remove(position);
+        mOrdersList.get(position).setOrder_state("已取消");
         mOwnerOrderIBookAdapter.notifyDataSetChanged();
     }
 

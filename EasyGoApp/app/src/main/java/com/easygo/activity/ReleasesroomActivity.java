@@ -37,6 +37,13 @@ import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
+import com.yolanda.nohttp.error.ClientError;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.NotFoundCacheError;
+import com.yolanda.nohttp.error.ServerError;
+import com.yolanda.nohttp.error.TimeoutError;
+import com.yolanda.nohttp.error.URLError;
+import com.yolanda.nohttp.error.UnKnownHostError;
 
 import java.io.File;
 import java.lang.reflect.Type;
@@ -123,7 +130,24 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+            if (exception instanceof ClientError) {// 客户端错误
+                Toast.makeText(ReleasesroomActivity.this, "客户端发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof ServerError) {// 服务器错误
+                Toast.makeText(ReleasesroomActivity.this, "服务器发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NetworkError) {// 网络不好
+                Toast.makeText(ReleasesroomActivity.this, "请检查网络", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof TimeoutError) {// 请求超时
+                Toast.makeText(ReleasesroomActivity.this, "请求超时，网络不好或者服务器不稳定", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof UnKnownHostError) {// 找不到服务器
+                Toast.makeText(ReleasesroomActivity.this, "未发现指定服务器", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof URLError) {// URL是错的
+                Toast.makeText(ReleasesroomActivity.this, "URL错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NotFoundCacheError) {
+                Toast.makeText(ReleasesroomActivity.this, "没有发现缓存", Toast.LENGTH_SHORT).show();
+                // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
+            } else {
+                Toast.makeText(ReleasesroomActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override
@@ -542,7 +566,7 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
 
             try {
                 // 设置服务器上保存文件的目录和文件名，如果服务器上同目录下已经有同名文件会被自动覆盖的。
-                String SAVE_KEY = File.separator + "test" + File.separator + System.currentTimeMillis() + ".jpg";
+                String SAVE_KEY = File.separator + "house" + File.separator + System.currentTimeMillis() + ".jpg";
 
                 // 取得base64编码后的policy
                 String policy = UpYunUtils.makePolicy(SAVE_KEY, EXPIRATION, BUCKET);
@@ -572,7 +596,7 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            uploadPath = result;
+            uploadPath = "http://"+result;
             if (result != null) {
                 Log.i("test", "上传成功,访问地址为：" + result);
                 Toast.makeText(ReleasesroomActivity.this, "上传成功,访问地址为：" + result, Toast.LENGTH_SHORT).show();

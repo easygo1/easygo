@@ -1438,6 +1438,14 @@ public class AppServlet extends HttpServlet {
 			orderDAO = new IOrderDAOImpl();
 			orderDAO.updateOrderState(order_id, "待入住");
 			// 需要通知房东
+			orders = new Orders();
+			orderDAO = new IOrderDAOImpl();
+			orders = orderDAO.findOrdersByorderid(order_id);
+			//根据房子id查询房主id,向房主推送消息
+			housedao = new IHouseDAOImpl();
+			house = new House();
+			house = housedao.findSpecHouseById(orders.getHouse_id());
+			Jdpush.sendPush(house.getUser_id(), "您的一条订单已被房客付款，请注意查看。");
 			break;
 
 		// 根据发布房源传来的数据进行添房源

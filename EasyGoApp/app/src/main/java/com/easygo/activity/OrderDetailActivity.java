@@ -280,7 +280,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.order_update:
-                if (mOrderStateTextView.getText().equals("待确认")) {
+                if (mOrderStateTextView.getText().toString().equals("待确认")) {
                     //创建请求对象
                     request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
                     //添加请求参数
@@ -290,7 +290,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     request.add("book_tel", mBookTelEditText.getText().toString());
                     mRequestQueue.add(WHAT_UPDATEORDERBOOK, request, mOnResponseListener);
                 }
-                if (mOrderStateTextView.getText().equals("已完成")) {
+                if (mOrderStateTextView.getText().toString().equals("已完成")) {
                     //创建请求对象
                     request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
                     //添加请求参数
@@ -298,7 +298,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     request.add("order_id", order_id);
                     mRequestQueue.add(WHAT_ISASSESSORDERS, request, mOnResponseListener);
                 }
-                if (mOrderStateTextView.getText().equals("待付款")) {
+                if (mOrderStateTextView.getText().toString().equals("待付款")) {
                     Intent intent = new Intent();
                     intent.putExtra("order_id", order_id);
                     intent.putExtra("describe", house.getHouse_describe() + "-" + house.getHouse_style());

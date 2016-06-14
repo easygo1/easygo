@@ -116,14 +116,25 @@ public class OwnerOrderIngAdapter extends BaseAdapter {
         viewHolder.orderOwnerDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDelDialog(position);
+                if (mOrdersList.get(position).getOrder_state().equals("待付款") || mOrdersList.get(position).getOrder_state().equals("待确认")){
+                    showDelDialog(position);
+                }else {
+                    Toast.makeText(mContext, "您不可以取消该订单", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         viewHolder.orderYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Toast.makeText(mContext, "点击了确认订单" , Toast.LENGTH_SHORT).show();
-                showYesDialog(position);
+              // Toast.makeText(mContext, "点击了确认订单" , Toast.LENGTH_SHORT).show();
+                if (mOrdersList.get(position).getOrder_state().equals("待确认")){
+                    showYesDialog(position);
+                }else if(mOrdersList.get(position).getOrder_state().equals("已取消")) {
+                    Toast.makeText(mContext, "该订单已被取消，无法确认", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(mContext, "该订单已确认，无需重复确认", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         /*viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
