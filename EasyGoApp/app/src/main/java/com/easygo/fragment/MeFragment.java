@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easygo.activity.CustomOrderActivity;
+import com.easygo.activity.DateManageActivity;
 import com.easygo.activity.HouseCollectionActivity;
 import com.easygo.activity.LogintestActivity;
 import com.easygo.activity.MyInfomationActivity;
@@ -465,6 +466,13 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             case R.id.me_customer_certification:
                 intent = new Intent();
                 intent.setClass(getActivity(), RealNameIdentifyActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.me_owner_datemanage:
+                //可租日期管理
+                intent = new Intent();
+                intent.setClass(getActivity(), DateManageActivity.class);
+                intent.putExtra("user_id",user_id);
                 startActivity(intent);
                 break;
         }

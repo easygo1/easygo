@@ -2,6 +2,7 @@ package com.easygo.activity;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,7 +47,8 @@ public class DateManageActivity extends AppCompatActivity
     private RequestQueue requestQueue;
     Request<String> request;
     String mPath;
-    int houseid = 1;//暂时认定为存在Houseid
+    int houseid;//暂时认定为存在Houseid
+    int user_id;
     GsonAboutHouseManage gsonAboutHouseManage;
     //数据库中房东设置的已关的时间列
     List<HouseDateManage> sqlNotList;
@@ -90,20 +92,20 @@ public class DateManageActivity extends AppCompatActivity
     }
 
     private void loadData() {
+        Intent mIntent = getIntent();
+        user_id = mIntent.getIntExtra("user_id", 0);
         //初始化
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
-
         sqlNotList = new ArrayList<>();
         userBuyList = new ArrayList<>();
-
         // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
         requestQueue = NoHttp.newRequestQueue();
         // 创建请求对象
         request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
         // 添加请求参数
-        request.add("methods", "getHouseDateByHouseId");
-        request.add("houseid", houseid);
+        request.add("methods", "getHouseDateByUserId");
+        request.add("user_id", user_id);
         /*
          * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
 		 * request: 请求对象
@@ -128,6 +130,7 @@ public class DateManageActivity extends AppCompatActivity
 
                 sqlNotList = gsonAboutHouseManage.getHouseNotList();
                 userBuyList = gsonAboutHouseManage.getHouseUserBuyList();
+                houseid = gsonAboutHouseManage.getHouse_id();
                 //等得到数据后再去初始化那些View
                 init();
             } else if (what == HOUSE_DATE_ADD) {
@@ -251,6 +254,7 @@ public class DateManageActivity extends AppCompatActivity
                     view.setBackgroundColor(Color.WHITE);
                     textDayView.setTextColor(Color.parseColor("#FF6600"));
                     textView.setText("");
+                    //如果只剩一个,同样移除，数据库将该房屋相关的所有都清空
                     sqlNotList.remove(i);
 //                    mDateList.remove(date);
                     return;
@@ -302,8 +306,11 @@ public class DateManageActivity extends AppCompatActivity
                 // 添加请求参数
                 Gson gson = new Gson();
                 String houseDate = gson.toJson(sqlNotList);
+                Log.e("打出来看看咯", "66666");
+                Log.e("打出来看看咯", "66666" + houseDate);
                 request.add("methods", "updateHouseDate");
                 request.add("houseDate", houseDate);
+                request.add("house_id", houseid);
                 requestQueue.add(HOUSE_DATE_ADD, request, onResponseListener);
 //                Toast.makeText(DateManageActivity.this, "结束了。。。。", Toast.LENGTH_SHORT).show();
                 break;

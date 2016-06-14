@@ -27,4 +27,10 @@ public interface IHouseDateManageDAO {
 	//查询某个房源不可租的日期 返回不可租的日期list
 	public abstract List<String> selsectNoGoHouse(int house_id);
 
+	// 删除房源不可租的日期（加上类型删除）
+	public abstract boolean delAllNotDateById(int house_id, int date_manage_type);
+
+	// 删除当前日期之前所有的日期
+	public abstract boolean delDelayDate();
+
 }

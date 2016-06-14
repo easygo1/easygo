@@ -458,7 +458,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 				} else {
 					statement.setString(4, stay_time);
 				}
-				System.out.println("这还没空呀3333！！！");
+				// System.out.println("这还没空呀3333！！！");
 				// 分页处理
 				statement.setInt(5, Begin);
 				statement.setInt(6, num);
