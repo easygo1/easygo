@@ -20,7 +20,6 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bumptech.glide.Glide;
-import com.easygo.activity.BookActivity;
 import com.easygo.activity.DateManageActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
@@ -40,7 +39,7 @@ import java.util.concurrent.TimeUnit;
 public class HomeFragment extends Fragment implements View.OnClickListener {
     //第一步：数据源
     //广告的图片
-
+//http://easygo.b0.upaiyun.com/test/advert1.jpg
     private String[] advertImages = new String[]{
             "http://easygo.b0.upaiyun.com/advert/advert1.jpg",
             "http://easygo.b0.upaiyun.com/advert/advert2.jpg",

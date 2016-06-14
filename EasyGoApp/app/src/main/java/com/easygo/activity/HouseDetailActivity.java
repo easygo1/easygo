@@ -1,7 +1,6 @@
 package com.easygo.activity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -55,8 +53,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
-
-import static android.view.View.SCALE_X;
 
 /**
  * 具体房源页面
@@ -266,6 +262,8 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
         for (int i = 0; i < mHousePhotoList.size(); i++) {
             ImageView imageView = new ImageView(this);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            Log.i("HouseDetailA",mHousePhotoList.get(0).getHouse_photo_path()+"2张："+mHousePhotoList.get(1).getHouse_photo_path());
+
             Glide.with(this)
                     .load(mHousePhotoList.get(i).getHouse_photo_path())
                     .into(imageView);

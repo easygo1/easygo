@@ -748,7 +748,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
             //添加请求参数
             request.add("methods", "updateUserPhoto");
             request.add("user_id", user_id);
-            request.add("user_photo", mloadpath);
+            request.add("user_photo", "http://"+mloadpath);
             Log.e("头像", mloadpath);
             mRequestQueue.add(WHAT_UPDATE_PHOTO, request, mOnResponseListener);
         }
