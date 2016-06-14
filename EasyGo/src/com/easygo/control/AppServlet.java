@@ -162,6 +162,7 @@ public class AppServlet extends HttpServlet {
 	// 所有的房屋，包括下面两种
 	List<HouseDateManage> houseUserBuyList;// 用户预定的某个房屋的日期
 	List<HouseDateManage> houseNotList;// 房东设置的某个房屋的不可租的日期
+	List<String> housenoUsetimelist;// 房源的不能租的日期list
 	// Assess的相关对象
 	IAssessDAO assessDAO;
 	// 存每个房源评价的数量
@@ -973,6 +974,100 @@ public class AppServlet extends HttpServlet {
 
 			gson = new Gson();
 			result = gson.toJson(gsonAboutHouse2);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		case "searchHouse":
+			//按照入住时间段和城市进行搜索
+			// 从安卓端得到的搜索日期list
+			String housenoUses = request.getParameter("timelist");
+			String searchcity = new String(request.getParameter("searchcity")
+					.getBytes("iso8859-1"), "UTF-8");
+			user_id= Integer.parseInt(request.getParameter("user_id"));
+			//int housecur= Integer.parseInt(request.getParameter("cur"));
+            System.out.println("timelist"+housenoUses);
+            System.out.println("searchcity"+searchcity);
+			housenoUsetimelist = new ArrayList<String>();
+			gson = new Gson();
+			type = new TypeToken<List<String>>() {
+			}.getType();
+			housenoUsetimelist = gson.fromJson(housenoUses, type);
+			// 找到所有的房源
+			houseList = new ArrayList<House>();
+			List<House> resulthouselist = new ArrayList<House>();
+			housedao = new IHouseDAOImpl();
+			// houseList = housedao.selectAllHouse();
+			houseList = housedao.findSpecHouseByCity(searchcity);
+
+			// 根据房屋id选择房源的不可租list
+			houseDateManageDAO = new IHouseDateManageDAOImpl();
+			List<String> timelist = new ArrayList<String>();
+
+			for (int i = 0; i < houseList.size(); i++) {
+				house_id = houseList.get(i).getHouse_id();
+				// 得到不可租list
+				timelist = houseDateManageDAO.selsectNoGoHouse(house_id);
+				// 求交集，如果交集为空说明该房源符合条件
+				timelist.retainAll(housenoUsetimelist);
+				//System.out.println("timelist" + timelist.toString());
+				//System.out.println("housenoUsetimelist"
+				//		+ housenoUsetimelist.toString());
+				if (timelist.size() == 0) {
+					resulthouselist.add(houseList.get(i));
+				}
+			}
+			// 得到所有符合条件的房源
+			// 得到房源的图片
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			housePhotoList = new ArrayList<HousePhoto>();
+			// 得到房源的房东
+			userList = new ArrayList<>();
+			userdao = new IUserDAOImpl();
+			// 得到房源的评价
+			assessDAO = new IAssessDAOImpl();
+			assessList = new ArrayList<>();
+			starNumList = new ArrayList<>();
+			// 得到用户的收藏
+			houseCollectDAO = new IHouseCollectDAOImpl();
+			if(resulthouselist.size()==0){
+				result="没有搜索到您要查找的房源";
+			}else{
+				// 遍历查询
+				for (int j = 0; j < resulthouselist.size(); j++) {
+					// 房源图片List
+					housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(resulthouselist.get(j).getHouse_id());
+					housePhotoList.add(housePhoto);
+					// 房源的评价的数量
+					int size1 =assessDAO.selectAllAssess(resulthouselist.get(j).getHouse_id())
+					.size();
+					assessList.add(size1);
+				
+					// 用户List房东
+					user = userdao.findSpecUserById(resulthouselist.get(j).getUser_id());
+					userList.add(user);
+					// 星级
+					int starNum = 0;
+					for (Assess a : assessDAO.selectAllAssess(resulthouselist.get(j).getHouse_id())) {
+						starNum += a.getStar();
+					}
+					// （强转为整型，以防出错）
+					if (size1 != 0) {
+						starNum = starNum / size1;
+					}
+					// System.out.println("打出来看看" + starNum);
+					starNumList.add(starNum);
+				}
+				// 用户收藏
+				houseCollectList = houseCollectDAO
+									.findHouseCollectByUserId(user_id);
+
+				GsonAboutHouse gsonAboutHouse1 = new GsonAboutHouse(resulthouselist,
+									userList, housePhotoList, assessList, houseCollectList,starNumList);
+				// 得到房子所有信息
+				gson = new Gson();
+				result = gson.toJson(gsonAboutHouse1);
+				System.out.println("搜索结果"+result);
+			}
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;

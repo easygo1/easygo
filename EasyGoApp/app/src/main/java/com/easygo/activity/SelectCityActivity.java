@@ -1,6 +1,6 @@
 package com.easygo.activity;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -49,6 +49,11 @@ public class SelectCityActivity extends AppCompatActivity implements View.OnClic
     private DBManager dbManager;
 
     private AMapLocationClient mLocationClient;
+
+    //偏好设置
+    public static final String TYPE = "type";
+    SharedPreferences mSharedPreferences;
+    SharedPreferences.Editor mEditor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,11 +180,19 @@ public class SelectCityActivity extends AppCompatActivity implements View.OnClic
 
     private void back(String city){
         ToastUtils.showToast(this, "点击的城市：" + city);
-        Intent intent = new Intent();
+        finish();
+        //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
+        mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
+        //向偏好设置文件中保存数据
+        mEditor = mSharedPreferences.edit();
+        mEditor.putString("searchcity",city);
+        //提交保存结果
+        mEditor.commit();
+        /*Intent intent = new Intent();
         intent.putExtra("flag","search");
         intent.putExtra("city",city);
         intent.setClass(SelectCityActivity.this,MainActivity.class);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
 

@@ -131,7 +131,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                             .bitmapTransform(new CropCircleTransformation(getActivity()))
                             .error(R.mipmap.user_photo_defult)
                             .into(meCustomerUserImageview);
-                    meCustomerDescriptustomer.setText(user.getUser_mood());
+                    meCustomerDescriptustomer.setText("个性签名："+user.getUser_mood());
                     if (user.getUser_idcard()==null){
                         mIsIdentifyImageView.setVisibility(View.GONE);
                         mIsIdentifyTextView.setText("未认证");

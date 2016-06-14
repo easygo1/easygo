@@ -34,6 +34,8 @@ public class CalendarActivity extends AppCompatActivity implements MyCalendar.On
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
+    TextView mTitleTextView,mSaveTextView;
+
     private String inday, outday, sp_inday, sp_outday;
 
 
@@ -41,6 +43,10 @@ public class CalendarActivity extends AppCompatActivity implements MyCalendar.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        mTitleTextView= (TextView) findViewById(R.id.data_manage_title);
+        mTitleTextView.setText("选择日期");
+        mSaveTextView= (TextView) findViewById(R.id.data_manage_save);
+        mSaveTextView.setVisibility(View.GONE);
         sp = getSharedPreferences("date", Context.MODE_PRIVATE);
         //本地保存
         sp_inday = sp.getString("dateIn", "");
