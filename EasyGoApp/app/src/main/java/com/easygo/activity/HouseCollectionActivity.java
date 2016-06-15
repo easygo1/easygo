@@ -29,6 +29,13 @@ import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
+import com.yolanda.nohttp.error.ClientError;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.NotFoundCacheError;
+import com.yolanda.nohttp.error.ServerError;
+import com.yolanda.nohttp.error.TimeoutError;
+import com.yolanda.nohttp.error.URLError;
+import com.yolanda.nohttp.error.UnKnownHostError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -67,40 +74,60 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
         @Override
         public void onSucceed(int what, Response<String> response) {
             String result = response.get();// 响应结果
-            if (what == WHAT_USER_COLLECT) {
-                //得到该用户的房源收藏列表
-                // 请求成功
-                Log.e("tag", result);
-                //把JSON格式的字符串改为Student对象
-                Gson gson = new Gson();
-                Type type = new TypeToken<GsonUserCollect>() {
-                }.getType();
-                mGsonUserCollect = gson.fromJson(result, type);
-                if (mGsonUserCollect.getHouselist().size() == 0) {
-                    Toast.makeText(HouseCollectionActivity.this, "没有更多收藏了~", Toast.LENGTH_SHORT).show();
-                }
-                //房源信息
-                mHouseList.addAll(mGsonUserCollect.getHouselist());
-                //房东信息
-                mUserList.addAll(mGsonUserCollect.getUserlist());
-                //房源主图信息
-                mHousePhotoList.addAll(mGsonUserCollect.getHousephotolist());
-                mAssessList.addAll(mGsonUserCollect.getAssessList());
-                //mHouseCollectList.addAll(gsonAboutHouse.getHouseCollectList());
-                //通知刷新
-                mAdpter.notifyDataSetChanged();
-                //表示刷新完成
-                mPullToRefreshListView.onRefreshComplete();
-            }if(what==WHAT_DELETECOLLECT){
-                //取消收藏
-                Toast.makeText(HouseCollectionActivity.this, "取消"+result, Toast.LENGTH_SHORT).show();
-                mAdpter.notifyDataSetChanged();
+            switch (what){
+                case WHAT_USER_COLLECT:
+                    //得到该用户的房源收藏列表
+                    // 请求成功
+                    Log.e("tag", result);
+                    //把JSON格式的字符串改为Student对象
+                    Gson gson = new Gson();
+                    Type type = new TypeToken<GsonUserCollect>() {
+                    }.getType();
+                    mGsonUserCollect = gson.fromJson(result, type);
+                    if (mGsonUserCollect.getHouselist().size() == 0) {
+                        Toast.makeText(HouseCollectionActivity.this, "没有更多收藏了~", Toast.LENGTH_SHORT).show();
+                    }
+                    //房源信息
+                    mHouseList.addAll(mGsonUserCollect.getHouselist());
+                    //房东信息
+                    mUserList.addAll(mGsonUserCollect.getUserlist());
+                    //房源主图信息
+                    mHousePhotoList.addAll(mGsonUserCollect.getHousephotolist());
+                    mAssessList.addAll(mGsonUserCollect.getAssessList());
+                    //mHouseCollectList.addAll(gsonAboutHouse.getHouseCollectList());
+                    //通知刷新
+                    mAdpter.notifyDataSetChanged();
+                    //表示刷新完成
+                    mPullToRefreshListView.onRefreshComplete();
+                    break;
+                case WHAT_DELETECOLLECT:
+                    //取消收藏
+                   // Toast.makeText(HouseCollectionActivity.this, "取消"+result, Toast.LENGTH_SHORT).show();
+                    mAdpter.notifyDataSetChanged();
+                break;
             }
         }
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+            if (exception instanceof ClientError) {// 客户端错误
+                Toast.makeText(HouseCollectionActivity.this, "客户端发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof ServerError) {// 服务器错误
+                Toast.makeText(HouseCollectionActivity.this, "服务器发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NetworkError) {// 网络不好
+                Toast.makeText(HouseCollectionActivity.this, "请检查网络", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof TimeoutError) {// 请求超时
+                Toast.makeText(HouseCollectionActivity.this, "请求超时，网络不好或者服务器不稳定", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof UnKnownHostError) {// 找不到服务器
+                Toast.makeText(HouseCollectionActivity.this, "未发现指定服务器", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof URLError) {// URL是错的
+                Toast.makeText(HouseCollectionActivity.this, "URL错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NotFoundCacheError) {
+                Toast.makeText(HouseCollectionActivity.this, "没有发现缓存", Toast.LENGTH_SHORT).show();
+                // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
+            } else {
+                Toast.makeText(HouseCollectionActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override
@@ -143,7 +170,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
         mHousePhotoList=new ArrayList<>();
         mAssessList=new ArrayList<>();
         starNumList=new ArrayList<>();
-        mAdpter=new HouseCollectAdpter(this,mHouseList,mUserList,mHousePhotoList,mAssessList);
+        mAdpter=new HouseCollectAdpter(this,mHouseList,mUserList,mHousePhotoList,mAssessList,starNumList);
         mPullToRefreshListView.setAdapter(mAdpter);
     }
 

@@ -266,8 +266,8 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
                 Intent intent = new Intent(SearchHouseActivity.this,
                         HouseDetailActivity.class);
 //                Log.e("position",position+"");
-//                Log.e("mHouseList",mHouseList.get(position-1).getHouse_id()+"");
-                int houseid = mHouseList.get(position - 1).getHouse_id();
+//               Log.e("mHouseList",mHouseList.get(position-1).getHouse_id()+"");
+                int houseid = mHouseList.get(position - 2).getHouse_id();
                 intent.putExtra("houseid", houseid);
                 startActivity(intent);
             }
@@ -392,6 +392,12 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
                         starNumList.clear();
                         mAdapter.notifyDataSetChanged();
                     } else {
+                        mHouseList.clear();
+                        mUserList.clear();
+                        mHousePhotoList.clear();
+                        mAssessList.clear();
+                        mHouseCollectList.clear();
+                        starNumList.clear();
                         //把JSON格式的字符串改为Student对象
                         Gson gson = new Gson();
                         Type type = new TypeToken<GsonAboutHouse>() {
