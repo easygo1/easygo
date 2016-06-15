@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="200dp"
-                android:text="ÒÑÈÏÖ¤"
+                android:text="å·²è®¤è¯"
                 android:textColor="@color/textDown"
                 android:textSize="@dimen/textsize_m"/>
 
