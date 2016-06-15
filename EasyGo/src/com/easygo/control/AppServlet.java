@@ -1227,6 +1227,9 @@ public class AppServlet extends HttpServlet {
 			// 得到房源的评价
 			assessDAO = new IAssessDAOImpl();
 			assessList = new ArrayList<>();
+			starNumList = new ArrayList<>();
+			// 得到用户的收藏
+			// houseCollectDAO = new IHouseCollectDAOImpl();
 
 			// 遍历查询
 			for (House house : houseList) {
@@ -1235,15 +1238,27 @@ public class AppServlet extends HttpServlet {
 						.getHouse_id());
 				housePhotoList.add(housePhoto);
 				// 房源的评价的数量
-
-				assessList.add(assessDAO.selectAllAssess(house.getHouse_id())
-						.size());
+				// 房源的评价的数量
+				int size1 = assessDAO.selectAllAssess(house.getHouse_id())
+						.size();
+				assessList.add(size1);
+				// 星级
+				int starNum = 0;
+				for (Assess a : assessDAO.selectAllAssess(house.getHouse_id())) {
+					starNum += a.getStar();
+				}
+				// （强转为整型，以防出错）
+				if (size1 != 0) {
+					starNum = starNum / size1;
+				}
+				// System.out.println("打出来看看" + starNum);
+				starNumList.add(starNum);
 				// 用户List房东
 				user = userdao.findSpecUserById(house.getUser_id());
 				userList.add(user);
 			}
 			GsonUserCollect userCollect = new GsonUserCollect(houseList,
-					housePhotoList, userList, houseCollectlist);
+					housePhotoList, userList,assessList,starNumList);
 			gson = new Gson();
 			result = gson.toJson(userCollect);
 			mPrintWriter.write(result);

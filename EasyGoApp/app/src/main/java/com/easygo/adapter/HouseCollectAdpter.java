@@ -31,13 +31,16 @@ public class HouseCollectAdpter extends BaseAdapter {
     List<User> mUserList = null;
     List<HousePhoto> mHousePhotoList = null;
     List<Integer> mAssessList = null;
+    List<Integer> starNumList;
 
-    public HouseCollectAdpter(Context context, List<House> houseList, List<User> userList, List<HousePhoto> housePhotoList, List<Integer> assessList) {
+    public HouseCollectAdpter(Context context, List<House> houseList, List<User> userList, List<HousePhoto> housePhotoList, List<Integer> assessList,
+                              List<Integer> starNumList) {
         mContext = context;
         mHouseList = houseList;
         mUserList = userList;
         mHousePhotoList = housePhotoList;
         mAssessList = assessList;
+        this.starNumList = starNumList;
         mInflater = LayoutInflater.from(mContext);
     }
 
@@ -87,7 +90,7 @@ public class HouseCollectAdpter extends BaseAdapter {
             viewHolder.text_username = (TextView) convertView.findViewById(R.id.homepage_city_item_text_name);
             viewHolder.mRatingBar = (RatingBar) convertView.findViewById(R.id.homepage_city_item_ratingBar);
             viewHolder.text_assess = (TextView) convertView.findViewById(R.id.homepage_city_item_assess);
-            viewHolder.mCollectionImageView= (ImageView) convertView.findViewById(R.id.homepage_city_item_collect_image);
+            viewHolder.mCollectionImageView = (ImageView) convertView.findViewById(R.id.homepage_city_item_collect_image);
             convertView.setTag(viewHolder);
         } else {
             //说明开始上下滑动，后面的所有行布局采用第一次绘制时的缓存布局
@@ -113,7 +116,15 @@ public class HouseCollectAdpter extends BaseAdapter {
                 .error(R.drawable.user_error)
                 .into(viewHolder.mUserImageView);
         viewHolder.text_username.setText(user.getUser_realname());
-//        viewHolder.mRatingBar.setNumStars();
+//        Log.e("size",""+starNumList.get(position));
+        /*if (starNumList != null) {
+            if (starNumList.get(position) != 0) {
+                viewHolder.mRatingBar.setNumStars(starNumList.get(position));
+            } else {
+                viewHolder.mRatingBar.setNumStars(5);
+            }
+        }*/
+
         viewHolder.text_assess.setText(mAssessList.get(position) + "条评论");
         viewHolder.mCollectionImageView.setImageResource(R.mipmap.icon_collect_on);
         final ImageView mCollectionImageView = (ImageView) convertView.findViewById(R.id.homepage_city_item_collect_image);
@@ -128,5 +139,4 @@ public class HouseCollectAdpter extends BaseAdapter {
         });
         return convertView;
     }
-
 }
