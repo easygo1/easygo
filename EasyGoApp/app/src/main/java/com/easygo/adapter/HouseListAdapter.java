@@ -143,7 +143,7 @@ public class HouseListAdapter extends BaseAdapter {
                     //将收藏的行加入到数据库中
                     mHomeCityActivity = new HomeCityActivity();
                     //应该从偏好设置中取出来用户ID
-                    mHomeCityActivity.addCollect(user_id, house.getHouse_id());
+                    mHomeCityActivity.addCollect(user_id, house.getHouse_id(),mContext);
                 } else if (mHouseList.get(position).isCollected()) {
                     //此处之前为false
                     //说明用户之前收藏过,再次点击则取消
@@ -157,7 +157,7 @@ public class HouseListAdapter extends BaseAdapter {
                             deleteId = mhouseCollect.getHouse_collect_id();
                         }
                     }
-                    mHomeCityActivity.deleteCollect(deleteId);
+                    mHomeCityActivity.deleteCollect(deleteId,mContext);
                 }
             }
         });

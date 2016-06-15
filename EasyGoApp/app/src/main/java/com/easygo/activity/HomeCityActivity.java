@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -60,6 +61,9 @@ public class HomeCityActivity extends Activity {
     private static final int NOHTTP_WHAT_LOAD = 0x001;
     public static final int NOHTTP_WHAT_DELETECOLLECT = 2;
     public static final int NOHTTP_WHAT_ADDCOLLECT = 3;
+    //标题栏
+    TextView title_text;
+    ImageView mBackView;
 
     //请求队列
     private RequestQueue requestQueue;
@@ -122,6 +126,7 @@ public class HomeCityActivity extends Activity {
         //接受上一个页面的值
         Intent mGetIntent = getIntent();
         city = mGetIntent.getStringExtra("City");
+        title_text.setText(city);
 
 //        Log.e("取出来了id", userid + "");
         MyApplication myApplication = (MyApplication) this.getApplication();
@@ -136,7 +141,7 @@ public class HomeCityActivity extends Activity {
         //适配器初始化
         mAdapter = new HouseListAdapter(HomeCityActivity.this,
                 mHouseList, mUserList, mHousePhotoList, mAssessList,
-                mHouseCollectList, userid,starNumList);
+                mHouseCollectList, userid, starNumList);
         mPullToRefreshListView.setAdapter(mAdapter);
 
         //筛选条件数据
@@ -193,6 +198,8 @@ public class HomeCityActivity extends Activity {
     }
 
     private void initViews() {
+        title_text = (TextView) findViewById(R.id.city_title_text);
+        mBackView = (ImageView) findViewById(R.id.city_back);
         mDialog = new WaitDialog(this);//提示框
         //1.find the listview
         mPullToRefreshListView = (PullToRefreshListView) findViewById(R.id.home_city_listview);
@@ -203,6 +210,12 @@ public class HomeCityActivity extends Activity {
     }
 
     private void addListener() {
+        mBackView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         //设置上拉和下拉时候的监听器
         mPullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             //下拉时
@@ -210,11 +223,12 @@ public class HomeCityActivity extends Activity {
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
                 cur = 1;
                 //清空List
-                mHouseList.clear();
-                mUserList.clear();
-                mHousePhotoList.clear();
-                mAssessList.clear();
-                mHouseCollectList.clear();
+//                mHouseList.clear();
+//                mUserList.clear();
+//                mHousePhotoList.clear();
+//                mAssessList.clear();
+//                mHouseCollectList.clear();
+//                starNumList.clear();
                 new LoadDataAsyncTask(HomeCityActivity.this).execute();//执行下载数据
             }
 
@@ -252,15 +266,15 @@ public class HomeCityActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(HomeCityActivity.this,"房源类型"+housetype[position],Toast.LENGTH_SHORT).show();
+//                if (housetype[position].equals("不限")) {
+//                    //如果是不限则传递类型
+//                    house_style = "类型";
+//                } else {
+//                }
+                cur = 1;//取第一页
                 house_style = housetype[position];
                 Log.e("ggggg", "执行了" + housetype[position]);
-
                 new LoadDataAsyncTask(HomeCityActivity.this).execute();
-                mHouseList.clear();
-                mUserList.clear();
-                mHousePhotoList.clear();
-                mAssessList.clear();
-                mHouseCollectList.clear();
 
 //                sortData(city, cur, house_style, sex_limit, price_limit, stay_limit, userid);
             }
@@ -274,15 +288,15 @@ public class HomeCityActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(HomeCityActivity.this,"性别限制"+sexs[position],Toast.LENGTH_SHORT).show();
+                cur = 1;//取第一页
                 sex_limit = sexs[position];
-
-//                sortData(city, cur, house_style, sex_limit, price_limit, stay_limit, userid);
                 new LoadDataAsyncTask(HomeCityActivity.this).execute();
-                mHouseList.clear();
-                mUserList.clear();
-                mHousePhotoList.clear();
-                mAssessList.clear();
-                mHouseCollectList.clear();
+//                mHouseList.clear();
+//                mUserList.clear();
+//                mHousePhotoList.clear();
+//                mAssessList.clear();
+//                mHouseCollectList.clear();
+//                starNumList.clear();
             }
 
             @Override
@@ -293,16 +307,16 @@ public class HomeCityActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(HomeCityActivity.this,"价格限制"+pricesort[position],Toast.LENGTH_SHORT).show();
+                cur = 1;//取第一页
                 price_limit = pricesort[position];
-
-//                sortData(city, cur, house_style, sex_limit, price_limit, stay_limit, userid);
-
                 new LoadDataAsyncTask(HomeCityActivity.this).execute();
-                mHouseList.clear();
-                mUserList.clear();
-                mHousePhotoList.clear();
-                mAssessList.clear();
-                mHouseCollectList.clear();
+//                mHouseList.clear();
+//                mUserList.clear();
+//                mHousePhotoList.clear();
+//                mAssessList.clear();
+//                mHouseCollectList.clear();
+//                starNumList.clear();
+
             }
 
             @Override
@@ -313,30 +327,35 @@ public class HomeCityActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(HomeCityActivity.this,"入住时间"+checknum[position],Toast.LENGTH_SHORT).show();
-                if(checknum[position].equals("可议")){
+                cur = 1;//取第一页
+                if (checknum[position].equals("可议")) {
                     stay_limit = "0";
-                }else if(checknum[position].equals("1天")){
+                } else if (checknum[position].equals("1天")) {
                     stay_limit = "1";
-                }else if(checknum[position].equals("2天")){
+                } else if (checknum[position].equals("2天")) {
                     stay_limit = "2";
-                }else if(checknum[position].equals("3天")){
+                } else if (checknum[position].equals("3天")) {
                     stay_limit = "3";
-                }else if(checknum[position].equals("4天")){
+                } else if (checknum[position].equals("4天")) {
                     stay_limit = "4";
-                }else if(checknum[position].equals("5天")){
+                } else if (checknum[position].equals("5天")) {
                     stay_limit = "5";
-                }else if(checknum[position].equals("6天")){
+                } else if (checknum[position].equals("6天")) {
                     stay_limit = "6";
-                }else if(checknum[position].equals("7天")){
+                } else if (checknum[position].equals("7天")) {
                     stay_limit = "7";
+                } else if (checknum[position].equals("时间")) {
+                    stay_limit = "时间";
+                } else if (checknum[position].equals("全部")) {
+                    stay_limit = "全部";
                 }
-//                sortData(city, cur, house_style, sex_limit, price_limit, stay_limit, userid);
                 new LoadDataAsyncTask(HomeCityActivity.this).execute();
-                mHouseList.clear();
-                mUserList.clear();
-                mHousePhotoList.clear();
-                mAssessList.clear();
-                mHouseCollectList.clear();
+//                mHouseList.clear();
+//                mUserList.clear();
+//                mHousePhotoList.clear();
+//                mAssessList.clear();
+//                mHouseCollectList.clear();
+//                starNumList.clear();
             }
 
             @Override
@@ -495,13 +514,14 @@ public class HomeCityActivity extends Activity {
                     .findViewById(android.R.id.text1);
             tv.setText(items[position]);
             tv.setGravity(Gravity.CENTER_HORIZONTAL);
-            tv.setTextSize(18);
+            tv.setTextSize(16);
             return convertView;
         }
     }
 
     //删除一条收藏
-    public void deleteCollect(int house_collect_id) {
+    public void deleteCollect(int house_collect_id, Context context) {
+        mDialog = new WaitDialog(context);
         // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
         requestQueue = NoHttp.newRequestQueue();
         // 创建请求对象
@@ -519,7 +539,8 @@ public class HomeCityActivity extends Activity {
     }
 
     //增加一条收藏
-    public void addCollect(int user_id, int house_id) {
+    public void addCollect(int user_id, int house_id, Context context) {
+        mDialog = new WaitDialog(context);
         // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
         requestQueue = NoHttp.newRequestQueue();
         // 创建请求对象
@@ -543,6 +564,18 @@ public class HomeCityActivity extends Activity {
         @Override
         public void onSucceed(int what, Response<String> response) {
             if (what == NOHTTP_WHAT_LOAD) {
+                if (cur == 1) {
+                    //第一页则清空,请求成功再清空
+
+                    mHouseList.clear();
+                    mUserList.clear();
+                    mHousePhotoList.clear();
+                    mAssessList.clear();
+                    mHouseCollectList.clear();
+                    starNumList.clear();
+                } else {
+
+                }
                 // 请求成功
                 String result = response.get();// 响应结果
                 //把JSON格式的字符串改为Student对象
@@ -550,6 +583,7 @@ public class HomeCityActivity extends Activity {
                 Type type = new TypeToken<GsonAboutHouse>() {
                 }.getType();
 //                gsonAboutHouse = new GsonAboutHouse();
+//                Log.e("传过来了呀", result);
                 gsonAboutHouse = gson.fromJson(result, type);
                 if (gsonAboutHouse.getHouseList().size() == 0) {
                     Toast.makeText(HomeCityActivity.this, "暂时没有房源了~", Toast.LENGTH_SHORT).show();
@@ -564,6 +598,12 @@ public class HomeCityActivity extends Activity {
                 mAdapter.notifyDataSetChanged();
                 //表示刷新完成
                 mPullToRefreshListView.onRefreshComplete();
+            } else if (what == NOHTTP_WHAT_ADDCOLLECT) {
+                //回调时，如果服务器报错，有可能会空指针
+//                Toast.makeText(context, "收藏成功", Toast.LENGTH_SHORT).show();
+            } else if (what == NOHTTP_WHAT_DELETECOLLECT) {
+//                Toast.makeText(HomeCityActivity.this, "取消收藏成功", Toast.LENGTH_SHORT).show();
+
             }
         }
 

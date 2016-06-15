@@ -388,23 +388,24 @@ public class IHouseDAOImpl implements IHouseDAO {
 		try {
 			int Begin = (cur - 1) * 4;
 			int num = 4;
-			if (price_limit.equals("价格")) {
+			if (price_limit.equals("价格") || price_limit.equals("默认")) {
+				System.out.println(price_limit + "--------------");
 				System.out.println(style_limit + "--------------");
 				System.out.println(sex_limit + "--------------");
 				System.out.println(stay_time + "--------------");
 				statement = connection.prepareStatement(sql);
 				statement.setString(1, house_address_city);
-				if (style_limit.equals("类型")) {
+				if (style_limit.equals("类型") || style_limit.equals("全部")) {
 					statement.setString(2, "%");
 				} else {
 					statement.setString(2, style_limit);
 				}
-				if (sex_limit.equals("性别")) {
+				if (sex_limit.equals("性别") || sex_limit.equals("全部")) {
 					statement.setString(3, "%");
 				} else {
 					statement.setString(3, sex_limit);
 				}
-				if (stay_time.equals("时间")) {
+				if (stay_time.equals("时间") || stay_time.equals("全部")) {
 					statement.setString(4, "%");
 				} else {
 					statement.setString(4, stay_time);
@@ -418,19 +419,23 @@ public class IHouseDAOImpl implements IHouseDAO {
 				statement.setInt(6, num);
 				// System.out.println(paging.getPageSize() + "分页是多少了");
 			} else if (price_limit.equals("低-高")) {
+				System.out.println(price_limit + "======低---高");
+				System.out.println(style_limit + "======低---高");
+				System.out.println(sex_limit + "======低---高");
+				System.out.println(stay_time + "-======低---高");
 				statement = connection.prepareStatement(sql2);
 				statement.setString(1, house_address_city);
-				if (style_limit.equals("类型")) {
+				if (style_limit.equals("类型") || style_limit.equals("全部")) {
 					statement.setString(2, "%");
 				} else {
 					statement.setString(2, style_limit);
 				}
-				if (sex_limit.equals("性别")) {
+				if (sex_limit.equals("性别") || sex_limit.equals("全部")) {
 					statement.setString(3, "%");
 				} else {
 					statement.setString(3, sex_limit);
 				}
-				if (stay_time.equals("时间")) {
+				if (stay_time.equals("时间") || stay_time.equals("全部")) {
 					statement.setString(4, "%");
 				} else {
 					statement.setString(4, stay_time);
@@ -440,20 +445,24 @@ public class IHouseDAOImpl implements IHouseDAO {
 				statement.setInt(5, Begin);
 				statement.setInt(6, num);
 			} else if (price_limit.equals("高-低")) {
+				System.out.println(price_limit + "+++++++++");
+				System.out.println(style_limit + "+++++++");
+				System.out.println(sex_limit + "++++++");
+				System.out.println(stay_time + "+++++");
 				// 降序
 				statement = connection.prepareStatement(sql3);
 				statement.setString(1, house_address_city);
-				if (style_limit.equals("类型")) {
+				if (style_limit.equals("类型") || style_limit.equals("全部")) {
 					statement.setString(2, "%");
 				} else {
 					statement.setString(2, style_limit);
 				}
-				if (sex_limit.equals("性别")) {
+				if (sex_limit.equals("性别") || sex_limit.equals("全部")) {
 					statement.setString(3, "%");
 				} else {
 					statement.setString(3, sex_limit);
 				}
-				if (stay_time.equals("时间")) {
+				if (stay_time.equals("时间") || stay_time.equals("全部")) {
 					statement.setString(4, "%");
 				} else {
 					statement.setString(4, stay_time);
@@ -499,6 +508,7 @@ public class IHouseDAOImpl implements IHouseDAO {
 		}
 		return houseList;
 	}
+
 	@Override
 	public List<House> findSpecHouseByCity(String house_address_city) {
 		List<House> houseList = new ArrayList<House>();
