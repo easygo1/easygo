@@ -1,6 +1,8 @@
 package com.easygo.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,7 @@ import com.easygo.beans.gson.GsonUserCollect;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.user.User;
+import com.easygo.view.WaitDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
@@ -43,7 +46,11 @@ import java.util.List;
 
 public class HouseCollectionActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int WHAT_USER_COLLECT = 20;
-    public static final int WHAT_DELETECOLLECT =21;
+    public static final int WHAT_DELETECOLLECT = 21;
+    private WaitDialog mDialog;
+
+    public static final String TYPE = "type";
+    SharedPreferences mSharedPreferences;
     TextView mTextView;
     ImageView mBackImageView;
 
@@ -52,7 +59,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
     List<HousePhoto> mHousePhotoList;
     List<User> mUserList;//房东
     List<Integer> mAssessList;
-    List<Integer> starNumList = null;
+    List<Integer> starNumList;
     HouseCollectAdpter mAdpter;
 
     String mPath;
@@ -63,22 +70,21 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
     PullToRefreshListView mPullToRefreshListView;
 
     private int cur = 1;
-    private int userid = 1;//从偏好设置中获取
+    private int userid;//从偏好设置中获取
     private OnResponseListener<String> mOnResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
         @Override
         public void onStart(int what) {
-
+            mDialog.show();
         }
 
         @Override
         public void onSucceed(int what, Response<String> response) {
             String result = response.get();// 响应结果
-            switch (what){
+            switch (what) {
                 case WHAT_USER_COLLECT:
                     //得到该用户的房源收藏列表
                     // 请求成功
-                    Log.e("tag", result);
                     //把JSON格式的字符串改为Student对象
                     Gson gson = new Gson();
                     Type type = new TypeToken<GsonUserCollect>() {
@@ -94,6 +100,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
                     //房源主图信息
                     mHousePhotoList.addAll(mGsonUserCollect.getHousephotolist());
                     mAssessList.addAll(mGsonUserCollect.getAssessList());
+                    starNumList.addAll(mGsonUserCollect.getStarNumList());
                     //mHouseCollectList.addAll(gsonAboutHouse.getHouseCollectList());
                     //通知刷新
                     mAdpter.notifyDataSetChanged();
@@ -102,9 +109,11 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
                     break;
                 case WHAT_DELETECOLLECT:
                     //取消收藏
-                   // Toast.makeText(HouseCollectionActivity.this, "取消"+result, Toast.LENGTH_SHORT).show();
-                    mAdpter.notifyDataSetChanged();
-                break;
+                    // Toast.makeText(HouseCollectionActivity.this, "取消"+result, Toast.LENGTH_SHORT).show();
+//                    cur =1;
+//                    new LoadDataAsyncTask(HouseCollectionActivity.this).execute();//执行下载数据
+//                    mAdpter.notifyDataSetChanged();
+                    break;
             }
         }
 
@@ -132,7 +141,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
 
         @Override
         public void onFinish(int what) {
-
+            mDialog.dismiss();
         }
     };
 
@@ -155,6 +164,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
     }
 
     private void initViews() {
+        mDialog = new WaitDialog(this);//提示框
         mTextView = (TextView) findViewById(R.id.title_text);
         mTextView.setText("我的收藏");
         mBackImageView = (ImageView) findViewById(R.id.back);
@@ -162,15 +172,18 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
     }
 
     private void initData() {
+        mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        userid = mSharedPreferences.getInt("user_id", 0);//整个页面要用
         //初始化数据
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();
-        mHouseList=new ArrayList<>();
-        mUserList=new ArrayList<>();
-        mHousePhotoList=new ArrayList<>();
-        mAssessList=new ArrayList<>();
-        starNumList=new ArrayList<>();
-        mAdpter=new HouseCollectAdpter(this,mHouseList,mUserList,mHousePhotoList,mAssessList,starNumList);
+        mHouseList = new ArrayList<>();
+        mUserList = new ArrayList<>();
+        mHousePhotoList = new ArrayList<>();
+        mAssessList = new ArrayList<>();
+        starNumList = new ArrayList<>();
+        mAdpter = new HouseCollectAdpter(HouseCollectionActivity.this, mHouseList, mUserList,
+                mHousePhotoList, mAssessList, starNumList, userid);
         mPullToRefreshListView.setAdapter(mAdpter);
     }
 
@@ -179,7 +192,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
         // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
         requestQueue = NoHttp.newRequestQueue();
         // 创建请求对象
-        request = NoHttp.createStringRequest(mPath, RequestMethod.GET);
+        request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
         // 添加请求参数
         request.add("methods", "selecthousecollect");
         request.add("cur", cur);
@@ -212,7 +225,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
                 mHousePhotoList.clear();
                 mAssessList.clear();
                 starNumList.clear();
-              //  mHouseCollectList.clear();
+                //  mHouseCollectList.clear();
                 new LoadDataAsyncTask(HouseCollectionActivity.this).execute();//执行下载数据
                 mAdpter.notifyDataSetChanged();
             }
@@ -234,14 +247,16 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
                 //传参
                 Intent intent = new Intent(HouseCollectionActivity.this,
                         HouseDetailActivity.class);
-                Log.e("position",position+"");
-                Log.e("mHouseList",mHouseList.get(position-1).getHouse_id()+"");
-                int houseid = mHouseList.get(position-1).getHouse_id();
+                Log.e("position", position + "");
+                Log.e("mHouseList", mHouseList.get(position - 1).getHouse_id() + "");
+                int houseid = mHouseList.get(position - 1).getHouse_id();
                 intent.putExtra("houseid", houseid);
                 startActivity(intent);
             }
         });
     }
+
+
     static class LoadDataAsyncTask extends AsyncTask<Void, Void, String> {//定义返回值的类型
         //后台处理
         private HouseCollectionActivity activity;
@@ -251,15 +266,15 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
         //初始化三个参数
         public LoadDataAsyncTask(HouseCollectionActivity activity) {
             this.activity = activity;
-            cur = activity.cur;
-            userid = activity.userid;
+            this.cur = activity.cur;
+            this.userid = activity.userid;
         }
 
         @Override
         protected String doInBackground(Void... params) {
 //            Log.e("zz",""+cur);
             //加载数据
-            activity.loadData( cur, userid);
+            activity.loadData(cur, userid);
             return "success";
         }
 
@@ -273,6 +288,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
             }
         }
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -281,16 +297,18 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
                 break;
         }
     }
+
     //删除一条收藏
-    public void deleteCollect(int houseid) {
+    public void deleteCollect(int delUserid, int delHouseid,Context context) {
+        mDialog = new WaitDialog(context);
         // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
         requestQueue = NoHttp.newRequestQueue();
         // 创建请求对象
         request = NoHttp.createStringRequest(new MyApplication().getUrl(), RequestMethod.POST);
         // 添加请求参数
         request.add("methods", "deleteHouseCollectById");
-        request.add("houseid", houseid);
-        request.add("userid",userid);
+        request.add("houseid", delHouseid);
+        request.add("userid", delUserid);
         /*
          * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
 		 * request: 请求对象

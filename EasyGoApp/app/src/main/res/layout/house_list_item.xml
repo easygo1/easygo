@@ -87,9 +87,8 @@
             android:textSize="20sp"/>
 
         <RatingBar
-
-            android:id="@+id/homepage_city_item_ratingBar"
             style="?android:attr/ratingBarStyleSmall"
+            android:id="@+id/homepage_city_item_ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/homepage_city_item_text_name"

@@ -32,16 +32,19 @@ public class HouseCollectAdpter extends BaseAdapter {
     List<HousePhoto> mHousePhotoList = null;
     List<Integer> mAssessList = null;
     List<Integer> starNumList;
+    int user_id;
+
 
     public HouseCollectAdpter(Context context, List<House> houseList, List<User> userList, List<HousePhoto> housePhotoList, List<Integer> assessList,
-                              List<Integer> starNumList) {
-        mContext = context;
-        mHouseList = houseList;
-        mUserList = userList;
-        mHousePhotoList = housePhotoList;
-        mAssessList = assessList;
+                              List<Integer> starNumList, int user_id) {
+        this.mContext = context;
+        this.mHouseList = houseList;
+        this.mUserList = userList;
+        this.mHousePhotoList = housePhotoList;
+        this.mAssessList = assessList;
         this.starNumList = starNumList;
-        mInflater = LayoutInflater.from(mContext);
+        this.user_id = user_id;
+        this.mInflater = LayoutInflater.from(mContext);
     }
 
     @Override
@@ -76,7 +79,7 @@ public class HouseCollectAdpter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.house_list_item, null);
             viewHolder = new ViewHolder();
@@ -117,13 +120,12 @@ public class HouseCollectAdpter extends BaseAdapter {
                 .into(viewHolder.mUserImageView);
         viewHolder.text_username.setText(user.getUser_realname());
 //        Log.e("size",""+starNumList.get(position));
-        /*if (starNumList != null) {
-            if (starNumList.get(position) != 0) {
-                viewHolder.mRatingBar.setNumStars(starNumList.get(position));
-            } else {
-                viewHolder.mRatingBar.setNumStars(5);
-            }
-        }*/
+        if (starNumList.get(position) != 0) {
+            viewHolder.mRatingBar.setNumStars(starNumList.get(position));
+        }else{
+            viewHolder.mRatingBar.setNumStars(5);
+        }
+
 
         viewHolder.text_assess.setText(mAssessList.get(position) + "条评论");
         viewHolder.mCollectionImageView.setImageResource(R.mipmap.icon_collect_on);
@@ -134,7 +136,10 @@ public class HouseCollectAdpter extends BaseAdapter {
             public void onClick(View v) {
                 //将数据库中的收藏行删除
                 mCollectionActivity = new HouseCollectionActivity();
-                mCollectionActivity.deleteCollect(mHouseList.get(position).getHouse_id());
+                mCollectionActivity.deleteCollect(
+                        user_id, mHouseList.get(position).getHouse_id(),mContext);
+                viewHolder.mCollectionImageView.setImageResource(R.mipmap.icon_collect_blue);
+
             }
         });
         return convertView;

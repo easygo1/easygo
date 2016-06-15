@@ -238,7 +238,7 @@ public class AppServlet extends HttpServlet {
 				System.out.println("登录成功");
 				mPrintWriter.close();
 			}
-			
+
 			break;
 		// 用户注册
 		case "register":
@@ -247,7 +247,7 @@ public class AppServlet extends HttpServlet {
 			user_password = request.getParameter("user_password");
 			userdao = new IUserDAOImpl();
 			user = userdao.selectUser(user_phone);
-			//System.out.println("user..."+user.toString());
+			// System.out.println("user..."+user.toString());
 			if (user == null) {
 				// 对用户进行注册
 				user = new User();
@@ -273,14 +273,14 @@ public class AppServlet extends HttpServlet {
 					System.out.println("登录成功");
 					mPrintWriter.close();
 				}
-			}else {
+			} else {
 				System.out.println("该用户已注册");
 				mPrintWriter.write("0");// 将数据写回android端
 				mPrintWriter.close();
 			}
-			
+
 			// mPrintWriter.write(userdao.register(user));
-			//mPrintWriter.close();
+			// mPrintWriter.close();
 			break;
 		// 添加好友
 		case "addFriend":
@@ -1179,6 +1179,7 @@ public class AppServlet extends HttpServlet {
 			houseCollectDAO = new IHouseCollectDAOImpl();
 			house_collect_id = Integer.parseInt(request
 					.getParameter("houseCollectId"));
+			System.out.println("house_collect_id" + house_collect_id);
 			houseCollectDAO.delHouseCollect(house_collect_id);
 			break;
 		case "deleteHouseCollectById":
@@ -1187,6 +1188,9 @@ public class AppServlet extends HttpServlet {
 			// 用户id
 			user_id = Integer.parseInt(request.getParameter("userid"));
 			houseCollectDAO.deleteHouseCollectById(user_id, house_id);
+			// result = gson.toJson(userCollect);
+			// mPrintWriter.write(result);
+			// mPrintWriter.close();
 			break;
 		// 增加某个用户的收藏表的一条数据
 		case "addHouseCollect":
@@ -1259,7 +1263,7 @@ public class AppServlet extends HttpServlet {
 				userList.add(user);
 			}
 			GsonUserCollect userCollect = new GsonUserCollect(houseList,
-					housePhotoList, userList,assessList,starNumList);
+					housePhotoList, userList, assessList, starNumList);
 			gson = new Gson();
 			result = gson.toJson(userCollect);
 			mPrintWriter.write(result);
