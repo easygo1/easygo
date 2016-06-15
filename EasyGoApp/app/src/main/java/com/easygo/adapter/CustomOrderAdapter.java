@@ -120,6 +120,9 @@ public class CustomOrderAdapter extends BaseAdapter {
         if (mOrdersList.get(position).getOrder_state().equals("待付款")){
             viewHolder.orderUpdateText.setText("去付款");
         }
+        if (mOrdersList.get(position).getOrder_state().equals("待入住")){
+            viewHolder.orderUpdateText.setText("确认入住");
+        }
         //viewHolder.orderImageView.setImageResource(order.getImage());
         Glide.with(mContext).load(mHousePhotoList.get(position).getHouse_photo_path()).into(viewHolder.orderImageView);
         viewHolder.orderDelte.setOnClickListener(new View.OnClickListener() {
@@ -201,6 +204,5 @@ public class CustomOrderAdapter extends BaseAdapter {
 //        builder.setNeutralButton("忽略", dialogOnclicListener);
         builder.create().show();
     }
-
 
 }

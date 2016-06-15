@@ -119,7 +119,7 @@ public class ReleasesroomNoFragment extends Fragment{
 
             try {
                 // 设置服务器上保存文件的目录和文件名，如果服务器上同目录下已经有同名文件会被自动覆盖的。
-                String SAVE_KEY = File.separator + "test" + File.separator + System.currentTimeMillis() + ".jpg";
+                String SAVE_KEY = File.separator + "house" + File.separator + System.currentTimeMillis() + ".jpg";
 
                 // 取得base64编码后的policy
                 String policy = UpYunUtils.makePolicy(SAVE_KEY, EXPIRATION, BUCKET);
@@ -185,7 +185,7 @@ public class ReleasesroomNoFragment extends Fragment{
         // start multiple photos selector
         Intent intent = new Intent(getActivity(),ImagesSelectorActivity.class);
         // max number of images to be selected
-        intent.putExtra(SelectorSettings.SELECTOR_MAX_IMAGE_NUMBER, 100);
+        intent.putExtra(SelectorSettings.SELECTOR_MAX_IMAGE_NUMBER, 5);
         // min size of image which will be shown; to filter tiny images (mainly icons)
         intent.putExtra(SelectorSettings.SELECTOR_MIN_IMAGE_SIZE, 100000);
         // show camera or not

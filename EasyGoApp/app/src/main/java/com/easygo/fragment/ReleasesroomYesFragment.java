@@ -266,7 +266,7 @@ public class ReleasesroomYesFragment extends Fragment implements View.OnClickLis
         }
     }
     private void takePhoto() {
-        // start multiple photos selector
+        // start multiple photos selectoru
         Intent intent = new Intent(getActivity(),ImagesSelectorActivity.class);
         // max number of images to be selected
         intent.putExtra(SelectorSettings.SELECTOR_MAX_IMAGE_NUMBER, 5-mList.size());

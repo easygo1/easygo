@@ -180,6 +180,28 @@ public class CustomOrderActivity extends FragmentActivity implements View.OnClic
         CustomOrderIngFragment customOrderIngFragment = (CustomOrderIngFragment) mOrderFragmentAdapter.getItem(0);
         customOrderIngFragment.deleteOrder(position);
     }
+    public void yesStayOneOrder(int order_id,int position){
+        Log.e("调用了，",order_id+"");
+        MyApplication myApplication = (MyApplication) CustomOrderActivity.this.getApplication();
+        mUrl = myApplication.getUrl();
+        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+        mRequestQueue = NoHttp.newRequestQueue();
+        //创建请求对象
+        Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
+        //添加请求参数
+        request.add("methods", "yesStayOrders");
+        request.add("order_id", order_id);
+        /*
+         * what: 当多个请求同时使用同一个OnResponseListener时用来区分请求, 类似handler的what一样
+		 * request: 请求对象
+		 * onResponseListener 回调对象，接受请求结果
+		 */
+        mRequestQueue.add(NOHTTP_WHAT_DEL, request, onResponseListener);
+
+        mOrdersList.get(position).setOrder_state("已取消");
+        CustomOrderIngFragment customOrderIngFragment = (CustomOrderIngFragment) mOrderFragmentAdapter.getItem(0);
+        customOrderIngFragment.deleteOrder(position);
+    }
     private void initViewPager() {
         fragments = new ArrayList<Fragment>();
         Fragment customOrderIngFragment = new CustomOrderIngFragment();

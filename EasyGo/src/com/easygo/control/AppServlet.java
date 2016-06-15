@@ -757,6 +757,7 @@ public class AppServlet extends HttpServlet {
 			orders = orderDAO.findOrdersByorderid(order_id);
 			Jdpush.sendPush(orders.getUser_id(), "您的订单已被房主确认，请及时付款");
 			break;
+		
 		case "assessokOrders":
 			order_id = Integer.valueOf(request.getParameter("order_id"));
 			assessDAO = new IAssessDAOImpl();
