@@ -99,9 +99,10 @@
     </style>
 
     <style name="releasesroom_arrow">
+        <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:src">@mipmap/yellow_right_arrow</item>
     </style>
@@ -209,7 +210,7 @@
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginRight">25dp</item>
         <item name="android:singleLine">true</item>
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/gray</item>

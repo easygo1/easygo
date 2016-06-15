@@ -23,7 +23,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="25dp"
             android:scaleType="fitStart"
             android:src="@mipmap/user_photo_defult"/>
 
@@ -70,7 +70,7 @@
 
         <TextView
             android:id="@+id/change_city_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
@@ -92,7 +92,7 @@
 
         <TextView
             android:id="@+id/change_sex_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
@@ -114,7 +114,7 @@
 
         <TextView
             android:id="@+id/change_job_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
@@ -136,7 +136,7 @@
 
         <TextView
             android:id="@+id/change_label_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
@@ -158,7 +158,7 @@
 
         <TextView
             android:id="@+id/change_autograph_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
@@ -180,7 +180,7 @@
 
         <TextView
             android:id="@+id/change_instroduce_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
@@ -204,7 +204,7 @@
 
         <TextView
             android:id="@+id/change_realname_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
@@ -226,7 +226,7 @@
 
         <TextView
             android:id="@+id/user_idcard_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
@@ -248,7 +248,7 @@
 
         <TextView
             android:id="@+id/change_date_birth_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView
@@ -270,7 +270,7 @@
 
         <TextView
             android:id="@+id/change_password_textView"
-            style="@style/releasesroom_xuanze"
+            style="@style/myinfo_xuanze"
             android:text="选择"/>
 
         <ImageView

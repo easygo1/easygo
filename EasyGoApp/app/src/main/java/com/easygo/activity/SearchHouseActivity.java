@@ -134,8 +134,7 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
         user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
         inday = mDateSharedPreferences.getString("dateIn", "");
         outday = mDateSharedPreferences.getString("dateOut", "");
-        searchcity= mSharedPreferences.getString("searchcity", "苏州");
-        mCityTextView.setText(searchcity);
+        searchcity = mSharedPreferences.getString("searchcity", "");
         if (!"".equals(inday)) {
             mInTextView.setText(inday);
         }
@@ -155,8 +154,11 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        getData(mTimeListString,searchcity);
-
+        if (!searchcity.equals("") && !inday.equals("")) {
+            getData(mTimeListString, searchcity);
+            mCityTextView.setText(searchcity);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private void initListView() {
@@ -186,9 +188,9 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
         mHousePhotoList = new ArrayList<>();
         mAssessList = new ArrayList<>();
         mHouseCollectList = new ArrayList<>();
-        starNumList=new ArrayList<>();
+        starNumList = new ArrayList<>();
         //初始化适配器
-        mAdapter = new HouseListAdapter(SearchHouseActivity.this, mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList, user_id,starNumList);
+        mAdapter = new HouseListAdapter(SearchHouseActivity.this, mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList, user_id, starNumList);
 
     }
 
@@ -235,13 +237,14 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
             //下拉时
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-               // cur = 1;
+                // cur = 1;
                 //清空List
                 mHouseList.clear();
                 mUserList.clear();
                 mHousePhotoList.clear();
                 mAssessList.clear();
                 mHouseCollectList.clear();
+                starNumList.clear();
                 new LoadDataAsyncTask(SearchHouseActivity.this).execute();//执行下载数据
                 mAdapter.notifyDataSetChanged();
             }
@@ -250,8 +253,8 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 //页码加一
-               // cur++;
-               // new LoadDataAsyncTask(SearchHouseActivity.this).execute();
+                // cur++;
+                // new LoadDataAsyncTask(SearchHouseActivity.this).execute();
             }
         });
         //点击进入对应的房源
@@ -286,14 +289,14 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
             cur = activity.cur;
             mTimeListString = activity.mTimeListString;
             userid = activity.user_id;
-            Searchcity=activity.searchcity;
+            Searchcity = activity.searchcity;
         }
 
         @Override
         protected String doInBackground(Void... params) {
 //            Log.e("zz",""+cur);
             //加载数据
-            activity.getData(mTimeListString,Searchcity);
+            activity.getData(mTimeListString, Searchcity);
             return "success";
         }
 
@@ -309,8 +312,8 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    private void getData(String TimeListString,String searchcity) {
-        Log.e("timelist", TimeListString);
+    private void getData(String TimeListString, String searchcity) {
+//        Log.e("timelist", TimeListString);
         // 创建请求队列, 默认并发3个请求,传入你想要的数字可以改变默认并发数, 例如NoHttp.newRequestQueue(1);
         requestQueue = NoHttp.newRequestQueue();
         // 创建请求对象
@@ -342,19 +345,62 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
             String result = response.get();
             switch (what) {
                 case WHAT_LOAD_DATA:
-                   // Log.e("result","666666");
-                   // Log.e("result",result);
-                    if(result.equals("没有搜索到您要查找的房源")){
-                        Toast.makeText(SearchHouseActivity.this,result, Toast.LENGTH_SHORT).show();
-                    }else{
+//                   Log.e("result",result);
+                    // Log.e("result",result);
+                    /*switch (result){
+                        case "没有搜索到您要查找的房源":
+                            mHouseList.clear();
+                            mUserList.clear();
+                            mHousePhotoList.clear();
+                            mAssessList.clear();
+                            mHouseCollectList.clear();
+                            starNumList.clear();
+                            new LoadDataAsyncTask(SearchHouseActivity.this).execute();//执行下载数据
+                            mAdapter.notifyDataSetChanged();
+                            Toast.makeText(SearchHouseActivity.this,result, Toast.LENGTH_SHORT).show();
+                            break;
+                        default:
+                            //把JSON格式的字符串改为Student对象
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<GsonAboutHouse>() {
+                            }.getType();
+                            gsonAboutHouse = gson.fromJson(result, type);
+                            Log.e("搜索结果", ""+gsonAboutHouse.getHouseList().size());
+                            if (gsonAboutHouse.getHouseList().size() == 0) {
+                                Toast.makeText(SearchHouseActivity.this, "没有更多房源了~", Toast.LENGTH_SHORT).show();
+                                mAdapter.notifyDataSetChanged();
+                            }
+                            //Toast.makeText(SearchHouseActivity.this, "qwqw" + gsonAboutHouse.getHouseList().size(), Toast.LENGTH_SHORT).show();
+                            mHouseList.addAll(gsonAboutHouse.getHouseList());
+                            mUserList.addAll(gsonAboutHouse.getUserList());
+                            mHousePhotoList.addAll(gsonAboutHouse.getHousePhotoList());
+                            mAssessList.addAll(gsonAboutHouse.getAssessList());
+                            mHouseCollectList.addAll(gsonAboutHouse.getHouseCollectList());
+                            starNumList.addAll(gsonAboutHouse.getStarNumList());
+                            //通知刷新
+                            mAdapter.notifyDataSetChanged();
+                            //表示刷新完成
+                            break;
+                    }*/
+                    if (result.equals("没有搜索到您要查找的房源") || result == null) {
+                        Toast.makeText(SearchHouseActivity.this, "没有搜索到您要查找的房源", Toast.LENGTH_SHORT).show();
+                        mHouseList.clear();
+                        mUserList.clear();
+                        mHousePhotoList.clear();
+                        mAssessList.clear();
+                        mHouseCollectList.clear();
+                        starNumList.clear();
+                        mAdapter.notifyDataSetChanged();
+                    } else {
                         //把JSON格式的字符串改为Student对象
                         Gson gson = new Gson();
                         Type type = new TypeToken<GsonAboutHouse>() {
                         }.getType();
                         gsonAboutHouse = gson.fromJson(result, type);
-                        Log.e("搜索结果", ""+gsonAboutHouse.getHouseList().size());
+                        Log.e("搜索结果", "" + gsonAboutHouse.getHouseList().size());
                         if (gsonAboutHouse.getHouseList().size() == 0) {
                             Toast.makeText(SearchHouseActivity.this, "没有更多房源了~", Toast.LENGTH_SHORT).show();
+                            mAdapter.notifyDataSetChanged();
                         }
                         //Toast.makeText(SearchHouseActivity.this, "qwqw" + gsonAboutHouse.getHouseList().size(), Toast.LENGTH_SHORT).show();
                         mHouseList.addAll(gsonAboutHouse.getHouseList());

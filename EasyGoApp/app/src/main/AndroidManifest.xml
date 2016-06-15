@@ -81,7 +81,7 @@
             android:value="e65c17859f5937c95081ef9f3bf6aba0"/>
 
         <activity android:name=".MainActivity"
-            android:launchMode="singleTask">
+            >
         </activity>
         <activity android:name=".Guide">
         </activity>

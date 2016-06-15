@@ -174,14 +174,17 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                     if (user.getUser_job() != null) {
                         mChangeJobTextView.setText(user.getUser_job());
                     }
-                    for (int i = 0; i < hobbyNamelist.size(); i++) {
-                        lablesString += hobbyNamelist.get(i) + " ";
+                    if(hobbyNamelist.size()!=0){
+                        for (int i = 0; i < hobbyNamelist.size(); i++) {
+                            lablesString += hobbyNamelist.get(i) + " ";
 //                        Log.e("lablesString", lablesString);
 //                        Log.e("hobby", i + hobbyNamelist.get(i));
+                        }
+                        if (lablesString != null) {
+                            mChangeLabelTextView.setText(lablesString);
+                        }
                     }
-                    if (lablesString != null) {
-                        mChangeLabelTextView.setText(lablesString);
-                    }
+
                     if (user.getUser_mood() != null) {
                         mChangeAutographTextView.setText(user.getUser_mood());
                     }
@@ -199,14 +202,14 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                     }
                     break;
                 case WHAT_UPDATE_PHOTO:
-                    Toast.makeText(MyInfomationActivity.this, "result更新photo" + result, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyInfomationActivity.this, "头像保存" + result, Toast.LENGTH_SHORT).show();
                     break;
                 case WHAT_UPDATE_HOBBY:
                     //Log.e("zfg", "hobby" + result);
                     Toast.makeText(MyInfomationActivity.this, "更新hobby" + result, Toast.LENGTH_SHORT).show();
                     break;
                 case WHAT:
-                    Toast.makeText(MyInfomationActivity.this, "更新用户" + result, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyInfomationActivity.this, "信息修改" + result, Toast.LENGTH_SHORT).show();
                     break;
             }
         }

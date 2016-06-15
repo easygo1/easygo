@@ -1,7 +1,7 @@
 <resources
     xmlns:tools="http://schemas.android.com/tools"
     tools:locale="en">
-    <string name="app_name">EasyGo</string>
+    <string name="app_name">轻松住</string>
 
     <string name="homepage">首页</string>
     <string name="search">搜索</string>
@@ -10,9 +10,7 @@
 
     <string name="friend">好友</string>
     <string name="dynamic">动态</string>
-    <string name="housedescribe">普罗旺斯位于太湖之滨“温泉小镇”临湖镇，它以典雅的南法风情，舒适的户型居宅、完善的服务设施引人入胜，高尔夫果岭、水景、植被公园点缀其中。普罗旺斯位于太湖之滨“温泉小镇”临湖镇，它以典雅的南法风情，舒适的户型居宅、完善的服务设施引人入胜，高尔夫果岭、水景、植被公园点缀其中。普罗旺斯位于太湖之滨“温泉小镇”临湖镇，它以典雅的南法风情，舒适的户型居宅、完善的服务设施引人入胜，高尔夫果岭、水景、植被公园点缀其中。</string>
     <string name="myorder">我的订单</string>
-    <string name="text">真仙（不朽者、长生者）:超越人道绝巅，踏足仙道领域，死后就算剩下一滴血也可以维持数个纪元不灭。仙古纪元为真仙降临的纪元。在仙战中完整的大界被打残，化作九天十地，仙域与九天十地通道也被关闭。天地法则残缺不全，导致乱古纪元九天十地再无人可以成仙。 仙王（不朽之王）：至高的，无上的，战力无敌，为仙之王者，肉身不朽，元神不灭，可真正的长生不死。若有人念其真名就会被他们感知，会有异象显化。已知存在过的此级数的人物有：太古十凶中的真龙，天角蚁拥有仙王实力，蛄与仙凰，麒麟近乎为仙王。九天十地的六道轮回仙王、无终仙王、仙僧王、祖祭灵（柳神前身)等；异域的安澜、俞陀、赤王，无殇，洛摩等；葬域的葬王，后世有叶凡，狠人，无始，段德 仙道至尊（不朽之帝）：即不存在的境界，俞陀、安澜所追寻的路，可炼制仙源，封印仙道高手</string>
     <string name="mycollection">我的收藏</string>
     <string name="mywallet">我的钱包</string>
     <string name="myinformation">我的信息</string>

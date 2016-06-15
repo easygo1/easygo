@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -120,6 +121,8 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                         mFootOrderTextView.setText("去付款");
                     } else if (mOrders.getOrder_state().equals("待入住")) {
                         mOrderRemindTextView.setText("订单已完成，等待您的入住");
+                        mConcelOrderLinearLayout.setGravity(Gravity.CENTER_HORIZONTAL);
+                        mUpdateorderBookLinearLayout.setVisibility(View.GONE);
                     } else if (mOrders.getOrder_state().equals("已完成")) {
                         mOrderRemindTextView.setText("欢迎您的下次入住");
                         mFootOrderTextView.setText("去评价");
@@ -309,7 +312,11 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.order_delte:
                 //取消订单
-                showDialog();
+                if (mOrderStateTextView.getText().toString().equals("已取消")) {
+                    Toast.makeText(OrderDetailActivity.this, "该订单已经取消", Toast.LENGTH_SHORT).show();
+                } else {
+                    showDialog();
+                }
                 break;
             case R.id.chat_owner:
                 /**

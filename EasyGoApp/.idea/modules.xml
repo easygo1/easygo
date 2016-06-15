@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/EasyGoApp.iml" filepath="$PROJECT_DIR$/EasyGoApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/IMKit/IMKit.iml" filepath="$PROJECT_DIR$/IMKit/IMKit.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewpagerIndicator/ViewpagerIndicator.iml" filepath="$PROJECT_DIR$/ViewpagerIndicator/ViewpagerIndicator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ViewpagerIndicator/ViewpagerIndicator.iml" filepath="$PROJECT_DIR$/ViewpagerIndicator/ViewpagerIndicator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewpagerIndicator/library.iml" filepath="$PROJECT_DIR$/ViewpagerIndicator/library.iml" />
     </modules>

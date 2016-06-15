@@ -45,6 +45,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
     List<HousePhoto> mHousePhotoList;
     List<User> mUserList;//房东
     List<Integer> mAssessList;
+    List<Integer> starNumList = null;
     HouseCollectAdpter mAdpter;
 
     String mPath;
@@ -141,6 +142,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
         mUserList=new ArrayList<>();
         mHousePhotoList=new ArrayList<>();
         mAssessList=new ArrayList<>();
+        starNumList=new ArrayList<>();
         mAdpter=new HouseCollectAdpter(this,mHouseList,mUserList,mHousePhotoList,mAssessList);
         mPullToRefreshListView.setAdapter(mAdpter);
     }
@@ -182,8 +184,10 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
                 mUserList.clear();
                 mHousePhotoList.clear();
                 mAssessList.clear();
+                starNumList.clear();
               //  mHouseCollectList.clear();
                 new LoadDataAsyncTask(HouseCollectionActivity.this).execute();//执行下载数据
+                mAdpter.notifyDataSetChanged();
             }
 
             //上拉时
@@ -192,6 +196,7 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
                 //页码加一
                 cur++;
                 new LoadDataAsyncTask(HouseCollectionActivity.this).execute();
+                mAdpter.notifyDataSetChanged();
             }
         });
         //点击进入对应的房源
@@ -265,7 +270,6 @@ public class HouseCollectionActivity extends AppCompatActivity implements View.O
 		 * onResponseListener 回调对象，接受请求结果
 		 */
         requestQueue.add(WHAT_DELETECOLLECT, request, mOnResponseListener);
-
 
     }
 }

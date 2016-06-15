@@ -37,7 +37,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="崔凯"
             android:textSize="@dimen/textsize_m"/>
 
     </LinearLayout>
@@ -62,7 +61,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="110110110110"
             android:textSize="@dimen/textsize_m"/>
 
     </LinearLayout>
