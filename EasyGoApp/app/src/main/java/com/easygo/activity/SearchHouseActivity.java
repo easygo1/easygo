@@ -267,7 +267,7 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
                         HouseDetailActivity.class);
 //                Log.e("position",position+"");
 //                Log.e("mHouseList",mHouseList.get(position-1).getHouse_id()+"");
-                int houseid = mHouseList.get(position - 1).getHouse_id();
+                int houseid = mHouseList.get(position-2).getHouse_id();
                 intent.putExtra("houseid", houseid);
                 startActivity(intent);
             }
