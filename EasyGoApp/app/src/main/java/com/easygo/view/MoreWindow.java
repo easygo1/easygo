@@ -7,6 +7,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -26,11 +27,15 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.easygo.activity.CustomOrderActivity;
+import com.easygo.activity.OwnerOrderActivity;
 import com.easygo.activity.PublishDynamicActivity;
 import com.easygo.activity.R;
+import com.easygo.activity.ReleasesroomActivity;
 
 public class MoreWindow extends PopupWindow implements OnClickListener {
-
+	public static final String TYPE = "type";
+	int type=0;
 	private String TAG = MoreWindow.class.getSimpleName();
 	Activity mContext;
 	private int mWidth;
@@ -40,6 +45,7 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 	private Bitmap overlay = null;
 	/*private ImageView mMoreWindowLocal;*/
 	View  view;
+	SharedPreferences mSharedPreferences;
 
 	private Handler mHandler = new Handler();
 
@@ -222,23 +228,23 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.more_window_local:
-
+			//发表动态
 			publishdynamic();
 			break;
 		case R.id.more_window_online:
-			//Log.e("你点击了相册","你点击了相册");
-			Toast.makeText(mContext, "敬请期待", Toast.LENGTH_SHORT).show();
+			//Log.e("你点击了发表房源","你点击了发表房源");
+			publishedlistings();
 			break;
 		case R.id.more_window_delete:
-			//Log.e("拍摄","拍摄");
-			Toast.makeText(mContext, "敬请期待", Toast.LENGTH_SHORT).show();
+			//Log.e("我的订单","我的订单");
+			order();
 			break;
 		case R.id.more_window_collect:
 			//Log.e("签到功能","签到功能");
-			Toast.makeText(mContext, "签到", Toast.LENGTH_SHORT).show();
+			sign();
 			break;
 		case R.id.more_window_auto:
-			//Log.e("点评","更多");
+			//Log.e("客服中心","客服中心");
 			Toast.makeText(mContext, "敬请期待", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.more_window_external:
@@ -249,9 +255,53 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 			break;
 		}
 	}
+	//签到
+	private void sign() {
+		mSharedPreferences = mContext.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+		type = mSharedPreferences.getInt("type", 0);
+		if(type==0){
+			Toast.makeText(mContext, "请先去登录", Toast.LENGTH_SHORT).show();
+		}else{
+			Toast.makeText(mContext, "今日签到：积分+10 ^_^", Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	//我的订单
+	private void order() {
+		mSharedPreferences = mContext.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+		type = mSharedPreferences.getInt("type", 0);
+		if(type == 0){
+			Toast.makeText(mContext, "请先去登录", Toast.LENGTH_SHORT).show();
+		}else if(type==1){
+			//房客
+			Intent intent = new Intent(mContext, CustomOrderActivity.class);
+			ActivityCompat.startActivity(mContext,intent,null);
+		}else if(type==2){
+			//房东
+			Intent intent = new Intent(mContext, OwnerOrderActivity.class);
+			ActivityCompat.startActivity(mContext,intent,null);
+		}
+	}
+
+	//发布房源
+	private void publishedlistings() {
+		mSharedPreferences = mContext.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+		type = mSharedPreferences.getInt("type", 0);
+		if(type == 0){
+			Toast.makeText(mContext, "请先去登录", Toast.LENGTH_SHORT).show();
+		}else if(type==1){
+			//房客
+			Intent intent = new Intent(mContext, ReleasesroomActivity.class);
+			ActivityCompat.startActivity(mContext,intent,null);
+		}else if(type==2){
+			//房东
+			Toast.makeText(mContext, "您已经发布了房源", Toast.LENGTH_SHORT).show();
+
+		}
+	}
+
 	//发表动态
 	private void publishdynamic() {
-		Log.e("发表动态","发表动态");
 		//页面跳转
 		Intent intent = new Intent(mContext, PublishDynamicActivity.class);
 		ActivityCompat.startActivity(mContext,intent,null);

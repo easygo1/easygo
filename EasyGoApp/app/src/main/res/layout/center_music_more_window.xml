@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="相册" />
+            android:text="发表房源" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="文字" />
+            android:text="发表动态" />
     </LinearLayout>
 
 
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="拍摄" />
+            android:text="我的订单" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/more_window_collect"
@@ -117,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="点评" />
+            android:text="客服中心" />
     </LinearLayout>
 
     <ImageView

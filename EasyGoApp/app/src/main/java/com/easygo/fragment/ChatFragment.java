@@ -196,7 +196,9 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
     private void openPopWindow(int id) {
         switch (id){
             case R.id.add_friend:
-                showDialog();
+                //showDialog();
+                Intent selectfriend=new Intent(getActivity(), AddFriendActivity.class);
+                startActivity(selectfriend);
                 break;
         }
     }

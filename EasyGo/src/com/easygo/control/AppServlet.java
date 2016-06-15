@@ -235,25 +235,51 @@ public class AppServlet extends HttpServlet {
 				result = gson.toJson(user);
 				mPrintWriter.write(result);// 将数据写回android端
 				System.out.println("登录成功");
+				mPrintWriter.close();
 			}
-			mPrintWriter.close();
+			
 			break;
 		// 用户注册
 		case "register":
 			// 接收到android端传过来的手机号和密码（手机号相当于用户名）
 			user_phone = request.getParameter("user_phone");
 			user_password = request.getParameter("user_password");
-			// 对用户进行注册
-			user = new User();
-			user.setUser_phone(user_phone);
-			user.setUser_password(user_password);
-
 			userdao = new IUserDAOImpl();
-			if (userdao.register(user)) {
-				System.out.println("注册成功");
+			user = userdao.selectUser(user_phone);
+			//System.out.println("user..."+user.toString());
+			if (user == null) {
+				// 对用户进行注册
+				user = new User();
+				user.setUser_phone(user_phone);
+				user.setUser_password(user_password);
+
+				userdao = new IUserDAOImpl();
+				if (userdao.register(user)) {
+					System.out.println("注册成功11");
+				}
+				// 进行登录操作
+				user = new User();
+				userdao = new IUserDAOImpl();
+				// 检查出token是否为空
+				String token1 = userdao.login(user_phone, user_password);
+
+				if (token1 != null) {
+					// 不为空的话根据phone查找出该user的所有数据
+					user = userdao.selectUser(user_phone);
+					gson = new Gson();
+					result = gson.toJson(user);
+					mPrintWriter.write(result);// 将数据写回android端
+					System.out.println("登录成功");
+					mPrintWriter.close();
+				}
+			}else {
+				System.out.println("该用户已注册");
+				mPrintWriter.write("0");// 将数据写回android端
+				mPrintWriter.close();
 			}
+			
 			// mPrintWriter.write(userdao.register(user));
-			mPrintWriter.close();
+			//mPrintWriter.close();
 			break;
 		// 添加好友
 		case "addFriend":

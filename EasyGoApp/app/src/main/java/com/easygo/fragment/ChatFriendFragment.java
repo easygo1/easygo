@@ -282,10 +282,10 @@ public class ChatFriendFragment extends Fragment {
             public UserInfo getUserInfo(String s) {
                 for (int i=0;friendlist.size()>=i;i++) {
                     if(friendlist.size()==i){
-                        return new UserInfo(phone,nickname,Uri.parse(userphoto));
+                        return new UserInfo(phone+"",nickname+"",Uri.parse(userphoto+""));
                     }else
                     if (friendlist.get(i).getUser_phone().equals(s)) {
-                        return new UserInfo(friendlist.get(i).getUser_phone(),friendlist.get(i).getUser_nickname(), Uri.parse(friendlist.get(i).getUser_photo()));
+                        return new UserInfo(friendlist.get(i).getUser_phone()+"",friendlist.get(i).getUser_nickname()+"", Uri.parse(friendlist.get(i).getUser_photo()+""));
                     }
                 }
                 return null;
