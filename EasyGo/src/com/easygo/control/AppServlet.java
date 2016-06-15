@@ -237,7 +237,7 @@ public class AppServlet extends HttpServlet {
 				System.out.println("登录成功");
 				mPrintWriter.close();
 			}
-			
+
 			break;
 		// 用户注册
 		case "register":
@@ -246,7 +246,7 @@ public class AppServlet extends HttpServlet {
 			user_password = request.getParameter("user_password");
 			userdao = new IUserDAOImpl();
 			user = userdao.selectUser(user_phone);
-			//System.out.println("user..."+user.toString());
+			// System.out.println("user..."+user.toString());
 			if (user == null) {
 				// 对用户进行注册
 				user = new User();
@@ -272,14 +272,14 @@ public class AppServlet extends HttpServlet {
 					System.out.println("登录成功");
 					mPrintWriter.close();
 				}
-			}else {
+			} else {
 				System.out.println("该用户已注册");
 				mPrintWriter.write("0");// 将数据写回android端
 				mPrintWriter.close();
 			}
-			
+
 			// mPrintWriter.write(userdao.register(user));
-			//mPrintWriter.close();
+			// mPrintWriter.close();
 			break;
 		// 添加好友
 		case "addFriend":
@@ -756,6 +756,28 @@ public class AppServlet extends HttpServlet {
 			orders = orderDAO.findOrdersByorderid(order_id);
 			Jdpush.sendPush(orders.getUser_id(), "您的订单已被房主确认，请及时付款");
 			break;
+		// 用户确认入住
+		case "yesStayOrders":
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			orderDAO = new IOrderDAOImpl();
+			boolean yesStay = orderDAO.updateOrderState(order_id, "已完成");
+			if (yesStay) {
+				mPrintWriter.write("确认成功");
+				mPrintWriter.close();
+			} else {
+				mPrintWriter.write("确认失败");
+				mPrintWriter.close();
+			}
+			orders = new Orders();
+			orderDAO = new IOrderDAOImpl();
+			orders = orderDAO.findOrdersByorderid(order_id);
+			// 根据房子id查询房主id,向房主推送消息
+			housedao = new IHouseDAOImpl();
+			house = new House();
+			house = housedao.findSpecHouseById(orders.getHouse_id());
+			Jdpush.sendPush(house.getUser_id(), "您的订单已被房客确认入住，请及时查看");
+			break;
+
 		case "assessokOrders":
 			order_id = Integer.valueOf(request.getParameter("order_id"));
 			assessDAO = new IAssessDAOImpl();
@@ -1258,7 +1280,7 @@ public class AppServlet extends HttpServlet {
 				userList.add(user);
 			}
 			GsonUserCollect userCollect = new GsonUserCollect(houseList,
-					housePhotoList, userList,assessList,starNumList);
+					housePhotoList, userList, assessList, starNumList);
 			gson = new Gson();
 			result = gson.toJson(userCollect);
 			mPrintWriter.write(result);
