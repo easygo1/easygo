@@ -276,10 +276,12 @@ public class ReleasesroomActivity extends AppCompatActivity implements View.OnCl
         int id = v.getId();
         switch (id){
             case R.id.releaseroom_return:
-                intent = new Intent();
+                finish();
+               /* intent = new Intent();
                 intent.putExtra("flag","me");
-                intent.setClass(ReleasesroomActivity.this,MainActivity.class);
-                startActivity(intent);
+
+               intent.setClass(ReleasesroomActivity.this,MainActivity.class);
+                startActivity(intent);*/
                 break;
 
             case R.id.releaseroom_bed:

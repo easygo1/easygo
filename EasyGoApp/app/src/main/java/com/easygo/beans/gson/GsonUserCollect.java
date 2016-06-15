@@ -16,15 +16,18 @@ public class GsonUserCollect {
 	private List<User> userlist;
 	//房源评价
 	private List<Integer> assessList;
+	//房源星级
+	private List<Integer> starNumList;
 	
 	public GsonUserCollect(List<House> houselist,
 						   List<HousePhoto> housephotolist, List<User> userlist,
-						   List<Integer> assessList) {
+						   List<Integer> assessList,List<Integer> starNumList) {
 		super();
 		this.houselist = houselist;
 		this.housephotolist = housephotolist;
 		this.userlist = userlist;
 		this.assessList = assessList;
+		this.starNumList=starNumList;
 	}
 	public List<House> getHouselist() {
 		return houselist;
@@ -51,10 +54,22 @@ public class GsonUserCollect {
 		this.assessList = assessList;
 	}
 
+	public List<Integer> getStarNumList() {
+		return starNumList;
+	}
+
+	public void setStarNumList(List<Integer> starNumList) {
+		this.starNumList = starNumList;
+	}
+
 	@Override
 	public String toString() {
-		return "GsonUserCollect [houselist=" + houselist + ", housephotolist="
-				+ housephotolist + ", userlist=" + userlist + ", assessList="
-				+ assessList + "]";
+		return "GsonUserCollect{" +
+				"houselist=" + houselist +
+				", housephotolist=" + housephotolist +
+				", userlist=" + userlist +
+				", assessList=" + assessList +
+				", starNumList=" + starNumList +
+				'}';
 	}
 }

@@ -62,6 +62,7 @@ public class OrderAssessActivity extends AppCompatActivity implements View.OnCli
         public void onSucceed(int what, Response<String> response) {
             if (what == WHAT_ORDERASSESSCOMMIT) {
                 String result = response.get();
+                finish();
                 //Toast.makeText(OrderAssessActivity.this, result, Toast.LENGTH_SHORT).show();
             }
         }
