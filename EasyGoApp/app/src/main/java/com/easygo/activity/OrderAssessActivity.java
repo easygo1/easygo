@@ -23,6 +23,13 @@ import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
+import com.yolanda.nohttp.error.ClientError;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.NotFoundCacheError;
+import com.yolanda.nohttp.error.ServerError;
+import com.yolanda.nohttp.error.TimeoutError;
+import com.yolanda.nohttp.error.URLError;
+import com.yolanda.nohttp.error.UnKnownHostError;
 
 public class OrderAssessActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TYPE = "type";
@@ -55,13 +62,31 @@ public class OrderAssessActivity extends AppCompatActivity implements View.OnCli
         public void onSucceed(int what, Response<String> response) {
             if (what == WHAT_ORDERASSESSCOMMIT) {
                 String result = response.get();
+                finish();
                 //Toast.makeText(OrderAssessActivity.this, result, Toast.LENGTH_SHORT).show();
             }
         }
 
         @Override
         public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+            if (exception instanceof ClientError) {// 客户端错误
+                Toast.makeText(OrderAssessActivity.this, "客户端发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof ServerError) {// 服务器错误
+                Toast.makeText(OrderAssessActivity.this, "服务器发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NetworkError) {// 网络不好
+                Toast.makeText(OrderAssessActivity.this, "请检查网络", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof TimeoutError) {// 请求超时
+                Toast.makeText(OrderAssessActivity.this, "请求超时，网络不好或者服务器不稳定", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof UnKnownHostError) {// 找不到服务器
+                Toast.makeText(OrderAssessActivity.this, "未发现指定服务器", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof URLError) {// URL是错的
+                Toast.makeText(OrderAssessActivity.this, "URL错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NotFoundCacheError) {
+                Toast.makeText(OrderAssessActivity.this, "没有发现缓存", Toast.LENGTH_SHORT).show();
+                // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
+            } else {
+                Toast.makeText(OrderAssessActivity.this, "未知错误", Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override

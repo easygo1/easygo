@@ -527,6 +527,7 @@ public class HomeCityActivity extends Activity {
         // 创建请求对象
         request = NoHttp.createStringRequest(new MyApplication().getUrl(), RequestMethod.POST);
         // 添加请求参数
+        Log.e("请求发送了",house_collect_id+"2222");
         request.add("methods", "deleteHouseCollect");
         request.add("houseCollectId", house_collect_id);
         /*

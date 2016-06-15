@@ -45,9 +45,10 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     List<String> mTimeList;//搜索得到的入住时间列表
     String searchdate;
     String searchcity;//搜索的城市名称
+    String city;
 
     private TextView tv_in, tv_out;
-    SharedPreferences mSharedPreferences,sp;
+    SharedPreferences mSharedPreferences, sp;
     String inday, outday;
 
     @Nullable
@@ -55,7 +56,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mSearchView = inflater.inflate(R.layout.bottom_search, null);
         initView();
-        initData();
+        //initData();
         initListener();
         return mSearchView;
     }
@@ -63,9 +64,11 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     private void initData() {
 //        Intent intent=getActivity().getIntent();
         mSharedPreferences = getActivity().getSharedPreferences(TYPE, Context.MODE_PRIVATE);
-        String city = mSharedPreferences.getString("searchcity", "苏州");
+        String city = mSharedPreferences.getString("searchcity","");
         //Toast.makeText(getActivity(),city,Toast.LENGTH_SHORT).show();
-        mSearchTextView.setText(city);
+        if(!city.equals("")){
+            mSearchTextView.setText(city);
+        }
     }
 
     private void initListener() {
@@ -101,6 +104,12 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         if (!"".equals(outday)) {
             tv_out.setText(outday);
         }
+        mSharedPreferences = getActivity().getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        String city = mSharedPreferences.getString("searchcity","");
+        //Toast.makeText(getActivity(),city,Toast.LENGTH_SHORT).show();
+        if(!city.equals("")){
+            mSearchTextView.setText(city);
+        }
         try {
             if ((!"请选择入住时间".equals(inday)) && (!"请选择离开时间".equals(outday))) {
                 Date indate = formatter.parse(inday);
@@ -134,21 +143,22 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                 searchcity = mSearchTextView.getText().toString();
                 //得到要查询的日期list
                 mTimeList = new ArrayList<>();
-                for (int i = 0; i < mDateList.size(); i++) {
-                    searchdate = formatter.format(mDateList.get(i));//格式化数据
-                    mTimeList.add(searchdate);
-                }
-                //Log.e("zfglist", "" + mTimeList.size());
-                //Log.e("zfgcity",searchcity+"1234");
-                if (!searchcity.equals("")) {
-                    intent.putExtra("searchcity", searchcity);
-                    intent.putExtra("timelist", mTimeList.toString());
-                    //intent.putExtra("inday",inday);
-                    //intent.putExtra("outday",outday);
-                    intent.setClass(getActivity(), SearchHouseActivity.class);
-                    startActivity(intent);
-
-                    // /创建请求对象
+               // Log.e("size","wqw"+mDateList.size());
+                if (mDateList==null) {
+                    Toast.makeText(getActivity(), "搜索时间不能为空", Toast.LENGTH_SHORT).show();
+                } else {
+                    for (int i = 0; i < mDateList.size(); i++) {
+                        searchdate = formatter.format(mDateList.get(i));//格式化数据
+                        mTimeList.add(searchdate);
+                    }
+                    if (!searchcity.equals("")) {
+                        intent.putExtra("searchcity", searchcity);
+                        intent.putExtra("timelist", mTimeList.toString());
+                        //intent.putExtra("inday",inday);
+                        //intent.putExtra("outday",outday);
+                        intent.setClass(getActivity(), SearchHouseActivity.class);
+                        startActivity(intent);
+                        // /创建请求对象
                     /*request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
                     //添加请求参数
                     request.add("methods", "searchHouse");
@@ -156,9 +166,13 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
                     request.add("timelist", mTimeList.toString());
                     mRequestQueue.add(WHAT_SEARCHHOUSE, request, mOnResponseListener);
                */
-                } else {
-                    Toast.makeText(getActivity(), "搜索条件不能为空", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "搜索城市不能为空", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                //Log.e("zfglist", "" + mTimeList.size());
+                //Log.e("zfgcity",searchcity+"1234");
+
 
                 break;
             case R.id.search_footpoint:

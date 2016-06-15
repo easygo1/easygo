@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private WaitDialog mDialog;
     //第一步：数据源
     //广告的图片
-
+//http://easygo.b0.upaiyun.com/test/advert1.jpg
     private String[] advertImages = new String[]{
             "http://easygo.b0.upaiyun.com/advert/advert1.jpg",
             "http://easygo.b0.upaiyun.com/advert/advert2.jpg",

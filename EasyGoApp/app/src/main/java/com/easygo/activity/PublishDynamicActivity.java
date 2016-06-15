@@ -192,7 +192,7 @@ public class PublishDynamicActivity extends AppCompatActivity implements View.On
             Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.POST);
             //获取到说说说的内容
             dynamic = mPublishDynamic.getText().toString();
-            mCommentDynamic = new CommentDynamic(user_id, dynamic, mphotopath);
+            mCommentDynamic = new CommentDynamic(user_id, dynamic,mphotopath);
             //将其封装成gson对象
             Gson gson = new Gson();
             String result = gson.toJson(mCommentDynamic);
@@ -220,7 +220,6 @@ public class PublishDynamicActivity extends AppCompatActivity implements View.On
                     Toast.makeText(PublishDynamicActivity.this, "发表成功", Toast.LENGTH_SHORT).show();
                     //跳转到动态页面
                     Intent intent = new Intent(PublishDynamicActivity.this, MainActivity.class);
-
                     startActivity(intent);
 
                 } else {
@@ -367,7 +366,7 @@ public class PublishDynamicActivity extends AppCompatActivity implements View.On
                 //Log.i("test", "上传成功,访问地址为：" + result);
                 //Toast.makeText(getActivity(), "上传成功,访问地址为：" + result, Toast.LENGTH_SHORT).show();
                 Log.e("网络路径为", path);
-                mphotopath.add(path);
+                mphotopath.add("http://"+path);
             } else {
                 //Log.i("test", "上传图片失败");
                 Toast.makeText(PublishDynamicActivity.this, "上传图片失败", Toast.LENGTH_SHORT).show();
@@ -394,7 +393,7 @@ public class PublishDynamicActivity extends AppCompatActivity implements View.On
                 }
                 break;
             case TAKE_CAMERA:
-
+                gridviewlist.add(mCurrentPhotoFile.getAbsolutePath());
                 //拍照选取
                 new UploadTask().execute(mCurrentPhotoFile.getAbsolutePath());
                 //初始化gridview中的照片
@@ -403,4 +402,5 @@ public class PublishDynamicActivity extends AppCompatActivity implements View.On
                 break;
         }
     }
+
 }

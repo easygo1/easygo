@@ -80,7 +80,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private TextView meCustomerDescriptustomer;
     private TextView meCustomerMypoints;
     private TextView mIsIdentifyTextView;
-    private ImageView mIsIdentifyImageView;
+   // private ImageView mIsIdentifyImageView;
 
     private TextView meCustomerDescription;
     private TextView meCustomerLinkman;
@@ -133,7 +133,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                             .into(meCustomerUserImageview);
                     meCustomerDescriptustomer.setText("个性签名："+user.getUser_mood());
                     if (user.getUser_idcard()==null){
-                        mIsIdentifyImageView.setVisibility(View.GONE);
+                        //mIsIdentifyImageView.setImageResource(R.mipmap.no_realname);
                         mIsIdentifyTextView.setText("未认证");
                     }
                 } else if (type == 2) {
@@ -143,7 +143,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                             .bitmapTransform(new CropCircleTransformation(getActivity()))
                             .error(R.mipmap.user_photo_defult)
                             .into(meOwnerUserImageview);
-                    meOwnerDescription.setText(user.getUser_mood());
+                    meOwnerDescription.setText("个性签名："+user.getUser_mood());
                 }
             }
         }
@@ -244,7 +244,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         meCustomerReleaseroom = (TextView) mView.findViewById(R.id.me_customer_releaseroom);
         meCustomerCustomerservice = (TextView) mView.findViewById(R.id.me_customer_customerservice);
         mIsIdentifyTextView= (TextView) mView.findViewById(R.id.is_identify_text);
-        mIsIdentifyImageView= (ImageView) mView.findViewById(R.id.is_identify_img);
+        //mIsIdentifyImageView= (ImageView) mView.findViewById(R.id.is_identify_img);
 
         myorder = (LinearLayout) mView.findViewById(R.id.myorder);
         mycollection = (LinearLayout) mView.findViewById(R.id.mycollection);

@@ -236,25 +236,51 @@ public class AppServlet extends HttpServlet {
 				result = gson.toJson(user);
 				mPrintWriter.write(result);// 将数据写回android端
 				System.out.println("登录成功");
+				mPrintWriter.close();
 			}
-			mPrintWriter.close();
+			
 			break;
 		// 用户注册
 		case "register":
 			// 接收到android端传过来的手机号和密码（手机号相当于用户名）
 			user_phone = request.getParameter("user_phone");
 			user_password = request.getParameter("user_password");
-			// 对用户进行注册
-			user = new User();
-			user.setUser_phone(user_phone);
-			user.setUser_password(user_password);
-
 			userdao = new IUserDAOImpl();
-			if (userdao.register(user)) {
-				System.out.println("注册成功");
+			user = userdao.selectUser(user_phone);
+			//System.out.println("user..."+user.toString());
+			if (user == null) {
+				// 对用户进行注册
+				user = new User();
+				user.setUser_phone(user_phone);
+				user.setUser_password(user_password);
+
+				userdao = new IUserDAOImpl();
+				if (userdao.register(user)) {
+					System.out.println("注册成功11");
+				}
+				// 进行登录操作
+				user = new User();
+				userdao = new IUserDAOImpl();
+				// 检查出token是否为空
+				String token1 = userdao.login(user_phone, user_password);
+
+				if (token1 != null) {
+					// 不为空的话根据phone查找出该user的所有数据
+					user = userdao.selectUser(user_phone);
+					gson = new Gson();
+					result = gson.toJson(user);
+					mPrintWriter.write(result);// 将数据写回android端
+					System.out.println("登录成功");
+					mPrintWriter.close();
+				}
+			}else {
+				System.out.println("该用户已注册");
+				mPrintWriter.write("0");// 将数据写回android端
+				mPrintWriter.close();
 			}
+			
 			// mPrintWriter.write(userdao.register(user));
-			mPrintWriter.close();
+			//mPrintWriter.close();
 			break;
 		// 添加好友
 		case "addFriend":
@@ -1202,6 +1228,9 @@ public class AppServlet extends HttpServlet {
 			// 得到房源的评价
 			assessDAO = new IAssessDAOImpl();
 			assessList = new ArrayList<>();
+			starNumList = new ArrayList<>();
+			// 得到用户的收藏
+			// houseCollectDAO = new IHouseCollectDAOImpl();
 
 			// 遍历查询
 			for (House house : houseList) {
@@ -1210,15 +1239,27 @@ public class AppServlet extends HttpServlet {
 						.getHouse_id());
 				housePhotoList.add(housePhoto);
 				// 房源的评价的数量
-
-				assessList.add(assessDAO.selectAllAssess(house.getHouse_id())
-						.size());
+				// 房源的评价的数量
+				int size1 = assessDAO.selectAllAssess(house.getHouse_id())
+						.size();
+				assessList.add(size1);
+				// 星级
+				int starNum = 0;
+				for (Assess a : assessDAO.selectAllAssess(house.getHouse_id())) {
+					starNum += a.getStar();
+				}
+				// （强转为整型，以防出错）
+				if (size1 != 0) {
+					starNum = starNum / size1;
+				}
+				// System.out.println("打出来看看" + starNum);
+				starNumList.add(starNum);
 				// 用户List房东
 				user = userdao.findSpecUserById(house.getUser_id());
 				userList.add(user);
 			}
 			GsonUserCollect userCollect = new GsonUserCollect(houseList,
-					housePhotoList, userList, houseCollectlist);
+					housePhotoList, userList,assessList,starNumList);
 			gson = new Gson();
 			result = gson.toJson(userCollect);
 			mPrintWriter.write(result);
