@@ -209,7 +209,6 @@ public class ChatFriendFragment extends Fragment {
                 Gson gson = new Gson();
                 friendlist = gson.fromJson(result, new TypeToken<List<User>>() {
                 }.getType());
-                Log.e("解析后", friendlist.toString());
                 //添加适配器
                 initAdapter();
                 //启动聊天界面
@@ -276,7 +275,7 @@ public class ChatFriendFragment extends Fragment {
     }
 
     //用户信息提供者
-    private void UserInfoProvider() {
+    public void UserInfoProvider() {
         RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
             @Override
             public UserInfo getUserInfo(String s) {

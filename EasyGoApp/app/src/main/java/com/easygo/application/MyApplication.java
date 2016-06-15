@@ -1,6 +1,7 @@
 package com.easygo.application;
 
 import android.app.Application;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.yolanda.nohttp.Logger;
 import com.yolanda.nohttp.NoHttp;
@@ -25,10 +26,12 @@ public class MyApplication extends Application{
         RongIM.init(this);
         // the following line is important
         Fresco.initialize(getApplicationContext());
+
     }
 
     public String getUrl() {
         return url;
     }
+
 
 }
