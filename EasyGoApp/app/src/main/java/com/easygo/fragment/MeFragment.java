@@ -143,7 +143,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                             .bitmapTransform(new CropCircleTransformation(getActivity()))
                             .error(R.mipmap.user_photo_defult)
                             .into(meOwnerUserImageview);
-                    meOwnerDescription.setText(user.getUser_mood());
+                    meOwnerDescription.setText("个性签名："+user.getUser_mood());
                 }
             }
         }
