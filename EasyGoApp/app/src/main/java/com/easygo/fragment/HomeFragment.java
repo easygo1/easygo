@@ -1,6 +1,8 @@
 package com.easygo.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -14,18 +16,43 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bumptech.glide.Glide;
+import com.easygo.activity.BookActivity;
+import com.easygo.activity.CustomOrderActivity;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.HouseDetailActivity;
+import com.easygo.activity.OwnerOrderActivity;
 import com.easygo.activity.R;
+import com.easygo.application.MyApplication;
+import com.easygo.beans.gson.GsonAboutHouseDetail;
+import com.easygo.beans.gson.GsonAboutLocal;
+import com.easygo.beans.house.HousePhoto;
 import com.easygo.utils.StringUtils;
+import com.easygo.view.WaitDialog;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.viewpagerindicator.CirclePageIndicator;
+import com.yolanda.nohttp.NoHttp;
+import com.yolanda.nohttp.OnResponseListener;
+import com.yolanda.nohttp.Request;
+import com.yolanda.nohttp.RequestMethod;
+import com.yolanda.nohttp.RequestQueue;
+import com.yolanda.nohttp.Response;
+import com.yolanda.nohttp.error.ClientError;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.NotFoundCacheError;
+import com.yolanda.nohttp.error.ServerError;
+import com.yolanda.nohttp.error.TimeoutError;
+import com.yolanda.nohttp.error.URLError;
+import com.yolanda.nohttp.error.UnKnownHostError;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -37,8 +64,10 @@ import java.util.concurrent.TimeUnit;
  * Created by PengHong on 2016/4/29.
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
+    public static final int GET_LOCAL_CITY_WHAT = 1;
     CirclePageIndicator titleIndicator;
-
+    //自定义一个dialog
+    private WaitDialog mDialog;
     //第一步：数据源
     //广告的图片
 
@@ -66,13 +95,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private int[] hotRoomId = new int[]{1, 2, 3};
 
     //本地生活的图片
-    private int[] localImages = new int[]{
-            R.drawable.local_hot1,
-            R.drawable.local_hot2,
-            R.drawable.local_hot3,
+    private String[] localImages = new String[]{
+            "http://easygo.b0.upaiyun.com/house/local_hot1_1.jpg",
+            "http://easygo.b0.upaiyun.com/house/local_hot2_1.jpg",
+            "http://easygo.b0.upaiyun.com/house/local_hot3_1.jpg"
     };
-    //热门房源的id
+    //    R.drawable.local_hot1,
+//    R.drawable.local_hot2,
+//    R.drawable.local_hot3,
+    private List<HousePhoto> localImageList;
+    PagerAdapter mLocalViewPagerAdapter;
+    //本地房源的id
     private int[] localRoomId = new int[]{4, 5, 6};
+
+    List<Integer> localList;
     //第二步：确定viewpager布局，这里直接在主界面声明viewpager即可
     ViewPager mCityViewPager;
     ViewPager mAdvertViewPager;
@@ -157,6 +193,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initViews() {
+        mDialog = new WaitDialog(getActivity());//提示框
         titleIndicator = (CirclePageIndicator) mView.findViewById(R.id.homepage_advert_viewpagerindicator);
         //滑动屏幕控件初始化
         mAdvertViewPager = (ViewPager) mView.findViewById(R.id.homepage_advert_viewpager);
@@ -345,12 +382,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mHomePageLocalList = new ArrayList<>();
         for (int i = 0; i < localImages.length; i++) {
             ImageView imageView = new ImageView(getActivity());
-            imageView.setBackgroundResource(localImages[i]);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            Glide.with(getActivity()).load(localImages[i]).into(imageView);
+
+//            imageView.setBackgroundResource(localImages[i]);
             mHomePageLocalList.add(imageView);
         }
 
-        //本地热门滑动图的适配器
-        mLocalViewPager.setAdapter(new PagerAdapter() {
+        mLocalViewPagerAdapter = new PagerAdapter() {
             @Override
             public int getCount() {
                 return mHomePageLocalList.size();
@@ -376,14 +415,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getActivity(), HouseDetailActivity.class);
-                        Log.e("666house","...."+localRoomId[position]);
-                        intent.putExtra("houseid",localRoomId[position]);
+                        intent.putExtra("houseid", localRoomId[position]);
                         startActivity(intent);
                     }
                 });
                 return mHomePageLocalList.get(position);
             }
-        });
+        };
+        //本地热门滑动图的适配器
+        mLocalViewPager.setAdapter(mLocalViewPagerAdapter);
     }
 
     //首页定位初始化
@@ -402,6 +442,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         String district = aMapLocation.getDistrict();
                         String location = StringUtils.extractLocation(city, district);
                         mLocationTextView.setText(location);
+                        //getLocalHot(location);
                     }
                 }
             }
@@ -441,5 +482,83 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             mAdvertViewPager.setCurrentItem(currentItem);
         }
     };
+
+
+
+    /*
+        //未完全实现
+    public void getLocalHot(String location) {
+        MyApplication myApplication = (MyApplication) getActivity().getApplication();
+        String mPath = myApplication.getUrl();
+        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+        RequestQueue mRequestQueue = NoHttp.newRequestQueue();
+        //创建请求对象
+        Request<String> request = NoHttp.createStringRequest(mPath, RequestMethod.POST);
+        //添加请求参数
+        request.add("methods", "getLocalCity");
+        request.add("local_city_name", location);
+        mRequestQueue.add(GET_LOCAL_CITY_WHAT, request, onResponseListener);
+
+    }
+
+    private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
+        @SuppressWarnings("unused")
+        @Override
+        public void onSucceed(int what, Response<String> response) {
+            switch (what) {
+                case GET_LOCAL_CITY_WHAT:
+                    GsonAboutLocal mGsonAboutLocal = new GsonAboutLocal();
+                    Gson gson = new Gson();
+                    String result = response.get();// 响应结果
+                    //把JSON格式的字符串改为Student对象
+                    Type type = new TypeToken<GsonAboutLocal>() {
+                    }.getType();
+                    localList = new ArrayList<>();
+                    mGsonAboutLocal = gson.fromJson(result, type);
+                    localList = mGsonAboutLocal.getLocalList();
+                    localImageList = mGsonAboutLocal.getHousePhotoList();
+                    //
+                    for(int i = 0 ; i <localList.size();i++ ){
+                        localRoomId[i] = localList.get(i);
+                        localImages[i] = localImageList.get(i).getHouse_photo_path();
+                    }
+                    initHomePagerLocal();
+//                    mLocalViewPagerAdapter.notifyDataSetChanged();
+            }
+        }
+
+        @Override
+        public void onStart(int what) {
+            // 请求开始，这里可以显示一个dialog
+//            mDialog.show();
+        }
+
+        @Override
+        public void onFinish(int what) {
+//            mDialog.dismiss();
+        }
+
+        @Override
+        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+            if (exception instanceof ClientError) {// 客户端错误
+                Toast.makeText(getActivity(), "客户端发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof ServerError) {// 服务器错误
+                Toast.makeText(getActivity(), "服务器发生错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NetworkError) {// 网络不好
+                Toast.makeText(getActivity(), "请检查网络", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof TimeoutError) {// 请求超时
+                Toast.makeText(getActivity(), "请求超时，网络不好或者服务器不稳定", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof UnKnownHostError) {// 找不到服务器
+                Toast.makeText(getActivity(), "未发现指定服务器", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof URLError) {// URL是错的
+                Toast.makeText(getActivity(), "URL错误", Toast.LENGTH_SHORT).show();
+            } else if (exception instanceof NotFoundCacheError) {
+                Toast.makeText(getActivity(), "没有发现缓存", Toast.LENGTH_SHORT).show();
+                // 这个异常只会在仅仅查找缓存时没有找到缓存时返回
+            } else {
+                Toast.makeText(getActivity(), "未知错误", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };*/
 
 }

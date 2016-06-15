@@ -198,6 +198,10 @@
     <style name="rating_assess_star_style" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/rating_assess_star</item>
     </style>
+    <!--界面的星星-->
+    <style name="rating_list_star_style" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_assess_star</item>
+    </style>
     <style name="myinfo_textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

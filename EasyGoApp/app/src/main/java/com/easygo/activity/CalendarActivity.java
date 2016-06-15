@@ -1,9 +1,11 @@
 package com.easygo.activity;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -85,6 +87,7 @@ public class CalendarActivity extends AppCompatActivity implements MyCalendar.On
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onDaySelectListener(View view, String date) {
         //若日历日期小于当前日期，或日历日期-当前日期超过三个月，则不能点击
@@ -123,6 +126,7 @@ public class CalendarActivity extends AppCompatActivity implements MyCalendar.On
         if (null == inday || inday.equals("")) {
             textDayView.setText(dateDay);
             textView.setText("入住");
+            view.setBackground(getResources().getDrawable(R.drawable.date_manage));
             inday = date;
         } else {
             if (inday.equals(date)) {
@@ -144,6 +148,7 @@ public class CalendarActivity extends AppCompatActivity implements MyCalendar.On
                 }
                 textDayView.setText(dateDay);
                 textView.setText("离开");
+                view.setBackground(getResources().getDrawable(R.drawable.date_manage));
                 outday = date;
                 editor.putString("dateIn", inday);
                 editor.putString("dateOut", outday);
