@@ -1,8 +1,12 @@
 package com.easygo.activity;
 
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Message;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
@@ -10,6 +14,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,6 +27,8 @@ import com.easygo.fragment.MeFragment;
 import com.easygo.fragment.SearchFragment;
 import com.easygo.view.MoreWindow;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
@@ -45,7 +52,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ChatFragment mChatFragment;
     MeFragment mMeFragment;
 
+    // 定义一个变量，来标识是否退出
+    private static boolean isExit = false;
 
+    Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            isExit = false;
+        }
+    };
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void exit() {
+        if (isExit) {
+            // ACTION_MAIN with category CATEGORY_HOME 启动主屏幕
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            startActivity(intent);
+            /*System.exit(0);// 使虚拟机停止运行并退出程序
+            *//*ActivityManager am = (ActivityManager)getSystemService (Context.ACTIVITY_SERVICE);
+            //am.restartPackage("com.easygo.activity");
+            am.killBackgroundProcesses("com.easygo.activity");*//*
+            forceStopAPK("com.easygo.activity");*/
+        } else {
+            isExit = true;
+            Toast.makeText(MainActivity.this, "再按一次退出APP", Toast.LENGTH_SHORT).show();
+            mHandler.sendEmptyMessageDelayed(0, 3000);// 3秒后发送消息
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,13 +107,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addListeners();
         //默认显示买模块，修改图标和文字颜色为选中颜色
         initDefault();
+
+
     }
 
     private void initDefault() {
-
         Intent intent = getIntent();
         String flag = null;
         flag = intent.getStringExtra("flag");
+
         if (flag == null) {
             //开始先显示第一个界面
             mFragmentManager = getSupportFragmentManager();
@@ -194,6 +239,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.chat:
+
                 if (mChatFragment == null) {
                     mChatFragment = new ChatFragment();
                     mFragmentTransaction.add(R.id.middle, mChatFragment);
@@ -223,14 +269,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mFragmentTransaction.hide(mSearchFragment);
         }
         if (mChatFragment != null && mChatFragment.isAdded()) {
-            mFragmentTransaction.hide(mChatFragment);
+             mFragmentTransaction.hide(mChatFragment);
         }
         if (mMeFragment != null && mMeFragment.isAdded()) {
             mFragmentTransaction.hide(mMeFragment);
         }
         mFragmentTransaction.commit();
     }
-
     private void reset() {
         //把底部导航栏的颜色还原为灰色
         mHomeImageView.setImageResource(R.mipmap.btn_home_page_disabled);
