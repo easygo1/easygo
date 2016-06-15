@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mFragmentTransaction = mFragmentManager.beginTransaction();
             //默认显示买模块，初始化买碎片
             mHomeFragment = new HomeFragment();
-            mFragmentTransaction.add(R.id.middle, mHomeFragment);
+            mFragmentTransaction.add(R.id.middle, mHomeFragment,"tab1");
             mFragmentTransaction.commit();
 
         } else if (flag.equals("me")) {
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mMeFragment = new MeFragment();
-            mFragmentTransaction.add(R.id.middle, mMeFragment);
+            mFragmentTransaction.add(R.id.middle, mMeFragment,"tab4");
             mFragmentTransaction.commit();
             //还原图标和文本颜色
             reset();
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
             mSearchFragment = new SearchFragment();
-            mFragmentTransaction.add(R.id.middle, mSearchFragment);
+            mFragmentTransaction.add(R.id.middle, mSearchFragment,"tab2");
             mFragmentTransaction.commit();
             //还原图标和文本颜色
             reset();
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.homepage:
                 if (mHomeFragment == null) {
                     mHomeFragment = new HomeFragment();
-                    mFragmentTransaction.add(R.id.middle, mHomeFragment);
+                    mFragmentTransaction.add(R.id.middle, mHomeFragment,"tab1");
                 } else {
                     mFragmentTransaction.show(mHomeFragment);
                 }
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.search:
                 if (mSearchFragment == null) {
                     mSearchFragment = new SearchFragment();
-                    mFragmentTransaction.add(R.id.middle, mSearchFragment);
+                    mFragmentTransaction.add(R.id.middle, mSearchFragment,"tab2");
                 } else {
                     mFragmentTransaction.show(mSearchFragment);
                 }
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.chat:
                 if (mChatFragment == null) {
                     mChatFragment = new ChatFragment();
-                    mFragmentTransaction.add(R.id.middle, mChatFragment);
+                    mFragmentTransaction.add(R.id.middle, mChatFragment,"tab3");
                 } else {
                     mFragmentTransaction.show(mChatFragment);
                 }
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.me:
                 if (mMeFragment == null) {
                     mMeFragment = new MeFragment();
-                    mFragmentTransaction.add(R.id.middle, mMeFragment);
+                    mFragmentTransaction.add(R.id.middle, mMeFragment,"tab4");
                 } else {
                     mFragmentTransaction.show(mMeFragment);
                 }
@@ -217,6 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //隐藏所有的碎片，首先需要知道碎片是否已经添加到事务中
         mFragmentTransaction = mFragmentManager.beginTransaction();
         if (mHomeFragment != null && mHomeFragment.isAdded()) {
+
             mFragmentTransaction.hide(mHomeFragment);
         }
         if (mSearchFragment != null && mSearchFragment.isAdded()) {

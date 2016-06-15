@@ -81,6 +81,7 @@ public class AddFriendActivity extends AppCompatActivity implements View.OnClick
             if(what==AddFrind){
                 //进行添加好友
                 Toast.makeText(AddFriendActivity.this, "好友添加成功", Toast.LENGTH_SHORT).show();
+                finish();
             }
         }
 
@@ -139,5 +140,9 @@ public class AddFriendActivity extends AppCompatActivity implements View.OnClick
         request.add("phone2",user_id2);
         //将请求添加到队列中
         mRequestQueue.add(AddFrind, request, onResponseListener);
+    }
+
+    public void back(View view) {
+        finish();
     }
 }
