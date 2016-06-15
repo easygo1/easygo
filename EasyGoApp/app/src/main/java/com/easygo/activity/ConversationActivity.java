@@ -2,6 +2,7 @@ package com.easygo.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 public class ConversationActivity extends AppCompatActivity {
@@ -17,5 +18,9 @@ public class ConversationActivity extends AppCompatActivity {
         String sName = getIntent().getData().getQueryParameter("title");//需要获取信息提供者
 
         mName.setText(sName);
+    }
+
+    public void back(View view) {
+        finish();
     }
 }

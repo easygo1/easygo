@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easygo.activity.CustomOrderActivity;
+import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.OwnerOrderActivity;
+import com.easygo.activity.PayActivity;
 import com.easygo.activity.R;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HousePhoto;
@@ -78,7 +82,7 @@ public class OwnerOrderIBookAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.order_list_item, null);
             viewHolder = new ViewHolder();
@@ -116,6 +120,9 @@ public class OwnerOrderIBookAdapter extends BaseAdapter {
         if (mOrdersList.get(position).getOrder_state().equals("待付款")){
             viewHolder.orderUpdateText.setText("去付款");
         }
+        if (mOrdersList.get(position).getOrder_state().equals("待入住")){
+            viewHolder.orderUpdateText.setText("确认入住");
+        }
         //viewHolder.orderImageView.setImageResource(order.getImage());
         Glide.with(mContext).load(mHousePhotoList.get(position).getHouse_photo_path()).into(viewHolder.orderImageView);
         viewHolder.orderDelte.setOnClickListener(new View.OnClickListener() {
@@ -128,12 +135,34 @@ public class OwnerOrderIBookAdapter extends BaseAdapter {
                 }
             }
         });
-        /*viewHolder.orderUpdate.setOnClickListener(new View.OnClickListener() {
+        viewHolder.orderUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "点击了更改订单" , Toast.LENGTH_SHORT).show();
+                // Toast.makeText(mContext, "点击了更改订单" , Toast.LENGTH_SHORT).show();
+               /* Log.e("dianjile","1"+viewHolder.orderUpdateText.getText());
+                Intent intent = new Intent();
+                intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
+                intent.setClass(mContext, PayActivity.class);
+                mContext.startActivity(intent);*/
+                if (viewHolder.orderUpdateText.getText().toString().equals("去付款")){
+                    Log.e("dianjile","1"+viewHolder.orderUpdateText.getText());
+                    Intent intent = new Intent();
+                    intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
+                    //新加上的
+                    intent.putExtra("house_id",mOrdersList.get(position).getHouse_id());
+                    intent.putExtra("checktime",mOrdersList.get(position).getChecktime());
+                    intent.putExtra("leavetime",mOrdersList.get(position).getLeavetime());
+
+                    intent.setClass(mContext, PayActivity.class);
+                    mContext.startActivity(intent);
+                }else {
+                    Intent intent = new Intent();
+                    intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
+                    intent.setClass(mContext, OrderDetailActivity.class);
+                    mContext.startActivity(intent);
+                }
             }
-        });*/
+        });
         /*viewHolder.orderLinerlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
