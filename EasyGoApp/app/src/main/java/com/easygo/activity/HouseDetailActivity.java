@@ -1,7 +1,6 @@
 package com.easygo.activity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,12 +9,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -56,8 +53,6 @@ import java.util.List;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
-import static android.view.View.SCALE_X;
-
 /**
  * 具体房源页面
  */
@@ -88,7 +83,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
 
     //房源信息用到的控件mHouseDescribeTextview未使用
     TextView mHousePriceTextview, mHousePhotoSizeTextView;
-    ImageView mHouseCollectionImageView, mHouseShareImageView;//是否收藏
+    ImageView mHouseCollectionImageView, mHouseShareImageView, mBackView;//是否收藏
     Button mBookButton;
     //一键分享使用
     private OnekeyShare mOnekeyShare = null;
@@ -126,6 +121,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
 
     //初始化视图
     private void initViews() {
+        mBackView = (ImageView) findViewById(R.id.house_detail_back);
         mDialog = new WaitDialog(this);//提示框
         mPhotoViewPager = (ViewPager) findViewById(R.id.house_detail_photo_viewpager);
         mRadioGroup = (RadioGroup) findViewById(R.id.house_radiogroup);
@@ -146,6 +142,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
 
     //初始化
     private void initListener() {
+        mBackView.setOnClickListener(this);
         //图片滑动时改变图片张数的显示
 //        mPhotoViewPager.setOffscreenPageLimit(4);
         mPhotoViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -359,11 +356,23 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                 mOnekeyShare.show(HouseDetailActivity.this);
                 break;
             case R.id.book_house_btn:
-                Intent intent = new Intent();
-                intent.setClass(HouseDetailActivity.this, BookActivity.class);
-                intent.putExtra("house", mHouse);
-                intent.putExtra("userid", userid);
-                startActivity(intent);
+                if (userid == 0) {
+                    //用户还未登录
+                    Intent mintent = new Intent();
+                    Toast.makeText(HouseDetailActivity.this, "您还未登录，请先登录！", Toast.LENGTH_SHORT).show();
+                    mintent.setClass(HouseDetailActivity.this, LogintestActivity.class);
+                    startActivity(mintent);
+                } else {
+                    Intent intent = new Intent();
+                    intent.setClass(HouseDetailActivity.this, BookActivity.class);
+                    intent.putExtra("house", mHouse);
+                    intent.putExtra("userid", userid);
+                    startActivity(intent);
+                }
+                break;
+            case R.id.house_detail_back:
+                //结束当前页面
+                finish();
                 break;
 
         }

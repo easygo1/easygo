@@ -12,7 +12,6 @@
         layout="@layout/activity_home_city_header"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
-
     <include
         layout="@layout/select_menu"
         android:layout_width="match_parent"

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,10 +48,11 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
     public static final String TYPE = "type";
     public static final int REQUEST_DATE_CODE = 1;
     public static final int BOOK_ORDER_WHAT = 1;//申请预定，添加到数据库
+    ImageView mBackView;
     //自定义一个dialog
     private WaitDialog mDialog;
     ListView mBookListView;
-    TextView mAddContactTextView, mInTextView, mOutTextView, mSendTextView;
+    TextView mAddContactTextView, mInTextView, mOutTextView, mSendTextView, title_text;
     EditText mNameEditText, mTelEditText;
     View mBeforeListView, mAfterListView, mCheckLayout, mLeaveLayout;
     BookContactAdapter mAdapter;
@@ -115,6 +117,10 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
         mBookListView.setAdapter(mAdapter);
 
         //ListView之前控件的初始化
+        title_text = (TextView) findViewById(R.id.title_text);
+        mBackView = (ImageView) findViewById(R.id.back);
+        title_text.setText("申请订单");
+
         mCheckLayout = mBeforeListView.findViewById(R.id.room_book_check_layout);
         mLeaveLayout = mBeforeListView.findViewById(R.id.room_book_leave_layout);
         mInTextView = (TextView) mBeforeListView.findViewById(R.id.room_book_inday);
@@ -138,6 +144,7 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void addListeners() {
+        mBackView.setOnClickListener(this);
         mSendTextView.setOnClickListener(this);
         //ListView之前的控件监听
         mCheckLayout.setOnClickListener(BookActivity.this);
@@ -178,7 +185,12 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(chooseIntent, 1);
                 break;
             case R.id.send_book:
+//                Intent m = new Intent(BookActivity.this, TestActivity.class);
+//                startActivity(m);
                 sendbook();
+                break;
+            case R.id.back:
+                finish();
                 break;
             default:
                 break;

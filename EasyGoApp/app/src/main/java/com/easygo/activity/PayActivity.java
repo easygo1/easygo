@@ -1,7 +1,9 @@
 package com.easygo.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,6 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.easygo.application.MyApplication;
+import com.easygo.beans.house.HouseDateManage;
+import com.easygo.utils.DateUtils;
+import com.easygo.view.WaitDialog;
+import com.google.gson.Gson;
 import com.easygo.beans.order.Orders;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,10 +31,24 @@ import com.yolanda.nohttp.Request;
 import com.yolanda.nohttp.RequestMethod;
 import com.yolanda.nohttp.RequestQueue;
 import com.yolanda.nohttp.Response;
+import com.yolanda.nohttp.error.ClientError;
+import com.yolanda.nohttp.error.NetworkError;
+import com.yolanda.nohttp.error.NotFoundCacheError;
+import com.yolanda.nohttp.error.ServerError;
+import com.yolanda.nohttp.error.TimeoutError;
+import com.yolanda.nohttp.error.URLError;
+import com.yolanda.nohttp.error.UnKnownHostError;
+import com.yolanda.nohttp.RequestQueue;
+import com.yolanda.nohttp.Response;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -36,7 +56,15 @@ import c.b.BP;
 import c.b.PListener;
 
 public class PayActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView mTextView,mOrderNameTextView,mPriceTextView;
+    //日期转换
+    private final static String DATE_FORMAT = "yyyy-MM-dd";
+    SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+    int house_id = 1;//从前面的一个页面出过来
+    String inday;//入住时间，从前面的一个页面出过来
+    String outday;//离开时间，从前面的一个页面出过来
+    private WaitDialog mDialog;
+
+    TextView mTextView, mOrderNameTextView, mPriceTextView;
     ImageView mImageView;
     RadioButton mAlipayRadioButton, mWeixinRadioButton;
     Button mPayButton;
@@ -46,7 +74,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
     double price = 0.02;
     String dcribe = "靠近机场";
     String ordername = "和风小院";
-    int order_id=0;
+    int order_id = 0;
 
     String mUrl;
     MyApplication myApplication;
@@ -105,23 +133,28 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
 
     private void setData() {
         mOrderNameTextView.setText(dcribe);
-        mPriceTextView.setText(""+price+"元");
+        mPriceTextView.setText("" + price + "元");
     }
 
     private void getData() {
         myApplication = (MyApplication) this.getApplication();
         mUrl = myApplication.getUrl();
-        Intent intent=getIntent();
-        order_id=intent.getIntExtra("order_id",0);//上个页面传过来的order_id
-        dcribe=intent.getStringExtra("describe");//名称
-        price=intent.getDoubleExtra("price",0);//价格
+        Intent intent = getIntent();
+        order_id = intent.getIntExtra("order_id", 0);//上个页面传过来的order_id
+        dcribe = intent.getStringExtra("describe");//名称
+        price = intent.getDoubleExtra("price", 0);//价格
+        //新加上的
+        house_id = intent.getIntExtra("house_id",0);
+        inday = intent.getStringExtra("checktime");
+        outday = intent.getStringExtra("leavetime");
     }
 
     private void initview() {
+        mDialog = new WaitDialog(this);//提示框
         mTextView = (TextView) findViewById(R.id.title_text);
         mTextView.setText("订单支付");
-        mOrderNameTextView= (TextView) findViewById(R.id.order_name);
-        mPriceTextView= (TextView) findViewById(R.id.order_price);
+        mOrderNameTextView = (TextView) findViewById(R.id.order_name);
+        mPriceTextView = (TextView) findViewById(R.id.order_price);
         mImageView = (ImageView) findViewById(R.id.back);
         mAlipayRadioButton = (RadioButton) findViewById(R.id.radio_alipay);
         mWeixinRadioButton = (RadioButton) findViewById(R.id.radio_weixin);
@@ -132,7 +165,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
     private void addlistener() {
         mImageView.setOnClickListener(this);
         mPayButton.setOnClickListener(this);
-       // mAlipayRadioButton.setOnCheckedChangeListener(this);
+        // mAlipayRadioButton.setOnCheckedChangeListener(this);
     }
 
     @Override
@@ -195,14 +228,8 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
                 Toast.makeText(PayActivity.this, "支付成功!", Toast.LENGTH_SHORT).show();
                 //tv.append(name + "'s pay status is success\n\n");
                 Log.e("order_id99",order_id+"");
-                //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
-                mRequestQueue = NoHttp.newRequestQueue();
-                //创建请求对象
-                request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
-                //添加请求参数
-                request.add("methods", "orderpayok");
-                request.add("order_id", order_id);
-                mRequestQueue.add(WHAT_ISASSESSORDERS, request, onResponseListener);
+                //需要改数据库中的不可租日期
+                changeDate();
                 finish();
                 hideDialog();
             }
@@ -219,7 +246,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
             // 支付失败,原因可能是用户中断支付操作,也可能是网络原因
             @Override
             public void fail(int code, String reason) {
-                Log.e("payfail",""+code);
+                Log.e("payfail", "" + code);
 
                 // 当code为-2,意味着用户中断了操作
                 // code为-3意味着没有安装BmobPlugin插件
@@ -287,4 +314,42 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
             } catch (Exception e) {
             }
     }
+
+    public void changeDate() {
+        Log.e("6666","66666666666");
+        Log.e("日期",inday+"....."+outday+"出来了");
+        List<HouseDateManage> mHouseDateManageList = new ArrayList<>();
+        try {
+            //这个逻辑不太合理的。只适用于数据不多的时候，如果数据过多（或者，有不合理的数据填入），可能会报错的
+            Date indate = formatter.parse(inday);
+            Date outdate = formatter.parse(outday);
+            List<Date> mDateList = DateUtils.getDaysListBetweenDates(indate, outdate);
+//            List<String> mTimeList = new ArrayList<>();
+            for (int i = 0; i < mDateList.size()-1; i++) {
+                String searchdate = formatter.format(mDateList.get(i));//日期
+                HouseDateManage mHouseDateManage = new HouseDateManage();
+                mHouseDateManage.setHouse_id(house_id);
+                mHouseDateManage.setDate_not_use(searchdate);
+                mHouseDateManage.setDate_manage_type(1);//预定的类型
+                //封装到List中
+                mHouseDateManageList.add(mHouseDateManage);
+                Log.e("ggggggg",searchdate+"11111");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Gson gson = new Gson();
+        String orderDate = gson.toJson(mHouseDateManageList);
+        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+        mRequestQueue = NoHttp.newRequestQueue();
+        //创建请求对象
+        request = NoHttp.createStringRequest(mUrl, RequestMethod.POST);
+        //添加请求参数
+        request.add("methods", "orderpayok");
+        request.add("order_id", order_id);
+        request.add("orderDate", orderDate);
+        // mRequestQueue.add(WHAT_ISASSESSORDERS, request, mOnResponseListener);
+        mRequestQueue.add(WHAT_ISASSESSORDERS, request, onResponseListener);
+    }
+
 }
