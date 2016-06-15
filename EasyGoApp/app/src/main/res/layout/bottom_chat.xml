@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:background="#FFBB55"
         >
 
@@ -17,7 +17,7 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:text="消 息"
-            android:textSize="@dimen/textsize_xl"
+            android:textSize="@dimen/textsize_m"
             />
 
         <ImageView

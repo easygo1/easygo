@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.validator.util.GetConstructor;
 
 import com.easygo.model.beans.chat.News;
 import com.easygo.model.beans.chat.NewsPhoto;

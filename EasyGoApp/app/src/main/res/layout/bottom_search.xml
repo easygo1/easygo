@@ -12,7 +12,7 @@
         android:background="#FFBB55"
         android:gravity="center"
         android:text="搜 索"
-        android:textSize="@dimen/textsize_xl"/>
+        android:textSize="@dimen/textsize_m"/>
 
     <LinearLayout
         android:id="@+id/city_search"

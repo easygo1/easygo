@@ -115,10 +115,10 @@ public class IHouseDAOImpl implements IHouseDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
-		}finally{
+		} finally {
 			C3P0Utils.close(resultSet, statement, connection);
 		}
-		
+
 	}
 
 	@Override
@@ -368,9 +368,189 @@ public class IHouseDAOImpl implements IHouseDAO {
 
 	@Override
 	public List<House> sortHouse(String house_address_city, int cur,
-			String style_limit, String sex_limit, String price_limit) {
+			String style_limit, String sex_limit, String price_limit,
+			String stay_time) {
 		// TODO Auto-generated method stub
-		return null;
+		List<House> houseList = new ArrayList<House>();
+		connection = C3P0Utils.getConnection();
+
+		String sql = "SELECT * FROM house WHERE house_address_city =? AND house_style LIKE ? "
+				+ "AND house_limit_sex LIKE ? AND house_stay_time  LIKE ? "
+				+ "LIMIT ?,?";
+
+		String sql2 = "SELECT * FROM house WHERE house_address_city =? AND house_style LIKE ? "
+				+ "AND house_limit_sex LIKE ? AND house_stay_time  LIKE ? "
+				+ "ORDER BY house_one_price LIMIT ?,?";
+
+		String sql3 = "SELECT * FROM house WHERE house_address_city =? AND house_style LIKE ? "
+				+ "AND house_limit_sex LIKE ? AND house_stay_time  LIKE ? "
+				+ "ORDER BY house_one_price DESC LIMIT ?,?";
+		try {
+			int Begin = (cur - 1) * 4;
+			int num = 4;
+			if (price_limit.equals("价格") || price_limit.equals("默认")) {
+				System.out.println(price_limit + "--------------");
+				System.out.println(style_limit + "--------------");
+				System.out.println(sex_limit + "--------------");
+				System.out.println(stay_time + "--------------");
+				statement = connection.prepareStatement(sql);
+				statement.setString(1, house_address_city);
+				if (style_limit.equals("类型") || style_limit.equals("全部")) {
+					statement.setString(2, "%");
+				} else {
+					statement.setString(2, style_limit);
+				}
+				if (sex_limit.equals("性别") || sex_limit.equals("全部")) {
+					statement.setString(3, "%");
+				} else {
+					statement.setString(3, sex_limit);
+				}
+				if (stay_time.equals("时间") || stay_time.equals("全部")) {
+					statement.setString(4, "%");
+				} else {
+					statement.setString(4, stay_time);
+				}
+				System.out.println(Begin + "！！！");
+				// 分页处理
+				statement.setInt(5, Begin);
+				// System.out.println((cur - 1) * paging.getPageSize() +
+				// "分页是多少了");
+				// System.out.println(stay_time + "分页是多少了");
+				statement.setInt(6, num);
+				// System.out.println(paging.getPageSize() + "分页是多少了");
+			} else if (price_limit.equals("低-高")) {
+				System.out.println(price_limit + "======低---高");
+				System.out.println(style_limit + "======低---高");
+				System.out.println(sex_limit + "======低---高");
+				System.out.println(stay_time + "-======低---高");
+				statement = connection.prepareStatement(sql2);
+				statement.setString(1, house_address_city);
+				if (style_limit.equals("类型") || style_limit.equals("全部")) {
+					statement.setString(2, "%");
+				} else {
+					statement.setString(2, style_limit);
+				}
+				if (sex_limit.equals("性别") || sex_limit.equals("全部")) {
+					statement.setString(3, "%");
+				} else {
+					statement.setString(3, sex_limit);
+				}
+				if (stay_time.equals("时间") || stay_time.equals("全部")) {
+					statement.setString(4, "%");
+				} else {
+					statement.setString(4, stay_time);
+				}
+				System.out.println("这还没空呀222！！！");
+				// 分页处理
+				statement.setInt(5, Begin);
+				statement.setInt(6, num);
+			} else if (price_limit.equals("高-低")) {
+				System.out.println(price_limit + "+++++++++");
+				System.out.println(style_limit + "+++++++");
+				System.out.println(sex_limit + "++++++");
+				System.out.println(stay_time + "+++++");
+				// 降序
+				statement = connection.prepareStatement(sql3);
+				statement.setString(1, house_address_city);
+				if (style_limit.equals("类型") || style_limit.equals("全部")) {
+					statement.setString(2, "%");
+				} else {
+					statement.setString(2, style_limit);
+				}
+				if (sex_limit.equals("性别") || sex_limit.equals("全部")) {
+					statement.setString(3, "%");
+				} else {
+					statement.setString(3, sex_limit);
+				}
+				if (stay_time.equals("时间") || stay_time.equals("全部")) {
+					statement.setString(4, "%");
+				} else {
+					statement.setString(4, stay_time);
+				}
+				// System.out.println("这还没空呀3333！！！");
+				// 分页处理
+				statement.setInt(5, Begin);
+				statement.setInt(6, num);
+			}
+
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				int house_id = resultSet.getInt(1);
+				int user_id = resultSet.getInt(2);
+				String house_title = resultSet.getString(3);
+				String house_describe = resultSet.getString(4);
+				String house_style = resultSet.getString(5);
+				String house_address_province = resultSet.getString(6);
+				String house_address_city2 = resultSet.getString(7);
+				double house_address_lng = resultSet.getDouble(8);
+				double house_address_lat = resultSet.getDouble(9);
+				String house_traffic = resultSet.getString(10);
+				int house_most_num = resultSet.getInt(11);
+				double house_one_price = resultSet.getDouble(12);
+				double house_add_price = resultSet.getDouble(13);
+				String house_limit_sex = resultSet.getString(14);
+				int house_stay_time = resultSet.getInt(15);
+				int house_assess_sum = resultSet.getInt(16);
+				House house = new House(house_id, user_id, house_title,
+						house_describe, house_style, house_address_province,
+						house_address_city2, house_address_lng,
+						house_address_lat, house_traffic, house_most_num,
+						house_one_price, house_add_price, house_limit_sex,
+						house_stay_time, house_assess_sum, false);
+				houseList.add(house);
+				// System.out.println(houseList.get(0).getHouse_id() + "取出啦了");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return houseList;
+	}
+
+	@Override
+	public List<House> findSpecHouseByCity(String house_address_city) {
+		List<House> houseList = new ArrayList<House>();
+		connection = C3P0Utils.getConnection();
+		String sql = "select * from house where house_address_city =?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, house_address_city);
+
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				int house_id = resultSet.getInt(1);
+				int user_id = resultSet.getInt(2);
+				String house_title = resultSet.getString(3);
+				String house_describe = resultSet.getString(4);
+				String house_style = resultSet.getString(5);
+				String house_address_province = resultSet.getString(6);
+				String house_address_city2 = resultSet.getString(7);
+				double house_address_lng = resultSet.getDouble(8);
+				double house_address_lat = resultSet.getDouble(9);
+				String house_traffic = resultSet.getString(10);
+				int house_most_num = resultSet.getInt(11);
+				double house_one_price = resultSet.getDouble(12);
+				double house_add_price = resultSet.getDouble(13);
+				String house_limit_sex = resultSet.getString(14);
+				int house_stay_time = resultSet.getInt(15);
+				int house_assess_sum = resultSet.getInt(16);
+				House house = new House(house_id, user_id, house_title,
+						house_describe, house_style, house_address_province,
+						house_address_city2, house_address_lng,
+						house_address_lat, house_traffic, house_most_num,
+						house_one_price, house_add_price, house_limit_sex,
+						house_stay_time, house_assess_sum, false);
+				houseList.add(house);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return houseList;
 	}
 
 }

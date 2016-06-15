@@ -31,11 +31,13 @@ public class HouseListAdapter extends BaseAdapter {
     List<Integer> mAssessList = null;
     List<HouseCollect> mHouseCollectList = null;
     HomeCityActivity mHomeCityActivity;
+    List<Integer> starNumList;
     int user_id;
 
     public HouseListAdapter(Context context, List<House> mHouseList, List<User> mUserList,
                             List<HousePhoto> mHousePhotoList, List<Integer> mAssessListList,
-                            List<HouseCollect> mHouseCollectList,int user_id) {
+                            List<HouseCollect> mHouseCollectList, int user_id,
+                            List<Integer> starNumList) {
         mContext = context;
         this.mHouseList = mHouseList;
         this.mUserList = mUserList;
@@ -43,6 +45,7 @@ public class HouseListAdapter extends BaseAdapter {
         this.mAssessList = mAssessListList;
         this.mHouseCollectList = mHouseCollectList;
         this.user_id = user_id;
+        this.starNumList = starNumList;
         mInflater = LayoutInflater.from(mContext);
     }
 
@@ -109,7 +112,7 @@ public class HouseListAdapter extends BaseAdapter {
         Glide.with(mContext).load(housePhoto.getHouse_photo_path()).into(viewHolder.mRoomImageView);
 //        viewHolder.mRoomImageView.setImageResource(R.drawable.home_city_room1);
         viewHolder.text_info.setText(house.getHouse_style() + "*" + house.getHouse_title());
-        viewHolder.text_price.setText(house.getHouse_one_price() + "");
+        viewHolder.text_price.setText("￥"+house.getHouse_one_price() + "");
         viewHolder.text_describe.setText(house.getHouse_describe());
         //用户
         Glide.with(mContext)
@@ -119,7 +122,11 @@ public class HouseListAdapter extends BaseAdapter {
                 .error(R.drawable.user_error)
                 .into(viewHolder.mUserImageView);
         viewHolder.text_username.setText(user.getUser_realname());
-//        viewHolder.mRatingBar.setNumStars();
+        if (starNumList.get(position) != 0) {
+            viewHolder.mRatingBar.setNumStars(starNumList.get(position));
+        }else{
+            viewHolder.mRatingBar.setNumStars(5);
+        }
         viewHolder.text_assess.setText(mAssessList.get(position) + "条评论");
 
         final ImageView mCollectionImageView = (ImageView) convertView.findViewById(R.id.homepage_city_item_collect_image);
@@ -136,7 +143,7 @@ public class HouseListAdapter extends BaseAdapter {
                     //将收藏的行加入到数据库中
                     mHomeCityActivity = new HomeCityActivity();
                     //应该从偏好设置中取出来用户ID
-                    mHomeCityActivity.addCollect(user_id, house.getHouse_id());
+                    mHomeCityActivity.addCollect(user_id, house.getHouse_id(),mContext);
                 } else if (mHouseList.get(position).isCollected()) {
                     //此处之前为false
                     //说明用户之前收藏过,再次点击则取消
@@ -150,7 +157,7 @@ public class HouseListAdapter extends BaseAdapter {
                             deleteId = mhouseCollect.getHouse_collect_id();
                         }
                     }
-                    mHomeCityActivity.deleteCollect(deleteId);
+                    mHomeCityActivity.deleteCollect(deleteId,mContext);
                 }
             }
         });

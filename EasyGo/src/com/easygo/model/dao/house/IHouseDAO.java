@@ -25,6 +25,10 @@ public interface IHouseDAO {
 	// 某个地区的所有房源
 	public abstract List<House> findSpecHouseByCity(String house_address_city,
 			int cur);
+	
+	//查找某个地区的房源不分页
+	public abstract List<House> findSpecHouseByCity(String house_address_city);
+		
 
 	// 房源类型（客厅沙发，独立房间）
 	public abstract List<House> findSpecHouseByStyle(String house_style);
@@ -38,7 +42,8 @@ public interface IHouseDAO {
 	// 根据house_id得到房东id
 	public abstract int findUseridByHouseid(int house_id);
 
-	// 某个地区的所有房源
+	// 某个地区的所有房源进行排序
 	public abstract List<House> sortHouse(String house_address_city, int cur,
-			String style_limit, String sex_limit, String price_limit);
+			String style_limit, String sex_limit, String price_limit,
+			String stay_time);
 }

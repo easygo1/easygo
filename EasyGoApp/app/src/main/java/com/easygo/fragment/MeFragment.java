@@ -16,12 +16,14 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.easygo.activity.CustomOrderActivity;
+import com.easygo.activity.DateManageActivity;
 import com.easygo.activity.HouseCollectionActivity;
 import com.easygo.activity.LogintestActivity;
 import com.easygo.activity.MyInfomationActivity;
 import com.easygo.activity.MyWalletActivity;
 import com.easygo.activity.OwnerOrderActivity;
 import com.easygo.activity.R;
+import com.easygo.activity.RealNameIdentifyActivity;
 import com.easygo.activity.RegisterActivity;
 import com.easygo.activity.ReleasesroomActivity;
 import com.easygo.activity.SetActivity;
@@ -77,6 +79,8 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private TextView meCustomerustomers;
     private TextView meCustomerDescriptustomer;
     private TextView meCustomerMypoints;
+    private TextView mIsIdentifyTextView;
+   // private ImageView mIsIdentifyImageView;
 
     private TextView meCustomerDescription;
     private TextView meCustomerLinkman;
@@ -127,7 +131,11 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                             .bitmapTransform(new CropCircleTransformation(getActivity()))
                             .error(R.mipmap.user_photo_defult)
                             .into(meCustomerUserImageview);
-                    meCustomerDescriptustomer.setText(user.getUser_mood());
+                    meCustomerDescriptustomer.setText("个性签名："+user.getUser_mood());
+                    if (user.getUser_idcard()==null){
+                        //mIsIdentifyImageView.setImageResource(R.mipmap.no_realname);
+                        mIsIdentifyTextView.setText("未认证");
+                    }
                 } else if (type == 2) {
                     //房东状态
                     Glide.with(getActivity())
@@ -168,6 +176,10 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         }
     };
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     @Nullable
     @Override
@@ -231,6 +243,9 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         meCustomerCertification = (TextView) mView.findViewById(R.id.me_customer_certification);
         meCustomerReleaseroom = (TextView) mView.findViewById(R.id.me_customer_releaseroom);
         meCustomerCustomerservice = (TextView) mView.findViewById(R.id.me_customer_customerservice);
+        mIsIdentifyTextView= (TextView) mView.findViewById(R.id.is_identify_text);
+        //mIsIdentifyImageView= (ImageView) mView.findViewById(R.id.is_identify_img);
+
         myorder = (LinearLayout) mView.findViewById(R.id.myorder);
         mycollection = (LinearLayout) mView.findViewById(R.id.mycollection);
         mywallet = (LinearLayout) mView.findViewById(R.id.mywallet);
@@ -450,6 +465,18 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             case R.id.me_owner_myroom:
                 intent = new Intent();
                 intent.setClass(getActivity(), UpdateroomActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.me_customer_certification:
+                intent = new Intent();
+                intent.setClass(getActivity(), RealNameIdentifyActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.me_owner_datemanage:
+                //可租日期管理
+                intent = new Intent();
+                intent.setClass(getActivity(), DateManageActivity.class);
+                intent.putExtra("user_id",user_id);
                 startActivity(intent);
                 break;
         }

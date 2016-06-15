@@ -130,5 +130,66 @@ public class IHouseDateManageDAOImpl implements IHouseDateManageDAO {
 
 		return null;
 	}
+	@Override
+	public List<String> selsectNoGoHouse(int house_id) {
+		List<String> housedatenolist=new ArrayList<String>();
+		connection = C3P0Utils.getConnection();
+		String sql = "SELECT date_not_use FROM house_date_manage WHERE house_id = ?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, house_id);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				String date_not_use = resultSet.getString(1);
+				housedatenolist.add(date_not_use);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return housedatenolist;
+	}
 
+	@Override
+	public boolean delAllNotDateById(int house_id, int date_manage_type) {
+		// TODO Auto-generated method stub
+		boolean result = false;
+		connection = C3P0Utils.getConnection();
+		List<HouseDateManage> houseDateList = new ArrayList<>();
+		String sql = "DELETE FROM house_date_manage WHERE house_id = ? AND date_manage_type=?";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, house_id);
+			statement.setInt(2, date_manage_type);
+			statement.executeUpdate();
+			result = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return result;
+	}
+
+	@Override
+	public boolean delDelayDate() {
+		// TODO Auto-generated method stub
+		connection = C3P0Utils.getConnection();
+		boolean result = false;
+		String sql = "DELETE FROM house_date_manage WHERE date_not_use < CURRENT_DATE";
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.executeUpdate();
+			result = true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			C3P0Utils.close(resultSet, statement, connection);
+		}
+		return result;
+	}
 }

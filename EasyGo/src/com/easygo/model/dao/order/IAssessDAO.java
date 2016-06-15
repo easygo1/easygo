@@ -16,5 +16,8 @@ public interface IAssessDAO {
 
 	// 查找所有评价（某个房源的所有评价）
 	public abstract List<Assess> selectAllAssess(int house_id);
+	
+	//查找某个订单是否已经被评价过了
+	public abstract boolean isAssessOrders(int order_id);
 
 }

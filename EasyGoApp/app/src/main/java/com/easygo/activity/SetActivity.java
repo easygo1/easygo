@@ -12,7 +12,7 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
     ImageView mReturnImageView;
     TextView mFeedbackTextView,mAboutusTextView,mClearcacheTextView,mExitloginTextView;
     public static final String TYPE = "type";
-    SharedPreferences mSharedPreferences;
+    SharedPreferences mSharedPreferences,mdateSharedPreferences;
     SharedPreferences.Editor mEditor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +55,9 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
                 startActivity(intentaboutus);
                 break;
             case R.id.set_clearcache:
-                Intent intent2 = new Intent();
+                /*Intent intent2 = new Intent();
                 intent2.setClass(SetActivity.this,OwnerOrderActivity.class);
-                startActivity(intent2);
+                startActivity(intent2);*/
                 break;
             case R.id.set_exitlogin:
                 //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
@@ -82,6 +82,15 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
                 mEditor.putString("remarks",null);
                 mEditor.putString("token",null);
                 mEditor.putString("phone",null);
+                mEditor.putString("searchcity",null);
+                //提交保存结果
+                mEditor.commit();
+                //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
+                mdateSharedPreferences = getSharedPreferences("date",MODE_PRIVATE);
+                //向偏好设置文件中保存数据
+                mEditor = mdateSharedPreferences.edit();
+                mEditor.putString("dateIn",null);
+                mEditor.putString("dateOut",null);
                 //提交保存结果
                 mEditor.commit();
                 Intent intentExit = new Intent();

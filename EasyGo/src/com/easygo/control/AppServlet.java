@@ -27,6 +27,7 @@ import com.easygo.model.beans.gson.GsonAboutHouseDetail;
 import com.easygo.model.beans.gson.GsonAboutHouseManage;
 import com.easygo.model.beans.gson.GsonOrderInfo;
 import com.easygo.model.beans.gson.GsonOrderInfoAllDetail;
+import com.easygo.model.beans.gson.GsonUserCollect;
 import com.easygo.model.beans.gson.GsonUserInfoHobby;
 import com.easygo.model.beans.house.Equipment;
 import com.easygo.model.beans.house.House;
@@ -91,6 +92,7 @@ public class AppServlet extends HttpServlet {
 	String user_phone;
 	String user_password;
 	GsonUserInfoHobby userInfoHobby;
+	String idcard;
 
 	// Hobby的相关对象
 	IHobbyDAO hobbydao;
@@ -160,11 +162,13 @@ public class AppServlet extends HttpServlet {
 	// 所有的房屋，包括下面两种
 	List<HouseDateManage> houseUserBuyList;// 用户预定的某个房屋的日期
 	List<HouseDateManage> houseNotList;// 房东设置的某个房屋的不可租的日期
+	List<String> housenoUsetimelist;// 房源的不能租的日期list
 	// Assess的相关对象
 	IAssessDAO assessDAO;
 	// 存每个房源评价的数量
 	List<Integer> assessList;
 	List<Assess> allAssessList;// 详细的评价
+	List<Integer> starNumList;// 星级
 	Assess assess;
 	// 常用入住人相关
 	List<UserLinkman> userLinkmanList;
@@ -231,25 +235,51 @@ public class AppServlet extends HttpServlet {
 				result = gson.toJson(user);
 				mPrintWriter.write(result);// 将数据写回android端
 				System.out.println("登录成功");
+				mPrintWriter.close();
 			}
-			mPrintWriter.close();
+			
 			break;
 		// 用户注册
 		case "register":
 			// 接收到android端传过来的手机号和密码（手机号相当于用户名）
 			user_phone = request.getParameter("user_phone");
 			user_password = request.getParameter("user_password");
-			// 对用户进行注册
-			user = new User();
-			user.setUser_phone(user_phone);
-			user.setUser_password(user_password);
-
 			userdao = new IUserDAOImpl();
-			if (userdao.register(user)) {
-				System.out.println("注册成功");
+			user = userdao.selectUser(user_phone);
+			//System.out.println("user..."+user.toString());
+			if (user == null) {
+				// 对用户进行注册
+				user = new User();
+				user.setUser_phone(user_phone);
+				user.setUser_password(user_password);
+
+				userdao = new IUserDAOImpl();
+				if (userdao.register(user)) {
+					System.out.println("注册成功11");
+				}
+				// 进行登录操作
+				user = new User();
+				userdao = new IUserDAOImpl();
+				// 检查出token是否为空
+				String token1 = userdao.login(user_phone, user_password);
+
+				if (token1 != null) {
+					// 不为空的话根据phone查找出该user的所有数据
+					user = userdao.selectUser(user_phone);
+					gson = new Gson();
+					result = gson.toJson(user);
+					mPrintWriter.write(result);// 将数据写回android端
+					System.out.println("登录成功");
+					mPrintWriter.close();
+				}
+			}else {
+				System.out.println("该用户已注册");
+				mPrintWriter.write("0");// 将数据写回android端
+				mPrintWriter.close();
 			}
+			
 			// mPrintWriter.write(userdao.register(user));
-			mPrintWriter.close();
+			//mPrintWriter.close();
 			break;
 		// 添加好友
 		case "addFriend":
@@ -373,20 +403,21 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write("success");
 			mPrintWriter.close();
 			break;
-		//增加浏览量
+		// 增加浏览量
 		case "browse":
-			//接收服务端传过来的数据
-			int news_id_browse=Integer.valueOf(request.getParameter("news_id"));
-			//执行浏览量+1操作
+			// 接收服务端传过来的数据
+			int news_id_browse = Integer.valueOf(request
+					.getParameter("news_id"));
+			// 执行浏览量+1操作
 			newsdao = new INewsDAOImlp();
 			newsdao.updateBrowse(news_id_browse);
 			System.out.println(news_id_browse);
 			break;
-		//点赞
+		// 点赞
 		case "zan":
-			//接收服务端传过来的数据
-			int news_id_zan=Integer.valueOf(request.getParameter("news_id"));
-			//执行浏览量+1操作
+			// 接收服务端传过来的数据
+			int news_id_zan = Integer.valueOf(request.getParameter("news_id"));
+			// 执行浏览量+1操作
 			newsdao = new INewsDAOImlp();
 			newsdao.updateZan(news_id_zan);
 			System.out.println("点赞成功");
@@ -501,6 +532,8 @@ public class AppServlet extends HttpServlet {
 					"user_address_city").getBytes("iso8859-1"), "UTF-8"));
 			user.setUser_mood(new String(request.getParameter("user_mood")
 					.getBytes("iso8859-1"), "UTF-8"));
+			user.setUser_introduct(new String(request.getParameter(
+					"user_introduct").getBytes("iso8859-1"), "UTF-8"));
 			user.setUser_mail(new String(request.getParameter("user_mail")
 					.getBytes("iso8859-1"), "UTF-8"));
 			user.setUser_birthday(new String(request.getParameter(
@@ -567,7 +600,7 @@ public class AppServlet extends HttpServlet {
 			}.getType();
 			hobbylist = gson.fromJson(lables, type);
 			userhobbydao.DeleteUserHobbyByUserId(user_id);// 先删除再进行添加
-			for (int i = 1; i < hobbylist.size(); i++) {
+			for (int i = 0; i < hobbylist.size(); i++) {
 				int hobby_id = hobbydao.SelectHobbyIDByHobbyName(hobbylist
 						.get(i));// 得到选择的爱好的id
 				flag = userhobbydao.inssertUserHobby(user_id, hobby_id);
@@ -590,6 +623,17 @@ public class AppServlet extends HttpServlet {
 			gson = new Gson();
 			result = gson.toJson(user);
 			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		case "updateRealName":
+			// 通过用户id得到用户的头像和签名
+			user_id = Integer.valueOf(request.getParameter("user_id"));
+			String real_name = new String(request.getParameter("realname")
+					.getBytes("iso8859-1"), "UTF-8");
+			idcard = request.getParameter("idcard");
+			userdao = new IUserDAOImpl();
+			flag = userdao.updateUserRealname(user_id, real_name, idcard);
+			mPrintWriter.write("实名认证" + flag);
 			mPrintWriter.close();
 			break;
 
@@ -629,7 +673,7 @@ public class AppServlet extends HttpServlet {
 			String order_state = request.getParameter("order_state");
 			String order_book_name = request.getParameter("book_name");
 			String linkmanList = request.getParameter("linkman");
-			System.out.println("接收到了name::" + order_book_name);
+			System.out.println("接收到了name:" + order_book_name);
 			// System.out.println("接收到了linkmanList" + linkmanList);
 			// 添加订单信息
 			orders = new Orders(house_id, user_id, checknum, checktime,
@@ -658,24 +702,31 @@ public class AppServlet extends HttpServlet {
 				// 一条条插入到数据库中
 				userorderlinkmandao.addUserOrderLinkman(userorderlinkman);
 			}
-			// 最后增加订单的同时要更改数据库中的不可租日期
-			houseDateManage = new HouseDateManage();
-			houseDateManageDAO = new IHouseDateManageDAOImpl();
-			houseDateManage.setDate_manage_type(1);
-			houseDateManage.setHouse_id(house_id);
-			houseDateManage.setDate_not_use(checktime);
-			houseDateManageDAO.addHouseDate(houseDateManage);
-			//根据房子id查询房主id,向房主推送消息
+
+			// 根据房子id查询房主id,向房主推送消息
 			housedao = new IHouseDAOImpl();
 			house = new House();
 			house = housedao.findSpecHouseById(house_id);
 			Jdpush.sendPush(house.getUser_id(), "您有一条新的订单，请及时处理。");
 			break;
+		case "addOrderDate":
+			// result = request.getParameter("orderDate");
+			// gson = new Gson();
+			// type = new TypeToken<List<HouseDateManage>>() {
+			// }.getType();
+			// houseDateManageList = new ArrayList<>();
+			// houseDateManageList = gson.fromJson(result, type);
+			// // 最后增加订单的同时要更改数据库中的不可租日期
+			// houseDateManageDAO = new IHouseDateManageDAOImpl();
+			// for (HouseDateManage h : houseDateManageList) {
+			// houseDateManageDAO.addHouseDate(houseDateManage);
+			// }
+			break;
 		// 得到全部订单
 		case "getAllorder":
-			
+
 			break;
-		//用户取消订单
+		// 用户取消订单
 		case "delOrders":
 			order_id = Integer.valueOf(request.getParameter("order_id"));
 			orderDAO = new IOrderDAOImpl();
@@ -688,7 +739,7 @@ public class AppServlet extends HttpServlet {
 				mPrintWriter.close();
 			}
 			break;
-		//用户确认订单
+		// 用户确认订单
 		case "yesOrders":
 			order_id = Integer.valueOf(request.getParameter("order_id"));
 			orderDAO = new IOrderDAOImpl();
@@ -704,6 +755,20 @@ public class AppServlet extends HttpServlet {
 			orderDAO = new IOrderDAOImpl();
 			orders = orderDAO.findOrdersByorderid(order_id);
 			Jdpush.sendPush(orders.getUser_id(), "您的订单已被房主确认，请及时付款");
+			break;
+		case "assessokOrders":
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			assessDAO = new IAssessDAOImpl();
+			boolean result2 = assessDAO.isAssessOrders(order_id);
+			if (result2) {
+				// 说明已经评价过了
+				mPrintWriter.write("已经评价");
+				mPrintWriter.close();
+			} else {
+				// 说明已经评价过了
+				mPrintWriter.write("未评价");
+				mPrintWriter.close();
+			}
 			break;
 		case "getorderdetailbyorderid":
 			// 根据订单号得到订单的具体信息，该房源具体信息，该房源的主图，房东信息，该订单入住人信息
@@ -871,7 +936,6 @@ public class AppServlet extends HttpServlet {
 		case "querySort":
 
 			// 根据城市查询所有房源，然后对查到的房源进行排序
-			// 如果类型不为空，未完成
 			String house_address_city2 = request.getParameter("city");
 			// 页码
 			String cur2 = request.getParameter("cur");
@@ -881,15 +945,19 @@ public class AppServlet extends HttpServlet {
 			String sex_limit = request.getParameter("sex_limit");
 			// 价格排序
 			String price_limit = request.getParameter("price_limit");
+			// 天数
+			String stay_limit = request.getParameter("stay_limit");
 
 			// 用户id
 			user_id = Integer.parseInt(request.getParameter("userid"));
 
 			houseList = new ArrayList<House>();
 			housedao = new IHouseDAOImpl();
+			// System.out.println(stay_limit + "+++++++");
 			// 得到了所有该城市房源
-			houseList = housedao.findSpecHouseByCity(house_address_city2,
-					Integer.parseInt(cur2));
+			houseList = housedao.sortHouse(house_address_city2,
+					Integer.parseInt(cur2), style_limit, sex_limit,
+					price_limit, stay_limit);
 			// System.out.println(houseList.get(1).getHouse_address_city());
 			// 得到房源的图片
 			housePhotoDAO = new IHousePhotoDAOImpl();
@@ -900,6 +968,7 @@ public class AppServlet extends HttpServlet {
 			// 得到房源的评价
 			assessDAO = new IAssessDAOImpl();
 			assessList = new ArrayList<>();
+			starNumList = new ArrayList<>();
 			// 得到用户的收藏
 			houseCollectDAO = new IHouseCollectDAOImpl();
 
@@ -910,22 +979,134 @@ public class AppServlet extends HttpServlet {
 						.getHouse_id());
 				housePhotoList.add(housePhoto);
 				// 房源的评价的数量
-
-				assessList.add(assessDAO.selectAllAssess(house.getHouse_id())
-						.size());
+				int size = assessDAO.selectAllAssess(house.getHouse_id())
+						.size();
+				assessList.add(size);
 				// 用户List
 				user = userdao.findSpecUserById(house.getUser_id());
 				userList.add(user);
+				// 星级
+				int starNum = 0;
+				for (Assess a : assessDAO.selectAllAssess(house.getHouse_id())) {
+					starNum += a.getStar();
+				}
+				// （强转为整型，以防出错）
+				if (size != 0) {
+					starNum = starNum / size;
+				}
+				// System.out.println("打出来看看" + starNum);
+				starNumList.add(starNum);
 			}
 			// 用户收藏
 			houseCollectList = houseCollectDAO
 					.findHouseCollectByUserId(user_id);
 
 			GsonAboutHouse gsonAboutHouse2 = new GsonAboutHouse(houseList,
-					userList, housePhotoList, assessList, houseCollectList);
+					userList, housePhotoList, assessList, houseCollectList,
+					starNumList);
 
 			gson = new Gson();
 			result = gson.toJson(gsonAboutHouse2);
+			System.out.println(result);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		case "searchHouse":
+			// 按照入住时间段和城市进行搜索
+			// 从安卓端得到的搜索日期list
+			String housenoUses = request.getParameter("timelist");
+			String searchcity = new String(request.getParameter("searchcity")
+					.getBytes("iso8859-1"), "UTF-8");
+			user_id = Integer.parseInt(request.getParameter("user_id"));
+			// int housecur= Integer.parseInt(request.getParameter("cur"));
+			System.out.println("timelist" + housenoUses);
+			System.out.println("searchcity" + searchcity);
+			housenoUsetimelist = new ArrayList<String>();
+			gson = new Gson();
+			type = new TypeToken<List<String>>() {
+			}.getType();
+			housenoUsetimelist = gson.fromJson(housenoUses, type);
+			// 找到所有的房源
+			houseList = new ArrayList<House>();
+			List<House> resulthouselist = new ArrayList<House>();
+			housedao = new IHouseDAOImpl();
+			// houseList = housedao.selectAllHouse();
+			houseList = housedao.findSpecHouseByCity(searchcity);
+
+			// 根据房屋id选择房源的不可租list
+			houseDateManageDAO = new IHouseDateManageDAOImpl();
+			List<String> timelist = new ArrayList<String>();
+
+			for (int i = 0; i < houseList.size(); i++) {
+				house_id = houseList.get(i).getHouse_id();
+				// 得到不可租list
+				timelist = houseDateManageDAO.selsectNoGoHouse(house_id);
+				// 求交集，如果交集为空说明该房源符合条件
+				timelist.retainAll(housenoUsetimelist);
+				// System.out.println("timelist" + timelist.toString());
+				// System.out.println("housenoUsetimelist"
+				// + housenoUsetimelist.toString());
+				if (timelist.size() == 0) {
+					resulthouselist.add(houseList.get(i));
+				}
+			}
+			// 得到所有符合条件的房源
+			// 得到房源的图片
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			housePhotoList = new ArrayList<HousePhoto>();
+			// 得到房源的房东
+			userList = new ArrayList<>();
+			userdao = new IUserDAOImpl();
+			// 得到房源的评价
+			assessDAO = new IAssessDAOImpl();
+			assessList = new ArrayList<>();
+			starNumList = new ArrayList<>();
+			// 得到用户的收藏
+			houseCollectDAO = new IHouseCollectDAOImpl();
+			if (resulthouselist.size() == 0) {
+				result = "没有搜索到您要查找的房源";
+			} else {
+				// 遍历查询
+				for (int j = 0; j < resulthouselist.size(); j++) {
+					// 房源图片List
+					housePhoto = housePhotoDAO
+							.selectSpecIHousePhotoFirst(resulthouselist.get(j)
+									.getHouse_id());
+					housePhotoList.add(housePhoto);
+					// 房源的评价的数量
+					int size1 = assessDAO.selectAllAssess(
+							resulthouselist.get(j).getHouse_id()).size();
+					assessList.add(size1);
+
+					// 用户List房东
+					user = userdao.findSpecUserById(resulthouselist.get(j)
+							.getUser_id());
+					userList.add(user);
+					// 星级
+					int starNum = 0;
+					for (Assess a : assessDAO.selectAllAssess(resulthouselist
+							.get(j).getHouse_id())) {
+						starNum += a.getStar();
+					}
+					// （强转为整型，以防出错）
+					if (size1 != 0) {
+						starNum = starNum / size1;
+					}
+					// System.out.println("打出来看看" + starNum);
+					starNumList.add(starNum);
+				}
+				// 用户收藏
+				houseCollectList = houseCollectDAO
+						.findHouseCollectByUserId(user_id);
+
+				GsonAboutHouse gsonAboutHouse1 = new GsonAboutHouse(
+						resulthouselist, userList, housePhotoList, assessList,
+						houseCollectList, starNumList);
+				// 得到房子所有信息
+				gson = new Gson();
+				result = gson.toJson(gsonAboutHouse1);
+				System.out.println("搜索结果" + result);
+			}
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
@@ -983,6 +1164,10 @@ public class AppServlet extends HttpServlet {
 					house, housePhotoList, isCollected, houseEquipmentNameList,
 					user);
 			gson = new Gson();
+			/*
+			 * System.out.println(houseEquipmentNameList.get(0)
+			 * .getEquipment_name());
+			 */
 			result = gson.toJson(gsonAboutHouseDetail);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
@@ -1012,47 +1197,147 @@ public class AppServlet extends HttpServlet {
 			houseCollect.setHouse_id(house_id);
 			houseCollectDAO.addHouseCollect(houseCollect);
 			break;
-		// 得到某个房屋的日期状态
+		// 查找某個用戶的全部收藏記錄
+		case "selecthousecollect":
+			user_id = Integer.parseInt(request.getParameter("user_id"));
+			int cur1 = Integer.parseInt(request.getParameter("cur"));
+
+			houseCollectDAO = new IHouseCollectDAOImpl();
+			houseCollect = new HouseCollect();
+			houseList = new ArrayList<House>();
+			// 得到用户的全部收藏 是一个house_id 的集合
+			List<Integer> houseCollectlist = new ArrayList<Integer>();
+			houseCollectlist = houseCollectDAO.findHouseCollectByUserIdCur(
+					cur1, user_id);
+			for (int i = 0; i < houseCollectlist.size(); i++) {
+				house_id = houseCollectlist.get(i);// 得到house_id
+				// 根据house_id得到house对象
+				// 得到房源
+				housedao = new IHouseDAOImpl();
+				house = housedao.findSpecHouseById(house_id);
+				houseList.add(house);
+			}
+
+			// 得到房源的图片
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			housePhotoList = new ArrayList<HousePhoto>();
+			// 得到房源的房东
+			userList = new ArrayList<>();
+			userdao = new IUserDAOImpl();
+			// 得到房源的评价
+			assessDAO = new IAssessDAOImpl();
+			assessList = new ArrayList<>();
+
+			// 遍历查询
+			for (House house : houseList) {
+				// 房源图片List
+				housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house
+						.getHouse_id());
+				housePhotoList.add(housePhoto);
+				// 房源的评价的数量
+
+				assessList.add(assessDAO.selectAllAssess(house.getHouse_id())
+						.size());
+				// 用户List房东
+				user = userdao.findSpecUserById(house.getUser_id());
+				userList.add(user);
+			}
+			GsonUserCollect userCollect = new GsonUserCollect(houseList,
+					housePhotoList, userList, houseCollectlist);
+			gson = new Gson();
+			result = gson.toJson(userCollect);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		// 得到某个房屋的日期状态（后期完善，传入房子的ID即可）
 		case "getHouseDateByHouseId":
+			// user_id = Integer.parseInt(request.getParameter("user_id"));
 			house_id = Integer.parseInt(request.getParameter("houseid"));
+			housedao = new IHouseDAOImpl();
 			houseDateManageDAO = new IHouseDateManageDAOImpl();
+			// house_id = housedao.findSpecHouseByUserId(user_id).getHouse_id();
 			// 得到该房屋的所有
 			/*
 			 * houseDateManageList=
 			 * houseDateManageDAO.selectAllDateById(house_id);
 			 */
-			// 已租
-			houseUserBuyList = houseDateManageDAO
-					.selectAllDateById(house_id, 1);
-			// 不可租
-			houseNotList = houseDateManageDAO.selectAllDateById(house_id, 2);
-			gson = new Gson();
-			GsonAboutHouseManage gsonAboutHouseManage = new GsonAboutHouseManage(
-					houseUserBuyList, houseNotList);
-			result = gson.toJson(gsonAboutHouseManage);
-			mPrintWriter.write(result);
-			mPrintWriter.close();
+			if (houseDateManageDAO.delDelayDate()) {
+				// 已租
+				houseUserBuyList = houseDateManageDAO.selectAllDateById(
+						house_id, 1);
+				// 不可租
+				houseNotList = houseDateManageDAO
+						.selectAllDateById(house_id, 2);
+				gson = new Gson();
+				GsonAboutHouseManage gsonAboutHouseManage = new GsonAboutHouseManage(
+						houseUserBuyList, houseNotList, house_id);
+				result = gson.toJson(gsonAboutHouseManage);
+				mPrintWriter.write(result);
+				mPrintWriter.close();
+			} else {
+				System.out.println("数据库出错了。");
+			}
+			break;
+		// 得到某个房屋的日期状态（后期完善，传入房子的ID即可）
+		case "getHouseDateByUserId":
+			user_id = Integer.parseInt(request.getParameter("user_id"));
+			// house_id = Integer.parseInt(request.getParameter("houseid"));
+			housedao = new IHouseDAOImpl();
+			houseDateManageDAO = new IHouseDateManageDAOImpl();
+			house_id = housedao.findSpecHouseByUserId(user_id).getHouse_id();
+			if (houseDateManageDAO.delDelayDate()) {
+				// 已租
+				houseUserBuyList = houseDateManageDAO.selectAllDateById(
+						house_id, 1);
+				// 不可租
+				houseNotList = houseDateManageDAO
+						.selectAllDateById(house_id, 2);
+				gson = new Gson();
+				GsonAboutHouseManage gsonAboutHouseManage2 = new GsonAboutHouseManage(
+						houseUserBuyList, houseNotList, house_id);
+				result = gson.toJson(gsonAboutHouseManage2);
+				mPrintWriter.write(result);
+				mPrintWriter.close();
+			} else {
+				System.out.println("数据库出错了！");
+			}
 			break;
 		// 用户修改时间后，进行数据库的管理
 		case "updateHouseDate":
 			// 先删除数据库中，房东曾经修改过的房屋的时间，然后再将新的时间加到数据库中
 			result = request.getParameter("houseDate");
+			house_id = Integer.parseInt(request.getParameter("house_id"));
 			houseDateManageDAO = new IHouseDateManageDAOImpl();
 			type = new TypeToken<List<HouseDateManage>>() {
 			}.getType();
 			gson = new Gson();
 			// APP传过来的数据
 			houseNotList = gson.fromJson(result, type);
-			// 将数据库中的房东设置的不可租数据全部查出来，然后删除
-			houseDateManageList = houseDateManageDAO.selectAllDateById(
-					houseNotList.get(0).getHouse_id(), 2);
-			for (int i = 0; i < houseDateManageList.size(); i++) {
-				houseDateManage = houseDateManageList.get(i);
-				houseDateManageDAO.delHouseDate(houseDateManage);
-			}
-			// 將新的不可租的日期存進去
-			for (HouseDateManage h : houseNotList) {
-				houseDateManageDAO.addHouseDate(h);
+
+			if (houseNotList.size() > 0) {
+				// 房东传过来的可租日期List不为空，
+				// 将数据库中的房东设置的不可租数据全部查出来，然后删除，再将新的传进去
+				// houseDateManageList = houseDateManageDAO.selectAllDateById(
+				// house_id, 2);
+				// for (int i = 0; i < houseDateManageList.size(); i++) {
+				// houseDateManage = houseDateManageList.get(i);
+				// houseDateManageDAO.delHouseDate(houseDateManage);
+				// }
+
+				houseDateManageDAO.delAllNotDateById(house_id, 2);
+				// 將新的不可租的日期存進去
+				for (HouseDateManage h : houseNotList) {
+					houseDateManageDAO.addHouseDate(h);
+				}
+			} else {
+				// 房东传过来的可租日期List为空，则将数据库中的数据都清除
+				// houseDateManageList = houseDateManageDAO.selectAllDateById(
+				// house_id, 2);
+				// for (int i = 0; i < houseDateManageList.size(); i++) {
+				// houseDateManage = houseDateManageList.get(i);
+				// houseDateManageDAO.delHouseDate(houseDateManage);
+				// }
+				houseDateManageDAO.delAllNotDateById(house_id, 2);
 			}
 			// mPrintWriter.write(result);
 			// mPrintWriter.close();
@@ -1061,7 +1346,7 @@ public class AppServlet extends HttpServlet {
 			// 得到某个用户的所有常用入住人
 			user_id = Integer.parseInt(request.getParameter("userid"));
 			String linkman_name = request.getParameter("linkmanname");
-			String idcard = request.getParameter("idcard");
+			idcard = request.getParameter("idcard");
 			userLinkmanDAO = new IUserLinkmanDAOImpl();
 			userLinkman = new UserLinkman();
 			userLinkman.setUser_id(user_id);
@@ -1184,6 +1469,35 @@ public class AppServlet extends HttpServlet {
 			result = gson.toJson(gsonOrderInfo2);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
+			break;
+
+		case "orderpayok":
+			// 支付成功修改订单状态为待入住
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			result = request.getParameter("orderDate");
+			orderDAO = new IOrderDAOImpl();
+			orderDAO.updateOrderState(order_id, "待入住");
+			// 同时修改数据库的不可租时间
+			gson = new Gson();
+			type = new TypeToken<List<HouseDateManage>>() {
+			}.getType();
+			houseDateManageList = new ArrayList<>();
+			houseDateManageList = gson.fromJson(result, type);
+			// 最后增加订单的同时要更改数据库中的不可租日期
+			houseDateManageDAO = new IHouseDateManageDAOImpl();
+			for (HouseDateManage h : houseDateManageList) {
+				houseDateManageDAO.addHouseDate(h);
+			}
+			System.out.println("已租日期成功插入到数据库中");
+			// 需要通知房东
+			orders = new Orders();
+			orderDAO = new IOrderDAOImpl();
+			orders = orderDAO.findOrdersByorderid(order_id);
+			// 根据房子id查询房主id,向房主推送消息
+			housedao = new IHouseDAOImpl();
+			house = new House();
+			house = housedao.findSpecHouseById(orders.getHouse_id());
+			Jdpush.sendPush(house.getUser_id(), "您的一条订单已被房客付款，请注意查看。");
 			break;
 
 		// 根据发布房源传来的数据进行添房源

@@ -1,6 +1,7 @@
 package com.easygo.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.easygo.application.MyApplication;
+import com.easygo.beans.user.User;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.OnResponseListener;
 import com.yolanda.nohttp.Request;
@@ -25,6 +29,8 @@ import com.yolanda.nohttp.error.ServerError;
 import com.yolanda.nohttp.error.TimeoutError;
 import com.yolanda.nohttp.error.URLError;
 import com.yolanda.nohttp.error.UnKnownHostError;
+
+import java.lang.reflect.Type;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
@@ -49,6 +55,12 @@ public class RegisterActivity extends AppCompatActivity {
     String APPSECRET = "410f7ac6fa30bc24b5648321d09bbb06";
 
     String mUrl;
+    //偏好设置
+    public static final String TYPE = "type";
+    SharedPreferences mSharedPreferences;
+    SharedPreferences.Editor mEditor;
+    //定义一个user对象
+    User user;
     //请求队列
     private RequestQueue mRequestQueue;
     @Override
@@ -99,9 +111,56 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         public void onSucceed(int what, Response<String> response) {
             if(what == Register) {//如果请求为注册，则执行注册请求
-                Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterActivity.this, LogintestActivity.class);
-                startActivity(intent);
+                //Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                // 请求成功，直接更新UI
+                String result = response.get();
+                if(result.equals("0")){
+                    Toast.makeText(RegisterActivity.this, "该手机号已注册", Toast.LENGTH_SHORT).show();
+                }else {
+                    //把JSON格式的字符串改为对象
+                    Gson gson = new Gson();
+                    Type mytype = new TypeToken<User>() {
+                    }.getType();
+                    user=gson.fromJson(result,mytype);
+
+                    if(user.getToken()==null){
+                        Toast.makeText(RegisterActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(RegisterActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                        //登录成功后进行页面的跳转
+                        Intent intent = new Intent();
+                        intent.putExtra("flag","me");
+                        intent.setClass(RegisterActivity.this,MainActivity.class);
+                        startActivity(intent);
+
+                        //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
+                        mSharedPreferences = getSharedPreferences(TYPE,MODE_PRIVATE);
+                        //向偏好设置文件中保存数据
+                        mEditor = mSharedPreferences.edit();
+                        mEditor.putInt("user_id",user.getUser_id());
+                        mEditor.putString("user_realname",user.getUser_realname());
+                        mEditor.putString("user_nickname",user.getUser_nickname());
+                        mEditor.putString("user_sex",user.getUser_sex());
+                        mEditor.putInt("user_type",user.getUser_type());
+                        mEditor.putString("user_photo",user.getUser_photo());
+                        mEditor.putString("user_job",user.getUser_job());
+                        mEditor.putString("user_address_province",user.getUser_address_province());
+                        mEditor.putString("user_address_city",user.getUser_address_city());
+                        mEditor.putString("user_mood",user.getUser_mood());
+                        mEditor.putString("user_mail",user.getUser_mail());
+                        mEditor.putString("user_introduct",user.getUser_introduct());
+                        mEditor.putString("user_birthday",user.getUser_birthday());
+                        mEditor.putString("user_idcard",user.getUser_idcard());
+                        mEditor.putString("token",user.getToken());
+                        Log.e("token",user.getToken());
+                        mEditor.putString("remarks",user.getRemarks());
+                        mEditor.putString("phone",mPhoneString);
+                        mEditor.putInt("type", user.getUser_type());
+                        //提交保存结果
+                        mEditor.commit();
+                    }
+                }
+
             }
         }
 

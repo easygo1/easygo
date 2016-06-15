@@ -1,6 +1,7 @@
 package com.easygo.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -44,7 +45,7 @@ public class DateShowActivity extends AppCompatActivity
     private RequestQueue requestQueue;
     Request<String> request;
     String mPath;
-    int houseid = 1;//暂时认定为存在Houseid
+    int houseid;//暂时认定为存在Houseid
     GsonAboutHouseManage gsonAboutHouseManage;
     //数据库中房东设置的已关的时间列
     List<HouseDateManage> sqlNotList;
@@ -91,6 +92,8 @@ public class DateShowActivity extends AppCompatActivity
     }
 
     private void loadData() {
+        Intent mIntent = getIntent();
+        houseid = mIntent.getIntExtra("house_id", 0);
         //初始化
         MyApplication myApplication = (MyApplication) this.getApplication();
         mPath = myApplication.getUrl();

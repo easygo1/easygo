@@ -99,9 +99,10 @@
     </style>
 
     <style name="releasesroom_arrow">
+        <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:src">@mipmap/yellow_right_arrow</item>
     </style>
@@ -179,13 +180,13 @@
         <item name="android:textColor">@color/gray</item>
     </style>
     <!--筛选菜单-->
-    <style name="select_spinner">
+    <style name="select_spinner" parent="android:Theme.Holo.Light.NoActionBar">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">30dp</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">40dp</item>
+
         <item name="android:dropDownWidth">1000dp</item>
         <item name="android:dropDownHorizontalOffset">50dp</item>
-        <item name="android:dropDownVerticalOffset">20dp</item>?android:attr/ratingBarStyleSmall
+        <item name="android:dropDownVerticalOffset">0dp</item>?android:attr/ratingBarStyleSmall
         <item name="android:gravity">center</item>
     </style>
     <!--房主订单的button-->
@@ -197,5 +198,22 @@
     <!--评价的星星-->
     <style name="rating_assess_star_style" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@drawable/rating_assess_star</item>
+    </style>
+    <style name="myinfo_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
+    <style name="myinfo_xuanze">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:gravity">right</item>
     </style>
 </resources>

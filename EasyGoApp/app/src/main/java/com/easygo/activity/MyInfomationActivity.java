@@ -67,9 +67,10 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
 
     public static final int TAKE_PHOTO = 1;
     public static final int TAKE_CAMERA = 0;
+    private TextView mTextView;
     private ImageView mReturnImageView;
     private RelativeLayout mChangeHeadLayout, mChangeUsernameLayout, mChangeRealnameLayout, mChangeCityLayout, mChangeSexLayout, mChangeJobLayout, mChangeLabelLayout, mChangeAutographLayout, mChangeDateBirthLayout, mChangePasswordLayout, mChangeInstroductLayout, mChangeEmailLayout;
-    private TextView mChangeHeadTextView, mChangeUsernameTextView, mChangeRealnameTextView, mChangeUserIdcardTextView, mChangeCityTextView, mChangeSexTextView, mChangeJobTextView, mChangeLabelTextView, mChangeAutographTextView, mChangeDateBirthTextView, mChangePasswordTextView, mChangeInstroductTextview, mChangeEmailTextView;
+    private TextView mChangeidcardTextView,mChangeHeadTextView, mChangeUsernameTextView, mChangeRealnameTextView, mChangeUserIdcardTextView, mChangeCityTextView, mChangeSexTextView, mChangeJobTextView, mChangeLabelTextView, mChangeAutographTextView, mChangeDateBirthTextView, mChangePasswordTextView, mChangeInstroductTextview, mChangeEmailTextView;
     private Button mSuccessButton;
     private MyPopupWindow popMenus;
 
@@ -102,14 +103,23 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
     MyApplication myApplication;
     Request<String> request;
     List<String> lables;
-    String lablesString;
+    String lablesString = "";
     String[] address;//用户地址
     String province = "";
     String city = "";
     String birthday = "";
+    String user_realname = "";
+    String user_nickname = "";
+    String user_sex = "";
+    String user_job = "";
+    String user_mood = "";
+    String user_mail = "";
+    String user_introduct = "";
+    String user_idcard="";
+
     //创建请求队列，默认并发3请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
     //只用定义一次
-    private RequestQueue mRequestQueue = NoHttp.newRequestQueue();//请求队列
+    private RequestQueue mRequestQueue = NoHttp.newRequestQueue(4);//请求队列
 
     private int user_id;//在偏好设置中获取
     private String selectedStr = "";//用户的标签多选
@@ -123,67 +133,84 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
 
         @Override
         public void onSucceed(int what, Response<String> response) {
-            if (what == WHAT_GETUSERINFO) {
-                String result = response.get();
-                //Toast.makeText(MyInfomationActivity.this, "result得到用户信息" + result, Toast.LENGTH_SHORT).show();
-                //解析对象
-                Gson gson = new Gson();
-                Type mytype = new TypeToken<GsonUserInfoHobby>() {
-                }.getType();
-                mGsonUserInfoHobby = gson.fromJson(result, mytype);
-                user = mGsonUserInfoHobby.getUser();
-                Log.e("user对象", user.toString());
-                hobbyNamelist = mGsonUserInfoHobby.getUserHobbyNamelist();
-                if (user.getUser_photo() != null) {
-                    Glide.with(MyInfomationActivity.this)
-                            .load(user.getUser_photo())
-                            .bitmapTransform(new CropCircleTransformation(MyInfomationActivity.this))
-                            .error(R.mipmap.user_photo_defult)
-                            .into(mshowImageView);
-                }
-                if (user.getUser_nickname() != null) {
-                    mChangeUsernameTextView.setText(user.getUser_nickname());
-                }
-                if (user.getUser_realname() != null) {
-                    mChangeRealnameTextView.setText(user.getUser_realname());
-                }
-                if (user.getUser_idcard() != null) {
-                    mChangeUserIdcardTextView.setText(user.getUser_idcard());
-                }
-                if ((user.getUser_address_province() != null) && (user.getUser_address_city() != null)) {
-                    mChangeCityTextView.setText(user.getUser_address_province() + "-" + user.getUser_address_city());
-                }
-                if (user.getUser_sex() != null) {
-                    mChangeSexTextView.setText(user.getUser_sex());
-                }
-                if (user.getUser_job() != null) {
-                    mChangeJobTextView.setText(user.getUser_job());
-                }
+            String result = response.get();
+            switch (what) {
+                case WHAT_GETUSERINFO:
+                    //Toast.makeText(MyInfomationActivity.this, "result得到用户信息" + result, Toast.LENGTH_SHORT).show();
+                    //解析对象
+                    Gson gson = new Gson();
+                    Type mytype = new TypeToken<GsonUserInfoHobby>() {
+                    }.getType();
+                    mGsonUserInfoHobby = gson.fromJson(result, mytype);
+                    if (mGsonUserInfoHobby.getUser() != null) {
+                        user = mGsonUserInfoHobby.getUser();
+                        Log.e("user对象", user.toString());
+                    }
+                    if (mGsonUserInfoHobby.getUserHobbyNamelist() != null) {
+                        hobbyNamelist = mGsonUserInfoHobby.getUserHobbyNamelist();
+                    }
+                    if (user.getUser_photo() != null) {
+                        Glide.with(MyInfomationActivity.this)
+                                .load(user.getUser_photo())
+                                .bitmapTransform(new CropCircleTransformation(MyInfomationActivity.this))
+                                .error(R.mipmap.user_photo_defult)
+                                .into(mshowImageView);
+                    }
+                    if (user.getUser_nickname() != null) {
+                        mChangeUsernameTextView.setText(user.getUser_nickname());
+                    }
+                    if (user.getUser_realname() != null) {
+                        mChangeRealnameTextView.setText(user.getUser_realname());
+                    }
+                    if (user.getUser_idcard() != null) {
+                        mChangeUserIdcardTextView.setText(user.getUser_idcard());
+                    }
+                    if ((user.getUser_address_province() != null) && (user.getUser_address_city() != null)) {
+                        mChangeCityTextView.setText(user.getUser_address_province() + "-" + user.getUser_address_city());
+                    }
+                    if (user.getUser_sex() != null) {
+                        mChangeSexTextView.setText(user.getUser_sex());
+                    }
+                    if (user.getUser_job() != null) {
+                        mChangeJobTextView.setText(user.getUser_job());
+                    }
+                    if(hobbyNamelist.size()!=0){
+                        for (int i = 0; i < hobbyNamelist.size(); i++) {
+                            lablesString += hobbyNamelist.get(i) + " ";
+//                        Log.e("lablesString", lablesString);
+//                        Log.e("hobby", i + hobbyNamelist.get(i));
+                        }
+                        if (lablesString != null) {
+                            mChangeLabelTextView.setText(lablesString);
+                        }
+                    }
 
-                for (int i = 1; i < hobbyNamelist.size(); i++) {
-                    lablesString += hobbyNamelist.get(i) + " ";
-                }
-                if (lablesString != null) {
-                    mChangeLabelTextView.setText(lablesString);
-                }
-                if (user.getUser_birthday() != null) {
-                    mChangeDateBirthTextView.setText(user.getUser_birthday());
-                }
-                if (user.getUser_introduct() != null) {
-                    mChangeInstroductTextview.setText(user.getUser_introduct());
-                }
-                if (user.getUser_mail() != null) {
-                    mChangeEmailTextView.setText(user.getUser_mail());
-                }
-            } else if (what == WHAT_UPDATE_PHOTO) {
-                String result = response.get();
-                Toast.makeText(MyInfomationActivity.this, "result更新photo" + result, Toast.LENGTH_SHORT).show();
-            } else if (what == WHAT_UPDATE_HOBBY) {
-                String result = response.get();
-                Toast.makeText(MyInfomationActivity.this, "更新hobby" + result, Toast.LENGTH_SHORT).show();
-            } else if (what == WHAT) {
-                String result = response.get();
-                Toast.makeText(MyInfomationActivity.this, "更新用户" + result, Toast.LENGTH_SHORT).show();
+                    if (user.getUser_mood() != null) {
+                        mChangeAutographTextView.setText(user.getUser_mood());
+                    }
+                    if (user.getUser_birthday() != null) {
+                        mChangeDateBirthTextView.setText(user.getUser_birthday());
+                    }
+                    if (user.getUser_introduct() != null) {
+                        mChangeInstroductTextview.setText(user.getUser_introduct());
+                    }
+                    if (user.getUser_mail() != null) {
+                        mChangeEmailTextView.setText(user.getUser_mail());
+                    }
+                    if(user.getUser_idcard()!=null){
+                        mChangeidcardTextView.setText(user.getUser_idcard());
+                    }
+                    break;
+                case WHAT_UPDATE_PHOTO:
+                    Toast.makeText(MyInfomationActivity.this, "头像保存" + result, Toast.LENGTH_SHORT).show();
+                    break;
+                case WHAT_UPDATE_HOBBY:
+                    //Log.e("zfg", "hobby" + result);
+                    Toast.makeText(MyInfomationActivity.this, "更新hobby" + result, Toast.LENGTH_SHORT).show();
+                    break;
+                case WHAT:
+                    Toast.makeText(MyInfomationActivity.this, "信息修改" + result, Toast.LENGTH_SHORT).show();
+                    break;
             }
         }
 
@@ -225,29 +252,29 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         initView();
         initAllData();
         addListeners();
-        /*//测试 网络图片可以
-        Glide.with(MyInfomationActivity.this).load("http://img5.imgtn.bdimg.com/it/u=3921194872,1207178069&fm=21&gp=0.jpg").into(mshowImageView);
-*/
+
     }
 
     private void initAllData() {
         mSharedPreferences = this.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         type = mSharedPreferences.getInt("type", 0);
         user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
-        if(user_id!=0){
+        if (user_id != 0) {
             // /创建请求对象
             request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
             //添加请求参数
             request.add("methods", "selectInfoById");
             request.add("user_id", user_id);
             mRequestQueue.add(WHAT_GETUSERINFO, request, mOnResponseListener);
-        }else{
+        } else {
 
         }
     }
 
     private void initView() {
-        mReturnImageView = (ImageView) findViewById(R.id.myinformation_return);
+        mTextView = (TextView) findViewById(R.id.title_text);
+        mTextView.setText("我的信息");
+        mReturnImageView = (ImageView) findViewById(R.id.back);
         mChangeHeadLayout = (RelativeLayout) findViewById(R.id.change_head);
         mChangeUsernameLayout = (RelativeLayout) findViewById(R.id.change_username);
         mChangeRealnameLayout = (RelativeLayout) findViewById(R.id.change_realname);
@@ -264,7 +291,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         //个人具体信息
         mChangeUsernameTextView = (TextView) findViewById(R.id.change_username_textView);
         mChangeRealnameTextView = (TextView) findViewById(R.id.change_realname_textView);
-        mChangeUserIdcardTextView = (TextView) findViewById(R.id.change_username_textView);
+        mChangeUserIdcardTextView = (TextView) findViewById(R.id.user_idcard_textView);
         mChangeSexTextView = (TextView) findViewById(R.id.change_sex_textView);
         mChangeJobTextView = (TextView) findViewById(R.id.change_job_textView);
         mChangeCityTextView = (TextView) findViewById(R.id.change_city_textView);
@@ -274,6 +301,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
         mChangePasswordTextView = (TextView) findViewById(R.id.change_password_textView);
         mChangeInstroductTextview = (TextView) findViewById(R.id.change_instroduce_textView);
         mChangeEmailTextView = (TextView) findViewById(R.id.change_email_textView);
+        mChangeidcardTextView= (TextView) findViewById(R.id.user_idcard_textView);
         mshowImageView = (ImageView) findViewById(R.id.photo_show);
     }
 
@@ -312,7 +340,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.myinformation_return:
+            case R.id.back:
                 Intent intent = new Intent();
                 intent.putExtra("flag", "me");
                 intent.setClass(MyInfomationActivity.this, MainActivity.class);
@@ -361,15 +389,16 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                 //添加请求参数
                 request.add("methods", "updateUserById");
                 request.add("user_id", user_id);
-                request.add("user_realname", mChangeRealnameTextView.getText().toString());
-                request.add("user_nickname",mChangeUsernameTextView.getText().toString() );
-                request.add("user_sex", mChangeSexTextView.getText().toString());
-                request.add("user_job", mChangeJobTextView.getText().toString());
+                request.add("user_realname", user_realname);
+                request.add("user_nickname", user_nickname);
+                request.add("user_sex", user_sex);
+                request.add("user_job", user_job);
                 request.add("user_address_province", province);
                 request.add("user_address_city", city);
-                request.add("user_mood", mChangeAutographTextView.getText().toString());
-                request.add("user_mail", mChangeEmailTextView.getText().toString());
-                request.add("user_birthday", mChangeDateBirthTextView.getText().toString());
+                request.add("user_mood", user_mood);
+                request.add("user_mail", user_mail);
+                request.add("user_introduct", user_introduct);
+                request.add("user_birthday", birthday);
                 mRequestQueue.add(WHAT, request, mOnResponseListener);
                 intent = new Intent();
                 intent.putExtra("flag", "me");
@@ -390,10 +419,30 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
             } else {
                 city = address[1];
             }
-
+        }
+        if (!mChangeDateBirthTextView.getText().toString().equals("选择")) {
+            birthday = mChangeDateBirthTextView.getText().toString();
+        }
+        if (!mChangeRealnameTextView.getText().toString().equals("选择")) {
+            user_realname = mChangeRealnameTextView.getText().toString();
+        }
+        if (!mChangeUsernameTextView.getText().toString().equals("选择")) {
+            user_nickname = mChangeUsernameTextView.getText().toString();
+        }
+        if (!mChangeSexTextView.getText().toString().equals("选择")) {
+            user_sex = mChangeSexTextView.getText().toString();
+        }
+        if (!mChangeJobTextView.getText().toString().equals("选择")) {
+            user_job = mChangeJobTextView.getText().toString();
+        }
+        if (!mChangeAutographTextView.getText().toString().equals("选择")) {
+            user_mood = mChangeAutographTextView.getText().toString();
+        }
+        if (!mChangeInstroductTextview.getText().toString().equals("选择")) {
+            user_introduct = mChangeInstroductTextview.getText().toString();
         }
         if (!mChangeEmailTextView.getText().toString().equals("选择")) {
-            birthday = mChangeEmailTextView.getText().toString();
+            user_mail = mChangeEmailTextView.getText().toString();
         }
     }
 
@@ -453,6 +502,7 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
                     }
                 })
                 .setNegativeButton("取消", null);
+        text.setText(user.getUser_mood());
         builder.create().show();
     }
 
@@ -698,7 +748,8 @@ public class MyInfomationActivity extends AppCompatActivity implements View.OnCl
             //添加请求参数
             request.add("methods", "updateUserPhoto");
             request.add("user_id", user_id);
-            request.add("user_photo", mloadpath);
+            request.add("user_photo", "http://"+mloadpath);
+            Log.e("头像", mloadpath);
             mRequestQueue.add(WHAT_UPDATE_PHOTO, request, mOnResponseListener);
         }
     }
