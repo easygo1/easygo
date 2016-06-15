@@ -981,6 +981,7 @@ public class AppServlet extends HttpServlet {
 
 			gson = new Gson();
 			result = gson.toJson(gsonAboutHouse2);
+			System.out.println(result);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
@@ -1447,10 +1448,10 @@ public class AppServlet extends HttpServlet {
 		case "orderpayok":
 			// 支付成功修改订单状态为待入住
 			order_id = Integer.valueOf(request.getParameter("order_id"));
+			result = request.getParameter("orderDate");
 			orderDAO = new IOrderDAOImpl();
 			orderDAO.updateOrderState(order_id, "待入住");
 			// 同时修改数据库的不可租时间
-			result = request.getParameter("orderDate");
 			gson = new Gson();
 			type = new TypeToken<List<HouseDateManage>>() {
 			}.getType();
@@ -1459,14 +1460,14 @@ public class AppServlet extends HttpServlet {
 			// 最后增加订单的同时要更改数据库中的不可租日期
 			houseDateManageDAO = new IHouseDateManageDAOImpl();
 			for (HouseDateManage h : houseDateManageList) {
-				houseDateManageDAO.addHouseDate(houseDateManage);
+				houseDateManageDAO.addHouseDate(h);
 			}
-
+			System.out.println("已租日期成功插入到数据库中");
 			// 需要通知房东
 			orders = new Orders();
 			orderDAO = new IOrderDAOImpl();
 			orders = orderDAO.findOrdersByorderid(order_id);
-			//根据房子id查询房主id,向房主推送消息
+			// 根据房子id查询房主id,向房主推送消息
 			housedao = new IHouseDAOImpl();
 			house = new House();
 			house = housedao.findSpecHouseById(orders.getHouse_id());

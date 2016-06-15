@@ -146,6 +146,11 @@ public class CustomOrderAdapter extends BaseAdapter {
                     Log.e("dianjile","1"+viewHolder.orderUpdateText.getText());
                     Intent intent = new Intent();
                     intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
+                    //新加上的
+                    intent.putExtra("house_id",mOrdersList.get(position).getHouse_id());
+                    intent.putExtra("checktime",mOrdersList.get(position).getChecktime());
+                    intent.putExtra("leavetime",mOrdersList.get(position).getLeavetime());
+
                     intent.setClass(mContext, PayActivity.class);
                     mContext.startActivity(intent);
                 }else {

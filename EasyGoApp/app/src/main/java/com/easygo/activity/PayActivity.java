@@ -58,7 +58,6 @@ import c.b.PListener;
 public class PayActivity extends AppCompatActivity implements View.OnClickListener {
     //日期转换
     private final static String DATE_FORMAT = "yyyy-MM-dd";
-    public static final int ADD_ORDER_DATE_WHAT = 1;
     SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
     int house_id = 1;//从前面的一个页面出过来
     String inday;//入住时间，从前面的一个页面出过来
@@ -229,15 +228,8 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
                 Toast.makeText(PayActivity.this, "支付成功!", Toast.LENGTH_SHORT).show();
                 //tv.append(name + "'s pay status is success\n\n");
                 Log.e("order_id99",order_id+"");
-                //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
-                mRequestQueue = NoHttp.newRequestQueue();
-                //创建请求对象
-                request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
-                //添加请求参数
-                request.add("methods", "orderpayok");
-                request.add("order_id", order_id);
-                // mRequestQueue.add(WHAT_ISASSESSORDERS, request, mOnResponseListener);
-                mRequestQueue.add(WHAT_ISASSESSORDERS, request, onResponseListener);
+                //需要改数据库中的不可租日期
+                changeDate();
                 finish();
                 hideDialog();
             }
@@ -324,13 +316,16 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     public void changeDate() {
+        Log.e("6666","66666666666");
+        Log.e("日期",inday+"....."+outday+"出来了");
         List<HouseDateManage> mHouseDateManageList = new ArrayList<>();
         try {
+            //这个逻辑不太合理的。只适用于数据不多的时候，如果数据过多（或者，有不合理的数据填入），可能会报错的
             Date indate = formatter.parse(inday);
             Date outdate = formatter.parse(outday);
             List<Date> mDateList = DateUtils.getDaysListBetweenDates(indate, outdate);
-            List<String> mTimeList = new ArrayList<>();
-            for (int i = 0; i < mDateList.size(); i++) {
+//            List<String> mTimeList = new ArrayList<>();
+            for (int i = 0; i < mDateList.size()-1; i++) {
                 String searchdate = formatter.format(mDateList.get(i));//日期
                 HouseDateManage mHouseDateManage = new HouseDateManage();
                 mHouseDateManage.setHouse_id(house_id);
@@ -338,22 +333,23 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
                 mHouseDateManage.setDate_manage_type(1);//预定的类型
                 //封装到List中
                 mHouseDateManageList.add(mHouseDateManage);
+                Log.e("ggggggg",searchdate+"11111");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
-//        RequestQueue mRequestQueue = NoHttp.newRequestQueue();
-        //创建请求对象
-//        Request<String> request = NoHttp.createStringRequest(mUrl, RequestMethod.POST);
         Gson gson = new Gson();
         String orderDate = gson.toJson(mHouseDateManageList);
+        //创建请求队列，默认并发3个请求，传入你想要的数字可以改变默认并发数，例如NoHttp.newRequestQueue(1);
+        mRequestQueue = NoHttp.newRequestQueue();
+        //创建请求对象
+        request = NoHttp.createStringRequest(mUrl, RequestMethod.POST);
         //添加请求参数
-        request.add("methods", "addOrderDate");
+        request.add("methods", "orderpayok");
+        request.add("order_id", order_id);
         request.add("orderDate", orderDate);
-//        mRequestQueue.add(ADD_ORDER_DATE_WHAT, request, onResponseListener);
-
-
+        // mRequestQueue.add(WHAT_ISASSESSORDERS, request, mOnResponseListener);
+        mRequestQueue.add(WHAT_ISASSESSORDERS, request, onResponseListener);
     }
 
 }

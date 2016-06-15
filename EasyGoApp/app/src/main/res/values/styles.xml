@@ -182,10 +182,10 @@
     <style name="select_spinner" parent="android:Theme.Holo.Light.NoActionBar">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">40dp</item>
-        <item name="android:layout_weight">1</item>
+
         <item name="android:dropDownWidth">1000dp</item>
         <item name="android:dropDownHorizontalOffset">50dp</item>
-        <item name="android:dropDownVerticalOffset">20dp</item>?android:attr/ratingBarStyleSmall
+        <item name="android:dropDownVerticalOffset">0dp</item>?android:attr/ratingBarStyleSmall
         <item name="android:gravity">center</item>
     </style>
     <!--房主订单的button-->

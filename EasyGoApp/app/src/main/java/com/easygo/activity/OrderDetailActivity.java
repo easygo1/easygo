@@ -281,6 +281,8 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     intent.putExtra("house_id",mOrders.getHouse_id());
                     intent.putExtra("checktime",mOrders.getChecktime());
                     intent.putExtra("leavetime",mOrders.getLeavetime());
+                    Log.e("orderdetail","过去之前就出来了");
+                    Log.e("orderdetail",mOrders.getChecktime()+"...."+mOrders.getLeavetime()+"orderderail");
                     intent.setClass(OrderDetailActivity.this, PayActivity.class);
                     startActivity(intent);
                 }
