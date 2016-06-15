@@ -128,7 +128,17 @@
         <item>老师</item>
         <item>销售</item>
         <item>房地产</item>
-        <item>法律</item>
+        <item>律师</item>
+        <item>演员</item>
+        <item>理财规划师</item>
+        <item>人力资源师</item>
+        <item>电子商务工程师</item>
+        <item>网络营销</item>
+        <item>网络媒体高级编辑</item>
+        <item>企业高级策划</item>
+        <item>公关经理</item>
+        <item>摄影</item>
+        <item>游戏、动画设计工程师</item>
     </string-array>
 
     <string-array name="equipment">
