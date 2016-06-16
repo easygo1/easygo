@@ -827,6 +827,40 @@ public class AppServlet extends HttpServlet {
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
+		case "getOwnerorderdetailbyorderid":
+			// 根据订单号得到订单的具体信息，该房源具体信息，该房源的主图，房客信息，该订单入住人信息
+			// 根据订单号得到订单//根据订单号得到该订单的全部信息
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			orderDAO = new IOrderDAOImpl();
+			orders = orderDAO.findOrdersByorderid(order_id);
+			house_id = orders.getHouse_id();
+
+			// 根据该订单中的house_id得到该house对象
+			housedao = new IHouseDAOImpl();
+			house = housedao.findSpecHouseById(house_id);
+			// 根据houseid得到房客id
+			user_id = orders.getUser_id();
+
+			// 得到房客的头像 得到房客的名称
+			userdao = new IUserDAOImpl();
+			house_user = userdao.findSpecUserById(user_id);// 房客对象
+
+			// 得到该房源的主图
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
+
+			// 根据订单号查询到该订单的所有入住人信息
+			userorderlinkmandao = new IUserOrderLinkmanDAOImpl();
+			userorderlinkmanlist = userorderlinkmandao
+					.selectUserOrderLinkmanByOrderid(order_id);
+
+			GsonOrderInfoAllDetail gsonorderinfoalldetailowner = new GsonOrderInfoAllDetail(
+					orders, house_user, house, housePhoto, userorderlinkmanlist);
+			gson = new Gson();
+			result = gson.toJson(gsonorderinfoalldetailowner);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
 		// 修改订单 只修改订单的预订人信息 预订人姓名 预订人电话
 		case "updateorderbook":
 			order_id = Integer.valueOf(request.getParameter("order_id"));

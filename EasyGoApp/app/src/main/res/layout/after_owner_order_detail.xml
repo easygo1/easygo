@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--订单详情页面-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.easygo.activity.OrderDetailActivity">
+
+    <!--预定人信息-->
+    <TextView
+        style="@style/room_book_sec_header"
+        android:background="@color/bookbackground"
+        android:gravity="center"
+        android:text="预定人信息"
+        android:textSize="@dimen/textsize_l"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:focusable="false"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="姓名:"
+            android:textSize="@dimen/textsize_m"/>
+
+        <TextView
+            android:id="@+id/book_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:textSize="@dimen/textsize_m"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="手机:"
+            android:textSize="@dimen/textsize_m"/>
+
+        <TextView
+            android:id="@+id/book_tel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:textSize="@dimen/textsize_m"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/bookbackground"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/order_delte"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40dp"
+                android:src="@mipmap/order_del"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="取消订单"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/order_update"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40dp"
+                android:src="@mipmap/order_yes"/>
+
+            <TextView
+                android:id="@+id/order_uptate_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="确认订单"
+                android:textColor="@color/textDown"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
