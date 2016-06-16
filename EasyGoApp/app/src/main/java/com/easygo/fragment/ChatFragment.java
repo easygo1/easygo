@@ -59,6 +59,8 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
             initChatView();
             addChatListeners();
             initChatDefault();
+
+
         }
         return mChatView ;
     }

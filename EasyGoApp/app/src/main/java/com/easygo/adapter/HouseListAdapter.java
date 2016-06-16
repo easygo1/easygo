@@ -1,6 +1,7 @@
 package com.easygo.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.easygo.activity.HomeCityActivity;
 import com.easygo.activity.R;
-import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.house.House;
 import com.easygo.beans.house.HouseCollect;
+import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.user.User;
 
 import java.util.List;
@@ -157,6 +158,7 @@ public class HouseListAdapter extends BaseAdapter {
                             deleteId = mhouseCollect.getHouse_collect_id();
                         }
                     }
+                    Log.e("请求发送了",deleteId+"shanchuID");
                     mHomeCityActivity.deleteCollect(deleteId,mContext);
                 }
             }

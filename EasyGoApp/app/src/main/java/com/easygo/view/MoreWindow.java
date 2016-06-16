@@ -302,9 +302,13 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 
 	//发表动态
 	private void publishdynamic() {
-		//页面跳转
-		Intent intent = new Intent(mContext, PublishDynamicActivity.class);
-		ActivityCompat.startActivity(mContext,intent,null);
+		if(type==0){
+			Toast.makeText(mContext, "请先去登录", Toast.LENGTH_SHORT).show();
+		}else{
+			//页面跳转
+			Intent intent = new Intent(mContext, PublishDynamicActivity.class);
+			ActivityCompat.startActivity(mContext,intent,null);
+		}
 	}
 
 	public void destroy() {

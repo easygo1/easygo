@@ -98,6 +98,7 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_search_house);
         mDateSharedPreferences = getSharedPreferences("date", Context.MODE_PRIVATE);
         mSharedPreferences = getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
         initListView();//初始化list，必须放在前面
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         //设置刷新时头部的状态
@@ -131,7 +132,9 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
         super.onStart();
         mTimeList = new ArrayList<>();
         //偏好设置中取出
-        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
+//        Log.e("用户ID出来",user_id+"");
+//        user_id = mSharedPreferences.getInt("user_id", 0);//整个页面要用
+
         inday = mDateSharedPreferences.getString("dateIn", "");
         outday = mDateSharedPreferences.getString("dateOut", "");
         searchcity = mSharedPreferences.getString("searchcity", "");
@@ -190,7 +193,9 @@ public class SearchHouseActivity extends AppCompatActivity implements View.OnCli
         mHouseCollectList = new ArrayList<>();
         starNumList = new ArrayList<>();
         //初始化适配器
-        mAdapter = new HouseListAdapter(SearchHouseActivity.this, mHouseList, mUserList, mHousePhotoList, mAssessList, mHouseCollectList, user_id, starNumList);
+//        Log.e("用户ID出来，放入适配器",user_id+"");
+        mAdapter = new HouseListAdapter(SearchHouseActivity.this, mHouseList, mUserList,
+                mHousePhotoList, mAssessList, mHouseCollectList, user_id, starNumList);
 
     }
 

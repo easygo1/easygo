@@ -7,15 +7,15 @@
         android:layout_height="wrap_content"
         />
     <!--没选中状态-->
-    <item
+<!--    <item
         android:id="@+id/secondaryProgress"
         android:drawable="@drawable/rating_star_off"
         android:layout_height="wrap_content"
-        />
+        />-->
     <!--选中状态-->
     <item
         android:id="@android:id/progress"
-        android:drawable="@drawable/rating_star_down"
+        android:drawable="@drawable/list_star"
         android:layout_height="wrap_content"  />
 
 </layer-list>

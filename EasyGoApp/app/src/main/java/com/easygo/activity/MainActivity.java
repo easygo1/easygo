@@ -1,17 +1,15 @@
 package com.easygo.activity;
 
 
-import android.app.ActivityManager;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Message;
-import android.os.PersistableBundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -27,8 +25,6 @@ import com.easygo.fragment.MeFragment;
 import com.easygo.fragment.SearchFragment;
 import com.easygo.view.MoreWindow;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
@@ -107,8 +103,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addListeners();
         //默认显示买模块，修改图标和文字颜色为选中颜色
         initDefault();
-
-
     }
 
     private void initDefault() {

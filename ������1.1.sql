@@ -248,3 +248,10 @@ CREATE TABLE checks(
 	check_sum       INT,                     #连续签到次数
 	check_last_time DATE                     #上次签到时间
 );
+
+#热门城市表
+CREATE TABLE local_city(
+local_city_id INT PRIMARY KEY AUTO_INCREMENT,
+local_city_name VARCHAR(20),
+local_city_house_id  INT NOT NULL
+);
