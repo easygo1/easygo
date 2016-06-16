@@ -71,14 +71,12 @@
         android:theme="@style/AppTheme">
 
         <!-- 高德地图 -->
-        <!--
             <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="598648bf7a682c675d74bb76a8b64d90"/>
-        -->
-        <meta-data
+        <!--<meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="20d76214fafcaca8b3c0cbb351269912"/>
+            android:value="20d76214fafcaca8b3c0cbb351269912"/>-->
 
         <activity android:name=".MainActivity">
         </activity>

@@ -11,10 +11,10 @@
     <TextView
         android:textIsSelectable="false"
         style="@style/room_book_sec_header"
-        android:background="@color/bookbackground"
+        android:background="#80dddddd"
         android:gravity="center"
         android:text="日期"
-        android:textSize="22sp"/>
+        android:textSize="@dimen/textsize_m"/>
     <!--日期的两个布局-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:layout_weight="0.01"
+            android:layout_weight="0.02"
             android:background="@color/bookbackground"/>
         <!--离开-->
         <LinearLayout
@@ -125,10 +125,10 @@
     <TextView
         android:focusable="false"
         style="@style/room_book_sec_header"
-        android:background="@color/bookbackground"
+        android:background="#80dddddd"
         android:gravity="center"
         android:text="入住人"
-        android:textSize="22sp"/>
+        android:textSize="@dimen/textsize_m"/>
 
 
 </LinearLayout>

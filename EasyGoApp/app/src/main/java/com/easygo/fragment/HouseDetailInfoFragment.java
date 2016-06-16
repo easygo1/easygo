@@ -171,6 +171,8 @@ public class HouseDetailInfoFragment extends Fragment implements OnClickListener
                         return;
                     }
                 });
+
+
         //添加一个确定按钮
         builder.setPositiveButton(" 返 回 ", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

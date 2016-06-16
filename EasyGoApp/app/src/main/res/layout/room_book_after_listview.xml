@@ -9,25 +9,25 @@
 
 
     <!--ListView之后的布局-->
-    <TextView
+<!--    <TextView
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="@color/bookbackground"/>
+        android:background="@color/bookbackground"/>-->
 
     <TextView
         android:id="@+id/room_book_add_contact"
         style="@style/room_book_sec_header"
         android:gravity="center"
         android:text="+添加入住人"
-        android:textSize="20sp"/>
+        android:textColor="@color/textDown"
+        android:textSize="@dimen/textsize_l"/>
 
     <TextView
         style="@style/room_book_sec_header"
-        android:background="@color/bookbackground"
+        android:background="#80dddddd"
         android:gravity="center"
         android:text="预订人信息"
-        android:textColor="@color/textDown"
-        android:textSize="20sp"
+        android:textSize="@dimen/textsize_m"
         />
 
     <EditText

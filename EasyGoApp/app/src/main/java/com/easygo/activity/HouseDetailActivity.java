@@ -343,14 +343,14 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                 mOnekeyShare = new OnekeyShare();
                 mOnekeyShare.setTitle("一键分享");
                 mOnekeyShare.setText("一键分享测试");
-                mOnekeyShare.setImageUrl("http://www.mob.com/images/logo_black.png");
-
+                mOnekeyShare.setImageUrl("http://easygo.b0.upaiyun.com/advert/easygo_icon.png");
                 // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-                mOnekeyShare.setComment("我是测试评论文本");
+                mOnekeyShare.setComment("欢迎下载轻松住APP");
                 // site是分享此内容的网站名称，仅在QQ空间使用
                 mOnekeyShare.setSite(getString(R.string.app_name));
                 // siteUrl是分享此内容的网站地址，仅在QQ空间使用
 //                mOnekeyShare.setSiteUrl("http://www.baidu.com");
+                mOnekeyShare.setTitle("http://www.baidu.com");
                 mOnekeyShare.setTitleUrl("http://www.baidu.com");
                 //这话必须放最后
                 mOnekeyShare.show(HouseDetailActivity.this);
@@ -363,6 +363,7 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                     mintent.setClass(HouseDetailActivity.this, LogintestActivity.class);
                     startActivity(mintent);
                 } else {
+
                     Intent intent = new Intent();
                     intent.setClass(HouseDetailActivity.this, BookActivity.class);
                     intent.putExtra("house", mHouse);
@@ -411,6 +412,12 @@ public class HouseDetailActivity extends AppCompatActivity implements View.OnCli
                     mHousePriceTextview.setText(mHouse.getHouse_one_price() + "元/晚");
                     //初始化Fragment的值
                     mInfoFragment.initInfoData(mHouse, mHouseEquipmentList);
+                    if (userid == mHouse.getUser_id()) {
+                        //房东自己的房子
+                        mBookButton.setVisibility(View.GONE);
+                    } else {
+                        mBookButton.setVisibility(View.VISIBLE);
+                    }
                     break;
                 case HOUSE_ADD_COOLECT_WHAT:
                     Toast.makeText(HouseDetailActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();

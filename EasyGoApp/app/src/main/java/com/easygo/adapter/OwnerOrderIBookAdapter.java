@@ -72,10 +72,13 @@ public class OwnerOrderIBookAdapter extends BaseAdapter {
         TextView orderChecktime;
         TextView orderLeavetime;
         TextView orderSumtime;
+        TextView orderBookname;
+        TextView orderChecknum;
         TextView orderRoomtype;
         TextView orderTotal;
         LinearLayout orderDelte;
         LinearLayout orderUpdate;
+        ImageView orderUpdateImage;
         TextView orderUpdateText;
         LinearLayout orderLinerlayout;
     }
@@ -92,11 +95,14 @@ public class OwnerOrderIBookAdapter extends BaseAdapter {
             viewHolder.orderChecktime = (TextView) convertView.findViewById(R.id.order_checktime);
             viewHolder.orderLeavetime = (TextView) convertView.findViewById(R.id.order_leavetime);
             viewHolder.orderSumtime = (TextView) convertView.findViewById(R.id.order_sumtime);
+            viewHolder.orderBookname = (TextView) convertView.findViewById(R.id.order_bookname);
+            viewHolder.orderChecknum = (TextView) convertView.findViewById(R.id.order_checknum);
             viewHolder.orderRoomtype = (TextView) convertView.findViewById(R.id.order_roomtype);
             viewHolder.orderTotal = (TextView) convertView.findViewById(R.id.order_total);
             viewHolder.orderImageView = (ImageView) convertView.findViewById(R.id.order_imageView);
             viewHolder.orderDelte = (LinearLayout) convertView.findViewById(R.id.order_delte);
             viewHolder.orderUpdate = (LinearLayout) convertView.findViewById(R.id.order_update);
+            viewHolder.orderUpdateImage = (ImageView) convertView.findViewById(R.id.order_update_image);
             viewHolder.orderUpdateText = (TextView) convertView.findViewById(R.id.order_update_text);
             viewHolder.orderLinerlayout = (LinearLayout) convertView.findViewById(R.id.order_linerlayout);
             //把当前的控件缓存到布局视图中
@@ -115,16 +121,22 @@ public class OwnerOrderIBookAdapter extends BaseAdapter {
         viewHolder.orderChecktime.setText(mOrdersList.get(position).getChecktime());
         viewHolder.orderLeavetime.setText(mOrdersList.get(position).getLeavetime());
         viewHolder.orderSumtime.setText("共" + days + "晚");
+        viewHolder.orderBookname.setText(mOrdersList.get(position).getBook_name());
+        viewHolder.orderChecknum.setText("共" + mOrdersList.get(position).getChecknum() + "人");
         viewHolder.orderRoomtype.setText(mHouselist.get(position).getHouse_style());
         viewHolder.orderTotal.setText(money + "");
         if (mOrdersList.get(position).getOrder_state().equals("待付款")){
             viewHolder.orderUpdateText.setText("去付款");
         }
         if (mOrdersList.get(position).getOrder_state().equals("待入住")){
+            viewHolder.orderUpdateImage.setImageResource(R.mipmap.order_yes);
             viewHolder.orderUpdateText.setText("确认入住");
         }
         //viewHolder.orderImageView.setImageResource(order.getImage());
         Glide.with(mContext).load(mHousePhotoList.get(position).getHouse_photo_path()).into(viewHolder.orderImageView);
+        if (mOrdersList.get(position).getOrder_state().equals("待入住") || mOrdersList.get(position).getOrder_state().equals("已取消")){
+            viewHolder.orderDelte.setVisibility(View.INVISIBLE);
+        }
         viewHolder.orderDelte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

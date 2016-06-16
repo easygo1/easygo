@@ -68,11 +68,14 @@ public class OwnerOrderIngAdapter extends BaseAdapter {
         TextView orderChecktime;
         TextView orderLeavetime;
         TextView orderSumtime;
+        TextView orderBookname;
+        TextView orderChecknum;
         TextView orderRoomtype;
         TextView orderTotal;
         LinearLayout orderOwnerDelete;
         LinearLayout orderYes;
         LinearLayout orderLinerlayout;
+        LinearLayout orderOwnerBottom;
     }
 
     @Override
@@ -87,12 +90,15 @@ public class OwnerOrderIngAdapter extends BaseAdapter {
             viewHolder.orderChecktime = (TextView) convertView.findViewById(R.id.order_checktime);
             viewHolder.orderLeavetime = (TextView) convertView.findViewById(R.id.order_leavetime);
             viewHolder.orderSumtime = (TextView) convertView.findViewById(R.id.order_sumtime);
+            viewHolder.orderBookname = (TextView) convertView.findViewById(R.id.order_bookname);
+            viewHolder.orderChecknum = (TextView) convertView.findViewById(R.id.order_checknum);
             viewHolder.orderRoomtype = (TextView) convertView.findViewById(R.id.order_roomtype);
             viewHolder.orderTotal = (TextView) convertView.findViewById(R.id.order_total);
             viewHolder.orderImageView = (ImageView) convertView.findViewById(R.id.order_imageView);
             viewHolder.orderOwnerDelete = (LinearLayout) convertView.findViewById(R.id.order_owner_delete);
             viewHolder.orderYes = (LinearLayout) convertView.findViewById(R.id.order_yes);
             viewHolder.orderLinerlayout = (LinearLayout) convertView.findViewById(R.id.order_linerlayout);
+            viewHolder.orderOwnerBottom = (LinearLayout) convertView.findViewById(R.id.order_owner_bottom);
             //把当前的控件缓存到布局视图中
             convertView.setTag(viewHolder);
         } else {
@@ -109,10 +115,16 @@ public class OwnerOrderIngAdapter extends BaseAdapter {
         viewHolder.orderChecktime.setText(mOrdersList.get(position).getChecktime());
         viewHolder.orderLeavetime.setText(mOrdersList.get(position).getLeavetime());
         viewHolder.orderSumtime.setText("共" + days + "晚");
+        viewHolder.orderBookname.setText(mOrdersList.get(position).getBook_name());
+        viewHolder.orderChecknum.setText("共" + mOrdersList.get(position).getChecknum() + "人");
         viewHolder.orderRoomtype.setText(mHouselist.get(position).getHouse_style());
         viewHolder.orderTotal.setText(money + "");
         //viewHolder.orderImageView.setImageResource(order.getImage());
         Glide.with(mContext).load(mHousePhotoList.get(position).getHouse_photo_path()).into(viewHolder.orderImageView);
+        if (mOrdersList.get(position).getOrder_state().equals("待入住") || mOrdersList.get(position).getOrder_state().equals("已取消")){
+            //viewHolder.orderOwnerBottom.setVisibility(View.GONE);
+            viewHolder.orderOwnerDelete.setVisibility(View.GONE);
+        }
         viewHolder.orderOwnerDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,6 +135,9 @@ public class OwnerOrderIngAdapter extends BaseAdapter {
                 }
             }
         });
+        if (!mOrdersList.get(position).getOrder_state().equals("待确认")){
+            viewHolder.orderYes.setVisibility(View.GONE);
+        }
         viewHolder.orderYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

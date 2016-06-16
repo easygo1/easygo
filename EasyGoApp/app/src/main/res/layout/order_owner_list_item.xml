@@ -25,6 +25,7 @@
     </RelativeLayout>
     <include layout="@layout/order_list_listview_house"/>
     <LinearLayout
+        android:id="@+id/order_owner_bottom"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
