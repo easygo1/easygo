@@ -1,7 +1,9 @@
 package com.easygo.view;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -222,6 +224,7 @@ public class MyCalendar extends LinearLayout {
             return position;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             GrideViewHolder holder;
@@ -245,13 +248,16 @@ public class MyCalendar extends LinearLayout {
                     day = "0" + date[1];
                 }
                 if ((date[0] + "-" + day).equals(nowday)) {
+
                     holder.tvDay.setTextColor(Color.parseColor("#FF6600"));
                     holder.tvDay.setTextSize(15);
                     holder.tvDay.setText("今天");
                 }
 
                 if (!"".equals(inday) && (date[0] + "-" + day).equals(inday)) {
-                    convertView.setBackgroundColor(Color.parseColor("#33B5E5"));
+//                    convertView.setBackgroundColor(Color.parseColor("#33B5E5"));
+                    convertView.setBackground(convertView.getResources()
+                            .getDrawable(R.drawable.date_manage));
                     holder.tvDay.setTextColor(Color.WHITE);
                     holder.tvDay.setText(date[1]);
                     holder.tv.setText("入住");
@@ -259,7 +265,9 @@ public class MyCalendar extends LinearLayout {
                     positionIn = date[1];
                 }
                 if (!"".equals(outday) && (date[0] + "-" + day).equals(outday)) {
-                    convertView.setBackgroundColor(Color.parseColor("#33B5E5"));
+                    convertView.setBackground(convertView.getResources()
+                            .getDrawable(R.drawable.date_manage));
+//                    convertView.setBackgroundColor(Color.parseColor("#33B5E5"));
                     holder.tvDay.setTextColor(Color.WHITE);
                     holder.tvDay.setText(date[1]);
                     holder.tv.setText("离开");

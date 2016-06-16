@@ -59,7 +59,7 @@ public class HomeCityActivity extends Activity {
      * 用来标志请求的what, 类似handler的what一样，这里用来区分请求.
      */
     private static final int NOHTTP_WHAT_LOAD = 0x001;
-    public static final int NOHTTP_WHAT_DELETECOLLECT = 2;
+    public static final int NOHTTP_WHAT_DELETE_COLLECT = 2;
     public static final int NOHTTP_WHAT_ADDCOLLECT = 3;
     //标题栏
     TextView title_text;
@@ -527,6 +527,7 @@ public class HomeCityActivity extends Activity {
         // 创建请求对象
         request = NoHttp.createStringRequest(new MyApplication().getUrl(), RequestMethod.POST);
         // 添加请求参数
+//        Log.e("请求发送了",house_collect_id+"2222");
         request.add("methods", "deleteHouseCollect");
         request.add("houseCollectId", house_collect_id);
         /*
@@ -534,7 +535,7 @@ public class HomeCityActivity extends Activity {
 		 * request: 请求对象
 		 * onResponseListener 回调对象，接受请求结果
 		 */
-        requestQueue.add(NOHTTP_WHAT_DELETECOLLECT, request, onResponseListener);
+        requestQueue.add(NOHTTP_WHAT_DELETE_COLLECT, request, onResponseListener);
 
     }
 
@@ -600,9 +601,7 @@ public class HomeCityActivity extends Activity {
                 mPullToRefreshListView.onRefreshComplete();
             } else if (what == NOHTTP_WHAT_ADDCOLLECT) {
                 //回调时，如果服务器报错，有可能会空指针
-//                Toast.makeText(context, "收藏成功", Toast.LENGTH_SHORT).show();
-            } else if (what == NOHTTP_WHAT_DELETECOLLECT) {
-//                Toast.makeText(HomeCityActivity.this, "取消收藏成功", Toast.LENGTH_SHORT).show();
+            } else if (what == NOHTTP_WHAT_DELETE_COLLECT) {
 
             }
         }

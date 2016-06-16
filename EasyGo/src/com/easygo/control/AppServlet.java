@@ -25,6 +25,7 @@ import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.gson.GsonAboutHouseAssess;
 import com.easygo.model.beans.gson.GsonAboutHouseDetail;
 import com.easygo.model.beans.gson.GsonAboutHouseManage;
+import com.easygo.model.beans.gson.GsonAboutLocal;
 import com.easygo.model.beans.gson.GsonOrderInfo;
 import com.easygo.model.beans.gson.GsonOrderInfoAllDetail;
 import com.easygo.model.beans.gson.GsonUserCollect;
@@ -1200,6 +1201,7 @@ public class AppServlet extends HttpServlet {
 			houseCollectDAO = new IHouseCollectDAOImpl();
 			house_collect_id = Integer.parseInt(request
 					.getParameter("houseCollectId"));
+			System.out.println("house_collect_id" + house_collect_id);
 			houseCollectDAO.delHouseCollect(house_collect_id);
 			break;
 		case "deleteHouseCollectById":
@@ -1208,6 +1210,9 @@ public class AppServlet extends HttpServlet {
 			// 用户id
 			user_id = Integer.parseInt(request.getParameter("userid"));
 			houseCollectDAO.deleteHouseCollectById(user_id, house_id);
+			// result = gson.toJson(userCollect);
+			// mPrintWriter.write(result);
+			// mPrintWriter.close();
 			break;
 		// 增加某个用户的收藏表的一条数据
 		case "addHouseCollect":
@@ -1723,6 +1728,27 @@ public class AppServlet extends HttpServlet {
 				houseEquipment.setEquipment_id(equipment_id1);
 				houseEquipmentDAO.addHouseEquipment(houseEquipment);
 			}
+			break;
+		case "getLocalCity":
+			String local_city_name = request.getParameter("local_city_name");
+			housedao = new IHouseDAOImpl();
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			List<Integer> localList = new ArrayList<>();
+			housePhotoList = new ArrayList<>();
+			localList = housedao.getHotHouse(local_city_name);
+			for (int i : localList) {
+				housePhoto = new HousePhoto();
+				housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(i);
+				housePhotoList.add(housePhoto);
+			}
+			GsonAboutLocal gsonAboutLocal = new GsonAboutLocal(localList,
+					housePhotoList);
+			gson = new Gson();
+			result = gson.toJson(gsonAboutLocal);
+			System.out.println(result);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+
 			break;
 		default:
 			break;
