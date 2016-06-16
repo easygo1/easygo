@@ -14,6 +14,7 @@ public class MyApplication extends Application{
    //private String url = "http://10.201.1.159:8080/EasyGo/appservlet";//wsh
  //  private String url = "http://10.201.1.145:8080/EasyGo/appservlet";
      private String url = "http://115.29.96.130/EasyGo/appservlet";//远程服务端
+     //private String url = "http://10.40.7.2:8080/EasyGo/appservlet";
 
     //Application的onCreate早于所有的Activity的onCreate方法
     @Override
