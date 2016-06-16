@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +54,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
     public static final int WHAT_UPDATEORDERBOOK = 11;
     public static final int WHAT_DELEORDER = 12;
     public static final int WHAT_ISASSESSORDERS = 15;
+    public static final int WHAT_OKGO=14;
     TextView mTextView, mOrderRemindTextView, mFootOrderTextView;
     ListView mOrderListView;
     View mBeforeListView, mAfterListView;
@@ -73,7 +73,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
     MyApplication myApplication;
     Request<String> request;
     //只用定义一次
-    private RequestQueue mRequestQueue = NoHttp.newRequestQueue(4);//请求队列
+    private RequestQueue mRequestQueue = NoHttp.newRequestQueue(5);//请求队列
     GsonOrderInfoAllDetail mGsonOrderInfoAllDetail;
     Orders mOrders;
     User house_user;//房东信息
@@ -121,12 +121,17 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                         mFootOrderTextView.setText("去付款");
                     } else if (mOrders.getOrder_state().equals("待入住")) {
                         mOrderRemindTextView.setText("订单已完成，等待您的入住");
-                        mConcelOrderLinearLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-                        mUpdateorderBookLinearLayout.setVisibility(View.GONE);
+                        mConcelOrderLinearLayout.setVisibility(View.INVISIBLE);
+//                        mUpdateorderBookLinearLayout.setVisibility(View.GONE);
+                        mFootOrderTextView.setText("确认入住");
                     } else if (mOrders.getOrder_state().equals("已完成")) {
                         mOrderRemindTextView.setText("欢迎您的下次入住");
                         mFootOrderTextView.setText("去评价");
                         mConcelOrderLinearLayout.setVisibility(View.INVISIBLE);
+                    }
+                    if(!mOrders.getOrder_state().equals("待确认")){
+                        mBookNameEditText.setEnabled(false);
+                        mBookTelEditText.setEnabled(false);
                     }
                     Glide.with(OrderDetailActivity.this)
                             .load(housephoto.getHouse_photo_path())
@@ -166,6 +171,9 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                         startActivity(intent);
                     }
 
+                    break;
+                case WHAT_OKGO:
+                    Toast.makeText(OrderDetailActivity.this,"已确认", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -314,6 +322,9 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     intent.setClass(OrderDetailActivity.this, PayActivity.class);
                     startActivity(intent);
                 }
+                if (mOrderStateTextView.getText().toString().equals("待入住")) {
+                    showOKDialog();
+                }
                 break;
             case R.id.order_delte:
                 //取消订单
@@ -348,6 +359,37 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                         request.add("methods", "delOrders");
                         request.add("order_id", order_id);
                         mRequestQueue.add(WHAT_DELEORDER, request, mOnResponseListener);
+                        mOrderStateTextView.setText("已取消");
+                        mConcelOrderLinearLayout.setVisibility(View.INVISIBLE);
+                        mUpdateorderBookLinearLayout.setVisibility(View.INVISIBLE);
+                        mOrderPhotoImageView.setImageResource(R.mipmap.fail_order);
+                        mOrderRemindTextView.setText("您已经取消该订单，订单已经失效");
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        builder.create().show();
+    }
+    private void showOKDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("您要确认该房源已入住？")
+                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //创建请求对象
+                        request = NoHttp.createStringRequest(mUrl, RequestMethod.GET);
+                        //添加请求参数
+                        request.add("methods", "yesStayOrders");
+                        request.add("order_id", order_id);
+                        mRequestQueue.add(WHAT_OKGO, request, mOnResponseListener);
+                        mConcelOrderLinearLayout.setVisibility(View.INVISIBLE);
+                        //mUpdateorderBookLinearLayout.setVisibility(View.GONE);
+                        mOrderStateTextView.setText("已完成");
+                        mFootOrderTextView.setText("去评价");
+                        mOrderRemindTextView.setText("欢迎您的下次入住");
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {

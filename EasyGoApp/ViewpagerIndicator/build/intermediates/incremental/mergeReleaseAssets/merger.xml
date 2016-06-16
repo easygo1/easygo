@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main"><source path="F:\TestArea\GitSpace\easygo\EasyGoApp\ViewpagerIndicator\src\main\assets"/></dataSet><dataSet config="release"><source path="F:\TestArea\GitSpace\easygo\EasyGoApp\ViewpagerIndicator\src\release\assets"/></dataSet></merger>
 =======
 <merger version="3"><dataSet config="main"><source path="F:\sharework\easygo3\easygo\EasyGoApp\ViewpagerIndicator\src\main\assets"/></dataSet><dataSet config="release"><source path="F:\sharework\easygo3\easygo\EasyGoApp\ViewpagerIndicator\src\release\assets"/></dataSet></merger>
 >>>>>>> 8faa4edd7514d6048dbdc5f210983a082522f2d8
+=======
+<merger version="3"><dataSet config="main"><source path="F:\easygo610\easygo\EasyGoApp\ViewpagerIndicator\src\main\assets"/></dataSet><dataSet config="release"><source path="F:\easygo610\easygo\EasyGoApp\ViewpagerIndicator\src\release\assets"/></dataSet></merger>
+>>>>>>> 4d52eba9fcb1bd7827af5cae43aa398d0472ad42
