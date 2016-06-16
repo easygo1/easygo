@@ -583,14 +583,16 @@ public class HomeCityActivity extends Activity {
                 Gson gson = new Gson();
                 Type type = new TypeToken<GsonAboutHouse>() {
                 }.getType();
-//                gsonAboutHouse = new GsonAboutHouse();
-//                Log.e("传过来了呀", result);
+               gsonAboutHouse = new GsonAboutHouse();
+                Log.e("传过来了呀", result);
                 gsonAboutHouse = gson.fromJson(result, type);
-                if (gsonAboutHouse.getHouseList().size() == 0) {
+                /*if (gsonAboutHouse.getHouseList().size() == 0) {
                     Toast.makeText(HomeCityActivity.this, "暂时没有房源了~", Toast.LENGTH_SHORT).show();
-                }
+                }*/
                 mHouseList.addAll(gsonAboutHouse.getHouseList());
-                mUserList.addAll(gsonAboutHouse.getUserList());
+                mUserList.addAll(gsonAboutHouse.getUserList(
+
+                ));
                 mHousePhotoList.addAll(gsonAboutHouse.getHousePhotoList());
                 mAssessList.addAll(gsonAboutHouse.getAssessList());
                 mHouseCollectList.addAll(gsonAboutHouse.getHouseCollectList());

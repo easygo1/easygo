@@ -62,6 +62,8 @@ public class CustomOrderHistoryAdapter extends BaseAdapter {
         TextView orderChecktime;
         TextView orderLeavetime;
         TextView orderSumtime;
+        TextView orderBookname;
+        TextView orderChecknum;
         TextView orderRoomtype;
         TextView orderTotal;
         LinearLayout orderLinerlayout;
@@ -79,6 +81,8 @@ public class CustomOrderHistoryAdapter extends BaseAdapter {
             viewHolder.orderChecktime = (TextView) convertView.findViewById(R.id.order_checktime);
             viewHolder.orderLeavetime = (TextView) convertView.findViewById(R.id.order_leavetime);
             viewHolder.orderSumtime = (TextView) convertView.findViewById(R.id.order_sumtime);
+            viewHolder.orderBookname = (TextView) convertView.findViewById(R.id.order_bookname);
+            viewHolder.orderChecknum = (TextView) convertView.findViewById(R.id.order_checknum);
             viewHolder.orderRoomtype = (TextView) convertView.findViewById(R.id.order_roomtype);
             viewHolder.orderTotal = (TextView) convertView.findViewById(R.id.order_total);
             viewHolder.orderImageView = (ImageView) convertView.findViewById(R.id.order_imageView);
@@ -99,6 +103,8 @@ public class CustomOrderHistoryAdapter extends BaseAdapter {
         viewHolder.orderChecktime.setText(mOrdersList.get(position).getChecktime());
         viewHolder.orderLeavetime.setText(mOrdersList.get(position).getLeavetime());
         viewHolder.orderSumtime.setText("共" + days + "晚");
+        viewHolder.orderBookname.setText(mOrdersList.get(position).getBook_name());
+        viewHolder.orderChecknum.setText("共" + mOrdersList.get(position).getChecknum() + "人");
         viewHolder.orderRoomtype.setText(mHouselist.get(position).getHouse_style());
         viewHolder.orderTotal.setText(money + "");
         //viewHolder.orderImageView.setImageResource(order.getImage());
