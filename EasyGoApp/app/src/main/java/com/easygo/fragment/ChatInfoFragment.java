@@ -53,8 +53,10 @@ public class ChatInfoFragment extends Fragment{
         connect(token);
         //用户信息提供者
         initUserInfo();
+
         //初始化会话列表
         initConversation();
+
         return mChatInfoView;
     }
 
@@ -126,6 +128,7 @@ public class ChatInfoFragment extends Fragment{
         Log.e("MainActivity", "UserId is:" + s);
         return null;
     }
+
 
     private void initUserInfo() {
         userIdList = new ArrayList<>();

@@ -31,6 +31,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener{
     //初始化控件
     private Button mButton_chat_info, mButton_chat_friend, mButton_chat_dynamic,mChatLogin,mChatReg;
     private ImageView add_friend;
+
     //定义聊天界面的碎片
     private ChatInfoFragment mChatInfoFragment;
     private ChatFriendFragment mChatFriendFragment;
