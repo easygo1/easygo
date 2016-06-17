@@ -52,7 +52,7 @@ public class OwnerOrderDetailActivity extends AppCompatActivity implements View.
     public static final int WHAT_GETORDERINFO = 10;
     public static final int WHAT_UPDATEORDERBOOK = 11;
     public static final int WHAT_DELEORDER = 12;
-    TextView mTextView, mFootOrderTextView;
+    TextView mTextView, mFootOrderTextView,mOrderbooknameTextview,mOrderChecknumTextView;
     ListView mOrderListView;
     View mBeforeListView, mAfterListView;
     //复用申请预定界面的ListView适配器
@@ -115,6 +115,8 @@ public class OwnerOrderDetailActivity extends AppCompatActivity implements View.
                     mHouseTypeTextView.setText(house.getHouse_style());
                     mOrderSumTimeTextView.setText("共" + mOrders.getChecknum() + "晚");
                     mHouseUserNameTextView.setText(house_user.getUser_realname());
+                    mOrderbooknameTextview.setText(mOrders.getBook_name());
+                    mOrderChecknumTextView.setText("共"+mOrders.getChecknum()+"晚");
                     mBookNameTextView.setText(mOrders.getBook_name());
                     mBookTelTextView.setText(mOrders.getTel());
                     house_user_nickname = house_user.getUser_nickname();
@@ -224,6 +226,8 @@ public class OwnerOrderDetailActivity extends AppCompatActivity implements View.
         mCheckLeaveTextView = (TextView) findViewById(R.id.order_leavetime);
         mOrderTotalTextView = (TextView) findViewById(R.id.order_total);
         mOrderSumTimeTextView = (TextView) findViewById(R.id.order_sumtime);
+        mOrderbooknameTextview= (TextView) findViewById(R.id.order_bookname);
+        mOrderChecknumTextView= (TextView) findViewById(R.id.order_checknum);
         mHouseTypeTextView = (TextView) findViewById(R.id.order_roomtype);
         mHouseUserNameTextView = (TextView) findViewById(R.id.house_user_name);
         mFootOrderTextView = (TextView) findViewById(R.id.order_uptate_textview);

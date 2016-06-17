@@ -24,7 +24,7 @@
             android:src="@mipmap/smile_order"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
@@ -37,13 +37,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="订单状态"/>
+                    android:text="订单状态"
+                    android:layout_marginRight="20dp"/>
 
                 <TextView
                     android:id="@+id/order_state"
-                    android:layout_width="match_parent"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
                     android:text="待支付"
                     android:textColor="@color/textDown"
                     android:textSize="@dimen/textsize_l"/>
@@ -63,15 +63,15 @@
                 android:paddingTop="8dp">
 
                 <TextView
+                    android:layout_marginRight="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="下单时间"/>
 
                 <TextView
                     android:id="@+id/order_time"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
                     android:text="2016-04-08 12:00"/>
             </LinearLayout>
 
@@ -159,11 +159,5 @@
         android:gravity="center"
         android:text="入住人信息"
         android:textSize="@dimen/textsize_l"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </LinearLayout>
-
 
 </LinearLayout>
