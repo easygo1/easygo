@@ -117,9 +117,9 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
         mBookListView.setAdapter(mAdapter);
 
         //ListView之前控件的初始化
-        title_text = (TextView) findViewById(R.id.title_text);
-        mBackView = (ImageView) findViewById(R.id.back);
-        title_text.setText("申请订单");
+        title_text = (TextView) findViewById(R.id.book_title_text);
+        mBackView = (ImageView) findViewById(R.id.book_back);
+//        title_text.setText("申请订单");
 
         mCheckLayout = mBeforeListView.findViewById(R.id.room_book_check_layout);
         mLeaveLayout = mBeforeListView.findViewById(R.id.room_book_leave_layout);
@@ -189,7 +189,7 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
 //                startActivity(m);
                 sendbook();
                 break;
-            case R.id.back:
+            case R.id.book_back:
                 finish();
                 break;
             default:

@@ -14,7 +14,6 @@ import android.widget.ListView;
 import com.easygo.activity.CustomOrderActivity;
 import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.R;
-import com.easygo.adapter.CustomOrderAdapter;
 import com.easygo.adapter.CustomOrderHistoryAdapter;
 import com.easygo.beans.gson.GsonOrderInfo;
 import com.easygo.beans.house.House;

@@ -25,6 +25,7 @@ import com.easygo.model.beans.gson.GsonAboutHouse;
 import com.easygo.model.beans.gson.GsonAboutHouseAssess;
 import com.easygo.model.beans.gson.GsonAboutHouseDetail;
 import com.easygo.model.beans.gson.GsonAboutHouseManage;
+import com.easygo.model.beans.gson.GsonAboutLocal;
 import com.easygo.model.beans.gson.GsonOrderInfo;
 import com.easygo.model.beans.gson.GsonOrderInfoAllDetail;
 import com.easygo.model.beans.gson.GsonUserCollect;
@@ -237,7 +238,7 @@ public class AppServlet extends HttpServlet {
 				System.out.println("登录成功");
 				mPrintWriter.close();
 			}
-			
+
 			break;
 		// 用户注册
 		case "register":
@@ -246,7 +247,7 @@ public class AppServlet extends HttpServlet {
 			user_password = request.getParameter("user_password");
 			userdao = new IUserDAOImpl();
 			user = userdao.selectUser(user_phone);
-			//System.out.println("user..."+user.toString());
+			// System.out.println("user..."+user.toString());
 			if (user == null) {
 				// 对用户进行注册
 				user = new User();
@@ -272,14 +273,14 @@ public class AppServlet extends HttpServlet {
 					System.out.println("登录成功");
 					mPrintWriter.close();
 				}
-			}else {
+			} else {
 				System.out.println("该用户已注册");
 				mPrintWriter.write("0");// 将数据写回android端
 				mPrintWriter.close();
 			}
-			
+
 			// mPrintWriter.write(userdao.register(user));
-			//mPrintWriter.close();
+			// mPrintWriter.close();
 			break;
 		// 添加好友
 		case "addFriend":
@@ -756,7 +757,28 @@ public class AppServlet extends HttpServlet {
 			orders = orderDAO.findOrdersByorderid(order_id);
 			Jdpush.sendPush(orders.getUser_id(), "您的订单已被房主确认，请及时付款");
 			break;
-		
+		// 用户确认入住
+		case "yesStayOrders":
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			orderDAO = new IOrderDAOImpl();
+			boolean yesStay = orderDAO.updateOrderState(order_id, "已完成");
+			if (yesStay) {
+				mPrintWriter.write("确认成功");
+				mPrintWriter.close();
+			} else {
+				mPrintWriter.write("确认失败");
+				mPrintWriter.close();
+			}
+			orders = new Orders();
+			orderDAO = new IOrderDAOImpl();
+			orders = orderDAO.findOrdersByorderid(order_id);
+			// 根据房子id查询房主id,向房主推送消息
+			housedao = new IHouseDAOImpl();
+			house = new House();
+			house = housedao.findSpecHouseById(orders.getHouse_id());
+			Jdpush.sendPush(house.getUser_id(), "您的订单已被房客确认入住，请及时查看");
+			break;
+
 		case "assessokOrders":
 			order_id = Integer.valueOf(request.getParameter("order_id"));
 			assessDAO = new IAssessDAOImpl();
@@ -802,6 +824,40 @@ public class AppServlet extends HttpServlet {
 					orders, house_user, house, housePhoto, userorderlinkmanlist);
 			gson = new Gson();
 			result = gson.toJson(gsonorderinfoalldetail);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+			break;
+		case "getOwnerorderdetailbyorderid":
+			// 根据订单号得到订单的具体信息，该房源具体信息，该房源的主图，房客信息，该订单入住人信息
+			// 根据订单号得到订单//根据订单号得到该订单的全部信息
+			order_id = Integer.valueOf(request.getParameter("order_id"));
+			orderDAO = new IOrderDAOImpl();
+			orders = orderDAO.findOrdersByorderid(order_id);
+			house_id = orders.getHouse_id();
+
+			// 根据该订单中的house_id得到该house对象
+			housedao = new IHouseDAOImpl();
+			house = housedao.findSpecHouseById(house_id);
+			// 根据houseid得到房客id
+			user_id = orders.getUser_id();
+
+			// 得到房客的头像 得到房客的名称
+			userdao = new IUserDAOImpl();
+			house_user = userdao.findSpecUserById(user_id);// 房客对象
+
+			// 得到该房源的主图
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(house_id);
+
+			// 根据订单号查询到该订单的所有入住人信息
+			userorderlinkmandao = new IUserOrderLinkmanDAOImpl();
+			userorderlinkmanlist = userorderlinkmandao
+					.selectUserOrderLinkmanByOrderid(order_id);
+
+			GsonOrderInfoAllDetail gsonorderinfoalldetailowner = new GsonOrderInfoAllDetail(
+					orders, house_user, house, housePhoto, userorderlinkmanlist);
+			gson = new Gson();
+			result = gson.toJson(gsonorderinfoalldetailowner);
 			mPrintWriter.write(result);
 			mPrintWriter.close();
 			break;
@@ -1179,6 +1235,7 @@ public class AppServlet extends HttpServlet {
 			houseCollectDAO = new IHouseCollectDAOImpl();
 			house_collect_id = Integer.parseInt(request
 					.getParameter("houseCollectId"));
+			System.out.println("house_collect_id" + house_collect_id);
 			houseCollectDAO.delHouseCollect(house_collect_id);
 			break;
 		case "deleteHouseCollectById":
@@ -1187,6 +1244,9 @@ public class AppServlet extends HttpServlet {
 			// 用户id
 			user_id = Integer.parseInt(request.getParameter("userid"));
 			houseCollectDAO.deleteHouseCollectById(user_id, house_id);
+			// result = gson.toJson(userCollect);
+			// mPrintWriter.write(result);
+			// mPrintWriter.close();
 			break;
 		// 增加某个用户的收藏表的一条数据
 		case "addHouseCollect":
@@ -1259,7 +1319,7 @@ public class AppServlet extends HttpServlet {
 				userList.add(user);
 			}
 			GsonUserCollect userCollect = new GsonUserCollect(houseList,
-					housePhotoList, userList,assessList,starNumList);
+					housePhotoList, userList, assessList, starNumList);
 			gson = new Gson();
 			result = gson.toJson(userCollect);
 			mPrintWriter.write(result);
@@ -1702,6 +1762,27 @@ public class AppServlet extends HttpServlet {
 				houseEquipment.setEquipment_id(equipment_id1);
 				houseEquipmentDAO.addHouseEquipment(houseEquipment);
 			}
+			break;
+		case "getLocalCity":
+			String local_city_name = request.getParameter("local_city_name");
+			housedao = new IHouseDAOImpl();
+			housePhotoDAO = new IHousePhotoDAOImpl();
+			List<Integer> localList = new ArrayList<>();
+			housePhotoList = new ArrayList<>();
+			localList = housedao.getHotHouse(local_city_name);
+			for (int i : localList) {
+				housePhoto = new HousePhoto();
+				housePhoto = housePhotoDAO.selectSpecIHousePhotoFirst(i);
+				housePhotoList.add(housePhoto);
+			}
+			GsonAboutLocal gsonAboutLocal = new GsonAboutLocal(localList,
+					housePhotoList);
+			gson = new Gson();
+			result = gson.toJson(gsonAboutLocal);
+			System.out.println(result);
+			mPrintWriter.write(result);
+			mPrintWriter.close();
+
 			break;
 		default:
 			break;

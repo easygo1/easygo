@@ -69,7 +69,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@color/bookbackground"
-        android:textColorHint="@color/linecorlor"
+        android:textColorHint="@color/hintColor"
         android:hint="写下你的入住体会，房间怎样？房东怎样？环境如何？"
         android:maxLength="200"
         android:textSize="@dimen/textsize_s"/>

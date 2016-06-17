@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="12"
-        android:fillViewport="true"
-        android:descendantFocusability="blocksDescendants">
+        android:descendantFocusability="blocksDescendants"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,12 +52,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <Button
             android:id="@+id/book_house_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_bg"
+            android:text="申请预定"
             android:textColor="#fff"
-            android:text="申请预定"/>
+            android:visibility="gone"/>
     </LinearLayout>
 </LinearLayout>

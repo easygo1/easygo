@@ -7,15 +7,9 @@
     android:orientation="vertical"
     tools:context="com.easygo.activity.BookActivity">
 
-    <include layout="@layout/common_title_bar"/>
-    <!--<TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+    <include
         android:background="@color/headerColor"
-        android:text="申请预定"
-        android:textSize="@dimen/textsize_xl"
-        android:gravity="center"/>-->
+        layout="@layout/book_title_bar"/>
 
     <include
         android:layout_width="match_parent"
@@ -31,6 +25,6 @@
         android:layout_weight="1"
         android:background="@color/headerColor"
         android:text="发送申请"
-        android:textSize="24sp"
+        android:textSize="@dimen/textsize_l"
         android:gravity="center"/>
 </LinearLayout>

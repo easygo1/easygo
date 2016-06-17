@@ -15,7 +15,7 @@
     <!--选中状态-->
     <item
         android:id="@android:id/progress"
-        android:drawable="@drawable/rating_star_down"
+        android:drawable="@drawable/list_star"
         android:layout_height="wrap_content"  />
 
 </layer-list>
