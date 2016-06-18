@@ -11,11 +11,11 @@
         android:background="@mipmap/me_userislogin_background">
         <ImageView
             android:id="@+id/me_owner_myset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
             android:src="@mipmap/me_set"/>
         <ImageView
             android:id="@+id/me_owner_user_imageview"
@@ -84,6 +84,5 @@
             android:text="@string/customerservice"/>
         <TextView
             style="@style/me_content_notext"/>
-
     </LinearLayout>
 </LinearLayout>

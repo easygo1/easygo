@@ -91,6 +91,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
         tv_in = (TextView) mSearchView.findViewById(R.id.search_check_time);
         tv_out = (TextView) mSearchView.findViewById(R.id.search_leave_time);
+//        mFootPrintView.setVisibility(View.INVISIBLE);
     }
 
     @Override

@@ -73,7 +73,7 @@
         <!-- 高德地图 -->
             <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="598648bf7a682c675d74bb76a8b64d90"/>
+            android:value="70669a0d7dd314c5645d7df57a71e3e7"/>
         <!--<meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="20d76214fafcaca8b3c0cbb351269912"/>-->
