@@ -106,3 +106,10 @@ INSERT INTO checks(user_id,check_sum,check_last_time) VALUE(1,2,'2016-04-13')
 #向admin管理员表插入数据
 INSERT INTO admin(admin_name,admin_password) VALUE('admin','admin')
 
+SELECT * FROM house WHERE house_address_city ="苏州市" 
+	AND house_style LIKE "客厅沙发" AND house_limit_sex LIKE "限男生" 
+	AND house_stay_time  LIKE "%" ORDER BY house_one_price ; 
+
+DELETE	FROM house_date_manage WHERE date_not_use < CURRENT_DATE;
+
+
