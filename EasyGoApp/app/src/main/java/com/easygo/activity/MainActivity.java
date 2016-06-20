@@ -29,13 +29,15 @@ import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
+import io.rong.imkit.RongIM;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     SharedPreferences mSharedPreferences;
     public static final String TYPE = "type";
     int user_id;
+    int count=0;
     LinearLayout mAllLayout, mHomeLayout, mSearchLayout, mPlusLayout, mChatLayout, mMeLayout;
-    ImageView mHomeImageView, mSearchImageView, mChatImageView, mMeImageView;
+    ImageView mHomeImageView, mSearchImageView, mChatImageView, mMeImageView,mtishi;
     TextView mHomeTextView, mSearchTextView, mChatTextView, mMeTextView;
     Toast mToast;
     MoreWindow mMoreWindow;
@@ -91,6 +93,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         mSharedPreferences = MainActivity.this.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
         user_id = mSharedPreferences.getInt("user_id", 0);
+
+
         JPushInterface.init(this);
         JPushInterface.setDebugMode(true);
         JPushInterface.setAlias(this, user_id+"", new TagAliasCallback() {
@@ -103,6 +107,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addListeners();
         //默认显示买模块，修改图标和文字颜色为选中颜色
         initDefault();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mtishi.bringToFront();
+        if(RongIM.getInstance()!=null){
+            count=RongIM.getInstance().getRongIMClient().getTotalUnreadCount();
+            if(count>0){
+                mtishi.setVisibility(View.VISIBLE);
+            }else{
+                mtishi.setVisibility(View.GONE);
+            }
+        }
     }
 
     private void initDefault() {
@@ -172,6 +190,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSearchImageView = (ImageView) findViewById(R.id.search_imageview);
         mChatImageView = (ImageView) findViewById(R.id.chat_imageview);
         mMeImageView = (ImageView) findViewById(R.id.me_imageview);
+        mtishi= (ImageView) findViewById(R.id.tishi);
+
 
         mHomeTextView = (TextView) findViewById(R.id.homepage_text);
         mSearchTextView = (TextView) findViewById(R.id.search_text);

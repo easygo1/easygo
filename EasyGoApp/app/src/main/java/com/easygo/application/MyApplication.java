@@ -1,6 +1,7 @@
 package com.easygo.application;
 
 import android.app.Application;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.yolanda.nohttp.Logger;
 import com.yolanda.nohttp.NoHttp;
@@ -8,12 +9,13 @@ import com.yolanda.nohttp.NoHttp;
 import io.rong.imkit.RongIM;
 
 
-public class MyApplication extends Application{
-//    private String url = "http://10.40.7.9:8080/EasyGo/appservlet";
-   // private String url = "http://10.201.1.173:8080/EasyGo/appservlet";
+public class MyApplication extends Application {
+    //    private String url = "http://10.40.7.9:8080/EasyGo/appservlet";
+//    private String url = "http://10.40.7.13:8080/EasyGo/appservlet";
+    // private String url = "http://10.201.1.173:8080/EasyGo/appservlet";
 //    private String url = "http://10.201.1.167:8080/EasyGo/appservlet";
-   // private String url = "http://10.201.1.159:8080/EasyGo/appservlet";//wsh
-  // private String url = "http://10.201.1.145:8080/EasyGo/appservlet";
+    // private String url = "http://10.201.1.159:8080/EasyGo/appservlet";//wsh
+    // private String url = "http://10.201.1.145:8080/EasyGo/appservlet";
    private String url = "http://115.29.96.130/EasyGo/appservlet";//远程服务端
 
     //Application的onCreate早于所有的Activity的onCreate方法

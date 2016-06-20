@@ -53,10 +53,22 @@
         android:id="@+id/chat"
         style="@style/bottom_style">
 
-        <ImageView
-            android:id="@+id/chat_imageview"
-            style="@style/bottom_image"
-            android:src="@mipmap/btn_chat_disabled"/>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/chat_imageview"
+                style="@style/bottom_image"
+                android:src="@mipmap/btn_chat_disabled"/>
+
+            <ImageView
+                android:id="@+id/tishi"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:src="@drawable/tishi"/>
+        </FrameLayout>
 
         <TextView
             android:id="@+id/chat_text"

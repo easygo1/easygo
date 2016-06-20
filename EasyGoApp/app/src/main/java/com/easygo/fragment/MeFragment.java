@@ -80,7 +80,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private TextView meCustomerDescriptustomer;
     private TextView meCustomerMypoints;
     private TextView mIsIdentifyTextView;
-   // private ImageView mIsIdentifyImageView;
+    // private ImageView mIsIdentifyImageView;
 
     private TextView meCustomerDescription;
     private TextView meCustomerLinkman;
@@ -131,8 +131,8 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                             .bitmapTransform(new CropCircleTransformation(getActivity()))
                             .error(R.mipmap.user_photo_defult)
                             .into(meCustomerUserImageview);
-                    meCustomerDescriptustomer.setText("个性签名："+user.getUser_mood());
-                    if (user.getUser_idcard()==null){
+                    meCustomerDescriptustomer.setText("个性签名：" + user.getUser_mood());
+                    if (user.getUser_idcard() == null) {
                         //mIsIdentifyImageView.setImageResource(R.mipmap.no_realname);
                         mIsIdentifyTextView.setText("未认证");
                     }
@@ -143,7 +143,9 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                             .bitmapTransform(new CropCircleTransformation(getActivity()))
                             .error(R.mipmap.user_photo_defult)
                             .into(meOwnerUserImageview);
-                    meOwnerDescription.setText("个性签名："+user.getUser_mood());
+                    if (user.getUser_mood()!=null) {
+                        meOwnerDescription.setText("个性签名：" + user.getUser_mood());
+                    }
                 }
             }
         }
@@ -243,7 +245,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         meCustomerCertification = (TextView) mView.findViewById(R.id.me_customer_certification);
         meCustomerReleaseroom = (TextView) mView.findViewById(R.id.me_customer_releaseroom);
         meCustomerCustomerservice = (TextView) mView.findViewById(R.id.me_customer_customerservice);
-        mIsIdentifyTextView= (TextView) mView.findViewById(R.id.is_identify_text);
+        mIsIdentifyTextView = (TextView) mView.findViewById(R.id.is_identify_text);
         //mIsIdentifyImageView= (ImageView) mView.findViewById(R.id.is_identify_img);
 
         myorder = (LinearLayout) mView.findViewById(R.id.myorder);
@@ -439,11 +441,11 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                     intent = new Intent();
                     intent.setClass(getActivity(), CustomOrderActivity.class);
                     startActivity(intent);
-                }else if (type == 2){
+                } else if (type == 2) {
                     intent = new Intent();
-                    intent.setClass(getActivity(),OwnerOrderActivity.class);
+                    intent.setClass(getActivity(), OwnerOrderActivity.class);
                     startActivity(intent);
-                }else {
+                } else {
                     Toast.makeText(getActivity(), "请去登录", Toast.LENGTH_SHORT).show();
                     intent = new Intent();
                     intent.setClass(getActivity(), LogintestActivity.class);
@@ -476,7 +478,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 //可租日期管理
                 intent = new Intent();
                 intent.setClass(getActivity(), DateManageActivity.class);
-                intent.putExtra("user_id",user_id);
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
                 break;
         }

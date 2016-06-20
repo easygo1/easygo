@@ -302,6 +302,8 @@ public class MoreWindow extends PopupWindow implements OnClickListener {
 
 	//发表动态
 	private void publishdynamic() {
+		mSharedPreferences = mContext.getSharedPreferences(TYPE, Context.MODE_PRIVATE);
+		type = mSharedPreferences.getInt("type", 0);
 		if(type==0){
 			Toast.makeText(mContext, "请先去登录", Toast.LENGTH_SHORT).show();
 		}else{
