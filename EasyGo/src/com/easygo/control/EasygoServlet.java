@@ -25,7 +25,7 @@ import com.easygo.model.impl.order.IOrderDAOImpl;
 import com.easygo.model.impl.user.IUserDAOImpl;
 import com.google.gson.Gson;
 
-@WebServlet("/easygoservlet")
+//@WebServlet("/easygoservlet")
 public class EasygoServlet extends HttpServlet {
 	private static final long serialVrsionUID = 1L;
 	// 用于输出数据

@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.easygo.activity.CustomOrderActivity;
 import com.easygo.activity.OrderDetailActivity;
 import com.easygo.activity.OwnerOrderActivity;
 import com.easygo.activity.PayActivity;
@@ -161,6 +160,8 @@ public class OwnerOrderIBookAdapter extends BaseAdapter {
                     Intent intent = new Intent();
                     intent.putExtra("order_id",mOrdersList.get(position).getOrder_id());
                     //新加上的
+                    intent.putExtra("describe", mHouselist.get(position).getHouse_describe() + "-" + mHouselist.get(position).getHouse_style());
+                    intent.putExtra("price", mOrdersList.get(position).getTotal());
                     intent.putExtra("house_id",mOrdersList.get(position).getHouse_id());
                     intent.putExtra("checktime",mOrdersList.get(position).getChecktime());
                     intent.putExtra("leavetime",mOrdersList.get(position).getLeavetime());

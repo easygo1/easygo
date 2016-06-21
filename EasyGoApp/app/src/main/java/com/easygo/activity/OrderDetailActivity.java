@@ -64,7 +64,7 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
     LayoutInflater mInflater;
 
     EditText mBookNameEditText, mBookTelEditText;
-    TextView mOrderStateTextView, mOrderTimeTextView, mCheckTiemTextView, mCheckLeaveTextView, mOrderTotalTextView, mOrderSumTimeTextView, mHouseTypeTextView, mHouseUserNameTextView, mHouseAddressTextView;
+    TextView mOrderStateTextView, mOrderTimeTextView, mCheckTiemTextView, mCheckLeaveTextView, mOrderTotalTextView, mOrderSumTimeTextView, mHouseTypeTextView, mHouseUserNameTextView, mHouseAddressTextView,mOrderbooknameTextview, mOrderChecknumTextView;
     ImageView mHousePhotoImageView, mOrderPhotoImageView, mbackImageView;
     LinearLayout mConcelOrderLinearLayout, mUpdateorderBookLinearLayout;
     Button mChatOwnerButton;
@@ -143,6 +143,8 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
                     mOrderTotalTextView.setText("" + mOrders.getTotal());
                     mHouseTypeTextView.setText(house.getHouse_style());
                     mOrderSumTimeTextView.setText("共" + mOrders.getChecknum() + "晚");
+                    mOrderbooknameTextview.setText(mOrders.getBook_name());
+                    mOrderChecknumTextView.setText("共" + mOrders.getChecknum() + "人");
                     mHouseUserNameTextView.setText(house_user.getUser_realname());
                     mHouseAddressTextView.setText(house.getHouse_address_province() + house.getHouse_address_city());
                     mBookNameEditText.setText(mOrders.getBook_name());
@@ -263,6 +265,8 @@ public class OrderDetailActivity extends AppCompatActivity implements View.OnCli
         mOrderTotalTextView = (TextView) findViewById(R.id.order_total);
         mOrderSumTimeTextView = (TextView) findViewById(R.id.order_sumtime);
         mHouseTypeTextView = (TextView) findViewById(R.id.order_roomtype);
+        mOrderbooknameTextview = (TextView) findViewById(R.id.order_bookname);
+        mOrderChecknumTextView = (TextView) findViewById(R.id.order_checknum);
         mHouseUserNameTextView = (TextView) findViewById(R.id.house_user_name);
         mHouseAddressTextView = (TextView) findViewById(R.id.house_address);
         mFootOrderTextView = (TextView) findViewById(R.id.order_uptate_textview);

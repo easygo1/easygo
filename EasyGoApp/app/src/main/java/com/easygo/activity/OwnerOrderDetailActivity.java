@@ -23,6 +23,7 @@ import com.easygo.beans.house.HousePhoto;
 import com.easygo.beans.order.Orders;
 import com.easygo.beans.order.UserOrderLinkman;
 import com.easygo.beans.user.User;
+import com.easygo.utils.DaysUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yolanda.nohttp.NoHttp;
@@ -52,7 +53,7 @@ public class OwnerOrderDetailActivity extends AppCompatActivity implements View.
     public static final int WHAT_GETORDERINFO = 10;
     public static final int WHAT_UPDATEORDERBOOK = 11;
     public static final int WHAT_DELEORDER = 12;
-    TextView mTextView, mFootOrderTextView,mOrderbooknameTextview,mOrderChecknumTextView;
+    TextView mTextView, mFootOrderTextView, mOrderbooknameTextview, mOrderChecknumTextView;
     ListView mOrderListView;
     View mBeforeListView, mAfterListView;
     //复用申请预定界面的ListView适配器
@@ -113,10 +114,11 @@ public class OwnerOrderDetailActivity extends AppCompatActivity implements View.
                     mCheckLeaveTextView.setText(mOrders.getLeavetime());
                     mOrderTotalTextView.setText("" + mOrders.getTotal());
                     mHouseTypeTextView.setText(house.getHouse_style());
-                    mOrderSumTimeTextView.setText("共" + mOrders.getChecknum() + "晚");
+                    int days = DaysUtil.getDays(mOrders.getChecktime(), mOrders.getLeavetime());
+                    mOrderSumTimeTextView.setText("共" + days + "晚");
                     mHouseUserNameTextView.setText(house_user.getUser_realname());
                     mOrderbooknameTextview.setText(mOrders.getBook_name());
-                    mOrderChecknumTextView.setText("共"+mOrders.getChecknum()+"晚");
+                    mOrderChecknumTextView.setText("共" + mOrders.getChecknum() + "人");
                     mBookNameTextView.setText(mOrders.getBook_name());
                     mBookTelTextView.setText(mOrders.getTel());
                     house_user_nickname = house_user.getUser_nickname();
@@ -125,10 +127,10 @@ public class OwnerOrderDetailActivity extends AppCompatActivity implements View.
                         mConcelOrderLinearLayout.setVisibility(View.GONE);
                         mUpdateorderBookLinearLayout.setVisibility(View.GONE);
                     }*/
-                    if(mOrders.getOrder_state().equals("待付款")){
+                    if (mOrders.getOrder_state().equals("待付款")) {
                         mFootOrderTextView.setText("已确认");
                     }
-                    if(!(mOrders.getOrder_state().equals("待付款")||mOrders.getOrder_state().equals("待确认"))){
+                    if (!(mOrders.getOrder_state().equals("待付款") || mOrders.getOrder_state().equals("待确认"))) {
                         mConcelOrderLinearLayout.setVisibility(View.GONE);
                         mUpdateorderBookLinearLayout.setVisibility(View.GONE);
                     }
@@ -226,8 +228,8 @@ public class OwnerOrderDetailActivity extends AppCompatActivity implements View.
         mCheckLeaveTextView = (TextView) findViewById(R.id.order_leavetime);
         mOrderTotalTextView = (TextView) findViewById(R.id.order_total);
         mOrderSumTimeTextView = (TextView) findViewById(R.id.order_sumtime);
-        mOrderbooknameTextview= (TextView) findViewById(R.id.order_bookname);
-        mOrderChecknumTextView= (TextView) findViewById(R.id.order_checknum);
+        mOrderbooknameTextview = (TextView) findViewById(R.id.order_bookname);
+        mOrderChecknumTextView = (TextView) findViewById(R.id.order_checknum);
         mHouseTypeTextView = (TextView) findViewById(R.id.order_roomtype);
         mHouseUserNameTextView = (TextView) findViewById(R.id.house_user_name);
         mFootOrderTextView = (TextView) findViewById(R.id.order_uptate_textview);

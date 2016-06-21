@@ -76,7 +76,7 @@ import com.easygo.utils.Jdpush;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-@WebServlet("/appservlet")
+//@WebServlet("/appservlet")
 public class AppServlet extends HttpServlet {
 
 	private static final long serialVrsionUID = 1L;

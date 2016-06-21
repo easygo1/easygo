@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>EasyGotest</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>EasyGotest</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>appservlet</servlet-name>
+		<servlet-class>com.easygo.control.AppServlet</servlet-class>
+	</servlet>
+	<!-- ... -->
+	<servlet-mapping>
+		<servlet-name>appservlet</servlet-name>
+		<url-pattern>/appservlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>easygoservlet</servlet-name>
+		<servlet-class>com.easygo.control.EasygoServlet</servlet-class>
+	</servlet>
+	<!-- ... -->
+	<servlet-mapping>
+		<servlet-name>easygoservlet</servlet-name>
+		<url-pattern>/easygoservlet</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>code</filter-name>
+		<filter-class>com.easygo.utils.MyFilter</filter-class>
+		<init-param>
+		<param-name>code</param-name>
+		<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>code</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
