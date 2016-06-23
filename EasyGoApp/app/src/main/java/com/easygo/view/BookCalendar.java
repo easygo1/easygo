@@ -202,13 +202,14 @@ public class BookCalendar extends LinearLayout {
      *
      * @author Administrator
      */
-    static class   {
+    static class GrideViewHolder {
         TextView tvDay, tv;
     }
 
     /**
      * gridview的adapter
      *
+     * @author Administrator
      */
     static class calendarGridViewAdapter extends BaseAdapter {
 
@@ -354,6 +355,7 @@ public class BookCalendar extends LinearLayout {
     /**
      * 自定义监听接口
      *
+     * @author Administrator
      */
     public interface OnDaySelectListener {
         void onDaySelectListener(View view, String date);
